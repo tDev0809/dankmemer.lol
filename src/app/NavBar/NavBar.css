@@ -1,0 +1,40 @@
+.navbar {
+  height: 100px;
+  display: flex;
+  background: #23272a;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.nav-item {
+  float: left;
+}
+
+.nav-link.active {
+  color: #7289DA;
+}
+ .nav-link {
+   display: block;
+   text-align: center;
+   margin-left: 10px;
+   margin-right: 10px;
+   color: white;
+   text-decoration: none;
+   font-weight: bold;
+ }
+
+ .DM-nav {
+   color: white;
+   font-weight: bold;
+   font-size: 2em;
+   margin-left: 20px;
+ }
