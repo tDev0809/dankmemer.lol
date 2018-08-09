@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import MemerIMG from '../../assets/memer.png';
 import './Home.css';
 
 class Home extends Component {
   render() {
     return(
-      <div>
-        Home
+      <div className="content">
+      <div className="home">
+        <img className="memer-img" height="200" width="200" src={MemerIMG} />
+        <span className="home-slogan">THE <span className="blurple">ORIGINAL</span> DISCORD MEME BOT</span>
+      </div>
+        
       </div>
     )
   }

@@ -4,7 +4,7 @@ import './Commands.css';
 class Commands extends Component {
   render() {
     return(
-      <div>
+      <div className="content">
         Commands  
       </div>
     )

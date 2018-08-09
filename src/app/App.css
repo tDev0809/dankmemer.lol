@@ -2,3 +2,25 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.content {
+  background: #2C2F33;
+}
+
+.psuedoBody {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: white;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.blurple {
+  color: #7289DA;
+}

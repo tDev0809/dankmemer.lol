@@ -1,6 +1,28 @@
 body {
   padding: 0;
   margin: 0;
+}
+
+.content {
+  background: #2C2F33;
+}
+
+.psuedoBody {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: white;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.blurple {
+  color: #7289DA;
 }.navbar {
   height: 100px;
   display: flex;
@@ -9,6 +31,7 @@ body {
   align-items: center;
   padding-left: 5px;
   padding-right: 5px;
+  font-family: 'Montserrat';
 }
 .nav-links {
   list-style-type: none;
@@ -48,4 +71,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Lato';
+}.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+.home-slogan {
+  font-size: 3em;
+  font-family: 'Montserrat';
+  font-weight: bold;
 }
