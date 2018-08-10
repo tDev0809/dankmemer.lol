@@ -39,7 +39,7 @@ body {
 }
 
 .button:hover {
-  border-color: grey;
+  border-color: #99AAB5;
   background-color: white;
   color: #7289DA;
 }
