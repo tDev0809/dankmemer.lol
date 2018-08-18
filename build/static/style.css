@@ -24,7 +24,8 @@ body {
 
 .blurple {
   color: #7289DA;
-}.button {
+}
+.button {
   border: 2px solid white;
   background-color: transparent;
   color: white;
@@ -61,7 +62,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  margin-right: 20px;
+  margin-right: 20%;
 }
 
 .nav-item {
@@ -85,8 +86,12 @@ body {
    color: white;
    font-weight: bold;
    font-size: 2em;
-   margin-left: 20px;
- }.footer {
+   margin-left: 20%;
+ }
+
+ .premium {
+  color: #FFD700;
+}.footer {
   height: 50px;
   background: #23272A;
   color: white;
