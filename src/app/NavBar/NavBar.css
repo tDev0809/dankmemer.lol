@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  margin-right: 20%;
+  margin-right: 40px;
 }
 
 .nav-item {
@@ -46,7 +46,7 @@
    color: white;
    font-weight: bold;
    font-size: 2em;
-   margin-left: 20%;
+   margin-left: 40px;
  }
 
  .nav-link.premium {
