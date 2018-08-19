@@ -1,1 +1,6 @@
 node_modules/
+.vscode/
+build/static/bundle.js
+build/static/bundlejs.map
+build/static/style.css
+build/static/stye.css.map

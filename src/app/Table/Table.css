@@ -1,0 +1,10 @@
+.command-table {
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 5px;
+  font-family: 'Lato';
+}
+
+.command-tr td {
+  padding: 5px;
+}
