@@ -1,10 +1,36 @@
 .footer {
-  height: 50px;
+  height: 100px;
   background: #23272A;
   color: white;
-  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
   font-family: 'Lato';
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+}
+
+.footer-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  color: #e6e6e6;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #e6e6e6;
+}
+
+.footer-link:hover {
+  color: white;
 }
