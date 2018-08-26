@@ -51,7 +51,7 @@ class DeveloperList extends Component {
     },
     {
       name: 'Yukine',
-      picture: 'yukine.jpg',
+      picture: 'yukine.png',
       about: 'Hey my name is Yukine and im a hobby developer who loves to try new things out.',
       social: [
         {name: 'GitHub', link: 'https://github.com/Dev-Yukine'}
