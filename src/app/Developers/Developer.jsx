@@ -4,8 +4,8 @@ import './Developer.css';
 class Developer extends Component {
   render() {
     let accounts = this.props.social.map(account => {
-      return <a href={account.link}>
-        <img className="developer-account" key={`${this.props.name}-${account.name}`}src={`${account.name}.svg`}></img>
+      return <a key={`${this.props.name}-${account.name}`} href={account.link}>
+        <img className="developer-account" src={`${account.name}.svg`}></img>
       </a>
     })
     return(

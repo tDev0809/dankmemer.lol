@@ -34,11 +34,11 @@ class DeveloperList extends Component {
       picture: 'kromatic.png'
     },
     {
-      name: 'Yukine',
-      picture: 'yukine.jpg',
-      about: 'Hey my name is Yukine and im a hobby developer who loves to try new things out.',
+      name: 'Melmsie',
+      picture: 'yeet.png',
+      about: 'Something about Melmsie, yah yeet.',
       social: [
-        {name: 'GitHub', link: 'https://github.com/Dev-Yukine'}
+        {name: 'GitHub', link: 'https://github.com/melmsie'}
       ]
     },
     {
@@ -48,14 +48,25 @@ class DeveloperList extends Component {
       social: [
         {name: 'GitHub', link: 'https://github.com/ParadoxOrigins'}
       ]
+    },
+    {
+      name: 'Yukine',
+      picture: 'yukine.jpg',
+      about: 'Hey my name is Yukine and im a hobby developer who loves to try new things out.',
+      social: [
+        {name: 'GitHub', link: 'https://github.com/Dev-Yukine'}
+      ]
     }];
     let list = devs.map(dev => {
       return <Developer key={`dev-${dev.name}`}name={dev.name} about={dev.about} picture={dev.picture} social={dev.social}/>
     })
 
     return(
-      <div className="developer-list">
-        {list}
+      <div>
+        <h2 className="developer-title">Developers</h2>
+        <div className="developer-list">
+          {list}
+        </div>
       </div>
     )
   }
