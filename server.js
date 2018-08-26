@@ -9,6 +9,7 @@ app.use('/', Express.static('./build/static'));
 
 app.post('/api/cmds', async (req, res) => {
   console.log(res.body.cmds)
+  // TODO: take this data and update /commands
 })
 
 app.get('*', function (request, response){
