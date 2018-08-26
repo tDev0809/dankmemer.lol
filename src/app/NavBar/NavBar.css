@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  margin-right: 20%;
+  margin-right: 40px;
 }
 
 .nav-item {
@@ -23,6 +23,11 @@
 .nav-link.active {
   color: #7289DA;
 }
+
+.nav-link.active:hover {
+  color: #4a67cf;
+}
+
  .nav-link {
    display: block;
    text-align: center;
@@ -33,13 +38,21 @@
    font-weight: bold;
  }
 
+.nav-link:hover {
+  color: #e6e6e6;
+}
+
  .DM-nav {
    color: white;
    font-weight: bold;
    font-size: 2em;
-   margin-left: 20%;
+   margin-left: 40px;
  }
 
- .premium {
+ .nav-link.premium {
   color: #FFD700;
+}
+
+.nav-link.premium:hover {
+  color: #ccad00;
 }
