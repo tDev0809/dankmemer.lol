@@ -1,0 +1,10 @@
+.commands-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.command-column {
+  display: flex;
+  flex-direction: column;
+}

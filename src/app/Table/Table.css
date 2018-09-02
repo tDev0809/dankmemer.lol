@@ -8,3 +8,16 @@
 .command-tr td {
   padding: 5px;
 }
+
+.category-name {
+  text-transform: uppercase;
+  font-family: 'Montserrat';
+}
+
+.command-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 12.5px;
+}

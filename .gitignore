@@ -6,3 +6,4 @@ build/static/style.css
 build/static/stye.css.map
 .DS_STORE
 config\.json
+keys.json

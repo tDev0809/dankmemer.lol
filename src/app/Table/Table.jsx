@@ -8,14 +8,21 @@ class Table extends Component {
   render() {
     //<tr><td>command</td><td>desc</td></tr> <- Per command
     let data = this.props.data;
-    let tableData = [];
-    data.forEach( (commData,index)  => tableData.push(<tr className="command-tr" key={index}><td className="blurple">{commData.command}</td><td>{commData.desc}</td></tr>))
+    let category = <h2 className="category-name blurple">{this.props.category}</h2>;
+    let tableData = data.map(commData  => {
+      return(
+      <tr className="command-tr" key={commData.triggers[0]}><td className="blurple">{commData.triggers[0]}</td><td>{commData.description}</td></tr>
+      )
+    })
     return(
-      <table className="command-table">
-        <tbody>
-          {tableData}
-        </tbody>
-      </table>
+      <div className="command-block">
+        {category}
+        <table className="command-table">
+          <tbody>
+            {tableData}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }

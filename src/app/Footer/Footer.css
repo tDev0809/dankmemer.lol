@@ -38,5 +38,6 @@
 @media only screen and (max-width: 786px) {
   .footer {
     padding-bottom: 50px;
+    padding-left: 10px;
   }
 }
