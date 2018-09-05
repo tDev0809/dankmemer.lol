@@ -36,9 +36,10 @@ class DeveloperList extends Component {
     {
       name: 'Melmsie',
       picture: 'yeet.png',
-      about: 'Something about Melmsie, yah yeet.',
+      about: 'Full stack developer with a love for all things memey and fun.',
       social: [
-        {name: 'GitHub', link: 'https://github.com/melmsie'}
+        {name: 'GitHub', link: 'https://github.com/melmsie'},
+        {name: 'Twitter', link: 'https://twitter.com/feelsdevman'},
       ]
     },
     {
