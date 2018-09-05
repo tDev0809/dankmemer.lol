@@ -18,7 +18,7 @@ class NavBar extends Component {
             <NavLink className="nav-link" activeClassName="active" to="/about">ABOUT</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link premium" activeClassName="active" to="/premium">PREMIUM</NavLink>
+            <NavLink className="nav-link premium" activeClassName="active" to="https://www.patreon.com/dankmemerbot">PREMIUM</NavLink>
           </li>
         </ul>
       </nav>
