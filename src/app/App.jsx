@@ -19,7 +19,6 @@ class App extends Component {
             <Route exact strict component={Home} path="/" />
             <Route component={Commands} path="/commands" />
             <Route component={About} path="/about" />
-            <Route component={Premium} path="https://www.patreon.com/dankmemerbot" />
           </Switch>
         <Footer />
     </div>

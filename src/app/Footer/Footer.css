@@ -2,31 +2,27 @@
   background: #23272A;
   color: white;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   font-family: 'Lato';
 }
 
-.footer-column {
+.footer-group {
   display: flex;
-  flex-direction: column;
-  padding-top: 8px;
+  align-items: center;
 }
 
-.footer-header {
-  font-weight: bold;
-  margin-bottom: 8px;
-  font-family: Montserrat;
-  text-transform: uppercase;
+.footer-copyright, .footer-links {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.footer-content {
+.footer-table {
   display: flex;
-  flex-direction: column;
-  color: #e6e6e6;
-  padding-bottom: 5px;
+  justify-content: space-evenly;
 }
 
 .footer-link {
+  margin-left: 10px;
   text-decoration: none;
   color: #e6e6e6;
 }
@@ -39,5 +35,19 @@
   .footer {
     padding-bottom: 50px;
     padding-left: 10px;
+  }
+
+  .footer-table {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-links {
+    order: 1;
+  }
+
+  .footer-copyright {
+    order: 2;
   }
 }

@@ -16,7 +16,7 @@ class DeveloperList extends Component {
     {
       name: 'CyberRonin',
       picture: 'cyber.png',
-      about: 'Maniac who loves programming. I\'m a fullstack developer trying to get into UI/UX!',
+      about: 'Maniac who loves programming. I\'m a full stack developer trying to get into UI/UX!',
       social: [
         {name: 'GitHub' ,link: 'https://github.com/TheCyberRonin'},
         {name: 'GitLab', link: 'https://gitlab.com/cyberronin'},
@@ -35,7 +35,7 @@ class DeveloperList extends Component {
     },
     {
       name: 'Melmsie',
-      picture: 'yeet.png',
+      picture: 'melmsie.png',
       about: 'Full stack developer with a love for all things memey and fun.',
       social: [
         {name: 'GitHub', link: 'https://github.com/melmsie'},
@@ -53,6 +53,7 @@ class DeveloperList extends Component {
     {
       name: 'Perryprog',
       picture: 'perry.jpg',
+      about: "Hi I'm perry and I do things.",
       social: [
         {name: 'GitHub', link: 'https://github.com/perryprog'},
         {name: 'Twitter', link: 'https://twitter.com/jabbathehutt123'},
