@@ -11,7 +11,7 @@ class Commands extends Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:3000/api/cmds')
+    fetch('https://dankmemer.lol/api/cmds')
       .then(results => {
         return results.json();
       }).then(data => {
