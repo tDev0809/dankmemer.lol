@@ -21,3 +21,8 @@
 .button:active {
   transform: scale(0.95);
 }
+
+.button a {
+  color: currentColor;
+  text-decoration: none;
+}
