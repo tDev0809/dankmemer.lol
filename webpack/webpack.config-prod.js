@@ -5,7 +5,6 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  devtool: 'source-map',
   name: 'client',
   context: path.join(__dirname, '..', 'src', 'app'),  
   entry: ['babel-polyfill', './index.js'],
