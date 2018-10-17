@@ -4,6 +4,12 @@ const port = 3000;
 const bodyParser = require('body-parser')
 const keys = require('./keys.json');
 
+const dd_options = {
+  'response_code': true
+}
+
+const connect_datadog = require('connect-datadog')(dd_options);
+app.use(connect_datadog);
 //set up parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
