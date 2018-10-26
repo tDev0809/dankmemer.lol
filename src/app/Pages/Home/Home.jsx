@@ -10,7 +10,7 @@ class Home extends Component {
       <div className="home">
         <img className="memer-img" height="250" width="250" src={MemerIMG} />
         <span className="home-slogan">THE <span className="blurple">ORIGINAL</span> DISCORD MEME BOT</span>
-        <a href="https://discordapp.com/oauth2/authorize?client_id=270904126974590976&scope=bot&permissions=3533888"><Button content="Invite Now!" /></a>
+        <a href="https://goo.gl/ZHSsby"><Button content="Invite Now!" /></a>
       </div>
         
       </div>
