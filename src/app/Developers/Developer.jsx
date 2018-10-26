@@ -12,7 +12,9 @@ class Developer extends Component {
       <div className="developer">
         <span className="developer-name blurple">{this.props.name}</span>
         <div className="developer-social">
-          <img className="developer-picture" src={`/${this.props.picture}`}></img>
+          <img className="developer-picture" src={`/${this.props.picture}`} 
+          onMouseOver={e => (e.currentTarget.src = this.props.hover)}
+          onMouseOut={e => (e.currentTarget.src = this.props.picture)}></img>
           <p className="developer-about">{this.props.about}</p>
         </div>
         <div className="developer-accounts">
