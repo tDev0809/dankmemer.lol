@@ -67,6 +67,17 @@ class DeveloperList extends Component {
       ]
     },
     {
+      name: 'Auxim',
+      picture: 'auxim.png',
+      hover: 'auxim.gif',
+      about: "Meme Grade Pythonker. Devourer of the frikandelbroodje.",
+      social: [
+        {name: 'GitHub', link: 'https://github.com/GeoffreyWesthoff'},
+        {name: 'GitLab', link: 'https://gitlab.com/GeoffreyWesthoff'},
+        {name: 'world', link: 'https://altdentifier.com/'}
+      ]
+    },
+    {
       name: 'Perryprog',
       picture: 'perry.png',
       hover: 'kazoo.gif',

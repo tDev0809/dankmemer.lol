@@ -33,6 +33,10 @@ app.post('/api/cmds', (req, res) => {
   
 })
 
+app.get('/source', (req, res) => {
+  res.status(200).sendfile('./source.zip');
+})
+
 app.get('/api/cmds', (req, res) => {
   res.status(200).send(commands);
 })
