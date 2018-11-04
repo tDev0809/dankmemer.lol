@@ -41,12 +41,12 @@ app.get('/api/cmds', (req, res) => {
   res.status(200).send(commands);
 })
 
-app.get('*', (request, response) => {
-  response.sendFile(`${__dirname}/build/static/index.html`);
-})
-/*
+// app.get('*', (request, response) => {
+//   response.sendFile(`${__dirname}/build/static/index.html`);
+// })
+
 app.use((req, res, next) => {
-  res.status(404).send("Sorry can't find that!")
+  res.status(404).sendFile(`${__dirname}/build/static/404.html`);
 });
-*/
+
 app.listen(port);
