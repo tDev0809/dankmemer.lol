@@ -43,8 +43,13 @@ app.get('/api/cmds', (req, res) => {
 })
 
 app.get('/api/stats', (req, res) => {
-  getStats().then(r => {
-    res.status(200).send(r);
+  getStats().then(t => {
+    let data = {
+      ram: (t.stats.totalRam / 1024).toFixed(1),
+      guilds: t.stats.guilds.toLocaleString(),
+      users: t.stats.users.toLocaleString()
+    }
+    res.status(200).send(data);
   })
 })
 

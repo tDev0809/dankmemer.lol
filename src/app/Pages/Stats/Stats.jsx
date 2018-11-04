@@ -14,7 +14,7 @@ class Stats extends Component {
           .then(results => {
             return results.json();
           }).then(data => {
-            this.setState({stats: data.stats});
+            this.setState({stats: data});
           })
       }
 
@@ -25,15 +25,15 @@ class Stats extends Component {
         <div className="statSection">
             <div className="statGroup">
                 <h4 className="statValue">Servers</h4>
-                <div className="statValue"> {JSON.stringify(this.state.stats.guilds)}</div>
+                <div className="statValue"> {this.state.stats.guilds}</div>
             </div>
             <div className="statGroup">
                 <h4 className="statValue">Users</h4>
-                <div className="statValue">{JSON.stringify(this.state.stats.users)}</div>
+                <div className="statValue">{this.state.stats.users}</div>
             </div>
             <div className="statGroup">
                 <h4 className="statValue">Memory</h4>
-                <div className="statValue">{(this.state.stats.totalRam / 1024).toFixed(1)}GB</div>
+                <div className="statValue">{this.state.stats.ram}GB</div>
             </div>
         </div>
       </div>
