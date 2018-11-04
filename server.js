@@ -3,6 +3,7 @@ const app = Express();
 const port = 3000;
 const bodyParser = require('body-parser')
 const keys = require('./keys.json');
+const r = require('rethinkdbdash')();
 
 const dd_options = {
   'response_code': true
@@ -41,12 +42,23 @@ app.get('/api/cmds', (req, res) => {
   res.status(200).send(commands);
 })
 
-// app.get('*', (request, response) => {
-//   response.sendFile(`${__dirname}/build/static/index.html`);
-// })
+app.get('/api/stats', (req, res) => {
+  getStats().then(r => {
+    res.status(200).send(r);
+  })
+})
 
-app.use((req, res, next) => {
-  res.status(404).sendFile(`${__dirname}/build/static/404.html`);
-});
+app.get('*', (request, response) => {
+  response.sendFile(`${__dirname}/build/static/index.html`);
+})
+
+// app.use((req, res, next) => {
+//   res.status(404).sendFile(`${__dirname}/build/static/404.html`);
+// });
 
 app.listen(port);
+
+async function getStats() {
+  let test = await r.table('stats')
+  return test[0]
+}

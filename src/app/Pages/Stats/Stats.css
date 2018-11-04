@@ -1,0 +1,20 @@
+.statValue {
+    font-family: 'Lato';
+}
+
+.statSection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.statGroup {
+    padding: 5px 25px 5px 25px;
+}
+  
+.title {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
