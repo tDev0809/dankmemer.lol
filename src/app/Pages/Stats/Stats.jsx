@@ -14,7 +14,6 @@ class Stats extends Component {
           .then(results => {
             return results.json();
           }).then(data => {
-              console.log(data)
             this.setState({stats: data.stats});
           })
       }
