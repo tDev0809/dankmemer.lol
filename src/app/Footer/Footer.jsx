@@ -15,7 +15,7 @@ render(){
           <a className="footer-link" href="/stats">Stats</a>
             <a className="footer-link" href="https://github.com/Dank-Memer">GitHub</a>
             <a className="footer-link" href="https://twitter.com/dankmemerbot">Twitter</a>
-            <a className="footer-link" href="https://discord.gg/9dsqMJ5" >Server</a>
+            <a className="footer-link" href="https://discord.gg/Wejhbd4" >Server</a>
             <a className="footer-link" href="https://discordbotlist.com/bots/270904126974590976">DBL</a>
           </div>
         </div>
