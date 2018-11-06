@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 
 class NavBar extends Component {
+
   render() {
     return(
       <nav className="navbar">
@@ -18,7 +19,7 @@ class NavBar extends Component {
             <NavLink className="nav-link" activeClassName="active" to="/devs">DEVS</NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link premium" href="https://www.patreon.com/dankmemerbot">PREMIUM</a>
+            <a className="nav-link premium" href="/premium">PREMIUM</a>
           </li>
         </ul>
       </nav>

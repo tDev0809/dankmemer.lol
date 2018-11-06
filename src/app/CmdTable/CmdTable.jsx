@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Table.css';
+import './CmdTable.css';
 
-class Table extends Component {
+class CmdTable extends Component {
   constructor(props) {
     super(props);
   }
@@ -27,4 +27,4 @@ class Table extends Component {
   }
 }
 
-export default Table;
+export default CmdTable;

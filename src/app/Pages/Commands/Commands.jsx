@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from '../../Table/Table';
+import CmdTable from '../../CmdTable/CmdTable';
 import './Commands.css';
 
 class Commands extends Component {
@@ -11,14 +11,14 @@ class Commands extends Component {
   }
 
   componentWillMount() {
-    fetch('https://dankmemer.lol/api/cmds')
+    fetch('api/cmds')
       .then(results => {
         return results.json();
       }).then(data => {
         let cols = [[],[],[]]
         Object.keys(data).forEach((key, index) => {
 
-          cols[index % 3].push(<Table key={key} category={key} data={data[key]}/>);
+          cols[index % 3].push(<CmdTable key={key} category={key} data={data[key]}/>);
         })
         this.setState({categories: cols});
       })
