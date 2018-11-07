@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Stats.css';
-
+import ReactGA from 'react-ga';
 class Stats extends Component {
     constructor() {
         super();
@@ -10,6 +10,10 @@ class Stats extends Component {
       }
 
     componentDidMount() {
+      ReactGA.pageview('/commands');
+    }
+
+    componentWillMount() {
         fetch('/api/stats')
           .then(results => {
             return results.json();

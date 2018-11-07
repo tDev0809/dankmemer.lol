@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import { NavLink } from 'react-router-dom';
 import './Footer.css' 
+import { onClickLink } from '../Utils/Tracking.js';
 
 class Footer extends Component {
 render(){
@@ -11,12 +11,12 @@ render(){
             <span className="copyright">Copyright © 2018 Dank Memer Team</span>
           </div>
           <div className="footer-group footer-links">
-          <a className="footer-link" href="/rules">Bot Rules</a>
-          <a className="footer-link" href="/stats">Stats</a>
-            <a className="footer-link" href="https://github.com/Dank-Memer">GitHub</a>
-            <a className="footer-link" href="https://twitter.com/dankmemerbot">Twitter</a>
-            <a className="footer-link" href="https://discord.gg/Wejhbd4" >Server</a>
-            <a className="footer-link" href="https://discordbotlist.com/bots/270904126974590976">DBL</a>
+          <a className="footer-link" onClick={onClickLink('FootRules')} href="/rules">Bot Rules</a>
+          <a className="footer-link" onClick={onClickLink('FootStats')} href="/stats">Stats</a>
+            <a className="footer-link" onClick={onClickLink('FootGit')} href="https://github.com/Dank-Memer">GitHub</a>
+            <a className="footer-link" onClick={onClickLink('FootTwit')} href="https://twitter.com/dankmemerbot">Twitter</a>
+            <a className="footer-link" onClick={onClickLink('FootServer')} href="https://discord.gg/Wejhbd4" >Server</a>
+            <a className="footer-link" onClick={onClickLink('FootDBL')} href="https://discordbotlist.com/bots/270904126974590976">DBL</a>
           </div>
         </div>
       </footer>      

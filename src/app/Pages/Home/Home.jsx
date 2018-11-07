@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import Button from '../../Button/Button';
 import MemerIMG from '../../assets/memer.png';
 import './Home.css';
+import ReactGA from 'react-ga';
 
 class Home extends Component {
+  componentDidMount() {
+    ReactGA.pageview('/commands');
+  }
   render() {
     return(
       <div className="content">

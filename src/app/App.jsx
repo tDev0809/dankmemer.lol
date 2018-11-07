@@ -9,11 +9,17 @@ import Rules from './Pages/Rules/Rules';
 import NavBar from './NavBar/NavBar';
 import Footer from './Footer/Footer';
 import './App.css';
+import { newVisitor } from './Utils/Tracking.js';
 
 class App extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    newVisitor();
+  }
+  
   render() {
     return (
       <div className="psuedoBody">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CmdTable from '../../CmdTable/CmdTable';
 import './Commands.css';
+import ReactGA from 'react-ga';
 
 class Commands extends Component {
   constructor() {
@@ -8,6 +9,10 @@ class Commands extends Component {
     this.state = {
       categories: []
     };
+  }
+
+  componentDidMount() {
+    ReactGA.pageview('/commands');
   }
 
   componentWillMount() {

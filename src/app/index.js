@@ -2,6 +2,10 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import App from './App';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-89062206-3'); //TODO, hide this?
+
 
 ReactDOM.render(
   <BrowserRouter>

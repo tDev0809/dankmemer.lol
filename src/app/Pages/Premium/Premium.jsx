@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import Prem from './Prem.jsx';
 import './Premium.css';
-
+import ReactGA from 'react-ga';
 class Premium extends Component {
     constructor() {
         super();
         this.state = {
           data: []
         };
+      }
+
+      componentDidMount() {
+        ReactGA.pageview('/commands');
       }
 
       componentWillMount() {

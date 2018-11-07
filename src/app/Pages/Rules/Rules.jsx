@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './Rules.css';
-
+import ReactGA from 'react-ga';
 class Rules extends Component {
+  componentDidMount() {
+    ReactGA.pageview('/commands');
+  }
   render() {
     return(
       <div className="content">

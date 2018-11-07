@@ -1,6 +1,6 @@
 import React from 'react';
 import './Premium.css';
-
+import { onClickLink } from '../../Utils/Tracking.js';
 export default class Prem extends React.PureComponent {
     render () {
       const { entry } = this.props;
@@ -17,7 +17,7 @@ export default class Prem extends React.PureComponent {
                 AND
                 {list}
                 <div className="sign">
-                    <a href={entry.link} className='button'>Purchase</a>
+                    <a href={entry.link} onClick={onClickLink(`patreon-${entry.name}`)} className='button'>Purchase</a>
                 </div>
             </div>
         </li>

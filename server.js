@@ -4,6 +4,8 @@ const port = 3000;
 const bodyParser = require('body-parser')
 const keys = require('./keys.json');
 const r = require('rethinkdbdash')();
+const { StatsD } = require('node-dogstatsd');
+const ddog = new StatsD();
 
 const dd_options = {
   'response_code': true
@@ -88,14 +90,17 @@ app.post('/api/cmds', (req, res) => {
 
 app.get('/source', (req, res) => {
   res.status(200).sendfile('./source.zip');
+  ddog.increment('website.source')
 })
 
 app.get('/api/cmds', (req, res) => {
   res.status(200).send(commands);
+  ddog.increment('website.cmds')
 })
 
 app.get('/api/premium', (req, res) => {
   res.status(200).send(data);
+  ddog.increment('website.premium')
 })
 
 app.get('/api/stats', (req, res) => {
@@ -107,10 +112,12 @@ app.get('/api/stats', (req, res) => {
     }
     res.status(200).send(data);
   })
+  ddog.increment('website.stats')
 })
 
 app.get('*', (request, response) => {
   response.sendFile(`${__dirname}/build/static/index.html`);
+  ddog.increment('website.visit')
 })
 
 // app.use((req, res, next) => {
