@@ -1,8 +1,9 @@
 const Express = require('express');
 const app = Express();
-const port = 3000;
 const bodyParser = require('body-parser')
 const keys = require('./keys.json');
+const config = require('./config.json')
+const port = config.port || 3000;
 const r = require('rethinkdbdash')();
 const { StatsD } = require('node-dogstatsd');
 const ddog = new StatsD();
