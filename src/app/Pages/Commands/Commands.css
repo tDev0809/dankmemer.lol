@@ -8,3 +8,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.overide {
+    background: #2C2F33;
+}
+
+.active-tab {
+  background: #7289DA;
+  color: white;
+}

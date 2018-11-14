@@ -79,7 +79,6 @@ app.use('/', Express.static('./build/static'));
 //handle posting of commands to the server
 app.post('/api/cmds', (req, res) => {
   if(keys.includes(req.headers.authorization)) {
-    console.log(req.body.commands);
     commands = req.body.commands;
     res.status(200).send({status: 'ok'});
   }
