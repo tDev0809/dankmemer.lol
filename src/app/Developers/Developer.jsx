@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './Developer.css';
-import { onClickLink } from '../Utils/Tracking.js';
 
 class Developer extends Component {
   render() {
     let accounts = this.props.social.map(account => {
-      return <a key={`${this.props.name}-${account.name}`} onClick={onClickLink(`${this.props.name}-${account.name}`)} href={account.link}>
+      return <a key={`${this.props.name}-${account.name}`} href={account.link}>
         <img className="developer-account" src={`${account.name}.svg`}></img>
       </a>
     })
