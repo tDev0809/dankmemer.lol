@@ -125,7 +125,7 @@ app.get('*', (request, response) => {
 //   res.status(404).sendFile(`${__dirname}/build/static/404.html`);
 // });
 
-app.listen(port);
+app.listen(port, '127.0.0.1')
 
 async function getStats() {
   let test = await r.table('stats')
