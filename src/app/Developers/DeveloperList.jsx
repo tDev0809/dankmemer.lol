@@ -68,6 +68,16 @@ class DeveloperList extends Component {
       ]
     },
     {
+      name: 'NANI',
+      picture: 'nani.png',
+      hover: 'nani.gif',
+      about: 'Heyo NANI here. I build bots and APIs in python for a hobby, but most of the time you\'ll find me in a laboratory.',
+      social: [
+        {name: 'GitHub' ,link: 'https://github.com/AndyTempel'},
+        {name: 'world', link: 'https://api.ksoft.si/'}
+      ]
+    },
+    {
       name: 'Kromatic',
       hover: 'kromatic.gif',
       about: 'Jukebot is better than Rythm, change my mind',
