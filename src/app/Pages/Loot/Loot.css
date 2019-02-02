@@ -1,0 +1,111 @@
+.boxes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  flex-direction: row;
+}
+
+.box {
+  width: 250px;
+  height: 100px;
+  float: left;
+  cursor: pointer;
+  transition: color, border 0.3s;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 2px;
+  font-family: 'Lato';
+}
+
+.box.active {
+  color: #7289DA;
+  border: 1px solid #7289DA;
+}
+
+.box-header {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.box-piss {
+  color: #FFD700 !important;;
+}
+
+.box-price {
+  font-size: 22px;
+  margin-top: 8px;
+  color: #85bb65 !important;;
+}
+
+.box-description {
+  font-style: italic;
+  font-size: 17px;
+  margin-bottom: 2px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input {
+  font-size: 22px;
+  color: #fff;
+  background: #23272a;
+  border: 1px solid #7289DA;
+  width: 25.5px;
+  padding: 2px;
+  margin: 2px;
+}
+
+.input-btn {
+  user-select: none;
+  cursor: pointer;
+  font-size: 22px;
+  border: 1px solid #7289DA;
+  padding: 0px 5px;
+  padding-bottom: 2.5px;
+  margin: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: #7289DA;
+}
+
+.fancy-header {
+  font-size: 30px;
+  font-style: italic;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.header {
+  font-size: 22px;
+  transition-timing-function: ease-in;
+  transition: opacity 0.17s;
+  margin-top: 30px;
+}
+
+.dolla-dolla-bills {
+  font-size: 28px;
+  transition-timing-function: ease-in;
+  transition: opacity 0.17s;
+  color: #85bb65;
+  margin-bottom: 10px;
+}
+
+.absolute-unit {
+  font-size: 48px;
+}
+
+.box-name {
+  color: #7289DA;
+}
