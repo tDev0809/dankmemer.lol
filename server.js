@@ -12,58 +12,6 @@ const dd_options = {
   'response_code': true
 }
 
-let data = [ //TODO: move to external file
-  {
-      name: "Meme",
-      price: 2,
-      link: "https://www.patreon.com/join/dankmemerbot/checkout?rid=2975977",
-      perks: [
-          "Donor Role on Dank Memer's server",
-          "Access to NSFW commands",
-          "1000 coins per dollar donated each month",
-          "Donor Multiplier for currency commands",
-          "Autoplaying flag for meme music"
-      ],
-      special: [
-          "5% steal shields",
-      ]
-  },
-  {
-      name: "Meme Lord",
-      price: 5,
-      link: "https://www.patreon.com/join/dankmemerbot/checkout?rid=2212442",
-      perks: [
-          "Donor Role on Dank Memer's server",
-          "Access to NSFW commands",
-          "1000 coins per dollar donated each month",
-          "Donor Multiplier for currency commands",
-          "Autoplaying flag for meme music"
-      ],
-      special: [
-          "Premium Perks on one server: Music functionality, Autoposting Memes, Austoposting NSFW, Tags, Extra coins",
-          "25% steal shields"
-      ]
-  },
-  {
-      name: "Meme God",
-      price: 20,
-      link: "https://www.patreon.com/join/dankmemerbot/checkout?rid=2434764",
-      perks: [
-          "Donor Role on Dank Memer's server",
-          "Access to NSFW commands",
-          "1000 coins per dollar donated each month",
-          "Donor Multiplier for currency commands",
-          "Autoplaying flag for meme music"
-      ],
-      special: [
-          "All your premium servers share donor perks to all server members",
-          "Premium Perks on five servers: Music functionality, Autoposting Memes, Austoposting NSFW, Tags, Extra coins",
-          "Sponser Role on Dank Memer's server",
-          "95% steal shields"
-      ]
-  }
-]
-
 const connect_datadog = require('connect-datadog')(dd_options);
 app.use(connect_datadog);
 //set up parsing
@@ -99,8 +47,8 @@ app.get('/api/cmds', (req, res) => {
   ddog.increment('website.cmds')
 })
 
-app.get('/api/premium', (req, res) => {
-  res.status(200).send(data);
+app.get('/premium', (req, res) => {
+  res.redirect('https://www.patreon.com/join/dankmemerbot?')
   ddog.increment('website.premium')
 })
 
