@@ -133,7 +133,7 @@ class Loot extends Component {
           <div className="fancy-header absolute-unit">Success!<br /></div>
           <div style={{ fontSize: '22px' }} >
             Your payment has successfully been made. You will receive your purchased boxes automatically.<br />
-            Should you have any issues, join <a href="https://TODO">the support server</a> and contact an administrator with your Payment ID:<br />
+            Should you have any issues, join <a href="https://discord.gg/FnP8m6q">the support server</a> and contact an administrator with your Payment ID:<br />
           </div>
           <code style={{ fontSize: '32px' }}>{this.state.succeededPayment.orderID}</code>
         </div>
