@@ -4,7 +4,6 @@ import Home from './Pages/Home/Home';
 import Commands from './Pages/Commands/Commands';
 import About from './Pages/Devs/Devs';
 import Loot from './Pages/Loot/Loot.jsx';
-import Premium from './Pages/Premium/Premium';
 import Rules from './Pages/Rules/Rules';
 import Terms from './Pages/Terms/Terms';
 import Privacy from './Pages/Privacy/Privacy';
@@ -29,7 +28,6 @@ class App extends Component {
             <Route component={Rules} path="/rules" />
             <Route component={Terms} path="/terms" />
             <Route component={Privacy} path="/privacy" />
-            <Route component={Premium} path="/premium" />
           </Switch>
         <Footer />
     </div>
