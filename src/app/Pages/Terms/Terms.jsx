@@ -1,0 +1,152 @@
+import React, { Component } from 'react';
+import './Terms.css';
+import ReactGA from 'react-ga';
+class Terms extends Component {
+  componentDidMount() {
+    ReactGA.pageview('/terms');
+  }
+  render() {
+    return(
+      <div className="content">
+        <h1>Terms of Service</h1>
+
+
+<p>Last updated: February 02, 2019</p>
+
+
+<p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://www.dankmemer.lol website (the "Service") operated by Dank Memer ("us", "we", or "our").</p>
+
+<p>Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who wish to access or use the Service.</p>
+
+<p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you do not have permission to access the Service.</p>
+
+
+
+
+<h2>Purchases</h2>
+
+<p>If you wish to purchase any product or service made available through the Service ("Purchase"), you may be asked to supply certain information relevant to your Purchase including, without limitation, your credit card number, the expiration date of your credit card, your billing address, and your shipping information.</p>
+
+<p>You represent and warrant that: (i) you have the legal right to use any credit card(s) or other payment method(s) in connection with any Purchase; and that (ii) the information you supply to us is true, correct and complete.</p>
+
+<p>The service may employ the use of third party services for the purpose of facilitating payment and the completion of Purchases. By submitting your information, you grant us the right to provide the information to these third parties subject to our Privacy Policy.</p>
+
+<p>We reserve the right to refuse or cancel your order at any time for reasons including but not limited to: product or service availability, errors in the description or price of the product or service, error in your order or other reasons.</p>
+
+<p>We reserve the right to refuse or cancel your order if fraud or an unauthorized or illegal transaction is suspected.</p>
+
+
+<h2>Availability, Errors and Inaccuracies</h2>
+
+<p>We are constantly updating product and service offerings on the Service. We may experience delays in updating information on the Service and in our advertising on other web sites. The information found on the Service may contain errors or inaccuracies and may not be complete or current. Products or services may be mispriced, described inaccurately, or unavailable on the Service and we cannot guarantee the accuracy or completeness of any information found on the Service.</p>
+
+<p>We therefore reserve the right to change or update information and to correct errors, inaccuracies, or omissions at any time without prior notice.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Links To Other Web Sites</h2>
+
+<p>Our Service may contain links to third party web sites or services that are not owned or controlled by Dank Memer</p>
+
+<p>Dank Memer has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.</p>
+
+<p>You acknowledge and agree that Dank Memer shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such third party web sites or services.</p>
+
+<p>We strongly advise you to read the terms and conditions and privacy policies of any third party web sites or services that you visit.</p>
+
+
+<h2>Termination</h2>
+
+<p>We may terminate or suspend your access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of the Terms.</p>
+
+<p>All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</p>
+
+
+<h2>Indemnification</h2>
+
+<p>You agree to defend, indemnify and hold harmless Dank Memer and its licensee and licensors, and their employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees), resulting from or arising out of a) your use and access of the Service, or b) a breach of these Terms.</p>
+    
+    
+
+<h2>Limitation Of Liability</h2>
+
+<p>In no event shall Dank Memer, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.</p>
+
+
+<h2>Disclaimer</h2>
+
+<p>Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance.</p>
+
+<p>Dank Memer its subsidiaries, affiliates, and its licensors do not warrant that a) the Service will function uninterrupted, secure or available at any particular time or location; b) any errors or defects will be corrected; c) the Service is free of viruses or other harmful components; or d) the results of using the Service will meet your requirements.</p>
+
+
+<h2>Exclusions</h2>
+
+<p>Some jurisdictions do not allow the exclusion of certain warranties or the exclusion or limitation of liability for consequential or incidental damages, so the limitations above may not apply to you.</p>
+
+
+
+<h2>Governing Law</h2>
+
+<p>These Terms shall be governed and construed in accordance with the laws of North Carolina, United States, without regard to its conflict of law provisions.</p>
+
+<p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have had between us regarding the Service.</p>
+
+
+<h2>Changes</h2>
+
+<p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+
+<p>By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Service.</p>
+
+
+<h2>Contact Us</h2>
+
+<p>If you have any questions about these Terms, please contact us.</p>
+
+<h1>Returns and Refunds Policy</h1>
+
+
+<p>Thank you for shopping at Dank Memer.</p>
+
+<p>Please read this policy carefully. This is the Return and Refund Policy of Dank Memer. The Return and Refund Policy  for Dank Memer has been created with the help of <a href="https://termsfeed.com/">TermsFeed</a>.</p>
+
+
+
+
+<h2>Digital products</h2>
+
+<p>We issue refunds for digital products within 3 days of the original purchase of the product, only if the product needs returned due to error or uncontrollable issue..</p>
+
+<p>We recommend contacting us for assistance if you experience any issues receiving or downloading our products.</p>
+
+
+
+<h2>Contact us</h2>
+
+<p>If you have any questions about our Returns and Refunds Policy, please contact us:</p>
+
+<ul>
+<li>
+    <p>By email: dankmemerbot@gmail.com</p>
+</li>
+</ul>
+
+
+      </div>
+    )
+  }
+}
+
+export default Terms;

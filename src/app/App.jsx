@@ -6,6 +6,8 @@ import About from './Pages/Devs/Devs';
 import Loot from './Pages/Loot/Loot.jsx';
 import Premium from './Pages/Premium/Premium';
 import Rules from './Pages/Rules/Rules';
+import Terms from './Pages/Terms/Terms';
+import Privacy from './Pages/Privacy/Privacy';
 import NavBar from './NavBar/NavBar';
 import Footer from './Footer/Footer';
 import './App.css';
@@ -25,6 +27,8 @@ class App extends Component {
             <Route component={About} path="/devs" />
             <Route component={Loot} path="/loot" />
             <Route component={Rules} path="/rules" />
+            <Route component={Terms} path="/terms" />
+            <Route component={Privacy} path="/privacy" />
             <Route component={Premium} path="/premium" />
           </Switch>
         <Footer />
