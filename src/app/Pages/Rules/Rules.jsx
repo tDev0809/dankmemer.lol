@@ -3,7 +3,7 @@ import './Rules.css';
 import ReactGA from 'react-ga';
 class Rules extends Component {
   componentDidMount() {
-    ReactGA.pageview('/commands');
+    ReactGA.pageview('/rules');
   }
   render() {
     return(

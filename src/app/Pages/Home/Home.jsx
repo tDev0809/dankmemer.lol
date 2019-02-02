@@ -6,7 +6,7 @@ import ReactGA from 'react-ga';
 
 class Home extends Component {
   componentDidMount() {
-    ReactGA.pageview('/commands');
+    ReactGA.pageview('/home');
   }
   render() {
     return(

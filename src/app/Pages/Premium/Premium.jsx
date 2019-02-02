@@ -11,7 +11,7 @@ class Premium extends Component {
       }
 
       componentDidMount() {
-        ReactGA.pageview('/commands');
+        ReactGA.pageview('/premium');
       }
 
       componentWillMount() {
