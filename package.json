@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:client": "./node_modules/.bin/webpack-cli --config ./webpack/webpack.config-client.js --display-error-details",
-    "build:client-prod": "./node_modules/.bin/webpack-cli -p --config ./webpack/webpack.config-prod.js --display-error-details"
+    "build:client-prod": "./node_modules/.bin/webpack-cli -p --config ./webpack/webpack.config-prod.js --display-error-details",
+    "test": "./node_modules/.bin/webpack-cli --config ./webpack/webpack.config-client.js --display-error-details && node server.js"
   },
   "repository": {
     "type": "git",
