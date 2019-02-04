@@ -7,7 +7,7 @@ class Terms extends Component {
   }
   render() {
     return(
-      <div className="content">
+      <div className="content-legal">
         <h1>Terms of Service</h1>
 
 
