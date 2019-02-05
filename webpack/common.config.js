@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  publicPath: path.join(__dirname, '..','build', 'static'),
+  publicPath: path.join(__dirname, '..', 'build', 'static'),
   assetsPath: path.join(__dirname, '..', 'build', 'static'),
   commonLoaders: [
     {
