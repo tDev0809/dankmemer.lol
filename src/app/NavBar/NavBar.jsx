@@ -22,7 +22,7 @@ class NavBar extends Component {
             <NavLink className="nav-link" activeClassName="active" to="/loot">LOOT</NavLink>
           </li>
           <li className="nav-item">
-            <a class="nav-link premium" href="https://www.patreon.com/join/dankmemerbot?">PREMIUM</a>
+            <a className="nav-link premium" href="https://www.patreon.com/join/dankmemerbot?">PREMIUM</a>
           </li>
         </ul>
       </nav>
