@@ -1,7 +1,11 @@
 const express = require('express');
 const { spawn } = require('child_process');
 const { resolve } = require('path');
+const { encode } = require('querystring');
+// todo: axios
+const { get, post } = require('snekfetch');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const rethinkdbdash = require('rethinkdbdash');
 const connectDatadog = require('connect-datadog');
 const { StatsD } = require('node-dogstatsd');
@@ -21,6 +25,16 @@ process.env.NODE_ENV = process.argv.includes('--development')
 // Datadog middleware
 app.use(connectDatadog({
   response_code: true
+}));
+
+app.use(session({
+  // todo: read from conf
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production'
+  }
 }));
 
 // set up parsing
@@ -68,6 +82,51 @@ app.get('/api/stats', async (req, res) => {
     users: stats.users.toLocaleString()
   });
   ddog.increment('website.stats');
+});
+
+const data = encode({
+  scope: 'identify',
+  response_type: 'code',
+  client_id: config.clientID,
+  // todo: set up for prod
+  redirect_uri: 'http://localhost/oauth/callback'
+});
+
+app.get('/oauth/login', (req, res) => {
+  res.redirect(`https://discordapp.com/oauth2/authorize?${data}`);
+});
+
+app.get('/oauth/callback', async (req, res) => {
+  if (!req.query.code) {
+    return res.status(400).send('Missing code querystring');
+  }
+
+  const { body } = await post(`https://discordapp.com/api/v7/oauth2/token`)
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .send({
+      client_id: config.clientID,
+      client_secret: config.clientSecret,
+      grant_type: 'authorization_code',
+      code: req.query.code,
+      // todo: set up for prod
+      redirect_uri: 'http://localhost/oauth/callback'
+    });
+
+  const user = await get('https://discordapp.com/api/v7/users/@me')
+    .set('Authorization', `Bearer ${body.access_token}`)
+    .then(r => r.body);
+
+  req.session.user = user;
+  res.redirect('/');
+});
+
+app.get('/oauth/state', (req, res) => {
+  return res.json(req.session.user || null);
+});
+
+app.get('/oauth/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
 });
 
 app.get('*', (request, response) => {

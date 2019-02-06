@@ -1,8 +1,6 @@
 import React, { Component, createRef } from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
-import paypal from 'paypal-checkout';
-const PaypalButton = paypal.Button.driver('react', { React, ReactDOM });
 
 import './Loot.css';
 
@@ -12,19 +10,34 @@ const boxes = [{
   name: 'Normie Box',
   description: 'Can\'t get more basic than this.',
   yield: '150 ~ 800',
-  price: 0.50
+  randomItem: {
+    keyword: 'low',
+    chance: 0.6
+  },
+  price: 0.49
 }, {
   name: 'Meme Box',
   description: 'Something actually worth opening.',
   yield: '750 ~ 3500',
-  price: 2.00
+  randomItem: {
+    keyword: 'medium',
+    chance: 0.7
+  },
+  price: 1.99
 }, {
   name: 'Dank Box',
   description: 'Dank rewards for a dank user.',
   yield: '1000 ~ 10000',
-  price: 4.00
+  randomItem: {
+    keyword: 'high',
+    chance: 0.94
+  },
+  price: 3.99
 }];
 
+const MINIMUM_PURCHASE_VALUE = 1.95;
+const MINIMUM_DISCOUNT_VALUE = 10;
+const DISCOUNT_NEAREST = 1.50;
 
 class Loot extends Component {
   constructor () {
@@ -39,14 +52,57 @@ class Loot extends Component {
     };
 
     this.inputRef = createRef();
+
+    this.paypalButton = null;
   }
 
   componentDidMount() {
     ReactGA.pageview('/loot');
+
+    const script = document.createElement('script');
+    script.setAttribute('async', '');
+    script.setAttribute('src', 'https://www.paypalobjects.com/api/checkout.min.js');
+
+    script.onload = () => {
+      const PaypalButton = paypal.Button.driver('react', { React, ReactDOM });
+      this.paypalButton = (
+        <PaypalButton
+          env="sandbox"
+          style={{
+            size: 'large',
+            shape: 'rect',
+            color: 'gold'
+          }}
+          payment={this.payment.bind(this)}
+          onAuthorize={this.onAuthorize.bind(this)}
+          onCancel={this.onCancel.bind(this)}
+          client={{
+            // TODO: move to conf
+            sandbox: 'ATKDzslD3dByny_jqr9s2NexgCc2Id0_BiR9VKUHyQ-qX0uldGhg9pZ8CpS3E6It20qYzx8_YUKl4_iB'
+          }}
+        />
+      );
+    };
+
+    document.head.appendChild(script);
   }
 
   getSubtotal () {
-    return (Number(this.state.boxCount) * this.state.activeBox.price).toFixed(2);
+    return (this.state.boxCount * this.state.activeBox.price).toFixed(2);
+  }
+
+  getDiscountedSubtotal () {
+    const subtotal = this.state.boxCount * this.state.activeBox.price;
+    const discount = subtotal % DISCOUNT_NEAREST;
+    if (
+      subtotal <= MINIMUM_DISCOUNT_VALUE ||
+      discount === 0
+    ) {
+      return subtotal.toFixed(2);
+    }
+
+    const discountedSubtotal = subtotal - discount;
+    return discountedSubtotal.toFixed(2);
   }
 
   payment (_, actions) {
@@ -54,7 +110,7 @@ class Loot extends Component {
       payment: {
         transactions: [ {
           amount: {
-            total: this.getSubtotal(),
+            total: this.getDiscountedSubtotal(),
             currency: 'USD'
           }
         } ]
@@ -78,8 +134,21 @@ class Loot extends Component {
     console.log('on cancel', data);
   }
 
-  onInput ({ target }) {
-    this.setState({ boxCount: target.value });
+  onInput ({ target, value }) {
+    let boxCount = value !== undefined
+      ? value
+      : Number(target.value);
+
+    if (boxCount <= 0 && target.value !== '') {
+      target.value = 1;
+      return window.ree({
+        duration: 1500,
+        intensity: 35
+      });
+    }
+
+    target.value = boxCount;
+    this.setState({ boxCount });
   }
   
   async setActiveBox (selectedBox) {
@@ -92,14 +161,14 @@ class Loot extends Component {
 
   onInputClick (increase) {
     return () => {
-      const { current } = this.inputRef;
+      let value = this.inputRef.current.value;
       if (increase) {
-        current.value++;
+        value++;
       } else {
-        current.value--;
+        value--;
       }
 
-      this.onInput({ target: current });
+      this.onInput({ target: this.inputRef.current, value });
     };
   }
 
@@ -114,18 +183,12 @@ class Loot extends Component {
         <div className="box-description">{box.description}</div>
         <div className="box-yield">
           Amount of coins:
-          <span className="box-piss"> {box.yield}</span>
+          <span className="box-piss"> {box.yield}</span><br />
+          A <u>{box.randomItem.chance * 100}%</u> chance at a <i>{box.randomItem.keyword}-tiered</i> item.
         </div>
         <div className="box-price">${box.price.toFixed(2)}</div>
       </div>
     );
-
-    const style = {};
-    if (this.state.transitioning === 'in') {
-      style.opacity = 1;
-    } else if (this.state.transitioning === 'out') {
-      style.opacity = 0;
-    }
 
     if (this.state.succeededPayment) {
       return (
@@ -140,15 +203,19 @@ class Loot extends Component {
       )
     }
 
+    const minimumIsMet = Number(this.getSubtotal()) < MINIMUM_PURCHASE_VALUE;
+
     return(
-      <div className="content">
-        <div className="fancy-header">Go on, honey. Go pick yourself a boxy box.</div>
+      <div className="content loot">
+        <div className="fancy-header absolute-unit">Go on, honey. Go pick yourself a boxy box.</div>
 
         <div className="boxes">
           {boxes.map(Box)}
         </div>
 
-        <div style={style} className="header">
+        <div className="divider" />
+
+        <div className="header">
           Amount of <span className="box-name">{this.state.activeBox.name}es</span>:
         </div>
         <input
@@ -161,22 +228,33 @@ class Loot extends Component {
         <span className="input-btn" onClick={this.onInputClick(true)}>+</span>
         <span className="input-btn" onClick={this.onInputClick(false)}>–</span>
 
+        <div className="divider" />
+
         <div className="header">Subtotal:</div>
-        <div style={style} className="dolla-dolla-bills">
-          ${this.getSubtotal()}
+        <div className="dolla-dolla-bills">
+          {
+            this.getSubtotal() === this.getDiscountedSubtotal()
+              ? <span>${this.getSubtotal()}</span>
+              : <span><s><i>${this.getSubtotal()}</i></s> ${this.getDiscountedSubtotal()}</span>
+          }
         </div>
 
-        <PaypalButton
-          env="sandbox"
-          payment={this.payment.bind(this)}
-          onAuthorize={this.onAuthorize.bind(this)}
-          onCancel={this.onCancel.bind(this)}
-          commit={true}
-          client={{
-            // TODO: move to conf
-            sandbox: 'ATKDzslD3dByny_jqr9s2NexgCc2Id0_BiR9VKUHyQ-qX0uldGhg9pZ8CpS3E6It20qYzx8_YUKl4_iB'
+        <div className="divider" />
+
+        {
+          minimumIsMet &&
+          <div className="header red">
+            You haven't met the minimum purchase value of ${MINIMUM_PURCHASE_VALUE.toFixed(2)}.
+          </div>
+        }
+
+        <div
+          style={{
+            display: minimumIsMet ? 'none' : ''
           }}
-        />
+        >
+          {this.paypalButton}
+        </div>
       </div>
     )
   }

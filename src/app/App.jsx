@@ -11,6 +11,8 @@ import NavBar from './NavBar/NavBar';
 import Footer from './Footer/Footer';
 import './App.css';
 
+const sleep = (t) => new Promise(r => setTimeout(r, t));
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,9 +32,59 @@ class App extends Component {
             <Route component={Privacy} path="/privacy" />
           </Switch>
         <Footer />
-    </div>
+      </div>
     );
   }
 }
+
+const renderFrame = (getDelta = () => 0) =>
+  Object.assign(document.body.style, {
+    top: getDelta('top'),
+    left: getDelta('left'),
+    right: getDelta('right'),
+    bottom: getDelta('bottom')
+  });
+
+// todo: make not ugly
+const d = document.createElement('div');
+d.id = 'ree-overlay';
+document.body.appendChild(d);
+
+window.reeCount = 0;
+window.ree = async function ({ duration = 500, heavyness = 10, playAudio = true, rage = true }) {
+  window.reeCount++;
+  const interval = setInterval(() =>
+    renderFrame(() => `${Math.random() * heavyness}px`)
+  );
+
+  d.className = 'reeing';
+
+  setTimeout(() => {
+    clearInterval(interval);
+    renderFrame(() => 0);
+    window.reeCount--;
+    if (window.reeCount === 0) {
+      d.className = '';
+    }
+  }, duration);
+
+  if (playAudio) {
+    const audio = new Audio('/reeee.mp3');
+    audio.volume = 0.5;
+    audio.play();
+
+    const steps = audio.volume / 0.001;
+    const timePerStep = duration / steps;
+    while (audio.volume > 0.001) {
+      await sleep(timePerStep);
+      console.log(audio.volume);
+      audio.volume -= 0.001;
+    }
+    audio.volume = 0;
+  }
+
+  return interval;
+}
+window.ree.renderFrame = renderFrame;
 
 export default App;
