@@ -16,6 +16,22 @@
   margin-right: 40px;
 }
 
+.avatar {
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  float: left;
+}
+
+.user div {
+  width: 80%;
+  float: right;
+}
+  
+.user img {
+  width: 20%;
+}
+
 .nav-item {
   float: left;
 }

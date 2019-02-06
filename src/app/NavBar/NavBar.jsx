@@ -38,12 +38,18 @@ class NavBar extends Component {
             <NavLink className="nav-link" activeClassName="active" to="/loot">LOOT</NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link premium" href="https://www.patreon.com/join/dankmemerbot?">{}</a>
+            <a className="nav-link premium" href="https://www.patreon.com/join/dankmemerbot?">PREMIUM</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href={this.state.user ? '/oauth/logout' : '/oauth/login'}>
-              {this.state.user ? <span>LOG OUT<br />LOGGED IN AS {this.state.user.username.toUpperCase()}</span> : 'LOG IN'}
-            </a>
+            {this.state.user ? (
+              <div className="user">
+                <img className="avatar" src={`https://cdn.discordapp.com/avatars/${this.state.user.id}/${this.state.user.avatar}?size=128`}/>
+                <div>
+                  <span className="nav-link">{`${this.state.user.username.toUpperCase()}#${this.state.user.discriminator}`}</span>
+                  <a className="nav-link" href='/oauth/logout'>LOG OUT</a>
+                </div>
+              </div>
+            ) : (<a className="nav-link" href='/oauth/login'>LOG IN</a>) }
           </li>
         </ul>
       </nav>
