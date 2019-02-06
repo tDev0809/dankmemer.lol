@@ -43,11 +43,8 @@ class NavBar extends Component {
           <li className="nav-item">
             {this.state.user ? (
               <div className="user">
-                <img className="avatar" src={`https://cdn.discordapp.com/avatars/${this.state.user.id}/${this.state.user.avatar}?size=128`}/>
-                <div>
                   <span className="nav-link">{`${this.state.user.username.toUpperCase()}#${this.state.user.discriminator}`}</span>
                   <a className="nav-link" href='/oauth/logout'>LOG OUT</a>
-                </div>
               </div>
             ) : (<a className="nav-link" href='/oauth/login'>LOG IN</a>) }
           </li>

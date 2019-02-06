@@ -25,11 +25,18 @@
 
 .user div {
   width: 80%;
+  text-align: left!important;
   float: right;
 }
   
-.user img {
-  width: 20%;
+.user a {
+  font-size: x-small!important;
+  text-align: right;
+  font-weight: normal!important;
+}
+
+.user span:hover {
+  color: white!important;
 }
 
 .nav-item {
