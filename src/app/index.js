@@ -40,6 +40,7 @@ document.addEventListener('dragover', (e) => {
   e.stopPropagation();
 });
 
+// Set up login state
 fetch('/oauth/state')
   .then(r => r.json())
   .then(res => {
@@ -47,3 +48,27 @@ fetch('/oauth/state')
       store.dispatch(actions.login(res));
     }
   });
+
+// Set up cookie consent
+const script = document.createElement('script');
+script.setAttribute('async', '');
+script.setAttribute('src', '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js');
+
+script.onload = () => {
+  window.cookieconsent.initialise({
+    palette: {
+      popup: {
+        background: '#252e39'
+      },
+      button: {
+        background: '#14a7d0'
+      }
+    },
+    position: 'bottom-left',
+    content: {
+      href: '/privacy'
+    }
+  });
+};
+
+document.head.appendChild(script);
