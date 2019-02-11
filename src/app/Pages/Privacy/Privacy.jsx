@@ -71,7 +71,7 @@ class Privacy extends Component {
 
 <h4>Usage Data</h4>
 
-<p>We may also collect information on how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+<p>We may also collect information on how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data. This is all stored by google, and not us. We may use email addresses in the future, only to send registered users emails about our service.</p>
 
 
 <h4>Tracking & Cookies Data</h4>
@@ -80,10 +80,7 @@ class Privacy extends Component {
 <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
 <p>Examples of Cookies we use:</p>
 <ul>
-    <li><strong>Session Cookies.</strong> We use Session Cookies to operate our Service.</li>
-    <li><strong>Preference Cookies.</strong> We use Preference Cookies to remember your preferences and various settings.</li>
-    <li><strong>Security Cookies.</strong> We use Security Cookies for security purposes.</li>
-    <li><strong>Advertising Cookies.</strong> Advertising Cookies are used to serve you with advertisements that may be relevant to you and your interests.</li></ul>
+    <li><strong>Session Cookies.</strong> We use Session Cookies to keep you logged in to Discord on our site. We also use Google Analytics, which uses cookies for general statistical data to help us learn and grow about how to make a better user experience.</li>
 
 <h2>Use of Data</h2> 
 <p>Dank Memer uses the collected data for various purposes:</p>    
