@@ -81,6 +81,7 @@ class Privacy extends Component {
 <p>Examples of Cookies we use:</p>
 <ul>
     <li><strong>Session Cookies.</strong> We use Session Cookies to keep you logged in to Discord on our site. We also use Google Analytics, which uses cookies for general statistical data to help us learn and grow about how to make a better user experience.</li>
+</ul>
 
 <h2>Use of Data</h2> 
 <p>Dank Memer uses the collected data for various purposes:</p>    
@@ -224,7 +225,7 @@ Express and Discover. PCI-DSS requirements help ensure the secure handling of pa
 <ul>
         <li>By email: dankmemerbot@gmail.com</li>
           
-        </ul>
+</ul>
         </div>
     )
   }
