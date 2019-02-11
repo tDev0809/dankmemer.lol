@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   name: 'client',
-  context: path.join(__dirname, '..', 'src', 'app'),  
+  context: path.join(__dirname, '..', 'src', 'app'),
   entry: ['babel-polyfill', './index.js'],
   output: {
     path: assetsPath,

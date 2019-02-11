@@ -4,23 +4,6 @@ import { connect } from 'react-redux';
 import './NavBar.css';
 
 class NavBar extends Component {
-  constructor () {
-    super();
-
-    this.state = {
-      user: null
-    };
-  }
-
-  async componentDidMount () {
-    const res = await fetch('/oauth/state')
-      .then(r => r.json());
-
-    this.setState({
-      user: res
-    });
-  }
-
   render() {
     return(
       <nav className="navbar">
