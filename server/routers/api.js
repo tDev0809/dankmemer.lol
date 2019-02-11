@@ -1,7 +1,6 @@
 const { Router } = require('express');
 
 const dataDog = require('../datadog.js');
-const r = require('../db.js')
 const keys = require('../../keys.json');
 const router = Router();
 
@@ -20,17 +19,6 @@ router.post('/cmds', (req, res) => {
   } else {
     res.status(401).json({ error: 'Get away you sick filth.' });
   }
-});
-
-router.get('/stats', async (req, res) => {
-  const [ { stats } ] = await r.table('stats');
-
-  res.status(200).json({
-    ram: (stats.totalRam / 1024).toFixed(1),
-    guilds: stats.guilds.toLocaleString(),
-    users: stats.users.toLocaleString()
-  });
-  dataDog.increment('website.stats');
 });
 
 module.exports = router;
