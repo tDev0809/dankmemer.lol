@@ -1,7 +1,7 @@
 .developer {
   background:#23272A;
   border-radius: 4px;
-  width: 200px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   padding: 12px 14px;
@@ -10,6 +10,7 @@
 
 .developer-name {
   text-align: center;
+  font-size: large;
   margin-bottom: 10px;
 }
 
@@ -28,8 +29,8 @@
 }
 
 .developer-picture {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   border-radius: 50%;
 }

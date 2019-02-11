@@ -7,14 +7,27 @@ class DeveloperList extends Component {
     let mods = [{
       name: 'Donovan',
       picture: 'dono.png',
-      hover: 'donovan.gif',
+      hover: 'dono.png',
       social: [
+        {name: 'Discord', link: 'https://discord.gg/SuccpZw'},
         {name: 'GitHub', link: 'https://github.com/DonovanDMC'},
         {name: 'GitLab', link: 'https://gitlab.com/DonovanDMC'},
+        {name: 'Reddit', link: 'https://www.reddit.com/user/Donovan_DMC'},
         {name: 'Twitter', link: 'https://twitter.com/Donovan_DMC'},
-        {name: 'world', link: 'https://furry.bot/'}
+        {name: 'Website', link: 'https://furry.bot/'}
       ],
       about: "OwO What's This?!?"
+    },
+    {
+      name: 'Nyx',
+      picture: 'nyx.png',
+      hover: 'nyx.png',
+      social: [
+        {name: 'Reddit', link: 'https://www.reddit.com/user/Nyxgawr'},
+        {name: 'Spotify', link: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV?si=uWJc5io0TtC2x3_qufttew'},
+        {name: 'Twitter', link: 'https://twitter.com/Nyxgawr'}
+      ],
+      about: "Night Shift Security Boi"
     }];
     let devs = [{
       name: 'Blake',
@@ -22,7 +35,8 @@ class DeveloperList extends Component {
       hover: 'hacker.gif',
       social: [
         {name: 'GitHub', link: 'https://github.com/zBlakee'},
-        {name: 'world', link: 'https://zblake.xyz'}
+        {name: 'Reddit', link: 'https://www.reddit.com/user/Nevulo'},
+        {name: 'Website', link: 'https://zblake.xyz'}
       ],
       about: "G'day, I'm Blake. I'm a web and software developer based in Australia."
     },
@@ -30,29 +44,39 @@ class DeveloperList extends Component {
       name: 'Melmsie',
       picture: 'melmsie.png',
       hover: 'melmsie.gif',
-      about: 'Full stack developer with a love for all things memey and fun.',
+      about: 'Full stack developer with a love for all things memey and fun, Dank Memer is my full time job.',
       social: [
+        {name: 'Discord', link: 'https://discord.gg/Wejhbd4'},
         {name: 'GitHub', link: 'https://github.com/melmsie'},
         {name: 'GitLab', link: 'https://gitlab.com/daegeiros'},
+        {name: 'Reddit', link: 'https://www.reddit.com/user/Kerdaloo'},
+        {name: 'Spotify', link: 'https://open.spotify.com/user/melmsaustin'},
         {name: 'Twitter', link: 'https://twitter.com/feelsdevman'},
+        {name: 'Website', link: 'https://drama.lol'}
       ]
     },
     {
       name: 'Aetheryx',
       picture: 'aetheryx.png',
       hover: 'snoop.gif',
-      about: "Weed weed weed weed space cake weed weed weed weed",
+      about: "Cutie and creator of powercord, the best discord client mod there is <3 Melmsie",
       social: [
-        {name: 'GitHub', link: 'https://github.com/aetheryx'}
+        {name: 'Discord', link: 'https://discord.gg/5eSH46g'},
+        {name: 'GitHub', link: 'https://github.com/aetheryx'},
+        {name: 'Reddit', link: 'https://www.reddit.com/user/Dynamexia'},
+        {name: 'Spotify', link: 'https://open.spotify.com/user/Aetheryx'},
+        {name: 'Website', link: 'https://powercord.xyz/'}
       ]
     },
     {
       name: 'Paradox',
       picture: 'paradox.png',
       hover: 'france.gif',
-      about: 'Baguette tbh',
+      about: 'Just a small time baguette, living in a croissant world',
+
       social: [
-        {name: 'GitHub', link: 'https://github.com/ParadoxOrigins'}
+        {name: 'GitHub', link: 'https://github.com/ParadoxOrigins'},
+        {name: 'Twitter', link: 'https://twitter.com/Paradox_Origins'}
       ]
     }];
     let contribs = [
@@ -74,7 +98,8 @@ class DeveloperList extends Component {
       about: 'Heyo NANI here. I build bots and APIs in python for a hobby, but most of the time you\'ll find me in a laboratory.',
       social: [
         {name: 'GitHub' ,link: 'https://github.com/AndyTempel'},
-        {name: 'world', link: 'https://api.ksoft.si/'}
+        {name: 'Reddit', link: 'https://www.reddit.com/user/andy_biomed'},
+        {name: 'Website', link: 'https://api.ksoft.si/'}
       ]
     },
     {
@@ -85,7 +110,7 @@ class DeveloperList extends Component {
         {name: 'GitHub', link: 'https://github.com/Devoxin'},
         {name: 'GitLab', link: 'https://gitlab.com/Devoxin'},
         {name: 'Twitter', link: 'https://twitter.com/Dvoxn'},
-        {name: 'world', link: 'https://serux.pro'}
+        {name: 'Website', link: 'https://serux.pro'}
       ],
       picture: 'kromatic.png'
     },
@@ -97,7 +122,7 @@ class DeveloperList extends Component {
       social: [
         {name: 'GitHub', link: 'https://github.com/GeoffreyWesthoff'},
         {name: 'GitLab', link: 'https://gitlab.com/GeoffreyWesthoff'},
-        {name: 'world', link: 'https://altdentifier.com/'}
+        {name: 'Website', link: 'https://altdentifier.com/'}
       ]
     }];
     let list = devs.map(dev => {
