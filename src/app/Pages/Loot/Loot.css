@@ -62,16 +62,14 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 .input {
+  -moz-appearance: textfield;
   font-size: 40px;
   color: #fff;
-  background: #23272a;
+  background: #23272A;
   border: 1px solid #7289DA;
   width: 49.5px;
+  padding: 0px 3px;
   padding-top: 4px;
   margin-right: 3px;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './NavBar.css';
 
 class NavBar extends Component {
@@ -41,9 +42,9 @@ class NavBar extends Component {
             <a className="nav-link premium" href="https://www.patreon.com/join/dankmemerbot?">PREMIUM</a>
           </li>
           <li className="nav-item">
-            {this.state.user ? (
+            {this.props.loggedIn ? (
               <div className="user">
-                  <span className="nav-link">{`${this.state.user.username.toUpperCase()}#${this.state.user.discriminator}`}</span>
+                  <span className="nav-link">{`${this.props.username.toUpperCase()}#${this.props.discriminator}`}</span>
                   <a className="nav-link" href='/oauth/logout'>LOG OUT</a>
               </div>
             ) : (<a className="nav-link" href='/oauth/login'>LOG IN</a>) }
@@ -54,4 +55,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default connect(store => store.login)(NavBar);

@@ -1,48 +1,17 @@
 import React, { Component, createRef } from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
+import { connect } from 'react-redux';
 
 import './Loot.css';
-
-const sleep = (t) => new Promise(r => setTimeout(r, t));
-
-const boxes = [{
-  name: 'Normie Box',
-  description: 'Can\'t get more basic than this.',
-  yield: '150 ~ 800',
-  randomItem: {
-    keyword: 'low',
-    chance: 0.6
-  },
-  price: 0.49
-}, {
-  name: 'Meme Box',
-  description: 'Something actually worth opening.',
-  yield: '750 ~ 3500',
-  randomItem: {
-    keyword: 'medium',
-    chance: 0.7
-  },
-  price: 1.99
-}, {
-  name: 'Dank Box',
-  description: 'Dank rewards for a dank user.',
-  yield: '1000 ~ 10000',
-  randomItem: {
-    keyword: 'high',
-    chance: 0.94
-  },
-  price: 3.99
-}];
-
-const MINIMUM_PURCHASE_VALUE = 1.95;
-const MINIMUM_DISCOUNT_VALUE = 10;
-const DISCOUNT_NEAREST = 1.50;
+import { boxes, Constants, clientIDs } from './data.json';
 
 class Loot extends Component {
   constructor () {
     super();
 
+    this.inputRef = createRef();
+    this.paypalButton = null;
     this.state = {
       selectedBox: 0,
       activeBox: boxes[0],
@@ -50,10 +19,6 @@ class Loot extends Component {
       transitioning: null,
       boxCount: 1
     };
-
-    this.inputRef = createRef();
-
-    this.paypalButton = null;
   }
 
   componentDidMount() {
@@ -71,38 +36,43 @@ class Loot extends Component {
           style={{
             size: 'large',
             shape: 'rect',
-            color: 'gold'
+            color: 'blue'
           }}
           payment={this.payment.bind(this)}
           onAuthorize={this.onAuthorize.bind(this)}
-          onCancel={this.onCancel.bind(this)}
-          client={{
-            // TODO: move to conf
-            sandbox: 'ATKDzslD3dByny_jqr9s2NexgCc2Id0_BiR9VKUHyQ-qX0uldGhg9pZ8CpS3E6It20qYzx8_YUKl4_iB'
-          }}
+          onCancel={() => {}}
+          client={clientIDs}
         />
       );
+      this.forceUpdate();
     };
 
     document.head.appendChild(script);
   }
 
-  getSubtotal () {
-    return (this.state.boxCount * this.state.activeBox.price).toFixed(2);
+  getSubtotal (returnRaw) {
+    const raw = this.state.boxCount * this.state.activeBox.price;
+    return returnRaw
+      ? raw
+      : raw.toFixed(2);
   }
 
-  getDiscountedSubtotal () {
-    const subtotal = this.state.boxCount * this.state.activeBox.price;
-    const discount = subtotal % DISCOUNT_NEAREST;
-    if (
-      subtotal <= MINIMUM_DISCOUNT_VALUE ||
-      discount === 0
-    ) {
-      return subtotal.toFixed(2);
-    }
+  getDiscount (returnRaw) {
+    const subtotal = this.getSubtotal(true);
+    const raw = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE
+      ? subtotal % Constants.DISCOUNT_NEAREST
+      : 0;
 
-    const discountedSubtotal = subtotal - discount;
-    return discountedSubtotal.toFixed(2);
+    return returnRaw
+      ? raw
+      : raw.toFixed(2);
+  }
+
+  getDiscountedSubtotal (returnRaw) {
+    const raw = this.getSubtotal(true) - this.getDiscount(true);
+    return returnRaw
+      ? raw
+      : raw.toFixed(2);
   }
 
   payment (_, actions) {
@@ -111,27 +81,41 @@ class Loot extends Component {
         transactions: [ {
           amount: {
             total: this.getDiscountedSubtotal(),
-            currency: 'USD'
+            currency: 'USD',
+            details: {
+              subtotal: this.getSubtotal(),
+              discount: this.getDiscount()
+            }
+          },
+          custom: this.props.jwt,
+          description: 'Meme Box Purchase',
+          item_list: {
+            items: [ {
+              name: this.state.activeBox.name,
+              quantity: this.state.boxCount,
+              price: this.state.activeBox.price.toFixed(2),
+              currency: 'USD'
+            } ]
           }
-        } ]
+        } ],
+        note_to_payer: 'melmsie small wenis btw'
       }
-    });
+    })
+      .catch(err => {
+        console.error(err);
+        this.setState({ finish: { success: false } });
+      });
   }
 
   onAuthorize (data, actions) {
     return actions.payment.execute()
-      .then(() => {
-        this.setState({ succeededPayment: data });
+      .then(r => {
+        this.setState({ finish: { success: true, data } });
       })
-      .catch(e => {
-        // TODO
-        console.error(e);
+      .catch(err => {
+        this.setState({ finish: { success: false, data } });
+        console.error(err);
       });
-  }
-
-  onCancel (data) {
-    // TODO
-    console.log('on cancel', data);
   }
 
   onInput ({ target, value }) {
@@ -150,13 +134,9 @@ class Loot extends Component {
     target.value = boxCount;
     this.setState({ boxCount });
   }
-  
-  async setActiveBox (selectedBox) {
-    this.setState({ transitioning: 'out' });
-    this.setState({ selectedBox });
-    await sleep(150);
-    this.setState({ activeBox: boxes[selectedBox] });
-    this.setState({ transitioning: 'in' });
+
+  async setActiveBox (index) {
+    this.setState({ activeBox: boxes[index] });
   }
 
   onInputClick (increase) {
@@ -176,7 +156,7 @@ class Loot extends Component {
     const Box = (box, boxIndex) => (
       <div
         key={boxIndex}
-        className={`box${boxIndex === this.state.selectedBox ? ' active' : ''}`}
+        className={`box${box.name === this.state.activeBox.name ? ' active' : ''}`}
         onClick={() => this.setActiveBox(boxIndex)}
       >
         <div className="box-header">{box.name}</div>
@@ -190,20 +170,43 @@ class Loot extends Component {
       </div>
     );
 
-    if (this.state.succeededPayment) {
+    if (this.state.finish) {
+      const { success, data } = this.state.finish;
+
       return (
         <div className="content">
-          <div className="fancy-header absolute-unit">Success!<br /></div>
-          <div style={{ fontSize: '22px' }} >
-            Your payment has successfully been made. You will receive your purchased boxes automatically.<br />
-            Should you have any issues, join <a href="https://discord.gg/FnP8m6q">the support server</a> and contact an administrator with your Payment ID:<br />
-          </div>
-          <code style={{ fontSize: '32px' }}>{this.state.succeededPayment.orderID}</code>
+          {
+            success
+              ? (
+                <div>
+                  <div className="fancy-header absolute-unit">Success!</div>
+                  <div style={{ fontSize: '22px' }}>
+                    Your payment has successfully been made. You will receive your purchased boxes automatically.<br />
+                    Should you have any issues, join <a href="https://discord.gg/FnP8m6q">the support server</a> and contact an administrator with your Payment ID:<br />
+                  </div>
+                  <code style={{ fontSize: '32px' }}>{data.paymentID}</code>
+                </div>
+              )
+              : (
+                <div>
+                  <div className="fancy-header absolute-unit red">Fucky wucky.</div>
+                  <div style={{ fontSize: '22px' }}>
+                    Something went wrong while trying to {data ? 'process' : 'create'} your payment.<br />
+                    Please join <a href="https://discord.gg/FnP8m6q">the support server</a> for help{data ? ' and contact an administrator with your Payment ID:' : '.'}<br />
+                    {
+                      data &&
+                      <code style={{ fontSize: '32px' }}>{data.paymentID}</code>
+                    }
+                  </div>
+                </div>
+              )
+          }
         </div>
-      )
+      );
     }
 
-    const minimumIsMet = Number(this.getSubtotal()) < MINIMUM_PURCHASE_VALUE;
+    const minimumIsMet = this.getDiscountedSubtotal(true) > Constants.MINIMUM_PURCHASE_VALUE;
+    const isLoggedIn = this.props.loggedIn;
 
     return(
       <div className="content loot">
@@ -233,7 +236,7 @@ class Loot extends Component {
         <div className="header">Subtotal:</div>
         <div className="dolla-dolla-bills">
           {
-            this.getSubtotal() === this.getDiscountedSubtotal()
+            this.getDiscount(true) === 0
               ? <span>${this.getSubtotal()}</span>
               : <span><s><i>${this.getSubtotal()}</i></s> ${this.getDiscountedSubtotal()}</span>
           }
@@ -242,15 +245,22 @@ class Loot extends Component {
         <div className="divider" />
 
         {
-          minimumIsMet &&
+          !minimumIsMet &&
           <div className="header red">
-            You haven't met the minimum purchase value of ${MINIMUM_PURCHASE_VALUE.toFixed(2)}.
+            You haven't met the minimum purchase value of ${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.
+          </div>
+        }
+
+        {
+          !isLoggedIn && minimumIsMet &&
+          <div className="header red">
+            You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/loot">Click this</a> to log in.
           </div>
         }
 
         <div
           style={{
-            display: minimumIsMet ? 'none' : ''
+            opacity: (minimumIsMet && isLoggedIn) ? 1 : 0
           }}
         >
           {this.paypalButton}
@@ -260,4 +270,4 @@ class Loot extends Component {
   }
 }
 
-export default Loot;
+export default connect(store => store.login, null)(Loot);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
 import Home from './Pages/Home/Home';
 import Commands from './Pages/Commands/Commands';
 import About from './Pages/Devs/Devs';
@@ -57,7 +58,9 @@ window.ree = async function ({ duration = 500, heavyness = 10, playAudio = true,
     renderFrame(() => `${Math.random() * heavyness}px`)
   );
 
-  d.className = 'reeing';
+  if (rage) {
+    d.className = 'reeing';
+  }
 
   setTimeout(() => {
     clearInterval(interval);

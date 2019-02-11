@@ -1,0 +1,44 @@
+{
+  "boxes": [
+    {
+      "name": "Normie Box",
+      "description": "Can't get more basic than this.",
+      "yield": "150 ~ 800",
+      "randomItem": {
+        "keyword": "low",
+        "chance": 0.6
+      },
+      "price": 0.49
+    },
+    {
+      "name": "Meme Box",
+      "description": "Something actually worth opening.",
+      "yield": "750 ~ 3500",
+      "randomItem": {
+        "keyword": "medium",
+        "chance": 0.7
+      },
+      "price": 1.99
+    },
+    {
+      "name": "Dank Box",
+      "description": "Dank rewards for a dank user.",
+      "yield": "1000 ~ 10000",
+      "randomItem": {
+        "keyword": "high",
+        "chance": 0.94
+      },
+      "price": 3.99
+    }
+  ],
+
+  "Constants": {
+    "MINIMUM_PURCHASE_VALUE": 1.95,
+    "MINIMUM_DISCOUNT_VALUE": 10,
+    "DISCOUNT_NEAREST": 1.50
+  },
+
+  "clientIDs": {
+    "sandbox": "AdJZ_EOByDesor9SeMLoQGrOp2cG2x8AL36xkUWY3aRnNpnW_OsD6xYNGGF81yxACSaplBAMz4o46y1t"
+  }
+}
