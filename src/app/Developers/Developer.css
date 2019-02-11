@@ -4,8 +4,8 @@
   width: 250px;
   display: flex;
   flex-direction: column;
-  padding: 12px 14px;
-  margin: 15px;
+  padding: 12px 15px;
+  margin: 20px;
 }
 
 .developer-name {

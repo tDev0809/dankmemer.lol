@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Developer from './Developer';
 import './DeveloperList.css';
 
@@ -28,6 +29,76 @@ class DeveloperList extends Component {
         {name: 'Twitter', link: 'https://twitter.com/Nyxgawr'}
       ],
       about: "Night Shift Security Boi"
+    }, {
+      name: 'NateTheCarrot',
+      picture: 'nate.png',
+      hover: 'nate.png',
+      social: [
+        {name: 'Discord', link: 'https://discord.gg/gz6vvXU'},
+        {name: 'GitHub', link: 'https://github.com/NateTheCarrot'},
+        {name: 'GitLab', link: 'https://gitlab.com/NateTheCarrot'},
+        {name: 'Reddit', link: 'https://reddit.com/u/NateTheCarrot'},
+        {name: 'Twitter', link: 'https://twitter.com/NateTheCarrot'},
+        {name: 'Website', link: 'https://website--iamnatej.repl.co/'}
+      ],
+      about: "Moderate Python and JS programmer, chairs are friends not food"
+    },
+    {
+      name: 'Sinister™',
+      picture: 'sinister.png',
+      hover: 'sinister.png',
+      social: [
+        {name: 'Website', link: 'https://www.youtube.com/watch?v=o1eHKf-dMwo'}
+      ],
+      about: "I help meth-heads change their light bulbs"
+    },
+    {
+      name: 'Dank Spider-Mod',
+      picture: 'spider.png',
+      hover: 'spider.png',
+      about: 'It\'s your friendly serverhood Spider-Mod!',
+      social: [
+        {name: 'GitHub', link: 'https://github.com/Zorukia'},
+        {name: 'Reddit', link: 'https://www.reddit.com/user/Zorukia'},
+        {name: 'Twitter', link: 'https://twitter.com/MDDQ2'}
+      ]
+    },
+    {
+      name: 'Mook',
+      picture: 'mook.png',
+      hover: 'mook.png',
+      about: 'ok ok ok ok ok x10',
+      social: [
+        {name: 'Discord', link: 'https://discord.gg/HdQYu6U'},
+        {name: 'Twitter', link: 'https://twitter.com/B_A_Services'}
+      ]
+    },
+    {
+      name: 'Dauntless',
+      picture: 'daunt.png',
+      hover: 'daunt.png',
+      about: 'Hi, I like coding stuff / Comp Sci student',
+      social: [
+        {name: 'Discord', link: 'https://discord.gg/FjBbCxC'},
+        {name: 'GitHub', link: 'https://github.com/Dauntless7'},
+        {name: 'Reddit', link: 'https://www.reddit.com/user/lonesomefickle'},
+        {name: 'Twitter', link: 'https://twitter.com/nicolai5423'}
+      ]
+    },
+    {
+      name: 'Alpha',
+      picture: 'alpha.png',
+      hover: 'alpha.png',
+      about: 'My personality type is Dwight Schrute of Schrute Farms, and Melmsie is cooler than me',
+      social: [
+        {name: 'Discord', link: 'https://discord.gg/Wejhbd4'},
+        {name: 'GitHub', link: 'https://github.com/melmsie'},
+        {name: 'GitLab', link: 'https://gitlab.com/daegeiros'},
+        {name: 'Reddit', link: 'https://www.reddit.com/user/Kerdaloo'},
+        {name: 'Spotify', link: 'https://open.spotify.com/user/melmsaustin'},
+        {name: 'Twitter', link: 'https://twitter.com/feelsdevman'},
+        {name: 'Website', link: 'https://drama.lol'}
+      ]
     }];
     let devs = [{
       name: 'Blake',
@@ -59,7 +130,7 @@ class DeveloperList extends Component {
       name: 'Aetheryx',
       picture: 'aetheryx.png',
       hover: 'snoop.gif',
-      about: "Cutie and creator of powercord, the best discord client mod there is <3 Melmsie",
+      about: `Hi ${this.props.loggedIn ? this.props.username : 'user'}, I'm dad`,
       social: [
         {name: 'Discord', link: 'https://discord.gg/5eSH46g'},
         {name: 'GitHub', link: 'https://github.com/aetheryx'},
@@ -154,4 +225,4 @@ class DeveloperList extends Component {
   }
 }
 
-export default DeveloperList;
+export default connect(store => store.login)(DeveloperList);
