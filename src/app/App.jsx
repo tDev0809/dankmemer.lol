@@ -6,6 +6,7 @@ import Commands from './Pages/Commands/Commands';
 import About from './Pages/Devs/Devs';
 import Loot from './Pages/Loot/Loot.jsx';
 import Rules from './Pages/Rules/Rules';
+import Admin from './Pages/Admin/Admin';
 import Terms from './Pages/Terms/Terms';
 import Privacy from './Pages/Privacy/Privacy';
 import NavBar from './NavBar/NavBar';
@@ -29,6 +30,7 @@ class App extends Component {
             <Route component={About} path="/devs" />
             <Route component={Loot} path="/loot" />
             <Route component={Rules} path="/rules" />
+            <Route component={Admin} path="/admin" />
             <Route component={Terms} path="/terms" />
             <Route component={Privacy} path="/privacy" />
           </Switch>

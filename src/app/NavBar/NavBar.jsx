@@ -24,6 +24,9 @@ class NavBar extends Component {
           <li className="nav-item">
             <a className="nav-link premium" href="https://www.patreon.com/join/dankmemerbot?">PREMIUM</a>
           </li>
+          {this.props.isAdmin ? <li className="nav-item">
+            <NavLink className="nav-link" activeClassName="active" to="/admin">ADMIN</NavLink>
+          </li> : ''}
           <li className="nav-item">
             {this.props.loggedIn ? (
               <div className="user">
