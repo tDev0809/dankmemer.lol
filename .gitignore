@@ -1,9 +1,9 @@
 node_modules/
 .vscode/
-build/static/bundle.js
-build/static/bundle.js.map
-build/static/style.css
-build/static/style.css.map
+server/build/static/bundle.js
+server/build/static/bundle.js.map
+server/build/static/style.css
+server/build/static/style.css.map
 .DS_STORE
 config\.json
 keys.json
