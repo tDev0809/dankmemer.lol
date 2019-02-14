@@ -13,6 +13,7 @@ class Loot extends Component {
     this.inputRef = createRef();
     this.paypalButton = null;
     this.state = {
+      bannedCountry: false,
       selectedBox: 0,
       activeBox: boxes[0],
       succeededPayment: null,
@@ -21,8 +22,15 @@ class Loot extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     ReactGA.pageview('/loot');
+
+    // Check for banned countries
+    const country = await fetch('/api/country')
+      .then(r => r.json());
+    if (country.isBlocked) {
+      return this.setState({ blockedCountry: country });
+    }
 
     const script = document.createElement('script');
     script.setAttribute('async', '');
@@ -201,6 +209,19 @@ class Loot extends Component {
                 </div>
               )
           }
+        </div>
+      );
+    } else if (this.state.blockedCountry) {
+      return (
+        <div className="content">
+          <div className="fancy-header absolute-unit red">Sorry.</div>
+          <div style={{ fontSize: '22px' }}>
+            Loot boxes are declared illegal in your country. As a result, you are unable to purchase any boxes.<br />
+            Alternatively, click <a href="https://www.google.com/search?q=flights+to+usa">here</a> to find flights to the Land of Freedom.
+          </div>
+          <div style={{ fontSize: '4px' }}>
+            also {this.state.blockedCountry.country} gay lmao
+          </div>
         </div>
       );
     }
