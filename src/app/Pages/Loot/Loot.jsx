@@ -39,7 +39,7 @@ class Loot extends Component {
       const PaypalButton = paypal.Button.driver('react', { React, ReactDOM });
       this.paypalButton = (
         <PaypalButton
-          env="sandbox"
+          env={__PAYPAL_ENV__}
           style={{
             size: 'large',
             shape: 'rect',

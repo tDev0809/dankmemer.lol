@@ -36,6 +36,9 @@ module.exports = {
     extensions: ['.jsx', '.js']
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+    new webpack.DefinePlugin({
+      __PAYPAL_ENV__: '"sandbox"'
+    })
   ]
 };
