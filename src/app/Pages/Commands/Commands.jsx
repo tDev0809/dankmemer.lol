@@ -13,6 +13,10 @@ class Commands extends Component {
 
   componentDidMount() {
     ReactGA.pageview('/commands');
+
+    if (window.location.search) {
+      window.history.pushState(null, null, 'commands');
+    }
   }
 
   componentWillMount() {
