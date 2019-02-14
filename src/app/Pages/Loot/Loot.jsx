@@ -14,9 +14,9 @@ class Loot extends Component {
     this.paypalButton = null;
     this.state = {
       bannedCountry: false,
+      hasAgreed: false,
       activeBox: boxes[0],
       succeededPayment: null,
-      transitioning: null,
       boxCount: 1
     };
   }
@@ -142,6 +142,10 @@ class Loot extends Component {
     this.setState({ boxCount });
   }
 
+  onCheck ({ target }) {
+    this.setState({ hasAgreed: target.checked });
+  }
+
   async setActiveBox (index) {
     this.setState({ activeBox: boxes[index] });
   }
@@ -227,6 +231,25 @@ class Loot extends Component {
 
     const minimumIsMet = this.getDiscountedSubtotal(true) > Constants.MINIMUM_PURCHASE_VALUE;
     const isLoggedIn = this.props.loggedIn;
+    const hasAgreed = this.state.hasAgreed;
+
+    let text;
+    if (!hasAgreed) {
+      text = 'You haven\'t agreed to the Terms of Service.';
+    } else if (!minimumIsMet) {
+      text = `You haven't met the minimum purchase value of $${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.`;
+    } else if (!isLoggedIn) {
+      text = (
+        <div>
+          You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/loot">Click this</a> to log in.
+        </div>
+      );
+    }
+    const lastSection = (
+      <div className="header red">
+        {text}
+      </div>
+    );
 
     return(
       <div className="content loot">
@@ -264,23 +287,19 @@ class Loot extends Component {
 
         <div className="divider" />
 
-        {
-          !minimumIsMet &&
-          <div className="header red">
-            You haven't met the minimum purchase value of ${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.
-          </div>
-        }
+        <label className="tos-container">
+          <input type="checkbox" className="tos-checkbox" onChange={this.onCheck.bind(this)} />
+          <span className="tos-checkmark" />
+          <span className="header">I agree to <a href="/terms">Dank Memer's Terms of Service</a><span className="red">*</span></span>.
+        </label>
 
-        {
-          !isLoggedIn && minimumIsMet &&
-          <div className="header red">
-            You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/loot">Click this</a> to log in.
-          </div>
-        }
+        <div className="divider" />
+
+        {lastSection}
 
         <div
           style={{
-            opacity: (minimumIsMet && isLoggedIn) ? 1 : 0
+            opacity: (minimumIsMet && isLoggedIn && hasAgreed) ? 1 : 0
           }}
         >
           {this.paypalButton}
