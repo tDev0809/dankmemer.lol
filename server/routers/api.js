@@ -20,7 +20,7 @@ router.post('/cmds', (req, res) => {
 });
 
 router.get('/country', (req, res) => {
-  const country = 'BE'//req.headers[ 'cf-ipcountry' ];
+  const country = req.headers[ 'cf-ipcountry' ];
   return res.json({
     country,
     isBlocked: BLOCKED_COUNTRIES.includes(country)
