@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter   } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './NavBar.css';
 
@@ -41,4 +41,4 @@ class NavBar extends Component {
   }
 }
 
-export default connect(store => store.login)(NavBar);
+export default withRouter(connect(store => store.login)(NavBar));
