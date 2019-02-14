@@ -14,7 +14,6 @@ class Loot extends Component {
     this.paypalButton = null;
     this.state = {
       bannedCountry: false,
-      selectedBox: 0,
       activeBox: boxes[0],
       succeededPayment: null,
       transitioning: null,
@@ -67,7 +66,7 @@ class Loot extends Component {
 
   getDiscount (returnRaw) {
     const subtotal = this.getSubtotal(true);
-    const raw = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE
+    const raw = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE && this.state.activeBox.id !== 0
       ? subtotal % Constants.DISCOUNT_NEAREST
       : 0;
 
