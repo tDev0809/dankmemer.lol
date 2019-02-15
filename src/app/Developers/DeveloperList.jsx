@@ -123,7 +123,7 @@ class DeveloperList extends Component {
         {name: 'Reddit', link: 'https://www.reddit.com/user/Kerdaloo'},
         {name: 'Spotify', link: 'https://open.spotify.com/user/melmsaustin'},
         {name: 'Twitter', link: 'https://twitter.com/feelsdevman'},
-        {name: 'Website', link: 'https://drama.lol'}
+        {name: 'Website', link: 'https://codebottle.io/users/melmsie'}
       ]
     },
     {
