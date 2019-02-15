@@ -63,7 +63,6 @@ router.get('/callback', async (req, res) => {
 });
 
 router.get('/state', (req, res) => {
-  console.log(req.session.user);
   return res.json(req.session.user || null);
 });
 

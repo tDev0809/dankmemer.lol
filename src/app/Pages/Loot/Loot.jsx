@@ -13,16 +13,23 @@ class Loot extends Component {
     this.inputRef = createRef();
     this.paypalButton = null;
     this.state = {
-      selectedBox: 0,
+      bannedCountry: false,
+      hasAgreed: false,
       activeBox: boxes[0],
       succeededPayment: null,
-      transitioning: null,
       boxCount: 1
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     ReactGA.pageview('/loot');
+
+    // Check for banned countries
+    const country = await fetch('/api/country')
+      .then(r => r.json());
+    if (country.isBlocked) {
+      return this.setState({ blockedCountry: country });
+    }
 
     const script = document.createElement('script');
     script.setAttribute('async', '');
@@ -32,7 +39,7 @@ class Loot extends Component {
       const PaypalButton = paypal.Button.driver('react', { React, ReactDOM });
       this.paypalButton = (
         <PaypalButton
-          env="sandbox"
+          env={__PAYPAL_ENV__}
           style={{
             size: 'large',
             shape: 'rect',
@@ -59,7 +66,7 @@ class Loot extends Component {
 
   getDiscount (returnRaw) {
     const subtotal = this.getSubtotal(true);
-    const raw = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE
+    const raw = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE && this.state.activeBox.id !== 0
       ? subtotal % Constants.DISCOUNT_NEAREST
       : 0;
 
@@ -135,6 +142,10 @@ class Loot extends Component {
     this.setState({ boxCount });
   }
 
+  onCheck ({ target }) {
+    this.setState({ hasAgreed: target.checked });
+  }
+
   async setActiveBox (index) {
     this.setState({ activeBox: boxes[index] });
   }
@@ -203,10 +214,42 @@ class Loot extends Component {
           }
         </div>
       );
+    } else if (this.state.blockedCountry) {
+      return (
+        <div className="content">
+          <div className="fancy-header absolute-unit red">Sorry.</div>
+          <div style={{ fontSize: '22px' }}>
+            Loot boxes are declared illegal in your country. As a result, you are unable to purchase any boxes.<br />
+            Alternatively, click <a href="https://www.google.com/search?q=flights+to+usa">here</a> to find flights to the Land of Freedom.
+          </div>
+          <div style={{ fontSize: '4px' }}>
+            also {this.state.blockedCountry.country} gay lmao
+          </div>
+        </div>
+      );
     }
 
     const minimumIsMet = this.getDiscountedSubtotal(true) > Constants.MINIMUM_PURCHASE_VALUE;
     const isLoggedIn = this.props.loggedIn;
+    const hasAgreed = this.state.hasAgreed;
+
+    let text;
+    if (!hasAgreed) {
+      text = 'You haven\'t agreed to the Terms of Service.';
+    } else if (!minimumIsMet) {
+      text = `You haven't met the minimum purchase value of $${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.`;
+    } else if (!isLoggedIn) {
+      text = (
+        <div>
+          You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/loot">Click this</a> to log in.
+        </div>
+      );
+    }
+    const lastSection = (
+      <div className="header red">
+        {text}
+      </div>
+    );
 
     return(
       <div className="content loot">
@@ -244,23 +287,19 @@ class Loot extends Component {
 
         <div className="divider" />
 
-        {
-          !minimumIsMet &&
-          <div className="header red">
-            You haven't met the minimum purchase value of ${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.
-          </div>
-        }
+        <label className="tos-container">
+          <input type="checkbox" className="tos-checkbox" onChange={this.onCheck.bind(this)} />
+          <span className="tos-checkmark" />
+          <span className="header">I agree to <a href="/terms">Dank Memer's Terms of Service</a><span className="red">*</span></span>.
+        </label>
 
-        {
-          !isLoggedIn && minimumIsMet &&
-          <div className="header red">
-            You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/loot">Click this</a> to log in.
-          </div>
-        }
+        <div className="divider" />
+
+        {lastSection}
 
         <div
           style={{
-            opacity: (minimumIsMet && isLoggedIn) ? 1 : 0
+            opacity: (minimumIsMet && isLoggedIn && hasAgreed) ? 1 : 0
           }}
         >
           {this.paypalButton}

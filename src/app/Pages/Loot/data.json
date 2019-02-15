@@ -2,6 +2,7 @@
   "boxes": [
     {
       "name": "Normie Box",
+      "id": 0,
       "description": "Can't get more basic than this.",
       "yield": "150 ~ 800",
       "randomItem": {
@@ -12,6 +13,7 @@
     },
     {
       "name": "Meme Box",
+      "id": 1,
       "description": "Something actually worth opening.",
       "yield": "750 ~ 3500",
       "randomItem": {
@@ -22,6 +24,7 @@
     },
     {
       "name": "Dank Box",
+      "id": 2,
       "description": "Dank rewards for a dank user.",
       "yield": "1000 ~ 10000",
       "randomItem": {
@@ -39,6 +42,7 @@
   },
 
   "clientIDs": {
-    "sandbox": "AdJZ_EOByDesor9SeMLoQGrOp2cG2x8AL36xkUWY3aRnNpnW_OsD6xYNGGF81yxACSaplBAMz4o46y1t"
+    "sandbox": "AdJZ_EOByDesor9SeMLoQGrOp2cG2x8AL36xkUWY3aRnNpnW_OsD6xYNGGF81yxACSaplBAMz4o46y1t",
+    "production": "AcID5bwat2e7wdw-lwYifde67vwuEGV3NzCMae_76G4SOfv0n1kbapSF0mUiLypkI1zzerxvnVa0ojbI"
   }
 }

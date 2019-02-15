@@ -13,6 +13,10 @@ class Commands extends Component {
 
   componentDidMount() {
     ReactGA.pageview('/commands');
+
+    if (window.location.search) {
+      window.history.pushState(null, null, 'commands');
+    }
   }
 
   componentWillMount() {
@@ -22,9 +26,10 @@ class Commands extends Component {
       }).then(data => {
         let cols = [[],[],[]]
         Object.keys(data).forEach((key, index) => {
-          let one = ['🐶 Animals', '😄 Fun', '😂 Memey', '🔊 Sound', '😏 NSFW'] //Temporary until redo the command page to be sorted by tabs (each category it's own tab)
+          if (key === '😏 NSFW') return
+          let one = ['🐶 Animals', '😄 Fun', '😂 Memey', '🔊 Sound', '🎲 Games' ] //Temporary until redo the command page to be sorted by tabs (each category it's own tab)
           let two = ['⚙ Config', '🔨 Moderation', '🆗 Text', '🛠 Utility']
-          let three = ['🎲 Games', '💰 Currency', '📷 Image']
+          let three = ['💰 Currency', '📷 Image']
           if (one.includes(key)) {
             cols[0].push(<CmdTable key={key} category={key} data={data[key]}/>);
           } else if (two.includes(key)) {
