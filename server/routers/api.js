@@ -15,4 +15,14 @@ router.post('/cmds', (req, res) => {
   }
 });
 
+router.get('/admin/data/', (req, res) => {
+  if (req.session.user && req.session.user.id === '172571295077105664') {
+    res.status(200).json({
+      test: '6969'
+    });
+  } else {
+    res.status(401).json({ message: 'No admin for you, tsk tsk tsk' });
+  }
+});
+
 module.exports = router;

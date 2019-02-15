@@ -1,12 +1,10 @@
-const config = require('../../../config.json')
-const login = (state = { loggedIn: false, isAdmin: false }, action) => {
+const login = (state = { loggedIn: false }, action) => {
   switch (action.type) {
     case 'LOGIN':
-      const admin = config.admins.includes(action.user.id)
-      return { loggedIn: true, isAdmin: admin, ...action.user };
+      return { loggedIn: true, ...action.user };
 
     case 'LOGOUT':
-      return { loggedIn: false, isAdmin: false, ...action.user };
+      return { loggedIn: false, ...action.user };
 
     default:
       return state;
