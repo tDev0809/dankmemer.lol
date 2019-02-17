@@ -131,9 +131,9 @@ input[type=number]::-webkit-outer-spin-button {
   background: #23272A;
   border: 1px solid #7289DA;
   width: 49.5px;
-  padding: 0px 3px;
-  padding-top: 4px;
+  padding: 3px 3px 2px;
   margin-right: 3px;
+  text-align: center;
 }
 
 .input-btn {
@@ -144,6 +144,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0px 3px;
   padding: 0px 4px;
   padding-bottom: 2px;
+  text-align: center;
 }
 
 a {

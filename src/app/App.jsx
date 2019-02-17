@@ -8,6 +8,7 @@ import Loot from './Pages/Loot/Loot.jsx';
 import Rules from './Pages/Rules/Rules';
 import Admin from './Pages/Admin/Admin';
 import Terms from './Pages/Terms/Terms';
+import Refunds from './Pages/Refunds/Refunds';
 import Privacy from './Pages/Privacy/Privacy';
 import NavBar from './NavBar/NavBar';
 import Footer from './Footer/Footer';
@@ -32,6 +33,7 @@ class App extends Component {
             <Route component={Rules} path="/rules" />
             <Route component={Admin} path="/admin" />
             <Route component={Terms} path="/terms" />
+            <Route component={Refunds} path="/refunds" />
             <Route component={Privacy} path="/privacy" />
           </Switch>
         <Footer />

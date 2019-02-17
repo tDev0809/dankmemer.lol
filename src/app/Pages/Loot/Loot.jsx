@@ -235,7 +235,7 @@ class Loot extends Component {
 
     let text;
     if (!hasAgreed) {
-      text = 'You haven\'t agreed to the Terms of Service.';
+      text = 'You haven\'t agreed to the Terms of Service and refund policy.';
     } else if (!minimumIsMet) {
       text = `You haven't met the minimum purchase value of $${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.`;
     } else if (!isLoggedIn) {
@@ -264,6 +264,7 @@ class Loot extends Component {
         <div className="header">
           Amount of <span className="box-name">{this.state.activeBox.name}es</span>:
         </div>
+        
         <input
           className="input"
           type="number"
@@ -290,7 +291,7 @@ class Loot extends Component {
         <label className="tos-container">
           <input type="checkbox" className="tos-checkbox" onChange={this.onCheck.bind(this)} />
           <span className="tos-checkmark" />
-          <span className="header">I agree to <a href="/terms">Dank Memer's Terms of Service</a><span className="red">*</span></span>.
+          <span className="header">I agree to Dank Memer's <a href="/terms">Terms of Service</a> and <a href="/refunds">Refund Policy</a><span className="red">*</span></span>.
         </label>
 
         <div className="divider" />

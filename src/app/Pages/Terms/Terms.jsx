@@ -115,27 +115,9 @@ class Terms extends Component {
 
 <p>If you have any questions about these Terms, please contact us.</p>
 
-<h1>Returns and Refunds Policy</h1>
-
-
-<p>Thank you for shopping at Dank Memer.</p>
-
-<p>Please read this policy carefully. This is the Return and Refund Policy of Dank Memer. The Return and Refund Policy  for Dank Memer has been created with the help of <a href="https://termsfeed.com/">TermsFeed</a>.</p>
-
-
-
-
-<h2>Digital products</h2>
-
-<p>We issue refunds for digital products within 3 days of the original purchase of the product, only if the product needs returned due to error or uncontrollable issue..</p>
-
-<p>We recommend contacting us for assistance if you experience any issues receiving or downloading our products.</p>
-
-
-
 <h2>Contact us</h2>
 
-<p>If you have any questions about our Returns and Refunds Policy, please contact us:</p>
+<p>If you have any questions about our Refunds and Refunds Policy, please contact us:</p>
 
 <ul>
 <li>
