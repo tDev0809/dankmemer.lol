@@ -85,6 +85,7 @@
     position: fixed;
     display: flex;
     bottom: 0px;
+    z-index: 999;
     margin: 0;
     background: #23272a;
     width: 100%;
