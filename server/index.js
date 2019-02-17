@@ -56,7 +56,7 @@ app.get('*', (request, response) => {
   dataDog.increment('website.visit');
 });
 
-app.listen(config.port, '127.0.0.1', () => {
+app.listen(config.port, () => {
   console.log('Listening to port', config.port);
 
   if (process.env.NODE_ENV === 'development') {
