@@ -84,7 +84,6 @@ window.ree = async function ({ duration = 500, heavyness = 10, playAudio = true,
     const timePerStep = duration / steps;
     while (audio.volume > 0.001) {
       await sleep(timePerStep);
-      console.log(audio.volume);
       audio.volume -= 0.001;
     }
     audio.volume = 0;
