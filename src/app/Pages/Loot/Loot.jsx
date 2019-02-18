@@ -195,8 +195,9 @@ class Loot extends Component {
                 <div>
                   <div className="fancy-header absolute-unit">Success!</div>
                   <div style={{ fontSize: '22px' }}>
-                    Your payment has successfully been made. You will receive your purchased boxes automatically.<br />
-                    Should you have any issues, join <a href="https://discord.gg/FnP8m6q">the support server</a> and contact an administrator with your Payment ID:<br />
+                    Your payment has successfully been made. Your boxes should be deposited directly into your inventory within 5 minutes of completing the purchase.<br />
+                    If they do not show up after 24 hours, join <a href="https://discord.gg/FnP8m6q">the support server</a> and mention a mod or a developer for assistance.<div className="divider" />
+                    Additionally, can find your Payment ID below.<br />You should store this ID somewhere and make sure you don't lose it - it is necessary if you are experiencing any problems.
                   </div>
                   <code style={{ fontSize: '32px' }}>{data.paymentID}</code>
                 </div>
