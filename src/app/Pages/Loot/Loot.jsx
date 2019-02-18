@@ -22,7 +22,7 @@ class Loot extends Component {
   }
 
   async componentDidMount() {
-    ReactGA.pageview('/loot');
+    ReactGA.pageview('/lootboxes');
 
     // Check for banned countries
     const country = await fetch('/api/country')

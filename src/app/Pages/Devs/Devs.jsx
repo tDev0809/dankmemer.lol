@@ -4,7 +4,7 @@ import './Devs.css';
 import ReactGA from 'react-ga';
 class About extends Component {
   componentDidMount() {
-    ReactGA.pageview('/devs');
+    ReactGA.pageview('/staff');
   }
   render() {
     return(

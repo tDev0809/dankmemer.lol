@@ -16,7 +16,7 @@ class NavBar extends Component {
             <NavLink className="nav-link" activeClassName="active" to="/commands">COMMANDS</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/devs">STAFF</NavLink>
+            <NavLink className="nav-link" activeClassName="active" to="/staff">STAFF</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" activeClassName="active" to="/loot">LOOTBOXES</NavLink>
