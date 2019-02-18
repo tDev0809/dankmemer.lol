@@ -23,6 +23,7 @@ hr {
   width: 380px;
   float: left;
   cursor: pointer;
+  user-select: none;
   flex-direction: column;
   transition: color, border 0.3s;
   border: 1px solid white;
