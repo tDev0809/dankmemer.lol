@@ -239,7 +239,7 @@ class Loot extends Component {
 
     let text;
     if (!hasAgreed) {
-      text = 'You haven\'t agreed to the Terms of Service and refund policy.';
+      text = 'You haven\'t agreed to the Terms of Service and Refund Policy.';
     } else if (!minimumIsMet) {
       text = `You haven't met the minimum purchase value of $${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.`;
     } else if (!isLoggedIn) {
