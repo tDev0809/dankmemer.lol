@@ -128,7 +128,7 @@ class Loot extends Component {
   onInput ({ target, value }) {
     let boxCount = value !== undefined
       ? value
-      : Number(target.value);
+      : Math.round(target.value);
 
     if ((boxCount <= 0 || boxCount >= 100) && target.value !== '') {
       target.value = boxCount <= 0
