@@ -130,8 +130,11 @@ class Loot extends Component {
       ? value
       : Number(target.value);
 
-    if (boxCount <= 0 && target.value !== '') {
-      target.value = 1;
+    if ((boxCount <= 0 || boxCount >= 100) && target.value !== '') {
+      target.value = boxCount <= 0
+        ? 1
+        : 99;
+
       return window.ree({
         duration: 1500,
         intensity: 35
