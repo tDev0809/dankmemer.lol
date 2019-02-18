@@ -9,6 +9,7 @@
 .boxes {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: 15px;
   flex-direction: row;
@@ -23,6 +24,7 @@ hr {
   height: 155px;
   float: left;
   cursor: pointer;
+  flex-direction: column;
   transition: color, border 0.3s;
   border: 1px solid white;
   border-radius: 4px;
