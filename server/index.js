@@ -20,8 +20,8 @@ app.use(connectDatadog({
   response_code: true
 }));
 
+app.set('trust proxy', 1);
 app.use(session({
-  // todo: read from conf
   secret: config.secret,
   name: 'DankMemerHasABigSteamer',
   resave: false,
