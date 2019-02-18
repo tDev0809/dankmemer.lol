@@ -67,7 +67,7 @@ class DeveloperList extends Component {
       name: 'Mook',
       picture: 'mook.png',
       hover: 'mook.png',
-      about: 'ok ok ok ok ok x10',
+      about: 'Is this my peak?',
       social: [
         {name: 'Discord', link: 'https://discord.gg/HdQYu6U'},
         {name: 'Twitter', link: 'https://twitter.com/B_A_Services'}
