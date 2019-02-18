@@ -21,7 +21,6 @@ hr {
 
 .box {
   width: 380px;
-  height: 155px;
   float: left;
   cursor: pointer;
   flex-direction: column;
