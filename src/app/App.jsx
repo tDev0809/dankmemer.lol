@@ -28,7 +28,7 @@ class App extends Component {
           <Switch>
             <Route exact strict component={Home} path="/" />
             <Route component={Commands} path="/commands" />
-            <Route component={About} path="/devs" />
+            <Route component={About} path="/staff" />
             <Route component={Loot} path="/loot" />
             <Route component={Rules} path="/rules" />
             <Route component={Admin} path="/admin" />
