@@ -41,7 +41,7 @@ document.addEventListener('dragover', (e) => {
 });
 
 // Set up login state
-fetch('/oauth/state')
+fetch('/oauth/state', { credentials: 'same-origin' })
   .then(r => r.json())
   .then(res => {
     if (res) {
