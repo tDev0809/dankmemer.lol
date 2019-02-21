@@ -5,6 +5,16 @@
   align-items: center;
   height: 500px;
 }
+.links {
+  display: flex;
+  flex-direction: row;
+}
+
+.links a {
+  margin: 0px 5px;
+  height: auto;
+  width: 150px;
+}
 
 .home-slogan {
   font-size: 3em;

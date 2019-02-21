@@ -32,6 +32,16 @@
   align-items: center;
   height: 500px;
 }
+.links {
+  display: flex;
+  flex-direction: row;
+}
+
+.links a {
+  margin: 0px 5px;
+  height: auto;
+  width: 150px;
+}
 
 .home-slogan {
   font-size: 3em;
@@ -155,6 +165,7 @@
 .boxes {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: 15px;
   flex-direction: row;
@@ -166,9 +177,10 @@ hr {
 
 .box {
   width: 380px;
-  height: 155px;
   float: left;
   cursor: pointer;
+  user-select: none;
+  flex-direction: column;
   transition: color, border 0.3s;
   border: 1px solid white;
   border-radius: 4px;
@@ -363,6 +375,7 @@ a {
   align-items: center;
   padding-left: 5px;
   padding-right: 5px;
+  z-index: 999;
   font-family: 'Montserrat';
 }
 .nav-links {
@@ -442,6 +455,7 @@ a {
     position: fixed;
     display: flex;
     bottom: 0px;
+    z-index: 999;
     margin: 0;
     background: #23272a;
     width: 100%;
@@ -463,6 +477,10 @@ a {
   display: flex;
   flex-direction: column;
   font-family: 'Lato';
+  z-index: 998;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .footer-group {
@@ -524,7 +542,7 @@ body::-webkit-scrollbar {
 }
 
 #ree-overlay {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
