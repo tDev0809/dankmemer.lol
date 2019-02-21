@@ -8,7 +8,7 @@ render(){
       <footer className="footer">
         <div className="footer-table">
           <div className="footer-group footer-copyright">
-            <span className="copyright">Copyright © 2018 Dank Memer Team</span>
+            <span className="copyright">Copyright © 2019 Dank Memer Team</span>
           </div>
           <div className="footer-group footer-links">
             <a className="footer-link" href="https://dankmemer.services/documentation">API</a>
