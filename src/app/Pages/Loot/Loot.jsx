@@ -188,7 +188,7 @@ class Loot extends Component {
       const { success, data } = this.state.finish;
 
       return (
-        <div className="content">
+        <main className="content">
           {
             success
               ? (
@@ -216,11 +216,11 @@ class Loot extends Component {
                 </div>
               )
           }
-        </div>
+        </main>
       );
     } else if (this.state.blockedCountry) {
       return (
-        <div className="content">
+        <main className="content">
           <div className="fancy-header absolute-unit red">Sorry.</div>
           <div style={{ fontSize: '22px' }}>
             Loot boxes are declared illegal in your country. As a result, you are unable to purchase any boxes.<br />
@@ -229,7 +229,7 @@ class Loot extends Component {
           <div style={{ fontSize: '4px' }}>
             also {this.state.blockedCountry.country} gay lmao
           </div>
-        </div>
+        </main>
       );
     }
 
@@ -256,7 +256,7 @@ class Loot extends Component {
     );
 
     return(
-      <div className="content loot">
+      <main className="content loot">
         <div className="fancy-header absolute-unit">Go on, honey. Go pick yourself a boxy box.</div>
 
         <div className="boxes">
@@ -309,7 +309,7 @@ class Loot extends Component {
         >
           {this.paypalButton}
         </div>
-      </div>
+      </main>
     )
   }
 }
