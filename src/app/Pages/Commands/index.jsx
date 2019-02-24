@@ -53,6 +53,7 @@ export default class Commands extends PureComponent {
         case '💰 Currency':
         case '📷 Image':
           index = 2;
+          break;
 
         default:
           index = entries.indexOf(entry) % columns.length;
