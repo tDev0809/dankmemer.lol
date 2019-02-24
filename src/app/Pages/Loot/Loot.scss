@@ -49,14 +49,6 @@
     }
   }
 
-  /*
-        <label className="tos-container">
-          <input type="checkbox" className="tos-checkbox" onChange={this.onCheck.bind(this)} />
-          <span className="tos-checkmark" />
-          <span className="header">I agree to Dank Memer's <a href="/terms">Terms of Service</a> and <a href="/refunds">Refund Policy</a><span className="red">*</span></span>.
-        </label>
-*/
-
   .tos-container {
     display: inline;
     position: relative;
