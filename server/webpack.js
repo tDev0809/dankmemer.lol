@@ -18,7 +18,7 @@ const webpack = spawn(webpackPath, [
 ], { env: { FORCE_COLOR: true } });
 
 webpack.on('error', (error) => {
-  console.log('Webpack error:', error);
+  console.log('Webpack erro:', error);
 });
 
 webpack.stdout.on('data', (data) => {
@@ -29,15 +29,11 @@ webpack.stdout.on('data', (data) => {
       break;
 
     case 'Hash:':
-      console.log('Bundle built:\n' + data.slice(0, data.indexOf('Entrypoint')));
+      console.log('Bundle built:\n', data.slice(0, data.indexOf('Entrypoint')), '\n');
       break;
   }
 });
 
-webpack.stderr.on('data', (data) => {
-  console.log('Webpack error', data.toString());
-});
-
 webpack.on('close', (code) => {
   console.log('Webpack closed with code', code);
-})
+});

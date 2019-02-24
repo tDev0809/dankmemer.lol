@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers/index.js';
 import * as actions from './actions/index.js';
+import loadScript from './util/loadScript.js';
 import App from './App';
 import ReactGA from 'react-ga';
 
@@ -19,6 +20,7 @@ const store = createStore(
     applyMiddleware(thunk)
   )
 );
+window.mainStore = store;
 
 ReactDOM.render(
   <Provider store={store}>
@@ -50,12 +52,8 @@ fetch('/oauth/state', { credentials: 'same-origin' })
   });
 
 // Set up cookie consent
-const script = document.createElement('script');
-script.setAttribute('async', '');
-script.setAttribute('src', '//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js');
-
-script.onload = () => {
-  window.cookieconsent.initialise({
+loadScript('//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js')
+  .then(() => window.cookieconsent.initialise({
     palette: {
       popup: {
         background: '#252e39'
@@ -68,7 +66,4 @@ script.onload = () => {
     content: {
       href: '/privacy'
     }
-  });
-};
-
-document.head.appendChild(script);
+  }));

@@ -1,0 +1,179 @@
+.loot {
+  font-size: 22px;
+
+  .boxes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    flex-direction: row;
+
+    .box {
+      width: 380px;
+      float: left;
+      cursor: pointer;
+      user-select: none;
+      flex-direction: column;
+      transition: color, border 0.3s;
+      border: 1px solid white;
+      border-radius: 4px;
+      padding: 5px;
+      margin: 5px;
+
+      &.active {
+        color: #7289DA;
+        border: 1px solid #7289DA;
+      }
+      
+      &-header {
+        font-weight: bold;
+        font-size: 22px;
+      }
+      
+      &-piss {
+        color: #FFD700 !important;;
+      }
+      
+      &-price {
+        font-size: 28px;
+        margin-top: 6px;
+        color: #85bb65 !important;;
+      }
+      
+      &-description {
+        font-style: italic;
+        font-size: 23px;
+        margin-bottom: 6px;
+      }
+    }
+  }
+
+  /*
+        <label className="tos-container">
+          <input type="checkbox" className="tos-checkbox" onChange={this.onCheck.bind(this)} />
+          <span className="tos-checkmark" />
+          <span className="header">I agree to Dank Memer's <a href="/terms">Terms of Service</a> and <a href="/refunds">Refund Policy</a><span className="red">*</span></span>.
+        </label>
+*/
+
+  .tos-container {
+    display: inline;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .tos-checkmark {
+        background-color: #7289DA;
+        border-color: #7289DA;
+
+        &:after {
+          display: block;
+        }
+      }
+    }
+
+    .tos-checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      border: 2px solid rgba(205, 205, 205, 0.2);
+      border-radius: 2px;
+      margin-top: -2px;
+      background-color: #23272A;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 8px;
+        top: 3px;
+        width: 7px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .box-input {
+    appearance: textfield;
+    font-size: 40px;
+    color: #fff;
+    background: #23272A;
+    border: 1px solid #7289DA;
+    width: 49.5px;
+    padding: 3px 3px 2px;
+    margin-right: 3px;
+    text-align: center;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  .input-btn {
+    user-select: none;
+    cursor: pointer;
+    font-size: 40px;
+    border: 1px solid #7289DA;
+    margin: 0px 3px;
+    padding: 0px 4px;
+    padding-bottom: 2px;
+    text-align: center;
+  }
+
+  .selected-box-name {
+    color: #7289DA;
+  }
+
+  a {
+    text-decoration: none;
+    color: #7289DA;
+  }
+
+  .fancy-header {
+    font-size: 30px;
+    font-style: italic;
+    margin-bottom: 4px;
+    color: white;
+  }
+  
+  .red {
+    color: #CA2D36;
+  }
+  
+  .divider {
+    width: 100%;
+    height: 4.1px;
+    background-color: #23272a;
+    margin: 28px 0px;
+  }
+  
+  .header {
+    font-size: 32px;
+  }
+  
+  .dolla-dolla-bills {
+    font-size: 42px;
+    color: #85bb65;
+  }
+  
+  .absolute-unit {
+    font-size: 48px;
+  }
+}

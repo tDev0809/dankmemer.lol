@@ -1,11 +1,8 @@
 const { Router } = require('express');
-
-const BLOCKED_COUNTRIES = [
-  'BE'
-];
-
-const keys = require('../../keys.json');
 const { writeFileSync } = require('fs');
+const keys = require('../../keys.json');
+const boxes = require('../data/boxes.json');
+const blockedCountries = require('../data/blockedCountries.json');
 const router = Router();
 
 router.post('/cmds', (req, res) => {
@@ -21,8 +18,12 @@ router.get('/country', (req, res) => {
   const country = req.headers[ 'cf-ipcountry' ];
   return res.json({
     country,
-    isBlocked: BLOCKED_COUNTRIES.includes(country)
+    isBlocked: blockedCountries.includes(country)
   });
+});
+
+router.get('/boxes', (req, res) => {
+  res.json(boxes);
 });
 
 router.get('/admin/data/', (req, res) => {
