@@ -18,7 +18,7 @@ const webpack = spawn(webpackPath, [
 ], { env: { FORCE_COLOR: true } });
 
 webpack.on('error', (error) => {
-  console.log('Webpack erro:', error);
+  console.log('Webpack error:', error);
 });
 
 webpack.stdout.on('data', (data) => {
