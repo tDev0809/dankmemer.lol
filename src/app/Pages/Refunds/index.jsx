@@ -17,7 +17,7 @@ export default class Refunds extends PureComponent {
 <p>We will issue refunds in certain cases. We will never accept "bully refund requests" aka PayPal chargebacks or emails demanding we refund "or else". Honestly, the nicer you are, the more likely we are to give you a full refund.</p>
 <h4>Reasons for potential refunds:</h4>
 <ul>
-  <li>Fraud/Unauthorized Payemnts (requires proof, as this is the most common "bs" chargeback)</li>
+  <li>Fraud/Unauthorized Payments (requires proof, as this is the most common "bs" chargeback)</li>
   <li>Issues with getting lootboxes or donor perks</li>
 </ul>
 <p>To request a refund for a PayPal order, please use the dispute resolution center on PayPal, or email us at dankmemerbot@gmail.com</p>
