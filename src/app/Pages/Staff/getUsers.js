@@ -167,15 +167,14 @@ export default ({ loggedIn, username }) => ({
     name: 'Alpha',
     picture: 'alpha.png',
     hover: 'alpha.png',
-    about: 'My personality type is Dwight Schrute of Schrute Farms, and Melmsie is cooler than me',
+    about: 'uhh ok so i like to do stuff then sleep. JS coder and student.',
     social: [
-      { name: 'Discord', link: 'https://discord.gg/Wejhbd4' },
-      { name: 'GitHub', link: 'https://github.com/melmsie' },
-      { name: 'GitLab', link: 'https://gitlab.com/daegeiros' },
-      { name: 'Reddit', link: 'https://www.reddit.com/user/Kerdaloo' },
-      { name: 'Spotify', link: 'https://open.spotify.com/user/melmsaustin' },
-      { name: 'Twitter', link: 'https://twitter.com/feelsdevman' },
-      { name: 'Website', link: 'https://drama.lol' }
+      { name: 'Discord', link: 'https://discord.gg/tsarFKm' },
+      { name: 'GitHub', link: 'https://github.com/LordAlpha27' },
+      { name: 'GitLab', link: 'https://gitlab.com/LordAlpha27' },
+      { name: 'Reddit', link: 'https://reddit.com/u/LordAlpha27' },
+      { name: 'Twitter', link: 'https://twitter.com/LordAlpha27' },
+      { name: 'Website', link: 'https://alphapack.xyz/' }
     ]
   }]
 });
