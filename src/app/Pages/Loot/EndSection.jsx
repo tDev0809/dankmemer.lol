@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default ({ success, data }) => (
-  <main className="content">
+  <main className="content loot">
     <div className={`fancy-header absolute-unit${success ? '' : ' red'}`}>
       {success ? 'Success!' : 'Fucky wucky.'}
     </div>
@@ -14,14 +14,14 @@ export default ({ success, data }) => (
               Additionally, can find your Payment ID below.<br />You should store this ID somewhere and make sure you don't lose it - it is necessary if you are experiencing any problems.<br />
               <code style={{ fontSize: '32px' }}>{data.paymentID}</code>
             </ >
-          : <React.Fragment>
+          : <>
               Something went wrong while trying to {data ? 'process' : 'create'} your payment.<br />
               Please join <a href="https://discord.gg/FnP8m6q">the support server</a> for help{data ? ' and contact an administrator with your Payment ID:' : '.'}<br />
               {
                 data &&
                 <code style={{ fontSize: '32px' }}>{data.paymentID}</code>
               }
-            </ React.Fragment>
+            </>
       }
     </div>
   </main>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default ({ country }) => (
-  <main className="content">
+  <main className="content loot">
     <div className="fancy-header absolute-unit red">Sorry.</div>
     <div style={{ fontSize: '22px' }}>
       Loot boxes are declared illegal in your country. As a result, you are unable to purchase any boxes.<br />

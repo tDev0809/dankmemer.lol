@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import './Privacy.css';
+import './Privacy.scss';
 import ReactGA from 'react-ga';
 
 export default class Privacy extends PureComponent {
