@@ -11,12 +11,6 @@ class Developer extends PureComponent {
   }
 
   render () {
-    const picture = this.props[
-      this.state.hovered
-        ? 'hover'
-        : 'picture'
-    ];
-
     return (
       <div className="staff-member">
         <span className="staff-name blurple">
@@ -26,9 +20,7 @@ class Developer extends PureComponent {
           <img
             className="staff-picture"
             alt={`${this.props.name}'s avatar`}
-            src={`/assets/${picture}`}
-            onMouseOver={() => this.setState({ hovered: true })}
-            onMouseOut={() => this.setState({ hovered: false })}
+            src={`/assets/${this.props.picture}`}
           />
           <p className="staff-about">
             {this.props.about}

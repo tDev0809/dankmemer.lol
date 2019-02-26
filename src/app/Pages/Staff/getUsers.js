@@ -2,7 +2,6 @@ export default ({ loggedIn, username }) => ({
   'Developers': [{
     name: 'Blake',
     picture: 'blake.png',
-    hover: 'hacker.gif',
     social: [
       { name: 'GitHub', link: 'https://github.com/zBlakee' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/Nevulo' },
@@ -11,8 +10,7 @@ export default ({ loggedIn, username }) => ({
     about: 'G\'day, I\'m Blake. I\'m a web and software developer based in Australia.'
   }, {
     name: 'Melmsie',
-    picture: 'melmsie.png',
-    hover: 'melmsie.gif',
+    picture: 'melmsie.gif',
     about: 'Full stack developer with a love for all things memey and fun, Dank Memer is my full time job.',
     social: [
       { name: 'Discord', link: 'https://discord.gg/Wejhbd4' },
@@ -26,7 +24,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Aetheryx',
     picture: 'aetheryx.png',
-    hover: 'snoop.gif',
     about: `Hi ${loggedIn ? username : 'user'}, I'm dad`,
     social: [
       { name: 'Discord', link: 'https://discord.gg/5eSH46g' },
@@ -38,7 +35,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Paradox',
     picture: 'paradox.png',
-    hover: 'france.gif',
     about: 'Just a small time baguette, living in a croissant world',
     social: [
       { name: 'GitHub', link: 'https://github.com/ParadoxOrigins' },
@@ -48,8 +44,7 @@ export default ({ loggedIn, username }) => ({
 
   'Contributors': [{
     name: 'CyberRonin',
-    picture: 'cyber.png',
-    hover: 'cyber.gif',
+    picture: 'cyber.gif',
     about: 'Maniac who loves programming. I\'m a full stack developer trying to get into UI/UX!',
     social: [
       { name: 'GitHub', link: 'https://github.com/TheCyberRonin' },
@@ -58,8 +53,7 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'NANI',
-    picture: 'nani.png',
-    hover: 'nani.gif',
+    picture: 'nani.gif',
     about: 'Heyo NANI here. I build bots and APIs in Python for a hobby, but most of the time you\'ll find me in a laboratory.',
     social: [
       { name: 'GitHub', link: 'https://github.com/AndyTempel' },
@@ -68,8 +62,7 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Kromatic',
-    picture: 'kromatic.png',
-    hover: 'kromatic.gif',
+    picture: 'kromatic.gif',
     about: 'Jukebot is better than Rythm, change my mind',
     social: [
       { name: 'GitHub', link: 'https://github.com/Devoxin' },
@@ -79,8 +72,7 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Auxim',
-    picture: 'auxim.png',
-    hover: 'auxim.gif',
+    picture: 'auxim.gif',
     about: 'Meme Grade Pythonker. Devourer of the frikandelbroodje.',
     social: [
       { name: 'GitHub', link: 'https://github.com/GeoffreyWesthoff' },
@@ -91,8 +83,7 @@ export default ({ loggedIn, username }) => ({
 
   'Server Staff': [{
     name: 'Donovan',
-    picture: 'dono.png',
-    hover: 'dono.png',
+    picture: 'donovan.gif',
     social: [
       { name: 'Discord', link: 'https://discord.gg/SuccpZw' },
       { name: 'GitHub', link: 'https://github.com/DonovanDMC' },
@@ -105,7 +96,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Nyx',
     picture: 'nyx.png',
-    hover: 'nyx.png',
     social: [
       { name: 'Reddit', link: 'https://www.reddit.com/user/Nyxgawr' },
       { name: 'Spotify', link: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV?si=uWJc5io0TtC2x3_qufttew' },
@@ -115,7 +105,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'NateTheCarrot',
     picture: 'nate.png',
-    hover: 'nate.png',
     social: [
       { name: 'Discord', link: 'https://discord.gg/gz6vvXU' },
       { name: 'GitHub', link: 'https://github.com/NateTheCarrot' },
@@ -128,7 +117,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Sinister™',
     picture: 'sinister.png',
-    hover: 'sinister.png',
     social: [
       { name: 'Website', link: 'https://www.youtube.com/watch?v=o1eHKf-dMwo' }
     ],
@@ -136,7 +124,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Dank Spider-Mod',
     picture: 'spider.png',
-    hover: 'spider.png',
     about: 'It\'s your friendly serverhood Spider-Mod!',
     social: [
       { name: 'GitHub', link: 'https://github.com/Zorukia' },
@@ -146,7 +133,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Mook',
     picture: 'mook.png',
-    hover: 'mook.png',
     about: 'Is this my peak?',
     social: [
       { name: 'Discord', link: 'https://discord.gg/HdQYu6U' },
@@ -155,7 +141,6 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Dauntless',
     picture: 'daunt.png',
-    hover: 'daunt.png',
     about: 'Hi, I like coding stuff / Comp Sci student',
     social: [
       { name: 'Discord', link: 'https://discord.gg/FjBbCxC' },
@@ -165,8 +150,7 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Alpha',
-    picture: 'alpha.png',
-    hover: 'alpha.png',
+    picture: 'alpha.gif',
     about: 'uhh ok so i like to do stuff then sleep. JS coder and student.',
     social: [
       { name: 'Discord', link: 'https://discord.gg/tsarFKm' },
