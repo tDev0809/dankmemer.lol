@@ -14,14 +14,13 @@ body::-webkit-scrollbar {
 
 #ree-overlay {
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   opacity: 0;
-  background-color: rgb(255, 0, 0);
-  transition: opacity 1.5s;
+  background-color: rgba(255, 0, 0, 0.5);
   pointer-events: none;
 }
 

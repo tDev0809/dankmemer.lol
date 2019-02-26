@@ -1,12 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const connectDatadog = require('connect-datadog');
-
 const config = require('../config.json');
-
 const Routers = require('./routers');
-const dataDog = require('./datadog.js');
 
 const app = express();
 
@@ -14,11 +10,6 @@ const app = express();
 process.env.NODE_ENV = process.argv.includes('--development')
   ? 'development'
   : 'production';
-
-// Datadog middleware
-app.use(connectDatadog({
-  response_code: true
-}));
 
 app.set('trust proxy', 1);
 app.use(session({
@@ -32,28 +23,25 @@ app.use(session({
 }));
 
 // set up parsing
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve static files
-app.use(express.static(__dirname + '/build/static'));
+app.use('/', express.static(__dirname + '/root'));
+app.use('/assets', express.static(__dirname + '/../src/app/assets'));
 
 app.get('/source', (req, res) => {
   res.status(200).sendfile('./source.zip');
-  dataDog.increment('website.source');
 });
 
 app.get('/premium', (req, res) => {
   res.redirect('https://www.patreon.com/join/dankmemerbot');
-  dataDog.increment('website.premium');
 });
 
 app.use('/api', Routers.API);
 app.use('/oauth', Routers.OAuth);
 
 app.get('*', (request, response) => {
-  response.sendFile(`${__dirname}/build/static/index.html`);
-  dataDog.increment('website.visit');
+  response.sendFile(`${__dirname}/root/index.html`);
 });
 
 app.listen(config.port, () => {
