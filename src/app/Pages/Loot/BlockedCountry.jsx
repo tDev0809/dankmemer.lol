@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ country }) => (
+export default React.memo(({ country }) => (
   <main className="content loot">
     <div className="fancy-header absolute-unit red">Sorry.</div>
     <div style={{ fontSize: '22px' }}>
@@ -11,4 +11,4 @@ export default ({ country }) => (
       also {country} gay lmao
     </div>
   </main>
-);
+));

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ success, data }) => (
+export default React.memo(({ success, data }) => (
   <main className="content loot">
     <div className={`fancy-header absolute-unit${success ? '' : ' red'}`}>
       {success ? 'Success!' : 'Fucky wucky.'}
@@ -25,4 +25,4 @@ export default ({ success, data }) => (
       }
     </div>
   </main>
-);
+));
