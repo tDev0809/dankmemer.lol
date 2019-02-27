@@ -103,17 +103,13 @@ export default ({ loggedIn, username }) => ({
     ],
     about: "Night Shift Security Boi"
   }, {
-    name: 'NateTheCarrot',
-    picture: 'nate.png',
+    name: 'Fizzy Coco',
+    picture: 'fizzy.png',
     social: [
-      { name: 'Discord', link: 'https://discord.gg/gz6vvXU' },
-      { name: 'GitHub', link: 'https://github.com/NateTheCarrot' },
-      { name: 'GitLab', link: 'https://gitlab.com/NateTheCarrot' },
-      { name: 'Reddit', link: 'https://reddit.com/u/NateTheCarrot' },
-      { name: 'Twitter', link: 'https://twitter.com/NateTheCarrot' },
-      { name: 'Website', link: 'https://website--iamnatej.repl.co/' }
+      { name: 'Reddit', link: 'https://www.reddit.com/u/rlcrawkm/' },
+      { name: 'Website', link: 'https://m.youtube.com/watch?v=dQw4w9WgXcQ' }
     ],
-    about: "Moderate Python and JS programmer, chairs are friends not food"
+    about: "Imagine having a bio in 2019"
   }, {
     name: 'Sinister™',
     picture: 'sinister.png',
