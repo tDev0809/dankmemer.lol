@@ -14,13 +14,10 @@ const NavBar = React.memo(({ loggedIn, username, discriminator, isAdmin }) => (
         <NavLink className="nav-link" activeClassName="active" to="/commands">COMMANDS</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" activeClassName="active" to="/staff">STAFF</NavLink>
+        <NavLink className="nav-link" activeClassName="active" to="/about">ABOUT</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" activeClassName="active" to="/loot">LOOTBOXES</NavLink>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link premium" href="https://www.patreon.com/join/dankmemerbot?">PREMIUM</a>
+        <NavLink className="nav-link premium" activeClassName="active" to="/loot">LOOTBOXES</NavLink>
       </li>
       {isAdmin ? <li className="nav-item">
         <NavLink className="nav-link" activeClassName="active" to="/admin">ADMIN</NavLink>
