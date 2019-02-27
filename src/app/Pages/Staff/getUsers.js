@@ -111,7 +111,7 @@ export default ({ loggedIn, username }) => ({
     ],
     about: "Imagine having a bio in 2019"
   }, {
-    name: 'Sinister™',
+    name: 'Sinister',
     picture: 'sinister.png',
     social: [
       { name: 'Website', link: 'https://www.youtube.com/watch?v=o1eHKf-dMwo' }
