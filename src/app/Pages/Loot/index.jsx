@@ -51,7 +51,7 @@ class Loot extends Component {
     }
 
     // Load and cache PayPal button
-    await loadScript('https://www.paypal.com/sdk/js?client-id=AZdGYShvqAd8pQwNxWLiNE8OY5zG6eJRCPBJyRJlQ9G5k32Y36tAM9afFGVOnFzVXquW_47dKUS648G3');
+    await loadScript(`https://www.paypal.com/sdk/js?client-id=${clientIDs[__PAYPAL_ENV__]}`);
     const PaypalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
     this.paypalButton = (
       <PaypalButton
