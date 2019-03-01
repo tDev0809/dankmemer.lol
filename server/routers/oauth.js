@@ -1,24 +1,10 @@
 const { encode, stringify } = require('querystring');
 const { get, post } = require('axios');
-const { promisify } = require('util');
 const { Router } = require('express');
+const { encrypt, decrypt } = require ('../util/crypt.js');
 
 const config = require('../../config.json');
 const router = Router();
-
-const { encodeJWT, decodeJWT } = (() => {
-  const { sign, verify } = require('jsonwebtoken');
-  const [ signAsync, verifyAsync ] = [ sign, verify ].map(promisify);
-
-  return {
-    encodeJWT (obj) {
-      return signAsync(obj, config.secret, { algorithm: 'HS512' });
-    },
-    decodeJWT (jwt) {
-      return verifyAsync(jwt, config.secret, { algorithms: [ 'HS512' ] });
-    }
-  };
-})();
 
 const data = encode({
   scope: 'identify',
@@ -57,7 +43,7 @@ router.get('/callback', async (req, res) => {
 
   req.session.user = {
     ...user,
-    jwt: await encodeJWT({ id: user.id })
+    token: encrypt(user.id)
   };
   res.redirect(req.session.redirect || '/');
 });
