@@ -118,8 +118,8 @@ class Loot extends Component {
         this.setState({ finish: { success: true, data } });
       })
       .catch(err => {
-        this.setState({ finish: { success: false, data } });
         console.error(err);
+        this.setState({ finish: { success: false, err } });
       });
   }
 
