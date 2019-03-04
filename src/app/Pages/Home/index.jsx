@@ -17,7 +17,7 @@ export default class Home extends PureComponent {
             THE <span className="blurple">ORIGINAL</span> DISCORD MEME BOT
           </span>
           <div className="links">
-            <Button link="https://getdankmemer.today">
+            <Button link="https://invite.dankmemer.lol">
               Invite Bot
             </Button>
             <Button link="https://discord.gg/FnP8m6q">
