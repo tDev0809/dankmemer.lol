@@ -52,15 +52,15 @@
   color: #4a67cf;
 }
 
- .nav-link {
-   display: block;
-   text-align: center;
-   margin-left: 10px;
-   margin-right: 10px;
-   color: white;
-   text-decoration: none;
-   font-weight: bold;
- }
+.nav-link {
+  display: block;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
 
 .nav-link:hover {
   color: #e6e6e6;
@@ -90,7 +90,6 @@
     margin: 0;
     background: #23272a;
     width: 100%;
-    padding: 5px;
     justify-content: center;
     height: 40px;
     align-items: center;
@@ -102,5 +101,6 @@
   }
   .navbar {
     justify-content: center;
+    padding: 0px;
   }
 }

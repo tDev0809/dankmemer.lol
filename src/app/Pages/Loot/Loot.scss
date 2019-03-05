@@ -1,3 +1,21 @@
+@keyframes test {
+  0% {
+    transform: translate(0, 0) rotate(var(--direction));
+  }
+
+  50% {
+    transform: translate(
+      var(--delta-x),
+      var(--delta-y)
+     )
+     rotate(var(--direction));
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(var(--direction));
+  }
+}
+
 .loot {
   font-size: 22px;
 
@@ -9,36 +27,45 @@
     margin-top: 15px;
     flex-direction: row;
 
+    .box-content {
+      background-color: #2C2F33;
+      position: relative;
+      border: 1px solid white;
+      transition: color, border 0.3s;
+      border-radius: 4px;
+      z-index: 1;
+
+      &.active {
+        z-index: 3;
+        color: #7289DA;
+        border: 1px solid #7289DA;
+      }
+    }
+
     .box {
+      background-color: #2C2F33;
+      position: relative;
       width: 380px;
       float: left;
       cursor: pointer;
       user-select: none;
       flex-direction: column;
-      transition: color, border 0.3s;
-      border: 1px solid white;
-      border-radius: 4px;
       padding: 5px;
       margin: 5px;
 
-      &.active {
-        color: #7289DA;
-        border: 1px solid #7289DA;
-      }
-      
       &-header {
         font-weight: bold;
         font-size: 22px;
       }
       
       &-piss {
-        color: #FFD700 !important;;
+        color: #FFD700;
       }
       
       &-price {
         font-size: 28px;
         margin-top: 6px;
-        color: #85bb65 !important;;
+        color: #85bb65;
       }
       
       &-description {
@@ -46,6 +73,21 @@
         font-size: 23px;
         margin-bottom: 6px;
       }
+    }
+
+    .peepo {
+      animation: test 1.5s;
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      left: 160px;
+      top: 49px;
+      margin-left: var(--offset-x);
+      margin-top: var(--offset-y);
+      z-index: 2;
+      background-image: url('http://localhost/assets/peepolove.png') !important;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 
