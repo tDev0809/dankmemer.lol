@@ -36,7 +36,7 @@ export default class Rules extends PureComponent {
               <ul className="invites">
                 <li><a href="https://invite.dankmemer.lol">Primary Invite</a></li>
               </ul>
-              <p>Also available for your server is our <span className="invites"><a href="https://discordapp.com/oauth2/authorize?client_id=499383056822435840&scope=bot&permissions=1060498550">Beta Bot</a></span><br/>Our beta bot is an "alpha" version of Dank Memer. It's not always online or stable, but it usually has sneak peeks at future updates</p>
+              <p>Also available for your server is our <span className="invites"><a href="https://beta.dankmemer.lol">Beta Bot</a></span><br/>Our beta bot is an "early access" version of Dank Memer. It's not always online or stable, but it usually has sneak peeks at future updates.</p>
               <h2 ref="prefix" className="subsection">Bot Prefix</h2>
               <p>By default, Dank Memer's prefix is <code>pls</code><br/>
               Commands are run like <code>pls meme</code>, there must be a space!</p>
