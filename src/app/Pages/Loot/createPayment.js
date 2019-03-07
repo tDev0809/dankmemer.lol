@@ -1,32 +1,43 @@
 export default ({
+  total,
   subtotal,
-  discountedSubtotal,
   discount,
-  jwt,
+  token,
   activeBox,
   boxCount
 }) => ({
-  payment: {
-    transactions: [ {
-      amount: {
-        total: discountedSubtotal,
-        currency: 'USD',
-        details: {
-          subtotal,
-          discount
+  intent: 'CAPTURE',
+  purchase_units: [ {
+    amount: {
+      value: total,
+      currency_code: 'USD',
+      breakdown: {
+        item_total: {
+          currency_code: 'USD',
+          value: subtotal
+        },
+        shipping_discount: {
+          currency_code: 'USD',
+          value: discount
         }
-      },
-      custom: jwt,
-      description: 'Meme Box Purchase',
-      item_list: {
-        items: [ {
-          name: activeBox.name,
-          quantity: boxCount,
-          price: activeBox.price.toFixed(2),
-          currency: 'USD'
-        } ]
       }
-    } ],
-    note_to_payer: 'melmsie small wenis btw'
+    },
+    description: 'Dank Memer Lootbox Purchase',
+    custom_id: token,
+    soft_descriptor: 'Dank Memer\'s Box Shop',
+    items: [ {
+      name: activeBox.name,
+      unit_amount: {
+        currency_code: 'USD',
+        value: activeBox.price.toFixed(2)
+      },
+      quantity: boxCount.toString(),
+      category: 'DIGITAL_GOODS'
+    } ]
+  } ],
+  application_context: {
+    brand_name: 'Dank Memer\'s Box Shop',
+    shipping_preference: 'NO_SHIPPING',
+    user_action: 'PAY_NOW'
   }
 });

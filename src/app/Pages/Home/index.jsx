@@ -10,14 +10,14 @@ export default class Home extends PureComponent {
 
   render () {
     return (
-      <main className="content">
+      <main className="content index">
         <div className="home">
           <img className="memer-img" alt="Dank Memer logo - the elusive and beautiful pepe" src="/assets/memer.png" />
           <span className="home-slogan">
             THE <span className="blurple">ORIGINAL</span> DISCORD MEME BOT
           </span>
           <div className="links">
-            <Button link="https://getdankmemer.today">
+            <Button link="https://invite.dankmemer.lol">
               Invite Bot
             </Button>
             <Button link="https://discord.gg/FnP8m6q">

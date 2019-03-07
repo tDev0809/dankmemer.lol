@@ -51,20 +51,19 @@ class Loot extends Component {
     }
 
     // Load and cache PayPal button
-    await loadScript('https://www.paypalobjects.com/api/checkout.min.js');
-    const PaypalButton = window.paypal.Button.driver('react', { React, ReactDOM });
+    await loadScript(`https://www.paypal.com/sdk/js?client-id=${clientIDs[__PAYPAL_ENV__]}`);
+    const PaypalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
     this.paypalButton = (
       <PaypalButton
         env={__PAYPAL_ENV__}
         style={{
-          size: 'large',
+          height: 45,
           shape: 'rect',
-          color: 'blue'
+          color: 'blue',
+          tagline: false
         }}
-        payment={this.payment.bind(this)}
-        onAuthorize={this.onAuthorize.bind(this)}
-        onCancel={() => {}}
-        client={clientIDs}
+        createOrder={(_, actions) => this.createOrder(actions)}
+        onApprove={(_, actions) => this.onApprove(actions)}
       />
     );
     this.forceUpdate();
@@ -97,12 +96,12 @@ class Loot extends Component {
       : raw.toFixed(2);
   }
 
-  payment (_, actions) {
-    return actions.payment.create(createPayment({
-      discountedSubtotal: this.getDiscountedSubtotal(),
+  createOrder (actions) {
+    return actions.order.create(createPayment({
+      total: this.getDiscountedSubtotal(),
       subtotal: this.getSubtotal(),
       discount: this.getDiscount(),
-      jwt: this.props.jwt,
+      token: this.props.token,
       activeBox: this.state.activeBox,
       boxCount: this.state.boxCount
     }))
@@ -112,14 +111,15 @@ class Loot extends Component {
       });
   }
 
-  onAuthorize (data, actions) {
-    return actions.payment.execute()
-      .then(() => {
+  onApprove (actions) {
+    return actions.order.capture()
+      .then(data => {
+        console.log(data);
         this.setState({ finish: { success: true, data } });
       })
       .catch(err => {
-        this.setState({ finish: { success: false, data } });
         console.error(err);
+        this.setState({ finish: { success: false, err } });
       });
   }
 
@@ -259,7 +259,8 @@ class Loot extends Component {
 
         <div
           style={{
-            opacity: +(minimumIsMet && isLoggedIn && hasAgreed)
+            display: (minimumIsMet && isLoggedIn && hasAgreed) ? 'inline-block' : 'none',
+            width: '300px'
           }}
         >
           {this.paypalButton}
