@@ -129,11 +129,11 @@ class Loot extends Component {
       : Math.round(target.value);
 
     if ((boxCount <= 0 || boxCount >= 100) && target.value !== '') {
-      target.value = boxCount <= 0
+      boxCount = boxCount <= 0
         ? 1
         : 99;
 
-      return ree({
+      ree({
         duration: 1500,
         intensity: 35
       });
@@ -213,7 +213,7 @@ class Loot extends Component {
               key={box.name}
               index={index}
               box={box}
-              activeBox={this.state.activeBox}
+              isActive={activeBox.id === index}
               setActiveBox={index => this.setActiveBox(index)}
             />
           ))}
