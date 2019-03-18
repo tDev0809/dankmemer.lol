@@ -1,6 +1,7 @@
 const { publicPath, assetsPath, commonLoaders } = require('./common.config');
 const webpack = require('webpack');
 const path = require('path');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -26,6 +27,11 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __PAYPAL_ENV__: '"sandbox"'
+    }),
+    new BrowserSyncPlugin({
+      host: 'localhost',
+      port: 3001,
+      proxy: 'http://localhost'
     })
   ]
 };

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/melmsie/dankmemer.lol#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.5.0",
