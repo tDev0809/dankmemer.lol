@@ -1,17 +1,18 @@
 export default ({ loggedIn, username }) => ({
   'Developers': [{
     name: 'Blake',
+    about: 'G\'day, I\'m Blake. I\'m a web and software developer based in Australia.',
     picture: 'blake.png',
     social: [
       { name: 'GitHub', link: 'https://github.com/zBlakee' },
+      { name: 'Spotify', link: 'https://open.spotify.com/user/talce8kvy7w0flxk2sv3iyxi4' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/Nevulo' },
       { name: 'Website', link: 'https://zblake.xyz' }
     ],
-    about: 'G\'day, I\'m Blake. I\'m a web and software developer based in Australia.'
   }, {
     name: 'Melmsie',
-    picture: 'melmsie.gif',
     about: 'Full stack developer with a love for all things memey and fun, Dank Memer is my full time job.',
+    picture: 'melmsie.gif',
     social: [
       { name: 'Discord', link: 'https://discord.gg/Wejhbd4' },
       { name: 'GitHub', link: 'https://github.com/melmsie' },
@@ -23,8 +24,8 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Aetheryx',
-    picture: 'aetheryx.png',
     about: `Hi ${loggedIn ? username : 'user'}, I'm dad`,
+    picture: 'aetheryx.png',
     social: [
       { name: 'Discord', link: 'https://discord.gg/5eSH46g' },
       { name: 'GitHub', link: 'https://github.com/aetheryx' },
@@ -34,8 +35,8 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Paradox',
-    picture: 'paradox.png',
     about: 'Just a small time baguette, living in a croissant world',
+    picture: 'paradox.png',
     social: [
       { name: 'GitHub', link: 'https://github.com/ParadoxOrigins' },
       { name: 'Twitter', link: 'https://twitter.com/Paradox_Origins' }
@@ -44,8 +45,8 @@ export default ({ loggedIn, username }) => ({
 
   'Contributors': [{
     name: 'CyberRonin',
-    picture: 'cyber.gif',
     about: 'Maniac who loves programming. I\'m a full stack developer trying to get into UI/UX!',
+    picture: 'cyber.gif',
     social: [
       { name: 'GitHub', link: 'https://github.com/TheCyberRonin' },
       { name: 'GitLab', link: 'https://gitlab.com/cyberronin' },
@@ -53,8 +54,8 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'NANI',
-    picture: 'nani.gif',
     about: 'Heyo NANI here. I build bots and APIs in Python for a hobby, but most of the time you\'ll find me in a laboratory.',
+    picture: 'nani.gif',
     social: [
       { name: 'GitHub', link: 'https://github.com/AndyTempel' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/andy_biomed' },
@@ -62,8 +63,8 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Devoxin',
-    picture: 'devoxin.png',
     about: 'Is breaking things considered a profession?',
+    picture: 'devoxin.png',
     social: [
       { name: 'GitHub', link: 'https://github.com/Devoxin' },
       { name: 'GitLab', link: 'https://gitlab.com/Devoxin' },
@@ -72,8 +73,8 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Auxim',
-    picture: 'auxim.gif',
     about: 'Meme Grade Pythonker. Devourer of the frikandelbroodje.',
+    picture: 'auxim.gif',
     social: [
       { name: 'GitHub', link: 'https://github.com/GeoffreyWesthoff' },
       { name: 'GitLab', link: 'https://gitlab.com/GeoffreyWesthoff' },
@@ -83,6 +84,7 @@ export default ({ loggedIn, username }) => ({
 
   'Server Staff': [{
     name: 'Donovan',
+    about: 'OwO What\'s This?!?',
     picture: 'donovan.gif',
     social: [
       { name: 'Discord', link: 'https://discord.gg/SuccpZw' },
@@ -91,44 +93,43 @@ export default ({ loggedIn, username }) => ({
       { name: 'Reddit', link: 'https://www.reddit.com/user/Donovan_DMC' },
       { name: 'Twitter', link: 'https://twitter.com/Donovan_DMC' },
       { name: 'Website', link: 'https://furry.bot/' }
-    ],
-    about: 'OwO What\'s This?!?'
+    ]
   }, {
     name: 'Nyx',
+    about: 'Night Shift Security Boi',
     picture: 'nyx.png',
     social: [
       { name: 'Reddit', link: 'https://www.reddit.com/user/Nyxgawr' },
-      { name: 'Spotify', link: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV?si=uWJc5io0TtC2x3_qufttew' },
+      { name: 'Spotify', link: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV' },
       { name: 'Twitter', link: 'https://twitter.com/Nyxgawr' }
-    ],
-    about: 'Night Shift Security Boi'
+    ]
   }, {
     name: 'Fizzy Coco',
+    about: 'Imagine having a bio in 2019',
     picture: 'fizzy.gif',
     social: [
       { name: 'Reddit', link: 'https://www.reddit.com/u/rlcrawkm/' },
       { name: 'Website', link: 'https://m.youtube.com/watch?v=dQw4w9WgXcQ' }
-    ],
-    about: 'Imagine having a bio in 2019'
+    ]
   }, {
     name: 'Sinister',
+    about: 'I help meth-heads change their light bulbs',
     picture: 'sinister.png',
     social: [
       { name: 'Website', link: 'https://www.youtube.com/watch?v=o1eHKf-dMwo' }
-    ],
-    about: 'I help meth-heads change their light bulbs'
+    ]
   }, {
     name: 'Mook',
-    picture: 'mook.png',
     about: 'Is this my peak?',
+    picture: 'mook.png',
     social: [
       { name: 'Discord', link: 'https://discord.gg/HdQYu6U' },
       { name: 'Twitter', link: 'https://twitter.com/B_A_Services' }
     ]
   }, {
     name: 'Dauntless',
+    about: 'aspiring programmer // comp sci student',
     picture: 'dauntless.png',
-    about: 'Hi, I like coding stuff / Comp Sci student',
     social: [
       { name: 'Discord', link: 'https://discord.gg/FjBbCxC' },
       { name: 'GitHub', link: 'https://github.com/Dauntless7' },
@@ -137,18 +138,23 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Mangowo',
-    picture: 'mango.gif',
     about: 'Beyoncé made me do it',
+    picture: 'mango.gif',
     social: []
   }, {
     name: 'Jakey',
-    picture: 'jakey.png',
-    about: 'idk about the bio need to thnk about that',
-    social: []
+    about: 'Dank Memer is the best bot',
+    picture: 'jakey.jpg',
+    social: [
+      { name: 'Reddit', link: 'https://www.reddit.com/user/ConsistentAgent' },
+      { name: 'Spotify', link: 'https://open.spotify.com/user/batman6456' },
+      { name: 'Twitch', link: 'https://twitch.tv/jake3/' },
+      { name: 'Twitter', link: 'https://twitter.com/PeacefulLion12' }
+    ]
   }, {
     name: 'Blair',
-    picture: 'blair.gif',
     about: 'i like ass',
+    picture: 'blair.gif',
     social: []
   }]
 });
