@@ -61,9 +61,9 @@ export default ({ loggedIn, username }) => ({
       { name: 'Website', link: 'https://api.ksoft.si/' }
     ]
   }, {
-    name: 'Kromatic',
-    picture: 'kromatic.gif',
-    about: 'Jukebot is better than Rythm, change my mind',
+    name: 'Devoxin',
+    picture: 'devoxin.png',
+    about: 'Is breaking things considered a profession?',
     social: [
       { name: 'GitHub', link: 'https://github.com/Devoxin' },
       { name: 'GitLab', link: 'https://gitlab.com/Devoxin' },
@@ -92,7 +92,7 @@ export default ({ loggedIn, username }) => ({
       { name: 'Twitter', link: 'https://twitter.com/Donovan_DMC' },
       { name: 'Website', link: 'https://furry.bot/' }
     ],
-    about: "OwO What's This?!?"
+    about: 'OwO What\'s This?!?'
   }, {
     name: 'Nyx',
     picture: 'nyx.png',
@@ -101,31 +101,22 @@ export default ({ loggedIn, username }) => ({
       { name: 'Spotify', link: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV?si=uWJc5io0TtC2x3_qufttew' },
       { name: 'Twitter', link: 'https://twitter.com/Nyxgawr' }
     ],
-    about: "Night Shift Security Boi"
+    about: 'Night Shift Security Boi'
   }, {
     name: 'Fizzy Coco',
-    picture: 'fizzy.png',
+    picture: 'fizzy.gif',
     social: [
       { name: 'Reddit', link: 'https://www.reddit.com/u/rlcrawkm/' },
       { name: 'Website', link: 'https://m.youtube.com/watch?v=dQw4w9WgXcQ' }
     ],
-    about: "Imagine having a bio in 2019"
+    about: 'Imagine having a bio in 2019'
   }, {
     name: 'Sinister',
     picture: 'sinister.png',
     social: [
       { name: 'Website', link: 'https://www.youtube.com/watch?v=o1eHKf-dMwo' }
     ],
-    about: "I help meth-heads change their light bulbs"
-  }, {
-    name: 'Dank Spider-Mod',
-    picture: 'spider.png',
-    about: 'It\'s your friendly serverhood Spider-Mod!',
-    social: [
-      { name: 'GitHub', link: 'https://github.com/Zorukia' },
-      { name: 'Reddit', link: 'https://www.reddit.com/user/Zorukia' },
-      { name: 'Twitter', link: 'https://twitter.com/MDDQ2' }
-    ]
+    about: 'I help meth-heads change their light bulbs'
   }, {
     name: 'Mook',
     picture: 'mook.png',
@@ -136,7 +127,7 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Dauntless',
-    picture: 'daunt.png',
+    picture: 'dauntless.png',
     about: 'Hi, I like coding stuff / Comp Sci student',
     social: [
       { name: 'Discord', link: 'https://discord.gg/FjBbCxC' },
@@ -145,16 +136,19 @@ export default ({ loggedIn, username }) => ({
       { name: 'Twitter', link: 'https://twitter.com/nicolai5423' }
     ]
   }, {
-    name: 'Alpha',
-    picture: 'alpha.gif',
-    about: 'uhh ok so i like to do stuff then sleep. JS coder and student.',
-    social: [
-      { name: 'Discord', link: 'https://discord.gg/tsarFKm' },
-      { name: 'GitHub', link: 'https://github.com/LordAlpha27' },
-      { name: 'GitLab', link: 'https://gitlab.com/LordAlpha27' },
-      { name: 'Reddit', link: 'https://reddit.com/u/LordAlpha27' },
-      { name: 'Twitter', link: 'https://twitter.com/LordAlpha27' },
-      { name: 'Website', link: 'https://alphapack.xyz/' }
-    ]
+    name: 'Mangowo',
+    picture: 'mango.gif',
+    about: 'Beyoncé made me do it',
+    social: []
+  }, {
+    name: 'Jakey',
+    picture: 'jakey.png',
+    about: 'idk about the bio need to thnk about that',
+    social: []
+  }, {
+    name: 'Blair',
+    picture: 'blair.gif',
+    about: 'i like ass',
+    social: []
   }]
 });
