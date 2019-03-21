@@ -148,13 +148,18 @@ export default ({ loggedIn, username }) => ({
     social: [
       { name: 'Reddit', link: 'https://www.reddit.com/user/ConsistentAgent' },
       { name: 'Spotify', link: 'https://open.spotify.com/user/batman6456' },
-      { name: 'Twitch', link: 'https://twitch.tv/jake3/' },
-      { name: 'Twitter', link: 'https://twitter.com/PeacefulLion12' }
+      { name: 'Discord', link: 'https://discord.gg/mYAGfeE' },
+      { name: 'Twitter', link: 'https://twitter.com/PeacefulLion12' },
+      { name: 'Twitch', link: 'https://twitch.tv/jake3/' }
     ]
   }, {
     name: 'Blair',
-    about: 'i like ass',
+    about: 'preposterous boast but alas. i also like ass',
     picture: 'blair.gif',
-    social: []
+    social: [
+      { name: 'Discord', link: 'https://discord.gg/fM5YVkk' },
+      { name: 'Reddit', link: 'https://www.reddit.com/user/gotohellwhydontya' },
+      { name: 'Twitch', link: 'https://twitch.tv/expectationsblair' }
+    ]
   }]
 });
