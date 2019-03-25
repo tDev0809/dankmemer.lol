@@ -1,26 +1,27 @@
 export default ({ loggedIn, username }) => ({
   'Developers': [{
-    name: 'Blake',
+    name: 'Nevulo',
     about: 'G\'day, I\'m Blake. I\'m a web and software developer based in Australia.',
     picture: 'blake.png',
     social: [
       { name: 'GitHub', link: 'https://github.com/zBlakee' },
       { name: 'Spotify', link: 'https://open.spotify.com/user/talce8kvy7w0flxk2sv3iyxi4' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/Nevulo' },
-      { name: 'Website', link: 'https://zblake.xyz' }
+      { name: 'Website', link: 'https://zblake.xyz' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/nevvulo' },
     ],
   }, {
     name: 'Melmsie',
     about: 'Full stack developer with a love for all things memey and fun, Dank Memer is my full time job.',
-    picture: 'melmsie.gif',
+    picture: 'melmsie.png',
     social: [
       { name: 'Discord', link: 'https://discord.gg/Wejhbd4' },
       { name: 'GitHub', link: 'https://github.com/melmsie' },
-      { name: 'GitLab', link: 'https://gitlab.com/daegeiros' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/Kerdaloo' },
       { name: 'Spotify', link: 'https://open.spotify.com/user/melmsaustin' },
       { name: 'Twitter', link: 'https://twitter.com/feelsdevman' },
-      { name: 'Website', link: 'https://codebottle.io/users/melmsie' }
+      { name: 'Twitch', link: 'https://www.twitch.tv/melmsie' },
+      { name: 'Youtube', link: 'https://www.youtube.com/c/DankMemerDiscordBot' }
     ]
   }, {
     name: 'Aetheryx',
@@ -51,6 +52,8 @@ export default ({ loggedIn, username }) => ({
       { name: 'GitHub', link: 'https://github.com/TheCyberRonin' },
       { name: 'GitLab', link: 'https://gitlab.com/cyberronin' },
       { name: 'Twitter', link: 'https://twitter.com/thecyberronin' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/thecyberronin' },
+      { name: 'Youtube', link: 'https://www.youtube.com/channel/UC3yrSVbg5CQJPKFi9aGrA4g' }
     ]
   }, {
     name: 'NANI',
@@ -69,16 +72,21 @@ export default ({ loggedIn, username }) => ({
       { name: 'GitHub', link: 'https://github.com/Devoxin' },
       { name: 'GitLab', link: 'https://gitlab.com/Devoxin' },
       { name: 'Twitter', link: 'https://twitter.com/Dvoxn' },
-      { name: 'Website', link: 'https://serux.pro' }
+      { name: 'Website', link: 'https://serux.pro' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/devoxin' }
     ]
   }, {
     name: 'Auxim',
     about: 'Meme Grade Pythonker. Devourer of the frikandelbroodje.',
     picture: 'auxim.gif',
     social: [
+      { name: 'Discord', link: 'https://discordapp.com/invite/BP2SV3J' },
       { name: 'GitHub', link: 'https://github.com/GeoffreyWesthoff' },
       { name: 'GitLab', link: 'https://gitlab.com/GeoffreyWesthoff' },
-      { name: 'Website', link: 'https://altdentifier.com/' }
+      { name: 'Reddit', link: 'https://www.reddit.com/user/le_spacecookie' },
+      { name: 'Twitter', link: 'https://twitter.com/altdentifier' },
+      { name: 'Website', link: 'https://altdentifier.com/' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/EXG_Auxim' }
     ]
   }],
 
@@ -88,11 +96,13 @@ export default ({ loggedIn, username }) => ({
     picture: 'donovan.gif',
     social: [
       { name: 'Discord', link: 'https://discord.gg/SuccpZw' },
-      { name: 'GitHub', link: 'https://github.com/DonovanDMC' },
+      { name: 'GitHub', link: 'https://github.com/Donovan_DMC' },
       { name: 'GitLab', link: 'https://gitlab.com/DonovanDMC' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/Donovan_DMC' },
       { name: 'Twitter', link: 'https://twitter.com/Donovan_DMC' },
-      { name: 'Website', link: 'https://furry.bot/' }
+      { name: 'Website', link: 'https://furry.bot/' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/Donovan_DMC' },
+      { name: 'Youtube', link: 'https://www.youtube.com/c/DonovanDMinecraft' }
     ]
   }, {
     name: 'Nyx',
@@ -105,7 +115,7 @@ export default ({ loggedIn, username }) => ({
     ]
   }, {
     name: 'Fizzy Coco',
-    about: 'Imagine having a bio in 2019',
+    about: 'Imagine having a bio in 2019, btw I\'m mel\'s favorite',
     picture: 'fizzy.gif',
     social: [
       { name: 'Reddit', link: 'https://www.reddit.com/u/rlcrawkm/' },
@@ -150,7 +160,8 @@ export default ({ loggedIn, username }) => ({
       { name: 'Spotify', link: 'https://open.spotify.com/user/batman6456' },
       { name: 'Discord', link: 'https://discord.gg/mYAGfeE' },
       { name: 'Twitter', link: 'https://twitter.com/PeacefulLion12' },
-      { name: 'Twitch', link: 'https://twitch.tv/jake3/' }
+      { name: 'Twitch', link: 'https://twitch.tv/jake3' },
+      { name: 'Youtube', link: 'https://www.youtube.com/channel/UCUi2W5FYhEvCdq2ikCSVbSg' }
     ]
   }, {
     name: 'Blair',
@@ -161,5 +172,118 @@ export default ({ loggedIn, username }) => ({
       { name: 'Reddit', link: 'https://www.reddit.com/user/gotohellwhydontya' },
       { name: 'Twitch', link: 'https://twitch.tv/expectationsblair' }
     ]
-  }]
+  },
+  {
+    name: 'RebelKay',
+    about: 'Just because you don\'t see me, doesn\'t mean I\'m not there. 🙃',
+    picture: 'rebel.png',
+    social: [
+      { name: 'Discord', link: 'https://discord.gg/tjXgFcp' }
+    ]
+  },
+  {
+    name: 'Omar',
+    about: 'I believe in Lit Life!',
+    picture: 'omar.jpg',
+    social: [
+      { name: 'Twitter', link: 'https://twitter.com/Ayye_Men' },
+      { name: 'Twitch', link: 'https://twitch.tv/starcorroder' },
+    ]
+  },
+  {
+    name: 'Lego',
+    about: 'What poppin my fellow kids?! I\'m a web developer and aspiring data analyst desperate for work. pls help',
+    picture: 'lego.png',
+    social: [
+      { name: 'Reddit', link: 'https://www.reddit.com/user/LegoRs' },
+      { name: 'Spotify', link: 'https://open.spotify.com/user/1115086977?si=Pcyy94QtTlC5fFiuIpJ9hw' },
+      { name: 'Twitter', link: 'https://twitter.com/Ole_m97' },
+      { name: 'Website', link: 'https://olemj.com' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/jenzeen' },
+      { name: 'Youtube', link: 'https://www.youtube.com/c/DankMemerDiscordBot' }
+    ]
+  },
+  {
+    name: 'DuckySoren',
+    about: 'The only thing I have going for me is being a duck.',
+    picture: 'ducky.gif',
+    social: [
+      { name: 'Discord', link: 'https://discord.gg/NXAc5xs' }
+    ]
+  },
+  {
+    name: 'Benz',
+    about: 'I am mystery... and boring.',
+    picture: 'benz.png',
+    social: [
+    ]
+  },
+  {
+    name: 'SirPrize',
+    about: 'DankMemer\'s mystery box.',
+    picture: 'sirprize.png',
+    social: [
+      { name: 'Discord', link: 'https://discord.gg/REn8bKj' },
+      { name: 'Reddit', link: 'https://reddit.com/u/Draikonite' }
+    ]
+  },
+  {
+    name: 'Snaxet',
+    about: 'Leave no prisoners behind. And yeah I programme aswell. ',
+    picture: 'snaxet.gif',
+    social: [
+      { name: 'GitHub', link: 'https://github.com/Snaxet' },
+      { name: 'Twitter', link: 'https://twitter.com/SnaxetTheDev' },
+      { name: 'Youtube', link: 'https://www.youtube.com/channel/UCh6oETuvpb62FZJQjffNBIQ' }
+    ]
+  },
+  {
+    name: 'Kayla',
+    about: 'Insert pretentious stuff about myself here',
+    picture: 'kayla.png',
+    social: [
+      { name: 'Spotify', link: 'https://open.spotify.com/user/kaylaramirez135' },
+      { name: 'Twitter', link: 'https://twitter.com/Bfk4everr' },
+      { name: 'Youtube', link: 'https://m.youtube.com/channel/UCCThI2y7_OGzI1oF1gsur-Q' }
+    ]
+  },
+  {
+    name: 'AwkNinja',
+    about: 'Aerospace Engineer who also likes gaming and technology.',
+    picture: 'awkninja.png',
+    social: [
+      { name: 'Twitter', link: 'https://twitter.com/mrawkninja' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/awkninja64' },
+      { name: 'Youtube', link: 'https://www.youtube.com/channel/UCSXTVQOs5_RvfqxExsF0IpQ?view_as=subscriber' }
+    ]
+  },
+  {
+    name: 'Zynxy',
+    about: 'I\'m there, always the right place at the right time',
+    picture: 'zynxy.png',
+    social: [
+      { name: 'Twitch', link: 'https://www.twitch.tv/zynxosu' },
+      { name: 'Youtube', link: 'https://www.youtube.com/channel/UC8seTUOvCBA0wF2yRFgjLYw' }
+    ]
+  },
+  {
+    name: 'Sheepii',
+    about: 'Professional taco holder. Will hold tacos for money. I hold no liability on said taco. Speak to my lawyer.',
+    picture: 'sheepii.png',
+    social: [
+      { name: 'Discord', link: 'https://discord.gg/ZQ87ue5' },
+      { name: 'GitHub', link: 'https://github.com/sheepiiHD' },
+      { name: 'Gitlab', link: 'https://github.com/sheepiiHD' },
+      { name: 'Reddit', link: 'https://www.reddit.com/user/sheepiiHD' },
+      { name: 'Twitter', link: 'https://twitter.com/sheepiiHD' },
+      { name: 'Twitch', link: 'https://www.twitch.tv/sheepiiHD' }
+    ]
+  },
+  {
+    name: 'FatalError',
+    about: 'FATAL ERROR: BIO NOT FOUND',
+    picture: 'fatalerror.png',
+    social: []
+  },
+]
 });

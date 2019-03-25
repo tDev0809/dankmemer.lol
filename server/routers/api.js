@@ -14,6 +14,24 @@ router.post('/cmds', (req, res) => {
   }
 });
 
+router.post('/webhook', (req, res) => { // TODO: Finish webhook endpoint, make it secure, then test it via axios before starting pages using it
+  if (req.session.user) {
+    console.log(req.body);
+    axios.post(
+      `https://discordapp.com/api/webhooks/${config.webhookID}/${config.webhook_token}?wait=true`, { embeds: [ {
+        title: req.body.title,
+        description: req.body.description,
+        color: 0x71f23e
+      } ] }, {
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+    res.status(200);
+  } else {
+    res.status(401).json({ error: 'Get away you sick filth.' });
+  }
+});
+
 router.get('/country', (req, res) => {
   const country = req.headers[ 'cf-ipcountry' ];
   return res.json({
