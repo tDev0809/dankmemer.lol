@@ -172,16 +172,14 @@ export default ({ loggedIn, username }) => ({
       { name: 'Reddit', link: 'https://www.reddit.com/user/gotohellwhydontya' },
       { name: 'Twitch', link: 'https://twitch.tv/expectationsblair' }
     ]
-  },
-  {
+  }, {
     name: 'RebelKay',
     about: 'Just because you don\'t see me, doesn\'t mean I\'m not there. 🙃',
     picture: 'rebel.png',
     social: [
       { name: 'Discord', link: 'https://discord.gg/tjXgFcp' }
     ]
-  },
-  {
+  }, {
     name: 'Omar',
     about: 'I believe in Lit Life!',
     picture: 'omar.jpg',
@@ -189,36 +187,31 @@ export default ({ loggedIn, username }) => ({
       { name: 'Twitter', link: 'https://twitter.com/Ayye_Men' },
       { name: 'Twitch', link: 'https://twitch.tv/starcorroder' },
     ]
-  },
-  {
+  }, {
     name: 'Lego',
     about: 'What poppin my fellow kids?! I\'m a web developer and aspiring data analyst desperate for work. pls help',
     picture: 'lego.png',
     social: [
       { name: 'Reddit', link: 'https://www.reddit.com/user/LegoRs' },
-      { name: 'Spotify', link: 'https://open.spotify.com/user/1115086977?si=Pcyy94QtTlC5fFiuIpJ9hw' },
+      { name: 'Spotify', link: 'https://open.spotify.com/user/1115086977' },
       { name: 'Twitter', link: 'https://twitter.com/Ole_m97' },
       { name: 'Website', link: 'https://olemj.com' },
       { name: 'Twitch', link: 'https://www.twitch.tv/jenzeen' },
       { name: 'Youtube', link: 'https://www.youtube.com/c/DankMemerDiscordBot' }
     ]
-  },
-  {
+  }, {
     name: 'DuckySoren',
     about: 'The only thing I have going for me is being a duck.',
     picture: 'ducky.gif',
     social: [
       { name: 'Discord', link: 'https://discord.gg/NXAc5xs' }
     ]
-  },
-  {
+  }, {
     name: 'Benz',
     about: 'I am mystery... and boring.',
     picture: 'benz.png',
-    social: [
-    ]
-  },
-  {
+    social: []
+  }, {
     name: 'SirPrize',
     about: 'DankMemer\'s mystery box.',
     picture: 'sirprize.png',
@@ -226,8 +219,7 @@ export default ({ loggedIn, username }) => ({
       { name: 'Discord', link: 'https://discord.gg/REn8bKj' },
       { name: 'Reddit', link: 'https://reddit.com/u/Draikonite' }
     ]
-  },
-  {
+  }, {
     name: 'Snaxet',
     about: 'Leave no prisoners behind. And yeah I programme aswell. ',
     picture: 'snaxet.gif',
@@ -236,8 +228,7 @@ export default ({ loggedIn, username }) => ({
       { name: 'Twitter', link: 'https://twitter.com/SnaxetTheDev' },
       { name: 'Youtube', link: 'https://www.youtube.com/channel/UCh6oETuvpb62FZJQjffNBIQ' }
     ]
-  },
-  {
+  }, {
     name: 'Kayla',
     about: 'Insert pretentious stuff about myself here',
     picture: 'kayla.png',
@@ -246,18 +237,16 @@ export default ({ loggedIn, username }) => ({
       { name: 'Twitter', link: 'https://twitter.com/Bfk4everr' },
       { name: 'Youtube', link: 'https://m.youtube.com/channel/UCCThI2y7_OGzI1oF1gsur-Q' }
     ]
-  },
-  {
+  }, {
     name: 'AwkNinja',
     about: 'Aerospace Engineer who also likes gaming and technology.',
     picture: 'awkninja.png',
     social: [
       { name: 'Twitter', link: 'https://twitter.com/mrawkninja' },
       { name: 'Twitch', link: 'https://www.twitch.tv/awkninja64' },
-      { name: 'Youtube', link: 'https://www.youtube.com/channel/UCSXTVQOs5_RvfqxExsF0IpQ?view_as=subscriber' }
+      { name: 'Youtube', link: 'https://www.youtube.com/channel/UCSXTVQOs5_RvfqxExsF0IpQ' }
     ]
-  },
-  {
+  }, {
     name: 'Zynxy',
     about: 'I\'m there, always the right place at the right time',
     picture: 'zynxy.png',
@@ -265,25 +254,22 @@ export default ({ loggedIn, username }) => ({
       { name: 'Twitch', link: 'https://www.twitch.tv/zynxosu' },
       { name: 'Youtube', link: 'https://www.youtube.com/channel/UC8seTUOvCBA0wF2yRFgjLYw' }
     ]
-  },
-  {
+  }, {
     name: 'Sheepii',
     about: 'Professional taco holder. Will hold tacos for money. I hold no liability on said taco. Speak to my lawyer.',
     picture: 'sheepii.png',
     social: [
       { name: 'Discord', link: 'https://discord.gg/ZQ87ue5' },
       { name: 'GitHub', link: 'https://github.com/sheepiiHD' },
-      { name: 'Gitlab', link: 'https://github.com/sheepiiHD' },
+      { name: 'Gitlab', link: 'https://gitlab.com/sheepiiHD' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/sheepiiHD' },
       { name: 'Twitter', link: 'https://twitter.com/sheepiiHD' },
       { name: 'Twitch', link: 'https://www.twitch.tv/sheepiiHD' }
     ]
-  },
-  {
+  }, {
     name: 'FatalError',
     about: 'FATAL ERROR: BIO NOT FOUND',
     picture: 'fatalerror.png',
     social: []
-  },
-]
+  }]
 });
