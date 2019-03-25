@@ -196,8 +196,7 @@ export default ({ loggedIn, username }) => ({
       { name: 'Spotify', link: 'https://open.spotify.com/user/1115086977' },
       { name: 'Twitter', link: 'https://twitter.com/Ole_m97' },
       { name: 'Website', link: 'https://olemj.com' },
-      { name: 'Twitch', link: 'https://www.twitch.tv/jenzeen' },
-      { name: 'Youtube', link: 'https://www.youtube.com/c/DankMemerDiscordBot' }
+      { name: 'Twitch', link: 'https://www.twitch.tv/jenzeen' }
     ]
   }, {
     name: 'DuckySoren',
