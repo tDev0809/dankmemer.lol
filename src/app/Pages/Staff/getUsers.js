@@ -260,7 +260,7 @@ export default ({ loggedIn, username }) => ({
     social: [
       { name: 'Discord', link: 'https://discord.gg/ZQ87ue5' },
       { name: 'GitHub', link: 'https://github.com/sheepiiHD' },
-      { name: 'Gitlab', link: 'https://gitlab.com/sheepiiHD' },
+      { name: 'GitLab', link: 'https://gitlab.com/sheepiiHD' },
       { name: 'Reddit', link: 'https://www.reddit.com/user/sheepiiHD' },
       { name: 'Twitter', link: 'https://twitter.com/sheepiiHD' },
       { name: 'Twitch', link: 'https://www.twitch.tv/sheepiiHD' }
