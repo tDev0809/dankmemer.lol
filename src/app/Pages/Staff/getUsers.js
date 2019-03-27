@@ -12,7 +12,7 @@ export default ({ loggedIn, username }) => ({
     }
   }, {
     name: 'Melmsie',
-    about: 'ass',
+    about: 'eat my ass',
     picture: 'melmsie.png',
     social: {
       Discord: 'https://discord.gg/Wejhbd4',
@@ -172,7 +172,7 @@ export default ({ loggedIn, username }) => ({
     }
   }, {
     name: 'RebelKay',
-    about: 'my bio is stupid🙃',
+    about: 'My bio is stupid🙃.',
     picture: 'rebel.png',
     social: {
       Discord: 'https://discord.gg/tjXgFcp'
