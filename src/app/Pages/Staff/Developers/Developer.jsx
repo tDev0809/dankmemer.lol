@@ -27,12 +27,12 @@ class Developer extends PureComponent {
           </p>
         </div>
         <div className="staff-accounts">
-          {this.props.social.map(account => (
-            <a key={`${this.props.name}-${account.name}`} href={account.link}>
+          {Object.entries(this.props.social).map(([ name, link ]) => (
+            <a key={name} href={link}>
               <img
                 className="staff-account"
-                alt={`${this.props.name}'s ${account.name} link`}
-                src={`/assets/${account.name}.svg`}
+                alt={`${this.props.name}'s ${name} link`}
+                src={`/assets/${name}.svg`}
               />
             </a>
           ))}
