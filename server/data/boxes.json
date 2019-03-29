@@ -4,7 +4,7 @@
       "name": "Normie Box",
       "id": 0,
       "description": "Can't get more basic than this.",
-      "yield": "150 ~ 800",
+      "yield": "150 ~ 850",
       "randomItem": {
         "keyword": "low",
         "chance": 0.6
