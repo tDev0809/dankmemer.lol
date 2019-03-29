@@ -2,6 +2,7 @@ const { encode, stringify } = require('querystring');
 const { get, post } = require('axios');
 const { Router } = require('express');
 const { encrypt, decrypt } = require ('../util/crypt.js');
+const db = require('../util/db.js');
 
 const config = require('../../config.json');
 const router = Router();
@@ -10,7 +11,10 @@ const data = encode({
   scope: 'identify',
   response_type: 'code',
   client_id: config.clientID,
-  redirect_uri: `${config.domain}/oauth/callback`
+  redirect_uri: `${config.domain}/oauth/callback`,
+  scope: [
+    'email'
+  ].join(' ')
 });
 
 router.get('/login', (req, res) => {
@@ -40,6 +44,13 @@ router.get('/callback', async (req, res) => {
       'Authorization': `Bearer ${data.access_token}`
     }
   });
+
+  db.updateOne({ _id: user.id }, {
+    $set: {
+      _id: user.id,
+      email: user.email
+    }
+  }, { upsert: true });
 
   req.session.user = {
     ...user,
