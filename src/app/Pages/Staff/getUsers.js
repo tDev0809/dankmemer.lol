@@ -145,10 +145,12 @@ export default ({ loggedIn, username }) => ({
       Twitter: 'https://twitter.com/nicolai5423'
     }
   }, {
-    name: 'Mangowo',
+    name: 'Mango',
     about: 'Beyoncé made me do it',
     picture: 'mango.gif',
-    social: {}
+    social: {
+      Website: 'https://nevulo.xyz/mango'
+    }
   }, {
     name: 'Jakey',
     about: 'Dank Memer is the best bot',
