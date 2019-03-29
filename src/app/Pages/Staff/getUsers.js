@@ -87,19 +87,15 @@ export default ({ loggedIn, username }) => ({
     }
   }],
 
-  'Server Staff': [{
-    name: 'Donovan',
-    about: 'OwO What\'s This?!?',
-    picture: 'donovan.gif',
+  'Server Staff': [ {
+    name: 'Dauntless',
+    about: 'aspiring programmer // comp sci student',
+    picture: 'dauntless.png',
     social: {
-      Discord: 'https://discord.gg/SuccpZw',
-      GitHub: 'https://github.com/Donovan_DMC',
-      GitLab: 'https://gitlab.com/DonovanDMC',
-      Reddit: 'https://www.reddit.com/user/Donovan_DMC',
-      Twitter: 'https://twitter.com/Donovan_DMC',
-      Website: 'https://furry.bot/',
-      Twitch: 'https://www.twitch.tv/Donovan_DMC',
-      Youtube: 'https://www.youtube.com/c/DonovanDMinecraft'
+      Discord: 'https://discord.gg/FjBbCxC',
+      GitHub: 'https://github.com/Dauntless7',
+      Reddit: 'https://www.reddit.com/user/lonesomefickle',
+      Twitter: 'https://twitter.com/nicolai5423'
     }
   }, {
     name: 'Nyx',
@@ -135,16 +131,6 @@ export default ({ loggedIn, username }) => ({
       Twitter: 'https://twitter.com/B_A_Services'
     }
   }, {
-    name: 'Dauntless',
-    about: 'aspiring programmer // comp sci student',
-    picture: 'dauntless.png',
-    social: {
-      Discord: 'https://discord.gg/FjBbCxC',
-      GitHub: 'https://github.com/Dauntless7',
-      Reddit: 'https://www.reddit.com/user/lonesomefickle',
-      Twitter: 'https://twitter.com/nicolai5423'
-    }
-  }, {
     name: 'Mango',
     about: 'Beyoncé made me do it',
     picture: 'mango.gif',
@@ -174,7 +160,7 @@ export default ({ loggedIn, username }) => ({
     }
   }, {
     name: 'RebelKay',
-    about: 'My bio is stupid🙃.',
+    about: 'My bio is stupid.',
     picture: 'rebel.png',
     social: {
       Discord: 'https://discord.gg/tjXgFcp'
