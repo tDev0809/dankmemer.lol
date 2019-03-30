@@ -7,19 +7,21 @@ const db = require('../util/db.js');
 const config = require('../../config.json');
 const router = Router();
 
-const data = encode({
+const OAuthScope = [
+  'identify',
+  'email'
+].join(' ');
+const OAuthData = encode({
   scope: 'identify',
   response_type: 'code',
   client_id: config.clientID,
   redirect_uri: `${config.domain}/oauth/callback`,
-  scope: [
-    'email'
-  ].join(' ')
+  scope: OAuthScope
 });
 
 router.get('/login', (req, res) => {
   req.session.redirect = req.query.redirect;
-  res.redirect(`https://discordapp.com/oauth2/authorize?${data}`);
+  res.redirect(`https://discordapp.com/oauth2/authorize?${OAuthData}`);
 });
 
 router.get('/callback', async (req, res) => {
@@ -36,8 +38,12 @@ router.get('/callback', async (req, res) => {
   }), {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
-    },
+    }
   });
+
+  if (data.scope !== OAuthScope) {
+    return res.status(403).send(`Expected scope "${OAuthScope}" but received scope "${data.scope}"`);
+  }
 
   const { data: user } = await get('https://discordapp.com/api/v7/users/@me', {
     headers: {
