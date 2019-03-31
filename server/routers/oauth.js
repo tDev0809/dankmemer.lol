@@ -51,6 +51,11 @@ router.get('/callback', async (req, res) => {
     }
   });
 
+  // temporary verbose logging for bug that wasn't reproducable
+  if (user.email === null) {
+    console.log('Null email', data, user);
+  }
+
   db.updateOne({ _id: user.id }, {
     $set: {
       _id: user.id,
