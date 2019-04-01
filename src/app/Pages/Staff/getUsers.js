@@ -166,14 +166,6 @@ export default ({ loggedIn, username }) => ({
       Discord: 'https://discord.gg/tjXgFcp'
     }
   }, {
-    name: 'Omar',
-    about: 'I believe in Lit Life!',
-    picture: 'omar.jpg',
-    social: {
-      Twitter: 'https://twitter.com/Ayye_Men',
-      Twitch: 'https://twitch.tv/starcorroder',
-    }
-  }, {
     name: 'Lego',
     about: 'What poppin my fellow kids?! I\'m a web developer and aspiring data analyst desperate for work. pls help',
     picture: 'lego.png',
