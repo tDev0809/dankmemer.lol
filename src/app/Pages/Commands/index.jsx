@@ -35,11 +35,9 @@ export default class Commands extends PureComponent {
         case '😏 NSFW':
           continue;
 
-        case '🐶 Animals':
         case '😄 Fun':
         case '😂 Memey':
         case '🔊 Sound':
-        case '🎲 Games':
           index = 0;
           break;
 
@@ -47,6 +45,8 @@ export default class Commands extends PureComponent {
         case '🔨 Moderation':
         case '🆗 Text':
         case '🛠 Utility':
+        case '🎲 Games':
+        case '🐶 Animals':
           index = 1;
           break;
 
