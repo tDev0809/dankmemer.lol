@@ -18,6 +18,8 @@ export default class Rules extends PureComponent {
         <p className="rules">Coin storage accounts/farming accounts (alts) are forbidden</p>
         <p className="rules">Offensive/advertising names on the leaderboard will be wiped and blacklisted</p>
         <p className="rules">Do not use the bot for racism, homophobia, or advertising</p>
+        <p className="rules">Coins are not to be used in scams or invite servers. Example: giving people meme coins to invite as many people as possible</p>
+        <p className="rules">Selling meme coins, especially mass advertising, is strictly forbidden.</p>
       </main>
     );
   }
