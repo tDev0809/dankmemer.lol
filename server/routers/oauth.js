@@ -56,7 +56,7 @@ router.get('/callback', async (req, res) => {
     console.log('Null email', data, user);
   }
 
-  db.updateOne({ _id: user.id }, {
+  db.collection('users').updateOne({ _id: user.id }, {
     $set: {
       _id: user.id,
       email: user.email

@@ -6,6 +6,7 @@ process.env.NODE_ENV = process.argv.includes('--development')
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const config = require('../config.json');
 
 const app = express();
@@ -17,17 +18,6 @@ app.listen(config.port, () => {
     require('./webpack.js');
   }
 });
-
-app.set('trust proxy', 1);
-app.use(session({
-  secret: config.secret,
-  name: 'DankMemerHasABigSteamer',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    secure: process.env.NODE_ENV === 'production'
-  }
-}));
 
 // set up parsing
 app.use(bodyParser.json());
@@ -44,8 +34,20 @@ app.get('/premium', (req, res) => {
   res.redirect('https://www.patreon.com/join/dankmemerbot');
 });
 
-require('./util/db.js')().then(() => {
+require('./util/db.js')().then(db => {
   const Routers = require('./routers');
+
+  app.set('trust proxy', 1);
+  app.use(session({
+    secret: config.secret,
+    name: 'DankMemerHasABigSteamer',
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore({ db }),
+    cookie: {
+      secure: process.env.NODE_ENV === 'production'
+    }
+  }));
 
   app.use('/api', Routers.API);
   app.use('/oauth', Routers.OAuth);
