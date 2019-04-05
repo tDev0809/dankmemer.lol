@@ -163,7 +163,7 @@ export default ({ loggedIn, username }) => ({
     about: 'My bio is stupid.',
     picture: 'rebel.png',
     social: {
-      Discord: 'https://discord.gg/tjXgFcp'
+      Discord: 'https://discord.gg/qt4WBrU'
     }
   }, {
     name: 'Lego',
