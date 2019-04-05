@@ -81,7 +81,7 @@ class Loot extends Component {
 
     const subtotal = this.getSubtotal(true);
     const raw = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE && this.state.activeBox.id !== 0
-      ? subtotal % Constants.DISCOUNT_NEAREST
+      ? subtotal * (Constants.FLAT_DISCOUNT_PERCENTAGE / 100)
       : 0;
 
     return returnRaw
@@ -218,6 +218,9 @@ class Loot extends Component {
             />
           ))}
         </div>
+        <span className="discount-notification">
+          Purchases above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> receive a <u>{Constants.FLAT_DISCOUNT_PERCENTAGE}%</u> discount!
+        </span>
 
         <div className="divider" />
         <div className="header">

@@ -34,10 +34,10 @@
       "price": 3.99
     }
   ],
-  
+
   "Constants": {
     "MINIMUM_PURCHASE_VALUE": 1.95,
     "MINIMUM_DISCOUNT_VALUE": 10,
-    "DISCOUNT_NEAREST": 1.50
+    "FLAT_DISCOUNT_PERCENTAGE": 10
   }
 }
