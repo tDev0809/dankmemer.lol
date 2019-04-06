@@ -212,8 +212,16 @@
   .discount-notification {
     font-style: italic;
     font-size: 16px;
+    z-index: 6;
+    position: relative;
+    background: #2C2F33;
   }
-  
+
+  .discount-info {
+    color: #FFF;
+    font-size: 18px;
+  }
+
   .absolute-unit {
     font-size: 48px;
   }

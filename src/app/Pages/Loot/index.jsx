@@ -243,7 +243,12 @@ class Loot extends Component {
           {
             this.getDiscount(true) === 0
               ? <span>${this.getSubtotal()}</span>
-              : <span><s><i>${this.getSubtotal()}</i></s> ${this.getDiscountedSubtotal()}</span>
+              : <span>
+                  <s><i>${this.getSubtotal()}</i></s> ${this.getDiscountedSubtotal()}
+                  <div className="discount-info">
+                    ({(this.getDiscount(true) / this.getSubtotal(true) * 100).toFixed()}% discount)
+                  </div>
+                </span>
           }
         </div>
 
