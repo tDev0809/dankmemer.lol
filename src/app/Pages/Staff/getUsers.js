@@ -87,7 +87,7 @@ export default ({ loggedIn, username }) => ({
     }
   }],
 
-  'Server Staff': [ {
+  'Server Staff': [{
     name: 'Dauntless',
     about: 'aspiring programmer // comp sci student',
     picture: 'dauntless.png',
@@ -120,7 +120,8 @@ export default ({ loggedIn, username }) => ({
     picture: 'sinister.png',
     social: {
       Website: 'https://www.youtube.com/watch?v=o1eHKf-dMwo',
-      Twitch: 'https://www.twitch.tv/sinister__1337'
+      Twitch: 'https://www.twitch.tv/sinister__1337',
+      Discord: 'https://discord.gg/wdCVp9P'
     }
   }, {
     name: 'Mook',
@@ -129,6 +130,15 @@ export default ({ loggedIn, username }) => ({
     social: {
       Discord: 'https://discord.gg/HdQYu6U',
       Twitter: 'https://twitter.com/B_A_Services'
+    }
+  }, {
+    name: 'SpiderMod',
+    about: 'It\'s your friendly neighborhood SpiderMod!',
+    picture: 'spider.gif',
+    social: {
+      Youtube: 'https://www.youtube.com/channel/UCE0Xwx_P7X3qiExH2k8cXpA',
+      Reddit: 'https://www.reddit.com/user/Zorukia',
+      Twitter: 'https://twitter.com/Zorukia'
     }
   }, {
     name: 'Mango',
@@ -166,17 +176,6 @@ export default ({ loggedIn, username }) => ({
       Discord: 'https://discord.gg/qt4WBrU'
     }
   }, {
-    name: 'Lego',
-    about: 'What poppin my fellow kids?! I\'m a web developer and aspiring data analyst desperate for work. pls help',
-    picture: 'lego.png',
-    social: {
-      Reddit: 'https://www.reddit.com/user/LegoRs',
-      Spotify: 'https://open.spotify.com/user/1115086977',
-      Twitter: 'https://twitter.com/Ole_m97',
-      Website: 'https://olemj.com',
-      Twitch: 'https://www.twitch.tv/jenzeen'
-    }
-  }, {
     name: 'DuckySoren',
     about: 'The only thing I have going for me is being a duck.',
     picture: 'ducky.png',
@@ -188,14 +187,6 @@ export default ({ loggedIn, username }) => ({
     about: 'Always a dull moment.',
     picture: 'benz.png',
     social: {}
-  }, {
-    name: 'SirPrize',
-    about: 'DankMemer\'s mystery box.',
-    picture: 'sirprize.png',
-    social: {
-      Discord: 'https://discord.gg/REn8bKj',
-      Reddit: 'https://reddit.com/u/Draikonite'
-    }
   }, {
     name: 'Snaxet',
     about: 'Leave no prisoners behind. And yeah I programme aswell. ',
@@ -243,10 +234,5 @@ export default ({ loggedIn, username }) => ({
       Twitter: 'https://twitter.com/sheepiiHD',
       Twitch: 'https://www.twitch.tv/sheepiiHD'
     }
-  }, {
-    name: 'FatalError',
-    about: 'I\'m cool, I guess.',
-    picture: 'fatalerror.png',
-    social: {}
   }]
 });
