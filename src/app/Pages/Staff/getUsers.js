@@ -53,15 +53,6 @@ export default ({ loggedIn, username }) => ({
       Youtube: 'https://www.youtube.com/channel/UC3yrSVbg5CQJPKFi9aGrA4g'
     }
   }, {
-    name: 'NANI',
-    about: 'Heyo NANI here. I build bots and APIs in Python for a hobby, but most of the time you\'ll find me in a laboratory.',
-    picture: 'nani.gif',
-    social: {
-      GitHub: 'https://github.com/AndyTempel',
-      Reddit: 'https://www.reddit.com/user/andy_biomed',
-      Website: 'https://api.ksoft.si/'
-    }
-  }, {
     name: 'Devoxin',
     about: 'Is breaking things considered a profession?',
     picture: 'devoxin.png',
@@ -221,18 +212,6 @@ export default ({ loggedIn, username }) => ({
     social: {
       Twitch: 'https://www.twitch.tv/zynxosu',
       Youtube: 'https://www.youtube.com/channel/UC8seTUOvCBA0wF2yRFgjLYw'
-    }
-  }, {
-    name: 'Sheepii',
-    about: 'Professional taco holder. Will hold tacos for money. I hold no liability on said taco. Speak to my lawyer.',
-    picture: 'sheepii.png',
-    social: {
-      Discord: 'https://discord.gg/ZQ87ue5',
-      GitHub: 'https://github.com/sheepiiHD',
-      GitLab: 'https://gitlab.com/sheepiiHD',
-      Reddit: 'https://www.reddit.com/user/sheepiiHD',
-      Twitter: 'https://twitter.com/sheepiiHD',
-      Twitch: 'https://www.twitch.tv/sheepiiHD'
     }
   }]
 });
