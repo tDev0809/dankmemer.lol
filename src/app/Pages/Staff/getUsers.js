@@ -4,10 +4,10 @@ export default ({ loggedIn, username }) => ({
     about: 'G\'day, I\'m Blake. I\'m a web and software developer based in Australia.',
     picture: 'blake.png',
     social: {
-      GitHub: 'https://github.com/zBlakee',
+      GitHub: 'https://github.com/nevvulo',
       Spotify: 'https://open.spotify.com/user/talce8kvy7w0flxk2sv3iyxi4',
       Reddit: 'https://www.reddit.com/user/Nevulo',
-      Website: 'https://zblake.xyz',
+      Website: 'https://nevulo.xyz',
       Twitch: 'https://www.twitch.tv/nevvulo'
     }
   }, {
