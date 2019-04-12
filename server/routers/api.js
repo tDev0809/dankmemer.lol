@@ -4,6 +4,7 @@ const keys = require('../../keys.json');
 const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
 const router = Router();
+const db = require('../util/db.js');
 
 router.post('/cmds', (req, res) => {
   if (keys.includes(req.headers.authorization)) {
@@ -15,6 +16,8 @@ router.post('/cmds', (req, res) => {
 });
 
 router.post('/webhook', (req, res) => { // TODO: Finish webhook endpoint, make it secure, then test it via axios before starting pages using it
+  return res.status(410).send();
+
   if (req.session.user) {
     console.log(req.body);
     axios.post(
@@ -43,6 +46,19 @@ router.get('/country', (req, res) => {
 router.get('/boxes', (req, res) => {
   res.json(boxes);
 });
+
+router.get('/discount', async (req, res) => {
+  const discount = await db.collection('discounts').findOne();
+  if (discount) {
+    res.json({
+      percent: discount.percent,
+      name: discount.name || '',
+      expiry: discount.expiry
+    });
+  } else {
+    res.json(null);
+  }
+})
 
 router.get('/admin/data/', (req, res) => {
   if (req.session.user && req.session.user.id === '172571295077105664') {

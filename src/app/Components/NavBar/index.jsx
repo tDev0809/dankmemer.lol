@@ -3,7 +3,12 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './NavBar.css';
 
-const NavBar = React.memo(({ loggedIn, username, discriminator, isAdmin }) => (
+import parseTime from '../../util/parseTime.js';
+
+const NavBar = ({
+  discount,
+  login: { loggedIn, username, discriminator, isAdmin }
+}) => (
   <nav className="navbar">
     <span className="DM-nav">DANK MEMER</span>
     <ul className="nav-links">
@@ -17,7 +22,7 @@ const NavBar = React.memo(({ loggedIn, username, discriminator, isAdmin }) => (
         <NavLink className="nav-link" activeClassName="active" to="/about">ABOUT</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link premium" activeClassName="active" to="/loot">LOOTBOXES</NavLink>
+        <NavLink className="nav-link premium" activeClassName="active" to="/loot" data-discount={discount ? `FLASH SALE (${parseTime(discount.expiry - Date.now()).hours}H LEFT)` : ''}>LOOTBOXES</NavLink>
       </li>
       {isAdmin ? <li className="nav-item">
         <NavLink className="nav-link" activeClassName="active" to="/admin">ADMIN</NavLink>
@@ -32,6 +37,6 @@ const NavBar = React.memo(({ loggedIn, username, discriminator, isAdmin }) => (
       </li>
     </ul>
   </nav>
-))
+);
 
-export default withRouter(connect(store => store.login)(NavBar));
+export default withRouter(connect(store => store)(NavBar));

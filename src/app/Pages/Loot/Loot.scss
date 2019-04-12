@@ -217,6 +217,11 @@
     background: #2C2F33;
   }
 
+  .flash-discount-notification {
+    @extend .discount-notification;
+    color: #f44336;
+  }
+
   .discount-info {
     color: #FFF;
     font-size: 18px;

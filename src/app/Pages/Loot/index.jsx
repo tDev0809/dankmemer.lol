@@ -9,6 +9,7 @@ import Box from './Box.jsx';
 import BlockedCountry from './BlockedCountry.jsx';
 import createPayment from './createPayment.js';
 import ree from '../../util/ree.js';
+import parseTime from '../../util/parseTime.js';
 import loadScript from '../../util/loadScript.js';
 
 import './Loot.scss';
@@ -78,10 +79,20 @@ class Loot extends Component {
 
   getDiscount (returnRaw) {
     const { Constants } = this.state;
+    const { discount } = this.props;
 
     const subtotal = this.getSubtotal(true);
-    const raw = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE && this.state.activeBox.id !== 0
-      ? subtotal * (Constants.FLAT_DISCOUNT_PERCENTAGE / 100)
+
+    let discountPercent = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE
+      ? Constants.FLAT_DISCOUNT_PERCENTAGE
+      : 0;
+
+    if (discount) {
+      discountPercent += discount.percent;
+    }
+    
+    const raw = this.state.activeBox.id !== 0
+      ? subtotal * (discountPercent / 100)
       : 0;
 
     return returnRaw
@@ -90,7 +101,7 @@ class Loot extends Component {
   }
 
   getDiscountedSubtotal (returnRaw) {
-    const raw = this.getSubtotal(true) - this.getDiscount(true);
+    const raw = this.getSubtotal(true) - Number(this.getDiscount());
     return returnRaw
       ? raw
       : raw.toFixed(2);
@@ -101,7 +112,7 @@ class Loot extends Component {
       total: this.getDiscountedSubtotal(),
       subtotal: this.getSubtotal(),
       discount: this.getDiscount(),
-      token: this.props.token,
+      token: this.props.login.token,
       activeBox: this.state.activeBox,
       boxCount: this.state.boxCount
     }))
@@ -182,7 +193,7 @@ class Loot extends Component {
     }
 
     const minimumIsMet = this.getDiscountedSubtotal(true) > Constants.MINIMUM_PURCHASE_VALUE;
-    const isLoggedIn = this.props.loggedIn;
+    const isLoggedIn = this.props.login.loggedIn;
     const hasAgreed = this.state.hasAgreed;
 
     let text;
@@ -221,6 +232,12 @@ class Loot extends Component {
         <span className="discount-notification">
           Purchases above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> receive a <u>{Constants.FLAT_DISCOUNT_PERCENTAGE}%</u> discount!
         </span>
+        <br />
+        {this.props.discount && 
+          <span className="flash-discount-notification">
+            {this.props.discount.name} FLASH SALE: ALL purchases receive a BONUS <u>{this.props.discount.percent}%</u> discount!<br />{parseTime(this.props.discount.expiry - Date.now()).human} left.
+          </span>
+        }
 
         <div className="divider" />
         <div className="header">
@@ -246,7 +263,7 @@ class Loot extends Component {
               : <span>
                   <s><i>${this.getSubtotal()}</i></s> ${this.getDiscountedSubtotal()}
                   <div className="discount-info">
-                    ({(this.getDiscount(true) / this.getSubtotal(true) * 100).toFixed()}% discount)
+                    ({(this.getDiscount(true) / this.getSubtotal(true) * 100).toFixed()}% total discount)
                   </div>
                 </span>
           }
@@ -278,4 +295,4 @@ class Loot extends Component {
   }
 }
 
-export default connect(store => store.login, null)(Loot);
+export default connect(store => store, null)(Loot);

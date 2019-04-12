@@ -51,6 +51,12 @@ fetch('/oauth/state', { credentials: 'same-origin' })
     }
   });
 
+fetch('/api/discount')
+  .then(r => r.json())
+  .then(res => (
+    store.dispatch(actions.discount(res))
+  ));
+
 // Set up cookie consent
 loadScript('//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js')
   .then(() => window.cookieconsent.initialise({

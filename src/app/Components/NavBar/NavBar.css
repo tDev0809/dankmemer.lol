@@ -48,7 +48,7 @@
   color: #7289DA;
 }
 
-.nav-link.active:hover {
+.nav-link.active:not(.premium):hover {
   color: #4a67cf;
 }
 
@@ -73,12 +73,19 @@
    margin-left: 40px;
  }
 
- .nav-link.premium {
+.nav-link.premium {
   color: #FFD700;
 }
 
+.nav-link.premium:after {
+  content: '\A ' attr(data-discount);
+  color: #f44336;
+  white-space: pre;
+  font-size: x-small;
+}
+
 .nav-link.premium:hover {
-  color: #ccad00;
+  filter: brightness(85%) !important;
 }
 
 @media only screen and (max-width: 786px) {
