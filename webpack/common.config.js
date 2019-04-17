@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  publicPath: path.join(__dirname, '..', 'server', 'root'),
-  assetsPath: path.join(__dirname, '..', 'server', 'root'),
+  publicPath: path.join(__dirname, '..', 'src', 'server', 'root'),
+  assetsPath: path.join(__dirname, '..', 'src', 'server', 'root'),
   commonLoaders: [
     {
       test: /\.(js|jsx)$/,
