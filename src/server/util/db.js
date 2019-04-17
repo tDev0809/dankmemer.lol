@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const { mongoURL } = require('../../config.json');
+const { mongoURL } = require('../../../config.json');
 
 module.exports = async () => (
   module.exports = await MongoClient

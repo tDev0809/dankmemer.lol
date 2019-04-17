@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./server/index.js --development",
+    "dev": "node ./src/server/index.js --development",
     "build": "./node_modules/.bin/webpack-cli -p --config ./webpack/webpack.config-prod.js --display-error-details"
   },
   "repository": {

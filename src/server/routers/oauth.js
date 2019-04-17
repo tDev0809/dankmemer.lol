@@ -4,7 +4,7 @@ const { Router } = require('express');
 const { encrypt, decrypt } = require ('../util/crypt.js');
 const db = require('../util/db.js');
 
-const config = require('../../config.json');
+const config = require('../../../config.json');
 const router = Router();
 
 const OAuthScope = [

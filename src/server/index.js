@@ -7,7 +7,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const config = require('../config.json');
+const config = require('../../config.json');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 // Serve static files
 app.use('/', express.static(__dirname + '/root'));
-app.use('/assets', express.static(__dirname + '/../src/app/assets'));
+app.use('/assets', express.static(__dirname + '/../app/assets'));
 
 app.get('/source', (req, res) => {
   res.status(200).sendfile('./source.zip');

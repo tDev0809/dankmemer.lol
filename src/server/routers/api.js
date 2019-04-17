@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { writeFileSync } = require('fs');
-const keys = require('../../keys.json');
+const keys = require('../../../keys.json');
 const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
 const router = Router();

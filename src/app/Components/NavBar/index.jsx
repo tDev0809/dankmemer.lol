@@ -10,7 +10,7 @@ const NavBar = ({
   login: { loggedIn, username, discriminator, isAdmin }
 }) => (
   <nav className="navbar">
-    <span className="DM-nav">DANK MEMER</span>
+    <span className="DM-nav">DANK MEMERR</span>
     <ul className="nav-links">
       <li className="nav-item">
         <NavLink exact className="nav-link" activeClassName="active" to="/">HOME</NavLink>

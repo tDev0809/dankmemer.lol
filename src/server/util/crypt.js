@@ -1,5 +1,5 @@
 const { createCipheriv, createDecipheriv } = require('crypto');
-const { cryptKeys } = require('../../config.json');
+const { cryptKeys } = require('../../../config.json');
 
 const [
   key,
