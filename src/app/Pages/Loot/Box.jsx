@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-const directions = new Array(4).fill(0).map((_, i) => i * 90);
-const peepos = new Array(7).fill(0).map((_, i) => new Audio(`/assets/peepo${i}.mp3`));
+const directions = [ 0, 90, 180, 270 ];
+const peepos = Array(7).fill(0).map((_, i) => new Audio(`/assets/peepo${i}.mp3`));
 let currentAudio = -1;
 const playAudio = () =>
   (peepos[++currentAudio] || peepos[currentAudio = 0])
