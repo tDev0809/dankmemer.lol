@@ -4,6 +4,7 @@
   background: #23272a;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   padding-left: 5px;
   padding-right: 5px;
   z-index: 999;
@@ -66,12 +67,12 @@
   color: #e6e6e6;
 }
 
- .DM-nav {
-   color: white;
-   font-weight: bold;
-   font-size: 2em;
-   margin-left: 40px;
- }
+.DM-nav {
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  margin-left: 40px;
+}
 
 .nav-link.premium {
   color: #FFD700;
@@ -89,25 +90,25 @@
 }
 
 @media only screen and (max-width: 786px) {
-  .nav-links {
-    position: fixed;
-    display: flex;
-    bottom: 0px;
-    z-index: 999;
-    margin: 0;
-    background: #23272a;
-    width: 100%;
-    justify-content: center;
-    height: 40px;
-    align-items: center;
-    overflow-x: scroll;
-  }
   .DM-nav {
     margin: 0;
-    text-align: center;
   }
   .navbar {
     justify-content: center;
-    padding: 0px;
+    height: auto;
+  }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 999;
+    margin: 0 8px;
+    padding: 0;
+    background: #23272a;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .user a {
+    text-align: center;
   }
 }
