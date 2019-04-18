@@ -81,7 +81,7 @@ export default ({ loggedIn, username }) => ({
   'Server Staff': [{
     name: 'Dauntless',
     about: 'aspiring programmer // comp sci student',
-    picture: 'dauntless.png',
+    picture: 'dauntless.gif',
     social: {
       Discord: 'https://discord.gg/FjBbCxC',
       GitHub: 'https://github.com/Dauntless7',
@@ -100,7 +100,7 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'Fizzy Coco',
     about: 'Imagine having a bio in 2019, btw I\'m mel\'s favorite',
-    picture: 'fizzy.gif',
+    picture: 'coco.png',
     social: {
       Reddit: 'https://www.reddit.com/u/rlcrawkm/',
       Website: 'https://m.youtube.com/watch?v=dQw4w9WgXcQ'
@@ -139,16 +139,12 @@ export default ({ loggedIn, username }) => ({
       Website: 'https://nevulo.xyz/mango'
     }
   }, {
-    name: 'Jakey',
-    about: 'Dank Memer is the best bot',
-    picture: 'jakey.jpg',
+    name: 'Honeepo',
+    about: 'make me mod so I can talk',
+    picture: 'honee.png',
     social: {
-      Reddit: 'https://www.reddit.com/user/ConsistentAgent',
-      Spotify: 'https://open.spotify.com/user/batman6456',
-      Discord: 'https://discord.gg/mYAGfeE',
-      Twitter: 'https://twitter.com/PeacefulLion12',
-      Twitch: 'https://twitch.tv/jake3',
-      Youtube: 'https://www.youtube.com/channel/UCUi2W5FYhEvCdq2ikCSVbSg'
+      Twitter: 'https://twitter.com/MaejoonB',
+      Youtube: 'https://www.youtube.com/channel/UC4YUCpsiIV8b8Ii8Em0iYLA'
     }
   }, {
     name: 'Blair',
@@ -169,7 +165,7 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'DuckySoren',
     about: 'The only thing I have going for me is being a duck.',
-    picture: 'ducky.png',
+    picture: 'ducky.gif',
     social: {
       Discord: 'https://discord.gg/NXAc5xs'
     }
@@ -199,7 +195,7 @@ export default ({ loggedIn, username }) => ({
   }, {
     name: 'AwkNinja',
     about: 'Aerospace Engineer who also likes gaming and technology.',
-    picture: 'awkninja.png',
+    picture: 'awkninja.gif',
     social: {
       Twitter: 'https://twitter.com/mrawkninja',
       Twitch: 'https://www.twitch.tv/awkninja64',
