@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 const directions = new Array(4).fill(0).map((_, i) => i * 90);
 const peepos = new Array(7).fill(0).map((_, i) => new Audio(`/assets/peepo${i}.mp3`));
-const playAudio = () => {
-  const availableSounds = peepos.filter(p => p.paused);
-  return availableSounds[Math.floor(Math.random() * availableSounds.length)].play();
-};
-
+let currentAudio = -1;
+const playAudio = () =>
+  (peepos[++currentAudio] || peepos[currentAudio = 0])
+    .play();
+    
 export default class Box extends Component {
   shouldComponentUpdate (newProps, newState) {
     return (
