@@ -1,0 +1,56 @@
+.blog-header {
+  font-size: 2.5em;
+  font-style: italic;
+  margin-bottom: 4px;
+  font-family: 'Lato';
+  text-align: center;
+}
+
+.blog-header-img {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.blog-header-img img {
+  height: 25em;
+  border-radius: 3px;
+}
+
+.blog-timestamp {
+  font-size: 1em;
+  font-style: italic;
+  font-family: 'Lato';
+  text-align: center;
+}
+
+.blog-content {
+  font-family: 'Lato';
+  margin: 2px 22%;
+  background: #23272A;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.blog-content p:first-child {
+  margin-top: 0;
+}
+
+.blog-content p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-content a {
+  text-decoration: none;
+  color: #7289DA;
+}
+
+.blog-content img {
+  max-width: 100%;
+}
+
+@media only screen and (max-width: 786px) {
+  .blog-content {
+    margin: 2px 8px;
+  }
+}
+

@@ -3,8 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 
 import Home     from './Pages/Home';
 import Loot     from './Pages/Loot';
+import Blog     from './Pages/Blogs/blog.jsx';
 import Rules    from './Pages/Rules';
 import Admin    from './Pages/Admin';
+import Blogs    from './Pages/Blogs';
 import About    from './Pages/About';
 import Staff    from './Pages/Staff';
 import Terms    from './Pages/Terms';
@@ -26,6 +28,8 @@ export default () => (
       <Route component={Loot} path="/loot" />
       <Route component={Rules} path="/rules" />
       <Route component={About} path="/about" />
+      <Route component={Blog} path="/blogs/:blog" />
+      <Route component={Blogs} path="/blogs/" />
       {/* <Route component={Admin} path="/admin" /> */}
       <Route component={Terms} path="/terms" />
       <Route component={Refunds} path="/refunds" />

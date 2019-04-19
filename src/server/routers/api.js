@@ -5,6 +5,7 @@ const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
 const router = Router();
 const db = require('../util/db.js');
+const blogs = require('../util/blogs.js');
 
 router.post('/cmds', (req, res) => {
   if (keys.includes(req.headers.authorization)) {
@@ -68,6 +69,24 @@ router.get('/admin/data/', (req, res) => {
   } else {
     res.status(401).json({ message: 'No admin for you, tsk tsk tsk' });
   }
+});
+
+router.get('/blogs', (req, res) =>
+  res.json(blogs.map(blog => ({
+    id: blog.id,
+    name: blog.name,
+    date: blog.date,
+    thumbnail: blog.thumbnail
+  })))
+);
+
+router.get('/blogs/:blogID', (req, res) => {
+  const { blogID } = req.params;
+  const blog = blogs.find(blog => blog.id === blogID);
+
+  return blog
+    ? res.status(200).send(blog)
+    : res.status(404).send(`Blog "${blogID}" not found`);
 });
 
 module.exports = router;

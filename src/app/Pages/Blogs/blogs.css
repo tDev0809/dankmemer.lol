@@ -1,0 +1,49 @@
+.header {
+  font-size: 48px;
+  font-style: italic;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.blogs {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: fit-content;
+  flex-direction: column;
+  text-decoration: none;
+  color: #fff;
+}
+
+.blog {
+  background: #23272A;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #FFF;
+  display: flex;
+  flex-direction: row;
+}
+
+.blog-img {
+  margin: auto 0;
+}
+
+.blog-img img {
+  height: 46px;
+  margin-right: 4px;
+}
+
+.blog-info {
+  text-align: left;
+}
+
+.blog-name {
+  font-size: 32px;
+}
+
+.blog-date {
+  font-size: 14px;
+}
