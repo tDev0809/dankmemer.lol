@@ -4,8 +4,6 @@ const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-global.f = require('browser-sync');
-
 module.exports = {
   mode: 'development',
   name: 'client',
