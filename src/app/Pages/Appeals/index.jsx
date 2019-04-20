@@ -69,7 +69,9 @@ class Appeals extends Component {
 
   handleCheckbox (rule) {
     this.setState(prev => ({
-      brokenRules: prev.brokenRules.concat(rule)
+      brokenRules: prev.brokenRules.includes(rule)
+        ? prev.brokenRules.filter(brokenRule => brokenRule !== rule)
+        : prev.brokenRules.concat(rule)
     }));
   }
 

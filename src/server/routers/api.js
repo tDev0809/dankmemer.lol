@@ -33,7 +33,7 @@ router.post('/appeal', async (req, res) => {
   }
 
   recentAppeals.add(user.id);
-  setTimeout(() => recentAppeals.delete(user.id), 60 * 60 * 1000);
+  setTimeout(() => recentAppeals.delete(user.id), 30 * 60 * 1000);
 
   await axios.post(
     `https://discordapp.com/api/webhooks/${config.webhookID}/${config.webhook_token}?wait=true`, { embeds: [ {
