@@ -1,11 +1,14 @@
 const { Router } = require('express');
 const { writeFileSync } = require('fs');
 const keys = require('../../../keys.json');
+const config = require('../../../config.json');
 const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
 const router = Router();
 const db = require('../util/db.js');
 const blogs = require('../util/blogs.js');
+const axios = require('axios');
+const recentAppeals = new Set();
 
 router.post('/cmds', (req, res) => {
   if (keys.includes(req.headers.authorization)) {
@@ -16,24 +19,43 @@ router.post('/cmds', (req, res) => {
   }
 });
 
-router.post('/webhook', (req, res) => { // TODO: Finish webhook endpoint, make it secure, then test it via axios before starting pages using it
-  return res.status(410).send();
+router.post('/appeal', async (req, res) => {
+  const { user } = req.session;
 
-  if (req.session.user) {
-    console.log(req.body);
-    axios.post(
-      `https://discordapp.com/api/webhooks/${config.webhookID}/${config.webhook_token}?wait=true`, { embeds: [ {
-        title: req.body.title,
-        description: req.body.description,
-        color: 0x71f23e
-      } ] }, {
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
-    res.status(200);
-  } else {
-    res.status(401).json({ error: 'Get away you sick filth.' });
+  if (!user) {
+    return res.status(401).json({ error: 'Get away you sick filth.' });
   }
+  if (recentAppeals.has(user.id)) {
+    return res.status(429).json({ error: 'You\'re doing that too often.' });
+  }
+  if (!req.body.banType || !req.body.body) {
+    return res.status(400).json({ error: 'Malformed body' });
+  }
+
+  recentAppeals.add(user.id);
+  setTimeout(() => recentAppeals.delete(user.id), 60 * 60 * 1000);
+
+  await axios.post(
+    `https://discordapp.com/api/webhooks/${config.webhookID}/${config.webhook_token}?wait=true`, { embeds: [ {
+      title: `${req.body.banType} Appeal`,
+      fields: [ {
+        name: 'User',
+        value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`
+      }, {
+        name: 'Broken Rules',
+        value: req.body.rules.join('\n')
+      }, {
+        name: 'Appeal',
+        value: req.body.body
+      } ],
+      color: 0x71f23e,
+      timestamp: new Date()
+    } ] }, {
+      headers: { 'Content-Type': 'application/json' }
+    }
+  );
+
+  await res.status(200).send();
 });
 
 router.get('/country', (req, res) => {
@@ -49,7 +71,9 @@ router.get('/boxes', (req, res) => {
 });
 
 router.get('/discount', async (req, res) => {
-  const discount = await db.collection('discounts').findOne();
+  const discount = await db.collection('discounts').findOne({
+    expiry: { $gt: Date.now() }
+  });
   if (discount) {
     res.json({
       percent: discount.percent,

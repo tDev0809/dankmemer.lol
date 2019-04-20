@@ -16,6 +16,7 @@ export default React.memo(() => (
         <NavLink className="footer-link" to="/rules">Rules</NavLink>
         <NavLink className="footer-link" to="/terms">Terms</NavLink>
         <NavLink className="footer-link" to="/privacy">Privacy</NavLink>
+        <NavLink className="footer-link" to="/appeals">Appeals</NavLink>
       </div>
     </div>
   </footer>

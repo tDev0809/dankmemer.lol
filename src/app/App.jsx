@@ -12,6 +12,7 @@ import Staff    from './Pages/Staff';
 import Terms    from './Pages/Terms';
 import NavBar   from './Components/NavBar';
 import Footer   from './Components/Footer';
+import Appeals  from './Pages/Appeals';
 import Refunds  from './Pages/Refunds';
 import Privacy  from './Pages/Privacy';
 import Commands from './Pages/Commands';
@@ -30,6 +31,7 @@ export default () => (
       <Route component={About} path="/about" />
       <Route component={Blog} path="/blogs/:blog" />
       <Route component={Blogs} path="/blogs/" />
+      <Route component={Appeals} path="/appeals/" />
       {/* <Route component={Admin} path="/admin" /> */}
       <Route component={Terms} path="/terms" />
       <Route component={Refunds} path="/refunds" />
