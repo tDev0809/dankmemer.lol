@@ -2,6 +2,7 @@
   background: #23272A;
   color: white;
   display: flex;
+  position: fixed;
   flex-direction: column;
   font-family: 'Lato';
   z-index: 998;

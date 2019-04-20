@@ -44,6 +44,7 @@ body::-webkit-scrollbar {
   flex-direction: column;
   min-height: 100vh;
   color: white;
+  margin-bottom: 40px;
 }
 .content {
   font-family: 'Lato';
