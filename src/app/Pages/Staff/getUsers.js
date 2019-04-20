@@ -1,4 +1,4 @@
-export default ({ loggedIn, username }) => ({
+export default () => ({
   'Developers': [{
     name: 'Nevulo',
     about: 'G\'day, I\'m Blake. I\'m a web and software developer based in Australia.',
@@ -12,20 +12,19 @@ export default ({ loggedIn, username }) => ({
     }
   }, {
     name: 'Melmsie',
-    about: 'eat my ass',
+    about: 'Owner of Dank Memer, full time streamer, and best friend of Fizzy Coco',
     picture: 'melmsie.png',
     social: {
-      Discord: 'https://discord.gg/Wejhbd4',
+      Discord: 'https://discord.gg/ks9c2Cd',
       GitHub: 'https://github.com/melmsie',
-      Reddit: 'https://www.reddit.com/user/Kerdaloo',
       Spotify: 'https://open.spotify.com/user/melmsaustin',
-      Twitter: 'https://twitter.com/feelsdevman',
+      Twitter: 'https://twitter.com/realmelmsie',
       Twitch: 'https://www.twitch.tv/melmsie',
-      Youtube: 'https://www.youtube.com/c/DankMemerDiscordBot'
+      Youtube: 'https://www.youtube.com/c/Melmsie'
     }
   }, {
     name: 'Aetheryx',
-    about: `Hi ${loggedIn ? username : 'user'}, I'm dad`,
+    about: 'who?',
     picture: 'aetheryx.png',
     social: {
       GitHub: 'https://github.com/aetheryx',

@@ -1,3 +1,8 @@
+@keyframes scroll {
+  from {}
+  to { transform: translateY(-100%); }
+}
+
 .staff-title {
   font-family: 'Montserrat';
   text-transform: uppercase;
@@ -18,6 +23,18 @@
     flex-direction: column;
     padding: 12px 15px;
     margin: 20px;
+
+    .staff-about-parent {
+      max-height: 4.5em;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+
+    .staff-about {
+      transform: translateY(3em);
+      animation: scroll 80s infinite linear 1s;
+      display: block;
+    }
 
     .staff-name {
       text-align: center;
