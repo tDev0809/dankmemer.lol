@@ -21,9 +21,9 @@ const NavBar = ({
       <li className="nav-item">
         <NavLink className="nav-link" activeClassName="active" to="/about">ABOUT</NavLink>
       </li>
-      {/* <li className="nav-item">
+      <li className="nav-item">
         <NavLink className="nav-link" activeClassName="active" to="/blogs">BLOGS</NavLink>
-      </li> */}
+      </li>
       <li className="nav-item">
         <NavLink className="nav-link premium" activeClassName="active" to="/loot" data-discount={discount ? `FLASH SALE (${parseTime(discount.expiry - Date.now()).hours}H LEFT)` : ''}>LOOTBOXES</NavLink>
       </li>

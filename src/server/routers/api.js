@@ -43,7 +43,7 @@ router.post('/appeal', async (req, res) => {
         value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`
       }, {
         name: 'Broken Rules',
-        value: req.body.rules.join('\n')
+        value: req.body.rules.join('\n').slice(0, 1000)
       }, {
         name: 'Appeal',
         value: req.body.body

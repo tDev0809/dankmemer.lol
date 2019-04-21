@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import hyphenToUppercase from '../../util/hyphenToUppercase.js';
+import ReactGA from 'react-ga';
 
 import './blogs.css';
 
@@ -13,6 +13,8 @@ export default class Blogs extends PureComponent {
   }
 
   async componentDidMount () {
+    ReactGA.pageview('/blogs');
+
     this.setState({
       blogs: await fetch('/api/blogs').then(r => r.json())
     });

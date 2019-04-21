@@ -31,7 +31,8 @@
   border-radius: 5px;
 }
 
-.blog-content p:first-child {
+.blog-content p:first-child,
+.blog-content h2:first-child {
   margin-top: 0;
 }
 

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import ReactGA from 'react-ga';
 import './blog.css';
 
 export default class Blog extends PureComponent {
@@ -15,7 +16,9 @@ export default class Blog extends PureComponent {
   async componentDidMount () {
     this.setState(
       await fetch(`/api/blogs/${this.props.match.params.blog}`)
-        .then(r => r.json())
+        .then(r => r.json()),
+      () =>
+        ReactGA.pageview(`/blogs/${this.state.id}`)
     );
   }
 
