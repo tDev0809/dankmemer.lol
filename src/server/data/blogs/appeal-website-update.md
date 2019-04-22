@@ -1,7 +1,7 @@
 ## Ban/Blacklist appeals!
 
-You are now able to appeal bans and blacklists on our website
-Be as detailed as possible, the more effort you put into an appeal, the more likely you are to get appealed.
+You are now able to appeal bans and blacklists on our website  
+Be as detailed as possible, the more effort you put into an appeal, the more likely you are to get appealed.  
 At this time, we will NOT be unbanning anyone for breaking Discord's TOS (racism, userbots, etc)
 
 Visit the appeals page [here](https://dankmemer.lol/appeals)
