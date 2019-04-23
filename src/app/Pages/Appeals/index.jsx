@@ -24,6 +24,9 @@ class Appeals extends Component {
     if (this.textAreaRef.current.value.split(' ').length < 20) {
       return alert('Your appeal must be at least 20 words.');
     }
+    if (this.state.brokenRules.length === 0) {
+      return alert('You must tick at least one broken rule. If you feel like you haven\'t broken any, select "Not Applicable".');
+    }
 
     const res = await fetch('/api/appeal', {
       credentials: 'same-origin',
@@ -58,6 +61,16 @@ class Appeals extends Component {
             Make sure you keep your direct messages with the bot open.<br />
             If we have any information to give you, the bot will send you a direct message.<br />
             If your appeal is approved or denied, you may not receive a response either way.
+          </>
+        ) });
+
+      case 403:
+        return this.setState({ finished: (
+          <>
+            <div className="header">
+              You have been banned from sending appeals.
+            </div>
+            Appeal bans are un-appealable. Good job. I'm proud of you.
           </>
         ) });
     }

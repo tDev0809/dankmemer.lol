@@ -1,0 +1,43 @@
+.admin {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: center;
+
+  .header {
+    font-size: 32px;
+
+    a {
+      color: #7289DA;
+      text-decoration: none;
+    }
+  }
+
+  section {
+    width: 400px;
+    text-align: left;
+    height: fit-content;
+    background: #23272A;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+
+    @media only screen and (max-width: 786px) {
+      flex-basis: 100%;
+    }
+
+    .section-header {
+      font-size: 20px;
+    }
+  }
+
+  label {
+    display: block;
+    margin: 7px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

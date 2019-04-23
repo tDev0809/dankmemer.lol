@@ -32,7 +32,7 @@ export default () => (
       <Route component={Blog} path="/blogs/:blog" />
       <Route component={Blogs} path="/blogs/" />
       <Route component={Appeals} path="/appeals/" />
-      {/* <Route component={Admin} path="/admin" /> */}
+      <Route component={Admin} path="/admin" />
       <Route component={Terms} path="/terms" />
       <Route component={Refunds} path="/refunds" />
       <Route component={Privacy} path="/privacy" />

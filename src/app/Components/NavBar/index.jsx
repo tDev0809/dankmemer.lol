@@ -27,9 +27,6 @@ const NavBar = ({
       <li className="nav-item">
         <NavLink className="nav-link premium" activeClassName="active" to="/loot" data-discount={discount ? `FLASH SALE (${parseTime(discount.expiry - Date.now()).hours}H LEFT)` : ''}>LOOTBOXES</NavLink>
       </li>
-      {isAdmin ? <li className="nav-item">
-        <NavLink className="nav-link" activeClassName="active" to="/admin">ADMIN</NavLink>
-      </li> : ''}
       <li className="nav-item">
         {loggedIn ? (
           <div className="user">

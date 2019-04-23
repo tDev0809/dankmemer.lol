@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { writeFileSync } = require('fs');
 const keys = require('../../../keys.json');
+const adminRouter = require('./admin.js');
 const config = require('../../../config.json');
 const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
@@ -24,6 +25,9 @@ router.post('/appeal', async (req, res) => {
 
   if (!user) {
     return res.status(401).json({ error: 'Get away you sick filth.' });
+  }
+  if (await db.collection('bans').findOne({ type: 'appeal', id: user.id })) {
+    return res.status(403).json({ error: 'Get away you sick filth.' });
   }
   if (recentAppeals.has(user.id)) {
     return res.status(429).json({ error: 'You\'re doing that too often.' });
@@ -85,15 +89,7 @@ router.get('/discount', async (req, res) => {
   }
 })
 
-router.get('/admin/data/', (req, res) => {
-  if (req.session.user && req.session.user.id === '172571295077105664') {
-    res.status(200).json({
-      test: '6969'
-    });
-  } else {
-    res.status(401).json({ message: 'No admin for you, tsk tsk tsk' });
-  }
-});
+router.use('/admin', adminRouter);
 
 router.get('/blogs', (req, res) =>
   res.json(blogs.map(blog => ({

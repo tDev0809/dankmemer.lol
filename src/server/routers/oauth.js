@@ -65,6 +65,7 @@ router.get('/callback', async (req, res) => {
 
   req.session.user = {
     ...user,
+    isAdmin: config.admins.includes(user.id),
     token: encrypt(user.id)
   };
   res.redirect(req.session.redirect || '/');
