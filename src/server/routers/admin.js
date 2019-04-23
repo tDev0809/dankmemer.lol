@@ -17,4 +17,9 @@ router.post('/ban', (req, res) => {
   res.status(200).send();
 });
 
+router.post('/unban', (req, res) => {
+  db.collection('bans').remove(req.body);
+  res.status(200).send();
+});
+
 module.exports = router;

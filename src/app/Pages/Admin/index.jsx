@@ -41,6 +41,36 @@ class Admin extends React.PureComponent {
     }
   }
 
+  async unban () {
+    if (!this.state.banID) {
+      return alert('enter a user id dumb cunt');
+    }
+
+    const res = await fetch('/api/admin/unban', {
+      method: 'POST',
+      body: JSON.stringify({
+        type: this.state.banType,
+        id: this.state.banID
+      }),
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    switch (res.status) {
+      case 200:
+        alert(`Successfully unbanned ${this.state.banID}`);
+        return this.setState({
+          banID: ''
+        });
+
+      default:
+        alert(`Unknown HTTP response code: ${res.status}`);
+    }
+  }
+
+
   render () {
     if (!this.props.loggedIn) {
       return (
@@ -67,8 +97,8 @@ class Admin extends React.PureComponent {
               value={this.banType}
               onChange={e => this.setState({ banType: e.target.value })}
             >
-              <option value="Lootbox">Lootbox</option>
-              <option value="Appeal">Appeal</option>
+              <option value="lootbox">Lootbox</option>
+              <option value="appeal">Appeal</option>
             </select>
           </label>
 
@@ -82,6 +112,32 @@ class Admin extends React.PureComponent {
 
           <label>
             <button onClick={() => this.ban()}>Hammer</button>
+          </label>
+        </section>
+        <section>
+          <div class="section-header">Unban User</div>
+
+          <label>
+            Ban Type<br />
+            <select
+              value={this.banType}
+              onChange={e => this.setState({ banType: e.target.value })}
+            >
+              <option value="lootbox">Lootbox</option>
+              <option value="appeal">Appeal</option>
+            </select>
+          </label>
+
+          <label>
+            User ID<br />
+            <input
+              value={this.state.banID}
+              onChange={e => !isNaN(e.target.value) && this.setState({ banID: e.target.value })}
+            />
+          </label>
+
+          <label>
+            <button onClick={() => this.unban()}>Unhammer</button>
           </label>
         </section>
       </div>
