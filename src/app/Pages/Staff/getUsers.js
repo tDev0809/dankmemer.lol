@@ -109,7 +109,6 @@ export default () => ({
     about: 'I help meth-heads change their light bulbs',
     picture: 'sinister.png',
     social: {
-      Website: 'https://www.youtube.com/watch?v=o1eHKf-dMwo',
       Twitch: 'https://www.twitch.tv/sinister__1337',
       Discord: 'https://discord.gg/wdCVp9P'
     }
@@ -131,16 +130,9 @@ export default () => ({
       Twitter: 'https://twitter.com/Zorukia'
     }
   }, {
-    name: 'Mango',
-    about: 'Beyoncé made me do it',
-    picture: 'mango.gif',
-    social: {
-      Website: 'https://nevulo.xyz/mango'
-    }
-  }, {
     name: 'Honeepo',
     about: 'make me mod so I can talk',
-    picture: 'honee.png',
+    picture: 'honee.gif',
     social: {
       Twitter: 'https://twitter.com/MaejoonB',
       Youtube: 'https://www.youtube.com/channel/UC4YUCpsiIV8b8Ii8Em0iYLA'
@@ -164,7 +156,7 @@ export default () => ({
   }, {
     name: 'DuckySoren',
     about: 'The only thing I have going for me is being a duck.',
-    picture: 'ducky.gif',
+    picture: 'ducky.png',
     social: {
       Discord: 'https://discord.gg/NXAc5xs'
     }
