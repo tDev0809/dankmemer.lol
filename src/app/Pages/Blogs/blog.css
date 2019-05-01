@@ -53,5 +53,11 @@
   .blog-content {
     margin: 2px 8px;
   }
+
+  .blog-header-img img {
+    height: auto;
+    margin: 2px 8px;
+    width: 95%;
+  }
 }
 
