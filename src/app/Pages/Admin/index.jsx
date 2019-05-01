@@ -89,12 +89,12 @@ class Admin extends React.PureComponent {
     return (
       <div className="content admin">
         <section>
-          <div class="section-header">Ban User</div>
+          <div className="section-header">Ban User</div>
 
           <label>
             Ban Type<br />
             <select
-              value={this.banType}
+              value={this.state.banType}
               onChange={e => this.setState({ banType: e.target.value })}
             >
               <option value="lootbox">Lootbox</option>
@@ -115,12 +115,12 @@ class Admin extends React.PureComponent {
           </label>
         </section>
         <section>
-          <div class="section-header">Unban User</div>
+          <div className="section-header">Unban User</div>
 
           <label>
             Ban Type<br />
             <select
-              value={this.banType}
+              value={this.state.banType}
               onChange={e => this.setState({ banType: e.target.value })}
             >
               <option value="lootbox">Lootbox</option>

@@ -25,6 +25,7 @@ class Loot extends Component {
       activeBox: null,
       Constants: null,
       bannedCountry: false,
+      bannedUser: false,
       hasAgreed: false,
       succeededPayment: null,
       boxCount: 1
@@ -49,6 +50,12 @@ class Loot extends Component {
       .then(r => r.json());
     if (country.isBlocked) {
       return this.setState({ blockedCountry: country });
+    }
+
+    // Check for banned user
+    const bannedUser = await fetch('/api/isBanned', { credentials: 'same-origin' });
+    if (bannedUser.status === 403) {
+      return this.setState({ bannedUser: true });
     }
 
     // Load and cache PayPal button
@@ -176,7 +183,7 @@ class Loot extends Component {
   }
 
   render () {
-    const { boxes, Constants, finish, blockedCountry, activeBox } = this.state;
+    const { boxes, Constants, finish, blockedCountry, activeBox, bannedUser } = this.state;
 
     if (finish) {
       return (
@@ -185,6 +192,15 @@ class Loot extends Component {
     } else if (blockedCountry) {
       return (
         <BlockedCountry {...blockedCountry} />
+      );
+    } else if (bannedUser) {
+      return (
+        <main className="content loot">
+          <div className="fancy-header absolute-unit red">Sorry, not sorry.</div>
+          <div style={{ fontSize: '22px' }}>
+            Your account has been banned from purchasing any lootboxes.
+          </div>
+        </main>
       );
     } else if (!boxes) {
       return (

@@ -20,6 +20,17 @@ router.post('/cmds', (req, res) => {
   }
 });
 
+router.get('/isBanned', async (req, res) => {
+  if (await db.collection('bans').findOne({
+    type: 'lootbox',
+    id: req.session.user && req.session.user.id
+  })) {
+    res.status(403).send();
+  } else {
+    res.status(200).send();
+  }
+});
+
 router.post('/appeal', async (req, res) => {
   const { user } = req.session;
 
