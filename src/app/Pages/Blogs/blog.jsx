@@ -32,9 +32,9 @@ export default class Blog extends PureComponent {
         <div className="blog-timestamp">
           {new Date(this.state.date).toLocaleString().split(',')[0]}
         </div>
-        {this.state.thumbnail && 
+        {this.state.image && 
           <div className="blog-header-img">
-            <img src={this.state.thumbnail} />
+            <img src={this.state.image} />
           </div>}
         <div
           className="blog-content"
