@@ -35,7 +35,7 @@ export default class Blogs extends PureComponent {
             >
               {blog.thumbnail &&
                 <div className="blog-img">
-                  <img src={`/assets/${blog.thumbnail}`} />
+                  <img src={blog.thumbnail} />
                 </div>}
               <div className="blog-info">
                 <div className="blog-name">

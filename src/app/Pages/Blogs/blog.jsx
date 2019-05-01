@@ -34,7 +34,7 @@ export default class Blog extends PureComponent {
         </div>
         {this.state.thumbnail && 
           <div className="blog-header-img">
-            <img src={`/assets/${this.state.thumbnail}`} />
+            <img src={this.state.thumbnail} />
           </div>}
         <div
           className="blog-content"
