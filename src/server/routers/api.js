@@ -61,7 +61,7 @@ router.post('/appeal', async (req, res) => {
         value: req.body.rules.join('\n').slice(0, 1000)
       }, {
         name: 'Appeal',
-        value: req.body.body
+        value: req.body.body.slice(0, 1023)
       } ],
       color: 0x71f23e,
       timestamp: new Date()
