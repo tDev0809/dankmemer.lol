@@ -22,4 +22,22 @@ router.post('/unban', (req, res) => {
   res.status(200).send();
 });
 
+router.get('/checkBan', async (req, res) => {
+  const { type, id } = req.query;
+  if (!type || !id) {
+    return res.status(400).send('Missing type or id querystring parameter');
+  }
+
+  res.status(200).json(
+    await db.collection('bans').find({
+      id,
+      ...(type === 'any'
+        ? {}
+        : { type })
+    })
+      .toArray()
+      .then(res => res.map(entry => entry.type))
+  );
+});
+
 module.exports = router;
