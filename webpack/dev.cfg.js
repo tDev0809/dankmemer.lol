@@ -1,11 +1,8 @@
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
-const fs = require('fs');
 
 process.env.NODE_ENV = 'development';
 
