@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Button from '../../Components/Button/';
+import Button from '../../Components/Button/index.jsx';
 import './Home.scss';
 import ReactGA from 'react-ga';
 

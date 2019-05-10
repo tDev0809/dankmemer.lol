@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node ./src/server/index.js --development",
-    "build": "./node_modules/.bin/webpack-cli -p --config ./webpack/webpack.config-prod.js --display-error-details"
+    "build": "./node_modules/.bin/webpack-cli -p --config ./webpack/webpack.config.js --display-error-details"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,9 @@
     "node-watch": "^0.6.2"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.5",
     "@babel/core": "^7.3.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
@@ -36,7 +38,6 @@
     "browser-sync": "^2.26.3",
     "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "^2.1.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -48,8 +49,6 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   }

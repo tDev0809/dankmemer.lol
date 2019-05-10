@@ -7,7 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers/index.js';
 import * as actions from './actions/index.js';
 import loadScript from './util/loadScript.js';
-import App from './App';
+import App from './App.jsx';
 import ReactGA from 'react-ga';
 
 ReactGA.initialize('UA-89062206-3'); //TODO, hide this?

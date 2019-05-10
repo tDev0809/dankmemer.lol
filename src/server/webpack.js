@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const config = require('../../webpack/webpack.config-client.js');
+const config = require('../../webpack/webpack.config.js');
 let lastHash;
 
 webpack(config)
