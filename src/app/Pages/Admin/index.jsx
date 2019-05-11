@@ -3,6 +3,7 @@ import './Admin.scss';
 import { connect } from 'react-redux';
 
 import BanPanels from './panels/banPanels';
+import GetPayment from './panels/GetPayment';
 
 class Admin extends React.PureComponent {
   render () {
@@ -22,7 +23,8 @@ class Admin extends React.PureComponent {
 
     return (
       <div className="content admin">
-        {BanPanels.map(Panel => (<Panel />))}
+        {BanPanels.map((Panel, key) => (<Panel key={key} />))}
+        {<GetPayment/>}
       </div>
     );
   }
