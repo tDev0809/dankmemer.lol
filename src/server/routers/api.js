@@ -10,10 +10,14 @@ const db = require('../util/db.js');
 const blogs = require('../util/blogs.js');
 const axios = require('axios');
 const recentAppeals = new Set();
+const path = require('path');
 
 router.post('/cmds', (req, res) => {
   if (keys.includes(req.headers.authorization)) {
-    writeFileSync(`${__dirname}/../root/commands.json`, JSON.stringify(req.body.commands));
+    writeFileSync(
+      path.resolve(__dirname, '..', '..', 'app', 'Pages', 'Commands', 'commands.json'),
+      JSON.stringify(req.body.commands)
+    );
     res.status(200).json({ status: 'ok' });
   } else {
     res.status(401).json({ error: 'Get away you sick filth.' });

@@ -1,24 +1,19 @@
 import React, { PureComponent } from 'react';
 import CmdTable from './CmdTable';
+import commands from './commands.json';
 
 import './Commands.scss';
 
 export default class Commands extends PureComponent {
-  state = {
-    columns: []
-  };
-
-  componentDidMount() {
+  componentDidMount () {
     if (window.location.search) {
       window.history.pushState(null, null, 'commands');
     }
   }
 
-  async componentWillMount () {
+  getColumns () {
     const columns = Array(3).fill(0).map(() => []);
-    const entries = await fetch('commands.json')
-      .then(res => res.json())
-      .then(Object.entries);
+    const entries = Object.entries(commands);
 
     for (const entry of entries) {
       const [ category, data ] = entry;
@@ -55,13 +50,13 @@ export default class Commands extends PureComponent {
       columns[index].push({ category, data });
     }
 
-    this.setState({ columns });
+    return columns;
   }
 
   render () {
     return (
       <div className="content commands-page">
-        {this.state.columns.map((tables, index) => (
+        {this.getColumns().map((tables, index) => (
           <div key={index} className="command-column">
             {tables.map(data => (
               <CmdTable key={data.category} {...data} />
