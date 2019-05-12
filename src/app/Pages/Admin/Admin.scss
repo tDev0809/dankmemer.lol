@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-grow: 1;
   justify-content: center;
   align-content: flex-start;
+  margin: 0 10%;
 
   .header {
     font-size: 32px;
@@ -21,6 +21,7 @@
     height: fit-content;
     background: #23272A;
     border-radius: 5px;
+    flex-basis: 20%;
     margin: 5px;
     padding: 10px;
 

@@ -7,8 +7,8 @@ export default [
       title='Ban User'
       buttonText='Hammer'
       getEndpoint={() => '/ban'}
-      finish={({ type, id }) => (
-        alert(`Successfully ${type} banned ${id}`)
+      finish={({ dropdownValue, textValue }) => (
+        alert(`Successfully ${dropdownValue} banned ${textValue}`)
       )}
     />
   )),
@@ -17,8 +17,8 @@ export default [
       title='Unban User'
       buttonText='Unhammer'
       getEndpoint={() => '/unban'}
-      finish={({ type, id }) => (
-        alert(`Successfully ${type} unbanned ${id}`)
+      finish={({ dropdownValue, textValue }) => (
+        alert(`Successfully ${dropdownValue} unbanned ${textValue}`)
       )}
     />
   )),
@@ -28,14 +28,14 @@ export default [
       buttonText='Check'
       options={['any']}
       getFetchParams={() => ({ method: 'GET' })}
-      getEndpoint={({ type, id }) => `/checkBan?type=${type}&id=${id}`}
-      finish={async ({ id }, res) => {
+      getEndpoint={({ dropdownValue, textValue }) => `/checkBan?type=${dropdownValue}&id=${textValue}`}
+      finish={async ({ textValue }, res) => {
         const bans = await res.json();
 
         if (!bans[0]) {
-          return alert(`${id} is a good boye and has no bans`);
+          return alert(`${textValue} is a good boye and has no bans`);
         } else {
-          alert(`${id} has the following bans:\n\n${bans.join('\n')}`);
+          alert(`${textValue} has the following bans:\n\n${bans.join('\n')}`);
         } 
       }}
     />

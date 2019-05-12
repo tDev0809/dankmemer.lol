@@ -1,13 +1,12 @@
 .rules {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-family: 'Lato';
-  }
-  
-  .title {
-    font-family: 'Montserrat';
-    text-transform: uppercase;
-    text-align: center;
-  }
-  
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: 'Lato';
+}
+
+.title {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  text-align: center;
+}

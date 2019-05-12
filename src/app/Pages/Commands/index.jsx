@@ -1,21 +1,14 @@
 import React, { PureComponent } from 'react';
 import CmdTable from './CmdTable';
-import ReactGA from 'react-ga';
 
 import './Commands.scss';
 
 export default class Commands extends PureComponent {
-  constructor() {
-    super();
-
-    this.state = {
-      columns: []
-    };
-  }
+  state = {
+    columns: []
+  };
 
   componentDidMount() {
-    ReactGA.pageview('/commands');
-
     if (window.location.search) {
       window.history.pushState(null, null, 'commands');
     }

@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import ReactDOM from 'react-dom';
-import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 
 import { clientIDs } from './data.json';
@@ -15,26 +14,20 @@ import loadScript from '../../util/loadScript.js';
 import './Loot.scss';
 
 class Loot extends Component {
-  constructor () {
-    super();
-
-    this.inputRef = createRef();
-    this.paypalButton = null;
-    this.state = {
-      boxes: null,
-      activeBox: null,
-      Constants: null,
-      bannedCountry: false,
-      bannedUser: false,
-      hasAgreed: false,
-      succeededPayment: null,
-      boxCount: 1
-    };
-  }
+  inputRef = createRef();
+  paypalButton = null;
+  state = {
+    boxes: null,
+    activeBox: null,
+    Constants: null,
+    bannedCountry: false,
+    bannedUser: false,
+    hasAgreed: false,
+    succeededPayment: null,
+    boxCount: 1
+  };
 
   async componentDidMount () {
-    ReactGA.pageview('/lootboxes');
-
     // Load boxes from API and set state
     const { boxes, Constants } = await fetch('/api/boxes')
       .then(r => r.json());

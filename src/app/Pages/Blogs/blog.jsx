@@ -1,27 +1,19 @@
-import React, { PureComponent } from 'react';
-import ReactGA from 'react-ga';
+import React from 'react';
 import './blog.css';
 
-export default class Blog extends PureComponent {
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      name: '',
-      date: new Date('04/20').getTime(),
-      content: ''
-    };
-  }
+export default class Blog extends React.Component {
+  state = {
+    name: '',
+    date: new Date('04/20').getTime(),
+    content: ''
+  };
 
   async componentDidMount () {
     this.setState(
       await fetch(`/api/blogs/${this.props.match.params.blog}`)
-        .then(r => r.json()),
-      () =>
-        ReactGA.pageview(`/blogs/${this.state.id}`)
+        .then(r => r.json())
     );
   }
-
 
   render () {
     return (

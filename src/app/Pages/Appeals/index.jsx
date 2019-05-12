@@ -6,15 +6,10 @@ import rules from './rules.js';
 import './appeals.scss';
 
 class Appeals extends Component {
-  constructor (props) {
-    super(props);
-
-    this.textAreaRef = React.createRef();
-
-    this.state = {
-      banType: 'Bot Ban',
-      brokenRules: []
-    }
+  textAreaRef = React.createRef();
+  state = {
+    banType: 'Bot Ban',
+    brokenRules: []
   }
 
   async send () {
