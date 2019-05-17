@@ -1,8 +1,30 @@
+import blake from 'assets/blake.png';
+import mel from 'assets/melmsie.png';
+import aeth from 'assets/aetheryx.png';
+import paradox from 'assets/paradox.png';
+import cyber from 'assets/cyber.gif';
+import devo from 'assets/devoxin.png';
+import auxim from 'assets/auxim.gif';
+import nyx from 'assets/nyx.png';
+import daunt from 'assets/dauntless.gif';
+import fizzy from 'assets/fizzy.png';
+import sini from 'assets/sinister.png';
+import mook from 'assets/mook.png';
+import honee from 'assets/honee.gif';
+import blair from 'assets/blair.gif';
+import rebel from 'assets/rebel.png';
+import ducky from 'assets/ducky.png';
+import benz from 'assets/benz.png';
+import snaxet from 'assets/snaxet.gif';
+import kayla from 'assets/kayla.png';
+import awk from 'assets/awkninja.gif';
+import zynxy from 'assets/zynxy.png';
+
 export default () => ({
   'Developers': [{
     name: 'Nevulo',
     about: 'G\'day, I\'m Blake. I\'m a web and software developer based in Australia.',
-    picture: 'blake.png',
+    picture: blake,
     social: {
       GitHub: 'https://github.com/nevvulo',
       Spotify: 'https://open.spotify.com/user/talce8kvy7w0flxk2sv3iyxi4',
@@ -13,19 +35,19 @@ export default () => ({
   }, {
     name: 'Melmsie',
     about: 'Owner of Dank Memer, full time streamer, and best friend of Fizzy Coco',
-    picture: 'melmsie.png',
+    picture: mel,
     social: {
       Discord: 'https://discord.gg/ks9c2Cd',
       GitHub: 'https://github.com/melmsie',
       Spotify: 'https://open.spotify.com/user/melmsaustin',
       Twitter: 'https://twitter.com/realmelmsie',
       Twitch: 'https://www.twitch.tv/melmsie',
-      Youtube: 'https://www.youtube.com/c/Melmsie'
+      YouTube: 'https://www.youtube.com/c/Melmsie'
     }
   }, {
     name: 'Aetheryx',
     about: 'who?',
-    picture: 'aetheryx.png',
+    picture: aeth,
     social: {
       GitHub: 'https://github.com/aetheryx',
       Reddit: 'https://www.reddit.com/user/Dynamexia'
@@ -33,7 +55,7 @@ export default () => ({
   }, {
     name: 'Paradox',
     about: 'Just a small time baguette, living in a croissant world',
-    picture: 'paradox.png',
+    picture: paradox,
     social: {
       GitHub: 'https://github.com/ParadoxOrigins',
       Twitter: 'https://twitter.com/Paradox_Origins'
@@ -43,18 +65,18 @@ export default () => ({
   'Contributors': [{
     name: 'CyberRonin',
     about: 'Maniac who loves programming. I\'m a full stack developer trying to get into UI/UX!',
-    picture: 'cyber.gif',
+    picture: cyber,
     social: {
       GitHub: 'https://github.com/TheCyberRonin',
       GitLab: 'https://gitlab.com/cyberronin',
       Twitter: 'https://twitter.com/thecyberronin',
       Twitch: 'https://www.twitch.tv/thecyberronin',
-      Youtube: 'https://www.youtube.com/channel/UC3yrSVbg5CQJPKFi9aGrA4g'
+      YouTube: 'https://www.youtube.com/channel/UC3yrSVbg5CQJPKFi9aGrA4g'
     }
   }, {
     name: 'Devoxin',
     about: 'Is breaking things considered a profession?',
-    picture: 'devoxin.png',
+    picture: devo,
     social: {
       GitHub: 'https://github.com/Devoxin',
       GitLab: 'https://gitlab.com/Devoxin',
@@ -65,7 +87,7 @@ export default () => ({
   }, {
     name: 'Auxim',
     about: 'Meme Grade Pythonker. Devourer of the frikandelbroodje.',
-    picture: 'auxim.gif',
+    picture: auxim,
     social: {
       Discord: 'https://discordapp.com/invite/BP2SV3J',
       GitHub: 'https://github.com/GeoffreyWesthoff',
@@ -80,7 +102,7 @@ export default () => ({
   'Server Staff': [{
     name: 'Dauntless',
     about: 'aspiring programmer // comp sci student',
-    picture: 'dauntless.gif',
+    picture: daunt,
     social: {
       Discord: 'https://discord.gg/FjBbCxC',
       GitHub: 'https://github.com/Dauntless7',
@@ -90,7 +112,7 @@ export default () => ({
   }, {
     name: 'Nyx',
     about: 'Night Shift Security Boi',
-    picture: 'nyx.png',
+    picture: nyx,
     social: {
       Reddit: 'https://www.reddit.com/user/Nyxgawr',
       Spotify: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV',
@@ -99,7 +121,7 @@ export default () => ({
   }, {
     name: 'Fizzy Coco',
     about: 'Imagine having a bio in 2019, btw I\'m mel\'s favorite',
-    picture: 'coco.png',
+    picture: fizzy,
     social: {
       Reddit: 'https://www.reddit.com/u/rlcrawkm/',
       Website: 'https://m.youtube.com/watch?v=dQw4w9WgXcQ'
@@ -107,7 +129,7 @@ export default () => ({
   }, {
     name: 'Sinister',
     about: 'I help meth-heads change their light bulbs',
-    picture: 'sinister.png',
+    picture: sini,
     social: {
       Twitch: 'https://www.twitch.tv/sinister__1337',
       Discord: 'https://discord.gg/wdCVp9P'
@@ -115,32 +137,23 @@ export default () => ({
   }, {
     name: 'Mook',
     about: 'Is this my peak?',
-    picture: 'mook.png',
+    picture: mook,
     social: {
       Discord: 'https://discord.gg/HdQYu6U',
       Twitter: 'https://twitter.com/B_A_Services'
     }
   }, {
-    name: 'SpiderMod',
-    about: 'It\'s your friendly neighborhood SpiderMod!',
-    picture: 'spider.gif',
-    social: {
-      Youtube: 'https://www.youtube.com/channel/UCE0Xwx_P7X3qiExH2k8cXpA',
-      Reddit: 'https://www.reddit.com/user/Zorukia',
-      Twitter: 'https://twitter.com/Zorukia'
-    }
-  }, {
     name: 'Honeepo',
     about: 'make me mod so I can talk',
-    picture: 'honee.gif',
+    picture: honee,
     social: {
       Twitter: 'https://twitter.com/MaejoonB',
-      Youtube: 'https://www.youtube.com/channel/UC4YUCpsiIV8b8Ii8Em0iYLA'
+      YouTube: 'https://www.youtube.com/channel/UC4YUCpsiIV8b8Ii8Em0iYLA'
     }
   }, {
     name: 'Blair',
     about: 'preposterous boast but alas. i also like ass',
-    picture: 'blair.gif',
+    picture: blair,
     social: {
       Discord: 'https://discord.gg/fM5YVkk',
       Reddit: 'https://www.reddit.com/user/gotohellwhydontya',
@@ -149,56 +162,56 @@ export default () => ({
   }, {
     name: 'RebelKay',
     about: 'My bio is stupid.',
-    picture: 'rebel.png',
+    picture: rebel,
     social: {
       Discord: 'https://discord.gg/qt4WBrU'
     }
   }, {
     name: 'DuckySoren',
     about: 'The only thing I have going for me is being a duck.',
-    picture: 'ducky.png',
+    picture: ducky,
     social: {
       Discord: 'https://discord.gg/NXAc5xs'
     }
   }, {
     name: 'Benz',
     about: 'Always a dull moment.',
-    picture: 'benz.png',
+    picture: benz,
     social: {}
   }, {
     name: 'Snaxet',
     about: 'Leave no prisoners behind. And yeah I programme aswell. ',
-    picture: 'snaxet.gif',
+    picture: snaxet,
     social: {
       GitHub: 'https://github.com/Snaxet',
       Twitter: 'https://twitter.com/SnaxetTheDev',
-      Youtube: 'https://www.youtube.com/channel/UCh6oETuvpb62FZJQjffNBIQ'
+      YouTube: 'https://www.youtube.com/channel/UCh6oETuvpb62FZJQjffNBIQ'
     }
   }, {
     name: 'Kayla',
     about: 'Insert pretentious stuff about myself here',
-    picture: 'kayla.png',
+    picture: kayla,
     social: {
       Spotify: 'https://open.spotify.com/user/kaylaramirez135',
       Twitter: 'https://twitter.com/Bfk4everr',
-      Youtube: 'https://m.youtube.com/channel/UCCThI2y7_OGzI1oF1gsur-Q'
+      YouTube: 'https://m.youtube.com/channel/UCCThI2y7_OGzI1oF1gsur-Q'
     }
   }, {
     name: 'AwkNinja',
     about: 'Aerospace Engineer who also likes gaming and technology.',
-    picture: 'awkninja.gif',
+    picture: awk,
     social: {
       Twitter: 'https://twitter.com/mrawkninja',
       Twitch: 'https://www.twitch.tv/awkninja64',
-      Youtube: 'https://www.youtube.com/channel/UCSXTVQOs5_RvfqxExsF0IpQ'
+      YouTube: 'https://www.youtube.com/channel/UCSXTVQOs5_RvfqxExsF0IpQ'
     }
   }, {
     name: 'Zynxy',
     about: 'I\'m there, always the right place at the right time',
-    picture: 'zynxy.png',
+    picture: zynxy,
     social: {
       Twitch: 'https://www.twitch.tv/zynxosu',
-      Youtube: 'https://www.youtube.com/channel/UC8seTUOvCBA0wF2yRFgjLYw'
+      YouTube: 'https://www.youtube.com/channel/UC8seTUOvCBA0wF2yRFgjLYw'
     }
   }]
 });

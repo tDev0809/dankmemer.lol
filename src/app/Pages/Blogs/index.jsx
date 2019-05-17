@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import BlogView from './Blogs';
 import Blog from './Blog';

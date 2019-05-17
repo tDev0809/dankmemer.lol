@@ -1,5 +1,6 @@
 import React from 'react';
 import './Developer.scss';
+import * as socials from './socials.js';
 
 export default React.memo(({ name, picture, social, about }) => (
   <div className="staff-member">
@@ -10,7 +11,7 @@ export default React.memo(({ name, picture, social, about }) => (
       <img
         className="staff-picture"
         alt={`${name}'s avatar`}
-        src={`/assets/${picture}`}
+        src={picture}
       />
       <p className="staff-about-parent">
         <div className={about.length > 100 ? 'staff-about' : ''}>
@@ -24,7 +25,7 @@ export default React.memo(({ name, picture, social, about }) => (
           <img
             className="staff-account"
             alt={`${name}'s ${socialName} link`}
-            src={`/assets/${socialName}.svg`}
+            src={socials[socialName]}
           />
         </a>
       ))}

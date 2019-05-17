@@ -1,8 +1,8 @@
 {
   "name": "dankmemer.lol",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Dank Memer's website and dashboard",
+  "main": "src/server/index.js",
   "scripts": {
     "dev": "node ./src/server/index.js --development",
     "build": "./node_modules/.bin/webpack-cli -p --config ./webpack/webpack.config.js --display-error-details"
@@ -23,32 +23,35 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "marked": "^0.6.2",
-    "mongodb": "^3.2.2",
-    "node-watch": "^0.6.2"
+    "mongodb": "^3.2.2"
   },
   "devDependencies": {
-    "html-webpack-plugin": "^4.0.0-beta.5",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "babel-loader": "^8.0.5",
     "@babel/core": "^7.3.3",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "browser-sync": "^2.26.3",
-    "browser-sync-webpack-plugin": "^2.2.2",
+    "sass-loader": "^7.1.0",
+    "sass": "^1.20.1",
     "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "html-webpack-plugin": "^4.0.0-beta.5",
+    "workbox-webpack-plugin": "^4.3.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3"
+    "node-watch": "^0.6.2",
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2"
   }
 }

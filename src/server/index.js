@@ -23,8 +23,7 @@ app.listen(config.port, () => {
 app.use(bodyParser.json());
 
 // Serve static files
-app.use('/', express.static(__dirname + '/root'));
-app.use('/assets', express.static(__dirname + '/../app/assets'));
+app.use('/', express.static(__dirname + '/build'));
 
 app.get('/source', (req, res) => {
   res.status(200).sendfile('./source.zip');
@@ -53,6 +52,6 @@ require('./util/db.js')().then(db => {
   app.use('/oauth', Routers.OAuth);
 
   app.get('*', (request, response) => {
-    response.sendFile(`${__dirname}/root/index.html`);
+    response.sendFile(`${__dirname}/build/index.html`);
   });
 });

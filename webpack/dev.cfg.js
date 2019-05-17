@@ -3,6 +3,8 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
+const fs = require('fs');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 process.env.NODE_ENV = 'development';
 
@@ -13,13 +15,15 @@ module.exports = {
   name: 'client',
   entry: [ path.resolve(src, 'app', 'index.js') ],
   output: {
-    path: path.resolve(src, 'server', 'root'),
-    publicPath: '/',
-    filename: 'build/[name].[contenthash:8].js',
-    chunkFilename: 'build/[name].[contenthash:8].chunk.js'
+    path: path.resolve(src, 'server', 'build'),
+    filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].chunk.js'
   },
   resolve: {
-    extensions: [ '.js', '.jsx' ]
+    extensions: [ '.js', '.jsx' ],
+    alias: {
+      assets: path.resolve(src, 'app', 'assets')
+    }
   },
   optimization: {
     minimize: false,
@@ -45,7 +49,8 @@ module.exports = {
           ],
           plugins: [
             '@babel/plugin-syntax-dynamic-import',
-            '@babel/plugin-proposal-class-properties'
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-proposal-export-default-from'
           ]
         },
       },
@@ -54,7 +59,18 @@ module.exports = {
         use: [
           MiniCSSExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass')
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
         ]
       }
     ]
@@ -65,8 +81,8 @@ module.exports = {
       filename: 'index.html'
     }),
     new MiniCSSExtractPlugin({
-      filename: 'build/[name].[contenthash:8].css',
-      chunkFilename: 'build/[name].[contenthash:8].chunk.css',
+      filename: '[name].[contenthash:8].css',
+      chunkFilename: '[name].[contenthash:8].chunk.css',
     }),
     new DefinePlugin({
       __PAYPAL_ENV__: '"sandbox"'
@@ -75,6 +91,33 @@ module.exports = {
       host: 'localhost',
       port: 3001,
       proxy: 'http://localhost'
-    })
+    }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
+    }),
+    {
+      apply: (compiler) =>
+        compiler.hooks.compile.tap('miscFiles', () => {
+          const appDir = path.resolve(src, 'app');
+          const buildDir = path.resolve(src, 'server', 'build');
+          const appFile = fs.readFileSync(path.resolve(appDir, 'App.jsx'), 'utf8');
+
+          const sitemapTemplate = fs.readFileSync(path.resolve(appDir, 'sitemap.xml'), 'utf8');
+          let sitemapLocations = '';
+          for (const [ , match ] of appFile.matchAll(/path="(.*?)"/g)) {
+            sitemapLocations += `<url><loc>https://dankmemer.lol${match}</loc></url>`;
+          }
+
+          fs.writeFileSync(
+            path.resolve(buildDir, 'sitemap.xml'),
+            sitemapTemplate.replace('$locations', sitemapLocations)
+          );
+          fs.copyFileSync(
+            path.resolve(appDir, 'robots.txt'),
+            path.resolve(buildDir, 'robots.txt')
+          );
+        })
+    }
   ]
 };
