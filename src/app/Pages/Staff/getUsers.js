@@ -53,38 +53,6 @@ export default () => ({
       Reddit: 'https://www.reddit.com/user/Dynamexia'
     }
   }, {
-    name: 'Paradox',
-    about: 'Just a small time baguette, living in a croissant world',
-    picture: paradox,
-    social: {
-      GitHub: 'https://github.com/ParadoxOrigins',
-      Twitter: 'https://twitter.com/Paradox_Origins'
-    }
-  }],
-
-  'Contributors': [{
-    name: 'CyberRonin',
-    about: 'Maniac who loves programming. I\'m a full stack developer trying to get into UI/UX!',
-    picture: cyber,
-    social: {
-      GitHub: 'https://github.com/TheCyberRonin',
-      GitLab: 'https://gitlab.com/cyberronin',
-      Twitter: 'https://twitter.com/thecyberronin',
-      Twitch: 'https://www.twitch.tv/thecyberronin',
-      YouTube: 'https://www.youtube.com/channel/UC3yrSVbg5CQJPKFi9aGrA4g'
-    }
-  }, {
-    name: 'Devoxin',
-    about: 'Is breaking things considered a profession?',
-    picture: devo,
-    social: {
-      GitHub: 'https://github.com/Devoxin',
-      GitLab: 'https://gitlab.com/Devoxin',
-      Twitter: 'https://twitter.com/Dvoxn',
-      Website: 'https://serux.pro',
-      Twitch: 'https://www.twitch.tv/devoxin'
-    }
-  }, {
     name: 'Auxim',
     about: 'Meme Grade Pythonker. Devourer of the frikandelbroodje.',
     picture: auxim,
@@ -99,7 +67,7 @@ export default () => ({
     }
   }],
 
-  'Server Staff': [{
+  'Community Managers': [{
     name: 'Dauntless',
     about: 'aspiring programmer // comp sci student',
     picture: daunt,
@@ -108,23 +76,6 @@ export default () => ({
       GitHub: 'https://github.com/Dauntless7',
       Reddit: 'https://www.reddit.com/user/lonesomefickle',
       Twitter: 'https://twitter.com/nicolai5423'
-    }
-  }, {
-    name: 'Nyx',
-    about: 'Night Shift Security Boi',
-    picture: nyx,
-    social: {
-      Reddit: 'https://www.reddit.com/user/Nyxgawr',
-      Spotify: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV',
-      Twitter: 'https://twitter.com/Nyxgawr'
-    }
-  }, {
-    name: 'Fizzy Coco',
-    about: 'Imagine having a bio in 2019, btw I\'m mel\'s favorite',
-    picture: fizzy,
-    social: {
-      Reddit: 'https://www.reddit.com/u/rlcrawkm/',
-      Website: 'https://m.youtube.com/watch?v=dQw4w9WgXcQ'
     }
   }, {
     name: 'Sinister',
@@ -141,6 +92,25 @@ export default () => ({
     social: {
       Discord: 'https://discord.gg/HdQYu6U',
       Twitter: 'https://twitter.com/B_A_Services'
+    }
+  }],
+
+  'Server Moderators': [{
+    name: 'Nyx',
+    about: 'Night Shift Security Boi',
+    picture: nyx,
+    social: {
+      Reddit: 'https://www.reddit.com/user/Nyxgawr',
+      Spotify: 'https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV',
+      Twitter: 'https://twitter.com/Nyxgawr'
+    }
+  }, {
+    name: 'Fizzy Coco',
+    about: 'Imagine having a bio in 2019, btw I\'m mel\'s favorite',
+    picture: fizzy,
+    social: {
+      Reddit: 'https://www.reddit.com/u/rlcrawkm/',
+      Website: 'https://m.youtube.com/watch?v=dQw4w9WgXcQ'
     }
   }, {
     name: 'Honeepo',
@@ -212,6 +182,38 @@ export default () => ({
     social: {
       Twitch: 'https://www.twitch.tv/zynxosu',
       YouTube: 'https://www.youtube.com/channel/UC8seTUOvCBA0wF2yRFgjLYw'
+    }
+  }],
+
+  'Honorable Mentions': [{
+    name: 'Paradox',
+    about: 'Just a small time baguette, living in a croissant world',
+    picture: paradox,
+    social: {
+      GitHub: 'https://github.com/ParadoxOrigins',
+      Twitter: 'https://twitter.com/Paradox_Origins'
+    }
+  }, {
+    name: 'CyberRonin',
+    about: 'Maniac who loves programming. I\'m a full stack developer trying to get into UI/UX!',
+    picture: cyber,
+    social: {
+      GitHub: 'https://github.com/TheCyberRonin',
+      GitLab: 'https://gitlab.com/cyberronin',
+      Twitter: 'https://twitter.com/thecyberronin',
+      Twitch: 'https://www.twitch.tv/thecyberronin',
+      YouTube: 'https://www.youtube.com/channel/UC3yrSVbg5CQJPKFi9aGrA4g'
+    }
+  }, {
+    name: 'Devoxin',
+    about: 'Is breaking things considered a profession?',
+    picture: devo,
+    social: {
+      GitHub: 'https://github.com/Devoxin',
+      GitLab: 'https://gitlab.com/Devoxin',
+      Twitter: 'https://twitter.com/Dvoxn',
+      Website: 'https://serux.pro',
+      Twitch: 'https://www.twitch.tv/devoxin'
     }
   }]
 });
