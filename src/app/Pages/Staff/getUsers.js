@@ -119,7 +119,7 @@ export default () => ({
     }
   }, {
     name: 'Honeepo',
-    about: 'make me mod so I can talk',
+    about: 'Just the name no I don\'t want a bio just put my name and connections',
     picture: honee,
     social: {
       Twitter: 'https://twitter.com/MaejoonB',
