@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 
 // Serve static files
 app.use('/', express.static(__dirname + '/build'));
+app.use('/static', express.static(__dirname + '/../app/assets/'));
 
 app.get('/source', (req, res) => {
   res.status(200).sendfile('./source.zip');

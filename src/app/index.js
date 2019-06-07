@@ -9,7 +9,6 @@ import * as actions from './actions/index.js';
 import loadScript from './util/loadScript.js';
 import App from './App.jsx';
 
-
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(

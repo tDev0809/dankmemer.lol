@@ -10,12 +10,14 @@ export default React.memo(() => (
       <React.Fragment key={category}>
         <h2 className="staff-title">{category}</h2>
         <div className="staff-list">
-          {users.map(user => (
-            <Developer
-              key={user.name}
-              {...user}
-            />
-          ))}
+          {users
+            .sort(() => Math.random() - 0.5)
+            .map(user => (
+              <Developer
+                key={user.name}
+                {...user}
+              />
+            ))}
         </div>
       </React.Fragment>
     ))}

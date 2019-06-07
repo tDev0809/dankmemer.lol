@@ -15,10 +15,15 @@ import blair from 'assets/blair.gif';
 import rebel from 'assets/rebel.png';
 import ducky from 'assets/ducky.png';
 import benz from 'assets/benz.png';
-import snaxet from 'assets/snaxet.gif';
-import kayla from 'assets/kayla.png';
+import kayla from 'assets/kayla.jpg';
 import awk from 'assets/awkninja.gif';
-import zynxy from 'assets/zynxy.png';
+import nunca from 'assets/nunca.jpg';
+import izzy from 'assets/izzy.jpg';
+import nelly from 'assets/nelly.png';
+import bloop from 'assets/bloop.png';
+import nathan from 'assets/nathan.gif';
+import evade from 'assets/evade.gif';
+import hale from 'assets/hale.jpg';
 
 export default () => ({
   'Developers': [{
@@ -149,15 +154,6 @@ export default () => ({
     picture: benz,
     social: {}
   }, {
-    name: 'Snaxet',
-    about: 'Leave no prisoners behind. And yeah I programme aswell. ',
-    picture: snaxet,
-    social: {
-      GitHub: 'https://github.com/Snaxet',
-      Twitter: 'https://twitter.com/SnaxetTheDev',
-      YouTube: 'https://www.youtube.com/channel/UCh6oETuvpb62FZJQjffNBIQ'
-    }
-  }, {
     name: 'Kayla',
     about: 'Insert pretentious stuff about myself here',
     picture: kayla,
@@ -176,12 +172,49 @@ export default () => ({
       YouTube: 'https://www.youtube.com/channel/UCSXTVQOs5_RvfqxExsF0IpQ'
     }
   }, {
-    name: 'Zynxy',
-    about: 'I\'m there, always the right place at the right time',
-    picture: zynxy,
+    name: 'Nunca',
+    about: 'Programming is a pastime. Love to help when I can.',
+    picture: nunca,
     social: {
-      Twitch: 'https://www.twitch.tv/zynxosu',
-      YouTube: 'https://www.youtube.com/channel/UC8seTUOvCBA0wF2yRFgjLYw'
+      GitHub: 'https://github.com/Ionomycin',
+      Discord: 'https://discord.gg/s87mw8'
+    }
+  }, {
+    name: 'Izzy',
+    about: 'Just Izzy',
+    picture: izzy,
+    social: {}
+  }, {
+    name: 'Nelly',
+    about: 'I\'m obsessed with my cat. I also say "bruh" a lot.',
+    picture: nelly,
+    social: {
+      Spotify: 'https://open.spotify.com/user/f8rd443tvo37m87xntw4oen45',
+      Twitch: 'https://www.twitch.tv/stereotypicaly'
+    }
+  }, {
+    name: 'Shiiiitakë',
+    about: 'Bloop.',
+    picture: bloop,
+    social: {}
+  }, {
+    name: 'Nathan',
+    about: 'Sometimes, a few words can sum up the wisdom of a thousand.',
+    picture: nathan,
+    social: {}
+  }, {
+    name: 'Evade Hype',
+    about: 'Not a big fan of bios, also rebel\'s best friend.',
+    picture: evade,
+    social: {
+      Twitch: 'https://www.twitch.tv/jerryrice'
+    }
+  }, {
+    name: 'Hale',
+    about: 'Breh, i\'m a cat girl furry weeb',
+    picture: hale,
+    social: {
+      Twitter: 'https://twitter.com/CastielObsessed'
     }
   }],
 

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import peepoURL from 'assets/peepolove.png';
 
 const directions = [ 0, 90, 180, 270 ];
-const peepos = Array(7).fill(0).map((_, i) => new Audio(`/assets/peepo${i}.mp3`));
+const peepos = Array(7).fill(0).map((_, i) => new Audio(`/static/peepo${i}.mp3`));
 let currentAudio = -1;
 const playAudio = () =>
   (peepos[++currentAudio] || peepos[currentAudio = 0])
     .play();
-    
+
 export default class Box extends Component {
   shouldComponentUpdate (newProps, newState) {
     return (
@@ -31,7 +32,7 @@ export default class Box extends Component {
         '--delta-x': `${direction >= 180 ? -x : x}px`,
         '--delta-y': `${direction >= 180 ? y : -y}px`,
         '--offset-x': direction % 180 ? 0 : `${130 - (Math.random() * 260)}px`,
-        '--offset-y': direction % 180 ? `${40 - (Math.random() * 80)}px` : 0,
+        '--offset-y': direction % 180 ? `${40 - (Math.random() * 80)}px` : 0
       };
     }
 
@@ -48,7 +49,10 @@ export default class Box extends Component {
             <div
               key={i}
               className="peepo"
-              style={getPositioning()}
+              style={{
+                ...getPositioning(),
+                backgroundImage: `url(${peepoURL})`
+              }}
             />
           ))
         }
