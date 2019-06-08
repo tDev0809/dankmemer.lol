@@ -1,9 +1,9 @@
 import React from 'react';
-import getUsers from './getUsers.js';
+import users from './users.json';
 import Developer from './Developers/Developer';
 import images from './images.js';
 
-const categories = Object.entries(getUsers(mainStore.getState().login));
+const categories = Object.entries(users);
 const getSocialIndex = ({ social }) =>
   Object.keys(social).length === 0
     ? -1
