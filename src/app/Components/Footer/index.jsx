@@ -7,7 +7,7 @@ export default React.memo(() => (
   <footer className="footer">
     <div className="footer-table">
       <div className="footer-group footer-copyright">
-        <span className="copyright">Copyright © {new Date().getFullYear()} Dank Memer Team</span>
+        <span className="copyright">Copyright © {new Date().getFullYear()} Melms Media LLC</span>
       </div>
       <div className="footer-group footer-links">
         <a className="footer-link" href="https://www.patreon.com/join/dankmemerbot?">Premium</a>

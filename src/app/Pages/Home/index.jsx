@@ -12,10 +12,10 @@ export default React.memo(() => (
       </span>
       <div className="links">
         <Button link="https://invite.dankmemer.lol">
-          Invite Bot
+          Add Bot
         </Button>
-        <Button link="https://discord.gg/FnP8m6q">
-          Join Server
+        <Button link="https://discord.gg/meme">
+          Get Support
         </Button>
       </div>
     </div>
