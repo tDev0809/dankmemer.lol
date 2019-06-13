@@ -54,8 +54,14 @@ router.post('/appeal', async (req, res) => {
   recentAppeals.add(user.id);
   setTimeout(() => recentAppeals.delete(user.id), 30 * 60 * 1000);
 
+  const webhook = config[
+    req.body.banType === 'Server Ban'
+      ? 'cmAppealsWebhook'
+      : 'devAppealsWebhook'
+  ];
+
   await axios.post(
-    `https://discordapp.com/api/webhooks/${config.webhookID}/${config.webhook_token}?wait=true`, { embeds: [ {
+    `https://discordapp.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, { embeds: [ {
       title: `${req.body.banType} Appeal`,
       fields: [ {
         name: 'User',
