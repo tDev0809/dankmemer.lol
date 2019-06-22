@@ -1,0 +1,22 @@
+.title {
+  font-family: "Montserrat";
+  text-transform: uppercase;
+}
+
+.about {
+  text-align: left;
+}
+
+.subsection {
+  margin-top: 30px;
+}
+
+.invites a {
+  color: #7289DA;
+  text-decoration: none;
+}
+
+.good-spacing {
+  padding: 0px 20%;
+  margin-top: 75px;
+}
