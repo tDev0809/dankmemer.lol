@@ -20,15 +20,17 @@
         "Spotify": "https://open.spotify.com/user/melmsaustin",
         "Twitter": "https://twitter.com/realmelmsie",
         "Twitch": "https://www.twitch.tv/melmsie",
-        "YouTube": "https://www.youtube.com/c/Melmsie"
+        "YouTube": "https://www.youtube.com/c/Melmsie",
+        "Overwatch": "https://playoverwatch.com/en-us/career/pc/Melmsie-1311"
       }
     },
     {
-      "name": "Aetheryx",
-      "about": "who?",
+      "name": "aetheryx",
+      "about": "it's pronounced ayyth-uh-ricks or uhh-thi-ricks. honestly just call me aeth (ayyth), you can't fuck that up",
       "social": {
         "GitHub": "https://github.com/aetheryx",
-        "Reddit": "https://www.reddit.com/user/Dynamexia"
+        "Reddit": "https://www.reddit.com/user/Dynamexia",
+        "Overwatch": "https://playoverwatch.com/en-us/career/pc/aetheryx-2916"
       }
     },
     {
@@ -48,7 +50,7 @@
   "Community Managers": [
     {
       "name": "Dauntless",
-      "about": "aspiring programmer // comp sci student",
+      "about": "",
       "social": {
         "Discord": "https://discord.gg/FjBbCxC",
         "GitHub": "https://github.com/Dauntless7",
@@ -138,7 +140,7 @@
     },
     {
       "name": "AwkNinja",
-      "about": "Aerospace Engineer who also likes gaming and technology.",
+      "about": "Rocket scientist who also likes gaming and technology.",
       "social": {
         "Twitter": "https://twitter.com/mrawkninja",
         "Twitch": "https://www.twitch.tv/awkninja64",
@@ -160,10 +162,11 @@
     },
     {
       "name": "Nelly",
-      "about": "I'm obsessed with my cat. I also say \"bruh\" a lot.",
+      "about": "@ me with duck jokes",
       "social": {
         "Spotify": "https://open.spotify.com/user/f8rd443tvo37m87xntw4oen45",
-        "Twitch": "https://www.twitch.tv/stereotypicaly"
+        "Twitch": "https://www.twitch.tv/stereotypicaly",
+        "Overwatch": "https://playoverwatch.com/en-gb/career/pc/Niilay-21997"
       }
     },
     {

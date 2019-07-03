@@ -1,3 +1,4 @@
+export Overwatch from 'assets/Overwatch.svg';
 export Discord from 'assets/Discord.svg';
 export Spotify from 'assets/Spotify.svg';
 export Twitter from 'assets/Twitter.svg';

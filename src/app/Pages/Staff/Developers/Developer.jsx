@@ -14,7 +14,7 @@ export default React.memo(({ name, picture, social, about }) => (
         src={picture}
       />
       <p className="staff-about-parent">
-        <div className={about.length > 100 ? 'staff-about' : ''}>
+        <div className={about.length > 120 ? 'staff-about' : ''}>
           {about}
         </div>
       </p>
