@@ -14,9 +14,10 @@ export default React.memo(({ name, picture, social, about }) => (
         src={picture}
       />
       <p className="staff-about-parent">
-        <div className={about.length > 120 ? 'staff-about' : ''}>
-          {about}
-        </div>
+        <div
+          className={about.length > 120 ? 'staff-about' : ''}
+          dangerouslySetInnerHTML={{ __html: about }}
+        />
       </p>
     </div>
     <div className="staff-accounts">
