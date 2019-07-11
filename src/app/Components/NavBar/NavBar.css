@@ -1,12 +1,11 @@
 .navbar {
-  height: 100px;
+  height: 75px;
   display: flex;
-  background: #23272a;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 32em;
+  padding-right: 32em;
   z-index: 999;
   font-family: 'Montserrat';
 }
@@ -70,7 +69,7 @@
 .DM-nav {
   color: white;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em;
   margin-left: 40px;
 }
 
