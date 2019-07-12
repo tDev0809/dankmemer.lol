@@ -4,8 +4,8 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding-left: 32em;
-  padding-right: 32em;
+  padding-left: 16%;
+  padding-right: 16%;
   z-index: 999;
   font-family: 'Montserrat';
 }
