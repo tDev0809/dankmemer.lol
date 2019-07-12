@@ -2,6 +2,7 @@
   font-size: 2.5em;
   font-style: italic;
   margin-bottom: 4px;
+  margin-top: 0.5em;
   font-family: 'Lato';
   text-align: center;
 }
@@ -25,7 +26,7 @@
 
 .blog-content {
   font-family: 'Lato';
-  margin: 2px 22%;
+  margin: 15px 25%;
   background: #23272A;
   padding: 15px;
   border-radius: 5px;
@@ -51,7 +52,11 @@
 
 @media only screen and (max-width: 786px) {
   .blog-content {
-    margin: 2px 8px;
+    margin: 15px 8px;
+  }
+
+  .blog-header {
+    margin-top: 0.5em;
   }
 
   .blog-header-img img {

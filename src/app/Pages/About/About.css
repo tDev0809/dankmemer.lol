@@ -20,3 +20,10 @@
   padding: 0px 20%;
   margin-top: 75px;
 }
+
+@media only screen and (max-width: 786px) {
+  .good-spacing {
+    margin-top: 3em;
+    padding: 0px 0.5em;
+  }
+}

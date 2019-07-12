@@ -84,7 +84,7 @@ class Appeals extends Component {
   }
 
   render () {
-    if (!this.props.loggedIn) {
+    /*if (!this.props.loggedIn) {
       return (
         <div className="content appeal">
           <header className="header">
@@ -92,7 +92,7 @@ class Appeals extends Component {
           </header>
         </div>
       );
-    }
+    }*/
 
     if (this.state.finished) {
       return (

@@ -67,3 +67,52 @@ section {
 }
 
 .index > .home { justify-content: center; }
+
+@media only screen and (max-width: 786px) {
+  section {
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 5em;
+
+    img {
+      height: auto!important;
+      width: 80%!important;
+      margin: 0px 0px 18px;
+    }
+
+    &.reverse {
+      flex-direction: column!important;
+
+      img {
+        height: auto!important;
+        width: 80%!important;
+        margin: 0px 0px 18px;
+      }
+    }
+
+    .text-area {
+      width: 90%;
+    }
+  }
+  .home-slogan {
+    align-content: center!important;
+    text-align: center!important;
+    margin: 10px!important;
+  }
+
+  .hero {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center!important;
+    justify-content: center!important;
+
+    a {
+      padding: 8px 4px!important;
+    }
+  }
+}

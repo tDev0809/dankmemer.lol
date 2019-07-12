@@ -90,22 +90,25 @@
 
 @media only screen and (max-width: 786px) {
   .DM-nav {
-    margin: 0;
+    margin: 15px 0px 0px 0px;
   }
   .navbar {
     justify-content: center;
     height: auto;
+    padding: 0px;
   }
   .nav-links {
     display: flex;
     flex-wrap: wrap;
     z-index: 999;
-    margin: 0 8px;
+    margin: 10px 8px 0px;
     padding: 0;
-    background: #23272a;
     width: 100%;
     justify-content: center;
     align-items: center;
+  }
+  .nav-link {
+    margin: 5px;
   }
   .user a {
     text-align: center;

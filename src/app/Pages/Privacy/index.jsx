@@ -3,11 +3,11 @@ import './Privacy.scss';
 
 export default React.memo(() => (
   <div className="content-legal">
-    <h1>Privacy Policy</h1>
+    <h1 className="title">Privacy Policy</h1>
     
     <p>Effective date: February 02, 2019</p>
     
-    <p>Dank Memer LLC ("us", "we", or "our") operates the https://www.dankmemer.lol website (hereinafter referred to as the "Service").</p>
+    <p>Melms Media LLC ("us", "we", or "our") operates the https://www.dankmemer.lol website (hereinafter referred to as the "Service").</p>
     
     <p>This page informs you of our policies regarding the collection, use and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
     
@@ -17,7 +17,7 @@ export default React.memo(() => (
     <ul>
       <li>
         <p><strong>Service</strong></p>
-        <p>Service is the https://www.dankmemer.lol website operated by Dank Memer LLC</p>
+        <p>Service is the https://www.dankmemer.lol website operated by Melms Media LLC</p>
       </li>
       <li>
         <p><strong>Personal Data</strong></p>
@@ -79,7 +79,7 @@ export default React.memo(() => (
     </ul>
     
     <h2>Use of Data</h2> 
-    <p>Dank Memer LLC uses the collected data for various purposes:</p>
+    <p>Melms Media LLC uses the collected data for various purposes:</p>
     <ul>
       <li>To provide and maintain our Service</li>
       <li>To notify you about changes to our Service</li>
@@ -93,8 +93,8 @@ export default React.memo(() => (
     
     
     <h2>Legal Basis for Processing Personal Data under the General Data Protection Regulation (GDPR)</h2>
-    <p>If you are from the European Economic Area (EEA), Dank Memer LLC legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Data we collect and the specific context in which we collect it.</p>
-    <p>Dank Memer LLC may process your Personal Data because:</p>
+    <p>If you are from the European Economic Area (EEA), Melms Media LLC legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Data we collect and the specific context in which we collect it.</p>
+    <p>Melms Media LLC may process your Personal Data because:</p>
     <ul>
       <li>We need to perform a contract with you</li>
       <li>You have given us permission to do so</li>
@@ -105,22 +105,22 @@ export default React.memo(() => (
     
     
     <h2>Retention of Data</h2>
-    <p>Dank Memer LLC will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes and enforce our legal agreements and policies.</p>
-    <p>Dank Memer LLC will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer periods.</p>
+    <p>Melms Media LLC will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes and enforce our legal agreements and policies.</p>
+    <p>Melms Media LLC will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer periods.</p>
     
     <h2>Transfer of Data</h2>
     <p>Your information, including Personal Data, may be transferred to - and maintained on - computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.</p>
     <p>If you are located outside United States and choose to provide information to us, please note that we transfer the data, including Personal Data, to United States and process it there.</p>
     <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
-    <p>Dank Memer LLC will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
+    <p>Melms Media LLC will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
     
     <h2>Disclosure of Data</h2>
     
     <h3>Legal Requirements</h3>
-    <p>Dank Memer LLC may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
+    <p>Melms Media LLC may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
     <ul>
       <li>To comply with a legal obligation</li>
-      <li>To protect and defend the rights or property of Dank Memer LLC</li>
+      <li>To protect and defend the rights or property of Melms Media LLC</li>
       <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
       <li>To protect the personal safety of users of the Service or the public</li>
       <li>To protect against legal liability</li>
@@ -134,7 +134,7 @@ export default React.memo(() => (
     <p>You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser.</p>
     
     <h2>Your Data Protection Rights under the General Data Protection Regulation (GDPR)</h2>
-    <p>If you are a resident of the European Economic Area (EEA), you have certain data protection rights. Dank Memer LLC aims to take reasonable steps to allow you to correct, amend, delete or limit the use of your Personal Data.</p>
+    <p>If you are a resident of the European Economic Area (EEA), you have certain data protection rights. Melms Media LLC aims to take reasonable steps to allow you to correct, amend, delete or limit the use of your Personal Data.</p>
     <p>If you wish to be informed about what Personal Data we hold about you and if you want it to be removed from our systems, please contact us.</p>
     <p>In certain circumstances, you have the following data protection rights:</p>
     <ul>
@@ -171,7 +171,7 @@ export default React.memo(() => (
       <li>
         <p>
           <strong>The right to withdraw consent.</strong>
-          You also have the right to withdraw your consent at any time where Dank Memer LLC relied on your consent to process your personal information.
+          You also have the right to withdraw your consent at any time where Melms Media LLC relied on your consent to process your personal information.
         </p>
       </li>
     </ul>

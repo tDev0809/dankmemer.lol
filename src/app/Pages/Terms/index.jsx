@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import './Terms.scss';
+
 
 export default React.memo(() => (
   <div className="content-legal">
-    <h1>Terms of Service</h1>
+    <h1 className="title">Terms of Service</h1>
 
 
-    <p>Last updated: February 02, 2019</p>
+    <p>Last updated: July 7th, 2019</p>
 
 
     <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://www.dankmemer.lol website (the "Service") operated by Melms Media LLC ("us", "we", or "our").</p>

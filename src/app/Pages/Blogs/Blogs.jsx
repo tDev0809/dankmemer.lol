@@ -18,7 +18,7 @@ export default class Blogs extends React.Component {
     return (
       <div className="content">
         <header className="header">
-          Blogs
+          <span className="blurple">BLOGS</span>
         </header>
         <div className="blogs">
           {this.state.blogs.map(blog => (

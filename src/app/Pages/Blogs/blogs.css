@@ -1,7 +1,8 @@
 .header {
   text-align: center;
-  font-size: 48px;
-  font-style: italic;
+  font-size: 3em;
+  font-family: 'Montserrat';
+  font-weight: bold;
   margin-bottom: 4px;
   color: white;
 }
