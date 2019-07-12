@@ -38,7 +38,6 @@ a {
 }
 
 .rules {
-  display: flex;
   text-align: center;
   flex-wrap: wrap;
   font-family: 'Lato';
