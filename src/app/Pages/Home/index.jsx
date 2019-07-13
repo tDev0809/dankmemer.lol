@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../../Components/Button/index.jsx';
-import MemerIMG from 'assets/memer.png';
-import MemesIMG from 'assets/memes.png';
-import MusicIMG from 'assets/music.png';
+import MemerIMG from 'assets/memer.webp';
+import MemesIMG from 'assets/memes.webp';
+import MusicIMG from 'assets/music.webp';
 import './Home.scss';
 
 export default React.memo(() => (
