@@ -16,7 +16,7 @@ export default React.memo(() => (
         <Button link="https://invite.dankmemer.lol">
           Add Bot
         </Button>
-        <Button link="https://invite.dankmemer.lol">
+        <Button link="/commands">
           Commands
         </Button>
         <Button link="https://discord.gg/meme">

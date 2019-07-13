@@ -38,7 +38,7 @@ section {
   }
 
   img {
-    height: 32rem;
+    height: 28rem;
     margin-right: 8rem;
   }
 
@@ -98,10 +98,11 @@ section {
     align-content: center!important;
     text-align: center!important;
     margin: 10px!important;
+    font-size: 2em!important;
   }
 
   .hero {
-    margin-top: 3em;
+    margin-top: 2.5em;
     margin-bottom: 3em;
   }
 
@@ -114,5 +115,11 @@ section {
     a {
       padding: 8px 4px!important;
     }
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  .memer-img {
+    height: 10rem;
   }
 }
