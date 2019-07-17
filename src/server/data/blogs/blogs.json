@@ -1,19 +1,32 @@
 [
   {
+    "filename": "what-makes-us-special.md",
+    "name": "What makes Dank Memer special?",
+    "date": 1563390441432,
+    "desc": "There are literally thousands of Discord Bots you can add to your server. Why should you choose Dank Memer over another?",
+    "author": "Melmsie"
+  },
+  {
     "filename": "6-21-postmortem.md",
-    "name": "6/21 Port Mortem",
-    "date": 1561177649582
+    "name": "6/21 Post Mortem",
+    "date": 1561177649582,
+    "desc": "A post mortem report of the events unfolding on June 21st",
+    "author": "Melmsie"
   },
   {
     "filename": "may-first-update.md",
     "name": "Dank Memer May 1st Update",
     "date": 1556727736787,
     "thumbnail": "https://i.imgur.com/CJGhXp9.png",
-    "image": "https://i.imgur.com/Fu1htfP.png"
+    "image": "https://i.imgur.com/Fu1htfP.png",
+    "desc": "This post details the changes made in our update on May 1st, 2019.",
+    "author": "Melmsie"
   },
   {
     "filename": "appeal-website-update.md",
     "name": "Dank Memer Website Update",
-    "date": 1555855519171
+    "date": 1555855519171,
+    "desc": "This post details the changes made to our website in April 2019",
+    "author": "Melmsie"
   }
 ]

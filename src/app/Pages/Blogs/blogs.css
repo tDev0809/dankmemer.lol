@@ -3,7 +3,7 @@
   font-size: 3em;
   font-family: 'Montserrat';
   font-weight: bold;
-  margin-bottom: 4px;
+  margin-top: 5%;
   color: white;
 }
 
@@ -12,40 +12,45 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: fit-content;
-  flex-direction: column;
+  flex-direction: row;
   text-decoration: none;
   color: #fff;
+  margin: 2% 8%;
 }
 
 .blog {
   background: #23272A;
-  margin: 10px 0;
-  padding: 10px;
+  margin: 10px 10px;
+  padding: 15px;
+  width: 38vh;
+  height: 10vh;
   border-radius: 5px;
   text-decoration: none;
   color: #FFF;
-  display: flex;
-  flex-direction: row;
 }
 
-.blog-img {
-  margin: auto 0;
-}
-
-.blog-img img {
-  height: 46px;
-  margin-right: 4px;
-}
-
-.blog-info {
-  text-align: left;
+.blog:hover {
+  background: #1F2326;
 }
 
 .blog-name {
-  font-size: 32px;
+  font-size: 2em;
+}
+
+.blog-desc {
+  font-size: 1.1em;
+  text-align: center!important;
 }
 
 .blog-date {
-  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+@media only screen and (max-width: 786px) {
+  .blog {
+    height: auto;
+  }
+  .blogs {
+    margin: 0% 5%;
+  }
 }

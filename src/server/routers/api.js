@@ -118,7 +118,9 @@ router.get('/blogs', (req, res) =>
     name: blog.name,
     date: blog.date,
     thumbnail: blog.thumbnail,
-    image: blog.image
+    image: blog.image,
+    author: blog.author,
+    desc: blog.desc
   })))
 );
 

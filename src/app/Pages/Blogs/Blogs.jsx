@@ -18,7 +18,7 @@ export default class Blogs extends React.Component {
     return (
       <div className="content">
         <header className="header">
-          <span className="blurple">BLOGS</span>
+          <span>BLOGS</span>
         </header>
         <div className="blogs">
           {this.state.blogs.map(blog => (
@@ -27,17 +27,16 @@ export default class Blogs extends React.Component {
               key={blog.id}
               to={`/blogs/${blog.id}`}
             >
-              {blog.thumbnail &&
-                <div className="blog-img">
-                  <img src={blog.thumbnail} />
-                </div>}
               <div className="blog-info">
-                <div className="blog-name">
+                <div className="blog-name blurple">
                   {blog.name}
                 </div>
                 <div className="blog-date">
-                  {new Date(blog.date).toLocaleString().split(',')[0]}
+                  Posted {gibbeDatePls(blog.date)} by {blog.author}
                 </div>
+                <span className="blog-desc">
+                  {blog.desc}
+                </span>
               </div>
             </Link>
           ))}
@@ -45,4 +44,16 @@ export default class Blogs extends React.Component {
       </div>
     );
   }
+}
+
+function gibbeDatePls(date) {
+  date = new Date(date);
+  const month = date.toLocaleString('default', { month: 'long' });
+  const day = getOrdinalNum(date.getDate());
+  return `${month} ${day}`;
+}
+
+// This function courtesy of SO bc I'm lazy https://stackoverflow.com/a/44418732/7187153
+function getOrdinalNum(n) {
+  return n + (n > 0 ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10] : '');
 }

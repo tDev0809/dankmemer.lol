@@ -1,10 +1,9 @@
 .blog-header {
   font-size: 2.5em;
   font-style: italic;
-  margin-bottom: 4px;
-  margin-top: 0.5em;
+  margin: 0.5em 25% 4px;
   font-family: 'Lato';
-  text-align: center;
+  text-align: left;
 }
 
 .blog-header-img {
@@ -18,10 +17,10 @@
 }
 
 .blog-timestamp {
+  margin: 0 25%;
   font-size: 1em;
-  font-style: italic;
   font-family: 'Lato';
-  text-align: center;
+  text-align: left;
 }
 
 .blog-content {
@@ -52,11 +51,17 @@
 
 @media only screen and (max-width: 786px) {
   .blog-content {
-    margin: 15px 8px;
+    margin: 15px 3vh;
   }
 
   .blog-header {
-    margin-top: 0.5em;
+    margin: 0.5em 3vh 0vh;
+    text-align: center;
+  }
+
+  .blog-timestamp {
+    margin: 0 3vh;
+    text-align: center;
   }
 
   .blog-header-img img {
