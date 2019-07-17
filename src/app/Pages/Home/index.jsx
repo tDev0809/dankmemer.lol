@@ -1,8 +1,10 @@
 import React from 'react';
 import Button from '../../Components/Button/index.jsx';
-import MemerIMG from 'assets/memer.webp';
-import MemesIMG from 'assets/memes.webp';
-import MusicIMG from 'assets/music.webp';
+import MemerIMG from 'assets/memer.png';
+import MemesIMG from 'assets/memes.png';
+import MusicIMG from 'assets/music.png';
+import ModIMG from 'assets/mod.png';
+import CurrencyIMG from 'assets/currency.png';
 import './Home.scss';
 
 export default React.memo(() => (
@@ -40,6 +42,24 @@ export default React.memo(() => (
           MUSIC FEATURES
         </span>
         <p className="section-body">Dank Memer has completely free music for all servers to use! With additions like custom playlists, Spotify support, and bass boosting, you can't go wrong with us!</p>
+        </div>
+    </section>
+    <section>
+      <img height="15rem!important;" alt="Dank Memer has many moderation bot commands to add security to your discord server" src={ModIMG}/>
+      <div className="text-area">
+        <span className="section-title blurple">
+          MODERATION COMMANDS
+        </span>
+        <p className="section-body">Dank Memer has refreshingly in depth moderation system, without taking a PHD to know how to set up and understand it! From basic commands like bans and mutes, to more advanced commands such as mass nicknames and "decancering" usernames that are hard to read, we have it all!</p>
+        </div>
+    </section>
+    <section className="reverse">
+      <img height="15rem!important;" alt="Dank Memer is an in depth and unqiue + funny currency bot along with all our other features" src={CurrencyIMG}/>
+      <div className="text-area">
+        <span className="section-title blurple">
+          CURRENCY FEATURES
+        </span>
+        <p className="section-body">Dank Memer has one of the most unique and fun currency systems of any Discord Bots. With stealing, gambling, bankrobbing, unique/funny items, and so much more, we'll spice up your server ;)</p>
         </div>
     </section>
   </main>
