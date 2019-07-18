@@ -27,26 +27,29 @@ export default () => {
   });
 
   return (
-    <div className="psuedoBody">
-      <NavBar />
-      <Switch>
-        <Suspense fallback={<div></div>}>
-          <Route exact strict component={() => <Home />} path="/" />
-          <Route component={() => <Commands />} path="/commands" />
-          <Route component={() => <Staff />} path="/staff" />
-          <Route component={() => <Loot />} path="/loot" />
-          <Route component={() => <Rules />} path="/rules" />
-          <Route component={() => <About />} path="/about" />
-          <Route component={(props) => <Blogs {...props} />} path="/blogs" />
-          <Route component={() => <Appeals />} path="/appeals/" />
-          <Route component={() => <Admin />} path="/admin" />
-          <Route component={() => <Terms />} path="/terms" />
-          <Route component={() => <Landing />} path="/landing" />
-          <Route component={() => <Refunds />} path="/refunds" />
-          <Route component={() => <Privacy />} path="/privacy" />
-        </Suspense>
-      </Switch>
-      <Footer />
-    </div>
+    <>
+      <div className="psuedoBody">
+        <NavBar />
+        <Switch>
+          <Suspense fallback={<div></div>}>
+            <Route exact strict component={() => <Home />} path="/" />
+            <Route component={() => <Commands />} path="/commands" />
+            <Route component={() => <Staff />} path="/staff" />
+            <Route component={() => <Loot />} path="/loot" />
+            <Route component={() => <Rules />} path="/rules" />
+            <Route component={() => <About />} path="/about" />
+            <Route component={(props) => <Blogs {...props} />} path="/blogs" />
+            <Route component={() => <Appeals />} path="/appeals/" />
+            <Route component={() => <Admin />} path="/admin" />
+            <Route component={() => <Terms />} path="/terms" />
+            <Route component={() => <Landing />} path="/landing" />
+            <Route component={() => <Refunds />} path="/refunds" />
+            <Route component={() => <Privacy />} path="/privacy" />
+          </Suspense>
+        </Switch>
+        <Footer />
+      </div>
+      <div id='modals' />
+    </>
   );
 }
