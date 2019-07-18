@@ -10,10 +10,10 @@ Yes, we are a multipurpose bot. We do many many many things, but we take pride i
 What we REALLY excel at however, is doing what every other bot is doing, but in a MEMEY way. For instance, instead of saying "this user was banned", we say stuff like "good riddance idiot". Almost every aspect of our bot is memey at heart, and we think that adds a really deep enjoyment factor to using our stuff.
 
 ### What makes Dank Memer better?
-Plain and simply, we're devoted and we listen. We spend a ton of time making our bot the best it can be, and we're one of very few bots that really takes in user suggestions for improvements and additions. We believe this is a very large reason we are on as many servers as we are (over 1 million). Lots of developers decide they know whats best, and don't really care what the user has to say. We don't.
+Plain and simply, we're devoted and we listen. We spend a ton of time making our bot the best it can be, and we're one of very few bots that really takes in user suggestions for improvements and additions. We believe this is a very large reason we are on as many servers as we are (over 1 million). Lots of developers decide they know whats best, and don't really care what the user has to say. We don't, we work together with our community to decide the best way forward for everyone.
 
 ### How is Dank Memer adapting?
-As other bots pop up, mimicking our functions or doing them better than us, we track what users want. Your feedback is invaluable, and we are constantly talking about what to implement or improve next. We are adapting to be even more mutlipurpose, without being overwhelming.
+As other bots pop up, mimicking our functions or doing them better than us, we track what users want. Your feedback is invaluable, and we are constantly talking about what to implement or improve next. We are adapting to be even more multipurpose, without being overwhelming.
 
 As new technology comes out, we experiment with it to make sure our back-end is as fast and efficient as possible. This also includes when Discord adds new things. We were one of the first bots to implement slowmode support, and we always keep our eyes on the horizon looking for more ways to closely integrate with Discord!
 

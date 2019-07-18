@@ -17,7 +17,6 @@
       "social": {
         "Discord": "https://discord.gg/ks9c2Cd",
         "GitHub": "https://github.com/melmsie",
-        "Spotify": "https://open.spotify.com/user/melmsaustin",
         "Twitter": "https://twitter.com/realmelmsie",
         "Twitch": "https://www.twitch.tv/melmsie",
         "YouTube": "https://www.youtube.com/c/Melmsie",
@@ -215,14 +214,6 @@
     }
   ],
   "Honorable Mentions": [
-    {
-      "name": "Paradox",
-      "about": "Just a small time baguette, living in a croissant world",
-      "social": {
-        "GitHub": "https://github.com/ParadoxOrigins",
-        "Twitter": "https://twitter.com/Paradox_Origins"
-      }
-    },
     {
       "name": "CyberRonin",
       "about": "Maniac who loves programming. I'm a full stack developer trying to get into UI/UX!",
