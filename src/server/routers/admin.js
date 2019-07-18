@@ -62,7 +62,7 @@ router.get('/findTransaction', async (req, res) => {
       case 'Payment ID':
         dbQuery['$or'] = [
           { captureID: valueRX },
-          { paymentID: valueRX }
+          { orderID: valueRX }
         ];
     }
   }
