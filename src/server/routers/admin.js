@@ -40,4 +40,38 @@ router.get('/checkBan', async (req, res) => {
   );
 });
 
+router.get('/findTransaction', async (req, res) => {
+  const dbQuery = {};
+
+  for (const [ query, value ] of Object.entries(req.query)) {
+    const valueRX = RegExp(value, 'i');
+
+    switch (query) {
+      case 'Discord ID':
+        dbQuery['payer.userID'] = valueRX;
+        break;
+
+      case 'PayPal E-Mail':
+        dbQuery['payer.paypalEmail'] = valueRX;
+        break;
+
+      case 'Full Name':
+        dbQuery['payer.name'] = valueRX;
+        break;
+
+      case 'Payment ID':
+        dbQuery['$or'] = [
+          { captureID: valueRX },
+          { paymentID: valueRX }
+        ];
+    }
+  }
+
+  res.status(200).json(
+    await db.collection('purchases')
+      .find(dbQuery)
+      .toArray()
+  );
+});
+
 module.exports = router;
