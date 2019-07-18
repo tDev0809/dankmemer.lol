@@ -4,7 +4,6 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
 const fs = require('fs');
-const WorkboxPlugin = require('workbox-webpack-plugin');
 
 process.env.NODE_ENV = 'development';
 
@@ -93,10 +92,6 @@ module.exports = {
       host: 'localhost',
       port: 3001,
       proxy: 'http://localhost'
-    }),
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true
     }),
     {
       apply: (compiler) =>
