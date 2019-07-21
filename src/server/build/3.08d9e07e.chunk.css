@@ -1,0 +1,193 @@
+@keyframes peek {
+  100% {
+    transform: translate(var(--delta-x), var(--delta-y)) rotate(var(--direction));
+  }
+}
+.loot {
+  text-align: center;
+  font-size: 22px;
+}
+.loot .boxes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+  flex-direction: row;
+}
+.loot .boxes .box-content {
+  background-color: #2C2F33;
+  position: relative;
+  border: 1px solid white;
+  transition: color, border 0.3s;
+  border-radius: 4px;
+  z-index: 1;
+}
+.loot .boxes .box-content.active {
+  z-index: 3;
+  color: #7289DA;
+  border: 1px solid #7289DA;
+}
+.loot .boxes .box {
+  background-color: #2C2F33;
+  position: relative;
+  width: 380px;
+  float: left;
+  cursor: pointer;
+  user-select: none;
+  flex-direction: column;
+  padding: 5px;
+  margin: 5px;
+}
+.loot .boxes .box-header {
+  font-weight: bold;
+  font-size: 22px;
+}
+.loot .boxes .box-piss {
+  color: #FFD700;
+}
+.loot .boxes .box-price {
+  font-size: 28px;
+  margin-top: 6px;
+  color: #85bb65;
+}
+.loot .boxes .box-description {
+  font-style: italic;
+  font-size: 23px;
+  margin-bottom: 6px;
+}
+.loot .boxes .peepo {
+  animation: peek 0.8s forwards;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 160px;
+  top: 49px;
+  margin-left: var(--offset-x);
+  margin-top: var(--offset-y);
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.loot .tos-container {
+  display: inline;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+.loot .tos-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.loot .tos-container input:checked ~ .tos-checkmark {
+  background-color: #7289DA;
+  border-color: #7289DA;
+}
+.loot .tos-container input:checked ~ .tos-checkmark:after {
+  display: block;
+}
+.loot .tos-container .tos-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 2px solid rgba(205, 205, 205, 0.2);
+  border-radius: 2px;
+  margin-top: -2px;
+  background-color: #23272A;
+}
+.loot .tos-container .tos-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 8px;
+  top: 3px;
+  width: 7px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.loot .box-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  font-size: 40px;
+  color: #fff;
+  background: #23272A;
+  border: 1px solid #7289DA;
+  width: 49.5px;
+  padding: 3px 3px 2px;
+  margin-right: 3px;
+  text-align: center;
+}
+.loot .box-input::-webkit-inner-spin-button, .loot .box-input::-webkit-outer-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  display: none;
+  margin: 0;
+}
+.loot .input-btn {
+  user-select: none;
+  cursor: pointer;
+  font-size: 40px;
+  border: 1px solid #7289DA;
+  margin: 0px 3px;
+  padding: 0px 4px;
+  padding-bottom: 2px;
+  text-align: center;
+}
+.loot .selected-box-name {
+  color: #7289DA;
+}
+.loot a {
+  text-decoration: none;
+  color: #7289DA;
+}
+.loot .fancy-header {
+  font-size: 30px;
+  font-style: italic;
+  margin-bottom: 4px;
+  color: white;
+}
+.loot .red {
+  color: #CA2D36;
+}
+.loot .divider {
+  width: 100%;
+  height: 4.1px;
+  background-color: #23272a;
+  margin: 28px 0px;
+}
+.loot .header {
+  font-size: 32px;
+}
+.loot .dolla-dolla-bills {
+  font-size: 42px;
+  color: #85bb65;
+}
+.loot .green {
+  color: #85bb65;
+}
+.loot .discount-notification, .loot .flash-discount-notification {
+  font-style: italic;
+  font-size: 16px;
+  z-index: 6;
+  position: relative;
+  background: #2C2F33;
+}
+.loot .flash-discount-notification {
+  color: #f44336;
+}
+.loot .discount-info {
+  color: #FFF;
+  font-size: 18px;
+}
+.loot .absolute-unit {
+  font-size: 48px;
+}
