@@ -3,31 +3,35 @@
 
   .categories {
     float: left;
+    margin-top: 5vh;
 
     .category {
-      font-size: 3.2vh;
-      margin: 1vh 0;
+      font-size: 2vh;
+      margin: 0.6vh 0 0 0;
       background: #23272a;
-      padding: 0.6vh;
-      border-radius: 5px;
+      padding: 0.8vh;
+      border-radius: 8px;
       border: rgba(0, 0, 0, 0.5);
       cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
       position: relative;
 
       &.selected {
         border: 2px solid #7289DA;
+        color: #7289DA;
       }
 
       &-img {
-        height: 3.2vh;
-        width: 3.2vh;
+        height: 2vh;
+        width: 2vh;
         display: inline-block;
         bottom: 1vh;
         position: absolute;
       }
 
       span {
-        margin-left: 3.75vh;
+        margin-left: 2.75vh;
       }
     }
   }
@@ -45,16 +49,16 @@
   }
 
   .search-bar {
-    padding: 0.5vh;
+    padding: 0.8vh;
     margin: 0.5vh;
-    margin-top: 1vh;
+    margin-top: 5.5vh;
     outline: none !important;
     border: 2px solid #23272A;
-    border-radius: 3px;
+    border-radius: 8px;
     color: #fff;
     background: rgba(246, 246, 247, 0.1);
     resize: none;
-    font-size: 2.4vh;
+    font-size: 2vh;
     width: calc(100% - 24px);
 
     &.active {
@@ -83,10 +87,11 @@
     }
 
     .command {
-      margin: 0.5vh;
+      margin: 0.6vh 0 0 0.5vh;
+      cursor: pointer;
       background: #23272a;
-      padding: 0.5vh;
-      border-radius: 5px;
+      padding: 0.8vh;
+      border-radius: 8px;
       border: rgba(0, 0, 0, 0.5);
 
       &.expanded {
@@ -94,7 +99,8 @@
       }
 
       .command-header {
-        font-size: 2.4vh;
+        font-size: 1.5vh;
+        font-weight: bold;
 
         &-category {
           float: right;

@@ -120,7 +120,7 @@ export default class Commands extends PureComponent {
                       expandedCommand: expandedCommand === command ? null : command
                     })}>
 
-                    <div className='command-header'>
+                    <div className='command-header blurple'>
                       {command.triggers[0]}
                       <span className='command-header-category'>
                         {selectedCategory === 'search-bar' && (
