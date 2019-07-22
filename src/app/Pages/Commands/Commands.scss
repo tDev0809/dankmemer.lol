@@ -3,11 +3,10 @@
 
   .categories {
     float: left;
-    margin-top: 5vh;
 
     .category {
       font-size: 2vh;
-      margin: 0.6vh 0 0 0;
+      margin-top: 0.6vh;
       background: #23272a;
       padding: 0.8vh;
       border-radius: 8px;
@@ -50,8 +49,7 @@
 
   .search-bar {
     padding: 0.8vh;
-    margin: 0.5vh;
-    margin-top: 5.5vh;
+    margin: 0.6vh;
     outline: none !important;
     border: 2px solid #23272A;
     border-radius: 8px;
