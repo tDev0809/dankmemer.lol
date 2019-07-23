@@ -26,7 +26,7 @@
       "name": "Dank Box",
       "id": 2,
       "description": "Dank rewards for a dank user.",
-      "yield": "1000 ~ 10000",
+      "yield": "3000 ~ 15000",
       "randomItem": {
         "keyword": "high",
         "chance": 0.94
