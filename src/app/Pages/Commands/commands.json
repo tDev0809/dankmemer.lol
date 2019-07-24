@@ -182,7 +182,8 @@
       "perms": [
         "sendMessages",
         "manageWebhooks"
-      ]
+      ],
+      "premiumServer": true
     },
     {
       "triggers": [
@@ -193,7 +194,8 @@
       "perms": [
         "sendMessages",
         "manageWebhooks"
-      ]
+      ],
+      "premiumServer": true
     },
     {
       "triggers": [
@@ -293,7 +295,8 @@
       "description": "Add or remove the current guild as a premium server, or leave the arguments blank to list all of your premium servers.\n\nYou can remove a premium guild by its ID by specifying the ID after `remove`, like `pls premiumserver remove [id]`, you can get the ID by listing your redeemed premium servers",
       "perms": [
         "sendMessages"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -576,7 +579,8 @@
       "description": "redeem your cool donor rewards fortnightly!!",
       "perms": [
         "sendMessages"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -691,7 +695,8 @@
       "description": "Get your weekly injection of meme coins",
       "perms": [
         "sendMessages"
-      ]
+      ],
+      "premiumServer": true
     },
     {
       "triggers": [
@@ -2629,7 +2634,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2641,7 +2647,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2652,7 +2659,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2663,7 +2671,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2675,7 +2684,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2711,7 +2721,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2722,7 +2733,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2733,7 +2745,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2744,7 +2757,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2755,7 +2769,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2766,7 +2781,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2778,7 +2794,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2789,7 +2806,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2800,7 +2818,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2812,7 +2831,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2823,7 +2843,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2834,7 +2855,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2846,7 +2868,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2870,7 +2893,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2881,7 +2905,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2892,7 +2917,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2904,7 +2930,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2926,7 +2953,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     },
     {
       "triggers": [
@@ -2937,7 +2965,8 @@
       "perms": [
         "sendMessages",
         "embedLinks"
-      ]
+      ],
+      "donorOnly": true
     }
   ],
   "Sound": [

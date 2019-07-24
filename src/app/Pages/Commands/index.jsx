@@ -1,25 +1,15 @@
 import React, { PureComponent } from 'react';
 import commands from './commands.json';
 import sleep from '../../util/sleep';
+import twemoji from './twemoji';
 
 import './Commands.scss';
-
-const categoryEmojis = {
-  'Animals': 'https://discordapp.com/assets/d8225d4b952c1b5cc325e6e827da212a.svg',
-  'Config': 'https://discordapp.com/assets/c61c8e1ffdcbf98496bc098c35f0f694.svg',
-  'Currency': 'https://discordapp.com/assets/ccebe0b729ff7530c5e37dbbd9f9938c.svg',
-  'Fun': 'https://discordapp.com/assets/f0835a46b501ae0a182874b003fdbb65.svg',
-  'Games': 'https://discordapp.com/assets/1adc9faf91526bb7a2c1d0b7b3516cae.svg',
-  'Image': 'https://discordapp.com/assets/57aea9031650f92408cb1d43f355fc74.svg',
-  'Memey': 'https://discordapp.com/assets/cae9e3b02af6e987442df2953de026fc.svg',
-  'Moderation': 'https://discordapp.com/assets/596bd0f8541debff8d44326e840ea085.svg',
-  'NSFW': 'https://discordapp.com/assets/1b6c783f128fe9fa93aee4d32a7013d6.svg',
-  'Sound': 'https://discordapp.com/assets/fd2173327b6bf2cd86fdcc1dd6d4dee8.svg',
-  'Text': 'https://discordapp.com/assets/a61b14400491c0c070e80c99a05cda82.svg',
-  'Utility': 'https://discordapp.com/assets/78200fb6296bd2ab02a834120606ae82.svg'
-};
+if (window !== window.parent) {
+  delete commands.NSFW;
+}
 
 export default class Commands extends PureComponent {
+  commandsRef = React.createRef();
   lastTyped = Date.now();
   state = {
     selectedCategory: Object.keys(commands)[0],
@@ -85,7 +75,7 @@ export default class Commands extends PureComponent {
                   key={category}
                   onClick={() => this.setCategory(category)}
                 >
-                  <div className='category-img' style={{ background: `url('${categoryEmojis[category]}')` }} />
+                  <div className='category-img' style={{ background: `url('${twemoji[category]}')` }} />
                   <span>
                     {category}
                   </span>
@@ -101,7 +91,7 @@ export default class Commands extends PureComponent {
               onKeyUp={ev => this.updateSearch(ev)}
               onFocus={() => this.setCategory('search-bar')}
             />
-            <div className={`${transitionState} commands`}>
+            <div className={`${transitionState} commands`} ref={this.commandsRef}>
               {(selectedCategory !== 'search-bar'
                 ? commands[selectedCategory]
                 : Object.values(commands)
@@ -122,10 +112,18 @@ export default class Commands extends PureComponent {
 
                     <div className='command-header blurple'>
                       {command.triggers[0]}
+                      {(command.premiumServer || command.donorOnly) && (
+                        <img
+                          className='premium-star'
+                          title={command.premiumServer ? 'Premium Server Command' : 'Donor Command'}
+                          src={twemoji.Star}
+                        />
+                      )}
+
                       <span className='command-header-category'>
                         {selectedCategory === 'search-bar' && (
                           <img src={
-                            categoryEmojis[Object.keys(commands).find(category => (
+                            twemoji[Object.keys(commands).find(category => (
                               commands[category].find(categoryCommand => (
                                 categoryCommand.triggers[0] === command.triggers[0]
                               ))

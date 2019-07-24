@@ -100,6 +100,12 @@
         font-size: 1.5vh;
         font-weight: bold;
 
+        .premium-star {
+          height: 1.5vh;
+          width: auto;
+          margin-left: 5px;
+        }
+
         &-category {
           float: right;
           img {
