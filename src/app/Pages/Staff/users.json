@@ -117,11 +117,6 @@
       }
     },
     {
-      "name": "Benz",
-      "about": "Always a dull moment.",
-      "social": {}
-    },
-    {
       "name": "Kayla",
       "about": "Insert pretentious stuff about myself here",
       "social": {
@@ -154,7 +149,7 @@
     },
     {
       "name": "Nelly",
-      "about": "do <code>-nelly</code>; that's all you need to know",
+      "about": "Waifu material.",
       "social": {
         "Spotify": "https://open.spotify.com/user/f8rd443tvo37m87xntw4oen45",
         "Twitch": "https://www.twitch.tv/stereotypicaly",
@@ -170,7 +165,7 @@
       "name": "Nathan",
       "about": "Sometimes, a few words can sum up the wisdom of a thousand.",
       "social": {
-        "Discord": "https://discord.gg/kmnQETs"
+        "Discord": "https://discord.gg/64GwnHH"
       }
     },
     {
@@ -196,14 +191,6 @@
       "name": "Tintin",
       "about": "<a style=\"color: #7289DA;\" href=\"https://aeth.dev/eaC\">the invisible character</a>",
       "social": {}
-    },
-    {
-      "name": "Markie",
-      "about": "I'm attractive to kpop, I also like bunnies owo",
-      "social": {
-        "Twitter": "https://twitter.com/MattariPH",
-        "Discord": "https://discord.gg/m6PBSE6"
-      }
     },
     {
       "name": "Satan",
