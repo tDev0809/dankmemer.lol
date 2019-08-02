@@ -1,10 +1,15 @@
 .commands-wrapper {
-  margin: 0;
-  margin-left: calc(20% + 35px);
-  margin-right: calc(20% - 0.6vh);
+  margin: 0 calc(20% + 35px) 0 calc(20% - 0.6vh);
+  @media only screen and (max-width: 800px) {
+    margin: 3vh;
+  }
+
 
   .categories {
     float: left;
+    @media only screen and (max-width: 800px) {
+      float: unset;
+    }
 
     .category {
       font-size: 2.2vh;
@@ -39,6 +44,10 @@
 
   .right {
     padding-left: 15px;
+    @media only screen and (max-width: 800px) {
+      padding-left: unset;
+    }
+
     max-height: 100vh;
     overflow-y: hidden;
 
@@ -52,6 +61,10 @@
   .search-bar {
     padding: 0.8vh;
     margin: 0.6vh;
+    @media only screen and (max-width: 800px) {
+      margin-top: 3vh;
+    }
+
     outline: none !important;
     border: 2px solid #23272A;
     border-radius: 8px;
