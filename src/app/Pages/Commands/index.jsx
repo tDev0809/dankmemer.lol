@@ -98,24 +98,24 @@ export default class Commands extends PureComponent {
                     .flat()
                     .filter(command => (
                       !searchQuery || (
-                        command.triggers.some(trigger => trigger.includes(searchQuery)) ||
-                        command.description.toLowerCase().includes(searchQuery)
+                        command.t.some(trigger => trigger.includes(searchQuery)) ||
+                        command.d.toLowerCase().includes(searchQuery)
                       )
                     )))
                 .map(command => (
                   <div
                     className={`${expandedCommand === command ? 'expanded ' : ''}command`}
-                    key={command.triggers[0]}
+                    key={command.t[0]}
                     onClick={() => this.setState({
                       expandedCommand: expandedCommand === command ? null : command
                     })}>
 
                     <div className='command-header blurple'>
-                      {command.triggers[0]}
-                      {(command.premiumServer || command.donorOnly) && (
+                      {command.t[0]}
+                      {(command.pS || command.dO) && (
                         <img
                           className='premium-star'
-                          title={command.premiumServer ? 'Premium Server Command' : 'Donor Command'}
+                          title={command.pS ? 'Premium Server Command' : 'Donor Command'}
                           src={twemoji.Star}
                         />
                       )}
@@ -125,19 +125,30 @@ export default class Commands extends PureComponent {
                           <img src={
                             twemoji[Object.keys(commands).find(category => (
                               commands[category].find(categoryCommand => (
-                                categoryCommand.triggers[0] === command.triggers[0]
+                                categoryCommand.t[0] === command.t[0]
                               ))
                             ))]
                           }/>
                         )}
                       </span>
                     </div>
-                    <div className='command-description'>{command.description.replace(/{command}/g, `pls ${command.triggers[0]}`)}</div>
+                    <div className='command-description'>
+                      {command.d.replace(/{command}/g, `pls ${command.t[0]}`)}
+                    </div>
 
                     <div className={`${expandedCommand === command ? 'expanded ' : ''}command-expanded-info`}>
                       <div className='command-expanded-seperator' />
-                      Usage: {command.usage.replace(/{command}/g, `pls ${command.triggers[0]}`)}<br/>
-                      Permissions: {command.perms.join(', ')}<br/>
+                      Usage: {command.u.replace(/{command}/g, `pls ${command.t[0]}`)}<br/>
+                      Permissions: {
+                        command.p
+                          .map(permission => {
+                            const chars = permission.split('');
+                            const uppercaseIdx = chars.findIndex(c => c === c.toUpperCase());
+                            chars.splice(uppercaseIdx, 0, ' ');
+                            return chars[0].toUpperCase() + chars.slice(1).join('');
+                          })
+                          .join(', ')
+                      }<br/>
                     </div>
                   </div>
                 ))}

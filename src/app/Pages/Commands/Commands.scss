@@ -1,11 +1,13 @@
 .commands-wrapper {
-  margin: 0 19.4% 0 21.9%;
+  margin: 0;
+  margin-left: calc(20% + 35px);
+  margin-right: calc(20% - 0.6vh);
 
   .categories {
     float: left;
 
     .category {
-      font-size: 2vh;
+      font-size: 2.2vh;
       margin-top: 0.6vh;
       background: #23272a;
       padding: 0.8vh;
