@@ -46,6 +46,7 @@
     padding-left: 15px;
     @media only screen and (max-width: 800px) {
       padding-left: unset;
+      overflow-y: unset;
     }
 
     max-height: 100vh;
@@ -82,6 +83,9 @@
   .commands {
     max-height: 75vh;
     overflow-y: scroll;
+    @media only screen and (max-width: 800px) {
+      overflow-y: unset;
+    }
 
     &::-webkit-scrollbar {
       display: none;
