@@ -1,10 +1,135 @@
-.commands-page {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.commands-wrapper {
+  margin: 0 19.4% 0 21.9%;
 
-  .command-column {
-    display: flex;
-    flex-direction: column;
+  .categories {
+    float: left;
+
+    .category {
+      font-size: 2vh;
+      margin-top: 0.6vh;
+      background: #23272a;
+      padding: 0.8vh;
+      border-radius: 8px;
+      border: rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      position: relative;
+
+      &.selected {
+        border: 2px solid #7289DA;
+        color: #7289DA;
+      }
+
+      &-img {
+        height: 2vh;
+        width: 2vh;
+        display: inline-block;
+        bottom: 1vh;
+        position: absolute;
+      }
+
+      span {
+        margin-left: 2.75vh;
+      }
+    }
+  }
+
+  .right {
+    padding-left: 15px;
+    max-height: 100vh;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scrollbar-width: none;
+  }
+
+  .search-bar {
+    padding: 0.8vh;
+    margin: 0.6vh;
+    outline: none !important;
+    border: 2px solid #23272A;
+    border-radius: 8px;
+    color: #fff;
+    background: rgba(246, 246, 247, 0.1);
+    resize: none;
+    font-size: 2vh;
+    width: calc(100% - 24px);
+
+    &.active {
+      border: 2px solid #7289DA;
+    }
+  }
+
+  .commands {
+    max-height: 75vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scrollbar-width: none;
+
+    &.fade-out {
+      transition: opacity 0.25s;
+      opacity: 0;
+    }
+
+    &.fade-in {
+      transition: opacity 0.25s;
+      opacity: 1;
+    }
+
+    .command {
+      margin: 0.6vh 0 0 0.5vh;
+      cursor: pointer;
+      background: #23272a;
+      padding: 0.8vh;
+      border-radius: 8px;
+      border: rgba(0, 0, 0, 0.5);
+
+      &.expanded {
+        border: 2px solid #7289DA;
+      }
+
+      .command-header {
+        font-size: 1.5vh;
+        font-weight: bold;
+
+        .premium-star {
+          height: 1.5vh;
+          width: auto;
+          margin-left: 5px;
+        }
+
+        &-category {
+          float: right;
+          img {
+            height: 3vh;
+            width: auto;
+          }
+        }
+      }
+
+      .command-expanded-info {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.25s;
+
+        .command-expanded-seperator {
+          margin: 5px 0;
+          border: solid 1px #7289DA;
+        }
+
+        &.expanded {
+          max-height: 60px;
+          transition: max-height 0.25s;
+        }
+      }
+    }
   }
 }
