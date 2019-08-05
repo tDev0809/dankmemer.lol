@@ -1,9 +1,11 @@
 .commands-wrapper {
-  margin: 0 calc(20% + 35px) 0 calc(20% - 0.6vh);
+  margin: 0 calc(20% - 0.6vh) 0 calc(20% + 35px);
+  @media only screen and (max-width: 1200px) {
+    margin: 0 calc(10% - 0.6vh + 5px) 0 10%;
+  }
   @media only screen and (max-width: 800px) {
     margin: 3vh;
   }
-
 
   .categories {
     float: left;
