@@ -73,11 +73,10 @@ loadScript('//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.
 
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').then(registration => {
-      console.log('SW registered: ', registration);
-    }).catch(registrationError => {
-      console.log('SW registration failed: ', registrationError);
-    });
-  });
+  import('./fix-caching.js');
+  // navigator.serviceWorker.register('/service-worker.js').then(registration => {
+  //   console.log('SW registered: ', registration);
+  // }).catch(registrationError => {
+  //   console.log('SW registration failed: ', registrationError);
+  // });
 }
