@@ -28,5 +28,11 @@
     "date": 1555855519171,
     "desc": "This post details the changes made to our website in April 2019",
     "author": "Melmsie"
+  },
+  {
+    "filename": "exploit-postmortem.md",
+    "name": "Coin Dupe Exploit Explanation",
+    "date": 1566589993358,
+    "desc": "An explanation regarding the huge inflation and mass blacklists surrounding an exploit"
   }
 ]
