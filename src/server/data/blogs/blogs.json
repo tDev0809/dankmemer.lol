@@ -33,6 +33,7 @@
     "filename": "exploit-postmortem.md",
     "name": "Coin Dupe Exploit Explanation",
     "date": 1566589993358,
-    "desc": "An explanation regarding the huge inflation and mass blacklists surrounding an exploit"
+    "desc": "An explanation regarding the huge inflation and mass blacklists surrounding an exploit",
+    "author": "Melmsie"
   }
 ]
