@@ -27,6 +27,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 * **Ronin** - *Initial work* - [TheCyberRonin](https://github.com/TheCyberRonin)
 * **Mel** - *Initial design* - [Melmsie](https://github.com/melmsie)
+* **Aetheryx** - *Basically the whole thing* - [Aetheryx](https://github.com/aetheryx)
+
 
 See also the list of [contributors](https://github.com/Dank-Memer/webhook-server/contributors) who participated in this project.
 
