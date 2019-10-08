@@ -51,17 +51,27 @@ router.get('/callback', async (req, res) => {
     }
   });
 
-  // temporary verbose logging for bug that wasn't reproducable
   if (user.email === null) {
-    console.log('Null email', data, user);
+    return res.status(400).send('Please verify your Discord\'s account E-mail before logging in.');
   }
 
-  db.collection('users').updateOne({ _id: user.id }, {
-    $set: {
+  const exists = await db.collection('users').countDocuments({ _id: user.id });
+  if (exists) {
+    db.collection('users').updateOne({ _id: user.id }, {
+      $set: {
+        email: user.email
+      },
+      $addToSet: {
+        ip: req.headers[ 'cf-connecting-ip' ]
+      }
+    });
+  } else {
+    db.collection('users').insertOne({
       _id: user.id,
-      email: user.email
-    }
-  }, { upsert: true });
+      email: user.email,
+      ip: [ req.headers[ 'cf-connecting-ip' ] ]
+    });
+  }
 
   req.session.user = {
     ...user,

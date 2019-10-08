@@ -57,6 +57,7 @@ export default React.memo(() => (
     
     <ul>
       <li>Email address</li>
+      <li>Your IP Address</li>
       <li>Cookies and Usage Data</li>
     </ul>
     
