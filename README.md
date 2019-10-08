@@ -30,7 +30,7 @@ These instructions will get you a copy of the project up and running on your loc
 * **Aetheryx** - *Basically the whole thing* - [Aetheryx](https://github.com/aetheryx)
 
 
-See also the list of [contributors](https://github.com/DankMemer/webhook-server/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/DankMemer/dankmemer.lol/contributors) who participated in this project.
 
 ## License
 
