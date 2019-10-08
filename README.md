@@ -13,7 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 - Redis (soon?)
 
 ### Installing
-1. `git clone https://github.com/Dank-Memer/dankmemer.lol.git`
+1. `git clone https://github.com/DankMemer/dankmemer.lol.git`
 2. Create config.json
 3. `npm i`
 
@@ -30,11 +30,11 @@ These instructions will get you a copy of the project up and running on your loc
 * **Aetheryx** - *Basically the whole thing* - [Aetheryx](https://github.com/aetheryx)
 
 
-See also the list of [contributors](https://github.com/Dank-Memer/webhook-server/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/DankMemer/dankmemer.lol/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
