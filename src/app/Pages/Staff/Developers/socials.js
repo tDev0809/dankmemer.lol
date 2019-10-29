@@ -8,3 +8,4 @@ export GitHub  from 'assets/GitHub.svg';
 export GitLab  from 'assets/GitLab.svg';
 export Reddit  from 'assets/Reddit.svg';
 export Twitch  from 'assets/Twitch.svg';
+export Insta   from 'assets/instagram.png';
