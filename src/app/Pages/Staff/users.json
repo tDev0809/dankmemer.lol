@@ -216,7 +216,6 @@
       "name": "Noah",
       "about": "Here's my bio.",
       "social": {
-        "Discord": "https://discord.gg/h4EJ8ER",
         "Twitch": "https://twitch.tv/shortnoah",
         "Insta": "https://instagram.com/noahhinsdale"
       }
@@ -254,6 +253,13 @@
       "about": "I'm not a weeb",
       "social": {
         "Twitter": "https://twitter.com/vryhuman"
+      }
+    },
+    {
+      "name": "mercury",
+      "about": "best planet",
+      "social": {
+        "YouTube": "https://www.youtube.com/channel/UCyGmGua4f5xWj-h6jcq2CNw"
       }
     }
   ],
