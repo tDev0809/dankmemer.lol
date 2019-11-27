@@ -242,7 +242,7 @@ class Loot extends Component {
         <span className="discount-notification">
           Purchases above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> receive a <u>{Constants.FLAT_DISCOUNT_PERCENTAGE}%</u> discount! {(() => {
             const curSubtotal = this.getSubtotal(true);
-            if (curSubtotal > Constants.MINIMUM_DISCOUNT_VALUE && this.getDiscount(true) === 0) {
+            if (curSubtotal > Constants.MINIMUM_DISCOUNT_VALUE && this.getDiscount(true) === 0 && this.state.activeBox.id !== 0) {
               const untilBoundary = ((1 / ((100 - Constants.FLAT_DISCOUNT_PERCENTAGE) / 100)) * Constants.MINIMUM_DISCOUNT_VALUE) - curSubtotal;
               return (
                 <>
