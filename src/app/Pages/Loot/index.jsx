@@ -77,23 +77,39 @@ class Loot extends Component {
       : raw.toFixed(2);
   }
 
-  getDiscount (returnRaw) {
+  getDiscountPercent () {
     const { Constants } = this.state;
     const { discount } = this.props;
+    const res = {};
 
     const subtotal = this.getSubtotal(true);
-
-    let discountPercent =
-      (subtotal * ((100 - Constants.FLAT_DISCOUNT_PERCENTAGE) / 100)) >= Constants.MINIMUM_DISCOUNT_VALUE
-      ? Constants.FLAT_DISCOUNT_PERCENTAGE
-      : 0;
-
+    
+    let discountPercent = 0;
     if (discount) {
       discountPercent += discount.percent;
+      res.discount = true;
     }
+    const hypothetical = (subtotal * ((100 - (discountPercent + Constants.FLAT_DISCOUNT_PERCENTAGE)) / 100));
+    if (
+      hypothetical >= Constants.MINIMUM_DISCOUNT_VALUE
+    ) {
+      discountPercent += Constants.FLAT_DISCOUNT_PERCENTAGE;
+      res.flat = true;
+    } else {
+      res.neededUntilFlat = Constants.MINIMUM_DISCOUNT_VALUE - hypothetical;
+    }
+
+    res.discountPercent = discountPercent;
+
+    return res;
+  }
+
+  getDiscount (returnRaw) {
+    const subtotal = this.getSubtotal(true);
+    const discountPercent = this.getDiscountPercent();
     
     const raw = this.state.activeBox.id !== 0
-      ? subtotal * (discountPercent / 100)
+      ? subtotal * (discountPercent.discountPercent / 100)
       : 0;
 
     return returnRaw
@@ -241,12 +257,16 @@ class Loot extends Component {
         </div>
         <span className="discount-notification">
           Purchases above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> receive a <u>{Constants.FLAT_DISCOUNT_PERCENTAGE}%</u> discount! {(() => {
-            const curSubtotal = this.getSubtotal(true);
-            if (curSubtotal > Constants.MINIMUM_DISCOUNT_VALUE && this.getDiscount(true) === 0 && this.state.activeBox.id !== 0) {
-              const untilBoundary = ((1 / ((100 - Constants.FLAT_DISCOUNT_PERCENTAGE) / 100)) * Constants.MINIMUM_DISCOUNT_VALUE) - curSubtotal;
+            const curSubtotal = this.getDiscountedSubtotal(true);
+            const discount = this.getDiscountPercent();
+            if (
+              this.state.activeBox.id !== 0 &&
+              curSubtotal > Constants.MINIMUM_DISCOUNT_VALUE &&
+              !discount.flat
+            ) {
               return (
                 <>
-                  <br />You have to spend <span className="green">${untilBoundary.toFixed(2)}</span> more for your purchase total to be above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> after the discount.
+                  <br />You have to spend <span className="green">${(discount.neededUntilFlat).toFixed(2)}</span> more for your purchase total to be above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> after the discount.
                 </>
               );
             }
