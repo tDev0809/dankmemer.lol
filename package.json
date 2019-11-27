@@ -23,7 +23,8 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "marked": "^0.6.2",
-    "mongodb": "^3.2.2"
+    "mongodb": "^3.2.2",
+    "string.prototype.matchall": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",

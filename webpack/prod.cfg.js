@@ -7,6 +7,8 @@ const fs = require('fs');
 const path = require('path');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
+require('string.prototype.matchall').shim();
+
 process.env.NODE_ENV = 'production';
 
 const src = path.resolve(__dirname, '..', 'src');

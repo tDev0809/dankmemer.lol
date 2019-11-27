@@ -83,7 +83,8 @@ class Loot extends Component {
 
     const subtotal = this.getSubtotal(true);
 
-    let discountPercent = subtotal >= Constants.MINIMUM_DISCOUNT_VALUE
+    let discountPercent =
+      (subtotal * ((100 - Constants.FLAT_DISCOUNT_PERCENTAGE) / 100)) >= Constants.MINIMUM_DISCOUNT_VALUE
       ? Constants.FLAT_DISCOUNT_PERCENTAGE
       : 0;
 
@@ -239,7 +240,17 @@ class Loot extends Component {
           ))}
         </div>
         <span className="discount-notification">
-          Purchases above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> receive a <u>{Constants.FLAT_DISCOUNT_PERCENTAGE}%</u> discount!
+          Purchases above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> receive a <u>{Constants.FLAT_DISCOUNT_PERCENTAGE}%</u> discount! {(() => {
+            const curSubtotal = this.getSubtotal(true);
+            if (curSubtotal > Constants.MINIMUM_DISCOUNT_VALUE && this.getDiscount(true) === 0) {
+              const untilBoundary = ((1 / ((100 - Constants.FLAT_DISCOUNT_PERCENTAGE) / 100)) * Constants.MINIMUM_DISCOUNT_VALUE) - curSubtotal;
+              return (
+                <>
+                  <br />You have to spend <span className="green">${untilBoundary.toFixed(2)}</span> more for your purchase total to be above <span className="green">${Constants.MINIMUM_DISCOUNT_VALUE}</span> after the discount.
+                </>
+              );
+            }
+          })()}
         </span>
         <br />
         {this.props.discount && 
