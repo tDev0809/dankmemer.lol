@@ -4,21 +4,21 @@
       "name": "Normie Box",
       "id": 0,
       "description": "Can't get more basic than this.",
-      "yield": "200 ~ 950",
+      "yield": "500 ~ 1000",
       "randomItem": {
-        "keyword": "low",
-        "chance": 0.65
+        "keyword": "medium",
+        "chance": 0.69
       },
-      "price": 0.49
+      "price": 0.69
     },
     {
       "name": "Meme Box",
       "id": 1,
       "description": "Something actually worth opening.",
-      "yield": "1000 ~ 3500",
+      "yield": "1500 ~ 4500",
       "randomItem": {
-        "keyword": "medium",
-        "chance": 0.75
+        "keyword": "high",
+        "chance": 0.80
       },
       "price": 1.99
     },
@@ -29,9 +29,20 @@
       "yield": "5000 ~ 18000",
       "randomItem": {
         "keyword": "high",
-        "chance": 0.96
+        "chance": 0.99
       },
       "price": 3.99
+    },
+    {
+      "name": "God Box",
+      "id": 2,
+      "description": "This is a really op box",
+      "yield": "9000 ~ 30000",
+      "randomItem": {
+        "keyword": "GOD",
+        "chance": 1
+      },
+      "price": 4.99
     }
   ],
 
