@@ -137,6 +137,67 @@
     }
   }
 
+  .gift-container {
+    display: inline;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+    input[type=checkbox] ~ .header {
+      padding-left: 35px;
+    }
+
+    input.gift-textbox {
+      background: #23272A;
+      border: 1px solid #7289DA;
+      color: #FFF;
+      font-size: 20px;
+      padding: 4px;
+    }
+
+    input[type=checkbox] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .gift-checkmark {
+        background-color: #7289DA;
+        border-color: #7289DA;
+
+        &:after {
+          display: block;
+        }
+      }
+    }
+
+    .gift-checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      border: 2px solid rgba(205, 205, 205, 0.2);
+      border-radius: 2px;
+      margin-top: -2px;
+      background-color: #23272A;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 8px;
+        top: 3px;
+        width: 7px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
   .box-input {
     -moz-appearance: textfield;
     appearance: textfield;

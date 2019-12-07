@@ -2,6 +2,7 @@
   "boxes": [
     {
       "name": "Normie Box",
+      "disabled": true,
       "id": 0,
       "description": "Can't get more basic than this.",
       "yield": "500 ~ 1000",
@@ -35,8 +36,8 @@
     },
     {
       "name": "God Box",
-      "id": 2,
-      "description": "This is a really op box",
+      "id": 3,
+      "description": "This is a really op box.",
       "yield": "9000 ~ 30000",
       "randomItem": {
         "keyword": "GOD",

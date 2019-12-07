@@ -24,7 +24,8 @@ class Loot extends Component {
     bannedUser: false,
     hasAgreed: false,
     succeededPayment: null,
-    boxCount: 1
+    boxCount: 1,
+    giftState: null
   };
 
   async componentDidMount () {
@@ -35,7 +36,7 @@ class Loot extends Component {
     this.setState({
       boxes,
       Constants,
-      activeBox: boxes[0]
+      activeBox: boxes[1]
     });
 
     // Check for banned countries
@@ -131,7 +132,10 @@ class Loot extends Component {
       discount: this.getDiscount(),
       token: this.props.login.token,
       activeBox: this.state.activeBox,
-      boxCount: this.state.boxCount
+      boxCount: this.state.boxCount,
+      ...(this.state.giftState === null ? {} : {
+        giftUserID: this.state.giftState
+      })
     }))
       .catch(err => {
         console.error(err);
@@ -175,6 +179,10 @@ class Loot extends Component {
     this.setState({ hasAgreed: target.checked });
   }
 
+  onGift ({ target }) {
+    this.setState({ giftState: target.value === 'on' ? '' : target.value });
+  }
+
   async setActiveBox (index) {
     this.setState({ activeBox: this.state.boxes[index] });
   }
@@ -193,7 +201,7 @@ class Loot extends Component {
   }
 
   render () {
-    const { boxes, Constants, finish, blockedCountry, activeBox, bannedUser } = this.state;
+    const { boxes, Constants, finish, blockedCountry, activeBox, bannedUser, giftState } = this.state;
 
     if (finish) {
       return (
@@ -221,13 +229,27 @@ class Loot extends Component {
     const minimumIsMet = this.getDiscountedSubtotal(true) > Constants.MINIMUM_PURCHASE_VALUE;
     const isLoggedIn = this.props.login.loggedIn;
     const hasAgreed = this.state.hasAgreed;
+    let giftIsValid = true;
 
     let text;
     if (!hasAgreed) {
       text = 'You haven\'t agreed to the Terms of Service and Refund Policy.';
     } else if (!minimumIsMet) {
       text = `You haven't met the minimum purchase value of $${Constants.MINIMUM_PURCHASE_VALUE.toFixed(2)}.`;
-    } else if (!isLoggedIn) {
+    } else if (
+      giftState !== null && (
+        giftState.length < 16 ||
+        giftState.length > 21 ||
+        isNaN(giftState)
+      )
+    ) {
+      giftIsValid = false;
+      text = (
+        <div>
+          The user ID you have entered for the gift user is invalid.<br />Please see <a href="https://support.discordapp.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-">this</a> link for more information on getting user IDs.
+        </div>
+      );
+    }else if (!isLoggedIn) {
       text = (
         <div>
           You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/loot">Click this</a> to log in.
@@ -245,7 +267,7 @@ class Loot extends Component {
         <div className="fancy-header absolute-unit">Go on, honey. Go pick yourself a boxy box.</div>
 
         <div className="boxes">
-          {boxes.map((box, index) => (
+          {boxes.map((box, index) => !box.disabled && (
             <Box
               key={box.name}
               index={index}
@@ -320,11 +342,35 @@ class Loot extends Component {
         </label>
 
         <div className="divider" />
+        <label className="gift-container">
+          {this.state.giftState === null ? (
+            <>
+              <input type="checkbox" className="gift-checkbox" onChange={this.onGift.bind(this)} />
+              <span className="gift-checkmark" />
+              <span className="header">
+                This purchase is a gift.
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="header">
+                Gift User ID:
+              </span><br />
+              <input
+                type="text"
+                className="gift-textbox"
+                onChange={this.onGift.bind(this)}
+                value={this.state.giftState}
+              />
+            </>
+          )}
+        </label>
+        <div className="divider" />
         {lastSection}
 
         <div
           style={{
-            display: (minimumIsMet && isLoggedIn && hasAgreed) ? 'inline-block' : 'none',
+            display: (minimumIsMet && isLoggedIn && hasAgreed && giftIsValid) ? 'inline-block' : 'none',
             width: '300px'
           }}
         >

@@ -4,7 +4,8 @@ export default ({
   discount,
   token,
   activeBox,
-  boxCount
+  boxCount,
+  giftUserID
 }) => ({
   intent: 'CAPTURE',
   purchase_units: [ {
@@ -23,7 +24,7 @@ export default ({
       }
     },
     description: 'Dank Memer Lootbox Purchase',
-    custom_id: token,
+    custom_id: `${token}${giftUserID ? `:${giftUserID}` : ''}`,
     soft_descriptor: 'Dank Memer\'s Box Shop',
     items: [ {
       name: activeBox.name,
