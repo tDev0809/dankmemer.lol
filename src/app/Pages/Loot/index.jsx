@@ -126,17 +126,20 @@ class Loot extends Component {
   }
 
   createOrder (actions) {
-    return actions.order.create(createPayment({
-      total: this.getDiscountedSubtotal(),
-      subtotal: this.getSubtotal(),
-      discount: this.getDiscount(),
+    const p = createPayment({
+      total: this.getDiscountedSubtotal(true),
+      subtotal: this.getSubtotal(true),
+      discount: this.getDiscount(true),
       token: this.props.login.token,
       activeBox: this.state.activeBox,
       boxCount: this.state.boxCount,
+      salesTax: (this.getDiscountedSubtotal(true) * 0.0675).toFixed(2),
       ...(this.state.giftState === null ? {} : {
         giftUserID: this.state.giftState
       })
-    }))
+    });
+
+    return actions.order.create(p)
       .catch(err => {
         console.error(err);
         this.setState({ finish: { success: false } });
@@ -160,10 +163,10 @@ class Loot extends Component {
       ? value
       : Math.round(target.value);
 
-    if ((boxCount <= 0 || boxCount >= 100) && target.value !== '') {
+    if ((boxCount <= 0 || boxCount >= 101) && target.value !== '') {
       boxCount = boxCount <= 0
         ? 1
-        : 99;
+        : 100;
 
       ree({
         duration: 1500,
@@ -249,7 +252,7 @@ class Loot extends Component {
           The user ID you have entered for the gift user is invalid.<br />Please see <a href="https://support.discordapp.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-">this</a> link for more information on getting user IDs.
         </div>
       );
-    }else if (!isLoggedIn) {
+    } else if (!isLoggedIn) {
       text = (
         <div>
           You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/loot">Click this</a> to log in.
@@ -306,6 +309,7 @@ class Loot extends Component {
           Amount of <span className="selected-box-name">{activeBox.name}es</span>:
         </div>
         
+        <span className="input-btn" onClick={this.onInputClick(true)}>+</span>
         <input
           className="box-input"
           type="number"
@@ -313,7 +317,6 @@ class Loot extends Component {
           defaultValue="1"
           ref={this.inputRef}
         />
-        <span className="input-btn" onClick={this.onInputClick(true)}>+</span>
         <span className="input-btn" onClick={this.onInputClick(false)}>–</span>
 
         <div className="divider" />
