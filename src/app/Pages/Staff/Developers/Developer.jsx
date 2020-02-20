@@ -1,6 +1,8 @@
 import React from 'react';
 import './Developer.scss';
 import * as socials from './socials.js';
+const UWU = new Audio(`/static/uwu.wav`);
+const playAudio = () => UWU.play();
 
 export default React.memo(({ name, picture, social, about }) => (
   <div className="staff-member">
@@ -11,6 +13,9 @@ export default React.memo(({ name, picture, social, about }) => (
       <img
         className="staff-picture"
         alt={`${name}'s avatar`}
+        onClick={() => {
+          name === 'Melmsie' ? playAudio() : console.log('Go click Mel\'s avatar')
+        }}
         src={picture}
       />
       <p className="staff-about-parent">
