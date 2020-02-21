@@ -33,14 +33,6 @@
       }
     },
     {
-      "name": "Sinister",
-      "about": "I help meth-heads change their light bulbs",
-      "social": {
-        "Twitch": "https://www.twitch.tv/sinister__1337",
-        "Discord": "https://discord.gg/wdCVp9P"
-      }
-    },
-    {
       "name": "Mook",
       "about": "Like a somboooooOoooOodie I need to spek to ur manager PLES",
       "social": {
@@ -104,6 +96,14 @@
   ],
   "Server Moderators": [
     {
+      "name": "Sinister",
+      "about": "I help meth-heads change their light bulbs",
+      "social": {
+        "Twitch": "https://www.twitch.tv/sinister__1337",
+        "Discord": "https://discord.gg/wdCVp9P"
+      }
+    },
+    {
       "name": "Bourbon",
       "about": "I like my chicken with a pasta.",
       "social": {}
@@ -161,7 +161,7 @@
       "name": "Aiphey",
       "about": "First I drink the coffee. Then I do the things.",
       "social": {
-        "Discord": "https://discord.gg/qwAH2v",
+        "Discord": "https://discord.gg/Y4Xu3WN",
         "Spotify": "https://open.spotify.com/user/409mdtf1dzhrdzg501y92yzd9?si=aosUi9_1S8a-GGcMSri_1Q",
         "Insta": "https://www.instagram.com/aipheyduh/"
       }
