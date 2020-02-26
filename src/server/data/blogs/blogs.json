@@ -1,5 +1,19 @@
 [
   {
+    "filename": "discord-music-bot.md",
+    "name": "Our new Discord Music Bot!",
+    "date": 1582731439054,
+    "desc": "This month we came into ownership of \"Gnar\", now known as \"Octave\". Here's the juicy deets",
+    "author": "Melmsie"
+  },
+  {
+    "filename": "exploit-postmortem.md",
+    "name": "Coin Dupe Exploit Explanation",
+    "date": 1566589993358,
+    "desc": "An explanation regarding the huge inflation and mass blacklists surrounding an exploit",
+    "author": "Melmsie"
+  },
+  {
     "filename": "what-makes-us-special.md",
     "name": "What makes Dank Memer special?",
     "date": 1563390441432,
@@ -27,13 +41,6 @@
     "name": "Dank Memer Website Update",
     "date": 1555855519171,
     "desc": "This post details the changes made to our website in April 2019",
-    "author": "Melmsie"
-  },
-  {
-    "filename": "exploit-postmortem.md",
-    "name": "Coin Dupe Exploit Explanation",
-    "date": 1566589993358,
-    "desc": "An explanation regarding the huge inflation and mass blacklists surrounding an exploit",
     "author": "Melmsie"
   }
 ]

@@ -49,6 +49,10 @@
   max-width: 100%;
 }
 
+h3 {
+  color: #7289da;
+}
+
 @media only screen and (max-width: 786px) {
   .blog-content {
     margin: 15px 3vh;

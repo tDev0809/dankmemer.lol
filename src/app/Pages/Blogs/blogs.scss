@@ -1,0 +1,133 @@
+.header {
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  margin-top: 5%;
+  color: white;
+}
+
+.blogs {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-decoration: none;
+  color: #fff;
+  margin: 2% 8%;
+}
+
+.blog {
+  background: #23272A;
+  margin: 10px 10px;
+  padding: 15px;
+  width: 38vh;
+  height: 10vh;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #FFF;
+}
+
+.blog:hover {
+  background: #1F2326;
+}
+
+.blog-name {
+  font-size: 2em;
+  padding-bottom: 5px;
+}
+
+.blog-desc {
+  font-size: 1.1em;
+  text-align: center!important;
+}
+
+.blog-date {
+  margin-bottom: 22px;
+}
+
+@keyframes scroll {
+  from {}
+  to { transform: translateY(-100%); }
+}
+
+.eee {
+  margin-top: 10%;
+}
+
+.title {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-size: 50px;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row!important;
+  align-items: center;
+  height: 25vh;
+  font-family: 'Lato';
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .boxy {
+    background:#23272A;
+    border-radius: 4px;
+    width: 325px;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    padding: 12px 15px;
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .82),
+      0 1px 4px rgba(0, 0, 0, .1);
+
+    .about-text {
+      max-height: 4.5em;
+      overflow: hidden;
+      text-align: center;
+      white-space: pre-wrap;
+    }
+
+    .about {
+      transform: translateY(3em);
+      animation: scroll 80s infinite linear 1s;
+      display: block;
+    }
+
+    .name {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 786px) {
+
+  .blog {
+    height: auto;
+  }
+  .blogs {
+    margin: 0% 5%;
+  }
+
+  .boxy {
+    width: 90%;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .eee {
+    margin-top: 0%;
+  }
+}

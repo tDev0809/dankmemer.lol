@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-import './blogs.css';
+import './blogs.scss';
 
 export default class Blogs extends React.Component {
   state = {
@@ -20,10 +20,10 @@ export default class Blogs extends React.Component {
         <header className="header">
           <span>BLOGS</span>
         </header>
-        <div className="blogs">
+        <div className="list">
           {this.state.blogs.map(blog => (
             <Link
-              className="blog"
+              className="boxy"
               key={blog.id}
               to={`/blogs/${blog.id}`}
             >
