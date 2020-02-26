@@ -12,12 +12,6 @@ Well one fateful day, YouTube starting cracking down on "automated" usage, such 
 
 For us, music had barely taken off. We never had too many more than 200 audio streams at once, and while that may sound like a lot, remember that Dank Memer is on nearly 1.7 million servers, so that's statistically unimportant. Due to all this, we decided our time would be better spent working on new things, rather than working on trying to get around YouTube's restrictions. So alas, music was disabled indefinitely.
 
-### How are other bots using YouTube, but you can't?
-
-Other bots, Octave included, are using complex systems to rotate their IP every x seconds or milliseconds. Essentially, YouTube is still cracking down on the usage but most music bots anymore are easily evading it, and if an IP does get banned, they can often have millions more to rotate to.
-
-The technology *is there* for Dank Memer to have music, but we still feel it's not something we should focus on at this time, or any time in the distant future. Why? Because why not just work on a separate music bot, that is much more likely to gain users and attention as it's primary focus is music?
-
 ### Why do you have Octave?
 
 Octave was previously known as "Gnar", and has been around since even before Dank Memer. It's an old bot, and was on ~160,000 servers when we acquired it. We hadn't originally planned on dipping our toes into the music bot world, but a perfect situation rose from the ashes.
@@ -32,7 +26,7 @@ A big reason Dank Memer is the 6th largest bot on Discord, is not because of our
 
 Well frankly, lets look at it from a simplistic view.
 
-You're searching Google for "discord music bots". You see lots of results on the first page including bots such as Rythm, Groovy, and Jukebot. At the bottom of the page, you also see a bot named "Gnar", with character from League of Legends as it's avatar. Being realistic, looking for a music bot, there's no way in hell you'd choose "Gnar" over other bots unless you really cared about LoL. And this is exactly why we've rebranded.
+You're searching Google for "discord music bots". You see lots of results on the first page including bots such as Rythm, Groovy, and Jukebot. At the bottom of the page, you also see a bot named "Gnar", with a character from League of Legends as it's avatar. Being realistic, looking for a music bot, there's no way in hell you'd choose "Gnar" over other bots unless you really cared about LoL. And this is exactly why we've rebranded.
 
 Octave is a common music term, and the new logo is a very simple and easy to understand design. You take one look at this bot without reading the description, and you know exactly what this bot is for now.
 
