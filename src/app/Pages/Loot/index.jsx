@@ -309,7 +309,7 @@ class Loot extends Component {
           Amount of <span className="selected-box-name">{activeBox.name}es</span>:
         </div>
         
-        <span className="input-btn" onClick={this.onInputClick(true)}>+</span>
+        <span className="input-btn" onClick={this.onInputClick(false)}>–</span>
         <input
           className="box-input"
           type="number"
@@ -317,7 +317,7 @@ class Loot extends Component {
           defaultValue="1"
           ref={this.inputRef}
         />
-        <span className="input-btn" onClick={this.onInputClick(false)}>–</span>
+        <span className="input-btn" onClick={this.onInputClick(true)}>+</span>
 
         <div className="divider" />
         <div className="header">Subtotal:</div>
