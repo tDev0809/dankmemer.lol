@@ -8,7 +8,7 @@ import './appeals.scss';
 class Appeals extends Component {
   textAreaRef = React.createRef();
   state = {
-    banType: 'Bot Ban',
+    banType: 'Server Ban',
     brokenRules: []
   }
 
@@ -105,25 +105,7 @@ class Appeals extends Component {
     return (
       <div className="content appeal">
         <section>
-          What kind of ban would you like to appeal?<br />
-          <label>
-            <input
-              type="radio"
-              value="Bot Ban"
-              checked={this.state.banType === 'Bot Ban'}
-              onChange={this.handleRadio.bind(this)}
-            />
-            Bot Ban
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="Bot Blacklist"
-              checked={this.state.banType === 'Bot Blacklist'}
-              onChange={this.handleRadio.bind(this)}
-            />
-            Bot Blacklist
-          </label>
+          They always come back tbh<br />
           <label>
             <input
               type="radio"
