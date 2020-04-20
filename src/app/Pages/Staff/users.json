@@ -33,14 +33,6 @@
       }
     },
     {
-      "name": "Mook",
-      "about": "Like a somboooooOoooOodie I need to spek to ur manager PLES",
-      "social": {
-        "Twitter": "https://twitter.com/MookScape",
-        "Twitch": "https://www.twitch.tv/zmook"
-      }
-    },
-    {
       "name": "Blair",
       "about": "before you embark on a journey of revenge, dig two graves. have fun.",
       "social": {
@@ -96,11 +88,19 @@
   ],
   "Server Moderators": [
     {
+      "name": "Mook",
+      "about": "Like a somboooooOoooOodie I need to spek to ur manager PLES",
+      "social": {
+        "Twitter": "https://twitter.com/MookScape",
+        "Twitch": "https://www.twitch.tv/zmook"
+      }
+    },
+    {
       "name": "Sinister",
       "about": "I help meth-heads change their light bulbs",
       "social": {
         "Twitch": "https://www.twitch.tv/sinister__1337",
-        "Discord": "https://discord.gg/wdCVp9P"
+        "Discord": "https://discord.gg/savewizard"
       }
     },
     {
@@ -124,13 +124,6 @@
         "Discord": "https://discord.gg/4Kvt9D9",
         "Spotify": "https://open.spotify.com/user/9k0q0ap8j8kiv7jjsnoykq12g",
         "YouTube": "https://www.youtube.com/channel/UCbTYsQ8Fx9wqbylyOlt8afQ"
-      }
-    },
-    {
-      "name": "Jaiden",
-      "about": "Hey I'm Jaiden, and you're Watching Disney Channel",
-      "social": {
-        "Insta": "https://www.instagram.com/jaiden.chengg/"
       }
     },
     {
@@ -162,31 +155,14 @@
       "about": "First I drink the coffee. Then I do the things.",
       "social": {
         "Discord": "https://discord.gg/Y4Xu3WN",
-        "Spotify": "https://open.spotify.com/user/409mdtf1dzhrdzg501y92yzd9?si=aosUi9_1S8a-GGcMSri_1Q",
+        "Spotify": "https://open.spotify.com/user/409mdtf1dzhrdzg501y92yzd9",
         "Insta": "https://www.instagram.com/aipheyduh/"
-      }
-    },
-    {
-      "name": "morgan",
-      "about": "stand by moi",
-      "social": {
-        "Twitter": "https://twitter.com/silksmooth09",
-        "Spotify": "https://open.spotify.com/user/0c4uwktqb04nfkxym5pji1ojc?si=Kn6sMWuqRtas2nlGAefKNg",
-        "YouTube": "https://www.youtube.com/channel/UCNuuA6tIdRU8pUj5GyxaAVw/playlists?disable_polymer=1"
       }
     },
     {
       "name": "Justin",
       "about": "Thought of a bio, here it is. Oh yeah, the names Justin!",
       "social": {}
-    },
-    {
-      "name": "Bleddyn48",
-      "about": "I'm a simple welsh boy, currently studying Mechanical and Manufacturing Engineering. I like the colour yellow, since all the other colours are shit looking, and for some reason, I like Indian food, like proper hot shit, chicken madras ye get me? I'm not sure what else to tall you tbh, I do have a slightly dark humour i guess? I keep that shit on lock down though. I have a pet cat called marmalade, annoys the shit out of me, but whatever. Ye, not sure what else to say, so uh.. bye?",
-      "social": {
-        "Discord": "https://discord.gg/qcCkr5",
-        "Spotify": "https://open.spotify.com/user/updp4bjrerrxexaxqwns6wp1e"
-      }
     },
     {
       "name": "Toto",
@@ -218,18 +194,6 @@
       "social": {}
     },
     {
-      "name": "Nathanos",
-      "about": "What do I see myself as in 2020? I don’t have 2020 vision.",
-      "social": {
-        "Discord": "https://discord.gg/KkVY3Xj",
-        "Reddit": "https://www.reddit.com/u/eternaIfire",
-        "Twitch": "https://twitch.tv/eternaifire",
-        "Spotify": "https://open.spotify.com/user/zyd072fa571o9fksgxhj26yux?si=GdKPaIFVRIq6rEchRC_7fQ",
-        "Insta": "https://instagram.com/nathan.ul",
-        "YouTube": "https://www.youtube.com/channel/UCY3OaLxtjkrSxj_foGSqVjA"
-      }
-    },
-    {
       "name": "f i n g e r c h i p s",
       "about": "bloop>",
       "social": {}
@@ -247,15 +211,6 @@
       "social": {}
     },
     {
-      "name": "Reign",
-      "about": "nostalgia.",
-      "social": {
-        "Spotify": "https://open.spotify.com/user/017bgykk6q21i1s1lsykhb9ev",
-        "Discord": "https://discord.gg/27kjC54",
-        "Reddit": "https://www.reddit.com/u/Lone_Ashbourne"
-      }
-    },
-    {
       "name": "notme#8130",
       "about": "I'm not a weeb",
       "social": {
@@ -267,6 +222,35 @@
       "about": "best planet",
       "social": {
         "YouTube": "https://www.youtube.com/channel/UCyGmGua4f5xWj-h6jcq2CNw"
+      }
+    },
+    {
+      "name": "Cece",
+      "about": "HI FAM' just a lil old lady with lots of cats.",
+      "social": {
+        "Twitter": "https://twitter.com/ceciliabooth04",
+        "Twitch": "https://www.twitch.tv/cecewazhere",
+        "Insta": "https://www.instagram.com/cecewazhere/",
+        "Discord": "https://discord.gg/YaKtB7z"
+      }
+    },
+    {
+      "name": "Dylan",
+      "about": "Casting my magic to this beautifully created world",
+      "social": {
+        "Insta": "https://www.instagram.com/dylan_c.p/",
+        "YouTube": "https://m.youtube.com/channel/UCiGzLIpUKTJsXd5ggxCvAkA",
+        "Spotify": "https://open.spotify.com/user/axn1mugfxtfb44u3vobvmlrf9",
+        "Twitch": "https://www.twitch.tv/tmdylancp"
+      }
+    },
+    {
+      "name": "Gxbriel",
+      "about": "A Canadian mod, that’s all",
+      "social": {
+        "YouTube": "https://m.youtube.com/channel/UCq5mwzHU-PpOoI2M3CMCZfQ",
+        "Twitch": "https://m.twitch.tv/vagona1/profile",
+        "Insta": "https://www.instagram.com/theanimedump/"
       }
     }
   ],
