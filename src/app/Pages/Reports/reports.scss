@@ -1,0 +1,40 @@
+.appeal {
+  margin: 0 auto;
+
+  .header {
+    font-size: 32px;
+
+    a {
+      color: #7289DA;
+      text-decoration: none;
+    }
+  }
+
+  .textarea {
+    padding: 5px;
+    color: #FFF;
+    background: #23272A;
+    border: 1.5px solid #7289DA;
+    width: 650px;
+    @media only screen and (max-width: 786px) {
+      width: 98%;
+    }
+  }
+
+  label {
+    display: block;
+  }
+
+  section {
+    margin: 12px 0;
+    max-width: 650px;
+    @media only screen and (max-width: 786px) {
+      width: 98%;
+    }
+  }
+}
+
+a {
+  color: #7289DA;
+  text-decoration: none;
+}

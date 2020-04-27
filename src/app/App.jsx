@@ -11,6 +11,7 @@ const Staff    = lazy(() => import('./Pages/Staff'));
 const Terms    = lazy(() => import('./Pages/Terms'));
 const Landing  = lazy(() => import('./Pages/Landing'));
 const Appeals  = lazy(() => import('./Pages/Appeals'));
+const Reports  = lazy(() => import('./Pages/Reports'));
 const Refunds  = lazy(() => import('./Pages/Refunds'));
 const Privacy  = lazy(() => import('./Pages/Privacy'));
 const Commands = lazy(() => import('./Pages/Commands'));
@@ -40,6 +41,7 @@ export default () => {
             <Route component={() => <About />} path="/about" />
             <Route component={(props) => <Blogs {...props} />} path="/blogs" />
             <Route component={() => <Appeals />} path="/appeals/" />
+            <Route component={() => <Reports />} path="/reports/" />
             <Route component={() => <Admin />} path="/admin" />
             <Route component={() => <Terms />} path="/terms" />
             <Route component={() => <Landing />} path="/landing" />

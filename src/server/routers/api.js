@@ -10,6 +10,7 @@ const db = require('../util/db.js');
 const blogs = require('../util/blogs.js');
 const axios = require('axios');
 const recentAppeals = new Set();
+const recentReports = new Set();
 const path = require('path');
 
 router.post('/cmds', (req, res) => {
@@ -71,6 +72,56 @@ router.post('/appeal', async (req, res) => {
         value: req.body.rules.join('\n').slice(0, 1000)
       }, {
         name: 'Appeal',
+        value: req.body.body.slice(0, 1023)
+      } ],
+      color: 0x71f23e,
+      timestamp: new Date()
+    } ] }, {
+      headers: { 'Content-Type': 'application/json' }
+    }
+  );
+
+  await res.status(200).send();
+});
+
+router.post('/report', async (req, res) => {
+  const { user } = req.session;
+  recentReports.delete(user.id)
+
+  if (!user) {
+    return res.status(401).json({ error: 'Get away you sick filth.' });
+  }
+  if (await db.collection('bans').findOne({ type: 'report', id: user.id })) {
+    return res.status(403).json({ error: 'Get away you sick filth.' });
+  }
+  if (recentReports.has(user.id)) {
+    return res.status(429).json({ error: 'You\'re doing that too often.' });
+  }
+  if (!req.body.reportType || !req.body.body) {
+    console.log(req.body)
+    return res.status(400).json({ error: 'Malformed body' });
+  }
+
+  recentReports.add(user.id);
+  setTimeout(() => recentReports.delete(user.id), 60 * 1000);
+
+  const webhook = config[
+    req.body.banType === 'Server Ban'
+      ? 'cmAppealsWebhook'
+      : 'devReportWebhook'
+  ];
+
+  await axios.post(
+    `https://discordapp.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, { embeds: [ {
+      title: `${req.body.reportType}`,
+      fields: [ {
+        name: 'User',
+        value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`
+      }, {
+        name: 'Broken Rules',
+        value: req.body.rules.join('\n').slice(0, 1000)
+      }, {
+        name: 'Report',
         value: req.body.body.slice(0, 1023)
       } ],
       color: 0x71f23e,
