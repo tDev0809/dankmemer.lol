@@ -7,7 +7,7 @@ const data = [
   { name: 'Music Bot', description: 'Everyone needs a decent music bot for their discord servers, why not check out ours?', link: 'https://octave.gg' },
   { name: 'Lootboxes', description: 'Dank Memer? More like EA: Memer edtion, come check out our "surprise mechanics"!', link: '/loot' },
   { name: 'Support', description: 'Have trouble or questions about the bot? Head over to our support server!', link: 'https://discord.gg/meme' },
-  { name: 'Don\'t click this!', description: 'It\'s just a cringe announcment about the best Discord Music Bot!', link: 'https://youtu.be/UP1gFNf8Fsg' }
+  { name: 'Apex Legends Bot', description: 'Melmsie is part of a team making a new Apex Legends bot!', link: 'https://discordapp.com/oauth2/authorize?scope=bot&client_id=702604525529202749' }
 ];
 
 const peepos = Array(7).fill(0).map((_, i) => new Audio(`/static/peepo${i}.mp3`));
