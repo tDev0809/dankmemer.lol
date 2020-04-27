@@ -86,7 +86,6 @@ router.post('/appeal', async (req, res) => {
 
 router.post('/report', async (req, res) => {
   const { user } = req.session;
-  recentReports.delete(user.id)
 
   if (!user) {
     return res.status(401).json({ error: 'Get away you sick filth.' });
@@ -103,7 +102,7 @@ router.post('/report', async (req, res) => {
   }
 
   recentReports.add(user.id);
-  setTimeout(() => recentReports.delete(user.id), 60 * 1000);
+  setTimeout(() => recentReports.delete(user.id), 10 * 60 * 1000);
 
   const webhook = config[
     req.body.banType === 'Server Ban'
