@@ -34,8 +34,13 @@
 
 .login-button.obutton {
   font-family: 'Inter', sans-serif;
-  letter-spacing: -.5px;
+  letter-spacing: -0.5px;
   font-size: 16px;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
 }
 
 .user div {
@@ -92,7 +97,7 @@
   font-size: 1.75em;
   margin-left: 40px;
   padding-right: 25px;
-  border-right: 3px solid #7289DA !important;
+  border-right: 3px solid #7289da !important;
   font-family: 'Inter', sans-serif;
   letter-spacing: -1px;
 }
@@ -132,20 +137,15 @@
 .obutton:hover {
   border-color: #23272a;
   background-color: #40444b;
-  color: #7289DA;
+  color: #7289da;
 }
 
 .obutton:active {
   transform: scale(0.95);
 }
 
-a {
-  color: currentColor;
-  text-decoration: none;
-}
-
 .navbar .nav-links {
-  transition: max-height .2s ease-out;
+  transition: max-height 0.2s ease-out;
 }
 
 /* Hamburger menu icon */
@@ -161,12 +161,12 @@ a {
   display: none;
   height: 2px;
   position: relative;
-  transition: background .2s ease-out;
+  transition: background 0.2s ease-out;
   width: 18px;
 }
 
-.navbar .navbar-icon .navicon:before,
-.navbar .navbar-icon .navicon:after {
+.navbar .navbar-icon .navicon::before,
+.navbar .navbar-icon .navicon::after {
   background: white;
   content: '';
   display: none;
@@ -176,11 +176,11 @@ a {
   width: 100%;
 }
 
-.navbar .navbar-icon .navicon:before {
+.navbar .navbar-icon .navicon::before {
   top: 5px;
 }
 
-.navbar .navbar-icon .navicon:after {
+.navbar .navbar-icon .navicon::after {
   top: -5px;
 }
 
@@ -200,16 +200,16 @@ a {
   background: transparent;
 }
 
-.navbar .navbar-btn:checked ~ .navbar-icon .navicon:before {
+.navbar .navbar-btn:checked ~ .navbar-icon .navicon::before {
   transform: rotate(-45deg);
 }
 
-.navbar .navbar-btn:checked ~ .navbar-icon .navicon:after {
+.navbar .navbar-btn:checked ~ .navbar-icon .navicon::after {
   transform: rotate(45deg);
 }
 
-.navbar .navbar-btn:checked ~ .navbar-icon:not(.steps) .navicon:before,
-.navbar .navbar-btn:checked ~ .navbar-icon:not(.steps) .navicon:after {
+.navbar .navbar-btn:checked ~ .navbar-icon:not(.steps) .navicon::before,
+.navbar .navbar-btn:checked ~ .navbar-icon:not(.steps) .navicon::after {
   top: 0;
 }
 
@@ -223,9 +223,9 @@ a {
     height: 250px !important;
   }
 
-  .navbar .navbar-icon .navicon:before,
+  .navbar .navbar-icon .navicon::before,
   .navbar .navbar-icon .navicon,
-  .navbar .navbar-icon .navicon:after {
+  .navbar .navbar-icon .navicon::after {
     display: block;
   }
 
@@ -273,7 +273,7 @@ a {
    font-size: 2em;
    padding: 43px 0px 5px;
    margin: 0px 20px;
-   border: none!important;
+   border: none !important;
   }
 
   .navbar {
@@ -291,7 +291,7 @@ a {
     flex-wrap: wrap;
     z-index: 999;
     margin: 0px 20px;
-    padding: 5px 0px 5px;
+    padding: 5px 0 5px;
     width: 100%;
     justify-content: center;
     align-items: center;
