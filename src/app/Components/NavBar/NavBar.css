@@ -172,7 +172,7 @@ a {
   display: none;
   height: 100%;
   position: absolute;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
   width: 100%;
 }
 
@@ -270,10 +270,10 @@ a {
 
 @media only screen and (max-width: 1515px) {
   .DM-nav {
-   font-size: 2em;
-   padding: 43px 0px 5px;
-   margin: 0px 20px;
-   border: none !important;
+    font-size: 2em;
+    padding: 43px 0px 5px;
+    margin: 0px 20px;
+    border: none !important;
   }
 
   .navbar {
