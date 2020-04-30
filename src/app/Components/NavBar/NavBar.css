@@ -1,4 +1,8 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .navbar {
+  transition: 0.2s height;
   height: 75px;
   display: flex;
   flex-direction: row;
@@ -10,13 +14,14 @@
   font-family: 'Montserrat';
   justify-content: space-between;
 }
+
 .nav-links {
   list-style-type: none;
   margin: 0;
   margin-top: 0.4em;
   padding: 0;
   overflow: hidden;
-  margin-right: 40px;
+  margin-right: 20px;
   margin-left: 15px;
 }
 
@@ -27,13 +32,10 @@
   float: left;
 }
 
-.test {
-  display: flex;
-  flex-direction: row;
-}
-
-.login {
-  align-content: right;
+.login-button.obutton {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -.5px;
+  font-size: 16px;
 }
 
 .user div {
@@ -57,7 +59,9 @@
 }
 
 .nav-link.active {
-  border-bottom: 2px solid white;
+  color: white;
+  background-color: #1c1e20;
+  border-bottom: 2px solid #141618;
 }
 
 .nav-link.active:not(.premium):hover {
@@ -67,13 +71,15 @@
 .nav-link {
   display: block;
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  color: white;
+  color: rgb(204, 204, 204);
   text-decoration: none;
   font-weight: bold;
   -webkit-transition-duration: 0.6s; /* Safari */
   transition-duration: 0.3s;
+  padding: 0.3em 0.5em;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
 }
 
 .nav-link:hover {
@@ -86,7 +92,9 @@
   font-size: 1.75em;
   margin-left: 40px;
   padding-right: 25px;
-  border-right: 3px solid #7289DA!important;
+  border-right: 3px solid #7289DA !important;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -1px;
 }
 
 .nav-link.premium {
@@ -109,31 +117,154 @@
   background-color: #40444b;
   color: white;
   padding: 9px 11px;
-  height: auto;
+  height: 28px;
+  line-height: 0;
   width: 100px;
   cursor: pointer;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 4px;
   -webkit-transition-duration: 0.6s; /* Safari */
   transition-duration: 0.3s;
 }
 
-  .obutton:hover {
-    border-color: #23272a;
-    background-color: #40444b;
-    color: #7289DA;
+.obutton:hover {
+  border-color: #23272a;
+  background-color: #40444b;
+  color: #7289DA;
+}
+
+.obutton:active {
+  transform: scale(0.95);
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.navbar .nav-links {
+  transition: max-height .2s ease-out;
+}
+
+/* Hamburger menu icon */
+.navbar .navbar-icon {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  user-select: none;
+}
+
+.navbar .navbar-icon .navicon {
+  background: white;
+  display: none;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.navbar .navbar-icon .navicon:before,
+.navbar .navbar-icon .navicon:after {
+  background: white;
+  content: '';
+  display: none;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.navbar .navbar-icon .navicon:before {
+  top: 5px;
+}
+
+.navbar .navbar-icon .navicon:after {
+  top: -5px;
+}
+
+.navbar .navbar-btn {
+  display: none;
+}
+
+.navbar .navbar-btn:checked ~ .nav-links {
+  max-height: 240px;
+}
+
+.navbar .navbar-btn:checked {
+  max-height: 240px;
+}
+
+.navbar .navbar-btn:checked ~ .navbar-icon .navicon {
+  background: transparent;
+}
+
+.navbar .navbar-btn:checked ~ .navbar-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.navbar .navbar-btn:checked ~ .navbar-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.navbar .navbar-btn:checked ~ .navbar-icon:not(.steps) .navicon:before,
+.navbar .navbar-btn:checked ~ .navbar-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+@media (max-width: 360px) {
+  .DM-nav {
+    padding-top: 12px !important;
+    font-size: 7.5vw !important;
   }
 
-  .obutton:active {
-    transform: scale(0.95);
+  nav.navbar.navbar-expanded {
+    height: 250px !important;
   }
 
-  a {
-    color: currentColor;
-    text-decoration: none;
+  .navbar .navbar-icon .navicon:before,
+  .navbar .navbar-icon .navicon,
+  .navbar .navbar-icon .navicon:after {
+    display: block;
   }
+
+  .navbar .nav-links {
+    max-height: 0;
+    padding: 0;
+  }
+
+  nav.navbar {
+    margin: 0 !important;
+  }
+
+  .navbar-icon {
+    padding: 28px 20px;
+    margin-top: 6px;
+  }
+
+  .navbar {
+    height: 96px !important;
+  }
+
+  .header li {
+    float: left;
+  }
+
+  .header li a {
+    padding: 20px 30px;
+  }
+
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+
+  .header .menu-icon {
+    display: none;
+  }
+}
 
 
 
@@ -145,41 +276,28 @@
    border: none!important;
   }
 
-  .login {
-    padding-top: 18px;
-  }
-
-  .test {
-    border-bottom: 2px solid #7289DA;
-  }
-
   .navbar {
     justify-content: center;
     text-align: center;
     align-content: center;
     align-items: center;
-    height: auto;
     margin: 0% 10%;
+    height: auto;
     padding: 0px 10px;
   }
+
   .nav-links {
     display: flex;
     flex-wrap: wrap;
     z-index: 999;
     margin: 0px 20px;
-    padding: 15px 0px 15px;
+    padding: 5px 0px 5px;
     width: 100%;
     justify-content: center;
     align-items: center;
   }
-  .nav-link {
-    margin: 5px;
-  }
+
   .user a {
     text-align: center;
   }
-}
-
-@media only screen and (min-width: 1900px) {
-  
 }
