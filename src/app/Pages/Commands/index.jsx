@@ -63,7 +63,6 @@ export default class Commands extends PureComponent {
 
   render () {
     const { selectedCategory, transitionState, expandedCommand, searchQuery } = this.state;
-
     return (
       <div className='content commands-page'>
         <div className='commands-wrapper'>
@@ -87,11 +86,13 @@ export default class Commands extends PureComponent {
             <textarea
               placeholder='Search...'
               rows={1}
+              spellCheck={false}
               className={`${selectedCategory === 'search-bar' ? 'active ' : ''}search-bar`}
               onKeyUp={ev => this.updateSearch(ev)}
               onFocus={() => this.setCategory('search-bar')}
             />
             <div className={`${transitionState} commands`} ref={this.commandsRef}>
+              <div className='commands-scroller'>
               {(selectedCategory !== 'search-bar'
                 ? commands[selectedCategory]
                 : Object.values(commands)
@@ -111,7 +112,7 @@ export default class Commands extends PureComponent {
                     })}>
 
                     <div className='command-header blurple'>
-                      {command.t[0]}
+                      <div className='command-name'>{command.t[0]}</div>
                       {(command.pS || command.dO) && (
                         <img
                           className='premium-star'
@@ -138,20 +139,33 @@ export default class Commands extends PureComponent {
 
                     <div className={`${expandedCommand === command ? 'expanded ' : ''}command-expanded-info`}>
                       <div className='command-expanded-seperator' />
-                      Usage: {command.u.replace(/{command}/g, `pls ${command.t[0]}`)}<br/>
-                      Permissions: {
-                        command.p
-                          .map(permission => {
-                            const chars = permission.split('');
-                            const uppercaseIdx = chars.findIndex(c => c === c.toUpperCase());
-                            chars.splice(uppercaseIdx, 0, ' ');
-                            return chars[0].toUpperCase() + chars.slice(1).join('');
-                          })
-                          .join(', ')
-                      }<br/>
+                      <div className='command-info-section'>
+                        <div className='command-info-header'>Usage</div>
+                        <div className='command-info-details command-info-usage'>
+                          <div className='command-info-usage-prefix'>pls</div>
+                          <div className='command-info-usage-command'>{command.u.replace(/{command}/g, `${command.t[0]}`).replace('pls', '').split(' ')[1]}</div>
+                          <div className='command-info-usage-arguments'>{command.u.replace(/{command}/g, `${command.t[0]}`).replace('pls', '').split(' ')[2] || ''}</div>
+                        </div>
+
+                        <div className='command-info-header'>Permissions</div>
+                        <div className='command-info-details command-info-permissions'>
+                          {
+                            command.p
+                              .map(permission => {
+                                const chars = permission.split('');
+                                const uppercaseIdx = chars.findIndex(c => c === c.toUpperCase());
+                                chars.splice(uppercaseIdx, 0, ' ');
+                                return chars[0].toUpperCase() + chars.slice(1).join('');
+                              })
+                              .join(', ')
+                          }
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className='commands-shadow'></div>
             </div>
           </div>
         </div>
