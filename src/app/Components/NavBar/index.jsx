@@ -38,14 +38,14 @@ const NavBar = ({
         {navigator.onLine && <li className="nav-item">
           <NavLink className="nav-link premium" activeClassName="active" to="/loot" data-discount={discount ? `FLASH SALE (${parseTime(discount.expiry - Date.now()).hours}H LEFT)` : ''}>LOOTBOXES</NavLink>
         </li>}
-        {navigator.onLine && <li className="login nav-item">
-          {true ? (
+        {navigator.onLine && <span className="login">
+          {loggedIn ? (
             <div className="user">
-                <span className="user-username nav-link">{`${'Nevulo' || username.toUpperCase()}#${'0007' || discriminator}`}</span>
-                <a className="nav-link logout login-button" href='/oauth/logout'>LOG OUT</a>
+                <span className="nav-link">{`${username.toUpperCase()}#${discriminator}`}</span>
+                <a className="nav-link login-button" href='/oauth/logout'>LOG OUT</a>
             </div>
           ) : (<a href="/oauth/login"><button className="obutton login-button">LOG IN</button></a>) }
-        </li>}
+        </span>}
       </ul>
       
     </nav>
