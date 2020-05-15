@@ -1,10 +1,19 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.content {
+  padding: 0;
+}
+
 .header {
-  text-align: center;
   font-size: 3em;
-  font-family: 'Montserrat';
+  font-family: 'Inter', sans-serif;
   font-weight: bold;
-  margin-top: 5%;
+  text-align: center;
+  margin-top: 1em;
+  padding: 0.5em;
   color: white;
+  background: #23272A;
 }
 
 .blogs {
@@ -35,16 +44,26 @@
 
 .blog-name {
   font-size: 2em;
-  padding-bottom: 5px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -1.5px;
+  line-height: 1em;
+  padding-bottom: 1px;
 }
 
 .blog-desc {
   font-size: 1.1em;
-  text-align: center!important;
+  text-align: center !important;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
 }
 
 .blog-date {
   margin-bottom: 22px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(156, 156, 156);
 }
 
 @keyframes scroll {
@@ -69,25 +88,75 @@
   flex-wrap: wrap;
   flex-direction: row!important;
   align-items: center;
-  height: 25vh;
+  height: 100%;
   font-family: 'Lato';
+  background: rgb(39, 43, 46);
+  padding-top: 32px;
+  padding: 1em;
 
   a {
     text-decoration: none;
     color: white;
   }
 
-  .boxy {
-    background:#23272A;
+  .click-to-read-tag {
+    transition: 0.3s all;
+    background: rgb(65, 70, 75);
     border-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.15em 1em;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: rgb(212, 212, 212);
+    letter-spacing: -0.64px;
+    position: absolute;
+    top: 24px;
+    left: 0;
+    z-index: 0;
+  }
+
+  .blog-post-container {
+    position: relative;
+    margin: 16px;
+
+    &:hover {
+      .click-to-read-tag {
+        transform: translateY(-44px);
+        position: absolute;
+        z-index: 0;
+      }
+    }
+  }
+
+  .boxy {
+    transition: 0.2s all;
+    position: relative;
+    background: rgb(17, 19, 20);
+    border-radius: 5px;
+    height: 200px;
+    max-height: 350px;
     width: 325px;
     display: flex;
     cursor: pointer;
     flex-direction: column;
-    padding: 12px 15px;
-    margin: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .82),
-      0 1px 4px rgba(0, 0, 0, .1);
+    padding: 1.5em;
+    box-shadow: 0 0 4px rgba(8, 8, 8, 0.82);
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 12px rgba(8, 8, 8, 0.82);
+      background: rgb(22, 24, 26);
+      position: relative;
+      z-index: 1;
+
+      .click-to-read-tag {
+        transform: translateY(-24px);
+        position: absolute;
+        z-index: -1;
+      }
+    }
 
     .about-text {
       max-height: 4.5em;
