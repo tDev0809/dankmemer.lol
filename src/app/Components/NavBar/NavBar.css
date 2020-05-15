@@ -32,6 +32,11 @@
   float: left;
 }
 
+span.user-username {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 .login-button.obutton {
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.5px;
@@ -213,7 +218,7 @@ a {
   top: 0;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 420px) {
   .DM-nav {
     padding-top: 12px !important;
     font-size: 7.5vw !important;
