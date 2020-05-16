@@ -8,7 +8,7 @@ import './appeals.scss';
 class Appeals extends Component {
   textAreaRef = React.createRef();
   state = {
-    banType: 'Server Ban',
+    banType: 'Bot Ban',
     brokenRules: []
   }
 
@@ -84,15 +84,15 @@ class Appeals extends Component {
   }
 
   render () {
-    /*if (!this.props.loggedIn) {
+    if (!this.props.loggedIn) {
       return (
         <div className="content appeal">
           <header className="header">
-            You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/appeals">Click this</a> to log in.
+            You can't appeal if you aren't logged in with your Discord account. <a href="/oauth/login?redirect=/appeals">Click this</a> to log in.
           </header>
         </div>
       );
-    }*/
+    }
 
     if (this.state.finished) {
       return (
@@ -105,7 +105,25 @@ class Appeals extends Component {
     return (
       <div className="content appeal">
         <section>
-          They always come back tbh<br />
+          What kind of ban would you like to appeal?<br />
+          <label>
+            <input
+              type="radio"
+              value="Bot Ban"
+              checked={this.state.banType === 'Bot Ban'}
+              onChange={this.handleRadio.bind(this)}
+            />
+            Bot Ban (Permanent ban)
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Bot Blacklist"
+              checked={this.state.banType === 'Bot Blacklist'}
+              onChange={this.handleRadio.bind(this)}
+            />
+            Bot Blacklist (Temporary Ban)
+          </label>
           <label>
             <input
               type="radio"
@@ -113,7 +131,7 @@ class Appeals extends Component {
               checked={this.state.banType === 'Server Ban'}
               onChange={this.handleRadio.bind(this)}
             />
-            Server Ban
+            Support Server Ban
           </label>
         </section>
 
