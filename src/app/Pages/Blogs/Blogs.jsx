@@ -18,27 +18,30 @@ export default class Blogs extends React.Component {
     return (
       <div className="content">
         <header className="header">
-          <span>BLOGS</span>
+          <span>Blog Posts</span>
         </header>
         <div className="list">
           {this.state.blogs.map(blog => (
-            <Link
-              className="boxy"
-              key={blog.id}
-              to={`/blogs/${blog.id}`}
-            >
-              <div className="blog-info">
-                <div className="blog-name blurple">
-                  {blog.name}
+            <div className="blog-post-container">
+              <div className="click-to-read-tag">Click to read</div>
+              <Link
+                className="boxy"
+                key={blog.id}
+                to={`/blogs/${blog.id}`}
+              >
+                <div className="blog-info">
+                  <div className="blog-name blurple">
+                    {blog.name}
+                  </div>
+                  <div className="blog-date">
+                    Posted {gibbeDatePls(blog.date)} by {blog.author}
+                  </div>
+                  <span className="blog-desc">
+                    {blog.desc}
+                  </span>
                 </div>
-                <div className="blog-date">
-                  Posted {gibbeDatePls(blog.date)} by {blog.author}
-                </div>
-                <span className="blog-desc">
-                  {blog.desc}
-                </span>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
