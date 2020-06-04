@@ -1,28 +1,229 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Hide the browser's default radio button */
+.appeal-check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.how-to-get-id {
+  color: rgb(142, 209, 221);
+  cursor: pointer;
+  font-size: 12.8px;
+}
+
+.appeal-check-container {
+  position: relative;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.appeal-rule-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.ban-type-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Create a custom radio button */
+.radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.appeal-check-container:hover input ~ .radio {
+  background-color: #ccc;
+}
+
+.appeal-check-container input:checked ~ .radio {
+  background-color: #7289DA;
+}
+
+.radio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.appeal-check-container input:checked ~ .radio:after {
+  display: block;
+}
+
+.appeal-check-container .radio:after {
+  top: 5.5px;
+  left: 5.5px;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  background: white;
+}
+
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+}
+
+.appeal-check-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.appeal-check-container input:checked ~ .checkmark {
+  background-color: #7289DA;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.appeal-check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.appeal-check-container .checkmark:after {
+  left: 5px;
+  top: 2.5px;
+  width: 2.5px;
+  height: 6px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.send-btn {
+  transition: 0.21s;
+  border-radius: 4px;
+  width: 125px;
+  height: 40px;
+  color: white;
+  outline: none;
+  border: none;
+  background-color: #66bb6a;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-4px);
+    background-color: #80ca84;
+    box-shadow: 0px 5px 4px rgb(44, 44, 44);
+  }
+}
+
+.options {
+  margin-left: 8px;
+}
+
 .appeal {
   margin: 0 auto;
+  margin-top: 12px;
+  background: rgb(26, 28, 31);
+  border-radius: 4px;
+  padding: 1em;
 
-  .header {
-    font-size: 32px;
+  &-number {
+    border-radius: 4px;
+    background: rgb(68, 74, 83);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 11px;
+    text-align: center;
+    line-height: 16px;
+    padding: 0.075em;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 8px;
+  }
 
-    a {
-      color: #7289DA;
-      text-decoration: none;
-    }
+  &-header-container {
+    margin: -14px;
+    border-radius: 4px;
+    background: rgb(16, 17, 19);
+    padding: 1em;
+    margin-bottom: 12px;
+  }
+
+  &-textarea-label {
+    color: #a8a8a8;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  &-label {
+    color: rgb(226, 226, 226);
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h5 {
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: rgb(139, 139, 139);
+    text-decoration: none;
+    margin-bottom: 12px;
+    margin-top: 0;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    color: #7289DA;
+    text-decoration: none;
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-top: 0;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    margin-bottom: 0;
+    text-decoration: none;
   }
 
   .textarea {
+    border-radius: 4px;
     padding: 5px;
     color: #FFF;
     background: #23272A;
-    border: 1.5px solid #7289DA;
-    width: 650px;
+    width: 550px;
+    outline: none;
+    margin-top: 8px;
+    resize: none;
+    border: none;
+
+    &:focus {
+      border: 0.5px solid #7289DA;
+    }
+
     @media only screen and (max-width: 786px) {
       width: 98%;
     }
-  }
-
-  label {
-    display: block;
   }
 
   section {
@@ -32,9 +233,4 @@
       width: 98%;
     }
   }
-}
-
-a {
-  color: #7289DA;
-  text-decoration: none;
 }
