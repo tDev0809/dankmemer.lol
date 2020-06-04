@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import peepoURL from 'assets/peepolove.png';
 
 const directions = [ 0, 90, 180, 270 ];
-const peepos = Array(7).fill(0).map((_, i) => new Audio(`/static/peepo${i}.mp3`));
+const peepos = Array(13).fill(0).map((_, i) => new Audio(`/static/peepo${i}.mp3`));
 let currentAudio = -1;
 const playAudio = () =>
   (peepos[++currentAudio] || peepos[currentAudio = 0])
