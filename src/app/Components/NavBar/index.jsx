@@ -52,7 +52,7 @@ const NavBar = ({
           <NavLink className="nav-link premium" activeClassName="active" to="/loot" data-discount={discount ? `FLASH SALE (${parseTime(discount.expiry - Date.now()).hours}H LEFT)` : ''}>LOOTBOXES</NavLink>
         </li>}
         {navigator.onLine && <div className="login">
-          {true ? (
+          {loggedIn ? (
             <li className="user nav-item" onClick={(e) => onClick(e.target.parentElement)}>
                 <span className="nav-link">{`${username.toUpperCase()}#${discriminator}`}</span>
                 <div className='nav-user'>
