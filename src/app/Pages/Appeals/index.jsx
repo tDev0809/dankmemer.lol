@@ -84,7 +84,8 @@ class Appeals extends Component {
   }
 
   render () {
-    if (!this.props.loggedIn) {
+    const titleCase = (text) => text.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+    if (false && !this.props.loggedIn) {
       return (
         <div className="content appeal">
           <header className="header">
@@ -104,55 +105,81 @@ class Appeals extends Component {
 
     return (
       <div className="content appeal">
-        <section>
-          What kind of ban would you like to appeal?<br />
-          <label>
-            <input
-              type="radio"
-              value="Bot Ban"
-              checked={this.state.banType === 'Bot Ban'}
-              onChange={this.handleRadio.bind(this)}
-            />
-            Bot Ban (Permanent ban)
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="Bot Blacklist"
-              checked={this.state.banType === 'Bot Blacklist'}
-              onChange={this.handleRadio.bind(this)}
-            />
-            Bot Blacklist (Temporary Ban)
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="Server Ban"
-              checked={this.state.banType === 'Server Ban'}
-              onChange={this.handleRadio.bind(this)}
-            />
-            Support Server Ban
-          </label>
+        <div className='appeal-header-container'>
+          <h1>Appeal a ban</h1>
+          <h5>Please give as much detail as possible when writing your appeal.<br />Appealing does not guarantee an unban.</h5>
+        </div>
+        
+        <section className='ban-type-section'>
+          <h2>What kind of ban would you like to appeal?</h2>
+          <div className='options'>
+            <div className='ban-type'>
+              <label className='appeal-check-container appeal-label'>
+                <input
+                  type="radio"
+                  value="Bot Ban"
+                  checked={this.state.banType === 'Bot Ban'}
+                  onChange={this.handleRadio.bind(this)}
+                />
+                <span class="radio"></span>
+              </label>
+              <label className='appeal-label'>Bot Ban (Permanent Ban)</label>
+            </div>
+            
+            <div className='ban-type'>
+              <label className='appeal-check-container appeal-label'>
+                <input
+                  className="radio"
+                  type="radio"
+                  value="Bot Blacklist"
+                  checked={this.state.banType === 'Bot Blacklist'}
+                  onChange={this.handleRadio.bind(this)}
+                />
+                <span class="radio"></span>
+              </label>
+              <label className='appeal-label'>Bot Blacklist (Temporary Ban)</label>
+            </div>
+            
+            <div className='ban-type'>
+              <label className='appeal-check-container appeal-label'>
+                <input
+                  className="radio"
+                  type="radio"
+                  value="Server Ban"
+                  checked={this.state.banType === 'Server Ban'}
+                  onChange={this.handleRadio.bind(this)}
+                />
+                <span class="radio"></span>
+              </label>
+              <label className='appeal-label'>Support Server Ban</label>
+            </div>
+          </div>
         </section>
 
         <section>
-          Which rules did you break?<br />
-          {rules[this.state.banType].map((rule, index) => (
-            <label key={rule}>
-              <input
-                type="checkbox"
-                value={rule}
-                checked={this.state.brokenRules.includes(rule)}
-                onChange={this.handleCheckbox.bind(this, rule)}
-              />
-              {`${index + 1}. ${rule}`}
-            </label>
-          ))}
+          <h2>Which rules did you break?</h2>
+          <div className='options'>
+            {rules[this.state.banType].map((rule, index) => (
+              <div className='appeal-rule-container'>
+                <label className='appeal-check-container appeal-label' key={rule}>
+                  <input
+                    type="checkbox"
+                    value={rule}
+                    checked={this.state.brokenRules.includes(rule)}
+                    onChange={this.handleCheckbox.bind(this, rule)}
+                  />
+                  <span class="checkmark"></span>
+                </label>
+                <div className='appeal-number'>{`${index + 1}`}</div>
+                <label className='appeal-label'>{`${titleCase(rule)}`}</label>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section>
-          <label>
-            Write the body of your appeal below. Why should we appeal your ban?<br />
+          <label className='appeal-textarea-label'>
+            Write the body of your appeal below. Why should we appeal your ban?
 
             <textarea
               className="textarea"
@@ -163,11 +190,12 @@ class Appeals extends Component {
         </section>
 
         <section>
-          <Button
+          <button
+            className='send-btn'
             onClick={this.send.bind(this)}
           >
             Send
-          </Button>
+          </button>
         </section>
       </div>
     );

@@ -104,47 +104,73 @@ class Reports extends Component {
 
     return (
       <div className="content appeal">
-        <section>
-          Which type of report is this?<br />
-          <label>
-            <input
-              type="radio"
-              value="User Report"
-              checked={this.state.reportType === 'User Report'}
-              onChange={this.handleRadio.bind(this)}
-            />
-            User Report
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="Server Report"
-              checked={this.state.reportType === 'Server Report'}
-              onChange={this.handleRadio.bind(this)}
-            />
-            Server Report
-          </label>
+        <div className='appeal-header-container'>
+          <h1>Report a {this.state.reportType === 'User Report' ? 'user' : 'server'}</h1>
+          <h5>Please give as much detail as possible when writing your report.<br />We won't tell you if the {this.state.reportType === 'User Report' ? 'user' : 'server'} you are reporting has been punished.</h5>
+        </div>
+
+        <section className='ban-type-section'>
+          <h2>What type of report is this?</h2>
+          <div className='options'>
+            <div className='ban-type'>
+              <label className='appeal-check-container appeal-label'>
+                <input
+                  type="radio"
+                  value="User Report"
+                  checked={this.state.reportType === 'User Report'}
+                  onChange={this.handleRadio.bind(this)}
+                />
+                <span class="radio"></span>
+              </label>
+              <label className='appeal-label'>User Report</label>
+            </div>
+            
+            <div className='ban-type'>
+              <label className='appeal-check-container appeal-label'>
+                <input
+                  className="radio"
+                  type="radio"
+                  value="Server Report"
+                  checked={this.state.reportType === 'Server Report'}
+                  onChange={this.handleRadio.bind(this)}
+                />
+                <span class="radio"></span>
+              </label>
+              <label className='appeal-label'>Server Report</label>
+            </div>
+          </div>
         </section>
 
         <section>
-          Which rules did they break?<br />
-          {rules[this.state.reportType].map((rule, index) => (
-            <label key={rule}>
-              <input
-                type="checkbox"
-                value={rule}
-                checked={this.state.brokenRules.includes(rule)}
-                onChange={this.handleCheckbox.bind(this, rule)}
-              />
-              {`${index + 1}. ${rule}`}
-            </label>
-          ))}
+          <h2>Which rules did they break?</h2>
+          <div className='options'>
+            {rules[this.state.reportType].map((rule, index) => (
+              <div className='appeal-rule-container'>
+                <label className='appeal-check-container appeal-label' key={rule}>
+                  <input
+                    type="checkbox"
+                    value={rule}
+                    checked={this.state.brokenRules.includes(rule)}
+                    onChange={this.handleCheckbox.bind(this, rule)}
+                  />
+                  <span class="checkmark"></span>
+                </label>
+                <div className='appeal-number'>{`${index + 1}`}</div>
+                <label className='appeal-label'>{rule}</label>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section>
-          <label>
-            Write the body of your report below. If you don't include an ID, the report is useless.<br />
-            <a target="_blank" href="https://support.discordapp.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-">HOW TO GET THEIR ID????</a><br />
+          <label className='appeal-textarea-label'>
+            Write the body of your report below.
+            <br />
+            <b>If you don't include an ID, the report is useless.</b>
+            <br />
+            <a target="_blank" href="https://support.discordapp.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" className="how-to-get-id">
+              HOW TO GET {this.state.reportType === 'User Report' ? 'USER' : 'SERVER'} ID????
+            </a>
             <textarea
               className="textarea"
               ref={this.textAreaRef}
@@ -154,11 +180,12 @@ class Reports extends Component {
         </section>
 
         <section>
-          <Button
+          <button
+            className='send-btn'
             onClick={this.send.bind(this)}
           >
             Send
-          </Button>
+          </button>
         </section>
       </div>
     );

@@ -47,21 +47,52 @@ a {
   color: currentColor;
   text-decoration: none;
 }
-
-.user div {
-  width: 80%;
-  text-align: left!important;
-  float: right;
-}
   
+.nav-user {
+  transition: all 0.4s;
+  transform: translateY(0px);
+  background: #212121;
+  border-radius: 4px;
+  padding: 0.65em;
+  margin-top: 0;
+  position: absolute;
+  display: none;
+}
+
+.nav-user-expanded {
+  animation: dragDown 0.2s forwards ease-in-out;
+  display: block;
+}
+
+.nav-user-expanded-container {
+  background: #212121;
+}
+
+@keyframes dragDown {
+  0% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
 .user a {
-  font-size: x-small!important;
+  color: #e53935;
+  font-size: 12px;
   text-align: right;
   font-weight: normal!important;
+  margin: 0;
+  padding: 0;
 }
 
 .user span:hover {
-  color: white!important;
+  color: white !important;
+}
+
+.user {
+  cursor: pointer;
 }
 
 .nav-item {
@@ -90,6 +121,20 @@ a {
   margin-right: 8px;
   margin-bottom: 4px;
   border-radius: 4px;
+}
+
+.navbar-context-menu {
+  background: #212121;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+.nav-link.login-button {
+  padding-top: 0;
+}
+
+.login {
+  display: flex;
 }
 
 .nav-link:hover {
@@ -301,8 +346,10 @@ a {
     justify-content: center;
     align-items: center;
   }
+}
 
-  .user a {
-    text-align: center;
+@media only screen and (min-width: 1515px) {
+  .navbar .nav-links {
+    width: auto;
   }
 }
