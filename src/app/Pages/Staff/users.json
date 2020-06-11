@@ -96,20 +96,6 @@
       }
     },
     {
-      "name": "Bourbon",
-      "about": "I like my chicken with a pasta.",
-      "social": {}
-    },
-    {
-      "name": "Miril Savla",
-      "about": "Madness as you know, is a lot like gravity, all it takes is a little push.",
-      "social": {
-        "Discord": "https://discord.gg/nBhSAW",
-        "Spotify": "https://open.spotify.com/user/b2dm3lhabhmvm4uqygo5ded95",
-        "YouTube": "https://www.youtube.com/channel/UCx60NXyx6On8b0aF6N4AdHA/"
-      }
-    },
-    {
       "name": "Passionate",
       "about": "Nothing is a waste of time if you use the experience wisely.",
       "social": {
@@ -142,15 +128,11 @@
       }
     },
     {
-      "name": "Justin",
-      "about": "Thought of a bio, here it is. Oh yeah, the names Justin!",
-      "social": {}
-    },
-    {
       "name": "Toto",
       "about": "I like my pasta with a chicken.",
       "social": {
-        "Insta": "https://www.instagram.com/cerennklndr"
+        "Insta": "https://www.instagram.com/cerennklndr",
+        "Discord": "https://discord.gg/3wXg9Ex"
       }
     },
     {
@@ -180,20 +162,6 @@
       "social": {}
     },
     {
-      "name": "notme#8130",
-      "about": "I'm not a weeb",
-      "social": {
-        "Twitter": "https://twitter.com/vryhuman"
-      }
-    },
-    {
-      "name": "mercury",
-      "about": "best planet",
-      "social": {
-        "YouTube": "https://www.youtube.com/channel/UCyGmGua4f5xWj-h6jcq2CNw"
-      }
-    },
-    {
       "name": "Cece",
       "about": "HI FAM' just a lil old lady with lots of cats.",
       "social": {
@@ -214,20 +182,6 @@
       }
     },
     {
-      "name": "Gxbriel",
-      "about": "A Canadian mod, that’s all",
-      "social": {
-        "YouTube": "https://m.youtube.com/channel/UCq5mwzHU-PpOoI2M3CMCZfQ",
-        "Twitch": "https://m.twitch.tv/vagona1/profile",
-        "Insta": "https://www.instagram.com/theanimedump/"
-      }
-    },
-    {
-      "name": "CEO of Your Data",
-      "about": "Professional Dumbass",
-      "social": {}
-    },
-    {
       "name": "Terrarian",
       "about": "When life gets you down, the bois on discord got your back (most of the time).",
       "social": {}
@@ -236,7 +190,6 @@
       "name": "Aerielle",
       "about": "Pretty short, Australian and will kick your ass if you dm me <3",
       "social": {
-        "Insta": "https://www.instagram.com/imaerielle",
         "Spotify": "https://open.spotify.com/user/axrixllx"
       }
     },
@@ -291,6 +244,13 @@
       "about": "im practicing",
       "social": {
         "Insta": "https://www.instagram.com/bern.swx"
+      }
+    },
+    {
+      "name": "reese",
+      "about": "i love willow sm",
+      "social": {
+        "Insta": "https://www.instagram.com/reeseped"
       }
     }
 
