@@ -236,8 +236,7 @@ export default React.memo(() => (
     <h2>Contact Us</h2>
     <p>If you have any questions about this Privacy Policy, please contact us:</p>
     <ul>
-      <li>By email: help@dankmemer.gg</li>
-      <li>By phone (US only): (336) 404-5886</li>
+      <li>By email: admin@dankmemer.gg</li>
     </ul>
   </div>
 ));

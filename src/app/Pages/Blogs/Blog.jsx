@@ -45,7 +45,8 @@ function gibbeDatePls(date) {
   date = new Date(date);
   const month = date.toLocaleString('default', { month: 'long' });
   const day = getOrdinalNum(date.getDate());
-  return `${month} ${day}`;
+  const year = date.getFullYear()
+  return `${month} ${day}, ${year}`;
 }
 
 // This function courtesy of SO bc I'm lazy https://stackoverflow.com/a/44418732/7187153

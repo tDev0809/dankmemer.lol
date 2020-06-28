@@ -94,17 +94,12 @@ export default React.memo(() => (
     <p>By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use the Service.</p>
 
 
-    <h2>Contact Us</h2>
-
-    <p>If you have any questions about these Terms, please contact us.</p>
-
     <h2>Contact us</h2>
 
-    <p>If you have any questions about our Refunds and Refunds Policy, please contact us:</p>
+    <p>If you have any questions about our Terms, please contact us:</p>
 
     <ul>
-    <li>By email: help@dankmemer.gg</li>
-      <li>By phone (US only): (336) 404-5886</li>
+    <li>By email: admin@dankmemer.gg</li>
     </ul>
 
   </div>
