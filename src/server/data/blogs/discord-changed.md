@@ -13,7 +13,7 @@ The video and message they sent made it clear, Discord isn't just a place for ga
 
 While Discord is no doubt the best chat platform on the market to date, I feel we're losing an important part of what made a lot of us love the app. Myself, and many others found the "memey" and "fun" parts of the app very appealing when moving over from the near-corporate feeling Skype. (Yes that's right kids, we used to use Skype in the exact way you use Discord)
 
-I saw a fairly decent suggestion on [/r/discordapp](https://www.reddit.com/r/discordapp/comments/hnx65n/the_depersonalization_of_discord/fxekxd7?utm_source=share&utm_medium=web2x) by users `SuperSupermario24`, `danbulant`, and `AnimatorGuy1` that would have us getting a "language setting" similar to what Minecraft has, where you can change the "language" in the app back to "classic Discord" which is inherently memey and fun.
+I saw a fairly decent suggestion on [/r/discordapp](https://www.reddit.com/r/discordapp/comments/hnx65n/the_depersonalization_of_discord/fxekxd7?utm_source=share&utm_medium=web2x) by users `SuperSupermario24`, `danbulant`, and `AnimatorGuy1` that would have us getting a "language setting" similar to what Minecraft has with the every funny "lol cat", where you can change the "language" in the app back to "classic Discord" which is inherently memey and fun.
 
 I know myself and many others are going to miss the small strings found throughout the app that reminded us how young and fun Discord was. Personally most of all, the "table flip" options in server settings which would dictate how strict your server security was. Now it has been reduced to simple (yet easy to understand) words in place of the previously hilarious emotes.
 
