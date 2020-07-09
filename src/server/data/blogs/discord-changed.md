@@ -7,7 +7,7 @@ The first to go was the name. They changed their main domain from `discordapp.co
 
 Myself among many others brushed this off as bad wording. Sadly, we're starting to see what they mean about "growing up". Soon after, we got a completely redesigned home page that removed many of the "cute gaming elements". Overall, the page looks much more appealing to a wider crowd than just the edgy teenagers who love anime and memes. This is certainly their goal, and they said as much in an update message shortly after.
 
-[![Discord's video announcing the redesign, links to a YouTube video](http://img.youtube.com/vi/jAXDxug-1B4/0.jpg)](http://www.youtube.com/watch?v=jAXDxug-1B4 "Discord's video announcing the redesign.")
+[![Discord's video announcing the redesign, links to a YouTube video](https://img.youtube.com/vi/jAXDxug-1B4/0.jpg)](https://www.youtube.com/watch?v=jAXDxug-1B4 "Discord's video announcing the redesign.")
 
 The video and message they sent made it clear, Discord isn't just a place for gamers anymore. It's a place for anyone and everyone of all ages. Overall, it's not a bad idea. After all, the user potential will grow astronomically if they can appeal to more than just teenagers and young-minded adults. However, I feel there is a significant downside here to be found as well for those of us who fell in love with Discord as it was.
 
