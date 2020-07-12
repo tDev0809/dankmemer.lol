@@ -43,7 +43,7 @@ const NavBar = ({
           <NavLink className="nav-link" activeClassName="active" to="/commands">COMMANDS</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/about">ABOUT</NavLink>
+          <NavLink className="nav-link" activeClassName="active" to="/blogs">BLOG</NavLink>
         </li>
         {navigator.onLine && <li className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/staff">STAFF</NavLink>

@@ -7,11 +7,11 @@ export default React.memo(() => (
   <footer className="footer">
     <div className="footer-table">
       <div className="footer-group footer-copyright">
-        <span className="copyright">Copyright © {new Date().getFullYear()} Melms Media LLC</span>
+        <span className="copyright">Copyright © {new Date().getFullYear()} Dank Memer</span>
       </div>
       <div className="footer-group footer-links">
         <a className="footer-link" href="https://www.patreon.com/join/dankmemerbot?">Premium</a>
-        <NavLink className="footer-link" to="/blogs">Blogs</NavLink>
+        <NavLink className="footer-link" to="/about">About</NavLink>
         <a className="footer-link" href="https://dankmemer.services/documentation">API</a>
         <NavLink className="footer-link" to="/rules">Rules</NavLink>
         <NavLink className="footer-link" to="/terms">Terms</NavLink>
