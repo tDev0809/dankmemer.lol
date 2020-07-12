@@ -39,7 +39,7 @@ As for managing your users, auto-moderating the content, and creating a role gat
 
 *...but what about some fun?* Discord comes from gaming roots, and as such, many bots offer *gameplay* ability. My personal favorite, backed by a vast community that naturally cultivates grounds to increase your server membership, is [Dank Memer](https://dankmemer.lol/). Memer is a quippy, memey, fuckery style bot that offers a suite of fun commands. From meme creation (from your photos even) to image generation built-in on your favorite meme templates, varied autoresponse trigger dad jokes (Trigg*her*, I barely know her!) finally a **HUGE** competitive economic system that has a regulated currency. You can gamble, play slots, blackjack, post memes, and even die from by the hands of the hobo in your attic! *[Autoposting](https://dankmemer.lol/premium) content capability is available too!*
 
->**ROLE GATE**  
+> **ROLE GATE**  
 ![see here](https://kableko.s3-us-east-2.amazonaws.com/lymphocystosis-apophysitis-earthbred-unhave/Screen-Shot-2020-07-09-21-26-09.67.png)  
 *This is a good example of putting those granular permissions to use in leaving the ability to see messages off for*@everyone*and the ability to see messages on for the role the bot will give once the user reacts the emote. You would make sure you have the channel overridden to be seen for the*@everyone* role and be unseen by your base members' role.
 
