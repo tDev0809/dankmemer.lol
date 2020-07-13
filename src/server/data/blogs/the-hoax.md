@@ -1,5 +1,3 @@
-Honestly, I'm not even sure where to begin this blog post.
-
 I resisted making this for a long time, hoping things would improve, but they have not. So there's going to be three sections here, and a TLDR (too long, didn't read) summary at the end.
 
 ## The Hoax, and How It's Wrong
@@ -14,7 +12,7 @@ That gist was telling users that we were "sending messages to a server full of c
 
 Now what people don't seem to realize is that literally ANY website you visit, unless you're using a [VPN](https://us.norton.com/internetsecurity-privacy-what-is-a-vpn.html), can see your IP address. In fact, MOST sites actually [store your IP](https://www.pinsentmasons.com/out-law/guides/ip-addresses-and-the-data-protection-act#:~:text=As%20soon%20as%20you%20visit,record%20of%20your%20internet%20activity.). It's not nearly as sensitive and damning as some people would have you believe.
 
-As outlined in our privacy policy, we sometimes store your IP and email address for our site. However, we ONLY store this data if you log into the site using Discord. We're purely storing it for security against malicious users, especially to fight chargeback fraud. What we're doing is standard practice, and our website is [entirely open source](https://github.com/DankMemer/dankmemer.lol).
+As outlined in our privacy policy, we sometimes store your IP and email address for our site. However, we ONLY store this data if you log into the site using Discord. We're purely storing it for security against malicious users, especially to fight chargeback fraud. We're doing standard practice, and our website is [entirely open source](https://github.com/DankMemer/dankmemer.lol).
 
 However, us storing your data in this specific instance isn't what the hoax is talking about. They're claiming that by having the bot in your server, we're able to get your email, IP address, address, and more. This is simply not possible, let alone true. 
 
@@ -30,6 +28,8 @@ At this point, anywhere from 25%-50% of our monthly income goes to a charity, th
 
 Why am I telling you all this about the financials? Well, look at how much we have to lose from "giving info to creeps." What could we POSSIBLY gain, and we would have so much to lose.
 
+If this were true, Aetheryx and I would lose all our income and be banned from the platform. (which is why the secondary rumor floating around that "Discord verified it's true" is so laughable). Discord has not "verified it to be true," when reached out to via email about the situation, Discord called it chainmail and asked the user not to participate in spreading it. [(As seen in this screenshot taken by a user.)](https://i.imgur.com/pSTpRgb.png)
+
 This hoax doesn't even reach conspiracy theory level, because there is literally no evidence presented. The only clear motive is by the people starting the rumor, which brings us to the next section.
 
 ### Issue Three - The motive of the person spreading this
@@ -44,7 +44,7 @@ This may be the case, albeit unlikely in my eyes. We seldom talk about what goes
 
 First, we have a long history of people mad about our bot or changes made to it. Whether it's an update they don't like that "ruins the fun," or they were caught cheating and banned for it, we aren't sure which case this might be.
 
-This rumor is so insanely unfounded with not even a fraction of truth to it. This was started maliciously in an attempt to hurt us personally or the business in general. Congrats, you've succeeded in hurting a small developer team and fracturing a passionate community.
+This rumor is so insanely unfounded with not even a fraction of truth to it. This was started maliciously in an attempt to hurt us personally or the business in general. Congrats, you've succeeded in damaging a small developer team and fracturing a passionate community.
 
 ## The Effect on Dank Memer
 
@@ -81,3 +81,15 @@ The bot will stay online, and Aetheryx will keep it running as smoothly as possi
 I'm going to pursue a career elsewhere, hopefully in the gaming industry, as Dank Memer has shown me where my passions truly lie. And if I do end up finding something, it won't mean the end of the bot—just the end of my participation in the bot.
 
 If you'd like to connect with me and talk about this, please reach out to me in my DMs on Twitter [(@realmelmsie)](https://twitter.com/realmelmsie). I will not be accepting Discord friend requests to chat, and I will not be around the official server for a while.
+
+## TLDR (Summary)
+
+- This hoax is exactly that, a hoax.
+
+- Discord did not verify this to be true.
+
+- We haven't got the means or motive to do what is claimed. 
+
+- These false accusations have damaged us a lot.
+
+- I will be removing myself from the bot for a few months for my own mental health.
