@@ -57,7 +57,7 @@
         "Twitter": "https://twitter.com/kablekompany",
         "GitHub": "https://github.com/kablekompany",
         "Insta": "https://instagram.com/kablekompany",
-        "Discord": "https://discord.gg/nhU7zXk"
+        "Discord": "https://kable.lol/discord"
       }
     }
   ],
@@ -68,6 +68,112 @@
       "social": {
         "Twitch": "https://www.twitch.tv/sinister__1337",
         "Discord": "https://discord.gg/savewizard"
+      }
+    },
+    {
+      "name": "Aiphey",
+      "about": "First I drink the coffee. Then I do the things.",
+      "social": {
+        "Discord": "https://discord.gg/Y4Xu3WN",
+        "Spotify": "https://open.spotify.com/user/409mdtf1dzhrdzg501y92yzd9",
+        "Insta": "https://www.instagram.com/aipheyduh/",
+        "Reddit": "https://www.reddit.com/user/Aiphey"
+      }
+    },
+    {
+      "name": "Mistress Red",
+      "about": "Chocolate doesn’t ask questions, chocolate understands.",
+      "social": {
+        "Website": "https://www.bungie.net/en/Profile/254/12740999/RED%20ENYO%2088"
+      }
+    },
+    {
+      "name": "2PumpChump",
+      "about": "Never forget, the world is yours. Terms and conditions may apply.",
+      "social": {}
+    },
+    {
+      "name": "Aerielle",
+      "about": "Pretty short, Australian and will kick your ass if you dm me <3",
+      "social": {
+        "Discord": "https://discord.gg/bAfT8QN",
+        "Reddit": "https://www.reddit.com/user/imaerielle",
+        "GitHub": "https://github.com/Aeriellee",
+        "Spotify": "https://open.spotify.com/user/axrixllx"
+      }
+    }
+  ],
+    "Server Support": [
+    {
+      "name": "reese",
+      "about": "i love willow sm",
+      "social": {
+        "Insta": "https://www.instagram.com/reeseped"
+      }
+    },
+    {
+      "name": "bernice swx",
+      "about": "im practicing",
+      "social": {
+        "Insta": "https://www.instagram.com/bern.swx"
+      }
+    },
+    {
+      "name": "xfastx",
+      "about": "im fast af boi",
+      "social": {}
+    },
+    {
+      "name": "samantha",
+      "about": "ur cute",
+      "social": {
+        "Insta": "https://www.instagram.com/sam.anthaaa.l/"
+      }
+    },
+    {
+      "name": "TheProdigyHenry",
+      "about": "Lost in reveries of sweet dreams...",
+      "social": {
+        "YouTube": "https://www.youtube.com/channel/UCjQQBB7iK3LJXwPPEwFJkxg"
+      }
+    },
+    {
+      "name": "Terrarian",
+      "about": "When life gets you down, the bois on discord got your back (most of the time).",
+      "social": {}
+    },
+    {
+      "name": "Dylan",
+      "about": "Casting my magic to this beautifully created world",
+      "social": {
+        "Insta": "https://www.instagram.com/dylan_c.p/",
+        "YouTube": "https://m.youtube.com/channel/UCiGzLIpUKTJsXd5ggxCvAkA",
+        "Spotify": "https://open.spotify.com/user/axn1mugfxtfb44u3vobvmlrf9",
+        "Twitch": "https://www.twitch.tv/tmdylancp"
+      }
+    },
+    {
+      "name": "Cece",
+      "about": "HI FAM' just a lil old lady with lots of cats.",
+      "social": {
+        "Twitter": "https://twitter.com/ceciliabooth04",
+        "Twitch": "https://www.twitch.tv/cecewazhere",
+        "Insta": "https://www.instagram.com/cecewazhere/",
+        "Discord": "https://discord.gg/YaKtB7z"
+      }
+    },
+    {
+      "name": "Shiiiitakë",
+      "about": "Bloop.",
+      "social": {}
+    },
+    {
+      "name": "Passionate",
+      "about": "Nothing is a waste of time if you use the experience wisely.",
+      "social": {
+        "Discord": "https://discord.gg/4Kvt9D9",
+        "Spotify": "https://open.spotify.com/user/9k0q0ap8j8kiv7jjsnoykq12g",
+        "YouTube": "https://www.youtube.com/channel/UCbTYsQ8Fx9wqbylyOlt8afQ"
       }
     },
     {
@@ -85,177 +191,7 @@
         "Discord": "https://discord.gg/NXAc5xs",
         "Twitter": "https://twitter.com/DuckySoren"
       }
-    },
-    {
-      "name": "Nunca",
-      "about": "Mel is a major qt...",
-      "social": {
-        "GitHub": "https://github.com/Ionomycin",
-        "Discord": "https://discord.gg/s87mw8"
-      }
-    },
-    {
-      "name": "Passionate",
-      "about": "Nothing is a waste of time if you use the experience wisely.",
-      "social": {
-        "Discord": "https://discord.gg/4Kvt9D9",
-        "Spotify": "https://open.spotify.com/user/9k0q0ap8j8kiv7jjsnoykq12g",
-        "YouTube": "https://www.youtube.com/channel/UCbTYsQ8Fx9wqbylyOlt8afQ"
-      }
-    },
-    {
-      "name": "Knight",
-      "about": "Hey guys! I'm Knight, feel free to friend and text me!  🏄🤙🏀",
-      "social": {
-        "Spotify": "https://open.spotify.com/user/npvwzu7cxn2pgi88t7vbzbj97?si=gRB77Z2ASISHgRNBaiG7mw"
-      }
-    },
-    {
-      "name": "Spurkeh",
-      "about": "Umm just your typically 21 year old that loves gaming and anime I work a lot whenever my freetime is I'm spending it with da bois either online or irl",
-      "social": {
-        "Twitch": "https://www.twitch.tv/yoboisparky"
-      }
-    },
-    {
-      "name": "Aiphey",
-      "about": "First I drink the coffee. Then I do the things.",
-      "social": {
-        "Discord": "https://discord.gg/Y4Xu3WN",
-        "Spotify": "https://open.spotify.com/user/409mdtf1dzhrdzg501y92yzd9",
-        "Insta": "https://www.instagram.com/aipheyduh/",
-        "Reddit": "https://www.reddit.com/user/Aiphey"
-      }
-    },
-    {
-      "name": "Toto",
-      "about": "I like my pasta with a chicken.",
-      "social": {
-        "Insta": "https://www.instagram.com/cerennklndr",
-        "Discord": "https://discord.gg/3wXg9Ex"
-      }
-    },
-    {
-      "name": "Nyx",
-      "about": "Night Shift Security Boi",
-      "social": {
-        "Reddit": "https://www.reddit.com/user/Nyxgawr",
-        "Spotify": "https://open.spotify.com/user/slashnyx/playlist/5aQkSFEXjGwzBJuFutQyGV",
-        "Twitter": "https://twitter.com/Nyxgawr"
-      }
-    },
-    {
-      "name": "Shiiiitakë",
-      "about": "Bloop.",
-      "social": {}
-    },
-    {
-      "name": "Mistress Red",
-      "about": "Chocolate doesn’t ask questions, chocolate understands.",
-      "social": {
-        "Website": "https://www.bungie.net/en/Profile/254/12740999/RED%20ENYO%2088"
-      }
-    },
-    {
-      "name": "2PumpChump",
-      "about": "Never forget, the world is yours. Terms and conditions may apply.",
-      "social": {}
-    },
-    {
-      "name": "Cece",
-      "about": "HI FAM' just a lil old lady with lots of cats.",
-      "social": {
-        "Twitter": "https://twitter.com/ceciliabooth04",
-        "Twitch": "https://www.twitch.tv/cecewazhere",
-        "Insta": "https://www.instagram.com/cecewazhere/",
-        "Discord": "https://discord.gg/YaKtB7z"
-      }
-    },
-    {
-      "name": "Dylan",
-      "about": "Casting my magic to this beautifully created world",
-      "social": {
-        "Insta": "https://www.instagram.com/dylan_c.p/",
-        "YouTube": "https://m.youtube.com/channel/UCiGzLIpUKTJsXd5ggxCvAkA",
-        "Spotify": "https://open.spotify.com/user/axn1mugfxtfb44u3vobvmlrf9",
-        "Twitch": "https://www.twitch.tv/tmdylancp"
-      }
-    },
-    {
-      "name": "Terrarian",
-      "about": "When life gets you down, the bois on discord got your back (most of the time).",
-      "social": {}
-    },
-    {
-      "name": "Aerielle",
-      "about": "Pretty short, Australian and will kick your ass if you dm me <3",
-      "social": {
-        "Discord": "https://discord.gg/bAfT8QN",
-        "Reddit": "https://www.reddit.com/user/imaerielle",
-        "GitHub": "https://github.com/Aeriellee",
-        "Spotify": "https://open.spotify.com/user/axrixllx"
-      }
-    },
-    {
-      "name": "Faith",
-      "about": "Honestly, what even is a bio without mentioning that ur cute. <3",
-      "social": {
-        "YouTube": "https://www.youtube.com/channel/UCoAsscQVGn2HfIcICmhNyLQ",
-        "Spotify": "https://open.spotify.com/user/ynuajcic3p4vv6rb622iaj24n",
-        "Insta": "https://www.instagram.com/xfaaith/"
-      }
-    },
-    {
-      "name": "TheProdigyHenry",
-      "about": "Lost in reveries of sweet dreams...",
-      "social": {
-        "YouTube": "https://www.youtube.com/channel/UCjQQBB7iK3LJXwPPEwFJkxg"
-      }
-    },
-    {
-      "name": "samantha",
-      "about": "ur cute",
-      "social": {
-        "Insta": "https://www.instagram.com/sam.anthaaa.l/"
-      }
-    },
-    {
-      "name": "xfastx",
-      "about": "im fast af boi",
-      "social": {}
-    },
-    {
-      "name": "Smile",
-      "about": "Some random nerd, Yet Doesn't know how they got here.",
-      "social": {
-        "Spotify": "https://open.spotify.com/user/uqccqaws5k6xm2nqvoua0j888",
-        "Website": "https://smiles.ga/",
-        "GitHub": "https://github.com/Xynnix",
-        "Twitch": "https://twitch.tv/s_m_i_l_e_s/profile"
-      }
-    },
-    {
-      "name": "Julia",
-      "about": "Just your typical, friendly and shy Singaporean mod. That’s all. :)",
-      "social": {
-        "Reddit": "https://www.reddit.com/user/pandaworld0"
-      }
-    },
-    {
-      "name": "bernice swx",
-      "about": "im practicing",
-      "social": {
-        "Insta": "https://www.instagram.com/bern.swx"
-      }
-    },
-    {
-      "name": "reese",
-      "about": "i love willow sm",
-      "social": {
-        "Insta": "https://www.instagram.com/reeseped"
-      }
     }
-
   ],
   "Honorable Mentions": [
     {
