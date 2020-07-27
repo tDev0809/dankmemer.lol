@@ -62,7 +62,7 @@ export default class Box extends Component {
           <div className="box-yield">
             Amount of coins:
             <span className="box-piss"> {box.yield}</span><br />
-            A <u>{box.randomItem.chance * 100}%</u> chance at a <i>{box.randomItem.keyword}-tiered</i> item.
+            A <u>{box.randomItem.chance * 100}%</u> chance at some <a target="_blank" href="https://gist.github.com/melmsie/022a1b76c6242a59829ea1c4d3af5fec">cool items</a>.
           </div>
           <div className="box-price">${box.price.toFixed(2)}</div>
         </div>

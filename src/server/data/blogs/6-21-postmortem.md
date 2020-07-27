@@ -1,3 +1,5 @@
+## **This article is very old, and a lot has changed since it was written. Take what you read with a grain of salt.**
+
 ## Here's the tea sis
 
 We tried almost 2 weeks ago to update the bot with a sick moderation update. It failed horribly and we worked on fixing it.

@@ -1,49 +1,40 @@
 {
   "boxes": [
     {
-      "name": "Normie Box",
-      "disabled": true,
-      "id": 0,
-      "description": "Can't get more basic than this.",
-      "yield": "600 ~ 1600",
-      "randomItem": {
-        "keyword": "medium",
-        "chance": 0.69
-      },
-      "price": 0.69
-    },
-    {
       "name": "Meme Box",
       "id": 1,
       "description": "Something actually worth opening.",
-      "yield": "2500 ~ 5000",
+      "yield": "2500 ~ 8000",
       "randomItem": {
         "keyword": "high",
-        "chance": 0.80
+        "chance": 0.60
       },
-      "price": 1.49
+      "price": 1.98,
+      "items": ""
     },
     {
       "name": "Dank Box",
       "id": 2,
       "description": "Dank rewards for a dank user.",
-      "yield": "7000 ~ 20000",
+      "yield": "5000 ~ 20000",
       "randomItem": {
         "keyword": "high",
-        "chance": 1
+        "chance": 0.85
       },
-      "price": 3.49
+      "price": 3.98,
+      "items": ""
     },
     {
       "name": "God Box",
       "id": 3,
       "description": "This is a really op box.",
-      "yield": "10000 ~ 25000",
+      "yield": "8000 ~ 25000",
       "randomItem": {
         "keyword": "GOD",
         "chance": 1
       },
-      "price": 4.49
+      "price": 4.98,
+      "items": ""
     }
   ],
 

@@ -1,3 +1,5 @@
+## **This article is very old, and a lot has changed since it was written. Take what you read with a grain of salt.**
+
 ## Ban/Blacklist appeals!
 
 You are now able to appeal bans and blacklists on our website  

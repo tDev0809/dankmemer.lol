@@ -1,3 +1,5 @@
+## **This article is very old, and a lot has changed since it was written. Take what you read with a grain of salt.**
+
 ## Today's update notes
 
 - Added two new animal commands (ferret and otter) (Animal)

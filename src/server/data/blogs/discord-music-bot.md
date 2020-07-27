@@ -1,3 +1,5 @@
+## **This article is very old, and a lot has changed since it was written. Take what you read with a grain of salt.**
+
 ## <u>Meet Octave, a premium quality Discord music bot!</u>
 
 As many of you know, we used to have music built into Dank Memer itself. Now, we own a separate bot that does music as it's primary function. This article will go into details on what's changed since our last announcement on the death of Dank Memer's music functionality, and what's great about our new system.
