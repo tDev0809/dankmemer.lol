@@ -2,7 +2,7 @@
   "boxes": [
     {
       "name": "Meme Box",
-      "id": 1,
+      "id": 0,
       "description": "Something actually worth opening.",
       "yield": "2500 ~ 8000",
       "randomItem": {
@@ -14,7 +14,7 @@
     },
     {
       "name": "Dank Box",
-      "id": 2,
+      "id": 1,
       "description": "Dank rewards for a dank user.",
       "yield": "5000 ~ 20000",
       "randomItem": {
@@ -26,7 +26,7 @@
     },
     {
       "name": "God Box",
-      "id": 3,
+      "id": 2,
       "description": "This is a really op box.",
       "yield": "8000 ~ 25000",
       "randomItem": {
