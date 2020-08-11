@@ -4,43 +4,43 @@
       "name": "Meme Box",
       "id": 0,
       "description": "Something actually worth opening.",
-      "yield": "2500 ~ 8000",
+      "yield": "2,500 ~ 5,000",
       "randomItem": {
         "keyword": "high",
         "chance": 0.60
       },
-      "price": 1.98,
+      "price": 1.69,
       "items": ""
     },
     {
       "name": "Dank Box",
       "id": 1,
       "description": "Dank rewards for a dank user.",
-      "yield": "5000 ~ 20000",
+      "yield": "5,000 ~ 20,000",
       "randomItem": {
         "keyword": "high",
         "chance": 0.85
       },
-      "price": 3.98,
+      "price": 3.69,
       "items": ""
     },
     {
       "name": "God Box",
       "id": 2,
       "description": "This is a really op box.",
-      "yield": "8000 ~ 25000",
+      "yield": "10,000 ~ 50,000",
       "randomItem": {
         "keyword": "GOD",
         "chance": 1
       },
-      "price": 4.98,
+      "price": 4.69,
       "items": ""
     }
   ],
 
   "Constants": {
-    "MINIMUM_PURCHASE_VALUE": 2.50,
-    "MINIMUM_DISCOUNT_VALUE": 15,
+    "MINIMUM_PURCHASE_VALUE": 3,
+    "MINIMUM_DISCOUNT_VALUE": 20,
     "FLAT_DISCOUNT_PERCENTAGE": 5
   }
 }
