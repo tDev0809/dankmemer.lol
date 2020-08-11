@@ -9,7 +9,7 @@
         "keyword": "high",
         "chance": 0.60
       },
-      "price": 1.69,
+      "price": 1.99,
       "items": ""
     },
     {
@@ -21,7 +21,7 @@
         "keyword": "high",
         "chance": 0.85
       },
-      "price": 3.69,
+      "price": 3.99,
       "items": ""
     },
     {
@@ -33,7 +33,7 @@
         "keyword": "GOD",
         "chance": 1
       },
-      "price": 4.69,
+      "price": 4.99,
       "items": ""
     }
   ],
@@ -41,6 +41,6 @@
   "Constants": {
     "MINIMUM_PURCHASE_VALUE": 3,
     "MINIMUM_DISCOUNT_VALUE": 20,
-    "FLAT_DISCOUNT_PERCENTAGE": 5
+    "FLAT_DISCOUNT_PERCENTAGE": 10
   }
 }
