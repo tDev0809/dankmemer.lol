@@ -36,7 +36,7 @@ export default () => {
             <Route exact strict component={() => <Home />} path="/" />
             <Route component={() => <Commands />} path="/commands" />
             <Route component={() => <Staff />} path="/staff" />
-            <Route component={() => <Loot />} path="/loot" />
+            {/* <Route component={() => <Loot />} path="/loot" /> */}
             <Route component={() => <Rules />} path="/rules" />
             <Route component={() => <About />} path="/about" />
             <Route component={(props) => <Blogs {...props} />} path="/blogs" />
