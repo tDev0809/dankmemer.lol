@@ -48,9 +48,9 @@ const NavBar = ({
         {navigator.onLine && <li className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/staff">STAFF</NavLink>
         </li>}
-        {/* {navigator.onLine && <li className="nav-item">
+        {navigator.onLine && <li className="nav-item">
           <NavLink className="nav-link premium" activeClassName="active" to="/loot" data-discount={discount ? `FLASH SALE (${parseTime(discount.expiry - Date.now()).hours}H LEFT)` : ''}>LOOTBOXES</NavLink>
-        </li>} */}
+        </li>}
         {navigator.onLine && <div className="login">
           {loggedIn ? (
             <li className="user nav-item" onClick={(e) => onClick(e.target.parentElement)}>
