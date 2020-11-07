@@ -15,6 +15,7 @@ const Reports  = lazy(() => import('./Pages/Reports'));
 const Refunds  = lazy(() => import('./Pages/Refunds'));
 const Privacy  = lazy(() => import('./Pages/Privacy'));
 const Commands = lazy(() => import('./Pages/Commands'));
+const Faq = lazy(() => import('./Pages/Faq'));
 
 import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
@@ -35,6 +36,7 @@ export default () => {
           <Suspense fallback={<div></div>}>
             <Route exact strict component={() => <Home />} path="/" />
             <Route component={() => <Commands />} path="/commands" />
+            <Route component={() => <Faq />} path="/faq" />
             <Route component={() => <Staff />} path="/staff" />
             <Route component={() => <Loot />} path="/loot" />
             <Route component={() => <Rules />} path="/rules" />

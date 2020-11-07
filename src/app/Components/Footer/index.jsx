@@ -12,6 +12,7 @@ export default React.memo(() => (
       <div className="footer-group footer-links">
         <a className="footer-link" href="https://www.patreon.com/join/dankmemerbot?">Premium</a>
         <NavLink className="footer-link" to="/about">About</NavLink>
+        <NavLink className="footer-link" to="/staff">Staff</NavLink>
         <a className="footer-link" href="https://dankmemer.services/documentation">API</a>
         <NavLink className="footer-link" to="/rules">Rules</NavLink>
         <NavLink className="footer-link" to="/terms">Terms</NavLink>

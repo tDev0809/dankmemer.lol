@@ -7,7 +7,7 @@ import parseTime from '../../util/parseTime.js';
 
 const NavBar = ({
   discount,
-  login: { loggedIn, username, discriminator, isAdmin }
+  login: { loggedIn, username, discriminator }
 }) => {
   const [ navExpanded, setNavExpanded ] = useState(false);
   const [ userExpanded, setUserExpanded ] = useState(false);
@@ -45,9 +45,9 @@ const NavBar = ({
         <li className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/blogs">BLOG</NavLink>
         </li>
-        {navigator.onLine && <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/staff">STAFF</NavLink>
-        </li>}
+        <li className="nav-item">
+          <NavLink className="nav-link" activeClassName="active" to="/faq">FAQ</NavLink>
+        </li>
         {navigator.onLine && <li className="nav-item">
           <NavLink className="nav-link premium" activeClassName="active" to="/loot" data-discount={discount ? `FLASH SALE (${parseTime(discount.expiry - Date.now()).hours}H LEFT)` : ''}>LOOTBOXES</NavLink>
         </li>}
