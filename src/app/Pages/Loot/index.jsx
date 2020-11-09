@@ -13,6 +13,8 @@ import loadScript from '../../util/loadScript.js';
 
 import './Loot.scss';
 
+const greetings = ['Go on, honey. Go pick yourself a boxy box.', 'TREAT YO SELF... to a box of loot.', 'Cmon, you know you want a box.', 'Look at all these chickens (boxes).', 'A box a day keeps the loot goblins away...']
+
 class Loot extends Component {
   inputRef = createRef();
   paypalButton = null;
@@ -25,6 +27,7 @@ class Loot extends Component {
     hasAgreed: false,
     succeededPayment: null,
     boxCount: 1,
+    welcomeMessage: greetings[Math.floor(Math.random()*greetings.length)],
     giftState: null
   };
 
@@ -219,7 +222,7 @@ class Loot extends Component {
         <main className="content loot">
           <div className="fancy-header absolute-unit red">Sorry, not sorry.</div>
           <div style={{ fontSize: '22px' }}>
-            Your account has been banned from purchasing any lootboxes.
+            Your account has been banned from purchasing any lootboxes. NICE!
           </div>
         </main>
       );
@@ -267,7 +270,7 @@ class Loot extends Component {
 
     return (
       <main className="content loot">
-        <div className="fancy-header absolute-unit">Go on, honey. Go pick yourself a boxy box.</div>
+        <div className="fancy-header absolute-unit">{this.state.welcomeMessage}</div>
 
         <div className="boxes">
           {boxes.map((box, index) => !box.disabled && (

@@ -114,9 +114,7 @@ export default class Commands extends PureComponent {
                       <div className='command-expanded-seperator' />
                       <div className='command-info-section'>
                         <div className='command-info-header'>Answer</div>
-                        <div className='command-info-details command-info-usage'>
-                          <div className='command-info-usage-command'>{command.a}</div>
-                        </div>
+                        <div className='command-info-details command-info-permissions'>{command.a}</div>
                       </div>
                     </div>
                   </div>

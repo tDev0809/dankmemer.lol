@@ -1,5 +1,6 @@
 import React from 'react';
 import './blog.css';
+import Button from '../../Components/Button/index.jsx';
 
 export default class Blog extends React.Component {
   state = {
@@ -36,6 +37,17 @@ export default class Blog extends React.Component {
             __html: this.state.content
           }}
         />
+        <div className="call-to-action">
+      <span className="action-text">Join the growing Dank Memer family, today.</span>
+      <div className="links">
+        <Button link="https://invite.dankmemer.lol">
+          Add Bot
+        </Button>
+        <Button link="/commands">
+          Commands
+        </Button>
+      </div>
+    </div>
       </>
     );
   }

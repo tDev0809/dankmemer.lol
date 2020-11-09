@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../../Components/Button/index.jsx';
 
 import './blogs.scss';
 
@@ -30,10 +31,10 @@ export default class Blogs extends React.Component {
                 to={`/blogs/${blog.id}`}
               >
                 <div className="blog-info">
-                  <div className="blog-name blurple">
+                  <div className="blog-name">
                     {blog.name}
                   </div>
-                  <div className="blog-date">
+                  <div className="blog-date blurple">
                     Posted {gibbeDatePls(blog.date)} by {blog.author}
                   </div>
                   <span className="blog-desc">
@@ -44,7 +45,19 @@ export default class Blogs extends React.Component {
             </div>
           ))}
         </div>
+        <div className="call-to-action">
+      <span className="action-text">Join the growing Dank Memer family, today.</span>
+      <div className="links">
+        <Button link="https://invite.dankmemer.lol">
+          Add Bot
+        </Button>
+        <Button link="/commands">
+          Commands
+        </Button>
       </div>
+    </div>
+      </div>
+      
     );
   }
 }

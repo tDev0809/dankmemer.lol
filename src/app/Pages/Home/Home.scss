@@ -7,8 +7,40 @@
 
   .home-slogan {
     font-size: 3em;
-    margin: 2rem;
+    margin: 2rem 2rem 0.5rem;
     font-family: 'Montserrat';
+    font-weight: bold;
+  }
+  .home-tag {
+    font-size: 2em;
+    margin: 0.5rem 2rem 2rem;
+    font-family: 'Montserrat';
+    color: #cccccc;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+
+.call-to-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18vh;
+  margin-bottom: 18vh;
+
+  .action-text {
+    font-size: 2em;
+    margin: 0.5rem 2rem 2rem;
+    font-family: 'Montserrat';
+    color: #ffffff;
     font-weight: bold;
   }
 
@@ -99,6 +131,20 @@ section {
     text-align: center!important;
     margin: 10px!important;
     font-size: 2em!important;
+  }
+
+  .home-tag {
+    align-content: center!important;
+    text-align: center!important;
+    margin: 10px!important;
+    font-size: 1.5em!important;
+  }
+
+  .action-text {
+    align-content: center!important;
+    text-align: center!important;
+    margin: 10px!important;
+    font-size: 1.5em!important;
   }
 
   .hero {

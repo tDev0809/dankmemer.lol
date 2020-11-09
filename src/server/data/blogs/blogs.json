@@ -1,5 +1,12 @@
 [
   {
+    "filename": "plans-past-2020.md",
+    "name": "Our Long-Term Plans",
+    "date": 1604879108664,
+    "desc": "In celebration of 4 million servers, we give you some insight into our ambitious plans for the next few years. Both on and off Discord as a platform.",
+    "author": "Melmsie"
+  },
+  {
     "filename": "rewrite-progress.md",
     "name": "Progress Update on Dank Memer's Rewrite",
     "date": 1597148426880,
@@ -24,7 +31,7 @@
     "filename": "discord-changed.md",
     "name": "Discord has Changed?",
     "date": 1594338625679,
-    "desc": "Discord is making some major changes that not everyone is enjoying to their branding. Why?",
+    "desc": "Discord is making some major changes that not everyone is enjoying to their branding. Why? Lets dive in!",
     "author": "Melmsie"
   },
   {
