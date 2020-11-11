@@ -60,6 +60,13 @@ export default class Commands extends PureComponent {
   render () {
     const { selectedCategory, transitionState, expandedCommand, searchQuery } = this.state;
     return (
+      <>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
       <div className='content commands-page'>
         <div className='commands-wrapper'>
           <div className='categories'>
@@ -125,6 +132,13 @@ export default class Commands extends PureComponent {
           </div>
         </div>
       </div>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </>
     );
   }
 }

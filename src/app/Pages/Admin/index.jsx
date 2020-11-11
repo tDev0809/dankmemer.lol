@@ -22,10 +22,18 @@ class Admin extends React.PureComponent {
     }
 
     return (
+      <>
       <div className="content admin">
         {BanPanels.map((Panel, key) => (<Panel key={key} />))}
         {<GetPayment/>}
       </div>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </>
     );
   }
 }

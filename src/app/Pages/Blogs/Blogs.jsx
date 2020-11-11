@@ -21,6 +21,12 @@ export default class Blogs extends React.Component {
         <header className="header">
           <span>Blog Posts</span>
         </header>
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
         <div className="list">
           {this.state.blogs.map(blog => (
             <div className="blog-post-container">
@@ -55,6 +61,12 @@ export default class Blogs extends React.Component {
           Commands
         </Button>
       </div>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
     </div>
       </div>
       

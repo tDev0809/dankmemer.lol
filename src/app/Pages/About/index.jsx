@@ -16,6 +16,12 @@ export default class Rules extends React.PureComponent {
   render () {
     return(
       <main className="content about">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
         <div className="good-spacing">
           <h1 ref="about" className="title blurple">About Dank Memer</h1>
           <h2 className="subsection">What is Dank Memer?</h2>

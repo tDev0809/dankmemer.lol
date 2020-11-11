@@ -11,6 +11,12 @@ const getSocialIndex = ({ social }) =>
 
 export default React.memo(() => (
   <div className="content">
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
     {categories.map(([ category, users ]) => (
       <React.Fragment key={category}>
         <h2 className="staff-title">{category}</h2>
