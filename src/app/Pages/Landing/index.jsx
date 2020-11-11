@@ -23,8 +23,8 @@ export default React.memo(() => (
     <div>
       <h1 className='title'>thanks for adding <span className='pepple'>dank memer</span></h1>
     </div>
-    <ins class="adsbygoogle"
-          style="display:block"
+    <ins className="adsbygoogle"
+          style={{display:'block'}}
           data-ad-client="ca-pub-7326182486296195"
           data-ad-slot="4551035249"
           data-ad-format="auto"
@@ -43,8 +43,8 @@ export default React.memo(() => (
         </a>
       ))}
     </div>
-    <ins class="adsbygoogle"
-          style="display:block"
+    <ins className="adsbygoogle"
+          style={{display:'block'}}
           data-ad-client="ca-pub-7326182486296195"
           data-ad-slot="4551035249"
           data-ad-format="auto"

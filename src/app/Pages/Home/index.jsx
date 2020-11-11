@@ -23,8 +23,8 @@ export default React.memo(() => (
           Commands
         </Button>
       </div>
-      <ins class="adsbygoogle"
-          style="display:block"
+      <ins className="adsbygoogle"
+          style={{display:'block'}}
           data-ad-client="ca-pub-7326182486296195"
           data-ad-slot="4551035249"
           data-ad-format="auto"
@@ -48,8 +48,8 @@ export default React.memo(() => (
         <p className="section-body">Dank Memer has 100+ meme commands, with a lot of them specializing in helping you generate your own memes. Browse our <a href="/commands">commands page</a> for the Memey and Image categories!</p>
         </div>
     </section>
-    <ins class="adsbygoogle"
-          style="display:block"
+    <ins className="adsbygoogle"
+          style={{display:'block'}}
           data-ad-client="ca-pub-7326182486296195"
           data-ad-slot="4551035249"
           data-ad-format="auto"
@@ -82,8 +82,8 @@ export default React.memo(() => (
           Commands
         </Button>
       </div>
-      <ins class="adsbygoogle"
-          style="display:block"
+      <ins className="adsbygoogle"
+          style={{display:'block'}}
           data-ad-client="ca-pub-7326182486296195"
           data-ad-slot="4551035249"
           data-ad-format="auto"
