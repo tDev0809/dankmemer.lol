@@ -37,11 +37,14 @@ export default class Home extends React.PureComponent {
           Commands
         </Button>
       </div>
-      <ins className="adsbygoogle ad"
-          data-ad-client="ca-pub-7326182486296195"
-          data-ad-slot="4551035249"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
+      <div align="center">
+          <ins className="adsbygoogle ad"
+            data-ad-client="ca-pub-7326182486296195"
+            data-ad-slot="4551035249"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+          </ins>
+        </div>
     </div>
     <section className="reverse">
       <img height="15rem!important;" alt="Dank Memer is an in depth and unique + funny currency bot along with all our other features" src={CurrencyIMG}/>
@@ -61,11 +64,14 @@ export default class Home extends React.PureComponent {
         <p className="section-body">Dank Memer has 100+ meme commands, with a lot of them specializing in helping you generate your own memes. Browse our <a href="/commands">commands page</a> for the Memey and Image categories!</p>
         </div>
     </section>
-    <ins className="adsbygoogle ad"
-          data-ad-client="ca-pub-7326182486296195"
-          data-ad-slot="4551035249"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
+    <div align="center">
+          <ins className="adsbygoogle ad"
+            data-ad-client="ca-pub-7326182486296195"
+            data-ad-slot="4551035249"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+          </ins>
+        </div>
     <section className="reverse">
       <img height="15rem!important;" alt="Dank Memer is a popular bot, and in many cases raises a server's activity levels by a TON!" src={InsightIMG}/>
       <div className="text-area">
@@ -94,11 +100,14 @@ export default class Home extends React.PureComponent {
           Commands
         </Button>
       </div>
-      <ins className="adsbygoogle ad"
-          data-ad-client="ca-pub-7326182486296195"
-          data-ad-slot="4551035249"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
+      <div align="center">
+          <ins className="adsbygoogle ad"
+            data-ad-client="ca-pub-7326182486296195"
+            data-ad-slot="4551035249"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+          </ins>
+        </div>
     </div>
   </main>
     );

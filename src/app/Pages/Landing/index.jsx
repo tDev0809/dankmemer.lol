@@ -30,11 +30,14 @@ const playAudio = () =>
             <div>
               <h1 className='title'>thanks for adding <span className='pepple'>dank memer</span></h1>
             </div>
-            <ins className="adsbygoogle ad"
-                  data-ad-client="ca-pub-7326182486296195"
-                  data-ad-slot="4551035249"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
+            <div align="center">
+          <ins className="adsbygoogle ad"
+            data-ad-client="ca-pub-7326182486296195"
+            data-ad-slot="4551035249"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+          </ins>
+        </div>
             <div className='list'>
               {data.map(({ name, description, link }) => (
                 <a key={name} href={link} className='boxy' onMouseEnter={() => playAudio()}>
@@ -49,11 +52,14 @@ const playAudio = () =>
                 </a>
               ))}
             </div>
-            <ins className="adsbygoogle ad"
-                  data-ad-client="ca-pub-7326182486296195"
-                  data-ad-slot="4551035249"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
+            <div align="center">
+          <ins className="adsbygoogle ad"
+            data-ad-client="ca-pub-7326182486296195"
+            data-ad-slot="4551035249"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+          </ins>
+        </div>
           </div>
         );
       }
