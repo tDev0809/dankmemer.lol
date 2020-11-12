@@ -35,9 +35,7 @@ async componentDidMount () {
       <div align="center">
           <ins className="adsbygoogle ad"
             data-ad-client="ca-pub-7326182486296195"
-            data-ad-slot="4551035249"
-            data-ad-format="auto"
-            data-full-width-responsive="true">
+            data-ad-slot="4551035249">
           </ins>
         </div>
       </>

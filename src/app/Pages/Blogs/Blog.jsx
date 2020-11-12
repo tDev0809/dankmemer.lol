@@ -52,9 +52,7 @@ export default class Blog extends React.Component {
     <div align="center">
           <ins className="adsbygoogle ad"
             data-ad-client="ca-pub-7326182486296195"
-            data-ad-slot="5725651587"
-            data-ad-format="auto"
-            data-full-width-responsive="true">
+            data-ad-slot="5725651587">
           </ins>
         </div>
       </>
