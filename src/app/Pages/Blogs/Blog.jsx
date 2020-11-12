@@ -10,6 +10,7 @@ export default class Blog extends React.Component {
   };
 
   async componentDidMount () {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     this.setState(
       await fetch(`/api/blogs/${this.props.match.params.blog}`)
         .then(r => r.json())

@@ -18,34 +18,43 @@ const playAudio = () =>
   (peepos[++currentAudio] || peepos[currentAudio = 0])
     .play();
 
-export default React.memo(() => (
-  <div className='eee'>
-    <div>
-      <h1 className='title'>thanks for adding <span className='pepple'>dank memer</span></h1>
-    </div>
-    <ins className="adsbygoogle ad"
-          data-ad-client="ca-pub-7326182486296195"
-          data-ad-slot="4551035249"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-    <div className='list'>
-      {data.map(({ name, description, link }) => (
-        <a key={name} href={link} className='boxy' onMouseEnter={() => playAudio()}>
-          <h1 className='name'>
-            <span className='blurple'>
-              {name}
-            </span>
-          </h1>
-          <p className='about-text'>
-            {description}
-          </p>
-        </a>
-      ))}
-    </div>
-    <ins className="adsbygoogle ad"
-          data-ad-client="ca-pub-7326182486296195"
-          data-ad-slot="4551035249"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-  </div>
-));
+
+    export default class Landing extends React.PureComponent {
+      componentDidMount () {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    
+      render () {
+        return(
+          <div className='eee'>
+            <div>
+              <h1 className='title'>thanks for adding <span className='pepple'>dank memer</span></h1>
+            </div>
+            <ins className="adsbygoogle ad"
+                  data-ad-client="ca-pub-7326182486296195"
+                  data-ad-slot="4551035249"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+            <div className='list'>
+              {data.map(({ name, description, link }) => (
+                <a key={name} href={link} className='boxy' onMouseEnter={() => playAudio()}>
+                  <h1 className='name'>
+                    <span className='blurple'>
+                      {name}
+                    </span>
+                  </h1>
+                  <p className='about-text'>
+                    {description}
+                  </p>
+                </a>
+              ))}
+            </div>
+            <ins className="adsbygoogle ad"
+                  data-ad-client="ca-pub-7326182486296195"
+                  data-ad-slot="4551035249"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+          </div>
+        );
+      }
+    }

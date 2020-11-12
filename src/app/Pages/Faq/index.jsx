@@ -4,7 +4,7 @@ import sleep from '../../util/sleep';
 
 import './Commands.scss';
 
-export default class Commands extends PureComponent {
+export default class FAQ extends PureComponent {
   commandsRef = React.createRef();
   lastTyped = Date.now();
   state = {
@@ -29,6 +29,7 @@ export default class Commands extends PureComponent {
   }
 
   componentDidMount () {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     if (window.location.search) {
       window.history.pushState(null, null, 'commands');
     }

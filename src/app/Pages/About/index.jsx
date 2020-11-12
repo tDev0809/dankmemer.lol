@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 export default class Rules extends React.PureComponent {
   componentDidMount () {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     const anchor = location.hash.replace('#', '');
     if (anchor) {
       const domElement = ReactDOM.findDOMNode(this.refs[anchor]);

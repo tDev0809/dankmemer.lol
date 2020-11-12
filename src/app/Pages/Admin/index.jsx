@@ -6,6 +6,11 @@ import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
 
 class Admin extends React.PureComponent {
+
+async componentDidMount () {
+  (window.adsbygoogle = window.adsbygoogle || []).push({});
+}
+
   render () {
     if (!this.props.loggedIn) {
       return (

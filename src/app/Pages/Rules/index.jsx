@@ -40,10 +40,5 @@ export default React.memo(() => (
         <p className="rule-body">The <a href="https://discordapp.com/terms">Discord TOS</a> and <a href="https://discordapp.com/guidelines">Discord Community Guidelines</a> also are enforcable through our bot.</p>
       </div>
     </section>
-    <ins className="adsbygoogle ad"
-          data-ad-client="ca-pub-7326182486296195"
-          data-ad-slot="4551035249"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
   </main>
 ));

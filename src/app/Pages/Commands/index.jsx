@@ -33,6 +33,7 @@ export default class Commands extends PureComponent {
   }
 
   componentDidMount () {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     if (window.location.search) {
       window.history.pushState(null, null, 'commands');
     }

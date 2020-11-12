@@ -9,13 +9,14 @@ const getSocialIndex = ({ social }) =>
     ? -1
     : 1;
 
-export default React.memo(() => (
-  <div className="content">
-      <ins className="adsbygoogle ad"
-          data-ad-client="ca-pub-7326182486296195"
-          data-ad-slot="4551035249"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
+    export default class Staff extends React.PureComponent {
+      componentDidMount () {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    
+      render () {
+        return(
+          <div className="content">
     {categories.map(([ category, users ]) => (
       <React.Fragment key={category}>
         <h2 className="staff-title">{category}</h2>
@@ -33,5 +34,12 @@ export default React.memo(() => (
         </div>
       </React.Fragment>
     ))}
+    <ins className="adsbygoogle ad"
+          data-ad-client="ca-pub-7326182486296195"
+          data-ad-slot="4551035249"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
   </div>
-));
+        );
+      }
+    }

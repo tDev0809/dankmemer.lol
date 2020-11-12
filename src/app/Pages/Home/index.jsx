@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Button from '../../Components/Button/index.jsx';
 import MemerIMG from 'assets/memer.png';
 import MemesIMG from 'assets/memes.png';
@@ -7,8 +8,21 @@ import InvitesIMG from 'assets/invites.png';
 import CurrencyIMG from 'assets/currency.png';
 import './Home.scss';
 
-export default React.memo(() => (
-  <main className="content index">
+export default class Home extends React.PureComponent {
+  componentDidMount () {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    const anchor = location.hash.replace('#', '');
+    if (anchor) {
+      const domElement = ReactDOM.findDOMNode(this.refs[anchor]);
+      if (domElement) {
+        domElement.scrollIntoView();
+      }
+    }
+  }
+
+  render () {
+    return(
+      <main className="content index">
     <div className="hero">
       <img className="memer-img" alt="Dank Memer logo - the elusive and beautiful pepe (Also the best Discord Bot around)" src={MemerIMG} />
       <span className="home-slogan">
@@ -32,7 +46,7 @@ export default React.memo(() => (
     <section className="reverse">
       <img height="15rem!important;" alt="Dank Memer is an in depth and unique + funny currency bot along with all our other features" src={CurrencyIMG}/>
       <div className="text-area">
-        <span className="section-title blurple">
+        <span ref="currency" className="section-title blurple">
           CURRENCY FEATURES
         </span>
         <p className="section-body">Dank Memer has one of the most unique and fun currency systems of any Discord Bots. With stealing, gambling, bankrobbing, unique/funny items, and so much more, we'll spice up your server ;)</p>
@@ -41,7 +55,7 @@ export default React.memo(() => (
     <section>
       <img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
       <div className="text-area">
-        <span className="section-title blurple">
+        <span ref="memes" className="section-title blurple">
           MEME COMMANDS
         </span>
         <p className="section-body">Dank Memer has 100+ meme commands, with a lot of them specializing in helping you generate your own memes. Browse our <a href="/commands">commands page</a> for the Memey and Image categories!</p>
@@ -55,7 +69,7 @@ export default React.memo(() => (
     <section className="reverse">
       <img height="15rem!important;" alt="Dank Memer is a popular bot, and in many cases raises a server's activity levels by a TON!" src={InsightIMG}/>
       <div className="text-area">
-        <span className="section-title blurple">
+        <span ref="activity" className="section-title blurple">
           BUILD SERVER ACTIVITY
         </span>
         <p className="section-body">With over 12 million active users, growing at about 300k new users a month, you will attract people to join and participate in your server just by having our bot. It's very community based, and has lots of ways to interact with other server members.</p>
@@ -64,7 +78,7 @@ export default React.memo(() => (
     <section>
       <img alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
       <div className="text-area">
-        <span className="section-title blurple">
+        <span ref="servers" className="section-title blurple">
           MASSIVE COMMUNITY SERVERS
         </span>
         <p className="section-body">We have to GIANT servers for you to join, all about Dank Memer! One is purely for support and announcements, and the other is a community server based around using the bot and participating in giveaways of our currency system!</p>
@@ -87,4 +101,6 @@ export default React.memo(() => (
           data-full-width-responsive="true"></ins>
     </div>
   </main>
-));
+    );
+  }
+}
