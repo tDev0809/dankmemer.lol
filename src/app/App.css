@@ -31,6 +31,12 @@ body::-webkit-scrollbar {
   pointer-events: none;
 }
 
+.ad {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #ree-overlay.reeing {
   opacity: 0.4;
 }

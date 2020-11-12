@@ -31,8 +31,7 @@ export default class Blog extends React.Component {
             <img src={this.state.image} />
           </div>}
         </div>
-        <ins className="adsbygoogle"
-          style={{display:'block'}}
+        <ins className="adsbygoogle ad"
           data-ad-client="ca-pub-7326182486296195"
           data-ad-slot="4551035249"
           data-ad-format="auto"
@@ -54,8 +53,7 @@ export default class Blog extends React.Component {
         </Button>
       </div>
     </div>
-    <ins className="adsbygoogle"
-          style={{display:'block'}}
+    <ins className="adsbygoogle ad"
           data-ad-client="ca-pub-7326182486296195"
           data-ad-slot="4551035249"
           data-ad-format="auto"

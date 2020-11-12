@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 18vh;
-  margin-bottom: 18vh;
+  margin-top: 12vh;
+  margin-bottom: 12vh;
 
   .home-slogan {
     font-size: 3em;
@@ -57,7 +57,8 @@ section {
   justify-content: center;
   flex-direction: row;
   padding: 0px 200px;
-  margin-bottom: 15em;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
 
   &.reverse {
     flex-direction: row-reverse!important;
@@ -104,7 +105,7 @@ section {
   section {
     flex-direction: column;
     padding: 10px;
-    margin-bottom: 5em;
+    margin-bottom: 4em;
 
     img {
       height: auto!important;
@@ -148,8 +149,8 @@ section {
   }
 
   .hero {
-    margin-top: 2.5em;
-    margin-bottom: 3em;
+    margin-top: 2em;
+    margin-bottom: 2.5em;
   }
 
   .links {
