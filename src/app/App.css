@@ -32,8 +32,9 @@ body::-webkit-scrollbar {
 }
 
 .ad {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: 728px;
+  height: 90px
 }
 
 #ree-overlay.reeing {
@@ -68,4 +69,14 @@ body::-webkit-scrollbar {
 
 .pepple {
   color: #598e3c;
+}
+
+@media only screen and (max-width: 786px) {
+
+  .ad {
+    display: inline-block;
+    width: 300px;
+    height: 100px
+  }
+
 }

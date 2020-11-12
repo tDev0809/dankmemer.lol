@@ -11,6 +11,8 @@ import './Home.scss';
 export default class Home extends React.PureComponent {
   componentDidMount () {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
     const anchor = location.hash.replace('#', '');
     if (anchor) {
       const domElement = ReactDOM.findDOMNode(this.refs[anchor]);
@@ -25,6 +27,7 @@ export default class Home extends React.PureComponent {
       <main className="content index">
         <div align="center">
           <ins className="adsbygoogle ad"
+            data-adtest="on"
             data-ad-client="ca-pub-7326182486296195"
             data-ad-slot="4551035249"
             data-ad-format="auto"
@@ -66,6 +69,7 @@ export default class Home extends React.PureComponent {
     </section>
     <div align="center">
           <ins className="adsbygoogle ad"
+            data-adtest="on"
             data-ad-client="ca-pub-7326182486296195"
             data-ad-slot="5725651587"
             data-ad-format="auto"
@@ -103,6 +107,7 @@ export default class Home extends React.PureComponent {
     </div>
     <div align="center">
           <ins className="adsbygoogle ad"
+            data-adtest="on"
             data-ad-client="ca-pub-7326182486296195"
             data-ad-slot="4197264728"
             data-ad-format="auto"

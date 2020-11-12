@@ -15,6 +15,7 @@ export default class Blogs extends React.Component {
     });
 
     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
 
   render () {

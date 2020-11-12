@@ -22,6 +22,7 @@ const playAudio = () =>
     export default class Landing extends React.PureComponent {
       componentDidMount () {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
     
       render () {
