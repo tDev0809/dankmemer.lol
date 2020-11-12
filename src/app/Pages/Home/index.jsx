@@ -23,8 +23,7 @@ export default class Home extends React.PureComponent {
   render () {
     return(
       <main className="content index">
-    <div className="hero">
-    <div align="center">
+        <div align="center">
           <ins className="adsbygoogle ad"
             data-ad-client="ca-pub-7326182486296195"
             data-ad-slot="4551035249"
@@ -32,6 +31,7 @@ export default class Home extends React.PureComponent {
             data-full-width-responsive="true">
           </ins>
         </div>
+    <div className="hero">
       <img className="memer-img" alt="Dank Memer logo - the elusive and beautiful pepe (Also the best Discord Bot around)" src={MemerIMG} />
       <span className="home-slogan">
         DISCORD'S FAVORITE <span className="blurple">FUN</span> BOT
@@ -62,16 +62,6 @@ export default class Home extends React.PureComponent {
           MEME COMMANDS
         </span>
         <p className="section-body">Dank Memer has 100+ meme commands, with a lot of them specializing in helping you generate your own memes. Browse our <a href="/commands">commands page</a> for the Memey and Image categories!</p>
-        </div>
-    </section>
-    <section>
-    <div align="center">
-          <ins className="adsbygoogle ad"
-            data-ad-client="ca-pub-7326182486296195"
-            data-ad-slot="4551035249"
-            data-ad-format="auto"
-            data-full-width-responsive="true">
-          </ins>
         </div>
     </section>
     <section className="reverse">
