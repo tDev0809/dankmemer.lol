@@ -22,7 +22,7 @@
     "connect-mongo": "^2.0.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "marked": "^0.6.2",
+    "marked": "^0.7.0",
     "mongodb": "^3.2.2",
     "string.prototype.matchall": "^4.0.0"
   },
