@@ -16,7 +16,7 @@ export default React.memo(() => (
 			</div>
 			<div id="footer-links">
 				<div className="footer-links-col">
-					<a id="footer-link" href="https://www.patreon.com/join/dankmemerbot">Premium</a>
+					<a className="footer-link" href="https://www.patreon.com/join/dankmemerbot">Premium</a>
 					<Link className="footer-link" to="/commands">Commands</Link>
 					<Link className="footer-link" to="/blogs">Our blog</Link>
 				</div>
