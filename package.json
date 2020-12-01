@@ -46,15 +46,15 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-json-view": "^1.19.1",
     "react-redux": "^6.0.1",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sass": "^1.20.1",
     "sass-loader": "^7.1.0",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
-    "workbox-webpack-plugin": "^4.3.1",
-    "react-json-view": "^1.19.1"
+    "workbox-webpack-plugin": "^4.3.1"
   }
 }

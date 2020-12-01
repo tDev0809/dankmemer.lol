@@ -4,3 +4,4 @@ node_modules/
 config\.json
 keys.json
 debug\.log
+yarn.lock
