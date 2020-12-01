@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 const Home     = lazy(() => import('./pages/singular/home'));
 const Loot     = lazy(() => import('./pages/store/lootboxes'));
 const Rules    = lazy(() => import('./pages/rules/rules'));
-const Admin    = lazy(() => import('./pages/Admin/admin'));
+const Admin    = lazy(() => import('./pages/admin/admin'));
 const Blog     = lazy(() => import('./components/blog'));
 const Blogs    = lazy(() => import('./pages/singular/blogs'));
 const About    = lazy(() => import('./pages/singular/about'));
