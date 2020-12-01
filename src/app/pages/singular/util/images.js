@@ -1,6 +1,6 @@
 const images = {};
 
-const requireCtx = require.context('assets', false, /\.(png|jpg|gif|webp)$/);
+const requireCtx = require.context('assets/img/staff', false, /\.(png|jpg|gif|webp)$/);
 requireCtx
   .keys()
   .map(name =>
