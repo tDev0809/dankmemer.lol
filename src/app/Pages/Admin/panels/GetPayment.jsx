@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import GenericPanel from './GenericPanel';
-import createModal from '../../../Components/Modal';
+import createModal from '../../../components/Modal';
 import ReactJSON from 'react-json-view';
 import reactJSONProps from './reactJSONProps';
 
