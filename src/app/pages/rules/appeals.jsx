@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '../../components/button.jsx';
-import rules from './data/rules.js';
+import rules from './data/appeals.js';
 
 import 'assets/styles/pages/rules/appeals.scss';
 
@@ -159,7 +159,7 @@ class Appeals extends Component {
         <section>
           <h2>Which rules did you break?</h2>
           <div className='options'>
-            {rules[this.state.banType].map((rule, index) => (
+            {rules[this.state.banType] ? rules[this.state.banType].map((rule, index) => (
               <div className='appeal-rule-container'>
                 <label className='appeal-check-container appeal-label' key={rule}>
                   <input
@@ -173,7 +173,7 @@ class Appeals extends Component {
                 <div className='appeal-number'>{`${index + 1}`}</div>
                 <label className='appeal-label'>{`${titleCase(rule)}`}</label>
               </div>
-            ))}
+            )) : ''}
           </div>
         </section>
 
