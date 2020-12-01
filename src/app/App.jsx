@@ -53,8 +53,8 @@ export default () => {
             <Route component={() => <Privacy />} path="/privacy" />
           </Suspense>
         </Switch>
-        <Footer />
       </div>
+      <Footer />
       <div id='modals' />
     </>
   );
