@@ -35,13 +35,13 @@ footer {
 		}
 	}
 	#footer-links {
-		#footer-links-col {
+		.footer-links-col {
 			display: inline-block;
 			vertical-align: middle;
 			&:not(:last-child) {
 				margin-right: 60px;
 			}
-			#footer-link {
+			.footer-link {
 				display: block;
 				margin-bottom: 5px;
 				color: #b5b5b5;

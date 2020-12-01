@@ -15,20 +15,20 @@ export default React.memo(() => (
 				</div>
 			</div>
 			<div id="footer-links">
-				<div id="footer-links-col">
+				<div className="footer-links-col">
 					<a id="footer-link" href="https://www.patreon.com/join/dankmemerbot">Premium</a>
-					<Link id="footer-link" to="/commands">Commands</Link>
-					<Link id="footer-link" to="/blogs">Our blog</Link>
+					<Link className="footer-link" to="/commands">Commands</Link>
+					<Link className="footer-link" to="/blogs">Our blog</Link>
 				</div>
-				<div id="footer-links-col">
-					<Link id="footer-link" to="/staff">Staff</Link>
-					<Link id="footer-link" to="/terms">Terms</Link>
-					<Link id="footer-link" to="/privacy">Privacy</Link>
+				<div className="footer-links-col">
+					<Link className="footer-link" to="/staff">Staff</Link>
+					<Link className="footer-link" to="/terms">Terms</Link>
+					<Link className="footer-link" to="/privacy">Privacy</Link>
 				</div>
-				<div id="footer-links-col">
-					<Link id="footer-link" to="/rules">Rules</Link>
-					<Link id="footer-link" to="/reports">Reports</Link>
-					<Link id="footer-link" to="/appeals">Appeals</Link>
+				<div className="footer-links-col">
+					<Link className="footer-link" to="/rules">Rules</Link>
+					<Link className="footer-link" to="/reports">Reports</Link>
+					<Link className="footer-link" to="/appeals">Appeals</Link>
 				</div>
 			</div>
     	</div>
