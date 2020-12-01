@@ -55,4 +55,6 @@ require('./util/db.js')().then(db => {
   app.get('*', (request, response) => {
     response.sendFile(`${__dirname}/build/index.html`);
   });
-});
+}).catch(e => {
+  console.error(e);
+})

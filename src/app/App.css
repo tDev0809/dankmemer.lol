@@ -50,7 +50,6 @@ body::-webkit-scrollbar {
   flex-direction: column;
   min-height: calc(100vh - 40px);
   color: white;
-  margin-bottom: 40px;
 }
 
 .content {
