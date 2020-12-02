@@ -21,7 +21,7 @@ const Faq      = lazy(() => import('./pages/info/Faq'));
 import NavBar from './components/navbar.jsx';
 import Footer from './components/footer.jsx';
 
-import './App.css';
+import './assets/styles/misc/main.scss';
 
 export default () => {
   ga('send', 'pageview', {
