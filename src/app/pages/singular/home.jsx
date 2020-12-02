@@ -36,36 +36,36 @@ export default function Home () {
 					</svg>
 				</div>
     		</div>
-    		<section className="reverse">
-      			<img height="15rem!important;" alt="Dank Memer is an in depth and unique + funny currency bot along with all our other features" src={CurrencyIMG}/>
+    		<section>
       			<div className="text-area">
         			<h3 className="section-title"><span className="text-highlight">Extensive</span> Currency<br/> Features</h3>
-        			<p className="section-body">Dank Memer has one of the most unique and fun currency systems of any Discord Bot. With stealing, gambling, bank robbing, unique and funny items, and so much more, we'll spice up your server!</p>
+        			<p className="section-body short">Dank Memer has one of the most unique and fun currency systems of any Discord Bot. With stealing, gambling, bank robbing, unique and funny items, and so much more, we'll spice up your server!</p>
         		</div>
+				<img height="15rem!important;" alt="Dank Memer is an in depth and unique + funny currency bot along with all our other features" src={CurrencyIMG}/>
     		</section>
-    		<section>
-				<img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
+    		<section className="reverse">
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Fantastic</span> Meme<br/> Commands</h3>
-					<p className="section-body short">Dank Memer has 100+ meme commands, with a lot of them specializing in helping you generate your own memes. Browse our <a href="/commands">commands page</a> for the Memey and Image categories!</p>
+					<p className="section-body">Dank Memer has 100+ meme commands, with a lot of them specializing in helping you generate your own memes. Browse our <a href="/commands">commands page</a> for the Memey and Image categories!</p>
         		</div>
+				<img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
     		</section>
     		<div align="center">
 				<ins className="adsbygoogle ad" data-adtest="on" data-ad-client="ca-pub-7326182486296195" data-ad-slot="5725651587" />
         	</div>
-			<section className="reverse">
-				<img height="15rem!important;" alt="Dank Memer is a popular bot, and in many cases raises a server's activity levels by a TON!" src={InsightIMG}/>
+			<section>
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Generate</span> Server<br/> Growth</h3>
-					<p className="section-body long">With over 12 million active users, growing at about 300k new users a month, you will attract people to join and participate in your server just by having our bot. It's very community based, and has lots of ways to interact with other server members.</p>
+					<p className="section-body">With over 12 million active users, growing at about 300k new users a month, you will attract people to join and participate in your server just by having our bot. It's very community based, and has lots of ways to interact with other server members.</p>
 				</div>
+				<img height="15rem!important;" alt="Dank Memer is a popular bot, and in many cases raises a server's activity levels by a TON!" src={InsightIMG}/>
 			</section>
-			<section>
-				<img alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
+			<section className="reverse">
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Massive</span> Community<br/> Servers</h3>
 					<p className="section-body">We have to GIANT servers for you to join, all about Dank Memer! One is purely for support and announcements, and the other is a community server based around using the bot and participating in giveaways of our currency system!</p>
 				</div>
+				<img alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
 			<div align="center">
 				<ins className="adsbygoogle ad" data-adtest="on" data-ad-client="ca-pub-7326182486296195" data-ad-slot="4197264728"/>
