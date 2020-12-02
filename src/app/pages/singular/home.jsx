@@ -12,22 +12,28 @@ export default function Home () {
 	useEffect(() => {
 		(window.adsbygoogle = window.adsbygoogle || []).push({});
 		(window.adsbygoogle = window.adsbygoogle || []).push({});
-		(window.adsbygoogle = window.adsbygoogle || []).push({});
 	}, [])
 
 	return (
-		<main className="content index">
-			<div align="center">
-				<ins className="adsbygoogle ad" data-adtest="on" data-ad-client="ca-pub-7326182486296195" data-ad-slot="4551035249" />
-			</div>
-    		<div className="hero">
-      			<img className="memer-img" alt="Dank Memer logo - the elusive and beautiful pepe (Also the best Discord Bot around)" src={MemerIMG} />
-      			<span className="home-slogan">DISCORD'S FAVORITE <span className="blurple">FUN</span> BOT</span>
-      			<span className="home-tag">Increase your server's activity, <span className='underline'>easily.</span></span>
-      			<div className="links">
-        			<Button link="https://invite.dankmemer.lol">Add Bot</Button>
-        			<Button link="/commands">Commands</Button>
-      			</div>
+		<div id="home">
+    		<div id="home-hero">
+				<div id="home-hero-text">
+					<h1 id="home-hero-title">Dank Memer</h1>
+					<p id="home-hero-slogan">Increase your server's activity <span className="text-highlight">easily</span> with Discord's favorite <span className="text-highlight">fun</span> bot.</p>					
+				</div>
+				<div id="home-hero-cta">
+					<a id="home-hero-cta-invite" href="https://invite.dankmemer.lol">Invite now</a>
+				</div>
+				<div id="home-hero-circles">
+					<svg height="500" width="1020">
+						<circle cx="190" cy="320" r="157.5" fill="#242424"/>
+						<circle cx="300" cy="50" r="50" fill="#242424"/>
+						<circle cx="700" cy="100" r="15" fill="#242424"/>
+						<circle cx="890" cy="120" r="107.5" fill="#242424"/>
+						<circle cx="930" cy="400" r="65" fill="#242424"/>
+						<circle cx="560" cy="450" r="25" fill="#242424"/>
+					</svg>
+				</div>
     		</div>
     		<section className="reverse">
       			<img height="15rem!important;" alt="Dank Memer is an in depth and unique + funny currency bot along with all our other features" src={CurrencyIMG}/>
@@ -70,6 +76,6 @@ export default function Home () {
     		<div align="center">
 				<ins className="adsbygoogle ad" data-adtest="on" data-ad-client="ca-pub-7326182486296195" data-ad-slot="4197264728"/>
         	</div>
-  		</main>
+  		</div>
 	);
 }
