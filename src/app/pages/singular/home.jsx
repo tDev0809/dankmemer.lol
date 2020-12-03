@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../../components/button.jsx';
-import MemerIMG from 'assets/img/memer.png';
 import MemesIMG from 'assets/img/memes.png';
 import InsightIMG from 'assets/img/insights.png';
 import InvitesIMG from 'assets/img/invites.png';
@@ -19,8 +17,8 @@ export default function Home () {
 		<div id="home">
     		<div id="home-hero">
 				<div id="home-hero-text">
-					<h1 id="home-hero-title">Dank Memer</h1>
-					<p id="home-hero-slogan">Increase your server's activity <span className="text-highlight">easily</span> with Discord's favorite <span className="text-highlight">fun</span> bot.</p>					
+					<h1 id="home-hero-text-title">Dank Memer</h1>
+					<p id="home-hero-text-slogan">Increase your server's activity <span className="text-highlight">easily</span> with Discord's favorite <span className="text-highlight">fun</span> bot.</p>					
 				</div>
 				<div id="home-hero-cta">
 					<a id="home-hero-cta-invite" href="https://invite.dankmemer.lol" rel="noreferrer noopener">Invite now</a>
