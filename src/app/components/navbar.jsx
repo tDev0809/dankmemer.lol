@@ -1,27 +1,99 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import 'assets/styles/components/navbar.scss';
 import parseTime from '../util/parseTime.js';
 
 
 export default function Navbar({ username, discriminator }) {
-	const [expanded, setExpanded] = useState(false);
+	const [navExpanded, setNavExpanded] = useState(false);
 	const [userExpanded, setUserExpanded] = useState(false);
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	useEffect(() => {
-
-	}, []);
+		try {
+			if(navExpanded) return document.getElementById('pseudoBody').style.overflowY = 'hidden';
+			else if(!navExpanded) return document.getElementById('pseudoBody').style.overflowY = 'auto';
+			else return document.getElementById('pseudoBody').style.overflowY = 'auto';
+		} catch (e) {
+			console.error(e);
+		}
+	}, [navExpanded]);
 
 	return (
 		<nav id="navbar">
+			<div id="navbar-mobile">
+				<h2 id="navbar-mobile-text">Dank Memer</h2>
+				<div id="navbar-mobile-hamburger" onClick={() => setNavExpanded(!navExpanded)}>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<line x1="4" y1="6" x2="20" y2="6" />
+						<line x1="4" y1="12" x2="20" y2="12" />
+						<line x1="4" y1="18" x2="20" y2="18" />
+					</svg>
+				</div>
+				<div id="navbar-mobile-container" className={navExpanded ? 'visible' : ''}>
+					<ul id="navbar-mobile-links">
+						<NavLink
+							className="navbar-mobile-link"
+							activeClassName="active"
+							exact to="/"
+							onClick={() => {
+								setTimeout(() => {
+									setNavExpanded(!navExpanded);
+								}, 1000)
+							}}>Home</NavLink>
+
+						<NavLink
+							className="navbar-mobile-link"
+							activeClassName="active"
+							to="/commands"
+							onClick={() => {
+								setTimeout(() => {
+									setNavExpanded(!navExpanded);
+								}, 1000)
+							}}>Commands</NavLink>
+
+						<NavLink
+							className="navbar-mobile-link"
+							activeClassName="active"
+							to="/blogs"
+							onClick={() => {
+								setTimeout(() => {
+									setNavExpanded(!navExpanded);
+								}, 1000)
+							}}>Blog</NavLink>
+
+						<NavLink
+							className="navbar-mobile-link"
+							activeClassName="active"
+							to="/faq"
+							onClick={() => {
+								setTimeout(() => {
+									setNavExpanded(!navExpanded);
+								}, 1000)
+							}}>FAQ</NavLink>
+
+						<NavLink
+							className="navbar-mobile-link"
+							activeClassName="active"
+							to="/loot"
+							onClick={() => {
+								setTimeout(() => {
+									setNavExpanded(!navExpanded);
+								}, 1000)
+							}}>Store</NavLink>
+
+						<a className="navbar-mobile-link" href="/oauth/login">{loggedIn ? username + discriminator : 'Login with Discord'}</a>
+					</ul>
+				</div>
+			</div>
 			<ul id="navbar-links">
-				<li id="navbar-link"><Link to="/">Home</Link></li>
-				<li><Link to="/commands">Commands</Link></li>
-				<li><Link to="/blog">Blog</Link></li>
-				<li><Link to="/">FAQ</Link></li>
-				<li><Link to="/">Store</Link></li>
-				<li><Link to="/">{loggedIn ? username + discriminator : 'Login'}</Link></li>
+				<li className="navbar-link"><NavLink activeClassName="active" exact to="/">Home</NavLink></li>
+				<li className="navbar-link"><NavLink activeClassName="active" to="/commands">Commands</NavLink></li>
+				<li className="navbar-link"><NavLink activeClassName="active" to="/blogs">Blog</NavLink></li>
+				<li className="navbar-link"><NavLink activeClassName="active" to="/faq">FAQ</NavLink></li>
+				<li className="navbar-link"><NavLink activeClassName="active" to="/loot">Store</NavLink></li>
+				<li className="navbar-link"><a href="/oauth/login">{loggedIn ? username + discriminator : 'Login'}</a></li>
 			</ul>
 		</nav>
 	);

@@ -31,7 +31,7 @@ export default () => {
 
   return (
     <>
-      <div className="psuedoBody">
+      <div id="psuedoBody">
         <NavBar />
         <Switch>
           <Suspense fallback={<div></div>}>
