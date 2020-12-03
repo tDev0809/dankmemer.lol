@@ -1,22 +1,22 @@
 #home {
-	#home-hero {
+	&-hero {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		margin-bottom: 12vh;
 		height: calc(100vh - 75px);
-		#home-hero-text {
+		&-text {
 			display: grid;
 			place-items: center;
-			#home-hero-title {
+			&-title {
 				font-size: 90px;
 				line-height: 98px;
 				text-transform: uppercase;
 				color: #39923c;
 				text-shadow: 5px 10px 10px rgba(0,0,0,0.1), 0px 10px 10px rgba(0,0,0,0.02);
 			}
-			#home-hero-slogan {
+			&-slogan {
 				font-size: 24px;
 				text-align: center;
 				width: 475px;
@@ -24,10 +24,10 @@
 				font-weight: 500;
 			}
 		}
-		#home-hero-cta {
+		&-cta {
 			margin-top: 30px;
 			width: 245px;
-			#home-hero-cta-invite {
+			&-invite {
 				display: block;
 				font-size: 28px;
 				font-family: 'Montserrat';
@@ -47,7 +47,7 @@
 				}
 			}
 		}
-		#home-hero-circles {
+		&-circles {
 			position: absolute;
 			z-index: -1;
 		}
@@ -61,24 +61,6 @@
 		&:not(:last-child) {
 			margin-bottom: 10vh;
 		}
-		// &.reverse {
-		// 	flex-direction: row-reverse !important;
-		// 	img {
-		// 		height: 28rem !important;
-		// 		// margin-left: 8rem;
-		// 		margin-right: 8rem !important;
-		// 	}
-		// 	.text-area {
-		// 		text-align: right;
-		// 		.section-title, .section-body {
-		// 			width: 80%;
-		// 			margin-left: unset;
-		// 			&.long {
-		// 				width: 100%;
-		// 			}
-		// 		}
-		// 	}
-		// }
 		&.reverse {
 			flex-direction: row-reverse;
 			img {
@@ -127,10 +109,10 @@
 		place-items: center;
 		margin-top: 5vh;
 		margin-bottom: 18vh;
-		#bottom-cta-subtitle {
+		&-subtitle {
 			font-size: 18px;
 		}
-		#bottom-cta-button {
+		&-button {
 			display: block;
 			width: 180px;
 			font-size: 18px;
@@ -152,7 +134,7 @@
 
 			}
 		}
-		#bottom-cta-text {
+		&-text {
 			font-family: 'Montserrat';
 			a {
 				font-weight: 400;
@@ -166,13 +148,13 @@
 
 @media only screen and (min-width: 455px) and (max-width: 1500px) {
 	#home {
-		#home-hero {
-			#home-hero-text {
-				#home-hero-title {
+		&-hero {
+			&-text {
+				&-title {
 					font-size: 70px;
 					line-height: 70px;
 				}
-				#home-hero-slogan {
+				&-slogan {
 					width: 450px;
 				}
 			}
@@ -198,32 +180,32 @@
 
 @media only screen and (max-width: 454px) {
 	#home {
-		#home-hero {
+		&-hero {
 			height: calc(100vh - 150px);
-			#home-hero-text {
+			&-text {
 				display: block;
 				text-align: center;
 				max-width: 100vw;
-				#home-hero-title {
+				&-title {
 					font-size: 70px;
 					line-height: 70px;
 				}
-				#home-hero-slogan {
+				&-slogan {
 					font-size: 18px;
 					width: 100vw;
 					padding: 0 5vw;
 					box-sizing: border-box;
 				}
 			}
-			#home-hero-cta {
+			&-cta {
 				text-align: center;
 				margin-top: 50px;
-				#home-hero-cta-invite {
+				&-invite {
 					font-size: 23px;
 					display: inline;
 				}
 			}
-			#home-hero-circles {
+			&-circles {
 				transform: scale(0.5)
 			}
 		}
@@ -247,74 +229,3 @@
 		}
 	}
 }
-
-// @media only screen and (max-width: 786px) {
-// 	section {
-// 		flex-direction: column;
-// 		padding: 10px;
-// 		margin-bottom: 4em;
-
-// 		img {
-// 			height: auto !important;
-// 			width: 80% !important;
-// 			margin: 0px 0px 18px;
-// 		}
-
-// 		&.reverse {
-// 			flex-direction: column !important;
-
-// 			img {
-// 				height: auto !important;
-// 				width: 80% !important;
-// 				margin: 0px 0px 18px;
-// 			}
-// 		}
-
-// 		.text-area {
-// 			width: 90%;
-// 		}
-// 	}
-
-// 	.home-slogan {
-// 		align-content: center !important;
-// 		text-align: center !important;
-// 		margin: 10px !important;
-// 		font-size: 2em !important;
-// 	}
-
-// 	.home-tag {
-// 		align-content: center !important;
-// 		text-align: center !important;
-// 		margin: 10px !important;
-// 		font-size: 1.5em !important;
-// 	}
-
-// 	.action-text {
-// 		align-content: center !important;
-// 		text-align: center !important;
-// 		margin: 10px !important;
-// 		font-size: 1.5em !important;
-// 	}
-
-// 	.hero {
-// 		margin-top: 2em;
-// 		margin-bottom: 2.5em;
-// 	}
-
-// 	.links {
-// 		display: flex;
-// 		flex-wrap: wrap;
-// 		align-content: center !important;
-// 		justify-content: center !important;
-
-// 		a {
-// 			padding: 8px 4px !important;
-// 		}
-// 	}
-// }
-
-// @media only screen and (max-width: 786px) {
-// 	.memer-img {
-// 		height: 10rem;
-// 	}
-// }
