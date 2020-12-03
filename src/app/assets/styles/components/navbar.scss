@@ -43,6 +43,32 @@
 			&.visible {
 				top: 0;
 			}
+			#navbar-mobile-links {
+				display: flex;
+				position: absolute;
+				justify-content: space-evenly;
+				flex-direction: column;
+				align-items: center;
+				height: 80%;
+				width: 100%;
+				&.move-down {
+					bottom: -15px;
+				}
+				.navbar-mobile-link {
+					width: 100%;
+					font-size: 20px;
+					text-align: center;
+					padding: 30px 0;
+					color: #ffffff;
+					&.logout {
+						color: #ff5f5f;
+					}
+					&:active {
+						background: rgba(0,0,0,0.3);
+						color: unset;
+					}
+				}
+			}
 			#navbar-mobile-account {
 				padding: 20px 0;
 				background: rgba(0,0,0,0.3);
@@ -67,30 +93,6 @@
 						font-size: 12px;
 						color: #a3a3a3;
 						text-align: left;
-					}
-				}
-			}
-			#navbar-mobile-links {
-				display: flex;
-				position: absolute;
-				justify-content: space-evenly;
-				flex-direction: column;
-				align-items: center;
-				height: 80%;
-				bottom: -7px;
-				width: 100%;
-				.navbar-mobile-link {
-					width: 100%;
-					font-size: 20px;
-					text-align: center;
-					padding: 30px 0;
-					color: #ffffff;
-					&.logout {
-						color: #ff5f5f;
-					}
-					&:active {
-						background: rgba(0,0,0,0.3);
-						color: unset;
 					}
 				}
 			}
@@ -124,6 +126,7 @@
 					color: #ffffff;
 					display: inline-block;
 					vertical-align: middle;
+					margin-bottom: 3px;
 					&:hover {
 						cursor: pointer;
 					}
@@ -147,33 +150,38 @@
 					top: 30px;
 					right: 0;
 					background: #1a1a1a;
-					width: 100px;
+					min-width: 100px;
+					// max-width: 400px;
 					padding: 10px;
 					border-radius: 5px;
 					&.active {
-						display: block;
+						display: flex;
+						flex-wrap: wrap;
 						animation: dropdownOpen 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 					}
-					&-picture {
-						width: 35px;
-						height: 35px;
-						border-radius: 50%;
-						margin-right: 10px;
-						background-position: center;
-						background-size: contain;
-						background-repeat: no-repeat;
-						display: inline-block;
-						vertical-align: middle;
-					}
-					&-details {
-						display: inline-block;
-						vertical-align: middle;
-						&-username {
-							font-size: 16px;
+					&-account {
+						white-space: nowrap;
+						&-picture {
+							width: 35px;
+							height: 35px;
+							border-radius: 50%;
+							margin-right: 10px;
+							background-position: center;
+							background-size: contain;
+							background-repeat: no-repeat;
+							display: inline-block;
+							vertical-align: middle;
 						}
-						&-discriminator {
-							font-size: 12px;
-							color: #a3a3a3;
+						&-details {
+							display: inline-block;
+							vertical-align: middle;
+							&-username {
+								font-size: 16px;
+							}
+							&-discriminator {
+								font-size: 12px;
+								color: #a3a3a3;
+							}
 						}
 					}
 					&-actions {

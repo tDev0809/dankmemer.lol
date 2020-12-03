@@ -43,7 +43,7 @@ const Navbar = ({ discount, login: { loggedIn, username, discriminator, avatar, 
 							</div>
 						</div>
 					: ''}
-					<div id="navbar-mobile-links">
+					<div id="navbar-mobile-links" className={loggedIn ? 'move-down' : ''}>
 						<NavLink
 							className="navbar-mobile-link"
 							activeClassName="active"
@@ -93,7 +93,6 @@ const Navbar = ({ discount, login: { loggedIn, username, discriminator, avatar, 
 									setNavExpanded(!navExpanded);
 								}, 1000)
 							}}>Store</NavLink>
-
 						{!loggedIn
 							? <a className="navbar-mobile-link" href="/oauth/login" rel="noreferrer noopener">Login with Discord</a>
 							: <a className="navbar-mobile-link logout" href="/oauth/logout" rel="noreferrer noopener">Logout</a>
@@ -121,10 +120,12 @@ const Navbar = ({ discount, login: { loggedIn, username, discriminator, avatar, 
 								</p>
 								{navDropdown ? 
 									<div id="navbar-account-dropdown" className={navDropdown ? 'active' : ''}>
-										<div id="navbar-account-dropdown-picture" style={{ backgroundImage: `url('https://cdn.discordapp.com/avatars/${id}/${avatar}')` }}/>
-										<div id="navbar-account-dropdown-details">
-											<p id="navbar-account-dropdown-details-username">{username}</p>
-											<p id="navbar-account-dropdown-details-discriminator">#{discriminator}</p>
+										<div id="navbar-account-dropdown-account">
+											<div id="navbar-account-dropdown-account-picture" style={{ backgroundImage: `url('https://cdn.discordapp.com/avatars/${id}/${avatar}')` }}/>
+											<div id="navbar-account-dropdown-account-details">
+												<p id="navbar-account-dropdown-account-details-username">{username}</p>
+												<p id="navbar-account-dropdown-account-details-discriminator">#{discriminator}</p>
+											</div>
 										</div>
 										<div id="navbar-account-dropdown-actions">
 											<a id="navbar-account-dropdown-actions-logout" href="/oauth/logout">Logout</a>
