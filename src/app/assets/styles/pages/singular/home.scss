@@ -61,6 +61,12 @@
 		&:not(:last-child) {
 			margin-bottom: 10vh;
 		}
+		&:last-child {
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
 		&.reverse {
 			flex-direction: row-reverse;
 			img {
@@ -81,7 +87,7 @@
 			text-align: left;
 			.section-title {
 				font-size: 40px;
-				font-family: 'Montserrat';
+				font-family: 'Montserrat', sans-serif;
 				text-transform: uppercase;
 				font-weight: 600;
 				letter-spacing: 1px;
@@ -89,7 +95,7 @@
 			}
 			.section-body {
 				width: 80%;
-				font-family: 'Lato';
+				font-family: 'Inter', sans-serif;
 				font-size: 20px;
 				color: #a3a3a3;
 				a {
@@ -135,7 +141,7 @@
 			}
 		}
 		&-text {
-			font-family: 'Montserrat';
+			font-family: 'Inter', sans-serif;
 			a {
 				font-weight: 400;
 				&:hover {
