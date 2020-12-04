@@ -24,6 +24,8 @@
     "express-session": "^1.15.6",
     "marked": "^0.7.0",
     "mongodb": "^3.2.2",
+    "react-snaplist-carousel": "^4.2.0",
+    "simplebar-react": "^2.3.0",
     "string.prototype.matchall": "^4.0.0"
   },
   "devDependencies": {
