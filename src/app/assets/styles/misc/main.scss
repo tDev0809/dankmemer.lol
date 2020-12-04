@@ -8,12 +8,16 @@ $darkGreen: #39923c;
 
 body {
     width: 100%;
+    max-width: 100vw;
     height: 100%;
     overflow-wrap: break-word;
     overflow-x: hidden;
     scroll-behavior: smooth;
     background: $bgMain;
     font-family: 'Inter', sans-serif;
+    a {
+        text-decoration: none;
+    }
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Montserrat';
     }
@@ -36,10 +40,11 @@ body {
         padding: 10px;
         flex: 1 0 auto;
     }
-    .psuedoBody {
+    #pseudoBody {
         display: flex;
         flex-direction: column;
         min-height: calc(100vh - 40px);
+        max-width: 100vw;
         color: white;
     }
     .ad {

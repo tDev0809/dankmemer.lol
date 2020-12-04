@@ -34,6 +34,7 @@
 				font-weight: 700;
 				text-transform: uppercase;
 				background: #39923c;
+				color: white;
 				padding: 20px 30px;
 				border-radius: 5px;
 				box-shadow: 0px 0px 35px rgba(57, 146, 60, 0.5),
@@ -126,6 +127,7 @@
 			font-weight: 700;
 			text-transform: uppercase;
 			background: #39923c;
+			color: #ffffff;
 			margin: 20px 0;
 			padding: 20px 30px;
 			border-radius: 5px;
@@ -159,6 +161,7 @@
 				&-title {
 					font-size: 70px;
 					line-height: 70px;
+					text-align: center;
 				}
 				&-slogan {
 					width: 450px;
@@ -212,7 +215,8 @@
 				}
 			}
 			&-circles {
-				transform: scale(0.5)
+				transform: scale(0.4);
+				overflow: hidden;
 			}
 		}
 		section, section.reverse {
