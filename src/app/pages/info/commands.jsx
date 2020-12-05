@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import commandsFile from './data/commands.json';
 import Expandable from '../../components/expandable';
-import { SnapList, SnapItem, useScroll, useDragToScroll, useVisibleElements } from 'react-snaplist-carousel';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
@@ -9,10 +8,11 @@ import 'assets/styles/pages/info/commands.scss';
 
 
 export default function Commands(props) {
-	const snapList = useRef(null);
 	const categories = useRef(Object.keys(commandsFile));
 	const [category, setCategory] = useState(categories.current[0]);
 	const [commands, setCommands] = useState(Object.values(commandsFile)[Object.keys(commandsFile).indexOf(category)]);
+	const [categoryDropdown, setCategoryDropdown] = useState(false);
+	const [hasEventListener, setHasEventListener] = useState(false);
 	const [expandedIndex, setExpandedIndex] = useState(null);
 	const [search, setSearch] = useState('');
 	const [prefix, setPrefix] = useState('pls ');
@@ -50,22 +50,32 @@ export default function Commands(props) {
 			setCommands([]);
 		}
 	}, [search]);
+
+	useEffect(() => {
+		if(!categoryDropdown && hasEventListener) {
+			document.getElementById('commands').removeEventListener('click', () => {
+				setHasEventListener(false);
+				return;
+			});
+		} else if(categoryDropdown && !hasEventListener) {
+			setHasEventListener(true);
+			document.getElementById('commands').addEventListener('click', (e) => {
+				if(e.target !== document.getElementById('commands-top-dropdown') && e.target.parentNode !== document.getElementById('commands-top-dropdown-options')) {
+					setCategoryDropdown(false);
+				}
+			});
+		}
+	}, [categoryDropdown])
 	
 	const changeCategory = (index) => {
 		setSearch("");
 		document.getElementById('commands-search').value="";
 		setCategory(categories.current[index]);
-		goToChildren(index);
-		visible(index);
 	}
 
 	const expand = (index) => {
 		setExpandedIndex(index.toString() && index === expandedIndex ? null : index);
 	}
-
-	const visible = useVisibleElements({ debounce: 10, ref: snapList }, (elements, elementInCenter) => elementInCenter);
-	const goToChildren = useScroll({ ref: snapList });
-	useDragToScroll({ ref: snapList });
 
 	return (
 		<div id="commands">
@@ -85,14 +95,26 @@ export default function Commands(props) {
 				</svg>
 			</div>
 			<div id="commands-top">
-				<ul id="commands-top-tabs">
-					<SnapList className="commands-top-tabs-scroller" width={'36.5vw'} ref={snapList}>
-						{categories.current.map((cat, i) => (
-							<SnapItem margin={{ right: '30px' }}>
-								<li key={i} className={category === cat ? search.length >= 1 ? 'commands-tab' : 'commands-tab selected' : 'commands-tab'} onClick={() => changeCategory(i)}>{cat}</li>
-							</SnapItem>
+				<div id="commands-top-dropdown">
+					<p id="commands-top-dropdown-selected" onClick={() => setCategoryDropdown(!categoryDropdown)}>{category} <span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 20" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<polyline points="6 9 12 15 18 9" />
+							</svg>
+					</span></p>
+					{categoryDropdown ? <div id="commands-top-dropdown-options">
+						{categories.current.filter(cat => cat !== category).map((cat, i) => (
+							<p className="commands-top-dropdown-option" onClick={() => {
+								changeCategory(categories.current.indexOf(cat));
+								setCategoryDropdown(!categoryDropdown);
+							}}>{cat}</p>
 						))}
-					</SnapList>
+					</div> : ''}
+				</div>
+				<ul id="commands-top-tabs">
+					{categories.current.map((cat, i) => (
+						<li key={i} className={category === cat ? search.length >= 1 ? 'commands-tab' : 'commands-tab selected' : 'commands-tab'} onClick={() => changeCategory(i)}>{cat}</li>
+					))}
 				</ul>
 				<div id="commands-top-search">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
