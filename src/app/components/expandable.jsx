@@ -3,7 +3,7 @@ import 'assets/styles/components/expandable.scss';
 
 export default function Expandable (props) {
     const [description, setDescription] = useState(props.description);
-    const [permissions, setPermissions] = useState(props.permissions);
+    const [permissions, setPermissions] = useState(props.permissions || null);
     const [wasExpanded, setWasExpanded] = useState(false);
 
     useEffect(() => {
@@ -15,6 +15,7 @@ export default function Expandable (props) {
         setDescription(props.description.replace(/`(.*?)`/g, (match, token) => {
             return `<b>${token}</b>`
         }));
+        if(!props.permissions) return;
         props.permissions.map(permission => {
             const transformed = permission.replace(/[A-Z]/g, (match) => {
                 return ` ${match}`
@@ -46,18 +47,27 @@ export default function Expandable (props) {
                         </svg>
                     </span>
                 : ''}</p>
-                <p className="expandable-text-message" dangerouslySetInnerHTML={{ __html: description }}></p>
+                { props.type === 'command' ? <p className="expandable-text-message" dangerouslySetInnerHTML={{ __html: description }}></p> : ''}
             </div>
-            <div className="expandable-body">
-                <section className="expandable-body-section">
-                    <h5 className="expandable-body-section-title">Usage</h5>
-                    <p className="expandable-body-section-content">{props.usage}</p>
-                </section>
-                <section className="expandable-body-section">
-                    <h5 className="expandable-body-section-title">Required permissions</h5>
-                    <p className="expandable-body-section-content">{permissions.join(", ")}</p>
-                </section>
-            </div>
+            {props.type === 'command' ?
+                <div className="expandable-body">
+                    <section className="expandable-body-section">
+                        <h5 className="expandable-body-section-title">Usage</h5>
+                        <p className="expandable-body-section-content">{props.usage}</p>
+                    </section>
+                    <section className="expandable-body-section">
+                        <h5 className="expandable-body-section-title">Required permissions</h5>
+                        <p className="expandable-body-section-content">{permissions.join(", ")}</p>
+                    </section>
+                </div>
+                    :
+                <div className="expandable-body">
+                    <section className="expandable-body-section">
+                        <h5 className="expandable-body-section-title">Response</h5>
+                        <p className="expandable-body-section-content" dangerouslySetInnerHTML={{ __html: description }}></p>
+                    </section>
+                </div>
+                }
         </div>
     )
 

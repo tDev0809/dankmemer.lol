@@ -38,6 +38,7 @@ export default function Commands(props) {
 	useEffect(() => {
 		if(search.length >= 1) {
 			Object.values(commandsFile).flat().filter(command => {
+				console.log(command.t);
 				if(command.t.some(trigger => trigger.includes(search)) || command.d.toLowerCase().includes(search)) {
 					setCommands(oldCommands => [...oldCommands, command]);
 				}
@@ -71,6 +72,7 @@ export default function Commands(props) {
 		setSearch("");
 		document.getElementById('commands-search').value="";
 		setCategory(categories.current[index]);
+		setExpandedIndex(null);
 	}
 
 	const expand = (index) => {
@@ -139,6 +141,7 @@ export default function Commands(props) {
 								permissions={command.p}
 								star={command.pS ? true : false}
 								expanded={expandedIndex === commands.indexOf(command)}
+								type={'command'}
 								setExpanded={expand}/>
 						))}
 					</div>

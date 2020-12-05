@@ -3,7 +3,7 @@ $text-accent-1: rgb(231, 231, 231);
 $text-accent-2: rgb(214, 214, 214);
 $text-accent-3: rgb(189, 189, 189);
 
-#commands {
+#commands, #faq {
 	width: 80vw;
 	margin: 0 auto;
 	margin-bottom: 40px;
@@ -33,7 +33,7 @@ $text-accent-3: rgb(189, 189, 189);
 		margin-top: 40px;
 		margin-left: 5px;
 		&-tabs {
-			.commands-tab {
+			.commands-tab, .faq-tab {
 				display: inline-block;
 				vertical-align: middle;
 				font-size: 18px;
@@ -45,6 +45,9 @@ $text-accent-3: rgb(189, 189, 189);
 					cursor: pointer;
 				}
 			}
+		}
+		#faq-top-dropdown-selected, #faq-top-dropdown-options {
+			width: 130px;
 		}
 		&-dropdown {
 			position: relative;
@@ -60,6 +63,11 @@ $text-accent-3: rgb(189, 189, 189);
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				&-name {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
 				span {
 					display: inline-block;
 					vertical-align: middle;
@@ -101,8 +109,8 @@ $text-accent-3: rgb(189, 189, 189);
 	}
 	&-list-container {
 		margin-top: 5vh;
-		#commands-list-wrapper {
-			#commands-list {
+		#commands-list-wrapper, #faq-list-wrapper {
+			#commands-list, #faq-list {
 				margin-right: 10px;
 				padding: 5px;
 			}
@@ -410,7 +418,7 @@ $text-accent-3: rgb(189, 189, 189);
 }
 
 @media only screen and (max-width: 1262px) {
-	#commands {
+	#commands, #faq {
 		&-top {
 			&-tabs {
 				display: none;
@@ -419,7 +427,7 @@ $text-accent-3: rgb(189, 189, 189);
 				display: block;
 			}
 			&-search {
-				#commands-search {
+				#commands-search, #faq-search {
 					width: 35vw;
 				}
 			}
@@ -428,7 +436,7 @@ $text-accent-3: rgb(189, 189, 189);
 }
 
 @media only screen and (max-width: 500px) {
-	#commands {
+	#commands, #faq {
 		&-top {
 			&-tabs {
 				display: none;
@@ -442,7 +450,7 @@ $text-accent-3: rgb(189, 189, 189);
 			}
 			&-search {
 				padding-left: 10px;
-				#commands-search {
+				#commands-search, #faq-search {
 					width: 10vw;
 				}
 			}
