@@ -65,6 +65,8 @@
 		&:nth-child(6) > img {
 			height: 100%!important;
 			width: 120%;
+			max-width: 703px;
+			max-height: 445px;
 		}
 		&.reverse {
 			flex-direction: row-reverse;
