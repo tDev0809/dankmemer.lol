@@ -62,11 +62,9 @@
 		&:not(:last-child) {
 			margin-bottom: 10vh;
 		}
-		&:last-child {
-			img {
-				height: 100%;
-				width: 100%;
-			}
+		&:nth-child(6) > img {
+			height: 100%!important;
+			width: 120%;
 		}
 		&.reverse {
 			flex-direction: row-reverse;
