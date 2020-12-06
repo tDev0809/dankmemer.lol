@@ -5,6 +5,7 @@ import InsightIMG from 'assets/img/insights.png';
 import InvitesIMG from 'assets/img/invites.png';
 import CurrencyIMG from 'assets/img/currency.png';
 import 'assets/styles/pages/singular/home.scss';
+import BottomCTA from '../../components/bottomCTA';
 
 export default function Home () {
 
@@ -68,12 +69,7 @@ export default function Home () {
 			<div align="center">
 				<ins className="adsbygoogle ad" data-adtest="on" data-ad-client="ca-pub-7326182486296195" data-ad-slot="4197264728"/>
         	</div>
-    		<div id="bottom-cta">
-				<h1 id="bottom-cta-title">What are you waiting for?</h1>
-				<p id="bottom-cta-subtitle">Join the growing Dank Memer family today!</p>
-				<a id="bottom-cta-button" href="https://invite.dankmemer.lol" rel="noreferrer noopener">Invite Now</a>
-				<p id="bottom-cta-text">Not convinced? Check out all the <Link to="/commands" className="text-highlight">commands</Link> available!</p>
-    		</div>
+			<BottomCTA/>
   		</div>
 	);
 }

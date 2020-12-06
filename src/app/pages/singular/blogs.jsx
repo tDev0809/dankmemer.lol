@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import RecentBlog from '../../components/recentBlog';
 import OlderBlog from '../../components/olderBlog';
-import 'assets/styles/components/blog.scss';
+import 'assets/styles/pages/singular/blogs.scss';
+import BottomCTA from '../../components/bottomCTA';
 
 export default function Blogs (props) {
 
@@ -37,6 +38,7 @@ export default function Blogs (props) {
 					))}
 				</div>
 			</section>
+			<BottomCTA/>
 		</div>
 	);
 
