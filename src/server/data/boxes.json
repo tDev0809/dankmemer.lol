@@ -1,40 +1,195 @@
 {
-  "boxes": [
-    {
+  "boxes": [{
       "name": "Meme Box",
       "id": 0,
       "description": "Something actually worth opening.",
-      "yield": "2,500 ~ 5,000",
+      "yield": "2,500 - 5,000",
       "randomItem": {
         "keyword": "high",
         "chance": 0.60
       },
       "price": 1.99,
-      "items": ""
+      "items": [{
+          "name": "phone",
+          "amount": "1"
+        },
+        {
+          "name": "tidepod",
+          "amount": "1"
+        },
+        {
+          "name": "fakeid",
+          "amount": "1"
+        },
+        {
+          "name": "sand",
+          "amount": "1"
+        },
+        {
+          "name": "spinner",
+          "amount": "1"
+        },
+        {
+          "name": "coinbomb",
+          "amount": "1"
+        },
+        {
+          "name": "laptop",
+          "amount": "2"
+        },
+        {
+          "name": "pinkphallicobject",
+          "amount": "1"
+        },
+        {
+          "name": "fishingpole",
+          "amount": "1"
+        },
+        {
+          "name": "banknote",
+          "amount": "1"
+        },
+        {
+          "name": "pepe",
+          "amount": "1"
+        }
+      ]
     },
     {
       "name": "Dank Box",
       "id": 1,
       "description": "Dank rewards for a dank user.",
-      "yield": "5,000 ~ 20,000",
+      "yield": "5,000 - 20,000",
       "randomItem": {
         "keyword": "high",
         "chance": 0.85
       },
       "price": 3.99,
-      "items": ""
+      "items": [{
+          "name": "padlock",
+          "amount": "5"
+        },
+        {
+          "name": "fakeid",
+          "amount": "4"
+        },
+        {
+          "name": "tidepod",
+          "amount": "5"
+        },
+        {
+          "name": "alcohol",
+          "amount": "5"
+        },
+        {
+          "name": "phone",
+          "amount": "1"
+        },
+        {
+          "name": "sand",
+          "amount": "6"
+        },
+        {
+          "name": "spinner",
+          "amount": "6"
+        },
+        {
+          "name": "coinbomb",
+          "amount": "8"
+        },
+        {
+          "name": "laptop",
+          "amount": "8"
+        },
+        {
+          "name": "pinkphallicobject",
+          "amount": "5"
+        },
+        {
+          "name": "snowball",
+          "amount": "3"
+        },
+        {
+          "name": "fishingpole",
+          "amount": "1"
+        },
+        {
+          "name": "banknote",
+          "amount": "2"
+        },
+        {
+          "name": "pepe",
+          "amount": "1"
+        }
+      ]
     },
     {
       "name": "God Box",
       "id": 2,
       "description": "This is a really op box.",
-      "yield": "10,000 ~ 50,000",
+      "yield": "10,000 - 50,000",
       "randomItem": {
         "keyword": "GOD",
         "chance": 1
       },
       "price": 4.99,
-      "items": ""
+      "items": [{
+          "name": "padlock",
+          "amount": "10"
+        },
+        {
+          "name": "fakeid",
+          "amount": "6"
+        },
+        {
+          "name": "lifesaver",
+          "amount": "2"
+        },
+        {
+          "name": "alcohol",
+          "amount": "6"
+        },
+        {
+          "name": "spinner",
+          "amount": "8"
+        },
+        {
+          "name": "coinbomb",
+          "amount": "6"
+        },
+        {
+          "name": "laptop",
+          "amount": "8"
+        },
+        {
+          "name": "huntingrifle",
+          "amount": "3"
+        },
+        {
+          "name": "snowball",
+          "amount": "10"
+        },
+        {
+          "name": "pepe",
+          "amount": "2"
+        },
+        {
+          "name": "pepecoin",
+          "amount": "1"
+        },
+        {
+          "name": "landmine",
+          "amount": "2"
+        },
+        {
+          "name": "fishingpole",
+          "amount": "3"
+        },
+        {
+          "name": "banknote",
+          "amount": "8"
+        }
+      ]
     }
   ],
 

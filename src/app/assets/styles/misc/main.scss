@@ -35,6 +35,23 @@ body {
             opacity: 0.4;
         }
     }
+    #discord--login {
+        background: #7289DA;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color ease .17s;
+        svg {
+            margin-right: 10px;
+        }
+        &:hover {
+            background: #677bc4;
+        }
+    }
     .content {
         font-family: 'Lato', sans-serif;
         padding: 10px;
@@ -57,7 +74,7 @@ body {
     .pepple { color: #598e3c; }
     .text-highlight {
         color: $darkGreen;
-        font-weight: 600;
+        font-weight: inherit;
     }
 
     &::-webkit-scrollbar {
