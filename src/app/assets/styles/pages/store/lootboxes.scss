@@ -134,14 +134,14 @@
 						font-size: 18px;
 						font-weight: 700;
 					}
-					&:not(:last-child) {
-						text-align: top;
-					}
 				}
 				&:nth-child(2) {
 					vertical-align: top;
 				}
-				&:nth-child(odd) {
+				&:nth-child(3) {
+					vertical-align: bottom;
+				}
+				&:first-child, &:nth-child(2), &:last-child {
 					height: 50px;
 					&:last-child {
 						border-top: 2px solid #1a1a1a;

@@ -184,12 +184,17 @@ function Loot(props) {
 						<td>${Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100}</td>
 					</tr>
 					<tr>
-						<td>Sales tax</td>
+						<td>Added sales tax</td>
 						<td>${constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : ''}</td>
 					</tr>
 					<tr>
+						<td>Discount</td>
+						<td>{(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) > 20 ? <p id="store-summary-sale-amount">10% (${((boxCount * activeBox.price) / 10).toFixed(2)})</p> : '0%'}</td>
+					</tr>
+					<tr><td/><td/></tr>
+					<tr>
 						<td></td>
-						<td id="store-summary-total">Total: ${Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100}</td>
+						<td id="store-summary-total">Total: ${(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) < 20 ? Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 : ((Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) - ((boxCount * activeBox.price) / 10).toFixed(2)).toFixed(2)}</td>
 					</tr>
 				</table>
 				<div id="store-summary-inputs">
