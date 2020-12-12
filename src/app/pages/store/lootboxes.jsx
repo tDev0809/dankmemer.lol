@@ -61,7 +61,7 @@ function Loot(props) {
 	}, []);
 
 	useEffect(() => {
-		if(isGift && giftRecipient.toString().length < 16 || giftRecipient.toString().length > 21) return setValidGift(true);
+		if(isGift && (giftRecipient.toString().length > 16 || giftRecipient.toString().length < 21)) return setValidGift(true);
 		else return setValidGift(false);
 	}, [giftRecipient])
 
@@ -223,13 +223,25 @@ function Loot(props) {
 						<input name="user-gift" type="number" onChange={(e) => setGiftRecipient(e.target.value)}/>
 						<label for="user-gift">Gift recipient's user ID.</label>
 					</div> : ''}
-					{validGift ? 
+					{isGift && !validGift ? 
 					<div id="checkout-error">
 						<p id="checkout-error-notice">The ID provided is invalid.</p>
 						<p id="checkout-error-help">If you are unsure, you can find how to get an user ID <a href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID" rel="noreferrer noopener" target="_blank">here</a>.</p>
 					</div> : ''}
 				</div>
-				{isGift ? validGift && agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 ?
+				{isGift ?
+					validGift && agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 ?
+					<div id="store-summary-actions">
+					<PaypalButton
+						activeBox={activeBox}
+						boxCount={boxCount}
+						giftState={isGift}
+						login={props.login}
+						Constants={constants}
+						discount={0}
+						setFinishState={finishState}
+					/>
+				</div> : '' : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 ?
 					<div id="store-summary-actions">
 						<PaypalButton
 							activeBox={activeBox}
