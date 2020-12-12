@@ -119,6 +119,16 @@ function Loot(props) {
 		else if(!increase && parseInt(boxCount) > 1) setBoxCount(parseInt(boxCount) - 1);
 	}
 
+	const updateBoxCount = () => {
+		if(boxValue.current.value < 1) {
+			boxValue.current.value = 1;
+			setBoxCount(1)
+		} else if(boxValue.current.value > 100) {
+			boxValue.current.value = 100;
+			setBoxCount(100);
+		} else setBoxCount(boxValue.current.value)
+	}
+
 	return (
 		<div id="store">
 			<div id="store-boxes">
@@ -134,8 +144,8 @@ function Loot(props) {
 									<line x1="5" y1="12" x2="19" y2="12" />
 								</svg>
 							</div>
-							<input id="store-box-counter-num" type="number" ref={boxValue} defaultValue={1} onInput={(e) => setBoxCount(e.target.value)} placeholder="Boxes" />
-							<div id="store-box-counter-ass" onClick={() => changeBoxCount(true)}>
+							<input id="store-box-counter-num" type="number" ref={boxValue} defaultValue={1} onInput={() => updateBoxCount()} placeholder="Boxes" />
+							<div id="store-box-counter-add" onClick={() => changeBoxCount(true)}>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 20" fill="none" stroke="currentColor" strokeWidth="1.5" stroke-linecap="round" stroke-linejoin="round">
 									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
 									<line x1="12" y1="5" x2="12" y2="19" />
