@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[20],{264:function(e,n){navigator.serviceWorker.getRegistrations().then(e=>e.map(e=>e.unregister()))}}]);

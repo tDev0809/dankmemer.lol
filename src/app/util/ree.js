@@ -28,7 +28,7 @@ export default async ({ duration = 1500, heavyness = 10, playAudio = true, rage 
   }
 
   if (playAudio) {
-    const audio = new Audio('/static/reeee.mp3'); // this is reinstantiated on every call on purpose. browsers will cache this for us,
+    const audio = new Audio('static/audio/reeee.mp3'); // this is reinstantiated on every call on purpose. browsers will cache this for us,
     audio.volume = 0.5;                           // us caching it manually will only cause issues with overlapping calls
     await audio.play();
 

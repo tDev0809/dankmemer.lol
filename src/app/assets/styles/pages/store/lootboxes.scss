@@ -11,6 +11,7 @@
 	}
 	&-boxes {
 		.store-box {
+			position: relative;
 			text-align: center;
 			background: #1e1e1e;
 			border: 1px solid transparent;
@@ -24,6 +25,25 @@
 			}
 			&:not(:last-child) {
 				margin-bottom: 5vh;
+			}
+			#peepos {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: calc(337px - 120px);
+				height: calc(192px - 160px);
+				pointer-events: none;
+				.peepo {
+					animation: peek 1s forwards;
+					position: absolute;
+					width: 60px;
+					height: 60px;
+					left: 160px;
+					top: 50%;
+					z-index: 2;
+					background-repeat: no-repeat;
+					background-size: contain;
+				}
 			}
 			&-name {
 				font-size: 30px;
@@ -63,9 +83,21 @@
 				}
 			}
 			&.active {
-				border: 1px solid #39923c;
-				box-shadow: 0px 0px 35px rgba(57, 146, 60, 0.5),
-							inset 0px 0px 20px rgba(4, 214, 9, 0.15);
+				&:nth-child(1) {
+					border: 1px solid #7a7a7a;
+					box-shadow: 0px 0px 35px rgba(128, 128, 128, 0.5),
+								inset 0px 0px 20px rgba(201, 201, 201, 0.15);	
+				}
+				&:nth-child(2) {
+					border: 1px solid #39923c;
+					box-shadow: 0px 0px 35px rgba(57, 146, 60, 0.5),
+								inset 0px 0px 20px rgba(4, 214, 9, 0.15);
+				}
+				&:nth-child(3) {
+					border: 1px solid #e9dc25;
+					box-shadow: 0px 0px 35px rgba(146, 137, 57, 0.5),
+								inset 0px 0px 20px rgba(214, 210, 4, 0.15);	
+				}
 			}
 		}
 	}
@@ -89,6 +121,7 @@
 					padding: 10px 20px;
 					font-family: 'Inter', sans-serif;
 					font-weight: 500;
+					font-size: 14px;
 					&:last-child {
 						width: 50%;
 						text-align: center;
@@ -117,11 +150,14 @@
 		padding-left: 5vw;
 		height: 670px;
 		position: relative;
+		&-message {
+			color: #a5a5a5;
+		}
 		table {
 			border-collapse: collapse;
 			margin-top: 20px;
 			width: 100%;
-			height: 50%;
+			height: 40%;
 			tr {
 				td {
 					&:nth-child(2n) {
@@ -234,17 +270,21 @@
 	}
 }
 
-// @keyframes peek {
-//   0% {}
-//   100% {
-//     transform:
-//       translate(
-//         var(--delta-x),
-//         var(--delta-y)
-//       )
-//       rotate(var(--direction));
-//   }
-// }
+@keyframes peek {
+  0% {}
+  90% {
+	  opacity: 0.8;
+  }
+  100% {
+    transform:
+      translate(
+        var(--delta-x),
+        var(--delta-y)
+      )
+      rotate(var(--direction));
+	  opacity: 0;
+  }
+}
 
 // .loot {
 //   text-align: center;

@@ -24,38 +24,38 @@ import Footer from './components/footer.jsx';
 import './assets/styles/misc/main.scss';
 
 export default () => {
-  ga('send', 'pageview', {
-    hitType: 'pageview',
-    page: location.pathname
-  });
+  	ga('send', 'pageview', {
+    	hitType: 'pageview',
+    	page: location.pathname
+  	});
 
-  return (
-    <>
-      <div id="pseudoBody">
-        <NavBar />
-        <Switch>
-          <Suspense fallback={<div></div>}>
-            <Route exact strict component={() => <Home />} path="/" />
-            <Route component={() => <Commands />} path="/commands" />
-            <Route component={() => <Faq />} path="/faq" />
-            <Route component={() => <Staff />} path="/staff" />
-            <Route component={() => <Loot />} path="/loot" />
-            <Route component={() => <Rules />} path="/rules" />
-            <Route component={() => <About />} path="/about" />
-            <Route exact component={() => <Blogs />} path="/blogs" />
-            <Route exact component={(props) => <Blog {...props} />} path="/blogs/:blog" />
-            <Route component={() => <Appeals />} path="/appeals/" />
-            <Route component={() => <Reports />} path="/reports/" />
-            <Route component={() => <Admin />} path="/admin" />
-            <Route component={() => <Terms />} path="/terms" />
-            <Route component={() => <Landing />} path="/landing" />
-            <Route component={() => <Refunds />} path="/refunds" />
-            <Route component={() => <Privacy />} path="/privacy" />
-          </Suspense>
-        </Switch>
-      </div>
-      <Footer />
-      <div id='modals' />
-    </>
-  );
+  	return (
+		<>
+			<div id="pseudoBody">
+				<NavBar />
+				<Switch>
+					<Suspense fallback={<div></div>}>
+						<Route exact strict component={() => <Home />} path="/" />
+						<Route component={() => <Commands />} path="/commands" />
+						<Route component={() => <Faq />} path="/faq" />
+						<Route component={() => <Staff />} path="/staff" />
+						<Route component={() => <Loot />} path="/loot" />
+						<Route component={() => <Rules />} path="/rules" />
+						<Route component={() => <About />} path="/about" />
+						<Route exact component={() => <Blogs />} path="/blogs" />
+						<Route exact component={(props) => <Blog {...props} />} path="/blogs/:blog" />
+						<Route component={() => <Appeals />} path="/appeals/" />
+						<Route component={() => <Reports />} path="/reports/" />
+						<Route component={() => <Admin />} path="/admin" />
+						<Route component={() => <Terms />} path="/terms" />
+						<Route component={() => <Landing />} path="/landing" />
+						<Route component={() => <Refunds />} path="/refunds" />
+						<Route component={() => <Privacy />} path="/privacy" />
+					</Suspense>
+				</Switch>
+			</div>
+			<Footer />
+			<div id='modals' />
+		</>
+	);
 }

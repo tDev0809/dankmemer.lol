@@ -7,11 +7,10 @@ import DiscordLogin from '../../components/discordLogin';
 import PaypalButton from '../../components/paypalButton';
 
 import EndSection from './views/EndSection.jsx';
-import Box from '../../components/lootbox.jsx';
 import BlockedCountry from './views/BlockedCountry.jsx';
 import ree from '../../util/ree.js';
+import images from './util/images.js';
 import parseTime from '../../util/parseTime.js';
-import loadScript from '../../util/loadScript.js';
 
 import 'assets/styles/pages/store/lootboxes.scss';
 
@@ -44,6 +43,10 @@ function Loot(props) {
 
 	const [validGift, setValidGift] = useState(false);
 
+	const [isRee, setIsRee] = useState(false);
+	const [currentPeepo, setCurrentPeepo] = useState(0);
+	const [showPeepos, setShowPeepos] = useState(false);
+
 	useEffect(() => {
 		axios.all([
 			axios('/api/boxes'),
@@ -63,15 +66,41 @@ function Loot(props) {
 	useEffect(() => {
 		if(isGift && (giftRecipient.toString().length > 16 || giftRecipient.toString().length < 21)) return setValidGift(true);
 		else return setValidGift(false);
-	}, [giftRecipient])
+	}, [giftRecipient]);
 
 	useEffect(() => {
 		setBoxCount(1);
-	}, [activeBox])
+	}, [activeBox]);
 
 	useEffect(() => {
+		if(!boxValue.current) return;
 		boxValue.current.value = boxCount;
-	}, [boxCount])
+	}, [boxCount]);
+
+	useEffect(() => {
+		if(isRee) {
+			ree({
+				duration: 1500,
+				intensity: 35
+			});
+			setTimeout(() => {
+				setIsRee(false);
+			}, 2000);
+		}
+	}, [isRee]);
+
+	const peepos = Array(13).fill(0).map((_, i) => new Audio(`/static/audio/peepo${i}.mp3`));
+	const getPeepoPositioning = () => {
+		const direction = Math.floor(Math.random() * 360);
+
+		return {
+			'--direction': `${direction}deg`,
+			'--delta-x': `${200*Math.sin(direction)}px`,
+			'--delta-y': `${150*Math.cos(direction)}px`,
+			'--offset-x': direction % 180 ? 0 : `${130 - (Math.random() * 260)}px`,
+			'--offset-y': direction % 180 ? `${40 - (Math.random() * 80)}px` : 0
+		}
+	}
 
 	const finishState = (e) => {
 		console.log(e);
@@ -97,10 +126,6 @@ function Loot(props) {
         res.discountPercent = discountPercent;
         return res;
 	}
-	
-	useEffect(() => {
-		console.log(giftRecipient.length);
-	}, [giftRecipient])
 
     const getDiscount = (returnRaw) => {
         const subtotal = getSubtotal(true);
@@ -120,12 +145,15 @@ function Loot(props) {
 	}
 
 	const updateBoxCount = () => {
+		if(!boxValue.current) return;
 		if(boxValue.current.value < 1) {
 			boxValue.current.value = 1;
-			setBoxCount(1)
+			setBoxCount(1);
+			setIsRee(true);
 		} else if(boxValue.current.value > 100) {
 			boxValue.current.value = 100;
 			setBoxCount(100);
+			setIsRee(true);
 		} else setBoxCount(boxValue.current.value)
 	}
 
@@ -133,9 +161,27 @@ function Loot(props) {
 		<div id="store">
 			<div id="store-boxes">
 				{boxes.map((box, i) => (
-					<div className={activeBox.id === i ? "store-box active" : "store-box"} onClick={() => setActiveBox(boxes[i])}>
+					<div key={i} className={activeBox.id === i ? "store-box active" : "store-box"} onClick={() => {
+						if(activeBox.id !== i) {
+							if(currentPeepo < 1) setCurrentPeepo(0);
+							else if(currentPeepo >= 12) setCurrentPeepo(0);
+							peepos[currentPeepo].play();
+							setCurrentPeepo(currentPeepo + 1);
+							setShowPeepos(true);
+						}
+						setActiveBox(boxes[i]);
+					}}>
 						<h2 className="store-box-name">{box.name}</h2>
 						<p className="store-box-price">${box.price}</p>
+						{showPeepos && activeBox.id === i ?
+						<div id="peepos">
+							<div className="peepo" style={{ ...getPeepoPositioning(), backgroundImage: `url(${images[Math.floor(Math.random() * images.length)]})`}} />
+							<div className="peepo" style={{ ...getPeepoPositioning(), backgroundImage: `url(${images[Math.floor(Math.random() * images.length)]})`}} />
+							<div className="peepo" style={{ ...getPeepoPositioning(), backgroundImage: `url(${images[Math.floor(Math.random() * images.length)]})`}} />
+							<div className="peepo" style={{ ...getPeepoPositioning(), backgroundImage: `url(${images[Math.floor(Math.random() * images.length)]})`}} />
+							<div className="peepo" style={{ ...getPeepoPositioning(), backgroundImage: `url(${images[Math.floor(Math.random() * images.length)]})`}} />
+						</div>
+						: ''}
 						{activeBox.id === i ?
 						<div id="store-box-counter">
 							<div id="store-box-counter-sub" onClick={() => changeBoxCount(false)}>
@@ -168,7 +214,7 @@ function Loot(props) {
 					</thead>
 					<tbody>
 						{activeBox.items.map(({ name, amount }, i) => (
-							<tr>
+							<tr key={i}>
 								<td>{name}</td>
 								<td>{amount}</td>
 							</tr>
@@ -178,24 +224,27 @@ function Loot(props) {
 			</div>
 			<div id="store-summary">
 				<h2 id="store-summary-title">Order summary</h2>
+				<p id="store-summary-message">All orders are processed via PayPal and will operate using the United States Dollar. Each order has a minimum charge amount of $3 where you will need to fulfill this amount to continue. Orders over $20 will receive a 10% discount.</p>
 				<table id="store-summary-items">
-					<tr>
-						<td>{boxCount}x {activeBox.name}</td>
-						<td>${Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100}</td>
-					</tr>
-					<tr>
-						<td>Added sales tax</td>
-						<td>${constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : ''}</td>
-					</tr>
-					<tr>
-						<td>Discount</td>
-						<td>{(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) > 20 ? <p id="store-summary-sale-amount">10% (${((boxCount * activeBox.price) / 10).toFixed(2)})</p> : '0%'}</td>
-					</tr>
-					<tr><td/><td/></tr>
-					<tr>
-						<td></td>
-						<td id="store-summary-total">Total: ${(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) < 20 ? Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 : ((Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) - ((boxCount * activeBox.price) / 10).toFixed(2)).toFixed(2)}</td>
-					</tr>
+					<tbody>
+						<tr>
+							<td>{boxCount}x {activeBox.name}</td>
+							<td>${Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100}</td>
+						</tr>
+						<tr>
+							<td>Added sales tax</td>
+							<td>${constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : ''}</td>
+						</tr>
+						<tr>
+							<td>Discount</td>
+							<td>{(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) > 20 ? <p id="store-summary-sale-amount">10% (${((boxCount * activeBox.price) / 10).toFixed(2)})</p> : '0%'}</td>
+						</tr>
+						<tr><td/><td/></tr>
+						<tr>
+							<td></td>
+							<td id="store-summary-total">Total: ${(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) < 20 ? Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 : ((Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) - ((boxCount * activeBox.price) / 10).toFixed(2)).toFixed(2)}</td>
+						</tr>
+					</tbody>
 				</table>
 				<div id="store-summary-inputs">
 					<div className="store-summary-input">
@@ -206,7 +255,7 @@ function Loot(props) {
 								<path d="M5 12l5 5l10 -10" />
 							</svg>
 						</div>
-						<label for="tos-privacy">I agree to Dank Memer’s <Link to="/terms">Terms of Service</Link> and <Link to="refunds">Refund Policy</Link>.</label><br/>
+						<label htmlFor="tos-privacy">I agree to Dank Memer’s <Link to="/terms">Terms of Service</Link> and <Link to="refunds">Refund Policy</Link>.</label><br/>
 					</div>
 					<div className="store-summary-input">
 						<input name="gift-purchase" type="checkbox" onChange={(e) => setIsGift(e.target.checked)}/>
@@ -216,12 +265,12 @@ function Loot(props) {
 								<path d="M5 12l5 5l10 -10" />
 							</svg>
 						</div>
-						<label for="gift-purchase">Th{boxCount === 1 ? 'is box is' : 'ese boxes are'} being purchased as a gift.</label>
+						<label htmlFor="gift-purchase">Th{boxCount === 1 ? 'is box is' : 'ese boxes are'} being purchased as a gift.</label>
 					</div>
 					{isGift ? 
 					<div className="store-summary-input">
 						<input name="user-gift" type="number" onChange={(e) => setGiftRecipient(e.target.value)}/>
-						<label for="user-gift">Gift recipient's user ID.</label>
+						<label htmlFor="user-gift">Gift recipient's user ID.</label>
 					</div> : ''}
 					{isGift && !validGift ? 
 					<div id="checkout-error">
@@ -230,7 +279,7 @@ function Loot(props) {
 					</div> : ''}
 				</div>
 				{isGift ?
-					validGift && agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 ?
+					validGift && agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= 3) ?
 					<div id="store-summary-actions">
 					<PaypalButton
 						activeBox={activeBox}
@@ -241,7 +290,7 @@ function Loot(props) {
 						discount={0}
 						setFinishState={finishState}
 					/>
-				</div> : '' : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 ?
+				</div> : '' : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= 3) ?
 					<div id="store-summary-actions">
 						<PaypalButton
 							activeBox={activeBox}
