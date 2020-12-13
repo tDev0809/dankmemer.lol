@@ -47,7 +47,6 @@ export default function PaypalButton(props) {
     const getDiscount = (returnRaw) => {
         const subtotal = getSubtotal(true);
         const {discountPercent} = getDiscountPercent();
-        console.log(`Discount Percent: ${discountPercent}`)
         const raw = props.activeBox.id !== 0 ? subtotal * (discountPercent / 100) : 0;
         return returnRaw ? raw : raw.toFixed(2);
     }
@@ -55,10 +54,6 @@ export default function PaypalButton(props) {
     const getDiscountedSubtotal = (returnRaw) => {
         const raw = getSubtotal(true) - Number(getDiscount());
         return returnRaw ? raw : raw.toFixed(2);
-    }
-
-    const createOrder = async (actions) => {
-        
     }
 
     const onApprove = (actions) => {
@@ -73,7 +68,7 @@ export default function PaypalButton(props) {
             props.setFinishState({
                 finish: {
                     success: false,
-                    err
+                    data: err
                 }
             });
         });
@@ -87,7 +82,6 @@ export default function PaypalButton(props) {
                 fontFamily: "'Inter', sans-serif"
             }}
             createOrder={(_, actions) => {
-                console.log(`Total: ${getDiscountedSubtotal(true)}\nSubtotal: ${getSubtotal(true)}\nDiscount: ${getDiscount(true).toFixed(2)}\nSales tax: ${(getDiscountedSubtotal(true) * 0.0675).toFixed(2)}`);
                 const p = createPayment({
                     total: getDiscountedSubtotal(true),
                     subtotal: getSubtotal(true),
