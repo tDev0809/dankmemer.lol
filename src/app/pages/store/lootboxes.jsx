@@ -298,7 +298,7 @@ function Loot(props) {
 							: ''}
 						</div>
 						{isGift ?
-							validGift && agreedTOS && !props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
+							validGift && agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
 							<div id="store-summary-actions">
 							<PaypalButton
 								activeBox={activeBox}
@@ -309,7 +309,7 @@ function Loot(props) {
 								discount={0}
 								setFinishState={finishState}
 							/>
-						</div> : '' : agreedTOS && !props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
+						</div> : '' : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
 							<div id="store-summary-actions">
 								<PaypalButton
 									activeBox={activeBox}
@@ -321,7 +321,7 @@ function Loot(props) {
 									setFinishState={finishState}
 								/>
 							</div>
-						: props.login.loggedIn ? 
+						: !props.login.loggedIn ? 
 							<div id="store-summary-actions">
 								<DiscordLogin />
 								<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes. You need to login.</p>
