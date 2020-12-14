@@ -166,6 +166,10 @@ function Loot(props) {
 			: bannedCountry ? <BlockedCountry />
 			: finishedPayment ? <EndSection success={finishedPayment} data={paymentData} /> 
 			: <>
+				<div id="store-header">
+					<h1 id="store-header-title">Dank Memer Store</h1>
+					<p id="store-header-message">Welcome to the lootbox shop! Here you can find a variety of different purchasable items that grant you a chance of winning something special!</p>
+				</div>
 				<div id="store-boxes">
 					{boxes.map((box, i) => (
 						<div key={i} className={activeBox.id === i ? "store-box active" : "store-box"} onClick={() => {
@@ -209,119 +213,121 @@ function Loot(props) {
 						</div>
 					))}
 				</div>
-				<div id="store-items">
-					<h2 id="store-items-title">Possible items</h2>
-					<p id="store-items-message">Below includes a list of all possible items and the maximum amount of items you could receive from the purchase of a <span className="text-highlight">{activeBox.name}</span>! Along with these items, you have the chance of getting anywhere in the range of <span className="text-highlight">{activeBox.yield}</span> coins.</p>
-					<table>
-						<thead>
-							<tr>
-								<th>Item name</th>
-								<th>Max. Amount</th>
-							</tr>
-						</thead>
-						<tbody>
-							{activeBox.items.map(({ name, amount }, i) => (
-								<tr key={i}>
-									<td>{name}</td>
-									<td>{amount}</td>
+				<div id="store-details">
+					<div id="store-items">
+						<h2 id="store-items-title">Possible items</h2>
+						<p id="store-items-message">Below includes a list of all possible items and the maximum amount of items you could receive from the purchase of a <span className="text-highlight">{activeBox.name}</span>! Along with these items, you have the chance of getting anywhere in the range of <span className="text-highlight">{activeBox.yield}</span> coins.</p>
+						<table>
+							<thead>
+								<tr>
+									<th>Item name</th>
+									<th>Max. Amount</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
-				<div id="store-summary">
-					<h2 id="store-summary-title">Order summary</h2>
-					<p id="store-summary-message">All orders are processed via PayPal and will operate using the United States Dollar. Each order has a minimum charge amount of ${constants && constants.MINIMUM_PURCHASE_VALUE} where you will need to fulfill this amount to continue. Orders over ${constants && constants.MINIMUM_DISCOUNT_VALUE} will receive a {constants && constants.FLAT_DISCOUNT_PERCENTAGE}% discount.</p>
-					<table id="store-summary-items">
-						<tbody>
-							<tr>
-								<td>{boxCount}x {activeBox.name}</td>
-								<td>${Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100}</td>
-							</tr>
-							<tr>
-								<td>Added sales tax</td>
-								<td>${constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : ''}</td>
-							</tr>
-							<tr>
-								<td>Discount</td>
-								<td>{(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) > 20 ? <p id="store-summary-sale-amount">10% (${((boxCount * activeBox.price) / 10).toFixed(2)})</p> : '0%'}</td>
-							</tr>
-							<tr><td/><td/></tr>
-							<tr>
-								<td></td>
-								<td id="store-summary-total">Total: ${(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) < 20 ? Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 : ((Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) - ((boxCount * activeBox.price) / 10).toFixed(2)).toFixed(2)}</td>
-							</tr>
-						</tbody>
-					</table>
-					<div id="store-summary-inputs">
-						<div className="store-summary-input">
-							<input name="tos-privacy" type="checkbox" onChange={(e) => setAgreedTOS(e.target.checked)}/>
-							<div className="store-summary-input-tick">
-								<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-									<path d="M5 12l5 5l10 -10" />
-								</svg>
-							</div>
-							<label htmlFor="tos-privacy">I agree to Dank Memer’s <Link to="/terms">Terms of Service</Link> and <Link to="refunds">Refund Policy</Link>.</label><br/>
-						</div>
-						<div className="store-summary-input">
-							<input name="gift-purchase" type="checkbox" onChange={(e) => setIsGift(e.target.checked)}/>
-							<div className="store-summary-input-tick">
-								<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-									<path d="M5 12l5 5l10 -10" />
-								</svg>
-							</div>
-							<label htmlFor="gift-purchase">Th{boxCount === 1 ? 'is box is' : 'ese boxes are'} being purchased as a gift.</label>
-						</div>
-						{isGift ? 
-						<div className="store-summary-input">
-							<input name="user-gift" type="number" onChange={(e) => setGiftRecipient(e.target.value)}/>
-							<label htmlFor="user-gift">Gift recipient's user ID.</label>
-						</div> : ''}
-						{constants && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 < constants.MINIMUM_PURCHASE_VALUE) ?
-							<div id="checkout-error">
-								<p id="checkout-error-notice">Insufficient purchase amount.</p>
-								<p id="checkout-error-help">Your order does not meet the minimum required value of ${constants && constants.MINIMUM_PURCHASE_VALUE}.</p>
-							</div>
-						: ''}
-						{constants && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) && isGift && !validGift ? 
-							<div id="checkout-error">
-								<p id="checkout-error-notice">The ID provided is invalid.</p>
-								<p id="checkout-error-help">If you are unsure, you can find how to get an user ID <a href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID" rel="noreferrer noopener" target="_blank">here</a>.</p>
-							</div>
-						: ''}
+							</thead>
+							<tbody>
+								{activeBox.items.map(({ name, amount }, i) => (
+									<tr key={i}>
+										<td>{name}</td>
+										<td>{amount}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
 					</div>
-					{isGift ?
-						validGift && agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
-						<div id="store-summary-actions">
-						<PaypalButton
-							activeBox={activeBox}
-							boxCount={boxCount}
-							giftState={giftRecipient}
-							login={props.login}
-							Constants={constants}
-							discount={0}
-							setFinishState={finishState}
-						/>
-					</div> : '' : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
-						<div id="store-summary-actions">
+					<div id="store-summary">
+						<h2 id="store-summary-title">Order summary</h2>
+						<p id="store-summary-message">All orders are processed via PayPal and will operate using the United States Dollar. Each order has a minimum charge amount of ${constants && constants.MINIMUM_PURCHASE_VALUE} where you will need to fulfill this amount to continue. Orders over ${constants && constants.MINIMUM_DISCOUNT_VALUE} will receive a {constants && constants.FLAT_DISCOUNT_PERCENTAGE}% discount.</p>
+						<table id="store-summary-items">
+							<tbody>
+								<tr>
+									<td>{boxCount}x {activeBox.name}</td>
+									<td>${Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100}</td>
+								</tr>
+								<tr>
+									<td>Added sales tax</td>
+									<td>${constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : ''}</td>
+								</tr>
+								<tr>
+									<td>Discount</td>
+									<td>{(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) > 20 ? <p id="store-summary-sale-amount">10% (${((boxCount * activeBox.price) / 10).toFixed(2)})</p> : '0%'}</td>
+								</tr>
+								<tr><td/><td/></tr>
+								<tr>
+									<td></td>
+									<td id="store-summary-total">Total: ${(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) < 20 ? Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 : ((Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) - ((boxCount * activeBox.price) / 10).toFixed(2)).toFixed(2)}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="store-summary-inputs">
+							<div className="store-summary-input">
+								<input name="tos-privacy" type="checkbox" onChange={(e) => setAgreedTOS(e.target.checked)}/>
+								<div className="store-summary-input-tick">
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+										<path d="M5 12l5 5l10 -10" />
+									</svg>
+								</div>
+								<label htmlFor="tos-privacy">I agree to Dank Memer’s <Link to="/terms">Terms of Service</Link> and <Link to="refunds">Refund Policy</Link>.</label><br/>
+							</div>
+							<div className="store-summary-input">
+								<input name="gift-purchase" type="checkbox" onChange={(e) => setIsGift(e.target.checked)}/>
+								<div className="store-summary-input-tick">
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+										<path d="M5 12l5 5l10 -10" />
+									</svg>
+								</div>
+								<label htmlFor="gift-purchase">Th{boxCount === 1 ? 'is box is' : 'ese boxes are'} being purchased as a gift.</label>
+							</div>
+							{isGift ? 
+							<div className="store-summary-input">
+								<input name="user-gift" type="number" onChange={(e) => setGiftRecipient(e.target.value)}/>
+								<label htmlFor="user-gift">Gift recipient's user ID.</label>
+							</div> : ''}
+							{constants && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 < constants.MINIMUM_PURCHASE_VALUE) ?
+								<div id="checkout-error">
+									<p id="checkout-error-notice">Insufficient purchase amount.</p>
+									<p id="checkout-error-help">Your order does not meet the minimum required value of ${constants && constants.MINIMUM_PURCHASE_VALUE}.</p>
+								</div>
+							: ''}
+							{constants && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) && isGift && !validGift ? 
+								<div id="checkout-error">
+									<p id="checkout-error-notice">The ID provided is invalid.</p>
+									<p id="checkout-error-help">If you are unsure, you can find how to get an user ID <a href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID" rel="noreferrer noopener" target="_blank">here</a>.</p>
+								</div>
+							: ''}
+						</div>
+						{isGift ?
+							validGift && agreedTOS && !props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
+							<div id="store-summary-actions">
 							<PaypalButton
 								activeBox={activeBox}
 								boxCount={boxCount}
-								giftState={null}
+								giftState={giftRecipient}
 								login={props.login}
 								Constants={constants}
 								discount={0}
 								setFinishState={finishState}
 							/>
-						</div>
-					: !props.login.loggedIn ? 
-						<div id="store-summary-actions">
-							<DiscordLogin />
-							<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes. You need to login.</p>
-						</div>			
-					: ''}
+						</div> : '' : agreedTOS && !props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
+							<div id="store-summary-actions">
+								<PaypalButton
+									activeBox={activeBox}
+									boxCount={boxCount}
+									giftState={null}
+									login={props.login}
+									Constants={constants}
+									discount={0}
+									setFinishState={finishState}
+								/>
+							</div>
+						: props.login.loggedIn ? 
+							<div id="store-summary-actions">
+								<DiscordLogin />
+								<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes. You need to login.</p>
+							</div>			
+						: ''}
+					</div>
 				</div>
 			</>}
 		</div>
