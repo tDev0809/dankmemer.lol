@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 const Home     = lazy(() => import('./pages/singular/home'));

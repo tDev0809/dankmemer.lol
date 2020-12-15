@@ -1,3 +1,45 @@
+#about {
+	width: 50vw;
+	margin: 10vh auto;
+	&-title {
+		font-size: 50px;
+		text-transform: uppercase;
+		span {
+			font-size: 60px;
+		}
+	}
+	&-usage {
+		margin-top: 5vh;
+		&-title {
+			font-size: 40px;
+			text-transform: uppercase;
+			margin-bottom: 30px;
+		}
+	}
+	.about-paragraph {
+		&-title {
+			margin-top: 10px;
+			margin-bottom: 5px;
+		}
+		&-subtitle {
+			margin: 10px 0;
+		}
+		&-body {
+			color: #cfcfcf;
+			a {
+				color: #39923c;
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		&-body-mt {
+			color: #cfcfcf;
+			margin-top: 10px;
+		}
+	}
+}
 .title {
   font-family: 'Montserrat';
   text-transform: uppercase;

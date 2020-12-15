@@ -7,11 +7,37 @@ import CurrencyIMG from 'assets/img/currency.png';
 import 'assets/styles/pages/singular/home.scss';
 import BottomCTA from '../../components/bottomCTA';
 
+const adPlacements = [
+	'nitropay-home-middle',
+	'nitropay-home-bottom'
+]
+
 export default function Home () {
 
 	useEffect(() => {
-		(window.adsbygoogle = window.adsbygoogle || []).push({});
-		(window.adsbygoogle = window.adsbygoogle || []).push({});
+		// adPlacements.forEach((placement) => {
+		// 	window['nitroAds'].createAd(placement, {
+		// 		"refreshLimit": 10,
+		// 		"refreshTime": 90,
+		// 		"renderVisibleOnly": false,
+		// 		"refreshVisibleOnly": true,
+		// 		"sizes": [
+		// 		  [
+		// 			"728",
+		// 			"90"
+		// 		  ],
+		// 		  [
+		// 			"320",
+		// 			"50"
+		// 		  ]
+		// 		],
+		// 		"report": {
+		// 		  "enabled": true,
+		// 		  "wording": "Report Ad",
+		// 		  "position": "top-right"
+		// 		}
+		// 	});
+		// });
 	}, [])
 
 	return (
@@ -49,9 +75,7 @@ export default function Home () {
         		</div>
 				<img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
     		</section>
-    		<div align="center">
-				<ins className="adsbygoogle ad" data-adtest="on" data-ad-client="ca-pub-7326182486296195" data-ad-slot="5725651587" />
-        	</div>
+			<div id="nitropay-home-middle" className="nitropay ad-h"/>
 			<section>
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Generate</span> Server<br/> Growth</h3>
@@ -66,9 +90,7 @@ export default function Home () {
 				</div>
 				<img alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
-			<div align="center">
-				<ins className="adsbygoogle ad" data-adtest="on" data-ad-client="ca-pub-7326182486296195" data-ad-slot="4197264728"/>
-        	</div>
+			<div id="nitropay-home-bottom" className="nitropay ad-h"/>
 			<BottomCTA/>
   		</div>
 	);

@@ -1,46 +1,72 @@
-import React from 'react';
-import 'assets/styles/pages/admin/admin.scss';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import DiscordLogin from '../../components/discordLogin';
+import 'assets/styles/pages/admin/admin.scss';
+
 
 import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
 
-class Admin extends React.PureComponent {
+const adPlacements = [
+	'nitropay-admin-top'
+]
 
-async componentDidMount () {
-  (window.adsbygoogle = window.adsbygoogle || []).push({});
-}
+function Admin (props) {
+	const history = useHistory();
 
-  render () {
-    if (!this.props.loggedIn) {
-      return (
-        <div className="content admin">
-          <header className="header">
-            You aren't logged in with your Discord account. <a href="/oauth/login?redirect=/admin">Click this</a> to log in.
-          </header>
-        </div>
-      );
-    }
+	useEffect(() => {
+		// adPlacements.forEach((placement) => {
+		// 	window['nitroAds'].createAd(placement, {
+		// 		"refreshLimit": 10,
+		// 		"refreshTime": 90,
+		// 		"renderVisibleOnly": false,
+		// 		"refreshVisibleOnly": true,
+		// 		"sizes": [
+		// 		  [
+		// 			"728",
+		// 			"90"
+		// 		  ],
+		// 		  [
+		// 			"320",
+		// 			"50"
+		// 		  ]
+		// 		],
+		// 		"report": {
+		// 		  "enabled": true,
+		// 		  "wording": "Report Ad",
+		// 		  "position": "top-right"
+		// 		}
+		// 	});
+		// });
+	}, []);
 
-    if (this.props.isAdmin === false) {
-      return location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-    }
+	useEffect(() => {
+		if(props.loggedIn && !props.isAdmin) return window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+	}, [props])
 
-    return (
-      <>
-      <div className="content admin">
-        {BanPanels.map((Panel, key) => (<Panel key={key} />))}
-        {<GetPayment/>}
-      </div>
-      <div align="center">
-          <ins className="adsbygoogle ad"
-            data-ad-client="ca-pub-7326182486296195"
-            data-ad-slot="4551035249">
-          </ins>
-        </div>
-      </>
-    );
-  }
+	return (
+		<div id="admin">
+			{!props.loggedIn ? 
+				<div id="admin-login">
+					<div id="admin-login-content">
+						<h1 id="admin-login-content-title">Restricted</h1>
+						<p id="admin-login-content-body">The page you are trying to access is restricted. Please login to continue</p>
+						<DiscordLogin />
+					</div>
+				</div>
+			:
+			<div id="admin-content">
+				<h1 id="admin-content-title">Admin Control Panel</h1>
+				<div id="nitropay-admin-top" className="nitropay ad-h"/>
+				<div id="admin-content-panels">
+					{BanPanels.map((Panel, key) => (<Panel key={key} />))}
+					{<GetPayment/>}
+				</div>
+			</div>
+			}
+		</div>
+	)
 }
 
 export default connect(store => store.login, null)(Admin);

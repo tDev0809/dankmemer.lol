@@ -6,6 +6,10 @@ import 'simplebar/dist/simplebar.min.css';
 
 import 'assets/styles/pages/info/commands.scss';
 
+const adPlacements = [
+	'nitropay-faq-top',
+	'nitropay-faq-bottom'
+]
 
 export default function FAQ(props) {
 	const categories = useRef(Object.keys(faqFile));
@@ -18,8 +22,29 @@ export default function FAQ(props) {
 	const [prefix, setPrefix] = useState('pls ');
 
 	useEffect(() => {
-		(window.adsbygoogle = window.adsbygoogle || []).push({});
-		(window.adsbygoogle = window.adsbygoogle || []).push({});
+		// adPlacements.forEach((placement) => {
+		// 	window['nitroAds'].createAd(placement, {
+		// 		"refreshLimit": 10,
+		// 		"refreshTime": 90,
+		// 		"renderVisibleOnly": false,
+		// 		"refreshVisibleOnly": true,
+		// 		"sizes": [
+		// 		  [
+		// 			"728",
+		// 			"90"
+		// 		  ],
+		// 		  [
+		// 			"320",
+		// 			"50"
+		// 		  ]
+		// 		],
+		// 		"report": {
+		// 		  "enabled": true,
+		// 		  "wording": "Report Ad",
+		// 		  "position": "top-right"
+		// 		}
+		// 	});
+		// });
 		if(window.location.search && window.location.search.split("?")[1].split("=")[0] === "prefix") {
 			setPrefix(`${window.location.search.split("?")[1].split("=")[1]} `);
 			return window.history.pushState(null, null, 'faq');
@@ -80,12 +105,7 @@ export default function FAQ(props) {
 
 	return (
 		<div id="faq">
-			<div align="center">
-				<ins className="adsbygoogle ad"
-					data-ad-client="ca-pub-7326182486296195"
-					data-ad-slot="4551035249">
-				</ins>
-			</div>
+			<div id="nitropay-faq-top" className="nitropay ad-h"/>
 			<div id="faq-header">
 				<h1 id="faq-header-title">Frequently Asked Questions</h1>
 				<p id="faq-header-message">The most frequently asked questions can be found below. Split into categories depending on what they are related to.</p>
@@ -142,159 +162,7 @@ export default function FAQ(props) {
 					</div>
 				</div>
 			</SimpleBar>
-			<div align="center">
-	        	<ins className="adsbygoogle ad"
-					data-ad-client="ca-pub-7326182486296195"
-					data-ad-slot="5725651587">
-				</ins>
-			</div>
+			<div id="nitropay-faq-top" className="nitropay ad-h"/>
 		</div>
 	);
 }
-
-// import React, { PureComponent } from 'react';
-// import faq from './data/faq.json';
-// import sleep from '../../util/sleep';
-
-// import 'assets/styles/pages/info/faq.scss';
-
-// export default class FAQ extends PureComponent {
-//   commandsRef = React.createRef();
-//   lastTyped = Date.now();
-//   state = {
-//     selectedCategory: Object.keys(faq)[0],
-//     expandedCommand: '',
-//     transitionState: 'fade-in',
-//     searchQuery: ''
-//   };
-
-//   setCategory (selectedCategory) {
-//     if (selectedCategory === this.state.selectedCategory) {
-//       return;
-//     }
-
-//     this.setState({ transitionState: 'fade-out' }, () =>
-//       sleep(250).then(() =>
-//         this.setState({ selectedCategory }, () =>
-//           this.setState({ transitionState: 'fade-in' })
-//         )
-//       )
-//     );
-//   }
-
-//   componentDidMount () {
-//     (window.adsbygoogle = window.adsbygoogle || []).push({});
-//     (window.adsbygoogle = window.adsbygoogle || []).push({});
-//     if (window.location.search) {
-//       window.history.pushState(null, null, 'faq');
-//     }
-//   }
-
-//   updateSearch (ev) {
-//     this.lastTyped = Date.now();
-//     const { value } = ev.target;
-
-//     if (value === this.state.searchQuery) {
-//       return;
-//     }
-
-//     setTimeout(() => {
-//       const diff = Date.now() - this.lastTyped;
-//       if (diff > 300 && diff < 400) {
-//         this.lastTyped = Date.now();
-//         this.setState({ transitionState: 'fade-out' }, () =>
-//           sleep(250).then(() =>
-//             this.setState({ searchQuery: value.toLowerCase() }, () =>
-//               this.setState({ transitionState: 'fade-in' })
-//             )
-//           )
-//         );
-//       }
-//     }, 350)
-//   }
-
-//   render () {
-//     const { selectedCategory, transitionState, expandedCommand, searchQuery } = this.state;
-//     return (
-//       <>
-//       <div align="center">
-//           <ins className="adsbygoogle ad"
-//             data-ad-client="ca-pub-7326182486296195"
-//             data-ad-slot="4551035249">
-//           </ins>
-//         </div>
-//       <div className='content faq-page'>
-//         <div className='faq-wrapper'>
-//           <div className='categories'>
-//             {Object.keys(faq)
-//               .map(category => (
-//                 <div
-//                   className={`${selectedCategory === category ? 'selected ' : ''}category`}
-//                   key={category}
-//                   onClick={() => this.setCategory(category)}
-//                 >
-//                   <span>
-//                     {category}
-//                   </span>
-//                 </div>
-//               ))}
-//           </div>
-
-//           <div className='right'>
-//             <textarea
-//               placeholder='Search...'
-//               rows={1}
-//               spellCheck={false}
-//               className={`${selectedCategory === 'search-bar' ? 'active ' : ''}search-bar`}
-//               onKeyUp={ev => this.updateSearch(ev)}
-//               onFocus={() => this.setCategory('search-bar')}
-//             />
-//             <div className={`${transitionState} faq`} ref={this.commandsRef}>
-//               <div className='faq-scroller'>
-//               {(selectedCategory !== 'search-bar'
-//                 ? faq[selectedCategory]
-//                 : Object.values(faq)
-//                     .flat()
-//                     .filter(command => (
-//                       !searchQuery || (
-//                         command.q.toLowerCase().includes(searchQuery) ||
-//                         command.a.toLowerCase().includes(searchQuery)
-//                       )
-//                     )))
-//                 .map(command => (
-//                   <div
-//                     className={`${expandedCommand === command ? 'expanded ' : ''}command`}
-//                     key={command.q}
-//                     onClick={() => this.setState({
-//                       expandedCommand: expandedCommand === command ? null : command
-//                     })}>
-
-//                     <div className='command-header blurple'>
-//                       <div className='command-name'>{command.q}</div>
-
-//                     </div>
-//                     <div className={`${expandedCommand === command ? 'expanded ' : ''}command-expanded-info`}>
-//                       <div className='command-expanded-seperator' />
-//                       <div className='command-info-section'>
-//                         <div className='command-info-header'>Answer</div>
-//                         <div className='command-info-details command-info-permissions'>{command.a}</div>
-//                       </div>
-//                     </div>
-//                   </div>
-//                 ))}
-//               </div>
-//               <div className='faq-shadow'></div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       <div align="center">
-//           <ins className="adsbygoogle ad"
-//             data-ad-client="ca-pub-7326182486296195"
-//             data-ad-slot="5725651587">
-//           </ins>
-//         </div>
-//       </>
-//     );
-//   }
-// }

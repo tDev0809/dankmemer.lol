@@ -457,3 +457,16 @@ $text-accent-3: rgb(189, 189, 189);
 		}
 	}
 }
+
+@media only screen and (max-width: 400px) {
+    body {
+        #commands, #faq {
+			width: unset!important;
+			margin: unset!important;
+			&-header, &-top, &-list-container {
+				width: 80vw;
+				margin: 0 auto;
+			}
+		}
+    }
+}

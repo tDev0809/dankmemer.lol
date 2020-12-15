@@ -6,6 +6,10 @@ import 'simplebar/dist/simplebar.min.css';
 
 import 'assets/styles/pages/info/commands.scss';
 
+const adPlacements = [
+	'nitropay-commands-top',
+	'nitropay-commands-bottom'
+]
 
 export default function Commands(props) {
 	const categories = useRef(Object.keys(commandsFile));
@@ -18,8 +22,30 @@ export default function Commands(props) {
 	const [prefix, setPrefix] = useState('pls ');
 
 	useEffect(() => {
-		(window.adsbygoogle = window.adsbygoogle || []).push({});
-		(window.adsbygoogle = window.adsbygoogle || []).push({});
+		// adPlacements.forEach((placement) => {
+		// 	window['nitroAds'].createAd(placement, {
+		// 		"refreshLimit": 10,
+		// 		"refreshTime": 90,
+		// 		"renderVisibleOnly": false,
+		// 		"refreshVisibleOnly": true,
+		// 		"sizes": [
+		// 		  [
+		// 			"728",
+		// 			"90"
+		// 		  ],
+		// 		  [
+		// 			"320",
+		// 			"50"
+		// 		  ]
+		// 		],
+		// 		"report": {
+		// 		  "enabled": true,
+		// 		  "wording": "Report Ad",
+		// 		  "position": "top-right"
+		// 		}
+		// 	});
+		// });
+
 		if(window.location.search && window.location.search.split("?")[1].split("=")[0] === "prefix") {
 			setPrefix(`${window.location.search.split("?")[1].split("=")[1]} `);
 			return window.history.pushState(null, null, 'commands');
@@ -81,12 +107,7 @@ export default function Commands(props) {
 
 	return (
 		<div id="commands">
-			<div align="center">
-				<ins className="adsbygoogle ad"
-					data-ad-client="ca-pub-7326182486296195"
-					data-ad-slot="4551035249">
-				</ins>
-			</div>
+			<div id="nitropay-commands-top" className="nitropay ad-h"/>
 			<div id="commands-header">
 				<h1 id="commands-header-title">Commands</h1>
 				<p id="commands-header-message">Find all the information, including required permissions, regarding the extensive list of commands available to you with Dank Memer.</p>
@@ -147,12 +168,7 @@ export default function Commands(props) {
 					</div>
 				</div>
 			</SimpleBar>
-			<div align="center">
-	        	<ins className="adsbygoogle ad"
-					data-ad-client="ca-pub-7326182486296195"
-					data-ad-slot="5725651587">
-				</ins>
-			</div>
+	        <div id="nitropay-commands-bottom" className="nitropay ad-h"/>
 		</div>
 	);
 }
