@@ -59,83 +59,8 @@
 	}
 }
 
-.staff-title {
-  font-family: 'Montserrat';
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.staff-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  font-family: 'Lato';
-
-  .staff-member {
-    background:#23272A;
-    border-radius: 4px;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    padding: 12px 15px;
-    margin: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .82),
-      0 1px 4px rgba(0, 0, 0, .1);
-
-    .staff-about-parent {
-
-    }
-
-    .staff-about {
-
-    }
-
-    .staff-name {
-      text-align: center;
-      font-size: large;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .staff-social {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      flex: 1 0 auto;
-      text-align: center;
-
-      .staff-picture {
-        width: 110px;
-        height: 110px;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-    }
-
-    .staff-accounts {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      .staff-account {
-        height: 25px;
-        width: 25px;
-        margin: 5px;
-
-        &:hover {
-          transform: scale(1.05);
-        }
-
-        &:active {
-          transform: scale(.95);
-        }
-      }
-    }
-  }
-}
-
 @media only screen and (max-width: 786px) {
-  .staff-member {
+  .staff-card {
     width: 90%;
   }
 }

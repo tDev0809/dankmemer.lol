@@ -42,6 +42,7 @@ export default function Home () {
 
 	return (
 		<div id="home">
+			<span data-ccpa-link="1"></span>
     		<div id="home-hero">
 				<div id="home-hero-text">
 					<h1 id="home-hero-text-title">Dank Memer</h1>

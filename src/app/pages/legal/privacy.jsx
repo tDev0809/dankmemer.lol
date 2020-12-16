@@ -3,6 +3,7 @@ import 'assets/styles/pages/legal/privacy.scss';
 
 export default React.memo(() => (
   <div className="content-legal">
+    <span data-ccpa-link="1"></span>
     <h1 className="title">Privacy Policy</h1>
     
     <p>Effective date: February 02, 2019</p>
