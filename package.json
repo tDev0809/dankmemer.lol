@@ -25,6 +25,7 @@
     "marked": "^0.7.0",
     "mongodb": "^3.2.2",
     "react-paypal-button-v2": "^2.6.2",
+    "react-toastify": "^6.2.0",
     "simplebar-react": "^2.3.0",
     "string.prototype.matchall": "^4.0.0"
   },

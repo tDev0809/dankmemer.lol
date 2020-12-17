@@ -85,52 +85,49 @@ router.post('/appeal', async (req, res) => {
 });
 
 router.post('/report', async (req, res) => {
-  const { user } = req.session;
+  	const { user } = req.session;
+	const { reporting } = req.body;
 
-  if (!user) {
-    return res.status(401).json({ error: 'Get away you sick filth.' });
-  }
-  if (await db.collection('bans').findOne({ type: 'report', id: user.id })) {
-    return res.status(403).json({ error: 'Get away you sick filth.' });
-  }
-  if (recentReports.has(user.id)) {
-    return res.status(429).json({ error: 'You\'re doing that too often.' });
-  }
-  if (!req.body.reportType || !req.body.body) {
-    console.log(req.body)
-    return res.status(400).json({ error: 'Malformed body' });
-  }
+	if (!user) return res.status(401).json({ error: 'Get away you sick filth.' });
+	if (await db.collection('bans').findOne({ type: 'report', id: user.id })) return res.status(403).json({ error: 'Get away you sick filth.' });
+	if (recentReports.has(user.id)) return res.status(429).json({ error: 'You\'re doing that too often.' });
+	if (!req.body.reportType || !req.body.content) return res.status(400).json({ error: 'Malformed body' });
 
-  recentReports.add(user.id);
-  setTimeout(() => recentReports.delete(user.id), 10 * 60 * 1000);
+	recentReports.add(user.id);
+	setTimeout(() => recentReports.delete(user.id), 10 * 60 * 1000);
 
-  const webhook = config[
-    req.body.banType === 'Server Ban'
-      ? 'cmAppealsWebhook'
-      : 'devReportWebhook'
-  ];
+	const webhook = config[req.body.banType === 'Server Ban' ? 'cmAppealsWebhook' : 'devReportWebhook'];
 
-  await axios.post(
-    `https://discordapp.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, { embeds: [ {
-      title: `${req.body.reportType}`,
-      fields: [ {
-        name: 'User',
-        value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`
-      }, {
-        name: 'Broken Rules',
-        value: req.body.rules.join('\n').slice(0, 1000)
-      }, {
-        name: 'Report',
-        value: req.body.body.slice(0, 1023)
-      } ],
-      color: 0x71f23e,
-      timestamp: new Date()
-    } ] }, {
-      headers: { 'Content-Type': 'application/json' }
-    }
-  );
-
-  await res.status(200).send();
+	try {
+		await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
+			embeds: [{
+				title: `Reporting a ${req.body.reportType}`,
+				color: 0x39923c,
+				timestamp: new Date(),
+				  fields: [{
+					name: 'Reporter',
+					value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
+					inline: true
+				  }, {
+					name: 'Reported',
+					value: reporting,
+					inline: true
+				  }, {
+					name: 'Rules that were broken',
+					value: req.body.rules.map((rule) => `• ${rule}`).join("\n")
+				}, {
+					name: 'Report content',
+					value: req.body.content.slice(0, 1023)
+				}]
+			}]
+		}, {
+			headers: { 'Content-Type': 'application/json' }
+		});
+	
+		await res.status(200).send();
+	} catch ({ res }) {
+		console.error(res.body);
+	}
 });
 
 router.get('/country', (req, res) => {
