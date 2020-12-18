@@ -413,21 +413,16 @@
 				margin: 0 auto;
 			}
 			#store-items {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
-				align-items: center;
-				margin-bottom: 10vh;
+				display: grid;
+				place-items: center;
 			}
 			#store-summary {
 				border: none;
 				padding: 0;
 				margin-top: 10vh;
 				min-width: 100%!important;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
+				display: grid;
+				place-items: center;
 				&-message {
 					width: 80%;
 				}
@@ -435,9 +430,11 @@
 					margin-bottom: 80px;
 				}
 				&-inputs {
-					margin-bottom: 400px;
+					margin-bottom: 40px;
 				}
 				&-actions {
+					display: block;
+					position: unset!important;
 					min-width: 80vw!important;
 				}
 			}

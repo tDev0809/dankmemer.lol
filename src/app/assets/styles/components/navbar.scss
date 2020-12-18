@@ -17,6 +17,7 @@
 			justify-content: space-between;
 			align-items: center;
 			z-index: 9999;
+			padding-top: 10px;
 			&-text {
 				text-transform: uppercase;
 				color: #39923c;
@@ -41,7 +42,7 @@
 			background: #292929;
 			justify-content: space-evenly;
 			&.visible {
-				top: 0;
+				top: 50px;
 			}
 			#navbar-mobile-links {
 				display: flex;
@@ -52,7 +53,7 @@
 				height: 80%;
 				width: 100%;
 				&.move-down {
-					bottom: -15px;
+					bottom: 25px;
 				}
 				.navbar-mobile-link {
 					width: 100%;
@@ -74,7 +75,7 @@
 				background: rgba(0,0,0,0.3);
 				width: 100%;
 				text-align: center;
-				margin-top: 15%;
+				margin-top: 10%;
 				& > * {
 					display: inline-block;
 					vertical-align: middle;
