@@ -326,7 +326,7 @@ function Loot(props) {
 						: !props.login.loggedIn ? 
 							<div id="store-summary-actions">
 								<DiscordLogin />
-								<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes. You need to login.</p>
+								<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes you need to login to Discord.</p>
 							</div>			
 						: ''}
 					</div>

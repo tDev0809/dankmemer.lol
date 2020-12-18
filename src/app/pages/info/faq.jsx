@@ -23,7 +23,7 @@ export default function FAQ(props) {
 
 	useEffect(() => {
 		adPlacements.forEach((placement) => {
-			window['nitroAds'].createAd(placement, {
+			window.nitroAds && window.nitroAds.createAd(placement, {
 				"refreshLimit": 10,
 				"refreshTime": 90,
 				"renderVisibleOnly": false,
