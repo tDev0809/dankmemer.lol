@@ -18,29 +18,29 @@ export default function Blogs() {
 			return res.json();
 		}
 		getBlogs().then((blogsData) => setBlogs(blogsData));
-		// adPlacements.forEach((placement) => {
-		// 	window['nitroAds'].createAd(placement, {
-		// 		"refreshLimit": 10,
-		// 		"refreshTime": 90,
-		// 		"renderVisibleOnly": false,
-		// 		"refreshVisibleOnly": true,
-		// 		"sizes": [
-		// 		  [
-		// 			"728",
-		// 			"90"
-		// 		  ],
-		// 		  [
-		// 			"320",
-		// 			"50"
-		// 		  ]
-		// 		],
-		// 		"report": {
-		// 		  "enabled": true,
-		// 		  "wording": "Report Ad",
-		// 		  "position": "top-right"
-		// 		}
-		// 	});
-		// });
+		adPlacements.forEach((placement) => {
+			window['nitroAds'].createAd(placement, {
+				"refreshLimit": 10,
+				"refreshTime": 90,
+				"renderVisibleOnly": false,
+				"refreshVisibleOnly": true,
+				"sizes": [
+				  [
+					"728",
+					"90"
+				  ],
+				  [
+					"320",
+					"50"
+				  ]
+				],
+				"report": {
+				  "enabled": true,
+				  "wording": "Report Ad",
+				  "position": "top-right"
+				}
+			});
+		});
 	}, [])
 
 	return (

@@ -94,7 +94,7 @@ export default function Privacy() {
 					<p className="legal-paragraph-body">Examples of Cookies we use:</p>
 					<ul className="legal-paragraph-list">
 						<li className="legal-paragraph-list-item">
-							<strong>Session Cookies.</strong>
+							<strong>Session Cookies.</strong> 
 							We use Session Cookies to keep you logged in to Discord on our site. We also use Google Analytics, which uses cookies for
 							general statistical data to help us learn and grow about how to make a better user experience.
 						</li>
@@ -156,16 +156,6 @@ export default function Privacy() {
 			<div className="legal-paragraph">
 				<h2 className="legal-paragraph-title">Security of Data</h2>
 				<p className="legal-paragraph-body">The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
-			</div>
-			<div className="legal-paragraph">
-				<h2 className="legal-paragraph-title">Our Policy on "Do Not Track" Signals under the California Online Protection Act (CalOPPA)</h2>
-				<p className="legal-paragraph-body">
-					We do not support Do Not Track ("DNT"). Do Not Track is a preference you can set in your web browser to inform websites that
-					you do not want to be tracked.
-				</p>
-				<p className="legal-paragraph-body">
-					You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser.
-				</p>
 			</div>
 			<div className="legal-paragraph">
 				<h2 className="legal-paragraph-title">Your Data Protection Rights under the General Data Protection Regulation (GDPR)</h2>
@@ -297,7 +287,7 @@ export default function Privacy() {
 			<div className="legal-paragraph">
 				<h2 className="legal-paragraph-title">Contact us</h2>
 				<p className="legal-paragraph-body">
-					If you have any questions about ths Privacy Policy, please contact us by email: <a href="mailto:admin@dankmemer.gg">admin@dankmemer.gg</a>.
+					If you have any questions about this Privacy Policy, please contact us by email: <a href="mailto:admin@dankmemer.gg">admin@dankmemer.gg</a>.
 				</p>
 			</div>
 		</div>

@@ -21,29 +21,29 @@ const adPlacements = [
 export default function Landing(props) {
 	const history = useHistory();
 
-	// adPlacements.forEach((placement) => {
-	// 	window['nitroAds'].createAd(placement, {
-	// 		"refreshLimit": 10,
-	// 		"refreshTime": 90,
-	// 		"renderVisibleOnly": false,
-	// 		"refreshVisibleOnly": true,
-	// 		"sizes": [
-	// 		  [
-	// 			"728",
-	// 			"90"
-	// 		  ],
-	// 		  [
-	// 			"320",
-	// 			"50"
-	// 		  ]
-	// 		],
-	// 		"report": {
-	// 		  "enabled": true,
-	// 		  "wording": "Report Ad",
-	// 		  "position": "top-right"
-	// 		}
-	// 	});
-	// });
+	adPlacements.forEach((placement) => {
+		window['nitroAds'].createAd(placement, {
+			"refreshLimit": 10,
+			"refreshTime": 90,
+			"renderVisibleOnly": false,
+			"refreshVisibleOnly": true,
+			"sizes": [
+			  [
+				"728",
+				"90"
+			  ],
+			  [
+				"320",
+				"50"
+			  ]
+			],
+			"report": {
+			  "enabled": true,
+			  "wording": "Report Ad",
+			  "position": "top-right"
+			}
+		});
+	});
 
 	return (
 		<div id="landing">

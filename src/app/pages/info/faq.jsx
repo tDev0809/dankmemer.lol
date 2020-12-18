@@ -22,29 +22,29 @@ export default function FAQ(props) {
 	const [prefix, setPrefix] = useState('pls ');
 
 	useEffect(() => {
-		// adPlacements.forEach((placement) => {
-		// 	window['nitroAds'].createAd(placement, {
-		// 		"refreshLimit": 10,
-		// 		"refreshTime": 90,
-		// 		"renderVisibleOnly": false,
-		// 		"refreshVisibleOnly": true,
-		// 		"sizes": [
-		// 		  [
-		// 			"728",
-		// 			"90"
-		// 		  ],
-		// 		  [
-		// 			"320",
-		// 			"50"
-		// 		  ]
-		// 		],
-		// 		"report": {
-		// 		  "enabled": true,
-		// 		  "wording": "Report Ad",
-		// 		  "position": "top-right"
-		// 		}
-		// 	});
-		// });
+		adPlacements.forEach((placement) => {
+			window['nitroAds'].createAd(placement, {
+				"refreshLimit": 10,
+				"refreshTime": 90,
+				"renderVisibleOnly": false,
+				"refreshVisibleOnly": true,
+				"sizes": [
+				  [
+					"728",
+					"90"
+				  ],
+				  [
+					"320",
+					"50"
+				  ]
+				],
+				"report": {
+				  "enabled": true,
+				  "wording": "Report Ad",
+				  "position": "top-right"
+				}
+			});
+		});
 		if(window.location.search && window.location.search.split("?")[1].split("=")[0] === "prefix") {
 			setPrefix(`${window.location.search.split("?")[1].split("=")[1]} `);
 			return window.history.pushState(null, null, 'faq');

@@ -15,29 +15,29 @@ const adPlacements = [
 export default function Home () {
 
 	useEffect(() => {
-		// adPlacements.forEach((placement) => {
-		// 	window['nitroAds'].createAd(placement, {
-		// 		"refreshLimit": 10,
-		// 		"refreshTime": 90,
-		// 		"renderVisibleOnly": false,
-		// 		"refreshVisibleOnly": true,
-		// 		"sizes": [
-		// 		  [
-		// 			"728",
-		// 			"90"
-		// 		  ],
-		// 		  [
-		// 			"320",
-		// 			"50"
-		// 		  ]
-		// 		],
-		// 		"report": {
-		// 		  "enabled": true,
-		// 		  "wording": "Report Ad",
-		// 		  "position": "top-right"
-		// 		}
-		// 	});
-		// });
+		adPlacements.forEach((placement) => {
+			window['nitroAds'].createAd(placement, {
+				"refreshLimit": 10,
+				"refreshTime": 90,
+				"renderVisibleOnly": false,
+				"refreshVisibleOnly": true,
+				"sizes": [
+				  [
+					"728",
+					"90"
+				  ],
+				  [
+					"320",
+					"50"
+				  ]
+				],
+				"report": {
+				  "enabled": true,
+				  "wording": "Report Ad",
+				  "position": "top-right"
+				}
+			});
+		});
 	}, [])
 
 	return (
