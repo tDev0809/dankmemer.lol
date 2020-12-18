@@ -72,12 +72,13 @@ router.get('/callback', async (req, res) => {
       ip: [ req.headers[ 'cf-connecting-ip' ] ]
     });
   }
-
+  
   req.session.user = {
     ...user,
     isAdmin: config.admins.includes(user.id),
     token: encrypt(user.id)
   };
+
   res.redirect(req.session.redirect || '/');
 });
 
