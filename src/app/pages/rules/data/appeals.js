@@ -13,20 +13,19 @@ const serverRules = [
 ];
 
 const botRules = [
-    "USERBOTS, SPAMMING, AND MACROS",
-    "SHARING EXPLOITS",
-    "COIN STORAGE ACCOUNTS/FARMING ACCOUNTS/ALTS",
-    "RACISM, HOMOPHOBIA, SEXISM, SLURS",
-    "ADVERTISING",
-    "SCAMS, SALES, TRADING",
-    "DISCORD TOS AND GUIDELINES",
+    "Userbots, spamming or macros",
+    "Sharing exploits",
+    "Coin storage accounts/Farming accounts/Alts",
+    "Racism, homophobia, sexism or slurs",
+    "Advertising",
+    "Scams, sales, trading",
+    "Discord TOS and Guidelines",
     "Unsure",
     "I didn't break any rules"
 ];
 
 export default {
-    'Server Ban': serverRules,
-    'Server Mute': serverRules,
-    'Bot Ban': botRules,
-    'Bot Blacklist': botRules
+    'server': serverRules,
+    'temporary': botRules,
+    'permanent': botRules
 };

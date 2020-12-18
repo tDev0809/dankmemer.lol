@@ -37,51 +37,47 @@ router.get('/isBanned', async (req, res) => {
 });
 
 router.post('/appeal', async (req, res) => {
-  const { user } = req.session;
+  	const { user } = req.session;
 
-  if (!user) {
-    return res.status(401).json({ error: 'Get away you sick filth.' });
-  }
-  if (await db.collection('bans').findOne({ type: 'appeal', id: user.id })) {
-    return res.status(403).json({ error: 'Get away you sick filth.' });
-  }
-  if (recentAppeals.has(user.id)) {
-    return res.status(429).json({ error: 'You\'re doing that too often.' });
-  }
-  if (!req.body.banType || !req.body.body) {
-    return res.status(400).json({ error: 'Malformed body' });
-  }
+	if (!user) return res.status(401).json({ error: 'Get away you sick filth.' });
+	if (await db.collection('bans').findOne({ type: 'appeal', id: user.id })) return res.status(403).json({ error: 'Get away you sick filth.' });
+	if (recentAppeals.has(user.id)) return res.status(429).json({ error: 'You\'re doing that too often.' });
+	if (!req.body.banType || !req.body.content) return res.status(400).json({ error: 'Malformed body' });
 
-  recentAppeals.add(user.id);
-  setTimeout(() => recentAppeals.delete(user.id), 30 * 60 * 1000);
+	recentAppeals.add(user.id);
+	setTimeout(() => recentAppeals.delete(user.id), 30 * 60 * 1000);
 
-  const webhook = config[
-    req.body.banType === 'Server Ban'
-      ? 'cmAppealsWebhook'
-      : 'devAppealsWebhook'
-  ];
+	const webhook = config[req.body.banType === 'server' ? 'cmAppealsWebhook' : 'devAppealsWebhook'];
 
-  await axios.post(
-    `https://discordapp.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, { embeds: [ {
-      title: `${req.body.banType} Appeal`,
-      fields: [ {
-        name: 'User',
-        value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`
-      }, {
-        name: 'Broken Rules',
-        value: req.body.rules.join('\n').slice(0, 1000)
-      }, {
-        name: 'Appeal',
-        value: req.body.body.slice(0, 1023)
-      } ],
-      color: 0x71f23e,
-      timestamp: new Date()
-    } ] }, {
-      headers: { 'Content-Type': 'application/json' }
-    }
-  );
-
-  await res.status(200).send();
+	try {
+		await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
+			embeds: [{
+				title: `Appealing a ${req.body.banType} ban`,
+			  	color: 0x39923c,
+				timestamp: new Date(),
+				fields: [{
+					name: `Banned user`,
+					value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`
+				}, {
+					name: 'Rules that were broken',
+					value: req.body.rules.map((rule) => `• ${rule}`).join("\n")
+				}, {
+					name: 'Appeal content',
+					value: req.body.content.slice(0, 1023)
+				}]
+			}]
+			}, {
+			headers: {
+				'Content-Type': 'application/json'
+			}
+			}
+		);
+  
+	  await res.status(200).send();
+	} catch ({ response }) {
+		console.error(`${response.statusText}: ${JSON.stringify(response.data)}`);
+		await res.status(500).send();
+	}
 });
 
 router.post('/report', async (req, res) => {
@@ -96,7 +92,7 @@ router.post('/report', async (req, res) => {
 	recentReports.add(user.id);
 	setTimeout(() => recentReports.delete(user.id), 10 * 60 * 1000);
 
-	const webhook = config[req.body.banType === 'Server Ban' ? 'cmAppealsWebhook' : 'devReportWebhook'];
+	const webhook = config[req.body.banType === 'server' ? 'cmAppealsWebhook' : 'devReportWebhook'];
 
 	try {
 		await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
@@ -125,8 +121,9 @@ router.post('/report', async (req, res) => {
 		});
 	
 		await res.status(200).send();
-	} catch ({ res }) {
-		console.error(res.body);
+	} catch ({ response }) {
+		console.error(`${response.statusText}: ${JSON.stringify(response.data)}`);
+		await res.status(500).send();
 	}
 });
 
