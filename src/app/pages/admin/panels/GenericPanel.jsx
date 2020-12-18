@@ -1,54 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-class GenericBanPanel extends React.PureComponent {
-  constructor (props) {
-    super(props);
+export default function GenericPanel(props) {
+	const [title, setTitle] = useState('Admin Panel');
+	const [dropdownText, setDropdownText] = useState('');
+	const [dropdownValue, setDropdownValue] = useState(props.defaultDropdown);
+	const [inputValue, setInputValue] = useState('');
+	const [inputPlaceholder, setInputPlaceholder] = useState('Placeholder');
+	const [buttonText, setButtonText] = useState('Submit');
 
-    this.state = {
-      dropdownVal: props.defaultDropdown,
-      textVal: ''
-    };
-  }
+	useEffect(() => {
+		setTitle(props.title);
+		setDropdownText(props.dropdownHeader);
+		setDropdownValue(props.defaultDropdown);
+		setInputPlaceholder(props.textAreaHeader);
+		setButtonText(props.buttonText)
+	}, [props])
 
-  render () {
-    return (
-      <section>
-        <div className="section-header">{this.props.title}</div>
-
-        <label>
-          {this.props.dropdownHeader || this.state.dropdownVal}<br />
-          <select
-            value={this.state.dropdownVal}
-            onChange={e => this.setState({ dropdownVal: e.target.value })}
-          >
-            {this.props.options.map(option => (
-              <option
-                value={option}
-                key={option}
-              >
-                {option}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          {this.props.textAreaHeader}<br />
-          <input
-            type="text"
-            value={this.state.textVal}
-            onChange={e => this.setState({ textVal: e.target.value })}
-          />
-        </label>
-
-        <label>
-          <button onClick={() => this.props.action(this.state)}>
-            {this.props.buttonText}
-          </button>
-        </label>
-      </section>
-    );
-  }
+	return (
+		<div className="admin-panel">
+			<h3>{title}</h3>
+			<label>{dropdownText}</label>
+          	<select value={dropdownValue} onChange={e => setDropdownValue(e.target.value)}>
+            	{props.options && props.options.map(option => (
+              		<option value={option} key={option}>{option}</option>
+            	))}
+          	</select>
+			<input type="text" placeholder={inputPlaceholder} onChange={(e) => setInputValue(e.target.value)}/>
+			<p className="admin-panel-button" onClick={() => props.action({ dropdownVal: dropdownValue, textVal: inputValue })}>{buttonText}</p>
+		</div>
+	)
 }
-
-export default GenericBanPanel;

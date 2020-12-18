@@ -3,7 +3,7 @@ $text-accent-1: rgb(231, 231, 231);
 $text-accent-2: rgb(214, 214, 214);
 $text-accent-3: rgb(189, 189, 189);
 
-#commands {
+#commands, #faq {
 	width: 80vw;
 	margin: 0 auto;
 	margin-bottom: 40px;
@@ -27,22 +27,65 @@ $text-accent-3: rgb(189, 189, 189);
 		}
 	}
 	&-top {
+		position: relative;
 		display: flex;
+		align-items: center;
 		margin-top: 40px;
 		margin-left: 5px;
 		&-tabs {
-			.commands-tab {
+			.commands-tab, .faq-tab {
 				display: inline-block;
 				vertical-align: middle;
 				font-size: 18px;
+				margin-right: 30px;
 				&.selected {
 					color: #39923c;
 				}
 				&:hover {
 					cursor: pointer;
 				}
-				&:not(:last-child) {
-					margin-right: 30px;
+			}
+		}
+		#faq-top-dropdown-selected, #faq-top-dropdown-options {
+			width: 130px;
+		}
+		&-dropdown {
+			position: relative;
+			display: none;
+			margin-right: 30px;
+			width: 134px;
+			cursor: pointer;
+			&-selected {
+				background: #222222;
+				border: 2px solid #1a1a1a;
+				border-radius: 5px;
+				padding: 10px 15px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				&-name {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				span {
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 10px;	
+				}
+			}
+			&-options {
+				position: absolute;
+				top: 50px;
+				left: 0;
+				z-index: 99;
+				padding: 10px 15px;
+				background: #222222;
+				border: 2px solid #1a1a1a;
+				border-radius: 5px;
+				width: 100px;
+				& > p {
+					margin-bottom: 10px;
 				}
 			}
 		}
@@ -66,8 +109,8 @@ $text-accent-3: rgb(189, 189, 189);
 	}
 	&-list-container {
 		margin-top: 5vh;
-		#commands-list-wrapper {
-			#commands-list {
+		#commands-list-wrapper, #faq-list-wrapper {
+			#commands-list, #faq-list {
 				margin-right: 10px;
 				padding: 5px;
 			}
@@ -374,14 +417,56 @@ $text-accent-3: rgb(189, 189, 189);
   }
 }
 
-@media only screen and (max-width: 725px) {
-	#commands {
+@media only screen and (max-width: 1262px) {
+	#commands, #faq {
 		&-top {
+			&-tabs {
+				display: none;
+			}
+			&-dropdown {
+				display: block;
+			}
 			&-search {
-				#commands-search {
-					width: 20vw;
+				#commands-search, #faq-search {
+					width: 35vw;
 				}
 			}
 		}
 	}
+}
+
+@media only screen and (max-width: 500px) {
+	#commands, #faq {
+		&-top {
+			&-tabs {
+				display: none;
+			}
+			&-dropdown {
+				margin-right: 10px;
+				display: block;
+				&-selected {
+					padding: 5px 10px;
+				}
+			}
+			&-search {
+				padding-left: 10px;
+				#commands-search, #faq-search {
+					width: 10vw;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 400px) {
+    body {
+        #commands, #faq {
+			width: unset!important;
+			margin: unset!important;
+			&-header, &-top, &-list-container {
+				width: 80vw;
+				margin: 0 auto;
+			}
+		}
+    }
 }

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 import 'assets/styles/pages/singular/landing.scss';
 
-const data = [
+const cardData = [
   { name: 'Commands', description: 'See all of the commands Dank Memer has to offer your server!', link: '/commands' },
   { name: 'FAQ', description: 'Have some questions? See if we\'ve already answered it on this page!', link: '/faq' },
   { name: 'Support', description: 'FAQ page not enough to help? Head over to our support server!', link: 'https://discord.gg/meme' },
@@ -12,52 +13,54 @@ const data = [
   { name: 'YouTube', description: 'We post tutorial videos on our YouTube channel, subscribe to see new ones sooner!', link: 'https://www.youtube.com/c/DankMemerDiscordBot' }
 ];
 
-const peepos = Array(13).fill(0).map((_, i) => new Audio(`/static/peepo${i}.mp3`));
-let currentAudio = -1;
-const playAudio = () =>
-  (peepos[++currentAudio] || peepos[currentAudio = 0])
-    .play();
+const adPlacements = [
+	'nitropay-landing-top',
+	'nitropay-landing-bottom'
+]
 
+export default function Landing(props) {
+	const history = useHistory();
 
-    export default class Landing extends React.PureComponent {
-      componentDidMount () {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    
-      render () {
-        return(
-          <div className='eee'>
-            <div>
-              <h1 className='title'>thanks for adding <span className='pepple'>dank memer</span></h1>
-            </div>
-            <div align="center">
-          <ins className="adsbygoogle ad"
-            data-ad-client="ca-pub-7326182486296195"
-            data-ad-slot="4551035249">
-          </ins>
-        </div>
-            <div className='list'>
-              {data.map(({ name, description, link }) => (
-                <a key={name} href={link} className='boxy' onMouseEnter={() => playAudio()}>
-                  <h1 className='name'>
-                    <span className='blurple'>
-                      {name}
-                    </span>
-                  </h1>
-                  <p className='about-text'>
-                    {description}
-                  </p>
-                </a>
-              ))}
-            </div>
-            <div align="center">
-          <ins className="adsbygoogle ad"
-            data-ad-client="ca-pub-7326182486296195"
-            data-ad-slot="5725651587">
-          </ins>
-        </div>
-          </div>
-        );
-      }
-    }
+	// adPlacements.forEach((placement) => {
+	// 	window['nitroAds'].createAd(placement, {
+	// 		"refreshLimit": 10,
+	// 		"refreshTime": 90,
+	// 		"renderVisibleOnly": false,
+	// 		"refreshVisibleOnly": true,
+	// 		"sizes": [
+	// 		  [
+	// 			"728",
+	// 			"90"
+	// 		  ],
+	// 		  [
+	// 			"320",
+	// 			"50"
+	// 		  ]
+	// 		],
+	// 		"report": {
+	// 		  "enabled": true,
+	// 		  "wording": "Report Ad",
+	// 		  "position": "top-right"
+	// 		}
+	// 	});
+	// });
+
+	return (
+		<div id="landing">
+			<h1 id="landing-title">Thanks for adding<br/><span className="text-highlight">Dank Memer</span></h1>
+			<div id="nitropay-landing-top" className="nitropay ad-h"/>
+			<div id="landing-cards">
+				{cardData.map((card, i) => (
+					<div className="landing-card" key={i} onClick={() => {
+						if(card.link.startsWith("/")) history.push(card.link);
+						else window.location.href = card.link;
+					}}>
+						<h3 className="landing-card-name">{card.name}</h3>
+						<p className="landing-card-text">{card.description}</p>
+					</div>
+				))}
+			</div>
+			<div id="nitropay-landing-top" className="nitropay ad-h"/>
+		</div>
+	)
+}

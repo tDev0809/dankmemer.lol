@@ -94,7 +94,7 @@ const Navbar = ({ discount, login: { loggedIn, username, discriminator, avatar, 
 								}, 1000)
 							}}>Store</NavLink>
 						{!loggedIn
-							? <a className="navbar-mobile-link" href="/oauth/login" rel="noreferrer noopener">Login with Discord</a>
+							? <a className="navbar-mobile-link" href={"/oauth/login?redirect=" + window.location.pathname} rel="noreferrer noopener">Login with Discord</a>
 							: <a className="navbar-mobile-link logout" href="/oauth/logout" rel="noreferrer noopener">Logout</a>
   						}
 					</div>
@@ -108,7 +108,7 @@ const Navbar = ({ discount, login: { loggedIn, username, discriminator, avatar, 
 				<li className="navbar-link"><NavLink activeClassName="active" to="/loot">Store</NavLink></li>
 				<li className="navbar-link">
 					{!loggedIn
-						? <a href="/oauth/login" rel="noreferrer noopener">Login</a>
+						? <a href={"/oauth/login?redirect=" + window.location.pathname} rel="noreferrer noopener">Login</a>
 						: 	<div id="navbar-account" onClick={() => setNavDropdown(!navDropdown)}>
 								<p id="navbar-account-name">Account
 									<span id="navbar-account-chevron" className={navDropdown ? 'active' : ''}>

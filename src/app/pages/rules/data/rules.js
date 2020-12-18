@@ -4,7 +4,7 @@ const userRules = [
   "No coin storage accounts/farming accounts (alts)",
   "Do not use the bot for racism, homophobia, any other type of targeted hate",
   "Using the bot for advertising",
-  "Coins are not to be used in scams or invite servers. Example: giving people meme coins to invite as many people as possible",
+  "Coins are not to be used in scams or invite servers.",
   "Selling meme coins or trading for real life currency in any way",
   "Other/NA"
 ];
@@ -18,6 +18,6 @@ const serverRules = [
 ];
 
 export default {
-  'Server Report': serverRules,
-  'User Report': userRules
+  'server': serverRules,
+  'user': userRules
 };
