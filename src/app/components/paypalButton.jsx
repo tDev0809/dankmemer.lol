@@ -1,19 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { clientIDs } from './util/paypalButton/data.json';
 import createPayment from './util/paypalButton/createPayment.js';
-import loadScript from '../util/loadScript.js';
-// import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { PayPalButton } from "react-paypal-button-v2";
 
 export default function PaypalButton(props) {
-    // const [{ isPending }] = usePayPalScriptReducer();
-    // const [{ scriptOptions }, dispatch] = usePayPalScriptReducer();
-    const [boxCount, setBoxCount] = useState(props.boxCount);
-    const [activeBox, setActiveBox] = useState(props.activeBox);
-
-    useEffect(() => {
-        setBoxCount(props.boxCount);
-    }, [props.boxCount])
 
     const getSubtotal = (returnRaw) => {
         const raw = props.boxCount * props.activeBox.price;
@@ -79,7 +69,8 @@ export default function PaypalButton(props) {
             options={{ "client-id": clientIDs[__PAYPAL_ENV__] }}
             style={{
                 height: 50,
-                fontFamily: "'Inter', sans-serif"
+                fontFamily: "'Inter', sans-serif",
+                layout: "horizontal"
             }}
             createOrder={(_, actions) => {
                 const p = createPayment({

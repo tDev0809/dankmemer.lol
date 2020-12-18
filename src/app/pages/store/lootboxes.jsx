@@ -309,6 +309,7 @@ function Loot(props) {
 								discount={0}
 								setFinishState={finishState}
 							/>
+							<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>
 						</div> : '' : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
 							<div id="store-summary-actions">
 								<PaypalButton
@@ -320,6 +321,7 @@ function Loot(props) {
 									discount={0}
 									setFinishState={finishState}
 								/>
+								<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>
 							</div>
 						: !props.login.loggedIn ? 
 							<div id="store-summary-actions">
