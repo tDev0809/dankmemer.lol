@@ -4,7 +4,6 @@ import 'assets/styles/pages/legal/legal.scss';
 export default function Privacy() {
   	return (
 		<div id="legal">
-			<span data-ccpa-link="1"></span>
 			<div id="legal-header">
 				<h1 id="legal-header-title">Privacy Policy</h1>
 				<p id="legal-header-subtitle">Effective date: February 02, 2019</p>
@@ -290,6 +289,7 @@ export default function Privacy() {
 					If you have any questions about this Privacy Policy, please contact us by email: <a href="mailto:admin@dankmemer.gg">admin@dankmemer.gg</a>.
 				</p>
 			</div>
+			<span data-ccpa-link="1"></span>
 		</div>
   	)
 }

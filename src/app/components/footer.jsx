@@ -12,6 +12,7 @@ export default React.memo(() => (
 				<div id="footer-left-text">
 					<h2 id="footer-title">DANK MEMER</h2>
 					<span id="footer-copyright">Copyright © {new Date().getFullYear()} Dank Memer</span>
+					<span data-ccpa-link="1"></span>
 				</div>
 			</div>
 			<div id="footer-links">
