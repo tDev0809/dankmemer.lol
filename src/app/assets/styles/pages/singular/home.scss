@@ -63,7 +63,7 @@
 		&:not(:last-child) {
 			margin-bottom: 10vh;
 		}
-		&:nth-child(7) > img {
+		#homepage-snowflake-image {
 			height: 100%!important;
 			width: 120%;
 			max-width: 703px;

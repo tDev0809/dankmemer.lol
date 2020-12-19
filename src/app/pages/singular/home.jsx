@@ -87,7 +87,7 @@ export default function Home () {
 					<h3 className="section-title"><span className="text-highlight">Massive</span> Community<br/> Servers</h3>
 					<p className="section-body">We have to GIANT servers for you to join, all about Dank Memer! One is purely for support and announcements, and the other is a community server based around using the bot and participating in giveaways of our currency system!</p>
 				</div>
-				<img alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
+				<img id="homepage-snowflake-image" alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
 			<div id="nitropay-home-bottom" className="nitropay ad-h"/>
 			<BottomCTA/>

@@ -142,6 +142,8 @@ body {
 @media only screen and (max-width: 454px) {
     body {
         #bottom-cta {
+            width: 80vw;
+            margin: 5vh auto;
 			text-align: center;
 		}
     }
