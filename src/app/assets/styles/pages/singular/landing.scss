@@ -7,6 +7,7 @@
 }
 
 #landing {
+	max-width: 1535px;
 	width: 80vw;
 	margin: 10vh auto;
 	&-title {
@@ -20,7 +21,8 @@
 	}
 	&-cards {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(350px, 1fr));
+		place-items: center;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 		row-gap: 20px;
 		.landing-card {
 			width: 300px;
@@ -102,15 +104,15 @@
 }
 
 @media only screen and (max-width: 786px) {
-	.boxy {
-		width: 90%;
-	}
-
-	.title {
-		font-size: 25px;
-	}
-
-	.eee {
-		margin-top: 0%;
+	#landing-cards {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		.landing-card {
+			width: 100%!important;
+			height: auto!important;
+			box-sizing: border-box;
+		}  
 	}
 }
