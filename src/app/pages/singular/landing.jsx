@@ -19,6 +19,7 @@ const adPlacements = [
 ]
 
 export default function Landing(props) {
+	window.scroll(0,0)
 	const history = useHistory();
 
 	adPlacements.forEach((placement) => {

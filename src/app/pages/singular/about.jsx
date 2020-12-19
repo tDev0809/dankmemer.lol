@@ -7,7 +7,7 @@ const adPlacements = [
 
 
 export default function About() {
-
+	window.scroll(0,0)
 	useEffect(() => {
 		adPlacements.forEach((placement) => {
 			window.nitroAds && window.nitroAds.createAd(placement, {

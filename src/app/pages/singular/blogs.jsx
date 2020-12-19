@@ -13,6 +13,7 @@ export default function Blogs() {
 	const [blogs, setBlogs] = useState([]);
 
 	useEffect(() => {
+		window.scroll(0,0)
 		const getBlogs = async () => {
 			const res = await fetch('/api/blogs');
 			return res.json();

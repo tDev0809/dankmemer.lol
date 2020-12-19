@@ -12,7 +12,7 @@ const categories = Object.entries(users);
 const getSocialIndex = ({ social }) => Object.keys(social).length === 0 ? -1 : 1;
 
 export default function Staff() {
-	
+	window.scroll(0,0)
 	useEffect(() => {
 		adPlacements.forEach((placement) => {
 			window.nitroAds && window.nitroAds.createAd(placement, {

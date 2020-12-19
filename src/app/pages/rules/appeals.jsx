@@ -13,6 +13,9 @@ function Appeals(props) {
 	const [appealContent, setAppealContent] = useState('');
 	const [appealState, setAppealState] = useState(0);
 
+	useEffect(() => {
+		window.scroll(0,0)
+	}, [])
 
 	useEffect(() => {
 		if(appealState === 0) return;

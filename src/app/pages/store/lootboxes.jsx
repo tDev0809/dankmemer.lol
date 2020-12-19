@@ -50,6 +50,7 @@ function Loot(props) {
 	const [showPeepos, setShowPeepos] = useState(false);
 
 	useEffect(() => {
+		window.scroll(0,0)
 		axios.all([
 			axios('/api/boxes'),
 			axios('/api/country'),

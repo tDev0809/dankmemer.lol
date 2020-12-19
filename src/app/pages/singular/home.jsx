@@ -14,6 +14,7 @@ const adPlacements = [
 export default function Home () {
 
 	useEffect(() => {
+		window.scroll(0,0)
 		adPlacements.forEach((placement) => {
 			window.nitroAds && window.nitroAds.createAd(placement, {
 				"refreshLimit": 10,
