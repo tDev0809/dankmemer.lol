@@ -26,7 +26,7 @@ function Admin (props) {
 			:
 			<div id="admin-content">
 				<h1 id="admin-content-title">Admin Control Panel</h1>
-				<div id="nitropay-admin-top" className="nitropay ad-h"/>
+				<div id="nitropay-admin-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 				<div id="admin-content-panels">
 					{BanPanels.map((Panel, key) => (<Panel key={key} />))}
 					{<GetPayment/>}

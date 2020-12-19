@@ -45,7 +45,7 @@ export default function Blogs() {
 	}, [])
 
 	return (
-		<div id="blogs">
+		<div id="blogs" className={!window.nitroAds ? 'nitro-margin' : ''}>
 			<div id="blogs-header">
 				<h1 id="blogs-header-title">Blog Posts</h1>
 				<p id="blogs-header-message">Blogs are written by the developers and are community focused, news and updates regarding Dank Memer and related topics.</p>
@@ -58,7 +58,7 @@ export default function Blogs() {
 					))}
 				</div>
 			</section>
-			<div id="nitropay-blogs-middle" className="nitropay ad-h"/>
+			<div id="nitropay-blogs-middle" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<section className="blogs-section">
 				<h3 className="blogs-section-heading">Older posts</h3>
 				<div id="blogs-section-older">

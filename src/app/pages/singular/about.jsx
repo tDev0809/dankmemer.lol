@@ -35,7 +35,7 @@ export default function About() {
 	}, [])
 
 	return (
-		<div id="about">
+		<div id="about" className={!window.nitroAds ? 'nitro-margin' : ''}>
 			<h1 id="about-title">About<br/><span className="text-highlight">Dank Memer</span></h1>
 			<div className="about-paragraph">
 				<h2 className="about-paragraph-title">What is Dank Memer?</h2>
@@ -72,7 +72,7 @@ export default function About() {
 					free. And to those who financially supported us, thank you. Dank Memer wouldn't be alive without you.
 				</p>
 			</div>
-			<div id="nitropay-about-middle" className="nitropay ad-h"/>
+			<div id="nitropay-about-middle" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<div id="about-usage">
 				<h1 id="about-usage-title">Basic Usage</h1>
 				<div className="about-paragraph">

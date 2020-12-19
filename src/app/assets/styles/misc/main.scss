@@ -65,13 +65,18 @@ body {
         max-width: 100vw;
         color: white;
     }
+    .nitropay-margin {
+        margin: 10vh auto;
+    }
     .nitropay {
         margin: 5vh auto;
         display: flex;
         &.ad-h  {
             width: 728px;
             height: 90px;
-            background: rgba($color: #000000, $alpha: .2);
+        }
+        &.blocked {
+            display: none;
         }
     }
 

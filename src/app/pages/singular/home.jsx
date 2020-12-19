@@ -41,7 +41,7 @@ export default function Home () {
 	}, [])
 
 	return (
-		<div id="home">
+		<div id="home" className={!window.nitroAds ? 'nitro-margin' : ''}>
     		<div id="home-hero">
 				<div id="home-hero-text">
 					<h1 id="home-hero-text-title">Dank Memer</h1>
@@ -75,7 +75,7 @@ export default function Home () {
         		</div>
 				<img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
     		</section>
-			<div id="nitropay-home-middle" className="nitropay ad-h"/>
+			<div id="nitropay-home-middle" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<section>
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Generate</span> Server<br/> Growth</h3>
@@ -90,7 +90,7 @@ export default function Home () {
 				</div>
 				<img id="homepage-snowflake-image" alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
-			<div id="nitropay-home-bottom" className="nitropay ad-h"/>
+			<div id="nitropay-home-bottom" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<BottomCTA/>
 			<span data-ccpa-link="1"></span>
   		</div>

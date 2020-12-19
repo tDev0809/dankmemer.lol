@@ -104,8 +104,8 @@ export default function FAQ(props) {
 	}
 
 	return (
-		<div id="faq">
-			<div id="nitropay-faq-top" className="nitropay ad-h"/>
+		<div id="faq" className={!window.nitroAds ? 'nitro-margin' : ''}>
+			<div id="nitropay-faq-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<div id="faq-header">
 				<h1 id="faq-header-title">Frequently Asked Questions</h1>
 				<p id="faq-header-message">The most frequently asked questions can be found below. Split into categories depending on what they are related to.</p>
@@ -162,7 +162,7 @@ export default function FAQ(props) {
 					</div>
 				</div>
 			</SimpleBar>
-			<div id="nitropay-faq-top" className="nitropay ad-h"/>
+			<div id="nitropay-faq-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 		</div>
 	);
 }

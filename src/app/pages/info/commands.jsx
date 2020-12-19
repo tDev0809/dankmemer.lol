@@ -105,8 +105,8 @@ export default function Commands(props) {
 	}
 
 	return (
-		<div id="commands">
-			<div id="nitropay-commands-top" className="nitropay ad-h"/>
+		<div id="commands" className={!window.nitroAds ? 'nitro-margin' : ''}>
+			<div id="nitropay-commands-top" className={window.nitroAds ? 'nitropay ad-h' : 'nitropay ad-h blocked'}/>
 			<div id="commands-header">
 				<h1 id="commands-header-title">Commands</h1>
 				<p id="commands-header-message">Find all the information, including required permissions, regarding the extensive list of commands available to you with Dank Memer.</p>
@@ -167,7 +167,7 @@ export default function Commands(props) {
 					</div>
 				</div>
 			</SimpleBar>
-	        <div id="nitropay-commands-bottom" className="nitropay ad-h"/>
+	        <div id="nitropay-commands-bottom" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 		</div>
 	);
 }

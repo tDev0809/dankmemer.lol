@@ -7,6 +7,9 @@ $text-accent-3: rgb(189, 189, 189);
 	width: 80vw;
 	margin: 0 auto;
 	margin-bottom: 40px;
+	&.extra-margin {
+		margin: 10vh auto;
+	}
 	&-header {
 		position: relative;
 		margin-left: 5px;

@@ -97,57 +97,57 @@ function Appeals(props) {
 
 	return (
 		<div id="appeals">
-		<div id="appeals-header">
-			<h1 id="appeals-header-title">Appeal a {appealType} ban</h1>
-			<p className="appeals-header-message">Please provide as much detail as possible when submitting your appeal.<br/>•</p>
-			<p className="appeals-header-message">Appealing does not guarantee a reprieval of the punishment.</p>
-		</div>
-		<div id="appeals-body">
-			<div className="appeals-body-group">
-				<h3 className="appeals-body-group-title">What kind of ban are you appealing?</h3>
-				<div className="appeals-body-group-radio">
-					<label className="fake-checkbox">
-						<span className={appealType === 'permanent' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
-						<input name="permanent-appeal" type="radio" checked={appealType === 'permanent'} onClick={() => setAppealType('permanent') } />
-					</label>
-					<label>Permanent bot ban</label>
-				</div>
-				<div className="appeals-body-group-radio">
-					<label className="fake-checkbox">
-						<span className={appealType === 'temporary' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
-						<input name="temporary-appeal" type="radio" checked={appealType === 'temporary'} onClick={() => setAppealType('temporary') } />
-					</label>
-					<label>Temporary bot ban</label>
-				</div>
-				<div className="appeals-body-group-radio">
-					<label className="fake-checkbox">
-						<span className={appealType === 'server' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
-						<input name="server-appeal" type="radio" checked={appealType === 'server'} onClick={() => setAppealType('server') } />
-					</label>
-					<label>Support server ban</label>
-				</div>
+			<div id="appeals-header">
+				<h1 id="appeals-header-title">Appeal a {appealType} ban</h1>
+				<p className="appeals-header-message">Please provide as much detail as possible when submitting your appeal.<br/>•</p>
+				<p className="appeals-header-message">Appealing does not guarantee a reprieval of the punishment.</p>
 			</div>
-			<div className="appeals-body-group">
-				<h3 className="appeals-body-group-title">Which rules did they break?</h3>
-				{rules[appealType].map((rule, i) => (
-					<div className="appeals-body-group-checkbox" key={i}>
-						<input name={`rule-${i}`} type="checkbox" onInput={(e) => updateBrokenRules(i, e.target.checked)} />
-						<div className="appeals-body-group-checkbox-num">{i + 1}</div>
-						<label htmlFor={`rule-${i}`}>{rule}</label>
+			<div id="appeals-body">
+				<div className="appeals-body-group">
+					<h3 className="appeals-body-group-title">What kind of ban are you appealing?</h3>
+					<div className="appeals-body-group-radio">
+						<label className="fake-checkbox">
+							<span className={appealType === 'permanent' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
+							<input name="permanent-appeal" type="radio" checked={appealType === 'permanent'} onClick={() => setAppealType('permanent') } />
+						</label>
+						<label>Permanent bot ban</label>
 					</div>
-				))}
+					<div className="appeals-body-group-radio">
+						<label className="fake-checkbox">
+							<span className={appealType === 'temporary' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
+							<input name="temporary-appeal" type="radio" checked={appealType === 'temporary'} onClick={() => setAppealType('temporary') } />
+						</label>
+						<label>Temporary bot ban</label>
+					</div>
+					<div className="appeals-body-group-radio">
+						<label className="fake-checkbox">
+							<span className={appealType === 'server' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
+							<input name="server-appeal" type="radio" checked={appealType === 'server'} onClick={() => setAppealType('server') } />
+						</label>
+						<label>Support server ban</label>
+					</div>
+				</div>
+				<div className="appeals-body-group">
+					<h3 className="appeals-body-group-title">Which rules did they break?</h3>
+					{rules[appealType].map((rule, i) => (
+						<div className="appeals-body-group-checkbox" key={i}>
+							<input name={`rule-${i}`} type="checkbox" onInput={(e) => updateBrokenRules(i, e.target.checked)} />
+							<div className="appeals-body-group-checkbox-num">{i + 1}</div>
+							<label htmlFor={`rule-${i}`}>{rule}</label>
+						</div>
+					))}
+				</div>
+				<div className="appeals-body-group">
+					<h3 className="appeals-body-group-title">Please write your appeal below.</h3>
+					<textarea className="appeals-body-group-textarea" maxLength={1024} onChange={((e) => setAppealContent(e.target.value))} />
+				</div>
+				{brokenRules.length >= 1 && appealContent.length >= 20 ? 
+				<div id="appeals-body-actions">
+					<span id="appeals-body-actions-submit" onClick={sendAppeal}>Appeal ban</span>
+				</div> : ''}
 			</div>
-			<div className="appeals-body-group">
-				<h3 className="appeals-body-group-title">Please write your appeal below.</h3>
-				<textarea className="appeals-body-group-textarea" maxLength={1024} onChange={((e) => setAppealContent(e.target.value))} />
-			</div>
-			{brokenRules.length >= 1 && appealContent.length >= 20 ? 
-			<div id="appeals-body-actions">
-				<span id="appeals-body-actions-submit" onClick={sendAppeal}>Appeal ban</span>
-			</div> : ''}
+			<ToastContainer />
 		</div>
-		<ToastContainer />
-	</div>
 	)
 }
 
