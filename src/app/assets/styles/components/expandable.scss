@@ -74,7 +74,7 @@
         opacity: 1;
         margin-top: 20px;
         padding-top: 20px;
-        max-height: 120px;
+        max-height: max-content;
     }
 }
 
@@ -89,12 +89,13 @@
         opacity: 1;
         margin-top: 20px;
         padding-top: 20px;
-        max-height: 120px;
+        max-height: max-content;
     }
 }
 
 @media only screen and (max-width: 790px) {
     .expandable {
         padding: 15px 20px;
+        height: max-content;
     }
 }

@@ -216,7 +216,7 @@ function Loot(props) {
 				<div id="store-details">
 					<div id="store-items">
 						<h2 id="store-items-title">Possible items</h2>
-						<p id="store-items-message">Below includes a list of all possible items and the maximum amount of items you could receive from the purchase of a <span className="text-highlight">{activeBox.name}</span>! Along with these items, you have the chance of getting anywhere in the range of <span className="text-highlight">{activeBox.yield}</span> coins.</p>
+						<p id="store-items-message">Below includes a list of all the goodies and the maximum amount of items you could receive from the purchase of a <span className="text-highlight">{activeBox.name}</span>! Along with these items, you have the chance of getting anywhere in the range of <span className="text-highlight">⏣ {activeBox.yield}</span>.</p>
 						<table>
 							<thead>
 								<tr>
