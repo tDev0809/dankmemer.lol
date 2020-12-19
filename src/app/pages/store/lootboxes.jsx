@@ -50,6 +50,7 @@ function Loot(props) {
 	const [showPeepos, setShowPeepos] = useState(false);
 
 	useEffect(() => {
+		window.scroll(0,0)
 		axios.all([
 			axios('/api/boxes'),
 			axios('/api/country'),
@@ -216,7 +217,7 @@ function Loot(props) {
 				<div id="store-details">
 					<div id="store-items">
 						<h2 id="store-items-title">Possible items</h2>
-						<p id="store-items-message">Below includes a list of all possible items and the maximum amount of items you could receive from the purchase of a <span className="text-highlight">{activeBox.name}</span>! Along with these items, you have the chance of getting anywhere in the range of <span className="text-highlight">{activeBox.yield}</span> coins.</p>
+						<p id="store-items-message">Below includes a list of all the goodies and the maximum amount of items you could receive from the purchase of a <span className="text-highlight">{activeBox.name}</span>! Along with these items, you have the chance of getting anywhere in the range of <span className="text-highlight">⏣ {activeBox.yield}</span>.</p>
 						<table>
 							<thead>
 								<tr>
@@ -310,7 +311,12 @@ function Loot(props) {
 								setFinishState={finishState}
 							/>
 							<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>
-						</div> : '' : agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
+						</div> : 
+							<div id="store-summary-actions">
+								<DiscordLogin />
+								<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes you need to login to Discord.</p>
+							</div>
+						: agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
 							<div id="store-summary-actions">
 								<PaypalButton
 									activeBox={activeBox}

@@ -12,7 +12,7 @@ const categories = Object.entries(users);
 const getSocialIndex = ({ social }) => Object.keys(social).length === 0 ? -1 : 1;
 
 export default function Staff() {
-	
+	window.scroll(0,0)
 	useEffect(() => {
 		adPlacements.forEach((placement) => {
 			window.nitroAds && window.nitroAds.createAd(placement, {
@@ -40,7 +40,7 @@ export default function Staff() {
 	}, []);
 
 	return (
-		<div id="staff">
+		<div id="staff" className={!window.nitroAds ? 'nitro-margin' : ''}>
 			<div id="staff-categories">
 				{categories.map(([category, users], i) => (
 					<div id={"staff-categories-" + category.toLowerCase().replace(/ /g, '-')} key={i}>
@@ -57,7 +57,7 @@ export default function Staff() {
 					</div>
 				))}
 			</div>
-			<div id="nitropay-staff-bottom" className="nitropay ad-h"/>
+			<div id="nitropay-staff-bottom" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 		</div>
 	)
 }

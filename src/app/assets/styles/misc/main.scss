@@ -45,7 +45,6 @@ body {
         color: #ffffff;
         padding: 10px;
         border-radius: 5px;
-        // max-width: 410px;
         min-width: 80%;
         transition: background-color ease .17s;
         svg {
@@ -65,13 +64,18 @@ body {
         max-width: 100vw;
         color: white;
     }
+    .nitropay-margin {
+        margin: 10vh auto;
+    }
     .nitropay {
         margin: 5vh auto;
         display: flex;
         &.ad-h  {
             width: 728px;
             height: 90px;
-            background: rgba($color: #000000, $alpha: .2);
+        }
+        &.blocked {
+            display: none;
         }
     }
 
@@ -82,9 +86,6 @@ body {
         font-weight: inherit;
     }
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
 	#bottom-cta {
 		width: 100%;
 		display: grid;
@@ -142,6 +143,8 @@ body {
 @media only screen and (max-width: 454px) {
     body {
         #bottom-cta {
+            width: 80vw;
+            margin: 5vh auto;
 			text-align: center;
 		}
     }

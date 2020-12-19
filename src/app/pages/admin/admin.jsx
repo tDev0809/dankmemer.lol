@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import DiscordLogin from '../../components/discordLogin';
 import 'assets/styles/pages/admin/admin.scss';
@@ -8,41 +7,10 @@ import 'assets/styles/pages/admin/admin.scss';
 import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
 
-const adPlacements = [
-	'nitropay-admin-top'
-]
-
 function Admin (props) {
-	const history = useHistory();
 
 	useEffect(() => {
-		// adPlacements.forEach((placement) => {
-		// 	window.nitroAds && window.nitroAds.createAd(placement, {
-		// 		"refreshLimit": 10,
-		// 		"refreshTime": 90,
-		// 		"renderVisibleOnly": false,
-		// 		"refreshVisibleOnly": true,
-		// 		"sizes": [
-		// 		  [
-		// 			"728",
-		// 			"90"
-		// 		  ],
-		// 		  [
-		// 			"320",
-		// 			"50"
-		// 		  ]
-		// 		],
-		// 		"report": {
-		// 		  "enabled": true,
-		// 		  "wording": "Report Ad",
-		// 		  "position": "top-right"
-		// 		}
-		// 	});
-		// });
-	}, []);
-
-	useEffect(() => {
-		if(props.loggedIn && !props.isAdmin) return window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+		if(props.loggedIn && !props.isAdmin) return window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 	}, [props])
 
 	return (
@@ -58,7 +26,7 @@ function Admin (props) {
 			:
 			<div id="admin-content">
 				<h1 id="admin-content-title">Admin Control Panel</h1>
-				<div id="nitropay-admin-top" className="nitropay ad-h"/>
+				<div id="nitropay-admin-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 				<div id="admin-content-panels">
 					{BanPanels.map((Panel, key) => (<Panel key={key} />))}
 					{<GetPayment/>}

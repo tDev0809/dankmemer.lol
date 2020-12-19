@@ -14,6 +14,10 @@ function Reports(props) {
 	const [reportState, setReportState] = useState(0);
 	
 	useEffect(() => {
+		window.scroll(0,0)
+	}, []);
+
+	useEffect(() => {
 		if(reportState === 0) return;
 		switch(reportState) {
 			case 200:

@@ -1,7 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect } from 'react';
 import 'assets/styles/pages/legal/legal.scss';
 
 export default function Privacy() {
+
+	useEffect(() => {
+		window.scroll(0,0)
+	}, [])
+
   	return (
 		<div id="legal">
 			<div id="legal-header">

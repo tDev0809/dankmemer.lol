@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import MemesIMG from 'assets/img/memes.png';
 import InsightIMG from 'assets/img/insights.png';
 import InvitesIMG from 'assets/img/invites.png';
@@ -15,6 +14,7 @@ const adPlacements = [
 export default function Home () {
 
 	useEffect(() => {
+		window.scroll(0,0)
 		adPlacements.forEach((placement) => {
 			window.nitroAds && window.nitroAds.createAd(placement, {
 				"refreshLimit": 10,
@@ -41,7 +41,7 @@ export default function Home () {
 	}, [])
 
 	return (
-		<div id="home">
+		<div id="home" className={!window.nitroAds ? 'nitro-margin' : ''}>
     		<div id="home-hero">
 				<div id="home-hero-text">
 					<h1 id="home-hero-text-title">Dank Memer</h1>
@@ -75,7 +75,7 @@ export default function Home () {
         		</div>
 				<img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
     		</section>
-			<div id="nitropay-home-middle" className="nitropay ad-h"/>
+			<div id="nitropay-home-middle" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<section>
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Generate</span> Server<br/> Growth</h3>
@@ -88,9 +88,9 @@ export default function Home () {
 					<h3 className="section-title"><span className="text-highlight">Massive</span> Community<br/> Servers</h3>
 					<p className="section-body">We have to GIANT servers for you to join, all about Dank Memer! One is purely for support and announcements, and the other is a community server based around using the bot and participating in giveaways of our currency system!</p>
 				</div>
-				<img alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
+				<img id="homepage-snowflake-image" alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
-			<div id="nitropay-home-bottom" className="nitropay ad-h"/>
+			<div id="nitropay-home-bottom" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<BottomCTA/>
 			<span data-ccpa-link="1"></span>
   		</div>

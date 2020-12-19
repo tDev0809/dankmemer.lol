@@ -19,6 +19,7 @@ const adPlacements = [
 ]
 
 export default function Landing(props) {
+	window.scroll(0,0)
 	const history = useHistory();
 
 	adPlacements.forEach((placement) => {
@@ -48,7 +49,7 @@ export default function Landing(props) {
 	return (
 		<div id="landing">
 			<h1 id="landing-title">Thanks for adding<br/><span className="text-highlight">Dank Memer</span></h1>
-			<div id="nitropay-landing-top" className="nitropay ad-h"/>
+			<div id="nitropay-landing-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 			<div id="landing-cards">
 				{cardData.map((card, i) => (
 					<div className="landing-card" key={i} onClick={() => {
@@ -60,7 +61,7 @@ export default function Landing(props) {
 					</div>
 				))}
 			</div>
-			<div id="nitropay-landing-top" className="nitropay ad-h"/>
+			<div id="nitropay-landing-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
 		</div>
 	)
 }
