@@ -5,24 +5,16 @@
         "a": "To disable commands you need to do pls disable <command> and make sure that there’s no overrides in the enable list so that this stays working. If you do pls enable list and you see an “enabled guild wide” (guild means server by the way) or the command is enabled for a certain channel that means it’s an override, because enables override disables. You can do pls enable remove 4 for example and it will remove number 4 off of the enable list. You can also do pls enable clear and everything on the enable list will be reset. (The same goes for the disable list if you’re looking to clear it or remove something off the list for that)"
       },
       {
+        "q": "Why is the bot offline?",
+        "a": "More than likely, we are rebooting for an update or performance fixes. If the bot is ever offline more than 30 minutes, check in at our support server to see if there's major downtime planned."
+      },
+      {
         "q": "How do I disable a command for everyone except a certain role or user?",
         "a": "You can do this by pls disable <command> then doing pls enable <command> <role> or pls enable <command> <@user>"
       },
       {
         "q": "Why won’t the bot respond to me on my server?",
         "a": "Please make sure the prefix has not changed, and the bot is showing online in your member list. If neither of these things are the case, please contact a support specialist for further help."
-      },
-      {
-        "q": "How do I stop a quest",
-        "a": "Do “pls quest stop” to stop a quest that you have started. Then you can do pls quest choose (new quest) afterwards."
-      },
-      {
-        "q": "Can I repeat quests?",
-        "a": "Currently you can’t really repeat them because you might get a bug that says to wait 0 seconds, the cooldown is supposed to be a month but due to this you just can’t do them. You’ll have to wait until the rewrite of the bot  is completed and this issue is fixed. "
-      },
-      {
-        "q": "I died but the terrible fate quest didn’t complete?",
-        "a": "To complete the terrible fate quest you need to die (either by pls search, your pet killing you, dying in a heist, from pls hunt, using tide pods, etc.). You can’t have a lifesaver in your inventory when you have the quest active and die because then it won’t count and it won’t get completed. Be sure of those things."
       },
       {
         "q": "How do I see multiple shop pages?",
