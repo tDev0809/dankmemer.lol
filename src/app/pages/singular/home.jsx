@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import MemesIMG from 'assets/img/memes.png';
 import InsightIMG from 'assets/img/insights.png';
 import InvitesIMG from 'assets/img/invites.png';

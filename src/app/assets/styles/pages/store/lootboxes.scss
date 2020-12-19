@@ -286,6 +286,10 @@
 							-webkit-appearance: none;
 							margin: 0;
 						}
+						&:focus {
+							border: 1px solid #39923c;
+							outline: none;
+						}
 					}
 					&-tick {
 						pointer-events: none;
@@ -325,7 +329,6 @@
 				text-align: center;
 				position: absolute;
 				bottom: 0;
-				// width: 100%;
 				width: 30vw;
 				min-width: 470px;
 				box-sizing: border-box;
