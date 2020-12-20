@@ -178,7 +178,6 @@
 				margin-top: 30px;
 				border: 1px solid #1f1f1f;
 				border-collapse: collapse;
-				width: 16vw;
 				thead {
 					text-align: left;
 					background: #222222;
@@ -188,7 +187,7 @@
 						font-weight: 500;
 						font-size: 14px;
 						&:last-child {
-							width: 50%;
+							width: max-content;
 							text-align: center;
 						}
 					}
