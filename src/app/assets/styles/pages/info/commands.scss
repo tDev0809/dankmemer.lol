@@ -473,3 +473,17 @@ $text-accent-3: rgb(189, 189, 189);
 		}
     }
 }
+
+@media only screen and (max-width: 325px) {
+    body {
+        #commands, #faq {
+			width: unset!important;
+			margin: unset!important;
+			&-header {
+				&-title {
+					font-size: 35px;
+				}
+			}
+		}
+    }
+}
