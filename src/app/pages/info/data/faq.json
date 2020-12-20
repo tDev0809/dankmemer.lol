@@ -37,7 +37,7 @@
         "a": "Sometimes you get a notification twice, the reason for that happening is due to a bug. If it’s a level up notification and you get the rewards twice, don’t worry about it, you won’t get any penalty or anything. This problem will be fixed once the rewrite of the bot is completed. (This also applies to quest rewards)"
       },
       {
-        "q": "How do I turn on/off auto-lottery?”",
+        "q": "How do I turn on/off auto-lottery?",
         "a": "The command is pls settings auto-lottery enabled and pls settings autolottey disabled to turn it off.\nNote: It takes coins from your bank and not your wallet.\n To set up an interval: pls settings al interval 2 this means that every 2 hours 100 coins will be taken out of your bank to buy a lottery ticket.\nTo set up a minimum: pls settings al minimum amount 1000 This means that if you have less than 1000 coins in your bank. You won’t be charged for the lottery. (auto-lottery will stop once < 1000)"
       },
       {
@@ -61,7 +61,7 @@
         "a": "Do pls notifs and check if you died, if yes, then do pls notifs view #(notification number) to view the whole notification and see if you also lost an item. If no, then you most likely traded it to someone, gifted it, or sold it (if it was sellable) | Note: Any item can be lost when you die without using an apple or not having a lifesaver in your inventory"
       },
       {
-        "q": "What can i do with my cookies or other collectables?",
+        "q": "What can I do with my cookies or other collectables?",
         "a": "As the name or type of the item suggests they are meant to be collected or to be traded to other users."
       },
       {

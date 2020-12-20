@@ -86,7 +86,7 @@ export default function Home () {
 			<section className="reverse">
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Massive</span> Community<br/> Servers</h3>
-					<p className="section-body">We have to GIANT servers for you to join, all about Dank Memer! One is purely for support and announcements, and the other is a community server based around using the bot and participating in giveaways of our currency system!</p>
+					<p className="section-body">We have two GIANT servers for you to join, all about Dank Memer! One is purely for support and announcements, and the other is a community server based around using the bot and participating in giveaways of our currency system!</p>
 				</div>
 				<img id="homepage-snowflake-image" alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
