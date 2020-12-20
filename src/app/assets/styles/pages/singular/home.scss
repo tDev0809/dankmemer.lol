@@ -146,6 +146,17 @@
 	}
 }
 
+@media only screen and (max-width: 1000px) {
+	#home {
+		&-hero {
+			&-circles {
+				transform: scale(0.7);
+				overflow: hidden;
+			}
+		}
+	}
+}
+
 @media only screen and (max-width: 454px) {
 	#home {
 		&-hero {

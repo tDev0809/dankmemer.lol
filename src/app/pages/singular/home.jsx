@@ -50,16 +50,16 @@ export default function Home () {
 				<div id="home-hero-cta">
 					<a id="home-hero-cta-invite" href="https://invite.dankmemer.lol" rel="noreferrer noopener">Invite now</a>
 				</div>
-				<div id="home-hero-circles">
-					<svg height="500" width="1020">
-						<circle cx="190" cy="320" r="157.5" fill="#242424"/>
-						<circle cx="300" cy="50" r="50" fill="#242424"/>
-						<circle cx="700" cy="100" r="15" fill="#242424"/>
-						<circle cx="890" cy="120" r="107.5" fill="#242424"/>
-						<circle cx="930" cy="400" r="65" fill="#242424"/>
-						<circle cx="560" cy="450" r="25" fill="#242424"/>
-					</svg>
-				</div>
+					<div id="home-hero-circles">
+						<svg height="500" width="1020">
+							<circle cx="190" cy="320" r="157.5" fill="#242424"/>
+							<circle cx="300" cy="50" r="50" fill="#242424"/>
+							<circle cx="700" cy="100" r="15" fill="#242424"/>
+							<circle cx="890" cy="120" r="107.5" fill="#242424"/>
+							<circle cx="930" cy="400" r="65" fill="#242424"/>
+							<circle cx="560" cy="450" r="25" fill="#242424"/>
+						</svg>
+					</div>
     		</div>
     		<section>
       			<div className="text-area">
