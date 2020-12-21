@@ -38,12 +38,56 @@
 				margin-top: 10px;
 				padding: 10px 15px;
 				border-radius: 5px;
-				display: block;
+				display: inline-block;
 				width: max-content;
 				transition: box-shadow ease-in-out .3s;
 				&:hover {
 					box-shadow: 0px 5px 20px rgba(57, 146, 60, 0.7),
 								inset 0px 0px 5px rgba(4, 214, 9, 0.3);
+				}
+				&-small {
+					margin-left: 20px;
+					color: #39923c;
+				}
+			}
+			.DayPickerInput {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 20px 0;
+				input {
+					appearance: none;
+					background: rgba(0,0,0,0.3);
+					border: none;
+					text-align: center;
+					color: #ffffff;
+					font-size: 16px;
+					padding: 10px 15px;
+					font-family: 'Inter', sans-serif;
+					border: 1px solid transparent;
+					&:focus {
+						outline: none;
+						border: 1px solid #39923c;
+					}
+				}
+				.DayPickerInput-Overlay {
+					background: #141414;
+					.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+						background: rgba(0,0,0,0.3);
+						border-radius: 5px;
+					}
+					.DayPicker-Day--today {
+						color: #39923c;
+						border-radius: 5px;
+					}
+					.DayPicker-Day--selected:not(.DayPicker-Day--today) {
+						background: #39923c;
+						border-radius: 5px;
+					}
+					.DayPicker-Day--selected .DayPicker-Day--today{
+						background: #39923c;
+						border-radius: 5px;
+					}
 				}
 			}
 		}
