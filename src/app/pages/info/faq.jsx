@@ -3,13 +3,9 @@ import faqFile from './data/faq.json';
 import Expandable from '../../components/expandable';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import createAd from '../../util/createAd';
 
 import 'assets/styles/pages/info/commands.scss';
-
-const adPlacements = [
-	'nitropay-faq-top',
-	'nitropay-faq-bottom'
-]
 
 export default function FAQ(props) {
 	const categories = useRef(Object.keys(faqFile));
@@ -22,29 +18,30 @@ export default function FAQ(props) {
 	const [prefix, setPrefix] = useState('pls ');
 
 	useEffect(() => {
-		adPlacements.forEach((placement) => {
-			window.nitroAds && window.nitroAds.createAd(placement, {
-				"refreshLimit": 10,
-				"refreshTime": 30,
-				"renderVisibleOnly": true,
-				"refreshVisibleOnly": true,
-				"sizes": [
-				  [
-					"728",
-					"90"
-				  ],
-				  [
-					"320",
-					"50"
-				  ]
-				],
-				"report": {
-				  "enabled": true,
-				  "wording": "Report Ad",
-				  "position": "top-right"
-				}
-			});
-		});
+		createAd('nitropay-faq-top', { sizes: [ [728, 90] ] }, 'desktop');
+		createAd('nitropay-faq-top', { sizes: [
+			[320, 50],
+			[300, 50],
+			[300, 250]
+		] }, 'mobile');
+
+		createAd('nitropay-faq-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-faq-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
+
 		if(window.location.search && window.location.search.split("?")[1].split("=")[0] === "prefix") {
 			setPrefix(`${window.location.search.split("?")[1].split("=")[1]} `);
 			return window.history.pushState(null, null, 'faq');
@@ -104,8 +101,8 @@ export default function FAQ(props) {
 	}
 
 	return (
-		<div id="faq" className={!window.nitroAds ? 'nitro-margin' : ''}>
-			<div id="nitropay-faq-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+		<div id="faq">
+			<div id="nitropay-faq-top" className="nitropay" />
 			<div id="faq-header">
 				<h1 id="faq-header-title">Frequently Asked Questions</h1>
 				<p id="faq-header-message">The most frequently asked questions can be found below. Split into categories depending on what they are related to.</p>
@@ -162,7 +159,7 @@ export default function FAQ(props) {
 					</div>
 				</div>
 			</SimpleBar>
-			<div id="nitropay-faq-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-faq-bottom" className="nitropay" />
 		</div>
 	);
 }

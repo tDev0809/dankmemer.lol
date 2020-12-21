@@ -3,10 +3,7 @@ import RecentBlog from '../../components/recentBlog';
 import OlderBlog from '../../components/olderBlog';
 import 'assets/styles/pages/singular/blogs.scss';
 import BottomCTA from '../../components/bottomCTA';
-
-const adPlacements = [
-	'nitropay-blogs-middle'
-]
+import createAd from '../../util/createAd';
 
 export default function Blogs() {
 
@@ -19,33 +16,27 @@ export default function Blogs() {
 			return res.json();
 		}
 		getBlogs().then((blogsData) => setBlogs(blogsData));
-		adPlacements.forEach((placement) => {
-			window.nitroAds && window.nitroAds.createAd(placement, {
-				"refreshLimit": 10,
-				"refreshTime": 30,
-				"renderVisibleOnly": true,
-				"refreshVisibleOnly": true,
-				"sizes": [
-				  [
-					"728",
-					"90"
-				  ],
-				  [
-					"320",
-					"50"
-				  ]
-				],
-				"report": {
-				  "enabled": true,
-				  "wording": "Report Ad",
-				  "position": "top-right"
-				}
-			});
-		});
+		
+		createAd('nitropay-blogs-middle', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-blogs-middle', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
 	}, [])
 
 	return (
-		<div id="blogs" className={!window.nitroAds ? 'nitro-margin' : ''}>
+		<div id="blogs">
 			<div id="blogs-header">
 				<h1 id="blogs-header-title">Blog Posts</h1>
 				<p id="blogs-header-message">Blogs are written by the developers and are community focused, news and updates regarding Dank Memer and related topics.</p>
@@ -58,7 +49,7 @@ export default function Blogs() {
 					))}
 				</div>
 			</section>
-			<div id="nitropay-blogs-middle" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-blogs-middle" class="nitropay" />
 			<section className="blogs-section">
 				<h3 className="blogs-section-heading">Older posts</h3>
 				<div id="blogs-section-older">

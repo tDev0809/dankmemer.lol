@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import 'assets/styles/pages/singular/landing.scss';
+import createAd from '../../util/createAd';
 
 const cardData = [
   { name: 'Commands', description: 'See all of the commands Dank Memer has to offer your server!', link: '/commands' },
@@ -13,43 +14,39 @@ const cardData = [
   { name: 'YouTube', description: 'We post tutorial videos on our YouTube channel, subscribe to see new ones sooner!', link: 'https://www.youtube.com/c/DankMemerDiscordBot' }
 ];
 
-const adPlacements = [
-	'nitropay-landing-top',
-	'nitropay-landing-bottom'
-]
-
 export default function Landing(props) {
 	window.scroll(0,0)
 	const history = useHistory();
 
-	adPlacements.forEach((placement) => {
-		window.nitroAds && window.nitroAds.createAd(placement, {
-			"refreshLimit": 10,
-			"refreshTime": 30,
-			"renderVisibleOnly": true,
-			"refreshVisibleOnly": true,
-			"sizes": [
-			  [
-				"728",
-				"90"
-			  ],
-			  [
-				"320",
-				"50"
-			  ]
+	useEffect(() => {
+		createAd('nitropay-landing-top', { sizes: [ [728, 90] ] }, 'desktop');
+		createAd('nitropay-landing-top', { sizes: [
+			[320, 50],
+			[300, 50],
+			[300, 250]
+		] }, 'mobile');
+	
+		createAd('nitropay-landing-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
 			],
-			"report": {
-			  "enabled": true,
-			  "wording": "Report Ad",
-			  "position": "top-right"
-			}
-		});
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-landing-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
 	});
 
 	return (
 		<div id="landing">
 			<h1 id="landing-title">Thanks for adding<br/><span className="text-highlight">Dank Memer</span></h1>
-			<div id="nitropay-landing-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-landing-top" className="nitropay" />
 			<div id="landing-cards">
 				{cardData.map((card, i) => (
 					<div className="landing-card" key={i} onClick={() => {
@@ -61,7 +58,7 @@ export default function Landing(props) {
 					</div>
 				))}
 			</div>
-			<div id="nitropay-landing-top" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-landing-bottom" className="nitropay" />
 		</div>
 	)
 }
