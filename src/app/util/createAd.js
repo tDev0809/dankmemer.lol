@@ -12,7 +12,7 @@ export default (id, opts, device) => {
       "wording": "Report Ad",
       "position": "top-right"
     },
-    "demo": !process.env.LIVE_ADS,
+    "demo": !LIVE_ADS,
     ...opts
   });
 }
