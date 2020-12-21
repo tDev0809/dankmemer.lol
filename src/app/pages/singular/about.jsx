@@ -1,41 +1,23 @@
 import React, { useEffect } from 'react';
+import createAd from '../../util/createAd';
 import 'assets/styles/pages/singular/about.scss';
-
-const adPlacements = [
-	'nitropay-about-middle'
-]
-
 
 export default function About() {
 	window.scroll(0,0)
 	useEffect(() => {
-		adPlacements.forEach((placement) => {
-			window.nitroAds && window.nitroAds.createAd(placement, {
-				"refreshLimit": 10,
-				"refreshTime": 30,
-				"renderVisibleOnly": true,
-				"refreshVisibleOnly": true,
-				"sizes": [
-				  [
-					"728",
-					"90"
-				  ],
-				  [
-					"320",
-					"50"
-				  ]
-				],
-				"report": {
-				  "enabled": true,
-				  "wording": "Report Ad",
-				  "position": "top-right"
-				}
-			});
-		});
-	}, [])
+		createAd('nitropay-about-middle', { sizes: [
+			[728, 90],
+			[300, 250]
+		] }, 'desktop');
+		createAd('nitropay-about-middle', { sizes: [
+			[320, 50],
+			[300, 50],
+			[300, 250]
+		] }, 'mobile');
+	});
 
 	return (
-		<div id="about" className={!window.nitroAds ? 'nitro-margin' : ''}>
+		<div id="about">
 			<h1 id="about-title">About<br/><span className="text-highlight">Dank Memer</span></h1>
 			<div className="about-paragraph">
 				<h2 className="about-paragraph-title">What is Dank Memer?</h2>
@@ -72,7 +54,7 @@ export default function About() {
 					free. And to those who financially supported us, thank you. Dank Memer wouldn't be alive without you.
 				</p>
 			</div>
-			<div id="nitropay-about-middle" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-about-middle" className="nitropay" />
 			<div id="about-usage">
 				<h1 id="about-usage-title">Basic Usage</h1>
 				<div className="about-paragraph">

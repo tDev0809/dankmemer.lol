@@ -9,6 +9,7 @@ import PaypalButton from '../../components/paypalButton';
 import BannedUser from './views/BannedUser.jsx';
 import EndSection from './views/EndSection.jsx';
 import BlockedCountry from './views/BlockedCountry.jsx';
+import AgeRequired from './views/AgeRequired.jsx'
 import ree from '../../util/ree.js';
 import images from './util/images.js';
 import parseTime from '../../util/parseTime.js';
@@ -34,6 +35,7 @@ function Loot(props) {
 	const [boxes, setBoxes] = useState([box]);
 	const [constants, setConstants] = useState(null);
 	const [activeBox, setActiveBox] = useState(box);
+	const [country, setCountry] = useState("");
 	const [bannedCountry, setBannedCountry] = useState(false);
 	const [bannedUser, setBannedUser] = useState(false);
 	const [agreedTOS, setAgreedTOS] = useState(false);
@@ -42,6 +44,7 @@ function Loot(props) {
 	const [boxCount, setBoxCount] = useState(1);
 	const [isGift, setIsGift] = useState(null);
 	const [giftRecipient, setGiftRecipient] = useState(0);
+	const [checkAge, setCheckAge] = useState(false);
 
 	const [validGift, setValidGift] = useState(false);
 
@@ -55,16 +58,20 @@ function Loot(props) {
 			axios('/api/boxes'),
 			axios('/api/country'),
 			axios('/api/isBanned')
-		]).then(axios.spread(({ data: {boxes, Constants} }, { data: { isBlocked }}, req3) => {
+		]).then(axios.spread(async ({ data: {boxes, Constants} }, { data: { country }}, req3) => {
 			setBoxes(boxes);
 			setActiveBox(boxes[1])
 			setConstants(Constants);
-			setBannedCountry(isBlocked);
+			setCountry(country);
 			setBannedUser(req3.status === 403);
 		})).catch(e => {
 			console.error(e);
 		}); 
 	}, []);
+
+	useEffect(() => {
+		setCheckAge([ "ES", "BE", "NL" ].includes(country));
+	}, [country]);
 
 	useEffect(() => {
 		if(isGift && (giftRecipient.toString().length > 16 || giftRecipient.toString().length < 21)) return setValidGift(true);
@@ -164,7 +171,8 @@ function Loot(props) {
 	return (
 		<div id="store">
 			{bannedUser ? <BannedUser />
-			: bannedCountry ? <BlockedCountry />
+			: country === "BE" ? <BlockedCountry />
+			: checkAge ? <AgeRequired checkAge={setCheckAge} />
 			: finishedPayment ? <EndSection success={finishedPayment} data={paymentData} /> 
 			: <>
 				<div id="store-header">

@@ -86,7 +86,8 @@ module.exports = {
       chunkFilename: '[name].[contenthash:8].chunk.css',
     }),
     new DefinePlugin({
-      __PAYPAL_ENV__: '"sandbox"'
+      __PAYPAL_ENV__: '"sandbox"',
+      LIVE_ADS: "false"
     }),
     new BrowserSyncPlugin({
       host: 'localhost',

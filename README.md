@@ -9,12 +9,21 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 - Node.js v8.x.x or higher
-- RethinkDB
+- MongoDB
 - Redis (soon?)
 
 ### Installing
 1. `git clone https://github.com/DankMemer/dankmemer.lol.git`
 2. Create config.json
+    * The following is the minimum amount of information required for testing in your config.json file.
+```json
+{
+  "port": 8080,
+  "cryptKeys": [],
+  "mongoURL": "mongodb://127.0.0.1:27017",
+  "secret": "anything"
+}
+```
 3. `npm i`
 
 ## Built With
@@ -28,6 +37,7 @@ These instructions will get you a copy of the project up and running on your loc
 * **Ronin** - *Initial work* - [TheCyberRonin](https://github.com/TheCyberRonin)
 * **Mel** - *Initial design* - [Melmsie](https://github.com/melmsie)
 * **Aetheryx** - *Basically the whole thing* - [Aetheryx](https://github.com/aetheryx)
+* **InBlue** - *Taken over work for redesign* - [InBlue](https://github.com/inblue)
 
 
 See also the list of [contributors](https://github.com/DankMemer/dankmemer.lol/contributors) who participated in this project.

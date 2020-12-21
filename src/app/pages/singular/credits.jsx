@@ -3,10 +3,7 @@ import '../../assets/styles/pages/singular/credits.scss';
 import users from './data/users.json';
 import StaffCard from '../../components/staff';
 import images from './util/images.js';
-
-const adPlacements = [
-	'nitropay-staff-bottom'
-];
+import createAd from '../../util/createAd';
 
 const categories = Object.entries(users);
 const getSocialIndex = ({ social }) => Object.keys(social).length === 0 ? -1 : 1;
@@ -14,33 +11,26 @@ const getSocialIndex = ({ social }) => Object.keys(social).length === 0 ? -1 : 1
 export default function Staff() {
 	window.scroll(0,0)
 	useEffect(() => {
-		adPlacements.forEach((placement) => {
-			window.nitroAds && window.nitroAds.createAd(placement, {
-				"refreshLimit": 10,
-				"refreshTime": 30,
-				"renderVisibleOnly": true,
-				"refreshVisibleOnly": true,
-				"sizes": [
-				  [
-					"728",
-					"90"
-				  ],
-				  [
-					"320",
-					"50"
-				  ]
-				],
-				"report": {
-				  "enabled": true,
-				  "wording": "Report Ad",
-				  "position": "top-right"
-				}
-			});
-		});
+		createAd('nitropay-staff-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-staff-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
 	}, []);
 
 	return (
-		<div id="staff" className={!window.nitroAds ? 'nitro-margin' : ''}>
+		<div id="staff">
 			<div id="staff-categories">
 				{categories.map(([category, users], i) => (
 					<div id={"staff-categories-" + category.toLowerCase().replace(/ /g, '-')} key={i}>
@@ -57,7 +47,7 @@ export default function Staff() {
 					</div>
 				))}
 			</div>
-			<div id="nitropay-staff-bottom" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-staff-bottom" class="nitropay" />
 		</div>
 	)
 }
