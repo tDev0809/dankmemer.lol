@@ -115,7 +115,8 @@ module.exports = {
       chunkFilename: '[name].[contenthash:8].chunk.css',
     }),
     new DefinePlugin({
-      __PAYPAL_ENV__: '"production"'
+      __PAYPAL_ENV__: '"production"',
+      LIVE_ADS: 'true'
     }),
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,

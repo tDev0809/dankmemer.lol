@@ -3,13 +3,9 @@ import commandsFile from './data/commands.json';
 import Expandable from '../../components/expandable';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+import createAd from '../../util/createAd';
 
 import 'assets/styles/pages/info/commands.scss';
-
-const adPlacements = [
-	'nitropay-commands-top',
-	'nitropay-commands-bottom'
-]
 
 export default function Commands(props) {
 	const categories = useRef(Object.keys(commandsFile));
@@ -22,29 +18,29 @@ export default function Commands(props) {
 	const [prefix, setPrefix] = useState('pls ');
 
 	useEffect(() => {
-		adPlacements.forEach((placement) => {
-			window.nitroAds && window.nitroAds.createAd(placement, {
-				"refreshLimit": 10,
-				"refreshTime": 30,
-				"renderVisibleOnly": true,
-				"refreshVisibleOnly": true,
-				"sizes": [
-				  [
-					"728",
-					"90"
-				  ],
-				  [
-					"320",
-					"50"
-				  ]
-				],
-				"report": {
-				  "enabled": true,
-				  "wording": "Report Ad",
-				  "position": "top-right"
-				}
-			});
-		});
+		createAd('nitropay-commands-top', { sizes: [ [728, 90] ] }, 'desktop');
+		createAd('nitropay-commands-top', { sizes: [
+			[320, 50],
+			[300, 50],
+			[300, 250]
+		] }, 'mobile');
+
+		createAd('nitropay-commands-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-commands-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
 
 		if(window.location.search && window.location.search.split("?")[1].split("=")[0] === "prefix") {
 			setPrefix(`${window.location.search.split("?")[1].split("=")[1]} `);
@@ -105,8 +101,8 @@ export default function Commands(props) {
 	}
 
 	return (
-		<div id="commands" className={!window.nitroAds ? 'nitro-margin' : ''}>
-			<div id="nitropay-commands-top" className={window.nitroAds ? 'nitropay ad-h' : 'nitropay ad-h blocked'}/>
+		<div id="commands">
+			<div id="nitropay-commands-top" className="nitropay" />
 			<div id="commands-header">
 				<h1 id="commands-header-title">Commands</h1>
 				<p id="commands-header-message">Find all the information, including required permissions, regarding the extensive list of commands available to you with Dank Memer.</p>
@@ -167,7 +163,7 @@ export default function Commands(props) {
 					</div>
 				</div>
 			</SimpleBar>
-	        <div id="nitropay-commands-bottom" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+	    <div id="nitropay-commands-bottom" className="nitropay" />
 		</div>
 	);
 }

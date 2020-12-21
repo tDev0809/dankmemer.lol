@@ -5,43 +5,46 @@ import InvitesIMG from 'assets/img/invites.png';
 import CurrencyIMG from 'assets/img/currency.png';
 import 'assets/styles/pages/singular/home.scss';
 import BottomCTA from '../../components/bottomCTA';
-
-const adPlacements = [
-	'nitropay-home-middle',
-	'nitropay-home-bottom'
-]
+import createAd from '../../util/createAd';
 
 export default function Home () {
 
 	useEffect(() => {
 		window.scroll(0,0)
-		adPlacements.forEach((placement) => {
-			window.nitroAds && window.nitroAds.createAd(placement, {
-				"refreshLimit": 10,
-				"refreshTime": 30,
-				"renderVisibleOnly": true,
-				"refreshVisibleOnly": true,
-				"sizes": [
-				  [
-					"728",
-					"90"
-				  ],
-				  [
-					"320",
-					"50"
-				  ]
-				],
-				"report": {
-				  "enabled": true,
-				  "wording": "Report Ad",
-				  "position": "top-right"
-				}
-			});
-		});
+
+		createAd('nitropay-home-middle', {
+			sizes: [ [728, 90] ],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-home-middle', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
+	
+		createAd('nitropay-home-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-home-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');	
+
 	}, [])
 
 	return (
-		<div id="home" className={!window.nitroAds ? 'nitro-margin' : ''}>
+		<div id="home">
     		<div id="home-hero">
 				<div id="home-hero-text">
 					<h1 id="home-hero-text-title">Dank Memer</h1>
@@ -75,7 +78,7 @@ export default function Home () {
         		</div>
 				<img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
     		</section>
-			<div id="nitropay-home-middle" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-home-middle" class="nitropay" />
 			<section>
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Generate</span> Server<br/> Growth</h3>
@@ -90,7 +93,7 @@ export default function Home () {
 				</div>
 				<img id="homepage-snowflake-image" alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
-			<div id="nitropay-home-bottom" className={window.nitroAds ? "nitropay ad-h" : 'nitropay ad-h blocked'}/>
+			<div id="nitropay-home-bottom" class="nitropay" />
 			<BottomCTA/>
 			<span data-ccpa-link="1"></span>
   		</div>

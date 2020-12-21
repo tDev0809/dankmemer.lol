@@ -66,19 +66,10 @@ body {
         max-width: 100vw;
         color: white;
     }
-    .nitropay-margin {
-        margin: 10vh auto;
-    }
+
     .nitropay {
         margin: 5vh auto;
         display: flex;
-        &.ad-h  {
-            width: 728px;
-            height: 90px;
-        }
-        &.blocked {
-            display: none;
-        }
     }
 
     .blurple { color: #7289DA; }  
@@ -130,17 +121,6 @@ body {
 		}
 	}		
 } 
-  
-@media only screen and (max-width: 916px) {
-    body {
-        .nitropay {
-            &.ad-h {
-                width: 320px;
-                height: 50px
-            }
-        }
-    }  
-}
 
 @media only screen and (max-width: 454px) {
     body {

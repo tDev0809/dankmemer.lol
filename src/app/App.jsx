@@ -15,8 +15,8 @@ const Appeals  = lazy(() => import('./pages/rules/appeals'));
 const Reports  = lazy(() => import('./pages/rules/reports'));
 const Refunds  = lazy(() => import('./pages/store/refunds'));
 const Privacy  = lazy(() => import('./pages/legal/privacy'));
-const Commands = lazy(() => import('./pages/info/Commands'));
-const Faq      = lazy(() => import('./pages/info/Faq'));
+const Commands = lazy(() => import('./pages/info/commands'));
+const Faq      = lazy(() => import('./pages/info/faq'));
 
 import NavBar from './components/navbar.jsx';
 import Footer from './components/footer.jsx';
