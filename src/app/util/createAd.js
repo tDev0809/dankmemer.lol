@@ -12,7 +12,6 @@ export default (id, opts, device) => {
       "wording": "Report Ad",
       "position": "top-right"
     },
-    "demo": !LIVE_ADS,
     ...opts
   });
 }
