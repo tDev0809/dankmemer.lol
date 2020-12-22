@@ -17,6 +17,7 @@ const Refunds  = lazy(() => import('./pages/store/refunds'));
 const Privacy  = lazy(() => import('./pages/legal/privacy'));
 const Commands = lazy(() => import('./pages/info/commands'));
 const Faq      = lazy(() => import('./pages/info/faq'));
+const NotFound = lazy(() => import('./pages/singular/notfound'));
 
 import NavBar from './components/navbar.jsx';
 import Footer from './components/footer.jsx';
@@ -51,6 +52,7 @@ export default () => {
 						<Route component={() => <Landing />} path="/landing" />
 						<Route component={() => <Refunds />} path="/refunds" />
 						<Route component={() => <Privacy />} path="/privacy" />
+						<Route component={() => <NotFound />} />
 					</Suspense>
 				</Switch>
 			</div>
