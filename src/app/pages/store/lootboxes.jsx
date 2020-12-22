@@ -74,7 +74,7 @@ function Loot(props) {
 	}, [country]);
 
 	useEffect(() => {
-		if(isGift && (giftRecipient.toString().length > 16 || giftRecipient.toString().length < 21)) return setValidGift(true);
+		if(isGift && (giftRecipient.toString().length > 16 && giftRecipient.toString().length < 21)) return setValidGift(true);
 		else return setValidGift(false);
 	}, [giftRecipient]);
 
@@ -319,12 +319,14 @@ function Loot(props) {
 								setFinishState={finishState}
 							/>
 							<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>
-						</div> : 
+						</div>
+						: !props.login.loggedIn ? 
 							<div id="store-summary-actions">
 								<DiscordLogin />
 								<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes you need to login to Discord.</p>
-							</div>
-						: agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
+							</div>			
+						: '' : ''}
+						{!isGift && agreedTOS && props.login.loggedIn && constants && activeBox.price !== 0 && (Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 >= constants.MINIMUM_PURCHASE_VALUE) ?
 							<div id="store-summary-actions">
 								<PaypalButton
 									activeBox={activeBox}
