@@ -66,11 +66,16 @@ function Loot(props) {
 			setBannedUser(req3.status === 403);
 		})).catch(e => {
 			console.error(e);
-		}); 
+		});
 	}, []);
 
 	useEffect(() => {
-		setCheckAge([ "ES", "BE", "NL" ].includes(country));
+		if([ "ES", "BE", "NL" ].includes(country) && !localStorage.getItem("verified_age")) {
+			if(localStorage.getItem("verified_age") !== "verified") {
+				setCheckAge(true);
+				localStorage.setItem("verified_age", "unverified")
+			}
+		}
 	}, [country]);
 
 	useEffect(() => {
@@ -98,6 +103,11 @@ function Loot(props) {
 			}, 2000);
 		}
 	}, [isRee]);
+
+	const verifiedAge = () => {
+		localStorage.setItem("verified_age", "verified");
+		setCheckAge(false);
+	}
 
 	const peepos = Array(13).fill(0).map((_, i) => new Audio(`/static/audio/peepo${i}.mp3`));
 	const getPeepoPositioning = () => {
@@ -172,7 +182,7 @@ function Loot(props) {
 		<div id="store">
 			{bannedUser ? <BannedUser />
 			: country === "BE" ? <BlockedCountry />
-			: checkAge ? <AgeRequired checkAge={setCheckAge} />
+			: checkAge ? <AgeRequired checkAge={verifiedAge} />
 			: finishedPayment ? <EndSection success={finishedPayment} data={paymentData} /> 
 			: <>
 				<div id="store-header">
