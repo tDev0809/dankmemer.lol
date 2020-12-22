@@ -25,9 +25,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/callback', async (req, res) => {
-  if (!req.query.code) {
-    return res.status(400).send('Missing code querystring');
-  }
+  if (!req.query.code) return res.status(404).redirect('/404');
 
   const { data } = await post('https://discordapp.com/api/v7/oauth2/token', stringify({
     client_id: config.clientID,

@@ -15,10 +15,10 @@ const cardData = [
 ];
 
 export default function Landing(props) {
-	window.scroll(0,0)
 	const history = useHistory();
 
 	useEffect(() => {
+		window.scroll(0,0);
 		createAd('nitropay-landing-top', { sizes: [ [728, 90] ] }, 'desktop');
 		createAd('nitropay-landing-top', { sizes: [
 			[320, 50],
