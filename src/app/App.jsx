@@ -35,25 +35,25 @@ export default () => {
 			<div id="pseudoBody">
 				<NavBar />
 				<Switch>
-					<Suspense fallback={<div></div>}>
-						<Route exact strict component={() => <Home />} path="/" />
-						<Route component={() => <Commands />} path="/commands" />
-						<Route component={() => <Faq />} path="/faq" />
-						<Route component={() => <Staff />} path="/staff" />
-						<Route component={() => <Loot />} path="/loot" />
-						<Route component={() => <Rules />} path="/rules" />
-						<Route component={() => <About />} path="/about" />
-						<Route exact component={() => <Blogs />} path="/blogs" />
-						<Route exact component={(props) => <Blog {...props} />} path="/blogs/:blog" />
-						<Route component={() => <Appeals />} path="/appeals/" />
-						<Route component={() => <Reports />} path="/reports/" />
-						<Route component={() => <Admin />} path="/admin" />
-						<Route component={() => <Terms />} path="/terms" />
-						<Route component={() => <Landing />} path="/landing" />
-						<Route component={() => <Refunds />} path="/refunds" />
-						<Route component={() => <Privacy />} path="/privacy" />
-						<Route component={() => <NotFound />} />
-					</Suspense>
+					<Route exact strict component={() => <Suspense fallback={<div></div>}><Home /></Suspense>} path="/" />
+					<Route component={() => <Suspense fallback={<div></div>}><Commands /></Suspense>} path="/commands" />
+					<Route component={() => <Suspense fallback={<div></div>}><Faq /></Suspense>} path="/faq" />
+					<Route component={() => <Suspense fallback={<div></div>}><Staff /></Suspense>} path="/staff" />
+					<Route component={() => <Suspense fallback={<div></div>}><Loot /></Suspense>} path="/loot" />
+					<Route component={() => <Suspense fallback={<div></div>}><Rules /></Suspense>} path="/rules" />
+					<Route component={() => <Suspense fallback={<div></div>}><About /></Suspense>} path="/about" />
+					<Route exact component={() => <Suspense fallback={<div></div>}><Blogs /></Suspense>} path="/blogs" />
+					<Route exact component={(props) => <Suspense fallback={<div></div>}><Blog {...props} /></Suspense>} path="/blogs/:blog" />
+					<Route component={() => <Suspense fallback={<div></div>}><Appeals /></Suspense>} path="/appeals/" />
+					<Route component={() => <Suspense fallback={<div></div>}><Reports /></Suspense>} path="/reports/" />
+					<Route component={() => <Suspense fallback={<div></div>}><Admin /></Suspense>} path="/admin" />
+					<Route component={() => <Suspense fallback={<div></div>}><Terms /></Suspense>} path="/terms" />
+					<Route component={() => <Suspense fallback={<div></div>}><Landing /></Suspense>} path="/landing" />
+					<Route component={() => <Suspense fallback={<div></div>}><Refunds /></Suspense>} path="/refunds" />
+					<Route component={() => <Suspense fallback={<div></div>}><Privacy /></Suspense>} path="/privacy" />
+					
+					{/* Route below must be at bottom for the 404 page to only show when no other route is found */}
+					<Route component={() => <Suspense fallback={<div></div>}><NotFound /></Suspense>} path="*" />
 				</Switch>
 			</div>
 			<Footer />
