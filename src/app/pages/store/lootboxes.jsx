@@ -349,7 +349,7 @@ function Loot(props) {
 								/>
 								<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>
 							</div>
-						: !props.login.loggedIn ? 
+						: !isGift && !props.login.loggedIn ? 
 							<div id="store-summary-actions">
 								<DiscordLogin />
 								<p id="store-summary-actions-message">Before you purchase your <span className="text-highlight">shiny</span> new boxes you need to login to Discord.</p>
