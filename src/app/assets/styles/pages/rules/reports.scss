@@ -28,6 +28,18 @@
 				font-weight: 600;
 				margin-bottom: 5px;
 			}
+			table {
+				width: 100%;
+				border-collapse: separate;
+				border-spacing: 0 5px;
+				tr {
+					td:nth-child(1) {
+						vertical-align: top;
+						width: 30px;
+					}
+					margin-bottom: 10px;
+				}
+			}
 			&-radio, &-checkbox, &-text {
 				input {
 					margin-right: 10px;
@@ -36,9 +48,6 @@
 					color: #a5a5a5;
 					display: inline-block;
 					vertical-align: middle;
-					white-space: nowrap;
-					overflow: hidden;
-					text-overflow: ellipsis;
 				}
 				.fake-checkbox {
 					cursor: pointer;
