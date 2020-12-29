@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import DiscordLogin from '../../components/discordLogin';
 import 'assets/styles/pages/admin/admin.scss';
@@ -8,14 +8,16 @@ import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
 
 function Admin (props) {
+	const [shouldRender, setShouldRender] = useState(false)
 
 	useEffect(() => {
+		if(props.loggedIn && props.isAdmin) setShouldRender(true);
 		if(props.loggedIn && !props.isAdmin) return window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-	}, [props])
+	}, [props]);
 
 	return (
 		<div id="admin">
-			{!props.loggedIn ? 
+			{!shouldRender || !props.loggedIn ? 
 				<div id="admin-login">
 					<div id="admin-login-content">
 						<h1 id="admin-login-content-title">Restricted</h1>
@@ -23,7 +25,7 @@ function Admin (props) {
 						<DiscordLogin />
 					</div>
 				</div>
-			:
+			: shouldRender ?
 			<div id="admin-content">
 				<h1 id="admin-content-title">Admin Control Panel</h1>
 				<div id="admin-content-panels">
@@ -31,7 +33,7 @@ function Admin (props) {
 					{<GetPayment/>}
 				</div>
 			</div>
-			}
+			: ''}
 		</div>
 	)
 }
