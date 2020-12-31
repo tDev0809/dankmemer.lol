@@ -129,13 +129,21 @@ function Appeals(props) {
 				</div>
 				<div className="appeals-body-group">
 					<h3 className="appeals-body-group-title">Which rules did they break?</h3>
-					{rules[appealType].map((rule, i) => (
-						<div className="appeals-body-group-checkbox" key={i}>
-							<input name={`rule-${i}`} type="checkbox" onInput={(e) => updateBrokenRules(i, e.target.checked)} />
-							<div className="appeals-body-group-checkbox-num">{i + 1}</div>
-							<label htmlFor={`rule-${i}`}>{rule}</label>
-						</div>
-					))}
+					<table>
+						<tbody>
+							{rules[appealType].map((rule, i) => (
+								<tr className="appeals-body-group-checkbox" key={i}>
+									<td>
+										<input name={`rule-${i}`} type="checkbox" onInput={(e) => updateBrokenRules(i, e.target.checked)} />
+										<p className="appeals-body-group-checkbox-num">{i + 1}</p>
+									</td>
+									<td>
+										<label htmlFor={`rule-${i}`}>{rule}</label>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
 				</div>
 				<div className="appeals-body-group">
 					<h3 className="appeals-body-group-title">Please write your appeal below.</h3>

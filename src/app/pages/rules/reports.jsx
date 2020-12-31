@@ -127,13 +127,21 @@ function Reports(props) {
 				</div>
 				<div className="reports-body-group">
 					<h3 className="reports-body-group-title">Which rules did they break?</h3>
-					{rules[reportType].map((rule, i) => (
-						<div className="reports-body-group-checkbox" key={i}>
-							<input name={`rule-${i}`} type="checkbox" onInput={(e) => updateBrokenRules(i, e.target.checked)} />
-							<div className="reports-body-group-checkbox-num">{i + 1}</div>
-							<label htmlFor={`rule-${i}`}>{rule}</label>
-						</div>
-					))}
+					<table>
+						<tbody>
+							{rules[reportType].map((rule, i) => (
+								<tr className="reports-body-group-checkbox" key={i}>
+									<td>
+										<input name={`rule-${i}`} type="checkbox" onInput={(e) => updateBrokenRules(i, e.target.checked)} />
+										<p className="reports-body-group-checkbox-num">{i + 1}</p>
+									</td>
+									<td>
+										<label htmlFor={`rule-${i}`}>{rule}</label>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
 				</div>
 				<div className="reports-body-group">
 					<h3 className="reports-body-group-title">Please write your report below.</h3>
