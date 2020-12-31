@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BottomCTA from './bottomCTA';
 import 'assets/styles/components/blog.scss';
+import createAd from '../util/createAd';
 
 export default function Blog(props) {
 	const [title, setTitle] = useState('');
@@ -22,6 +23,36 @@ export default function Blog(props) {
 			setContent(blogData.content);
 			setImage(blogData.image ? blogData.image : null);
 		});
+		createAd('nitropay-blog-middle', {
+			sizes: [
+				[728, 90],
+				[970, 90]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-blog-middle', {
+			sizes: [
+				[320, 50],
+				[300, 50]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
+		createAd('nitropay-blog-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-blog-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
 	}, []);
 
 	const getDate = (date) => {
@@ -49,7 +80,9 @@ export default function Blog(props) {
 			<div id="blog-image">
 				<img src={image} alt={title + "'s image."} />
 			</div> : ''}
+			<div id="nitropay-blog-middle" class="nitropay" />
 			<div id="blog-content" dangerouslySetInnerHTML={{ __html: content }}/>
+			<div id="nitropay-blog-bottom" class="nitropay" />
 			<BottomCTA/>
 		</div>
 	);

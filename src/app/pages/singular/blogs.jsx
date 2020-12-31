@@ -33,6 +33,22 @@ export default function Blogs() {
 			],
 			renderVisibleOnly: true
 		}, 'mobile');
+		createAd('nitropay-blogs-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-blogs-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
 	}, [])
 
 	return (
@@ -59,6 +75,7 @@ export default function Blogs() {
 				</div>
 			</section>
 			<BottomCTA/>
+			<div id="nitropay-blogs-bottom" class="nitropay" />
 		</div>
 	);
 }
