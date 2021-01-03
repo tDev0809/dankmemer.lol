@@ -12,6 +12,15 @@ export default function Home () {
 	useEffect(() => {
 		window.scroll(0,0)
 
+		createAd('nitropay-home-top', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
+
 		createAd('nitropay-home-middle', {
 			sizes: [ [728, 90] ],
 			renderVisibleOnly: true
@@ -63,6 +72,7 @@ export default function Home () {
 							<circle cx="560" cy="450" r="25" fill="#242424"/>
 						</svg>
 					</div>
+				<div id="nitropay-home-top" class="nitropay" />
     		</div>
     		<section>
       			<div className="text-area">
