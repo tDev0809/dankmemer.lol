@@ -73,6 +73,7 @@ router.get('/callback', async (req, res) => {
   
   req.session.user = {
     ...user,
+    isModerator: config.admins.includes(user.id),
     isAdmin: config.admins.includes(user.id),
     token: encrypt(user.id)
   };

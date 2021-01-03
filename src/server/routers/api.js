@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { writeFileSync } = require('fs');
 const keys = require('../../../keys.json');
 const adminRouter = require('./admin.js');
+const modsRouter = require('./mods.js');
 const config = require('../../../config.json');
 const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
@@ -155,6 +156,7 @@ router.get('/discount', async (req, res) => {
 })
 
 router.use('/admin', adminRouter);
+router.use('/mods', modsRouter);
 
 router.get('/blogs', (req, res) =>
   res.json(blogs.map(blog => ({

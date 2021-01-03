@@ -1,0 +1,229 @@
+#control {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    &-login {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 40px);
+
+        &-content {
+            background: #1e1e1e;
+            width: calc(485px - 120px);
+            padding: 60px 50px;
+
+            &-title {
+                font-size: 50px;
+                font-family: 'Montserrat', sans-serif;
+                margin-bottom: 20px;
+            }
+
+            &-body {
+                font-size: 16px;
+                margin-bottom: 50px;
+            }
+        }
+    }
+    &-admin {
+        margin: 10vh 5vw 0 0vw;
+        width: 50vw;
+        &-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #1a1a1a;
+            &-title {
+                font-size: 60px;
+            }
+            &-note {
+                color: #a5a5a5;
+                font-size: 18px;
+                width: 80%;
+                margin-bottom: 40px;
+            }
+        }
+        &-panels {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            row-gap: 20px;
+            .admin-panel {
+                min-height: 215px;
+                width: 230px;
+                padding: 20px 30px;
+                background: #1a1a1a;
+                box-sizing: border-box;
+                position: relative;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                text-align: left;
+                label {
+                    margin-right: 10px;
+                }
+                select {
+                    appearance: none;
+                    background: rgba(0, 0, 0, 0.37);
+                    outline: none;
+                    border: none;
+                    color: #ffffff;
+                    font-size: 14px;
+                    font-family: 'Inter', sans-serif;
+                    padding: 5px;
+                    position: relative;
+                    option {
+                        background:rgba(0, 0, 0, .82);
+                    }
+                }
+                input[type=text] {
+                    background: rgba(0, 0, 0, 0.37);
+                    width: 100%;
+                    padding: 10px;
+                    margin: 10px 0;
+                    color: #ffffff;
+                    border: none;
+                    font-size: 14px;
+                    font-family: 'Inter', sans-serif;
+                    box-sizing: border-box;
+                }
+
+                &-button {
+                    background: #39923c;
+                    color: #ffffff;
+                    margin-top: 10px;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    display: block;
+                    width: max-content;
+                    transition: box-shadow ease-in-out .3s;
+                    user-select: none;
+
+                    &:hover {
+                        cursor: pointer;
+                        box-shadow: 0px 2px 20px rgba(57, 146, 60, 0.7),
+                            inset 0px 0px 5px rgba(4, 214, 9, 0.3);
+                    }
+                }
+            }
+        }
+
+    }
+    &-mods {
+        margin: 10vh 5vw 0 0vw;
+        width: 50vw;
+        &-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #1a1a1a;
+            &-title {
+                font-size: 60px;
+            }
+            &-note {
+                color: #a5a5a5;
+                font-size: 18px;
+                width: 80%;
+                margin-bottom: 40px;
+            }
+        }
+        &-checker {
+            &-title {
+                font-size: 25px;
+            }
+            &-note {
+                color: #a5a5a5;
+                font-size: 16px;
+                width: 80%;
+                margin-bottom: 20px;
+            }
+            &-input {
+                label {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-right: 10px;
+                }
+                input {
+                    border: 1px solid #1a1a1a;
+					background: rgba(0,0,0,0.6);
+					height: 16px;
+					width: 165px;
+					padding: 5px;
+					margin-right: 10px;
+					color: #ffffff;
+					border: none;
+					font-size: 14px;
+					font-family: 'Inter', sans-serif;
+					&:focus {
+						border: 1px solid #39923c;
+						outline: none;
+					}
+                }
+            }
+            &-actions {
+                &-submit {
+                    user-select: none;
+                    cursor: pointer;
+                    background: #39923c;
+                    color: #ffffff;
+                    margin-top: 10px;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    display: block;
+                    width: max-content;
+                    transition: box-shadow ease-in-out .3s;
+                    &:hover {
+                        box-shadow: 0px 0px 10px rgba(57, 146, 60, 0.7),
+                                    inset 0px 0px 5px rgba(4, 214, 9, 0.3);
+                    }    
+                }
+            }
+        }
+    }
+    .staff-card {
+        position: relative;
+        text-align: center;
+        width: 250px;
+        height: 315px;
+        background:#1a1a1a;
+        border-radius: 4px;
+        padding: 12px 15px;
+        margin-top: 11vh;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .82),
+                      0 1px 4px rgba(0, 0, 0, .1);
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    #control {
+        &-admin {
+            margin: 10vh 0 0 0;
+            width: 50vw;
+            &-panels {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                flex-wrap: wrap;
+                row-gap: 20px;
+                .admin-panel {
+                    &:not(:last-child) {
+                        margin-right: 0!important;
+                    }
+                }
+            }
+        }        
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+    #control {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        &-admin-header, &-mods-header, &-mods-checker {
+            &-note {
+                width: 100%;
+            }
+        }
+    }
+}

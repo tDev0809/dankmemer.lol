@@ -151,10 +151,11 @@
 					top: 30px;
 					right: 0;
 					background: #1a1a1a;
+					max-width: max-content;
 					min-width: 100px;
-					// max-width: 400px;
 					padding: 10px;
 					border-radius: 5px;
+					z-index: 99999;
 					&.active {
 						display: flex;
 						flex-wrap: wrap;
@@ -187,19 +188,17 @@
 					}
 					&-actions {
 						margin-top: 10px;
-						text-align: center;
+						display: block;
 						& > * {
 							font-size: 15px;
 							cursor: pointer;						
-							& > * {
-								display: inline-block;
-								vertical-align: middle;
-							}
+							display: block;
 							span {
 								margin-right: 5px;
 							}
 						}
 						&-logout {
+							margin-top: 5px;
 							transition: color ease-in-out .1s;
 							&:hover {
 								color: #ff5f5f;
