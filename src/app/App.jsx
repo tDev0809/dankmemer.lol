@@ -4,7 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 const Home     = lazy(() => import('./pages/singular/home'));
 const Loot     = lazy(() => import('./pages/store/lootboxes'));
 const Rules    = lazy(() => import('./pages/rules/rules'));
-const Admin    = lazy(() => import('./pages/admin/admin'));
+const Admin    = lazy(() => import('./pages/control/admin'));
+const Mods     = lazy(() => import('./pages/control/mods'));
 const Blog     = lazy(() => import('./components/blog'));
 const Blogs    = lazy(() => import('./pages/singular/blogs'));
 const About    = lazy(() => import('./pages/singular/about'));
@@ -47,6 +48,7 @@ export default () => {
 					<Route component={() => <Suspense fallback={<div></div>}><Appeals /></Suspense>} path="/appeals/" />
 					<Route component={() => <Suspense fallback={<div></div>}><Reports /></Suspense>} path="/reports/" />
 					<Route component={() => <Suspense fallback={<div></div>}><Admin /></Suspense>} path="/admin" />
+					<Route component={() => <Suspense fallback={<div></div>}><Mods /></Suspense>} path="/mods" />
 					<Route component={() => <Suspense fallback={<div></div>}><Terms /></Suspense>} path="/terms" />
 					<Route component={() => <Suspense fallback={<div></div>}><Landing /></Suspense>} path="/landing" />
 					<Route component={() => <Suspense fallback={<div></div>}><Refunds /></Suspense>} path="/refunds" />

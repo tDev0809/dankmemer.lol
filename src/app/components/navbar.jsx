@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter, NavLink, Link } from 'react-router-dom';
 import 'assets/styles/components/navbar.scss';
 import parseTime from '../util/parseTime.js';
 
 
-const Navbar = ({ discount, login: { loggedIn, username, discriminator, avatar, id }}) => {
+const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, discriminator, avatar, id }}) => {
 	const [navExpanded, setNavExpanded] = useState(false);
 	const [navDropdown, setNavDropdown] = useState(false);
 
@@ -128,7 +128,8 @@ const Navbar = ({ discount, login: { loggedIn, username, discriminator, avatar, 
 											</div>
 										</div>
 										<div id="navbar-account-dropdown-actions">
-											<a id="navbar-account-dropdown-actions-logout" href="/oauth/logout">Logout</a>
+											{loggedIn && (isAdmin || isModerator) ? <Link className="navbar-account-dropdown-action" to={isAdmin ? "/admin" : "/mods"}>Control panel</Link> : ''}
+											<Link id="navbar-account-dropdown-actions-logout" to="/oauth/logout">Logout</Link>
 										</div>
 									</div>
 								: ''}	

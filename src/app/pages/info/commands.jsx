@@ -60,7 +60,7 @@ export default function Commands(props) {
 	useEffect(() => {
 		if(search.length >= 1) {
 			Object.values(commandsFile).flat().filter(command => {
-				if(command.t.some(trigger => trigger.includes(search)) || command.d.toLowerCase().includes(search)) {
+				if(command.t.some(trigger => trigger.includes(search.toLowerCase())) || command.d.toLowerCase().includes(search.toLowerCase())) {
 					setCommands(oldCommands => [...oldCommands, command]);
 				}
 			})

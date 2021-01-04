@@ -60,7 +60,7 @@ export default function FAQ(props) {
 	useEffect(() => {
 		if(search.length >= 1) {
 			Object.values(faqFile).flat().filter(question => {
-				if(question.q.toLowerCase().includes(search) || question.a.toLowerCase().includes(search)) {
+				if(question.q.toLowerCase().includes(search.toLowerCase()) || question.a.toLowerCase().includes(search.toLowerCase())) {
 					setQuestions(oldQuestions => [...oldQuestions, question]);
 				}
 			})
