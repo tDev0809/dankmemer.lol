@@ -1,20 +1,25 @@
 const userRules = [
-  "No userbots, spamming, auto-typers, or macros",
-  "No sharing exploits, or abusing them",
-  "No coin storage accounts/farming accounts (alts)",
-  "Do not use the bot for racism, homophobia, any other type of targeted hate",
+  "Userbot, Autotyper, Macro",
+  "Spamming",
+  "Sharing exploits",
+  "Abusing exploits",
+  "Racism or other form of targeted hate",
+  "Causing drama/Witch hunting",
   "Using the bot for advertising",
-  "Coins are not to be used in scams or invite servers.",
-  "Selling meme coins or trading for real life currency in any way",
-  "Other/NA"
+  "Real Money Trading",
+  "Scamming",
+  "Discord TOS",
+  "Other"
 ];
 
 const serverRules = [
   "Server has userbots",
+  "Rule breaking Giveaway Requirements or Bot Usage Requirements",
   "Server is trading invites/nitro for currency",
-  "Entire server is knowingly breaking bot rules",
+  "Server is knowingly breaking bot rules",
   "Server has alts",
-  "Other/NA"
+  "Server is witch-hunting or causing drama around Dank Memer",
+  "Other"
 ];
 
 export default {

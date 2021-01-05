@@ -1,9 +1,23 @@
 [
   {
+    "filename": "new-rules.md",
+    "name": "New Year, New Rules",
+    "date": 1609811753705,
+    "desc": "Today we have updated our bot's rules. These affect you if you interact with the bot in ANY way. This article explains what has changed.",
+    "author": "Melmsie"
+  },
+  {
     "filename": "2020-in-conclusion.md",
     "name": "2020: In Conclusion",
     "date": 1609448506308,
     "desc": "We take a short look back at 2020, forward to 2021, and give a quick goodbye to a terrible year.",
+    "author": "Melmsie"
+  },
+  {
+    "filename": "family-friendly.md",
+    "name": "Introducing: Family Friendly Mode",
+    "date": 1606263906000,
+    "desc": "We rolled out an experimental new feature, for those servers who can't work with the more adult features our bot has to offer.",
     "author": "Melmsie"
   },
   {

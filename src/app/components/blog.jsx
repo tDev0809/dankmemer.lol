@@ -23,20 +23,6 @@ export default function Blog(props) {
 			setContent(blogData.content);
 			setImage(blogData.image ? blogData.image : null);
 		});
-		createAd('nitropay-blog-middle', {
-			sizes: [
-				[728, 90],
-				[970, 90]
-			],
-			renderVisibleOnly: true
-		}, 'desktop');
-		createAd('nitropay-blog-middle', {
-			sizes: [
-				[320, 50],
-				[300, 50]
-			],
-			renderVisibleOnly: true
-		}, 'mobile');
 		createAd('nitropay-blog-bottom', {
 			sizes: [
 				[728, 90],
@@ -80,10 +66,9 @@ export default function Blog(props) {
 			<div id="blog-image">
 				<img src={image} alt={title + "'s image."} />
 			</div> : ''}
-			<div id="nitropay-blog-middle" class="nitropay" />
 			<div id="blog-content" dangerouslySetInnerHTML={{ __html: content }}/>
-			<div id="nitropay-blog-bottom" class="nitropay" />
 			<BottomCTA/>
+			<div id="nitropay-blog-bottom" class="nitropay" />
 		</div>
 	);
 }
