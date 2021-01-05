@@ -20,25 +20,23 @@ export default function Rules() {
 					<h3 className="rules-container-item-title">Rule One</h3>
 					<p className="rules-container-item-subtitle">User-bots, Spamming and Macros</p>
 					<p className="rules-container-item-body">
-						Usage of user-bots, macros, scripts or anything else enabling automation of commands is strictly forbidden.
-						In addition to this, massive amounts of spam is not allowed and will be punished with equal severity.
+					Usage of user-bots, macros, scripts, auto-typers or anything else enabling automation of commands is strictly forbidden. In addition to this, massive amounts of spam is not allowed and will be punished with equal severity.
 					</p>
 				</div>
 				<div className="rules-container-item">
 					<h3 className="rules-container-item-title">Rule Two</h3>
 					<p className="rules-container-item-subtitle">Sharing Exploits</p>
 					<p className="rules-container-item-body">
-						Sharing exploits and or bugs with other users is forbidden. Please report all exploits and bugs to staff on
+						Sharing exploits or exploitative bugs with other users is forbidden. Please report all exploits and bugs to staff on
 						the <a href="https://discord.gg/meme" target="_blank" rel="noopener noreferrer">Dank Memer Support Server</a> so
 						that we can fix it as soon as possible.
 					</p>
 				</div>
 				<div className="rules-container-item">
 					<h3 className="rules-container-item-title">Rule Three</h3>
-					<p className="rules-container-item-subtitle">Coin Storage Accounts or Farming Accounts</p>
+					<p className="rules-container-item-subtitle">Giveaway Requirements or Bot Usage Requirements in Your Server</p>
 					<p className="rules-container-item-body">
-						Usage of alternate accounts ("alts") to form or store coins is forbidden. This also includes giving coins to real
-						people who don't use the currency system.
+						You should not lock the bot, or giveaways for the bot, behind paywalls. This means stuff like patreon roles, donor roles (with irl money), etc, is forbidden for giveaway requirements or role locks. The only exception to this is boosters, we will allow you to lock things behind being a booster for your server. Things like level locks using external bots is perfectly fine.
 					</p>
 				</div>
 				<div className="rules-container-item">
@@ -53,19 +51,25 @@ export default function Rules() {
 					<h3 className="rules-container-item-title">Rule Five</h3>
 					<p className="rules-container-item-subtitle">Advertisement</p>
 					<p className="rules-container-item-body">
-						Usage of Dank Memer to advertise or promote anything will result in a punishment. This includes other Discord servers.
+						Usage of Dank Memer to advertise or promote anything will result in a punishment. This includes other Discord servers. Giving our currency in exchange for invites to your server is also forbidden.
 					</p>
 				</div>
 				<div className="rules-container-item">
 					<h3 className="rules-container-item-title">Rule Six</h3>
-					<p className="rules-container-item-subtitle">Scams, Sales and Trading</p>
+					<p className="rules-container-item-subtitle">Real Money Trading</p>
 					<p className="rules-container-item-body">
-						Dank Memer's currency, along with any other feature of the bot, used with intent to scam, trade or sell anything is
-						forbidden. For example; Giving meme coins in exchange for a user to advertise your Discord server.
+						Dank Memer's currency is not to be traded for real money or discord nitro. Buying anything with real money outside of our patreon and website, will get you a ban.
 					</p>
 				</div>
 				<div className="rules-container-item">
 					<h3 className="rules-container-item-title">Rule Seven</h3>
+					<p className="rules-container-item-subtitle">Etiquette</p>
+					<p className="rules-container-item-body">
+						Starting harmful rumors about the bot, causing unnecessary drama within our servers about the bot, or witch hunting staff members are all ban worthy behaviors.
+					</p>
+				</div>
+				<div className="rules-container-item">
+					<h3 className="rules-container-item-title">Rule Eight</h3>
 					<p className="rules-container-item-subtitle">Discord Terms of Service and Usage Guidelines</p>
 					<p className="rules-container-item-body">
 						Through usage of Dank Memer, you accept <Link to="/terms">Dank Memer's Terms of Service</Link> and <Link to="/privacy">Privacy Policy</Link>. Additionally, you accept Discord's <a href="https://discord.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> and <a href="https://discord.com/guidelines" target="_blank" rel="noopener noreferrer">Community Guidelines</a>,

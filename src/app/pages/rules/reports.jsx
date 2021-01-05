@@ -100,7 +100,7 @@ function Reports(props) {
 		<div id="reports">
 			<div id="reports-header">
 				<h1 id="reports-header-title">Report a {reportType}</h1>
-				<p className="reports-header-message">Please provide as much detail as possible when submitting your report.<br/>•</p>
+				<p className="reports-header-message">Please provide as much detail as possible when submitting your report.<br/></p>
 				<p className="reports-header-message">We are unable to provide details on the punishment from this report.</p>
 			</div>
 			<div id="reports-body">

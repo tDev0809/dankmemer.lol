@@ -99,7 +99,7 @@ function Appeals(props) {
 		<div id="appeals">
 			<div id="appeals-header">
 				<h1 id="appeals-header-title">Appeal a {appealType} ban</h1>
-				<p className="appeals-header-message">Please provide as much detail as possible when submitting your appeal.<br/>•</p>
+				<p className="appeals-header-message">Please provide as much detail as possible when submitting your appeal.<br/></p>
 				<p className="appeals-header-message">Appealing does not guarantee a reprieval of the punishment.</p>
 			</div>
 			<div id="appeals-body">
@@ -110,21 +110,28 @@ function Appeals(props) {
 							<span className={appealType === 'permanent' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
 							<input name="permanent-appeal" type="radio" checked={appealType === 'permanent'} onClick={() => setAppealType('permanent') } />
 						</label>
-						<label>Permanent bot ban</label>
+						<label>Bot Ban</label>
 					</div>
 					<div className="appeals-body-group-radio">
 						<label className="fake-checkbox">
 							<span className={appealType === 'temporary' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
 							<input name="temporary-appeal" type="radio" checked={appealType === 'temporary'} onClick={() => setAppealType('temporary') } />
 						</label>
-						<label>Temporary bot ban</label>
+						<label>Bot Blacklist</label>
 					</div>
 					<div className="appeals-body-group-radio">
 						<label className="fake-checkbox">
-							<span className={appealType === 'server' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
-							<input name="server-appeal" type="radio" checked={appealType === 'server'} onClick={() => setAppealType('server') } />
+							<span className={appealType === 'community' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
+							<input name="community-appeal" type="radio" checked={appealType === 'community'} onClick={() => setAppealType('community') } />
 						</label>
-						<label>Support server ban</label>
+						<label>Community Server Ban</label>
+					</div>
+					<div className="appeals-body-group-radio">
+						<label className="fake-checkbox">
+							<span className={appealType === 'support' ? "appeals-body-group-radio-button active" : "appeals-body-group-radio-button"}/>
+							<input name="support-appeal" type="radio" checked={appealType === 'support'} onClick={() => setAppealType('support') } />
+						</label>
+						<label>Support Server Ban</label>
 					</div>
 				</div>
 				<div className="appeals-body-group">
