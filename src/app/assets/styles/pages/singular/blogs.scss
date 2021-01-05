@@ -162,3 +162,24 @@
 		}
 	}
 }
+
+@media only screen and (max-width: 480px) {
+	#blogs {
+		&-header {
+			width: 80vw;
+		}
+		.blogs-section {
+			width: 80vw!important;
+			#blogs-section-older {
+				a > .blog-older {
+					.blog-older-description {
+						display: none;
+					}
+				}
+			}
+		}
+		.blogs-section:nth-child(2) {
+			max-width: 400px!important;
+		}
+	}
+}

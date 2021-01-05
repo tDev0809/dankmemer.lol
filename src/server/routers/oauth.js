@@ -86,6 +86,7 @@ router.get('/state', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
+  console.log("logout")
   req.session.destroy();
   res.redirect('/');
 });
