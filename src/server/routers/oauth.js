@@ -1,94 +1,113 @@
 const { encode, stringify } = require('querystring');
 const { get, post } = require('axios');
 const { Router } = require('express');
-const { encrypt, decrypt } = require ('../util/crypt.js');
+const { encrypt, decrypt } = require('../util/crypt.js');
 const db = require('../util/db.js');
 
 const config = require('../../../config.json');
 const router = Router();
 
-const OAuthScope = [
-  'identify',
-  'email'
-].join(' ');
+const OAuthScope = [ 'identify', 'email' ].join(' ');
 const OAuthData = encode({
-  scope: 'identify',
-  response_type: 'code',
-  client_id: config.clientID,
-  redirect_uri: `${config.domain}/oauth/callback`,
-  scope: OAuthScope
+	scope: 'identify',
+	response_type: 'code',
+	client_id: config.clientID,
+	redirect_uri: `${config.domain}/oauth/callback`,
+	scope: OAuthScope
 });
 
 router.get('/login', (req, res) => {
-  req.session.redirect = req.query.redirect;
-  res.redirect(`https://discordapp.com/oauth2/authorize?${OAuthData}`);
+	req.session.redirect = req.query.redirect;
+	res.redirect(`https://discordapp.com/oauth2/authorize?${OAuthData}`);
 });
 
 router.get('/callback', async (req, res) => {
-  if (!req.query.code) return res.status(404).redirect('/404');
+	if (!req.query.code) return res.status(404).redirect('/404');
 
-  const { data } = await post('https://discordapp.com/api/v7/oauth2/token', stringify({
-    client_id: config.clientID,
-    client_secret: config.clientSecret,
-    grant_type: 'authorization_code',
-    code: req.query.code,
-    redirect_uri: `${config.domain}/oauth/callback`
-  }), {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  });
+	const { data } = await post('https://discordapp.com/api/v7/oauth2/token', stringify({
+		client_id: config.clientID,
+		client_secret: config.clientSecret,
+		grant_type: 'authorization_code',
+		code: req.query.code,
+		redirect_uri: `${config.domain}/oauth/callback`
+	}), {
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		}
+	});
 
-  if (data.scope !== OAuthScope) {
-    return res.status(403).send(`Expected scope "${OAuthScope}" but received scope "${data.scope}"`);
-  }
+	if (data.scope !== OAuthScope) return res.status(403).send(`Expected scope "${OAuthScope}" but received scope "${data.scope}"`);
 
-  const { data: user } = await get('https://discordapp.com/api/v7/users/@me', {
-    headers: {
-      'Authorization': `Bearer ${data.access_token}`
-    }
-  });
+	const { data: user } = await get('https://discordapp.com/api/v7/users/@me', {
+		headers: {
+			'Authorization': `Bearer ${data.access_token}`
+		}
+	});
 
-  if (user.email === null) {
-    return res.status(400).send('Please verify your Discord\'s account E-mail before logging in.');
-  }
+	if (user.email === null) return res.status(400).send('Please verify your Discord\'s account E-mail before logging in.');
 
-  const exists = await db.collection('users').countDocuments({ _id: user.id });
-  if (exists) {
-    db.collection('users').updateOne({ _id: user.id }, {
-      $set: {
-        email: user.email
-      },
-      $addToSet: {
-        ip: req.headers[ 'cf-connecting-ip' ]
-      }
-    });
-  } else {
-    db.collection('users').insertOne({
-      _id: user.id,
-      email: user.email,
-      ip: [ req.headers[ 'cf-connecting-ip' ] ]
-    });
-  }
-  
-  req.session.user = {
-    ...user,
-    isModerator: config.admins.includes(user.id),
-    isAdmin: config.admins.includes(user.id),
-    token: encrypt(user.id)
-  };
+	const exists = await db.collection('users').countDocuments({ _id: user.id });
+	if (exists) {
+		db.collection('users').updateOne({ _id: user.id }, {
+			$set: {
+				email: user.email
+			},
+			$addToSet: {
+				ip: req.headers['cf-connecting-ip']
+			}
+		});
+	} else {
+		db.collection('users').insertOne({
+			_id: user.id,
+			email: user.email,
+			ip: [req.headers['cf-connecting-ip']]
+		});
+	}
 
-  res.redirect(req.session.redirect || '/');
+	const staffExists = await db.collection('staff').countDocuments({ _id: user.id });
+	if (!staffExists && config.mods.includes(user.id)) {
+		try {
+			await db.collection('staff').insertOne({
+				_id: user.id,
+				avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
+				category: 'Moderators', // Assuming that all new logins are moderators
+				name: user.username,
+				about: "",
+				social: {}
+			})
+		} catch (e) {
+			return;
+		}
+	} else {
+		try {
+			await db.collection('staff').updateOne({ _id: user.id }, {
+				$set: {
+					avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
+					name: user.username
+				}
+			});
+		} catch (e) {
+			return;
+		}
+	}
+
+	req.session.user = {
+		...user,
+		isModerator: config.mods.includes(user.id),
+		isAdmin: config.admins.includes(user.id),
+		token: encrypt(user.id)
+	};
+
+	res.redirect(req.session.redirect || '/');
 });
 
 router.get('/state', (req, res) => {
-  return res.json(req.session.user || null);
+	return res.json(req.session.user || null);
 });
 
 router.get('/logout', (req, res) => {
-  console.log("logout")
-  req.session.destroy();
-  res.redirect('/');
+	req.session.destroy();
+	res.redirect('/');
 });
 
 module.exports = router;

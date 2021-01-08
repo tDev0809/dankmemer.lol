@@ -8,10 +8,9 @@ import 'assets/styles/pages/control/control.scss';
 import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
 
+import * as axios from 'axios';
 import StaffCard from '../../components/staff';
-import users from '../singular/data/users.json';
 import images from '../singular/util/images.js';
-import flatten from '../../util/flattenObject.js';
 
 function Admin (props) {
 	const [shouldRender, setShouldRender] = useState(false)
@@ -26,11 +25,22 @@ function Admin (props) {
 		if(props.loggedIn && !props.isModerator) return window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 		if(!props.loggedIn) return;
-		let user = flatten(users).filter(u => u.name === props.username)[0];
-		setAdminUsername(user.name);
-		setAdminBiography(user.about);
-		setAdminImage(images[user.name.toLowerCase().replace(/ /g, '-')]);
-		setAdminSocials(user.social)
+		axios(`/api/staff?id=${props.id}`).then(({ data: user }) => {
+			user = user[0];
+			setAdminUsername(user.name);
+			setAdminBiography(user.about);
+			setAdminImage(user.avatar);
+			setAdminSocials(user.social)
+		}).catch(() => 			
+			toast.dark("Your staff card data was not able to be shown.", {
+			position: "top-right",
+			autoClose: 10000,
+			hideProgressBar: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			toastId: 'noStaff'
+		}));
 	}, [props]);
 
 	return (
@@ -60,7 +70,7 @@ function Admin (props) {
 					name={adminUsername}
 					about={adminBiography}
 					social={adminSocials}
-					picture={adminImage}
+					avatar={adminImage}
 				/>
 			: ''}
 			<ToastContainer />

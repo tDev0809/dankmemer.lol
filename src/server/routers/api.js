@@ -185,4 +185,26 @@ router.get('/blogs/:blogID', (req, res) => {
     : res.status(404).send(`Blog "${blogID}" not found`);
 });
 
+router.get('/staff', async (req, res) => {
+	try {
+		let result = {};
+		if(req.query.id) result = await db.collection('staff').find({ _id: req.query.id }).toArray();
+		else {
+			const staffMembers = await db.collection('staff').find({}).toArray();
+			for (const staffMember of staffMembers) {
+				if (result[staffMember.category]) {
+					result[staffMember.category].push(staffMember);
+				} else {
+					result[staffMember.category] = [staffMember];
+				}
+			}
+		}
+		if(!result) res.status(404).json({ message: 'No staff members were found.' })
+		return res.status(200).json(result);
+	} catch (e) {
+		console.error(e);
+		return res.status(500).json({ message: 'Internal server error' });
+	}
+});
+
 module.exports = router;

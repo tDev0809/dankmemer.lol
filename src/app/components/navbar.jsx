@@ -129,7 +129,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 										</div>
 										<div id="navbar-account-dropdown-actions">
 											{loggedIn && (isAdmin || isModerator) ? <Link className="navbar-account-dropdown-action" to={isAdmin ? "/admin" : "/mods"}>Control panel</Link> : ''}
-											<a id="navbar-account-dropdown-actions-logout" to="/oauth/logout">Logout</a>
+											<a id="navbar-account-dropdown-actions-logout" href="/oauth/logout">Logout</a>
 										</div>
 									</div>
 								: ''}	
