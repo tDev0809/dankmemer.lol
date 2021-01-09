@@ -152,7 +152,7 @@ export default function FAQ(props) {
 								index={i}
 								prefix={prefix}
 								name={command.q}
-								description={command.a.replaceAll("pls ", prefix)}
+								description={command.a.replace(/pls /g, prefix)}
 								expanded={expandedIndex === questions.indexOf(command)}
 								setExpanded={expand}/>
 						))}
