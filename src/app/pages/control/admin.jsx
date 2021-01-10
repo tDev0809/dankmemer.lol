@@ -10,7 +10,8 @@ import GetPayment from './panels/GetPayment';
 
 import * as axios from 'axios';
 import StaffCard from '../../components/staff';
-import images from '../singular/util/images.js';
+import EditStaff from '../../components/editStaff';
+import createModal from '../../components/modal/index';
 
 function Admin (props) {
 	const [shouldRender, setShouldRender] = useState(false)
@@ -33,14 +34,14 @@ function Admin (props) {
 			setAdminSocials(user.social)
 		}).catch(() => 			
 			toast.dark("Your staff card data was not able to be shown.", {
-			position: "top-right",
-			autoClose: 10000,
-			hideProgressBar: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-			toastId: 'noStaff'
-		}));
+				position: "top-right",
+				autoClose: 10000,
+				hideProgressBar: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				toastId: 'noStaff'
+			}));
 	}, [props]);
 
 	return (
@@ -65,13 +66,16 @@ function Admin (props) {
 				</div>
 			</div>
 			: ''}
-			{shouldRender ? 
-				<StaffCard 
-					name={adminUsername}
-					about={adminBiography}
-					social={adminSocials}
-					avatar={adminImage}
-				/>
+			{shouldRender ?
+				<div id="staff-card">
+					<StaffCard 
+						name={adminUsername}
+						about={adminBiography}
+						social={adminSocials}
+						avatar={adminImage}
+					/>
+					<span id="edit-staff-card" onClick={() => createModal(<EditStaff name={adminUsername} avatar={adminImage} social={adminSocials} about={adminBiography} />)}>Edit your staff card</span>
+				</div>
 			: ''}
 			<ToastContainer />
 		</div>

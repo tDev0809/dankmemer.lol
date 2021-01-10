@@ -65,7 +65,7 @@ router.get('/callback', async (req, res) => {
 	}
 
 	const staffExists = await db.collection('staff').countDocuments({ _id: user.id });
-	if (!staffExists && config.mods.includes(user.id)) {
+	if (!staffExists && (config.mods.includes(user.id)) || config.admins.includes(user.id)) {
 		try {
 			await db.collection('staff').insertOne({
 				_id: user.id,

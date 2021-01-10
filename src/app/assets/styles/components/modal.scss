@@ -13,9 +13,9 @@
   height: 100%;
 
   .modal-child {
-    background: #23272a;
+    background: #292929;
     position: absolute;
-    min-width: 50%;
+    max-width: 985px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -23,7 +23,7 @@
     color: white !important;
     border-radius: 5px;
     max-height: 80%;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     &::-webkit-scrollbar {
       display: none;

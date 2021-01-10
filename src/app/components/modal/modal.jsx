@@ -1,5 +1,6 @@
 import React from 'react';
 import Backdrop from './backdrop';
+import { ToastContainer } from 'react-toastify';
 
 export default class Modal extends React.Component {
   render () {
@@ -10,6 +11,7 @@ export default class Modal extends React.Component {
             {this.props.component}
           </div>
         </div>
+        <ToastContainer />
       </Backdrop>
     );
   }

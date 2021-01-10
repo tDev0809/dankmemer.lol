@@ -7,8 +7,8 @@ import DiscordLogin from '../../components/discordLogin';
 import 'assets/styles/pages/control/control.scss';
 
 import StaffCard from '../../components/staff';
-// import users from '../singular/data/users.json';
-import images from '../singular/util/images.js';
+import createModal from '../../components/modal/index';
+import EditStaff from '../../components/editStaff';
 
 function Mods(props) {
 	const [shouldRender, setShouldRender] = useState(false);
@@ -101,12 +101,15 @@ function Mods(props) {
 			</div>
 			: ''}
 			{shouldRender ? 
-				<StaffCard 
-					name={modUsername}
-					about={modBiography}
-					social={modSocials}
-					avatar={modImage}
-				/>
+				<div id="staff-card">
+					<StaffCard 
+						name={modUsername}
+						about={modBiography}
+						social={modSocials}
+						avatar={modImage}
+					/>
+					<span id="edit-staff-card" onClick={() => createModal(<EditStaff name={modUsername} avatar={modImage} social={modSocials} about={modBiography} />)}>Edit your staff card</span>
+				</div>
 			: ''}
 			<ToastContainer />
 		</div>

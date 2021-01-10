@@ -9,6 +9,20 @@ router.use((req, res, next) => {
   	next();
 });
 
+router.put('/staff', async(req, res) => {
+	try {
+		await db.collection('staff').updateOne({ _id: req.session.user.id }, {
+			$set: {
+				about: req.body.about,
+				social: req.body.socials
+			}
+		});
+		return res.status(200).send();
+	} catch (e) {
+		return res.status(500).send();
+	}
+});
+
 router.post('/ban', (req, res) => {
   	db.collection('bans').insertOne(req.body);
   	res.status(200).send();
