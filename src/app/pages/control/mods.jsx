@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DiscordLogin from '../../components/discordLogin';
 import 'assets/styles/pages/control/control.scss';
 
+import * as axios from 'axios';
 import StaffCard from '../../components/staff';
-import createModal from '../../components/modal/index';
 import EditStaff from '../../components/editStaff';
+import createModal from '../../components/modal/index';
 
 function Mods(props) {
 	const [shouldRender, setShouldRender] = useState(false);

@@ -46,17 +46,18 @@ export default function EditStaff({ name, avatar, social, about }) {
             <div id="edit-staff-modal-content">
                 <div id="edit-staff-modal-content-preview">
                     <StaffCard name={name} avatar={avatar} social={tempSocial} about={tempAbout}/>
-                    <span id="edit-staff-modal-content-preview-save" onClick={saveChanges}>Save changes</span>
+                    <span id="edit-staff-modal-content-preview-save" className="hide-mobile" onClick={saveChanges}>Save changes</span>
                 </div>
                 <div id="edit-staff-modal-content-info">
                     <textarea defaultValue={about} onChange={(e) => setTempAbout(e.target.value)}></textarea>
                     {Object.entries(socials).map(([socialName, socialLink], i) => (
                         <div className="input-group" key={i}>
                             <div className="input-group-image" style={{ backgroundImage: `url("${socialLink}")` }}></div>
-                            <input defaultValue={social[socialName] ? social[socialName] : ''} onChange={(e) => socialsChange(socialName, e.target.value)}/>
+                            <input defaultValue={social[socialName] ? social[socialName] : ''} onChange={(e) => socialsChange(socialName, e.target.value)} placeholder={`Your ${socialName.toLowerCase()} ${socialName.toLowerCase() !== 'website' ? socialName.toLowerCase() !== 'discord' ? 'account ' : 'server ' : ''}URL`}/>
                         </div>
                     ))}
                 </div>
+                <span id="edit-staff-modal-content-preview-save" className="show-mobile" onClick={saveChanges}>Save changes</span>
             </div>
         </div>
     )
