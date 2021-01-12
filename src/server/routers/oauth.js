@@ -74,11 +74,11 @@ router.get('/callback', async (req, res) => {
 		social: {}
 	*/
 
-	const staffExists = await db.collection('staff').countDocuments({ _id: user.id });
-	const staffUser = await db.collection('staff').findOne({ _id: user.id });
+	const staffExists = db.collection('staff').countDocuments({ _id: user.id });
+	const staffUser = db.collection('staff').findOne({ _id: user.id });
 	if (staffExists) {
 		try {
-			await db.collection('staff').updateOne({ _id: user.id }, {
+			db.collection('staff').updateOne({ _id: user.id }, {
 				$set: {
 					avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 					name: user.username
