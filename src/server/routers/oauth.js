@@ -64,21 +64,19 @@ router.get('/callback', async (req, res) => {
 		});
 	}
 
+	/*
+		data types
+		_id: 0,
+		avatar: '',
+		category: '',
+		name: '',
+		about: '',
+		social: {}
+	*/
+
 	const staffExists = await db.collection('staff').countDocuments({ _id: user.id });
-	if (!staffExists && (config.mods.includes(user.id)) || config.admins.includes(user.id)) {
-		try {
-			await db.collection('staff').insertOne({
-				_id: user.id,
-				avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
-				category: 'Moderators', // Assuming that all new logins are moderators
-				name: user.username,
-				about: "",
-				social: {}
-			})
-		} catch (e) {
-			return;
-		}
-	} else {
+	const staffUser = await db.collection('staff').findOne({ _id: user.id });
+	if (staffExists) {
 		try {
 			await db.collection('staff').updateOne({ _id: user.id }, {
 				$set: {
@@ -93,8 +91,10 @@ router.get('/callback', async (req, res) => {
 
 	req.session.user = {
 		...user,
-		isModerator: config.mods.includes(user.id),
-		isAdmin: config.admins.includes(user.id),
+		isModerator: staffUser ? staffUser.category === 'Moderators' 
+							  || staffUser.category === 'Server Management' 
+							  || staffUser.category === 'Developers' ? true : false : false,
+		isAdmin: staffUser ? staffUser.category === 'Developers' ? true : false : false,
 		token: encrypt(user.id)
 	};
 
