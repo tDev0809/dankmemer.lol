@@ -59,6 +59,9 @@
                 flex-wrap: wrap;
                 align-items: center;
                 text-align: left;
+                &.large  {
+                    width: 300px;
+                }
                 label {
                     margin-right: 10px;
                 }

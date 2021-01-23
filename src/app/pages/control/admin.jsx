@@ -7,6 +7,8 @@ import 'assets/styles/pages/control/control.scss';
 
 import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
+import AddStaff from './panels/AddStaff';
+import RemoveStaff from './panels/RemoveStaff';
 
 import * as axios from 'axios';
 import StaffCard from '../../components/staff';
@@ -62,7 +64,9 @@ function Admin (props) {
 				</div>
 				<div id="control-admin-panels">
 					{BanPanels.map((Panel, key) => (<Panel key={key} />))}
-					{<GetPayment/>}
+					<GetPayment />
+					<AddStaff />
+					<RemoveStaff />
 				</div>
 			</div>
 			: ''}

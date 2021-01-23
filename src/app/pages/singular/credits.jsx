@@ -60,10 +60,12 @@ export default function Staff() {
 						<h1 className="staff-category-title">{category}</h1>
 						<div className="staff-category-cards">
 							{users.sort(() => Math.random() * 0.5).sort((a, b) => getSocialIndex(a) - getSocialIndex(b)).map((user, i) => (
-								<StaffCard
-									{...user}
-									key={i}
-								/>
+								user.name !== '' ?
+									<StaffCard
+										{...user}
+										key={i}
+									/>
+								: ''
 							))}
 						</div>
 					</div>
