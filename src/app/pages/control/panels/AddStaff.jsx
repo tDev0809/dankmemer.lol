@@ -50,46 +50,4 @@ export default function AddStaff() {
 			<p className="admin-panel-button" onClick={() => submit()}>Add</p>
 		</div>
     )
-//   async action (state) {
-//     const res = await fetch(`/api/admin/findTransaction?${state.dropdownVal}=${state.textVal}`, {
-//       credentials: 'same-origin',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//       .then(res => res.json())
-//       .then(res => res.map(payment => ({
-//         date: new Date(payment.times.create),
-//         orderID: payment.orderID,
-//         captureID: payment.captureID,
-//         purchase: {
-//           type: payment.item.name,
-//           quantity: +payment.item.quantity,
-//           total: payment.amount.total
-//         },
-//         payer: [ 'name', 'paypalEmail', 'discordEmail', 'paypalID', 'userID' ]
-//           .reduce((data, key) => ({ ...data, [key]: payment.payer[key] }), {})
-//       })));
-
-//     createModal(
-//       <ReactJSON
-//         src={res}
-//         { ...reactJSONProps }
-//       />
-//     );
-//   }
-
-//   render () {
-//     return (
-//       <GenericPanel
-//         title='Find Payment'
-//         dropdownHeader='By'
-//         textAreaHeader='Value'
-//         defaultDropdown='Discord ID'
-//         options={['Discord ID', 'PayPal E-Mail', 'Full Name', 'Payment ID']}
-//         action={this.action.bind(this)}
-//         buttonText='Find'
-//       />
-//     );
-//   }
 }
