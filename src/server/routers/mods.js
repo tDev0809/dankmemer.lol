@@ -2,10 +2,8 @@ const { Router } = require('express');
 const router = Router();
 const db = require('../util/db.js');
 
-const { mods } = require('../../../config.json');
-
 router.use((req, res, next) => {
-	if (!req.session.user || !mods.includes(req.session.user.id)) return res.status(401).send('No mod for you, tsk tsk tsk');
+	if (!req.session.user || !req.session.user.isModerator) return res.status(401).send('No mod for you, tsk tsk tsk');
   	next();
 });
 

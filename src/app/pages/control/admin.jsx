@@ -24,7 +24,7 @@ function Admin (props) {
 	const [adminSocials, setAdminSocials] = useState('');
 
 	useEffect(() => {
-		if(props.loggedIn && props.isModerator) setShouldRender(true);
+		if(props.loggedIn && props.isAdmin) setShouldRender(true);
 		if(props.loggedIn && !props.isModerator) return window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 		if(!props.loggedIn) return;
