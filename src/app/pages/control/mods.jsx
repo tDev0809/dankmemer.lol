@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DiscordLogin from '../../components/discordLogin';
 import 'assets/styles/pages/control/control.scss';
 
+import * as axios from 'axios';
 import StaffCard from '../../components/staff';
-import users from '../singular/data/users.json';
-import images from '../singular/util/images.js';
-import flatten from '../../util/flattenObject.js';
+import EditStaff from '../../components/editStaff';
+import createModal from '../../components/modal/index';
 
 function Mods(props) {
 	const [shouldRender, setShouldRender] = useState(false);
@@ -25,11 +24,22 @@ function Mods(props) {
 		if(props.loggedIn && !props.isModerator) return window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 		if(!props.loggedIn) return;
-		let user = flatten(users).filter(u => u.name === props.username)[0];
-		setModUsername(user.name);
-		setModBiography(user.about);
-		setModImage(images[user.name.toLowerCase().replace(/ /g, '-')]);
-		setModSocials(user.social)
+		axios(`/api/staff?id=${props.id}`).then(({ data: user }) => {
+			user = user[0];
+			setModUsername(user.name);
+			setModBiography(user.about);
+			setModImage(user.avatar);
+			setModSocials(user.social)
+		}).catch(() => 			
+			toast.dark("Your staff card data was not able to be shown.", {
+			position: "top-right",
+			autoClose: 10000,
+			hideProgressBar: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			toastId: 'noStaff'
+		}));
 	}, [props]);
 
 	const checkUserBans = async () => {
@@ -91,12 +101,15 @@ function Mods(props) {
 			</div>
 			: ''}
 			{shouldRender ? 
-				<StaffCard 
-					name={modUsername}
-					about={modBiography}
-					social={modSocials}
-					picture={modImage}
-				/>
+				<div id="staff-card">
+					<StaffCard 
+						name={modUsername}
+						about={modBiography}
+						social={modSocials}
+						avatar={modImage}
+					/>
+					<span id="edit-staff-card" onClick={() => createModal(<EditStaff name={modUsername} avatar={modImage} social={modSocials} about={modBiography} />)}>Edit your staff card</span>
+				</div>
 			: ''}
 			<ToastContainer />
 		</div>

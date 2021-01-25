@@ -7,11 +7,13 @@ import 'assets/styles/pages/control/control.scss';
 
 import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
+import AddStaff from './panels/AddStaff';
+import RemoveStaff from './panels/RemoveStaff';
 
+import * as axios from 'axios';
 import StaffCard from '../../components/staff';
-import users from '../singular/data/users.json';
-import images from '../singular/util/images.js';
-import flatten from '../../util/flattenObject.js';
+import EditStaff from '../../components/editStaff';
+import createModal from '../../components/modal/index';
 
 function Admin (props) {
 	const [shouldRender, setShouldRender] = useState(false)
@@ -26,11 +28,22 @@ function Admin (props) {
 		if(props.loggedIn && !props.isModerator) return window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 		if(!props.loggedIn) return;
-		let user = flatten(users).filter(u => u.name === props.username)[0];
-		setAdminUsername(user.name);
-		setAdminBiography(user.about);
-		setAdminImage(images[user.name.toLowerCase().replace(/ /g, '-')]);
-		setAdminSocials(user.social)
+		axios(`/api/staff?id=${props.id}`).then(({ data: user }) => {
+			user = user[0];
+			setAdminUsername(user.name);
+			setAdminBiography(user.about);
+			setAdminImage(user.avatar);
+			setAdminSocials(user.social)
+		}).catch(() => 			
+			toast.dark("Your staff card data was not able to be shown.", {
+				position: "top-right",
+				autoClose: 10000,
+				hideProgressBar: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				toastId: 'noStaff'
+			}));
 	}, [props]);
 
 	return (
@@ -51,17 +64,22 @@ function Admin (props) {
 				</div>
 				<div id="control-admin-panels">
 					{BanPanels.map((Panel, key) => (<Panel key={key} />))}
-					{<GetPayment/>}
+					<GetPayment />
+					<AddStaff />
+					<RemoveStaff />
 				</div>
 			</div>
 			: ''}
-			{shouldRender ? 
-				<StaffCard 
-					name={adminUsername}
-					about={adminBiography}
-					social={adminSocials}
-					picture={adminImage}
-				/>
+			{shouldRender ?
+				<div id="staff-card">
+					<StaffCard 
+						name={adminUsername}
+						about={adminBiography}
+						social={adminSocials}
+						avatar={adminImage}
+					/>
+					<span id="edit-staff-card" onClick={() => createModal(<EditStaff name={adminUsername} avatar={adminImage} social={adminSocials} about={adminBiography} />)}>Edit your staff card</span>
+				</div>
 			: ''}
 			<ToastContainer />
 		</div>

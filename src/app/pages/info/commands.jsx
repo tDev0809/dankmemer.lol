@@ -152,7 +152,7 @@ export default function Commands(props) {
 								index={i}
 								prefix={prefix}
 								name={command.t[0]}
-								description={command.d.replaceAll("pls ", prefix)}
+								description={command.d.replace(/pls /g, prefix)}
 								usage={command.u.replace('pls ', prefix)}
 								permissions={command.p}
 								star={command.pS ? true : false}

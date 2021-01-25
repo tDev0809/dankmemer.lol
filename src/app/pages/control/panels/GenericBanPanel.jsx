@@ -9,7 +9,7 @@ class GenericBanPanel extends React.PureComponent {
         dropdownHeader="Ban Type"
         textAreaHeader="User ID"
         defaultDropdown="appeal"
-        options={this.props.options.concat('appeal', 'lootbox')}
+        options={this.props.options.concat('Appeal', 'Lootbox')}
         action={this.action.bind(this)}
         buttonText={this.props.buttonText}
       />

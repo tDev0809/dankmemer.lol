@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../assets/styles/pages/singular/credits.scss';
-import users from './data/users.json';
+// import users from './data/users.json';
+import * as axios from 'axios';
 import StaffCard from '../../components/staff';
 import images from './util/images.js';
 import createAd from '../../util/createAd';
 
-const categories = Object.entries(users);
-const getSocialIndex = ({ social }) => Object.keys(social).length === 0 ? -1 : 1;
+// const categories = Object.entries(users);
 
 export default function Staff() {
+	const [users, setUsers] = useState([]);
+	const [categories, setCategories] = useState([]);
+
 	window.scroll(0,0)
 	useEffect(() => {
 		createAd('nitropay-staff-bottom', {
@@ -27,7 +30,27 @@ export default function Staff() {
 			],
 			renderVisibleOnly: true
 		}, 'mobile');
-	}, []);
+
+		axios('/api/staff').then(({ data: staff }) => {
+			setUsers(staff)
+		}).catch(() => {
+			toast.dark("Our staff list was unable to be shown.", {
+				position: "top-right",
+				autoClose: 10000,
+				hideProgressBar: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				toastId: 'noStaff'
+			});
+		})
+	}, []);	
+
+	useEffect(() => {
+		setCategories(Object.entries(users));
+	}, [users]);
+
+	const getSocialIndex = ({ social }) => Object.keys(social).length === 0 ? -1 : 1;
 
 	return (
 		<div id="staff">
@@ -37,11 +60,12 @@ export default function Staff() {
 						<h1 className="staff-category-title">{category}</h1>
 						<div className="staff-category-cards">
 							{users.sort(() => Math.random() * 0.5).sort((a, b) => getSocialIndex(a) - getSocialIndex(b)).map((user, i) => (
-								<StaffCard
-									{...user}
-									key={i}
-									picture={images[user.name.toLowerCase().replace(/ /g, '-')]}
-								/>
+								user.name !== '' ?
+									<StaffCard
+										{...user}
+										key={i}
+									/>
+								: ''
 							))}
 						</div>
 					</div>

@@ -135,7 +135,7 @@ function Appeals(props) {
 					</div>
 				</div>
 				<div className="appeals-body-group">
-					<h3 className="appeals-body-group-title">Which rules did they break?</h3>
+					<h3 className="appeals-body-group-title">Which rules did you break?</h3>
 					<table>
 						<tbody>
 							{rules[appealType].map((rule, i) => (

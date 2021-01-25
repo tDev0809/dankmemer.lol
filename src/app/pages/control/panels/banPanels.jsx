@@ -26,7 +26,7 @@ export default [
     <GenericBanPanel
       title='Check User Ban'
       buttonText='Check'
-      options={['any']}
+      options={['Any']}
       getFetchParams={() => ({ method: 'GET' })}
       getEndpoint={({ dropdownVal, textVal }) => `/checkBan?type=${dropdownVal}&id=${textVal}`}
       finish={async ({ textVal }, res) => {

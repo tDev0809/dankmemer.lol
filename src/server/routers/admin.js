@@ -9,6 +9,47 @@ router.use((req, res, next) => {
   	next();
 });
 
+router.put('/staff', async(req, res) => {
+	try {
+		await db.collection('staff').updateOne({ _id: req.session.user.id }, {
+			$set: {
+				about: req.body.about,
+				social: req.body.socials
+			}
+		});
+		return res.status(200).send();
+	} catch (e) {
+		return res.status(500).send();
+	}
+});
+
+router.post('/staff', async(req, res) => {
+	if(!req.query || !req.query.id || !req.query.category) return res.status(400).json({ message: 'Missing search parameters.' });
+	try {
+		await db.collection('staff').insertOne({ 
+			_id: req.query.id,
+			category: req.query.category,
+			name: '',
+			about: '',
+			avatar: '',
+			social: {}
+		});
+		return res.status(200).send();
+	} catch (e) {
+		return res.status(500).send();
+	}
+});
+
+router.delete('/staff', async(req, res) => {
+	if(!req.query || !req.query.id) return res.status(400).json({ message: 'Missing search parameters.' });
+	try {
+		await db.collection('staff').deleteOne({ _id: req.query.id });
+		return res.status(200).send();
+	} catch (e) {
+		return res.status(500).send();
+	}
+});
+
 router.post('/ban', (req, res) => {
   	db.collection('bans').insertOne(req.body);
   	res.status(200).send();
