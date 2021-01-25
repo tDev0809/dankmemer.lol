@@ -9,11 +9,13 @@ import BanPanels from './panels/banPanels';
 import GetPayment from './panels/GetPayment';
 import AddStaff from './panels/AddStaff';
 import RemoveStaff from './panels/RemoveStaff';
+import CheckStaff from './panels/CheckStaff';
 
 import * as axios from 'axios';
 import StaffCard from '../../components/staff';
 import EditStaff from '../../components/editStaff';
 import createModal from '../../components/modal/index';
+
 
 function Admin (props) {
 	const [shouldRender, setShouldRender] = useState(false)
@@ -67,6 +69,7 @@ function Admin (props) {
 					<GetPayment />
 					<AddStaff />
 					<RemoveStaff />
+					<CheckStaff />
 				</div>
 			</div>
 			: ''}

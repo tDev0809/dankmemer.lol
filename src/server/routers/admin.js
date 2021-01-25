@@ -7,6 +7,18 @@ router.use((req, res, next) => {
   	next();
 });
 
+router.get('/staff', async(req, res) => {
+	if(!req.query.id) return res.status(400).send();
+	try {
+		let exist = await db.collection('staff').findOne({ _id: req.query.id });
+		if(!exist) return res.status(404).send();
+		return res.status(200).send();
+	} catch (e) {
+		return res.status(500).send();
+	}
+});
+
+
 router.put('/staff', async(req, res) => {
 	try {
 		await db.collection('staff').updateOne({ _id: req.session.user.id }, {
