@@ -23,6 +23,7 @@ router.put('/staff', async(req, res) => {
 	try {
 		await db.collection('staff').updateOne({ _id: req.session.user.id }, {
 			$set: {
+				avatar: req.body.avatar,
 				about: req.body.about,
 				social: req.body.socials
 			}

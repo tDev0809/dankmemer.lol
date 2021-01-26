@@ -240,6 +240,18 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            .input-singular {
+                background: #1a1a1a;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                padding: 5px 10px;
+                width: 260px;
+                height: 25px;
+                border: none;
+                outline: none;
+                color: #ffffff;
+                font-family: 'Inter', sans-serif;
+            }
             &-save {
                 user-select: none;
                 display: block;

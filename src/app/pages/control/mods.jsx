@@ -108,7 +108,7 @@ function Mods(props) {
 						social={modSocials}
 						avatar={modImage}
 					/>
-					<span id="edit-staff-card" onClick={() => createModal(<EditStaff name={modUsername} avatar={modImage} social={modSocials} about={modBiography} />)}>Edit your staff card</span>
+					<span id="edit-staff-card" onClick={() => createModal(<EditStaff discordAvatar={`https://cdn.discordapp.com/avatars/${props.id}/${props.avatar}`} name={modUsername} avatar={modImage} social={modSocials} about={modBiography} />)}>Edit your staff card</span>
 				</div>
 			: ''}
 			<ToastContainer />
