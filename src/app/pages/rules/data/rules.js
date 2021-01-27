@@ -7,7 +7,6 @@ const userRules = [
   "Causing drama/Witch hunting",
   "Using the bot for advertising",
   "Real Money Trading",
-  "Scamming",
   "Discord TOS",
   "Other"
 ];

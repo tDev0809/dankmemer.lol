@@ -73,6 +73,10 @@
         {
           "q": "Where did my beta coins go?",
           "a": "Because of it being a BETA, we sometimes wipe the currency. Please use the main bot to avoid this."
+        },
+        {
+          "q": "Why is x changed? Is this a bug?",
+          "a": "Maybe, maybe not. Some things are changed, some things are bugs, idk. It's a beta, stop asking questions."
         }
     ],
     "Website": [
