@@ -103,6 +103,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 			<ul id="navbar-links">
 				<li className="navbar-link"><NavLink activeClassName="active" exact to="/">Home</NavLink></li>
 				<li className="navbar-link"><NavLink activeClassName="active" to="/commands">Commands</NavLink></li>
+				<li className="navbar-link"><a href="https://discord.gg/meme">Support</a></li>
 				<li className="navbar-link"><NavLink activeClassName="active" to="/blogs">Blog</NavLink></li>
 				<li className="navbar-link"><NavLink activeClassName="active" to="/faq">FAQ</NavLink></li>
 				<li className="navbar-link"><NavLink activeClassName="active" to="/loot">Store</NavLink></li>
