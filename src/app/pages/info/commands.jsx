@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import commandsFile from './data/commands.json';
 import Expandable from '../../components/expandable';
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
 import createAd from '../../util/createAd';
 
 import 'assets/styles/pages/info/commands.scss';
@@ -59,6 +57,7 @@ export default function Commands(props) {
 
 	useEffect(() => {
 		if(search.length >= 1) {
+			setExpandedIndex(null);
 			Object.values(commandsFile).flat().filter(command => {
 				if(command.t.some(trigger => trigger.includes(search.toLowerCase())) || command.d.toLowerCase().includes(search.toLowerCase())) {
 					setCommands(oldCommands => [...oldCommands, command]);
@@ -143,26 +142,24 @@ export default function Commands(props) {
 					<input id="commands-search" name="search" placeholder="Search for a command..." onChange={(e) => setSearch(e.target.value)}/>
 				</div>
 			</div>
-			<SimpleBar id="commands-list-container" style={{ maxHeight: '60vh' }} autoHide={false}>
-				<div id="commands-list-wrapper">
-					<div id="commands-list">
-						{commands.map((command, i) => (
-							<Expandable
-								key={i}
-								index={i}
-								prefix={prefix}
-								name={command.t[0]}
-								description={command.d.replace(/pls /g, prefix)}
-								usage={command.u.replace('pls ', prefix)}
-								permissions={command.p}
-								star={command.pS ? true : false}
-								expanded={expandedIndex === commands.indexOf(command)}
-								type={'command'}
-								setExpanded={expand}/>
-						))}
-					</div>
+			<div id="commands-list-wrapper">
+				<div id="commands-list">
+					{commands.map((command, i) => (
+						<Expandable
+							key={i}
+							index={i}
+							prefix={prefix}
+							name={command.t[0]}
+							description={command.d.replace(/pls /g, prefix)}
+							usage={command.u.replace('pls ', prefix)}
+							permissions={command.p}
+							star={command.pS ? true : false}
+							expanded={expandedIndex === commands.indexOf(command)}
+							type={'command'}
+							setExpanded={expand}/>
+					))}
 				</div>
-			</SimpleBar>
+			</div>
 	    <div id="nitropay-commands-bottom" className="nitropay" />
 		</div>
 	);
