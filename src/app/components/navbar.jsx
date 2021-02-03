@@ -85,7 +85,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 							}}>FAQ</NavLink>
 
 						<NavLink
-							className="navbar-mobile-link"
+							className={discount ? "navbar-mobile-link discount" : "navbar-mobile-link"}
 							activeClassName="active"
 							to="/loot"
 							onClick={() => {
@@ -106,7 +106,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 				<li className="navbar-link"><a href="https://discord.gg/meme">Support</a></li>
 				<li className="navbar-link"><NavLink activeClassName="active" to="/blogs">Blog</NavLink></li>
 				<li className="navbar-link"><NavLink activeClassName="active" to="/faq">FAQ</NavLink></li>
-				<li className="navbar-link"><NavLink activeClassName="active" to="/loot">Store</NavLink></li>
+				<li className={discount ? "navbar-link discount" : "navbar-link" }><NavLink activeClassName="active" to="/loot">Store</NavLink></li>
 				<li className="navbar-link">
 					{!loggedIn
 						? <a href={"/oauth/login?redirect=" + window.location.pathname} rel="noreferrer noopener">Login</a>
