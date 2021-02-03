@@ -53,7 +53,7 @@ router.post('/appeal', async (req, res) => {
 		  ? 'cmAppealsWebhook'
 		  : req.body.banType === 'community'
 			? 'communityAppeals'
-			: 'devReportWebhook'
+			: 'devAppealsWebhook'
 	  ];
 
 	try {
