@@ -64,7 +64,11 @@
 					&.logout {
 						color: #ff5f5f;
 					}
-					&:active {
+					&.discount {
+						color: #ffcb00!important;
+						animation: discountFlash 2s infinite both;	
+					}
+					&.active {
 						background: rgba(0,0,0,0.3);
 						color: unset;
 					}
@@ -104,6 +108,12 @@
 		.navbar-link {
 			display: inline-block;
 			list-style-type: none;
+			&.discount {
+				a, a.active, a:hover {
+					color: #ffcb00!important;
+					animation: discountFlash 2s infinite both;
+				}
+			}
 			a {
 				font-size: 20px;
 				color: #ffffff;
@@ -229,6 +239,18 @@
 		transform: rotateX(0deg);
 		opacity: 1;
 	}  
+}
+
+@keyframes discountFlash {
+	0% {
+		text-shadow: 0px 0px 5px #ffcb0050;
+	}
+	50% {
+		text-shadow: 0px 0px 7px #ffcc0091;
+	}
+	100% {
+		text-shadow: 0px 0px 5px #ffcb0050;
+	}
 }
 
 @media only screen and (max-width: 550px) {

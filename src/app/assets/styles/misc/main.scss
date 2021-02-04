@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
     -webkit-appearance: none;
+    &:focus-visible {
+        outline: none;
+    }
 }
 
 $bgMain: #292929;

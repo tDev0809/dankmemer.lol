@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import faqFile from './data/faq.json';
 import Expandable from '../../components/expandable';
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
 import createAd from '../../util/createAd';
 
 import 'assets/styles/pages/info/commands.scss';
@@ -59,6 +57,7 @@ export default function FAQ(props) {
 
 	useEffect(() => {
 		if(search.length >= 1) {
+			setExpandedIndex(null);
 			Object.values(faqFile).flat().filter(question => {
 				if(question.q.toLowerCase().includes(search.toLowerCase()) || question.a.toLowerCase().includes(search.toLowerCase())) {
 					setQuestions(oldQuestions => [...oldQuestions, question]);
@@ -143,22 +142,20 @@ export default function FAQ(props) {
 					<input id="faq-search" name="search" placeholder="Search for a command..." onChange={(e) => setSearch(e.target.value)}/>
 				</div>
 			</div>
-			<SimpleBar id="faq-list-container" style={{ maxHeight: '60vh' }} autoHide={false}>
-				<div id="faq-list-wrapper">
-					<div id="faq-list">
-						{questions.map((command, i) => (
-							<Expandable
-								key={i}
-								index={i}
-								prefix={prefix}
-								name={command.q}
-								description={command.a.replace(/pls /g, prefix)}
-								expanded={expandedIndex === questions.indexOf(command)}
-								setExpanded={expand}/>
-						))}
-					</div>
+			<div id="faq-list-wrapper">
+				<div id="faq-list">
+					{questions.map((command, i) => (
+						<Expandable
+							key={i}
+							index={i}
+							prefix={prefix}
+							name={command.q}
+							description={command.a.replace(/pls /g, prefix)}
+							expanded={expandedIndex === questions.indexOf(command)}
+							setExpanded={expand}/>
+					))}
 				</div>
-			</SimpleBar>
+			</div>
 			<div id="nitropay-faq-bottom" className="nitropay" />
 		</div>
 	);
