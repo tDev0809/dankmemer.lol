@@ -1,3 +1,22 @@
+#control-panel {
+    min-height: 100vh;
+    display: flex;
+    nav {
+        margin-right: 5vw;
+        display: block;
+        width: 240px;
+        min-height: 100vh;
+        background: #1a1a1a;
+        overflow: hidden;
+        #nav-logo-container {
+            display: grid;
+            place-items: center;
+            width: 100%;
+            margin-top: 30px;
+        }
+    }
+}
+
 #control {
     display: flex;
     justify-content: center;

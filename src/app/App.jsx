@@ -1,11 +1,11 @@
-import React, { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { lazy } from 'react';
+import NormalRoute from './util/routers/NormalRoute';
+import ControlRoute from './util/routers/ControlRoute';
+import { Switch } from 'react-router-dom';
 
 const Home     = lazy(() => import('./pages/singular/home'));
 const Loot     = lazy(() => import('./pages/store/lootboxes'));
 const Rules    = lazy(() => import('./pages/rules/rules'));
-const Admin    = lazy(() => import('./pages/control/admin'));
-const Mods     = lazy(() => import('./pages/control/mods'));
 const Blog     = lazy(() => import('./components/blog'));
 const Blogs    = lazy(() => import('./pages/singular/blogs'));
 const About    = lazy(() => import('./pages/singular/about'));
@@ -20,9 +20,6 @@ const Commands = lazy(() => import('./pages/info/commands'));
 const Faq      = lazy(() => import('./pages/info/faq'));
 const NotFound = lazy(() => import('./pages/singular/notfound'));
 
-import NavBar from './components/navbar.jsx';
-import Footer from './components/footer.jsx';
-
 import './assets/styles/misc/main.scss';
 
 export default () => {
@@ -34,31 +31,29 @@ export default () => {
   	return (
 		<>
 			<div id="pseudoBody">
-				<NavBar />
 				<Switch>
-					<Route exact strict component={() => <Suspense fallback={<div></div>}><Home /></Suspense>} path="/" />
-					<Route component={() => <Suspense fallback={<div></div>}><Commands /></Suspense>} path="/commands" />
-					<Route component={() => <Suspense fallback={<div></div>}><Faq /></Suspense>} path="/faq" />
-					<Route component={() => <Suspense fallback={<div></div>}><Staff /></Suspense>} path="/staff" />
-					<Route component={() => <Suspense fallback={<div></div>}><Loot /></Suspense>} path="/loot" />
-					<Route component={() => <Suspense fallback={<div></div>}><Rules /></Suspense>} path="/rules" />
-					<Route component={() => <Suspense fallback={<div></div>}><About /></Suspense>} path="/about" />
-					<Route exact component={() => <Suspense fallback={<div></div>}><Blogs /></Suspense>} path="/blogs" />
-					<Route exact component={(props) => <Suspense fallback={<div></div>}><Blog {...props} /></Suspense>} path="/blogs/:blog" />
-					<Route component={() => <Suspense fallback={<div></div>}><Appeals /></Suspense>} path="/appeals/" />
-					<Route component={() => <Suspense fallback={<div></div>}><Reports /></Suspense>} path="/reports/" />
-					<Route component={() => <Suspense fallback={<div></div>}><Admin /></Suspense>} path="/admin" />
-					<Route component={() => <Suspense fallback={<div></div>}><Mods /></Suspense>} path="/mods" />
-					<Route component={() => <Suspense fallback={<div></div>}><Terms /></Suspense>} path="/terms" />
-					<Route component={() => <Suspense fallback={<div></div>}><Landing /></Suspense>} path="/landing" />
-					<Route component={() => <Suspense fallback={<div></div>}><Refunds /></Suspense>} path="/refunds" />
-					<Route component={() => <Suspense fallback={<div></div>}><Privacy /></Suspense>} path="/privacy" />
+					<NormalRoute exact strict path="/" component={<Home />} path="/" />
+					<NormalRoute path="/commands" component={<Commands />} />
+					<NormalRoute path="/faq" component={<Faq />} />
+					<NormalRoute path="/staff" component={<Staff />} />
+					<NormalRoute path="/loot" component={<Loot />}/>
+					<NormalRoute path="/rules" component={<Rules />} />
+					<NormalRoute path="/about" component={<About />}/>
+					<NormalRoute exact path="/blogs" component={<Blogs />} />
+					<NormalRoute exact path="/blogs/:blog" component={(props) => <Blog {...props} />} />
+					<NormalRoute path="/appeals/" component={<Appeals />} />
+					<NormalRoute path="/reports/" component={<Reports />} />
+					<NormalRoute path="/terms" component={<Terms />} />
+					<NormalRoute path="/landing" component={<Landing />} />
+					<NormalRoute path="/refunds" component={<Refunds />} />
+					<NormalRoute path="/privacy" component={<Privacy />} />
+
+					<ControlRoute path="/control/admin/access" view="admin:access" />
 					
 					{/* Route below must be at bottom for the 404 page to only show when no other route is found */}
-					<Route component={() => <Suspense fallback={<div></div>}><NotFound /></Suspense>} path="*" />
+					<NormalRoute path="*" component={<NotFound />} />
 				</Switch>
 			</div>
-			<Footer />
 			<div id='modals' />
 		</>
 	);
