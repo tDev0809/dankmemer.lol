@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import Logo from 'assets/img/memer.png';
 import 'assets/styles/pages/control/control.scss';
 import DiscordLogin from '../../components/discordLogin';
@@ -55,6 +56,7 @@ function ControlPanelController(props) {
                     <div id="content-container">
                         {componentToRender}
                     </div>
+                    <ToastContainer />
                 </>
             : 				
                 <div id="restricted">

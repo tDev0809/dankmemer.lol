@@ -3,24 +3,33 @@ import * as axios from 'axios';
 import { toast } from 'react-toastify';
 
 export default function AddStaff() {
-
-    const [accountID, setAccountID] = useState(0);
-    const [category, setCategory] = useState("Moderators");
-	const [addStaffSelectedCategory, setAddStaffSelectedsCategory] = useState(null);
+	const [pending, setPending] = useState(false);
+    const [accountID, setAccountID] = useState("");
+    const [category, setCategory] = useState("Staff type");
 	const [addStaffDropdownOpen, setAddStaffDropdownOpen] = useState(false);
 	const [hasEventListener, setHasEventListener] = useState(false);
 
 	useEffect(() => {
-		document.documentElement.addEventListener('click', (e) => {
-			console.log("C")
-			if(!addStaffDropdownOpen) return;
-			if(e.target !== document.getElementById('access-card-dropdown-container')) {
-				addStaffDropdownOpen(false);
-			}
-		});
-	}, [])
+		if(!addStaffDropdownOpen && hasEventListener) {
+			document.documentElement.removeEventListener('click', () => {
+				return setHasEventListener(false);
+			});
+		} else if (addStaffDropdownOpen && !hasEventListener) {
+			document.documentElement.addEventListener('click', (e) => {
+				setHasEventListener(true);
+				if(e.target !== document.getElementById('access-card-dropdown-container') && e.target.parentNode !== document.getElementById("access-card-dropdown-options")) {
+					setAddStaffDropdownOpen(false);	
+				}
+			});
+		}
+	}, [addStaffDropdownOpen]);
+
+	useEffect(() => {
+		setAddStaffDropdownOpen(false)
+	}, [category])
 
     const submit = async () => {
+		setPending(true)
         await axios({
             url: `/api/admin/staff?id=${accountID}&category=${category}`,
             method: 'POST'
@@ -34,6 +43,8 @@ export default function AddStaff() {
 				progress: undefined,
 				toastId: 'newStaff'
 			});
+			setPending(false);
+			setAccountID("")
         }).catch(() => {
 			toast.error("Something went wrong while trying to add a new staff member.", {
 				position: "top-right",
@@ -59,30 +70,24 @@ export default function AddStaff() {
 			</div>
 			<div className="access-card-input-group">
 				<span className="material-icons">account_box</span>
-				<input className="access-card-input" type="text" placeholder="Account ID" onChange={(e) => setAccountID(e.target.value)}/>
+				<input className="access-card-input" type="text" placeholder="Account ID" value={accountID} onChange={(e) => setAccountID(e.target.value)}/>
 			</div>
 			<div className="access-card-dropdown">
 				<div id="access-card-dropdown-container" onClick={() => setAddStaffDropdownOpen(!addStaffDropdownOpen)}>
 					<span className="icon material-icons">badge</span>
-					<p className={addStaffDropdownOpen ? "access-card-dropdown-selected open" : "access-card-dropdown-selected"}>Staff type</p>
+					<p className={addStaffDropdownOpen ? "access-card-dropdown-selected open" : "access-card-dropdown-selected"}>{category ? category : "Staff type"}</p>
 					<span className="right material-icons">expand_more</span>
 				</div>
 				{addStaffDropdownOpen ? 
-					<div className="access-card-dropdown-options">
-						<p>Moderator</p>
-						<p>Honorable Mention</p>
-						<p>Server Management</p>
-						<p>Developer</p>
+					<div id="access-card-dropdown-options">
+						<p onClick={() => setCategory("Moderator")}>Moderator</p>
+						<p onClick={() => setCategory("Honorable Mention")}>Honorable Mention</p>
+						<p onClick={() => setCategory("Server Management")}>Server Management</p>
+						<p onClick={() => setCategory("Developer")}>Developer</p>
 					</div>
 				: ''}
-				{/* <select onChange={(e) => setCategory(e.target.value)}>
-                    <option value="Moderators">Moderator</option>
-                    <option value="Honorable Mentions">Honorable Mention</option>
-                    <option value="Server Management">Server Management</option>      
-                    <option value="Developers">Developer</option>
-				</select> */}
 			</div>
-			<p className="access-card-button" onClick={() => submit()}>Confirm</p>
+			<p className={pending ? "access-card-button filled" : "access-card-button"} onClick={() => { if(!pending) submit() }}>{pending ? "Pending" : "Confirm"}</p>
 		</div>
     )
 }

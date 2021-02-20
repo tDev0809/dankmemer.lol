@@ -3,10 +3,11 @@ import * as axios from 'axios';
 import { toast } from 'react-toastify';
 
 export default function CheckStaff() {
-
-    const [accountID, setAccountID] = useState(0);
+	const [pending, setPending] = useState(false);
+    const [accountID, setAccountID] = useState("");
 
     const submit = async () => {
+		setPending(true);
         await axios({
             url: `/api/admin/staff?id=${accountID}`,
             method: 'GET'
@@ -20,6 +21,8 @@ export default function CheckStaff() {
 				progress: undefined,
 				toastId: 'staffFound'
 			});
+			setAccountID("");
+			setPending(false);
         }).catch(() => {
 			toast.error("That staff member was not found in the database... or something is broken :)", {
 				position: "top-right",
@@ -45,9 +48,9 @@ export default function CheckStaff() {
 			</div>
 			<div className="access-card-input-group">
 				<span className="material-icons">account_box</span>
-				<input className="access-card-input" type="text" placeholder="Account ID" onChange={(e) => setAccountID(e.target.value)}/>
+				<input className="access-card-input" type="text" placeholder="Account ID" value={accountID} onChange={(e) => setAccountID(e.target.value)}/>
 			</div>
-			<p className="access-card-button" onClick={() => submit()}>Confirm</p>
+			<p className={pending ? "access-card-button filled" : "access-card-button"} onClick={() => { if(!pending) submit() }}>{pending ? "Pending" : "Confirm"}</p>
 		</div>
     )
 }

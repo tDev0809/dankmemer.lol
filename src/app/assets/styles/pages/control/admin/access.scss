@@ -84,7 +84,7 @@
                         border-bottom-left-radius: 0px;
                     }
                 }
-                &-options {
+                #access-card-dropdown-options {
                     position: absolute;
                     height: max-content;
                     width: 100%;
@@ -160,6 +160,13 @@
                 padding: 7px 15px;
                 user-select: none;
                 transition: all ease-in-out .1s;
+                &.filled {
+                    color: #ffffff;
+                    background: #39923c;
+                    &:hover {
+                        cursor: not-allowed;
+                    }
+                }
                 &:hover, &:focus-within {
                     color: #ffffff;
                     background: #39923c;
