@@ -15,19 +15,12 @@
             margin-top: 30px;
         }
     }
-}
-
-#control {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
-    &-login {
+    #restricted {
         display: grid;
         justify-content: center;
         align-items: center;
         min-height: calc(100vh - 40px);
-
+        width: 100vw;
         &-content {
             background: #1e1e1e;
             width: calc(485px - 120px);
@@ -45,6 +38,13 @@
             }
         }
     }
+}
+
+#control {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
     &-admin {
         margin: 10vh 5vw 0 0vw;
         width: 50vw;

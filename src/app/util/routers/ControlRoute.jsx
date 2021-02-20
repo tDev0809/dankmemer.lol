@@ -1,9 +1,8 @@
 import React, { Suspense } from "react";
 import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import ControlPanelController from '../../pages/control/controller';
 
-function ControlRoute({ path, exact, strict, view }) {
+export default function ControlRoute({ path, exact, strict, view }) {
     return (
         <Route
             exact={exact}
@@ -16,5 +15,3 @@ function ControlRoute({ path, exact, strict, view }) {
         />
     )
 }
-
-export default connect(store => store.login, null)(ControlRoute);
