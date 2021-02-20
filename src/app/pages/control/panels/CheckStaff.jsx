@@ -34,10 +34,20 @@ export default function CheckStaff() {
     }
 
     return (
-		<div className="admin-panel large">
-			<h3>Find Staff Member</h3>
-			<input type="text" placeholder="User ID" onChange={(e) => setAccountID(e.target.value)}/>
-			<p className="admin-panel-button" onClick={() => submit()}>Check</p>
+		<div className="access-card">
+			<div className="access-card-header">
+				<div className="access-card-icon">
+					<span className="material-icons">person_search</span>
+					<span className="access-card-icon-bg lg green"></span>
+					<span className="access-card-icon-bg sm green"></span>
+				</div>
+				<h3>Search for<br/>staff members</h3>
+			</div>
+			<div className="access-card-input-group">
+				<span className="material-icons">account_box</span>
+				<input className="access-card-input" type="text" placeholder="Account ID" onChange={(e) => setAccountID(e.target.value)}/>
+			</div>
+			<p className="access-card-button" onClick={() => submit()}>Confirm</p>
 		</div>
     )
 }

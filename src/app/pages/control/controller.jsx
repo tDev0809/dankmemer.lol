@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from 'assets/img/memer.png';
+import 'assets/styles/pages/control/control.scss';
 import DiscordLogin from '../../components/discordLogin';
 
 // Views
