@@ -2,12 +2,14 @@
     min-height: 100vh;
     display: flex;
     nav {
+        position: fixed;
         margin-right: 7vw;
         display: block;
         min-width: 240px;
         min-height: 100vh;
         background: #1a1a1a;
         overflow: hidden;
+        z-index: 999999;
         #nav-logo-container {
             display: grid;
             place-items: center;
@@ -18,6 +20,7 @@
     #content-container {
         width: 86.5vw;
         margin-right: 7vw;
+        margin-left: calc(240px + 7vw);
     }
     #restricted {
         display: grid;
