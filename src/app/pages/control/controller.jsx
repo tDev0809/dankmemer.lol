@@ -46,12 +46,52 @@ function ControlPanelController(props) {
                         <Link id="nav-logo-container" to="/">
                             <img src="nav-logo" src={Logo} width="160" />
                         </Link>
-                        <h3>Administration</h3>
-                        <ul>
-                            <li><NavLink to="/control/admin/access">Access control</NavLink></li>
-                            <li><NavLink to="/control/admin/store">Store management</NavLink></li>
-                            <li><NavLink to="/control/admin/users">User control</NavLink></li>
-                        </ul>
+                        {props && props.isAdmin ?
+                            <>
+                                <div className="nav-category">
+                                    <h3 className="nav-category-heading">Administration</h3>
+                                    <ul className="nav-category-links">
+                                        <li><NavLink to="/control/admin/access">Access control</NavLink></li>
+                                        <li><NavLink to="/control/admin/users">User control</NavLink></li>
+                                        <li><NavLink to="/control/admin/store">Store management</NavLink></li>
+                                        <li><NavLink to="/control/admin/blogs">Blog management</NavLink></li>
+                                    </ul>
+                                </div>
+                                <div className="nav-category">
+                                    <h3 className="nav-category-heading">Moderation</h3>
+                                    <ul className="nav-category-links">
+                                        <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
+                                        <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
+                                    </ul>
+                                </div>
+                            </>
+                        : props && props.isModerator ?
+                            <div className="nav-category">
+                                <h3 className="nav-category-heading">Moderation</h3>
+                                <ul className="nav-category-links">
+                                    <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
+                                    <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
+                                </ul>
+                            </div>
+                        : ''  }
+                        <div className="nav-category">
+                            <h3 className="nav-category-heading">Personalization</h3>
+                            <ul className="nav-category-links">
+                                <li><NavLink to="/control/personalize/card">Card appearance</NavLink></li>
+                            </ul>
+                        </div>
+                        <div id="nav-account">
+                            <div id="nav-account-info">
+                                <img id="nav-account-info-avatar" src={`https://cdn.discordapp.com/avatars/${props.id}/${props.avatar}`} width="48" />
+                                <div id="nav-account-info-user">
+                                    <p id="nav-account-info-user-name">{props.username}</p>
+                                    <p id="nav-account-info-user-discrim">#{props.discriminator}</p>
+                                </div>
+                            </div>
+                            <div id="nav-account-actions">
+                                <a href="/oauth/logout"><span title="Logout" class="material-icons">logout</span></a>
+                            </div>
+                        </div>
                     </nav>
                     <div id="content-container">
                         {componentToRender}

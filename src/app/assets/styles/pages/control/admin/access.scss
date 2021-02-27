@@ -180,37 +180,20 @@
         &-title {
             font-size: 30px;
         }
-        table {
-            font-family: 'Inter', sans-serif;
-            border-spacing: 0 20px;
-            border-collapse: separate;
-            tr {
-                overflow: hidden;
-                td:not(:nth-child(1)){
-                    padding: 10px 40px;
-                }
-                td:nth-child(1) {
-                    padding-left: 40px;
-                }
-                td:nth-child(2) {
-                    white-space: nowrap;
-                    text-align: center;
-                }
-                td:nth-child(3) {
-                    white-space: nowrap;
-                }
-                td {
-                    vertical-align: middle;
-                }
-            }
-        }
         .staff-row {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
             text-align: left;
             width: 100%;
             background: #1a1a1a;
-            padding: 10px 40px;
+            padding: 10px 20px 10px 40px;
             border-radius: 5px;
             &-group {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                min-width: 380px;
                 &-picture {
                     width: 40px;
                     height: 40px;
@@ -218,6 +201,7 @@
                     border-radius: 50%;
                     display: grid;
                     place-items: center;
+                    margin-right: 20px;
                 }
                 &-username {
                     font-size: 16px;
@@ -227,7 +211,17 @@
                     }
                 }
             }
+            &-role {
+                min-width: 170px;
+                text-align: center;
+            }
+            &-about {
+                width: 100%;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
             &-actions {
+                float: right;
                 display: flex;
                 justify-content: center;
                 align-items: center;

@@ -16,6 +16,77 @@
             width: 100%;
             margin-top: 30px;
         }
+        .nav-category {
+            margin-left:  20px;
+            margin-top: 30px;
+            position: relative;
+            &-links {
+                margin-left: 20px;
+                li {
+
+                    list-style: none;
+                    margin-bottom: 5px;
+                    transition: margin-left ease-in-out .1s;
+                    &:hover {
+                        margin-left: 5px;
+                        a.active {
+                            color: #c0e9c6;
+                        }
+                    }
+                    a {
+                        color: #d8d8d8;
+                        &.active {
+                            color: #c0e9c6;
+                        }
+                        &:hover {
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+        }
+        #nav-account {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: #101010;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            &-info {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                &-avatar {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                }
+                &-user {
+                    margin-left: 10px;
+                    &-discrim {
+                        color: #929292;
+                        font-size: 12px;
+                    }
+                }
+            }
+            &-actions {
+                .material-icons {
+                    font-size: 20px;
+                    cursor: pointer;
+                    user-select: none;
+                    color: #fd7373;
+                    &:hover {
+                        color: #e95151;
+                    }
+                }
+            }
+        }
     }
     #content-container {
         width: 86.5vw;

@@ -42,35 +42,22 @@ function AdminAccess(props) {
 			{/* Icon, Username, Account ID, Roles, Actions << (Remove, Edit, Staff Card) */}
 			<div id="admin-access-staff-list">
 				<h2 id="admin-access-staff-list-title">All current staff members</h2>
-				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Staff member</th>
-							<th>Role</th>
-							<th>About</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
 					{staff && Object.entries(staff).map(([category, users]) => (
 						users.map((user, i) => (
-							<tr className="staff-row"  key={i}>
-								<td className="staff-row-group">
+							<div className="staff-row" key={i}>
+								<div className="staff-row-group">
 									<img className="staff-row-group-picture" src={user.avatar} alt="?"/>
-								</td>
-								<td className="staff-row-group-username">{user.name} (<span>{user._id}</span>)</td>
-								<td>{category}</td>
-								<th>{user.about.substr(0, 100)}</th>
-								<td className="staff-row-actions">
+									<p className="staff-row-group-username">{user.name} (<span>{user._id}</span>)</p>
+								</div>
+								<p className="staff-row-role">{category}</p>
+								<p className="staff-row-about">{user.about.substr(0, 100)}{user.about.length > 100 ? '...' : ''}</p>
+								<div className="staff-row-actions">
 									<p className="staff-row-actions-inspect">Inspect</p>
 									<p className="staff-row-actions-remove">Remove</p>
-								</td>
-							</tr>
+								</div>
+							</div>
 						))
 					))}		
-					</tbody>		
-				</table>
 			</div>
 		</div>
 	)
