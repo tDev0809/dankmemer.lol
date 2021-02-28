@@ -4,16 +4,6 @@ import GenericBanPanel from './GenericBanPanel';
 export default [
   React.memo(() => (
     <GenericBanPanel
-      title='Ban User'
-      buttonText='Hammer'
-      getEndpoint={() => '/ban'}
-      finish={({ dropdownVal, textVal }) => (
-        alert(`Successfully ${dropdownVal} banned ${textVal}`)
-      )}
-    />
-  )),
-  React.memo(() => (
-    <GenericBanPanel
       title='Unban User'
       buttonText='Unhammer'
       getEndpoint={() => '/unban'}

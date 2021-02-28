@@ -3,4 +3,10 @@
     &-title {
         font-size: 45px;
     }
+    &-cards {
+        margin: 5vh 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

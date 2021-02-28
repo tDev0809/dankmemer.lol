@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import Logo from 'assets/img/memer.png';
+import 'react-toastify/dist/ReactToastify.css';
 import 'assets/styles/pages/control/control.scss';
 import DiscordLogin from '../../components/discordLogin';
 
