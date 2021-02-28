@@ -48,7 +48,9 @@ export default () => {
 					<NormalRoute path="/refunds" component={<Refunds />} />
 					<NormalRoute path="/privacy" component={<Privacy />} />
 
+					<ControlRoute exact path={["/control", "/control/admin", "/control/mods"]} view="none:determine" />
 					<ControlRoute path="/control/admin/access" view="admin:access" />
+					<ControlRoute path="/control/admin/users" view="admin:users" />
 					
 					{/* Route below must be at bottom for the 404 page to only show when no other route is found */}
 					<NormalRoute path="*" component={<NotFound />} />

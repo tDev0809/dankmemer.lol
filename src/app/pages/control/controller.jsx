@@ -8,6 +8,7 @@ import DiscordLogin from '../../components/discordLogin';
 
 // Views
 import AdminAccess from './admin/access';
+import AdminUsers from './admin/users';
 
 function ControlPanelController(props) {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -22,8 +23,14 @@ function ControlPanelController(props) {
         if(!props.pending && !props.loggedIn) return;
         if(!props.pending && props.loggedIn && ((props.view.includes("admin") && !props.isAdmin) || (props.view.includes("mods") && !props.isModerator))) return window.location.href = "https://www.youtube.com/watch?v=2ocykBzWDiM";
         switch(props.view) {
+            case 'none:determine': 
+                if(props.isAdmin) return window.location.replace('/control/admin/access')
+                else if(props.isModerator) return window.location.replace('/control/mods/inspect')
             case 'admin:access':
                 setComponentToRender(<AdminAccess />);
+                break;
+            case 'admin:users':
+                setComponentToRender(<AdminUsers />);
                 break;
             default:
                 setComponentToRender(                
