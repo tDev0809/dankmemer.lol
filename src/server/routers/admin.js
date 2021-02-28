@@ -62,11 +62,13 @@ router.delete('/staff', async(req, res) => {
 });
 
 router.post('/ban', (req, res) => {
+	if(!req.body || !req.body.id || !req.body.type) res.status(400).json({ message: "Something is wrong, I can feel it." })
   	db.collection('bans').insertOne(req.body);
   	res.status(200).send();
 });
 
 router.post('/unban', (req, res) => {
+	if(!req.body || !req.body.id || !req.body.type) res.status(400).json({ message: "Something is wrong, I can feel it." })
   	db.collection('bans').remove(req.body);
   	res.status(200).send();
 });

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as axios from 'axios';
+import { toast } from 'react-toastify';
 
 import '../assets/styles/components/controlCard.scss';
 
@@ -51,7 +52,7 @@ export default function ControlCard({ mainIcon, colour, title, action={}, inputO
 			setPending(false);
 			setAccountID("")
         }).catch(() => {
-			toast.error("Something went wrong while trying to add a new staff member.", {
+			toast.error("Something went wrong while trying to perform that action.", {
 				position: "top-right",
 				autoClose: 10000,
 				hideProgressBar: true,
@@ -60,6 +61,7 @@ export default function ControlCard({ mainIcon, colour, title, action={}, inputO
 				progress: undefined,
 				toastId: 'staffError'
 			});
+            setPending(false);
         });
     }
 
