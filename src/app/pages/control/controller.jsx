@@ -11,6 +11,8 @@ import DiscordLogin from '../../components/discordLogin';
 import AdminAccess from './admin/access';
 import AdminUsers from './admin/users';
 
+import ModsInspect from './mods/inspect';
+
 function ControlPanelController(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [componentToRender, setComponentToRender] = useState(null);
@@ -32,6 +34,9 @@ function ControlPanelController(props) {
                 break;
             case 'admin:users':
                 setComponentToRender(<AdminUsers />);
+                break;
+            case 'mods:inspect':
+                setComponentToRender(<ModsInspect />);
                 break;
             default:
                 setComponentToRender(                
