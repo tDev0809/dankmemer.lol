@@ -12,6 +12,7 @@ import AdminAccess from './admin/access';
 import AdminUsers from './admin/users';
 
 import ModsInspect from './mods/inspect';
+import ModsAnalytics from './mods/analytics';
 
 function ControlPanelController(props) {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -37,6 +38,9 @@ function ControlPanelController(props) {
                 break;
             case 'mods:inspect':
                 setComponentToRender(<ModsInspect />);
+                break;
+            case 'mods:analytics':
+                setComponentToRender(<ModsAnalytics />);
                 break;
             default:
                 setComponentToRender(                
