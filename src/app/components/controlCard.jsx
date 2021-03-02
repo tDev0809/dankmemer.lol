@@ -4,12 +4,12 @@ import { toast } from 'react-toastify';
 
 import '../assets/styles/components/controlCard.scss';
 
-export default function ControlCard({ mainIcon, colour, title, action={}, inputOptions = {}, dropdownOptions, finish}) {
-
-    const [requestBody, setRequestBody] = useState({});
+export default function ControlCard({ mainIcon, colour, title, options, action={}, inputOptions = {}, dropdownOptions, finish}) {
+    const [submittable, setSubmittable] = useState(false);
     const [pending, setPending] = useState(false);
     const [accountID, setAccountID] = useState("");
-    const [category, setCategory] = useState(dropdownOptions.initial);
+    const [category, setCategory] = useState(dropdownOptions ?  dropdownOptions.initial : null);
+    const [selectedCategory, setSelectedCategory] = useState(-1);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [hasEventListener, setHasEventListener] = useState(false);
 
@@ -34,24 +34,28 @@ export default function ControlCard({ mainIcon, colour, title, action={}, inputO
 		setDropdownOpen(false)
 	}, [category]);
 
+    useEffect(() => {
+        if(!dropdownOptions && accountID.length >= 1) return setSubmittable(true);
+        if(accountID.length >= 1 && category !== dropdownOptions.initial) setSubmittable(true);
+    }, [accountID, category]);
+
     const submit = async () => {
 		setPending(true);
-        setRequestBody({ id: accountID, type: category })
+        const endpoint = action.endpoint.replace("{{input}}", accountID).replace("{{dropdown}}", category);
         await axios({
-            url: `/api${action.endpoint}`,
+            url: `/api${endpoint}`,
             method: action.method,
             credentials: 'same-origin',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: {
-                ...requestBody
-            }
+            data: options && options.includeBody ? { id: accountID, type: category } : {}
         }).then(() => {
             if(typeof(finish) === "function") finish();
 			setPending(false);
-			setAccountID("")
-        }).catch(() => {
+			setAccountID("");
+            setSubmittable(false);
+        }).catch((e) => {
 			toast.error("Something went wrong while trying to perform that action.", {
 				position: "top-right",
 				autoClose: 10000,
@@ -83,62 +87,20 @@ export default function ControlCard({ mainIcon, colour, title, action={}, inputO
                 <div className="control-card-dropdown">
                     <div id="control-card-dropdown-container" onClick={() => setDropdownOpen(!dropdownOpen)}>
                         <span className="icon material-icons">{dropdownOptions.icon}</span>
-                        <p className={dropdownOpen ? "control-card-dropdown-selected open" : "control-card-dropdown-selected"}>{category ? category : dropdownOptions.initial}</p>
+                        <p className={dropdownOpen ? "control-card-dropdown-selected open" : "control-card-dropdown-selected"}>{dropdownOptions.options[selectedCategory] ? dropdownOptions.options[selectedCategory].text : dropdownOptions.initial}</p>
                         <span className="right material-icons">expand_more</span>
                     </div>
                     {dropdownOpen ? 
                         <div id="control-card-dropdown-options">
-                            {dropdownOptions.options.map(({text, value}) => (
-                                <p onClick={() => setCategory(value ? value : text)}>{text}</p>
+                            {dropdownOptions.options.map(({text, value}, i) => (
+                                <p key={i} onClick={() => {setCategory(value ? value : text); setSelectedCategory(i)}}>{text}</p>
                             ))}
                         </div>
                     : ''}
                 </div>
             : '' }
-			<p className={pending ? "control-card-button filled" : "control-card-button"} onClick={() => { if(!pending) submit() }}>{pending ? "Pending" : "Confirm"}</p>
+			<p className={!submittable ? "control-card-button disabled" : pending ? "control-card-button filled" : "control-card-button"} onClick={() => { if(!pending && submittable) submit() }}>{pending ? "Pending" : "Confirm"}</p>
 		</div>
-    //   <GenericPanel
-    //     title={title}
-    //     dropdownHeader=
-    //     textAreaHeader="User ID"
-    //     defaultDropdown="appeal"
-    //     options={this.props.options.concat('Appeal', 'Lootbox')}
-    //     action={this.action.bind(this)}
-    //     buttonText={this.props.buttonText}
-    //   />
     );
 }
 
-//   async action (state) {
-//     if (!state.textVal) {
-//       return alert('enter a user id dumb cunt');
-//     }
-
-//     const res = await fetch(`/api/admin${this.props.getEndpoint(state)}`, {
-//       ...this.props.getFetchParams(state),
-//       credentials: 'same-origin',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//     });
-
-//     if (res.status !== 200) {
-//       alert(`Unknown HTTP response code: ${res.status}`);
-//     } else {
-//       this.props.finish(state, res);
-//     }
-//   }
-
-//   static defaultProps = {
-//     getFetchParams: (state) => ({
-//       method: 'POST',
-//       body: JSON.stringify({
-//         type: state.dropdownVal,
-//         id: state.textVal
-//       })
-//     }),
-//     options: []
-//   };
-// }
-
-// import React, { useEffect, useState } from 'react';

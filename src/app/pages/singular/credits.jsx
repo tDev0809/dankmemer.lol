@@ -71,7 +71,7 @@ export default function Staff() {
 					</div>
 				))}
 			</div>
-			<div id="nitropay-staff-bottom" class="nitropay" />
+			<div id="nitropay-staff-bottom" className="nitropay" />
 		</div>
 	)
 }

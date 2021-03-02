@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import * as axios from 'axios';
 import 'assets/styles/pages/control/admin/access.scss';
-
-import AddStaff from '../panels/AddStaff';
-import RemoveStaff from '../panels/RemoveStaff';
-import CheckStaff from '../panels/CheckStaff';
+import ControlCard from '../../../components/controlCard';
 
 function AdminAccess(props) {
 
@@ -27,19 +25,65 @@ function AdminAccess(props) {
 		});
 	}, [])
 
-	useEffect(() => {
-		console.log(staff);
-	}, [staff])
-
 	return (
 		<div id="admin-access">
             <h1 id="admin-access-title">Manage Staff Members</h1>
 			<div id="admin-access-cards">
-				<AddStaff />
-				<CheckStaff />
-				<RemoveStaff />
+				<ControlCard 
+					mainIcon="person_add"
+					colour="green"
+					title="Add a new<br/>staff member"
+					action={{ endpoint: "/admin/staff?id={{input}}&category={{dropdown}}", method: "POST" }}
+					inputOptions={{ icon: "badge", placeholder: "Account ID" }}
+					finish={() => {
+						toast.dark("New staff member added.", {
+							position: "top-right",
+							autoClose: 10000,
+							hideProgressBar: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+							toastId: 'newStaff'
+						});
+					}}
+				/>
+				<ControlCard 
+					mainIcon="person_search"
+					colour="green"
+					title="Search for<br/>staff members"
+					action={{ endpoint: "/admin/staff?id={{input}}", method: "GET" }}
+					inputOptions={{ icon: "badge", placeholder: "Account ID" }}
+					finish={() => {
+						toast.dark("That staff member was found in the database.", {
+							position: "top-right",
+							autoClose: 10000,
+							hideProgressBar: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+							toastId: 'staffFound'
+						});
+					}}
+				/>
+				<ControlCard 
+					mainIcon="person_remove"
+					colour="red"
+					title="Remove a<br/>staff member"
+					action={{ endpoint: "/admin/staff?id={{input}}", method: "DELETE" }}
+					inputOptions={{ icon: "badge", placeholder: "Account ID" }}
+					finish={() => {
+						toast.dark("Staff member removed.", {
+							position: "top-right",
+							autoClose: 10000,
+							hideProgressBar: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+							toastId: 'newStaff'
+						});
+					}}
+				/>
 			</div>
-			{/* Icon, Username, Account ID, Roles, Actions << (Remove, Edit, Staff Card) */}
 			<div id="admin-access-staff-list">
 				<h2 id="admin-access-staff-list-title">All current staff members</h2>
 					{staff && Object.entries(staff).map(([category, users]) => (

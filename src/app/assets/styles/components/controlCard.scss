@@ -157,6 +157,16 @@
                 cursor: not-allowed;
             }
         }
+        &.disabled {
+            color: #646464;
+            border: 3px solid #3f3f3f;
+            &:hover {
+                cursor: not-allowed;
+                color: #646464;
+                border: 3px solid #3f3f3f;
+                background: none;
+            }
+        }
         &:hover, &:focus-within {
             color: #ffffff;
             background: #39923c;

@@ -97,7 +97,7 @@ function ControlPanelController(props) {
                                 </div>
                             </div>
                             <div id="nav-account-actions">
-                                <a href="/oauth/logout"><span title="Logout" class="material-icons">logout</span></a>
+                                <a href="/oauth/logout"><span title="Logout" className="material-icons">logout</span></a>
                             </div>
                         </div>
                     </nav>

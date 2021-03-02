@@ -65,7 +65,7 @@ export default function Blogs() {
 					))}
 				</div>
 			</section>
-			<div id="nitropay-blogs-middle" class="nitropay" />
+			<div id="nitropay-blogs-middle" className="nitropay" />
 			<section className="blogs-section">
 				<h3 className="blogs-section-heading">Older posts</h3>
 				<div id="blogs-section-older">
@@ -75,7 +75,7 @@ export default function Blogs() {
 				</div>
 			</section>
 			<BottomCTA/>
-			<div id="nitropay-blogs-bottom" class="nitropay" />
+			<div id="nitropay-blogs-bottom" className="nitropay" />
 		</div>
 	);
 }

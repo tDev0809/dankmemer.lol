@@ -72,7 +72,7 @@ export default function Home () {
 							<circle cx="560" cy="450" r="25" fill="#242424"/>
 						</svg>
 					</div>
-				<div id="nitropay-home-top" class="nitropay" />
+				<div id="nitropay-home-top" className="nitropay" />
     		</div>
     		<section>
       			<div className="text-area">
@@ -88,7 +88,7 @@ export default function Home () {
         		</div>
 				<img alt="Two of Dank Memer's MANY memey commands - pls meme and pls floor" src={MemesIMG}/>
     		</section>
-			<div id="nitropay-home-middle" class="nitropay" />
+			<div id="nitropay-home-middle" className="nitropay" />
 			<section>
 				<div className="text-area">
 					<h3 className="section-title"><span className="text-highlight">Generate</span> Server<br/> Growth</h3>
@@ -103,7 +103,7 @@ export default function Home () {
 				</div>
 				<img id="homepage-snowflake-image" alt="We have two GIANT community servers for Dank Memer. One is for bot support, the other is for hanging out with other users and giveaways!" src={InvitesIMG}/>
 			</section>
-			<div id="nitropay-home-bottom" class="nitropay" />
+			<div id="nitropay-home-bottom" className="nitropay" />
 			<BottomCTA/>
 			<span data-ccpa-link="1"></span>
   		</div>
