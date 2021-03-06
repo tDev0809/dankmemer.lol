@@ -146,6 +146,10 @@ router.get('/boxes', (req, res) => {
   res.json(boxes);
 });
 
+router.get('/emojis', (req, res) => {
+	res.json(emojis);
+  });
+
 router.get('/discount', async (req, res) => {
   const discount = await db.collection('discounts').findOne({
     expiry: { $gt: Date.now() }
