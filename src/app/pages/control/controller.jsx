@@ -10,6 +10,7 @@ import DiscordLogin from '../../components/discordLogin';
 // Views
 import AdminAccess from './admin/access';
 import AdminUsers from './admin/users';
+import AdminBlogs from './admin/blogs';
 
 import ModsInspect from './mods/inspect';
 import ModsAnalytics from './mods/analytics';
@@ -17,6 +18,7 @@ import ModsAnalytics from './mods/analytics';
 function ControlPanelController(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [componentToRender, setComponentToRender] = useState(null);
+    const [overrideMargin, setOverrideMargin] = useState(false);
 
     useEffect(() => {
         if(!componentToRender || !props.view) return
@@ -35,6 +37,10 @@ function ControlPanelController(props) {
                 break;
             case 'admin:users':
                 setComponentToRender(<AdminUsers />);
+                break;
+            case 'admin:blogs':
+                setComponentToRender(<AdminBlogs />);
+                setOverrideMargin(true);
                 break;
             case 'mods:inspect':
                 setComponentToRender(<ModsInspect />);
@@ -110,7 +116,7 @@ function ControlPanelController(props) {
                             </div>
                         </div>
                     </nav>
-                    <div id="content-container">
+                    <div id="content-container" className={overrideMargin ? 'no-margin' : ''}>
                         {componentToRender}
                     </div>
                     <ToastContainer />

@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 #control-panel {
     min-height: 100vh;
     display: flex;
     nav {
         position: fixed;
-        margin-right: 7vw;
         display: block;
         min-width: 240px;
         min-height: 100vh;
         background: #1a1a1a;
         overflow: hidden;
         z-index: 999999;
+        &.no-margin {
+            margin-right: 0px;
+        }
         #nav-logo-container {
             display: grid;
             place-items: center;
@@ -92,6 +96,13 @@
         width: 86.5vw;
         margin-right: 7vw;
         margin-left: calc(240px + 7vw);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins';
+        }
+        &.no-margin {
+            margin-left: 240px;
+            margin-right: 0px;
+        }
     }
     #restricted {
         display: grid;

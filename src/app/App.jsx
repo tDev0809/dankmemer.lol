@@ -40,7 +40,7 @@ export default () => {
 					<NormalRoute path="/rules" component={<Rules />} />
 					<NormalRoute path="/about" component={<About />}/>
 					<NormalRoute exact path="/blogs" component={<Blogs />} />
-					<NormalRoute exact path="/blogs/:blog" component={(props) => <Blog {...props} />} />
+					<NormalRoute exact path="/blogs/:blog" component={<Blog/>} />
 					<NormalRoute path="/appeals/" component={<Appeals />} />
 					<NormalRoute path="/reports/" component={<Reports />} />
 					<NormalRoute path="/terms" component={<Terms />} />
@@ -51,6 +51,7 @@ export default () => {
 					<ControlRoute exact path={["/control", "/control/admin", "/control/mods"]} view="none:determine" />
 					<ControlRoute path="/control/admin/access" view="admin:access" />
 					<ControlRoute path="/control/admin/users" view="admin:users" />
+					<ControlRoute path="/control/admin/blogs" view="admin:blogs" />
 					<ControlRoute path="/control/mods/inspect" view="mods:inspect" />
 					<ControlRoute path="/control/mods/analytics" view="mods:analytics" />
 					
