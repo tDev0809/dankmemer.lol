@@ -3,83 +3,55 @@
       "name": "Meme Box",
       "id": 0,
       "description": "Something actually worth opening.",
-      "yield": "5,000 - 20,000",
+      "yield": "2,500 - 5,000",
       "randomItem": {
-        "keyword": "medium",
-        "chance": 1
+        "keyword": "high",
+        "chance": 0.60
       },
       "price": 1.99,
       "items": [{
-          "name": "pizza",
+          "name": "phone",
           "amount": "1"
         },
         {
-          "name": "chillpill",
-          "amount": "2"
+          "name": "tidepod",
+          "amount": "1"
         },
         {
-          "name": "bread",
+          "name": "fakeid",
+          "amount": "1"
+        },
+        {
+          "name": "sand",
+          "amount": "1"
+        },
+        {
+          "name": "spinner",
+          "amount": "1"
+        },
+        {
+          "name": "coinbomb",
+          "amount": "1"
+        },
+        {
+          "name": "laptop",
           "amount": "2"
         },
         {
           "name": "pinkphallicobject",
-          "amount": "25"
-        },
-        {
-          "name": "wishlist",
-          "amount": "1"
-        },
-        {
-          "name": "lifesaver",
-          "amount": "3"
-        },
-        {
-          "name": "banknote",
-          "amount": "2"
-        },
-        {
-          "name": "tidepod",
-          "amount": "2"
-        },
-        {
-          "name": "coinbomb",
-          "amount": "3"
-        },
-        {
-          "name": "huntingrifle",
-          "amount": "2"
-        },
-        {
-          "name": "horseshoe",
           "amount": "1"
         },
         {
           "name": "fishingpole",
-          "amount": "3"
+          "amount": "1"
         },
         {
-          "name": "cookie",
-          "amount": "10"
+          "name": "banknote",
+          "amount": "1"
         },
         {
-          "name": "fakeid",
-          "amount": "3"
-        },
-        {
-          "name": "sand",
-          "amount": "3"
-        },
-        {
-          "name": "laptop",
-          "amount": "3"
-        },
-        {
-          "name": "fish",
-          "amount": "6"
-        },
-        {
-          "name": "skunk",
-          "amount": "6"
+          "name": "pepe",
+          "amount": "1"
         }
       ]
     },
@@ -87,193 +59,135 @@
       "name": "Dank Box",
       "id": 1,
       "description": "Dank rewards for a dank user.",
-      "yield": "20,000 - 50,000",
+      "yield": "5,000 - 20,000",
       "randomItem": {
         "keyword": "high",
-        "chance": 1
+        "chance": 0.85
       },
       "price": 3.99,
-      "items": [
-      {
-        "name": "pepe",
-        "amount": "1"
-      },
-      {
-        "name": "pizza",
-        "amount": "2"
-      },
-      {
-        "name": "chillpill",
-        "amount": "3"
-      },
-      {
-        "name": "bread",
-        "amount": "3"
-      },
-      {
-        "name": "pinkphallicobject",
-        "amount": "69"
-      },
-      {
-        "name": "wishlist",
-        "amount": "1"
-      },
-      {
-        "name": "lifesaver",
-        "amount": "5"
-      },
-      {
-        "name": "banknote",
-        "amount": "5"
-      },
-      {
-        "name": "tidepod",
-        "amount": "5"
-      },
-      {
-        "name": "coinbomb",
-        "amount": "5"
-      },
-      {
-        "name": "huntingrifle",
-        "amount": "3"
-      },
-      {
-        "name": "horseshoe",
-        "amount": "2"
-      },
-      {
-        "name": "fishingpole",
-        "amount": "5"
-      },
-      {
-        "name": "cookie",
-        "amount": "25"
-      },
-      {
-        "name": "fakeid",
-        "amount": "6"
-      },
-      {
-        "name": "sand",
-        "amount": "3"
-      },
-      {
-        "name": "laptop",
-        "amount": "3"
-      },
-      {
-        "name": "fish",
-        "amount": "20"
-      },
-      {
-        "name": "skunk",
-        "amount": "6"
-      }
-    ]
+      "items": [{
+          "name": "padlock",
+          "amount": "5"
+        },
+        {
+          "name": "fakeid",
+          "amount": "4"
+        },
+        {
+          "name": "tidepod",
+          "amount": "5"
+        },
+        {
+          "name": "alcohol",
+          "amount": "5"
+        },
+        {
+          "name": "phone",
+          "amount": "1"
+        },
+        {
+          "name": "sand",
+          "amount": "6"
+        },
+        {
+          "name": "spinner",
+          "amount": "6"
+        },
+        {
+          "name": "coinbomb",
+          "amount": "8"
+        },
+        {
+          "name": "laptop",
+          "amount": "8"
+        },
+        {
+          "name": "pinkphallicobject",
+          "amount": "5"
+        },
+        {
+          "name": "snowball",
+          "amount": "3"
+        },
+        {
+          "name": "fishingpole",
+          "amount": "1"
+        },
+        {
+          "name": "banknote",
+          "amount": "2"
+        },
+        {
+          "name": "pepe",
+          "amount": "1"
+        }
+      ]
     },
     {
       "name": "God Box",
       "id": 2,
       "description": "This is a really op box.",
-      "yield": "50,000 - 100,000",
+      "yield": "10,000 - 50,000",
       "randomItem": {
         "keyword": "GOD",
         "chance": 1
       },
       "price": 4.99,
-      "items": [
-        {
-          "name": "pepetrophy",
-          "amount": "1"
+      "items": [{
+          "name": "padlock",
+          "amount": "10"
         },
         {
-          "name": "pepemedal",
-          "amount": "1"
+          "name": "fakeid",
+          "amount": "6"
         },
         {
-          "name": "pepecoin",
-          "amount": "1"
-        },
-        {
-          "name": "pepe",
+          "name": "lifesaver",
           "amount": "2"
+        },
+        {
+          "name": "alcohol",
+          "amount": "6"
+        },
+        {
+          "name": "spinner",
+          "amount": "8"
+        },
+        {
+          "name": "coinbomb",
+          "amount": "6"
+        },
+        {
+          "name": "laptop",
+          "amount": "8"
+        },
+        {
+          "name": "huntingrifle",
+          "amount": "3"
         },
         {
           "name": "snowball",
           "amount": "10"
         },
         {
-          "name": "santashat",
-          "amount": "6"
-        },
-        {
-          "name": "pizza",
-          "amount": "20"
-        },
-        {
-          "name": "chillpill",
-          "amount": "10"
-        },
-        {
-          "name": "bread",
-          "amount": "10"
-        },
-        {
-          "name": "pinkphallicobject",
-          "amount": "420"
-        },
-        {
-          "name": "wishlist",
+          "name": "pepe",
           "amount": "2"
         },
         {
-          "name": "lifesaver",
-          "amount": "10"
+          "name": "pepecoin",
+          "amount": "1"
         },
         {
-          "name": "banknote",
-          "amount": "10"
-        },
-        {
-          "name": "tidepod",
-          "amount": "10"
-        },
-        {
-          "name": "coinbomb",
-          "amount": "15"
-        },
-        {
-          "name": "huntingrifle",
-          "amount": "6"
-        },
-        {
-          "name": "horseshoe",
-          "amount": "10"
+          "name": "landmine",
+          "amount": "2"
         },
         {
           "name": "fishingpole",
-          "amount": "10"
+          "amount": "3"
         },
         {
-          "name": "cookie",
-          "amount": "420"
-        },
-        {
-          "name": "fakeid",
-          "amount": "10"
-        },
-        {
-          "name": "cupidsbigtoe",
-          "amount": "1"
-        },
-        {
-          "name": "jacky",
-          "amount": "1"
-        },
-        {
-          "name": "sand",
-          "amount": "15"
+          "name": "banknote",
+          "amount": "8"
         }
       ]
     }
