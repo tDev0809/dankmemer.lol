@@ -54,6 +54,7 @@ export default () => {
 					<ControlRoute path="/control/admin/blogs" view="admin:blogs" />
 					<ControlRoute path="/control/mods/inspect" view="mods:inspect" />
 					<ControlRoute path="/control/mods/analytics" view="mods:analytics" />
+					<ControlRoute path="/control/personalize/card" view="personalize:card" />
 					
 					{/* Route below must be at bottom for the 404 page to only show when no other route is found */}
 					<NormalRoute path="*" component={<NotFound />} />

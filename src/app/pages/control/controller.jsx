@@ -14,6 +14,7 @@ import AdminBlogs from './admin/blogs';
 
 import ModsInspect from './mods/inspect';
 import ModsAnalytics from './mods/analytics';
+import PersonalizeCard from './personalization/card';
 
 function ControlPanelController(props) {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -47,6 +48,9 @@ function ControlPanelController(props) {
                 break;
             case 'mods:analytics':
                 setComponentToRender(<ModsAnalytics />);
+                break;
+            case 'personalize:card':
+                setComponentToRender(<PersonalizeCard />);
                 break;
             default:
                 setComponentToRender(                
