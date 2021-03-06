@@ -164,25 +164,20 @@ router.get('/discount', async (req, res) => {
 router.use('/admin', adminRouter);
 router.use('/mods', modsRouter);
 
-router.get('/blogs', (req, res) =>
-  res.json(blogs.map(blog => ({
-    id: blog.id,
-    name: blog.name,
-    date: blog.date,
-    thumbnail: blog.thumbnail,
-    image: blog.image,
-    author: blog.author,
-    desc: blog.desc
-  })))
-);
+router.get('/blogs', async (req, res) => {
+	let blogs = await db.collection('blogs').find({}).sort({ 'date': -1 }).toArray();
+	res.json(blogs)
+});
 
-router.get('/blogs/:blogID', (req, res) => {
-  const { blogID } = req.params;
-  const blog = blogs.find(blog => blog.id === blogID);
+router.get('/blogs/:blogID', async (req, res) => {
+	const { blogID } = req.params;
+	let blog = await db.collection('blogs').find({ _id: blogID }).toArray();
+	blog = blog[0]
+	if(!blog) blog = blogs.find(blog => blog.id === blogID);
 
-  return blog
-    ? res.status(200).send(blog)
-    : res.status(404).send(`Blog "${blogID}" not found`);
+  	return blog
+    	? res.status(200).send(blog)
+    	: res.status(404).send(`Blog "${blogID}" not found`);
 });
 
 router.get('/staff', async (req, res) => {

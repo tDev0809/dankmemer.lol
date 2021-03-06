@@ -18,7 +18,6 @@ router.get('/staff', async(req, res) => {
 	}
 });
 
-
 router.put('/staff', async(req, res) => {
 	try {
 		await db.collection('staff').updateOne({ _id: req.session.user.id }, {
@@ -105,5 +104,30 @@ router.get('/findTransaction', async (req, res) => {
 
   	res.status(200).json(await db.collection('purchases').find(dbQuery).toArray());
 });
+
+router.post('/blogs', async (req, res) => {
+	try {
+		await db.collection('blogs').insertOne({ 
+			_id: req.body.id,
+			name: req.body.name,
+			date: req.body.date || new Date().getTime(),
+			author: req.body.author,
+			desc: req.body.desc,
+			content: req.body.content
+		});
+		return res.status(200).send();
+	} catch (e) {
+		return res.status(500).send();
+	}
+});
+
+router.delete('/blogs', async(req, res) => {
+	try {
+		await db.collection('blogs').deleteOne({ '_id': req.query.id });
+		return res.status(200).send();
+	} catch (e) {
+		return res.status(500).send();
+	}
+})
 
 module.exports = router;

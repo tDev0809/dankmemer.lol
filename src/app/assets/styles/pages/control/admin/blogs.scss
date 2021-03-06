@@ -33,6 +33,31 @@
                     border-color: #39923c;
                 }
             }
+            &-new {
+                height: 5vh;
+                margin-top: 20px;
+                background: #1f1f1f;
+                max-width: 100%;
+                padding: 10px 20px;
+                color: #a5a5a5;
+                font-size: 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-sizing: border-box;
+                border-radius: 5px;
+                user-select: none;
+                transition: all ease-in-out .2s;
+                &:hover {
+                    cursor: pointer;
+                    background: #141414;
+                    color: #ffffff;
+                    span {
+                        pointer-events: none;
+                        color: #43b581;
+                    }
+                }
+            }
         }
     }
     &-editor-container {
@@ -40,7 +65,7 @@
         width: 100vw;
         height: 100vh;
         #blog-editor-details {
-            height: 12vh;
+            height: 15vh;
             width: calc(100vw - 240px - 360px);
             background: #222222;
             border-left: 1px solid #0a0a0a;
@@ -48,7 +73,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            input {
+            &-title {
                 font-size: 40px;
                 font-family: 'Montserrat';
                 font-weight: 600;
@@ -56,19 +81,68 @@
                 color: #ffffff;
                 border: none;
                 outline: none;
+                max-width: 95%;
                 &::placeholder {
                     opacity: .9;
                 }
             }
-            p {
+            &-desc {
                 color: #a5a5a5;
+                font-size: 16px;
+                background: transparent;
+                color: #a5a5a5;
+                border: none;
+                outline: none;
+                font-family: 'Inter', sans-serif;
+                max-width: 95%;
+                &::placeholder {
+                    opacity: .7;
+                }
+            }
+            #blog-details-buttons {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .blog-button {
+                    margin-top: 10px;
+                    color: #a5a5a5;
+                    border: 2px solid #131313;
+                    border-radius: 5px;
+                    padding: 5px 10px;
+                    width: max-content;
+                    font-size: 14px;
+                    user-select: none;
+                    transition: color ease-in-out .2s;
+                    &:not(:last-child) {
+                        margin-right: 20px;
+                    }
+                    span {
+                        margin-right: 10px;
+                    }
+                    &:hover {
+                        background: #131313;
+                        color: #ffffff;
+                        cursor: pointer;
+                    }
+                    &.disabled:hover {
+                        cursor: not-allowed;
+                        background: transparent;
+                        color: #a5a5a5;
+                    }
+                    &.publish:hover span {
+                        color: #43b581;
+                    }
+                    &.delete:hover span {
+                        color: #b54343;
+                    }
+                }
             }
         }
         #blog-editor {
             background: transparent;
             border: none;
             width: calc(100vw - 240px - 360px);
-            height: 88vh;
+            height: 85vh;
             border-left: 1px solid #0a0a0a;
             .rc-md-navigation {
                 background: #222222;
@@ -88,6 +162,14 @@
                         }
                     }
                 }
+                #publish-blog-button {
+                    font-size: 20px;
+                    transition: color ease-in-out .2s;
+                    &:hover {
+                        color: #43b581;
+                        cursor: pointer;
+                    }
+                }
             }
             textarea {
                 background: #292929;
@@ -96,6 +178,9 @@
             .custom-html-style {
                 & > * {
                     color: #ffffff;
+                }
+                h1, h2, h3, h4, h5, h6 {
+                    font-family: 'Montserrat';
                 }
                 & > p + p {
                     line-height: 1.2;
