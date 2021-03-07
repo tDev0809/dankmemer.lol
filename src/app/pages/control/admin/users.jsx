@@ -9,7 +9,7 @@ function AdminUsers(props) {
 	return (
 		<div id="admin-users">
             <h1 id="admin-users-title">Control bot users</h1>
-			<div id="admin-users-cards">
+			<div id="admin-users-cards" className="card-grid">
 				<ControlCard 
 					mainIcon="remove"
 					colour="red"

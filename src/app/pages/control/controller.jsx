@@ -20,6 +20,8 @@ function ControlPanelController(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [componentToRender, setComponentToRender] = useState(null);
     const [overrideMargin, setOverrideMargin] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         if(!componentToRender || !props.view) return
@@ -69,7 +71,70 @@ function ControlPanelController(props) {
         <div id="control-panel">
             {isLoaded ?
                 <>
-                    <nav>
+                    <nav id="mobile-nav">
+                        <Link id="nav-logo-container" to="/">
+                            <img src="nav-logo" src={Logo} width="60" />
+                        </Link>
+                        <ul id="mobile-nav-links">
+                            {props.isAdmin ?
+                                <>
+                                    <li><NavLink to="/control/admin/access">Access control</NavLink></li>
+                                    <li><NavLink to="/control/admin/users">User control</NavLink></li>
+                                    <li><NavLink to="/control/admin/store">Store management</NavLink></li>
+                                    <li><NavLink to="/control/admin/blogs">Blog management</NavLink></li>                                
+                                    <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
+                                    <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
+                                </>
+                            : isModerator ? 
+                                <>
+                                    <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
+                                    <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
+                                </>
+                            : ''}
+                        </ul>
+                        <div id="mobile-nav-right">
+                            <div id="mobile-nav-right-hamburger">
+                                <span onClick={() => { setDropdownOpen(false); setMenuOpen(!menuOpen) }} className="material-icons">menu</span>
+                                {menuOpen ? 
+                                    <div id="mobile-nav-right-hamburger-links">
+                                        <ul>
+                                            {props.isAdmin ?
+                                                <>
+                                                    <li><NavLink to="/control/admin/access">Access control</NavLink></li>
+                                                    <li><NavLink to="/control/admin/users">User control</NavLink></li>
+                                                    <li><NavLink to="/control/admin/store">Store management</NavLink></li>
+                                                    <li><NavLink to="/control/admin/blogs">Blog management</NavLink></li>                                
+                                                    <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
+                                                    <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
+                                                    <li><NavLink to="/control/personalize/card">Card appearance</NavLink></li>
+                                                </>
+                                            : isModerator ? 
+                                                <>
+                                                    <li><NavLink to="/control/personalize/card">Card appearance</NavLink></li>
+                                                    <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
+                                                    <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
+                                                </>
+                                            : ''}
+                                        </ul>
+                                    </div>
+                                : ''}
+                            </div>
+                            <div id="mobile-nav-right-account" onClick={() => { setMenuOpen(false); setDropdownOpen(!dropdownOpen) }}>
+                                <div id="mobile-nav-right-account-info">
+                                    <img id="mobile-nav-right-account-info-avatar" src={`https://cdn.discordapp.com/avatars/${props.id}/${props.avatar}`} width="48" />
+                                </div>
+                            </div>
+                        </div>
+                        {dropdownOpen ?
+                            <div id="nav-account-dropdown">
+                                <ul>
+                                    <li><NavLink to="/control/personalize/card">Card appearance</NavLink></li>
+                                    <li><a href="/oauth/logout">Logout</a></li>
+                                </ul>
+                            </div>
+                        : ''}
+                    </nav>
+                    <nav id="desktop-nav">
                         <Link id="nav-logo-container" to="/">
                             <img src="nav-logo" src={Logo} width="160" />
                         </Link>

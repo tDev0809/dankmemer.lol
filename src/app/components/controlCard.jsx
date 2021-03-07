@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import '../assets/styles/components/controlCard.scss';
 
-export default function ControlCard({ mainIcon, colour, title, options, action={}, inputOptions = {}, dropdownOptions, finish}) {
+export default function ControlCard({ mainIcon, colour, title, options, resize, action={}, inputOptions = {}, dropdownOptions, finish}) {
     const [submittable, setSubmittable] = useState(false);
     const [pending, setPending] = useState(false);
     const [accountID, setAccountID] = useState("");
@@ -70,7 +70,7 @@ export default function ControlCard({ mainIcon, colour, title, options, action={
     }
 
     return (
-        <div className="control-card">
+        <div className={resize ? "control-card resize" : "control-card"}>
 			<div className="control-card-header">
 				<div className="control-card-icon">
 					<span className="material-icons">{mainIcon}</span>

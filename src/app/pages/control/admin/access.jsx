@@ -97,6 +97,7 @@ function AdminAccess(props) {
 					mainIcon="person_add"
 					colour="green"
 					title="Add a new<br/>staff member"
+					resize={true}
 					action={{ endpoint: "/admin/staff?id={{input}}&category={{dropdown}}", method: "POST" }}
 					inputOptions={{ icon: "badge", placeholder: "Account ID" }}
 					finish={() => {
@@ -115,6 +116,7 @@ function AdminAccess(props) {
 					mainIcon="person_search"
 					colour="green"
 					title="Search for<br/>staff members"
+					resize={true}
 					action={{ endpoint: "/admin/staff?id={{input}}", method: "GET" }}
 					inputOptions={{ icon: "badge", placeholder: "Account ID" }}
 					finish={() => {
@@ -133,6 +135,7 @@ function AdminAccess(props) {
 					mainIcon="person_remove"
 					colour="red"
 					title="Remove a<br/>staff member"
+					resize={true}
 					action={{ endpoint: "/admin/staff?id={{input}}", method: "DELETE" }}
 					inputOptions={{ icon: "badge", placeholder: "Account ID" }}
 					finish={() => {
@@ -155,7 +158,7 @@ function AdminAccess(props) {
 							<div className="staff-row" key={i}>
 								<div className="staff-row-group">
 									<img className="staff-row-group-picture" src={user.avatar} alt="?"/>
-									<p className="staff-row-group-username">{user.name} (<span>{user._id}</span>)</p>
+									<p className="staff-row-group-username">{user.name} <span className="staff-row-group-id"><span style={{ userSelect: "none" }}>(</span>{user._id}<span style={{ userSelect: "none" }}>)</span></span></p>
 								</div>
 								<p className="staff-row-role">{category}</p>
 								<p className="staff-row-about">{user.about.substr(0, 100)}{user.about.length > 100 ? '...' : ''}</p>

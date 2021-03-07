@@ -130,7 +130,11 @@ function AdminBlogs(props) {
                 <h2>Blog posts</h2>
                 <p className="control-subtitle">Here you are able to create new and edit existing blog posts!</p>
                 <div id="control-blogs">
-                    <SimpleBar style={{ maxHeight: "80vh" }}>
+                    <div id="control-blogs-new" onClick={() => clearEditor()}>
+                        <p>Write a blog post</p>
+                        <span className="material-icons">post_add</span>
+                    </div>
+                    <SimpleBar style={{ maxHeight: "78vh" }}>
                         {blogs.map((blog, i) => (
                             <div className={currentBlog === i ? "control-blog selected" : "control-blog"} key={i} onClick={() => selectBlog(i)}>
                                 <h3 className="control-blog-title">{blog.name}</h3>
@@ -138,10 +142,6 @@ function AdminBlogs(props) {
                             </div>
                         ))}
                     </SimpleBar>
-                    <div id="control-blogs-new" onClick={() => clearEditor()}>
-                        <p>Write a blog post</p>
-                        <span className="material-icons">post_add</span>
-                    </div>
                 </div>
             </div>
             <div id="admin-blogs-editor-container">

@@ -54,6 +54,11 @@
                 width: 100%;
                 margin-left: 20px;
                 margin-right: 20px;
+                line-height: 1.5em;
+                height: 3em;
+                overflow: hidden;
+                white-space: wrap;
+                text-overflow: ellipsis;
             }
             &-actions {
                 float: right;
@@ -93,6 +98,21 @@
             }
             &:not(:nth-child(1)) {
                 margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    #admin-access {
+        &-staff-list {
+            .staff-row {
+                &-group {
+                    min-width: 200px;
+                    &-id {
+                        display: none;
+                    }
+                }
             }
         }
     }
