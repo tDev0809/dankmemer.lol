@@ -1,6 +1,6 @@
 .control-card {
     position: relative;
-    background: #1a1a1a;
+    background: #050b06;
     padding: 24px 30px;
     height: 260px;
     width: 260px;
@@ -23,7 +23,7 @@
             height: 40px;
             font-size: 15px;
             font-family: 'Inter', sans-serif;
-            background: #0f0f0f;
+            background: #030704;
             border-radius: 5px;
             color: #b9b9b9;
             padding-left: 40px;
@@ -64,7 +64,7 @@
             padding-left: 40px;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            background: #0f0f0f;
+            background: #030704;
             border-radius: 5px;
             color: #b9b9b9;
             cursor: pointer;
@@ -78,8 +78,8 @@
             position: absolute;
             height: max-content;
             width: 100%;
-            background: #0f0f0f;
-            border-top: 1px solid #020202;
+            background: #030704;
+            border-top: 1px solid #000000;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
             z-index: 9;
@@ -144,7 +144,7 @@
         position: absolute;
         bottom: 20px;
         color: #39923c;
-        border: 3px solid #39923c;
+        border: 2px solid #39923c;
         border-radius: 5px;
         width: max-content;
         padding: 7px 15px;
@@ -159,11 +159,11 @@
         }
         &.disabled {
             color: #646464;
-            border: 3px solid #3f3f3f;
+            border: 2px solid #1d1d1d;
             &:hover {
                 cursor: not-allowed;
                 color: #646464;
-                border: 3px solid #3f3f3f;
+                border: 2px solid #1d1d1d;
                 background: none;
             }
         }

@@ -3,7 +3,7 @@
         position: fixed;
         width: 360px;
         height: 100vh;
-        background: #222222;
+        background: #101811;
         padding: 10px 20px;
         box-sizing: border-box;
         .control-subtitle {
@@ -36,7 +36,7 @@
             &-new {
                 height: 5vh;
                 margin-bottom: 20px;
-                background: #1f1f1f;
+                background: rgba(0, 0, 0, 0.3);
                 max-width: 100%;
                 padding: 10px 20px;
                 color: #a5a5a5;
@@ -50,7 +50,7 @@
                 transition: all ease-in-out .2s;
                 &:hover {
                     cursor: pointer;
-                    background: #141414;
+                    background: rgba(0, 0, 0, 0.5);
                     color: #ffffff;
                     span {
                         pointer-events: none;
@@ -67,7 +67,7 @@
         #blog-editor-details {
             height: 15vh;
             width: calc(100vw - 240px - 360px);
-            background: #222222;
+            background: #101811;
             border-left: 1px solid #0a0a0a;
             padding-left: 20px;
             display: flex;
@@ -106,7 +106,7 @@
                 .blog-button {
                     margin-top: 10px;
                     color: #a5a5a5;
-                    border: 2px solid #131313;
+                    border: 1.5px solid #050b06;
                     border-radius: 5px;
                     padding: 5px 10px;
                     width: max-content;
@@ -118,9 +118,10 @@
                     }
                     span {
                         margin-right: 10px;
+                        transition: color ease-in-out .2s;
                     }
                     &:hover {
-                        background: #131313;
+                        background: #050b06;
                         color: #ffffff;
                         cursor: pointer;
                     }
@@ -145,7 +146,7 @@
             height: 85vh;
             border-left: 1px solid #0a0a0a;
             .rc-md-navigation {
-                background: #222222;
+                background: rgba(0,0,0,0.3);
                 border: none;
                 .button-wrap .button {
                     transition: color ease-in-out .2s;
@@ -154,7 +155,7 @@
                     }
                 }
                 .drop-wrap {
-                    background: #222222;
+                    background: rgba(0,0,0,0.5);
                     border: 1px solid #0a0a0a;
                     li {
                         &:hover {
@@ -172,7 +173,7 @@
                 }
             }
             textarea {
-                background: #292929;
+                background: #0b110c;
                 color: #dddddd;
             }
             .custom-html-style {

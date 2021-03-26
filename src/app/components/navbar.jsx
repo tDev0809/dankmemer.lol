@@ -2,25 +2,49 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink, Link } from 'react-router-dom';
 import 'assets/styles/components/navbar.scss';
+import Logo from 'assets/img/memer.webp';
 import parseTime from '../util/parseTime.js';
 
 
 const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, discriminator, avatar, id }}) => {
 	const [navExpanded, setNavExpanded] = useState(false);
-	const [navDropdown, setNavDropdown] = useState(false);
+	const [dropdown, setDropdown] = useState(false);
+	const [dropdownEventListener, setDropdownEventListener] = useState(false);
+
+	// useEffect(() => {
+	// 	if(navExpanded) {
+	// 		document.getElementById('pseudoBody').style.overflowY = 'hidden';
+	// 		document.getElementById('pseudoBody').style.height = '100vh';
+	// 		document.getElementsByTagName('footer')[0].style.display = 'none';
+	// 	} else if(!navExpanded){
+	// 		document.getElementById('pseudoBody').style.overflowY = 'auto';
+	// 	}
+	// }, [navExpanded]);
 
 	useEffect(() => {
-		if(navExpanded) {
-			document.getElementById('pseudoBody').style.overflowY = 'hidden';
-			document.getElementById('pseudoBody').style.height = '100vh';
-			document.getElementsByTagName('footer')[0].style.display = 'none';
-		} else if(!navExpanded){
-			document.getElementById('pseudoBody').style.overflowY = 'auto';
+		if(!dropdown && dropdownEventListener) {
+			document.documentElement.removeEventListener('click', () => {
+				return setHasEventListener(false);
+			});
+		} else if (dropdown && !dropdownEventListener) {
+			document.documentElement.addEventListener('click', (e) => {
+				setDropdownEventListener(true);
+				if(
+                    e.target !== document.getElementById('user-account') && 
+                    e.target.parentNode !== document.getElementById("user-account-dropdown")
+                ) return setDropdown(false);	
+				
+			});
 		}
-	}, [navExpanded]);
+	}, [dropdown]);
 
 	return (
-		<nav id="navbar">
+		<div id="navigation-container">
+			<div id="announcement">
+				<div id="announcement-content">
+					<p><span className="announcement-bold">Bot Update</span>: Changes to Slots, Blackjack and Bet commands. <a className="announcement-link" target="_blank" href="https://www.reddit.com/r/dankmemer/comments/m7b1fn/dank_memer_update/" rel="noopener noreferrer">Read more</a></p>
+				</div>
+			</div>
 			<div id="navbar-mobile">
 				<div id="navbar-mobile-head">
 					<h2 id="navbar-mobile-head-text">Dank Memer</h2>
@@ -100,7 +124,36 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 					</div>
 				</div>
 			</div>
-			<ul id="navbar-links">
+			<nav id="desktop">
+				<div id="desktop-left">
+					<Link to="/"><img src={Logo} alt="Logo" width="42" /></Link>
+					<ul id="desktop-left-links">
+						<li className="desktop-nav-link"><NavLink to="/commands">Commands</NavLink></li>
+						<li className="desktop-nav-link"><NavLink to="/faq">FAQ</NavLink></li>
+						<li className="desktop-nav-link"><NavLink to="/blogs">Blog</NavLink></li>
+						<li className="desktop-nav-link"><NavLink to="/loot">Store</NavLink></li>
+					</ul>
+				</div>
+				<div id="desktop-right">
+					<a href="https://discord.gg/meme" rel="noreferrer noopener" className="desktop-nav-link">Support</a>
+					{!loggedIn ? 
+					<a href={`/oauth/login?redirect=${window.location.pathname}`} rel="noreferrer noopener" className="desktop-nav-link highlight">Login</a> :
+					<div id="user-account" onClick={() => setDropdown(!dropdown)}>
+						<img id="user-account-avatar" src={`https://cdn.discordapp.com/avatars/${id}/${avatar}`} alt="?" width="32" />
+						<p id="user-account-name"><span>{username}</span><span className="material-icons">expand_more</span></p>
+						{dropdown ?
+						<div id="user-account-dropdown">
+							<ul id="user-account-dropdown-content">
+								{isModerator || isAdmin ? <li className="dropdown-item"><Link to="/control" className="dropdown-link">Control panel</Link></li> : ''}
+								<li className="dropdown-item"><Link to="/appeals" className="dropdown-link">Appeals</Link></li>
+								<li className="dropdown-item"><Link to="/reports" className="dropdown-link">Reports</Link></li>
+								<li className="dropdown-item"><a href="/oauth/logout" rel="noreferrer noopener" className="dropdown-link red">Logout</a></li>
+							</ul>
+						</div> : ''}
+					</div>}
+				</div>
+			</nav>
+			{/* <ul id="navbar-links">
 				<li className="navbar-link"><NavLink activeClassName="active" exact to="/">Home</NavLink></li>
 				<li className="navbar-link"><NavLink activeClassName="active" to="/commands">Commands</NavLink></li>
 				<li className="navbar-link"><a href="https://discord.gg/meme">Support</a></li>
@@ -137,8 +190,8 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 							</div>
 					}
 				</li>
-			</ul>
-		</nav>
+			</ul> */}
+		</div>
 	);
 };
 

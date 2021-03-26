@@ -100,6 +100,24 @@ function AdminAccess(props) {
 					resize={true}
 					action={{ endpoint: "/admin/staff?id={{input}}&category={{dropdown}}", method: "POST" }}
 					inputOptions={{ icon: "badge", placeholder: "Account ID" }}
+					dropdownOptions={{ 
+						icon: "badge",
+						initial: "Staff type",
+						options: [
+							{
+								text: "Moderator"
+							},
+							{
+								text: "Honorable Mention"
+							},
+							{
+								text: "Server Management"
+							},
+							{
+								text: "Developer"
+							}
+						]
+					}}
 					finish={() => {
 						toast.dark("New staff member added.", {
 							position: "top-right",
