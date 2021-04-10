@@ -107,17 +107,17 @@ router.get('/findTransaction', async (req, res) => {
 
 router.post('/blogs', async (req, res) => {
 	try {
-		await db.collection('blogs').insertOne({ 
+		await db.collection('blogs').updateOne({ _id: req.body.id }, { $set: {
 			_id: req.body.id,
 			name: req.body.name,
 			date: req.body.date || new Date().getTime(),
 			author: req.body.author,
 			desc: req.body.desc,
 			content: req.body.content
-		});
+		}}, { upsert: true });
 		return res.status(200).send();
 	} catch (e) {
-		return res.status(500).send();
+		return res.status(500).send(e);
 	}
 });
 

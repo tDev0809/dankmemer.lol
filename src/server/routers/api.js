@@ -8,7 +8,7 @@ const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
 const router = Router();
 const db = require('../util/db.js');
-const blogs = require('../util/blogs.js');
+const _blogs = require('../util/blogs.js');
 const axios = require('axios');
 const recentAppeals = new Set();
 const recentReports = new Set();
@@ -148,28 +148,36 @@ router.get('/boxes', (req, res) => {
 
 router.get('/emojis', (req, res) => {
 	res.json(emojis);
-  });
+});
 
 router.get('/discount', async (req, res) => {
-  const discount = await db.collection('discounts').findOne({
-    expiry: { $gt: Date.now() }
-  });
-  if (discount) {
-    res.json({
-      percent: discount.percent,
-      name: discount.name || '',
-      expiry: discount.expiry
-    });
-  } else {
-    res.json(null);
-  }
+ 	const discount = await db.collection('discounts').findOne({
+    	expiry: { $gt: Date.now() }
+  	});
+  	if (discount) {
+    	res.json({
+			percent: discount.percent,
+			name: discount.name || '',
+			expiry: discount.expiry
+    	});
+  	} else {
+    	res.json(null);
+  	}
+});
+
+router.get('/announcement', async (req, res) => {
+	const announcement = await db.collection('announcements').find({}).sort({ '_id': -1 }).toArray();
+	if(!announcement[0]) return res.status(204).json({ message: 'There are no announcements.' });
+	res.status(200).json({
+		announcement: announcement[0]
+	})
 })
 
 router.use('/admin', adminRouter);
 router.use('/mods', modsRouter);
 
 router.get('/blogs', async (req, res) => {
-	let blogs = await db.collection('blogs').find({}).sort({ 'date': -1 }).toArray();
+	let blogs = await db.collection('blogs').find({}).sort({ 'date': -1 }).toArray(); // Get all the available blog posts, sorted by oldest to newest (by timestamp in the document)
 	res.json(blogs)
 });
 
@@ -177,7 +185,7 @@ router.get('/blogs/:blogID', async (req, res) => {
 	const { blogID } = req.params;
 	let blog = await db.collection('blogs').find({ _id: blogID }).toArray();
 	blog = blog[0]
-	if(!blog) blog = blogs.find(blog => blog.id === blogID);
+	if(!blog) blog = _blogs.find(blog => blog.id === blogID); // Fallback if the id is not found in mongo get the file content
 
   	return blog
     	? res.status(200).send(blog)
