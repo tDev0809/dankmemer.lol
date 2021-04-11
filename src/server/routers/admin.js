@@ -142,6 +142,20 @@ router.post('/discount', async(req, res) => {
 	} catch (e) {
 		res.status(500).json({ error: e })
 	}
+});
+
+router.post('/announcement', async(req, res) => {
+	let { id: content } = req.body;
+	try {
+		let announcements = await db.collection('announcements').find({}).toArray();
+		await db.collection('announcements').insertOne({
+			_id: announcements.length + 1,
+			content: content
+		});
+		return res.status(200).json({ message: "Announcement made" });
+	} catch (e) {
+		res.status(500).json({ error: e });
+	}
 })
 
 module.exports = router;
