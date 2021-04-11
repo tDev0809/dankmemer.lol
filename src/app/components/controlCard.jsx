@@ -81,7 +81,16 @@ export default function ControlCard({ mainIcon, colour, title, options, resize, 
 			</div>
 			<div className="control-card-input-group">
 				<span className="material-icons">{inputOptions.icon}</span>
-				<input className="control-card-input" type="text" placeholder={inputOptions.placeholder} value={accountID} onChange={(e) => setAccountID(e.target.value)}/>
+				<input className="control-card-input" type={inputOptions.min ? "number" : "text"} placeholder={inputOptions.placeholder} min={inputOptions.min} max={inputOptions.max} value={accountID}
+                    onChange={(e) => {
+                        setAccountID(e.target.value);
+                        if(inputOptions.min && e.target.value < inputOptions.min) e.target.value = inputOptions.min;
+                        else if(inputOptions.max && e.target.value > inputOptions.max) e.target.value = inputOptions.max;
+                    }}
+                    onInput={(e) => {
+                        if(e.target.value < inputOptions.min) e.target.value = inputOptions.min;
+                        else if(e.target.value > inputOptions.max) e.target.value = inputOptions.max;
+                    }}/>
 			</div>
             {dropdownOptions ?
                 <div className="control-card-dropdown">

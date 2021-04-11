@@ -10,6 +10,9 @@
         height: 30px;
         box-sizing: border-box;
         background: linear-gradient(to right, #20be50, #16c458);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &-content {
             display: flex;
             justify-content: center;
@@ -25,11 +28,13 @@
             }
         }
         &-action {
+            position: absolute;
+            right: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             .material-icons {
-                font-size: 20px;
+                font-size: 18px;
                 opacity: 0.7;
                 transition: opacity ease-in-out 0.2s;
                 cursor: pointer;

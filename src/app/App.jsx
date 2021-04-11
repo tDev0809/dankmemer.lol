@@ -51,6 +51,7 @@ export default () => {
 					<ControlRoute exact path={["/control", "/control/admin", "/control/mods"]} view="none:determine" />
 					<ControlRoute path="/control/admin/access" view="admin:access" />
 					<ControlRoute path="/control/admin/users" view="admin:users" />
+					<ControlRoute path="/control/admin/website" view="admin:website" />
 					<ControlRoute path="/control/admin/blogs" view="admin:blogs" />
 					<ControlRoute path="/control/mods/inspect" view="mods:inspect" />
 					<ControlRoute path="/control/mods/analytics" view="mods:analytics" />

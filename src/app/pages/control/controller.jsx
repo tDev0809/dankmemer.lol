@@ -10,6 +10,7 @@ import DiscordLogin from '../../components/discordLogin';
 // Views
 import AdminAccess from './admin/access';
 import AdminUsers from './admin/users';
+import AdminWebsite from './admin/website';
 import AdminBlogs from './admin/blogs';
 
 import ModsInspect from './mods/inspect';
@@ -40,6 +41,9 @@ function ControlPanelController(props) {
                 break;
             case 'admin:users':
                 setComponentToRender(<AdminUsers />);
+                break;
+            case 'admin:website':
+                setComponentToRender(<AdminWebsite />);
                 break;
             case 'admin:blogs':
                 setComponentToRender(<AdminBlogs />);
@@ -80,7 +84,7 @@ function ControlPanelController(props) {
                                 <>
                                     <li><NavLink to="/control/admin/access">Access control</NavLink></li>
                                     <li><NavLink to="/control/admin/users">User control</NavLink></li>
-                                    <li><NavLink to="/control/admin/store">Store management</NavLink></li>
+                                    <li><NavLink to="/control/admin/website">Website management</NavLink></li>
                                     <li><NavLink to="/control/admin/blogs">Blog management</NavLink></li>                                
                                     <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
                                     <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
@@ -102,7 +106,7 @@ function ControlPanelController(props) {
                                                 <>
                                                     <li><NavLink to="/control/admin/access">Access control</NavLink></li>
                                                     <li><NavLink to="/control/admin/users">User control</NavLink></li>
-                                                    <li><NavLink to="/control/admin/store">Store management</NavLink></li>
+                                                    <li><NavLink to="/control/admin/website">Website management</NavLink></li>
                                                     <li><NavLink to="/control/admin/blogs">Blog management</NavLink></li>                                
                                                     <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
                                                     <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
@@ -145,7 +149,7 @@ function ControlPanelController(props) {
                                     <ul className="nav-category-links">
                                         <li><NavLink to="/control/admin/access">Access control</NavLink></li>
                                         <li><NavLink to="/control/admin/users">User control</NavLink></li>
-                                        <li><NavLink to="/control/admin/store">Store management</NavLink></li>
+                                        <li><NavLink to="/control/admin/website">Website management</NavLink></li>
                                         <li><NavLink to="/control/admin/blogs">Blog management</NavLink></li>
                                     </ul>
                                 </div>

@@ -34,7 +34,7 @@ function AdminBlogs(props) {
             url: '/api/admin/blogs',
             method: 'POST',
             data: {
-                id: blogTitle.toLowerCase().replace(/ /g, '-'),
+                id: blogTitle.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9 -]/, ''),
                 name: blogTitle,
                 date: blogDate,
                 desc: blogDescription,
@@ -95,7 +95,7 @@ function AdminBlogs(props) {
         setBlogDate(blogs[currentBlog].date);
         setBlogAuthor(blogs[currentBlog].author);
         setBlogDescription(blogs[currentBlog].desc);
-        axios(`/api/blogs/${blogs[currentBlog]._id}`).then(({data: blog}) =>  {
+        axios(`/api/blogs/${blogs[currentBlog]._id || blogs[currentBlog].id}`).then(({data: blog}) =>  {
             setBlogContent(html2md(blog.content));
             setHTMLBlog(blog.content);
         });

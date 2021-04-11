@@ -4,12 +4,16 @@ import { withRouter, NavLink, Link } from 'react-router-dom';
 import 'assets/styles/components/navbar.scss';
 import Logo from 'assets/img/memer.webp';
 import parseTime from '../util/parseTime.js';
-
+import * as axios from 'axios';
 
 const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, discriminator, avatar, id }}) => {
 	const [navExpanded, setNavExpanded] = useState(false);
 	const [dropdown, setDropdown] = useState(false);
 	const [dropdownEventListener, setDropdownEventListener] = useState(false);
+
+	const [announcementHidden, setAnnouncementHidden] = useState(false);
+	const [announcementContent, setAnnouncementContent] = useState("This is awkward. There is no announcement content.");
+	const [recentAnnouncementNum, setRecentAnnouncementNum] = useState("0");
 
 	// useEffect(() => {
 	// 	if(navExpanded) {
@@ -20,6 +24,29 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 	// 		document.getElementById('pseudoBody').style.overflowY = 'auto';
 	// 	}
 	// }, [navExpanded]);
+
+	useEffect(() => {
+
+		(async() => {
+			try {
+				let req = await axios('/api/announcement');
+				if(req.data.announcement) {
+					setAnnouncementContent(req.data.announcement.content);
+					setRecentAnnouncementNum(req.data.announcement._id);
+				}
+			} catch {}
+		})();
+
+		const announcementStorage = localStorage.getItem("announcement-hidden");
+		const announcementNum = localStorage.getItem("announcement-at");
+		if(!announcementStorage && !announcementNum) return;
+		if(announcementStorage === "hidden" && announcementNum === recentAnnouncementNum) setAnnouncementHidden(true);
+	}, []);
+
+	useEffect(() => {
+		if(announcementHidden) localStorage.setItem("announcement-hidden", "hidden")
+		else localStorage.setItem("announcement-hidden", "no")
+	}, [announcementHidden]);
 
 	useEffect(() => {
 		if(!dropdown && dropdownEventListener) {
@@ -40,11 +67,17 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 
 	return (
 		<div id="navigation-container">
-			<div id="announcement">
-				<div id="announcement-content">
-					<p><span className="announcement-bold">Bot Update</span>: Changes to Slots, Blackjack and Bet commands. <a className="announcement-link" target="_blank" href="https://www.reddit.com/r/dankmemer/comments/m7b1fn/dank_memer_update/" rel="noopener noreferrer">Read more</a></p>
+			{announcementHidden ? '' :
+				<div id="announcement">
+					<div id="announcement-content">
+						<p>{announcementContent}</p>
+						{/* <p><span className="announcement-bold">Bot Update</span>: Changes to Slots, Blackjack and Bet commands. <a className="announcement-link" target="_blank" href="https://www.reddit.com/r/dankmemer/comments/m7b1fn/dank_memer_update/" rel="noopener noreferrer">Read more</a></p> */}
+					</div>
+					<div id="announcement-action" onClick={() => setAnnouncementHidden(!announcementHidden)}>
+						<span className="material-icons">close</span>
+					</div>
 				</div>
-			</div>
+			}
 			<div id="navbar-mobile">
 				<div id="navbar-mobile-head">
 					<h2 id="navbar-mobile-head-text">Dank Memer</h2>
@@ -145,8 +178,8 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 						<div id="user-account-dropdown">
 							<ul id="user-account-dropdown-content">
 								{isModerator || isAdmin ? <li className="dropdown-item"><Link to="/control" className="dropdown-link">Control panel</Link></li> : ''}
-								<li className="dropdown-item"><Link to="/appeals" className="dropdown-link">Appeals</Link></li>
-								<li className="dropdown-item"><Link to="/reports" className="dropdown-link">Reports</Link></li>
+								<li className="dropdown-item"><Link to="/appeals" className="dropdown-link">Appeal a ban</Link></li>
+								<li className="dropdown-item"><Link to="/reports" className="dropdown-link">Report a user</Link></li>
 								<li className="dropdown-item"><a href="/oauth/logout" rel="noreferrer noopener" className="dropdown-link red">Logout</a></li>
 							</ul>
 						</div> : ''}
