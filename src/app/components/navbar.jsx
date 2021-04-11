@@ -29,10 +29,9 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 	const handleResize = () => {
 		let width = document.documentElement.clientWidth;
 		if(width <= 730) {
-			console.log("mobile")
 			setMobile(true);
+			setDropdown(false);
 		} else if(width > 730) {
-			console.log("no mobile")
 			setMobile(false);
 			setDropdown(false);
 		}
@@ -59,7 +58,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 		// device is small enough for mobile navbar.
 		window.addEventListener("resize", (e) => {
 			handleResize();
-		})
+		});
 	}, []);
 
 	useEffect(() => {
