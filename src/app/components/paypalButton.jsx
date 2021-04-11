@@ -15,10 +15,8 @@ export default function PaypalButton(props) {
         const res = {};
 
         const subtotal = getSubtotal(true);
-        
-        let discountPercent = 0;
+        let discountPercent = props.discount;
         if (discount) {
-            discountPercent += discount.percent;
             res.discount = true;
         }
 
@@ -29,14 +27,13 @@ export default function PaypalButton(props) {
         } else {
             res.neededUntilFlat = Constants.MINIMUM_DISCOUNT_VALUE - hypothetical;
         }
-
         res.discountPercent = discountPercent;
         return res;
     };
 
     const getDiscount = (returnRaw) => {
         const subtotal = getSubtotal(true);
-        const {discountPercent} = getDiscountPercent();
+        const { discountPercent } = getDiscountPercent();
         const raw = props.activeBox.id !== 0 ? subtotal * (discountPercent / 100) : 0;
         return returnRaw ? raw : raw.toFixed(2);
     }

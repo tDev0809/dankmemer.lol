@@ -128,6 +128,20 @@ router.delete('/blogs', async(req, res) => {
 	} catch (e) {
 		return res.status(500).send();
 	}
+});
+
+router.post('/discount', async(req, res) => {
+	let { id: percentage,  type: expiry } = req.body;
+	try {
+		await db.collection('discounts').insertOne({
+			percent: percentage / 100,
+			name: '',
+			expiry: Date.now() + (parseInt(expiry) * 3600 * 1000) // Current date + hours in milliseconds of sale
+		});
+		return res.status(200).json({ message: "Discount set!" });
+	} catch (e) {
+		res.status(500).json({ error: e })
+	}
 })
 
 module.exports = router;

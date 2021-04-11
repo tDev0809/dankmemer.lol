@@ -16,7 +16,7 @@ function AdminWebsite(props) {
 					options={{
 						includeBody: true
 					}}
-					action={{ endpoint: "/admin/ban", method: "POST" }}
+					action={{ endpoint: "/admin/discount", method: "POST" }}
 					inputOptions={{ icon: "local_offer", placeholder: "Sale percentage", min: 1, max: 100 }}
 					dropdownOptions={{ 
 						icon: "date_range",

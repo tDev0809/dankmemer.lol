@@ -16,6 +16,8 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 
 	const [mobile, setMobile] = useState(false);
 
+	const [discountCountdown, setDiscountCountdown] = useState("");
+
 	useEffect(() => {
 		if(dropdown && mobile) {
 			document.getElementById('pseudoBody').style.overflowY = 'hidden';
@@ -26,16 +28,6 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 		}
 	}, [dropdown, mobile]);
 
-	const handleResize = () => {
-		let width = document.documentElement.clientWidth;
-		if(width <= 730) {
-			setMobile(true);
-			setDropdown(false);
-		} else if(width > 730) {
-			setMobile(false);
-			setDropdown(false);
-		}
-	}
 
 	useEffect(() => {
 		handleResize();
@@ -60,6 +52,16 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 			handleResize();
 		});
 	}, []);
+
+	useEffect(() => {
+		if(!discount) return;
+		let expiry = discount.expiry - 1000;
+		setDiscountCountdown(new Date(expiry).toTimeString().split(' ')[0])
+		setInterval(() => {
+			expiry = expiry - 1000;
+			setDiscountCountdown(new Date(expiry).toTimeString().split(' ')[0])
+		}, 1000);
+	}, [discount])
 
 	useEffect(() => {
 		if(announcementHidden) localStorage.setItem("announcement-hidden", "hidden")
@@ -90,10 +92,19 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 					
 				});
 			}
-		} else {
-			
 		}
 	}, [dropdown]);
+
+	const handleResize = () => {
+		let width = document.documentElement.clientWidth;
+		if(width <= 730) {
+			setMobile(true);
+			setDropdown(false);
+		} else if(width > 730) {
+			setMobile(false);
+			setDropdown(false);
+		}
+	}
 
 	return (
 		<div id="navigation-container">
@@ -123,7 +134,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 								<li className="mobile-nav-link"><NavLink to="/commands">Commands</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/faq">FAQ</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/blogs">Blog</NavLink></li>
-								<li className="mobile-nav-link"><NavLink to="/loot">Store</NavLink></li>
+								<li className={discount ? "mobile-nav-link discount" : "mobile-nav-link"}><NavLink to="/loot">Store</NavLink> {discount ? <span id="discount-countdown">SALE {discountCountdown}</span> : ''}</li>
 								<li className="mobile-nav-link"><NavLink to="/appeals">Appeal a ban</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/reports">Report a user</NavLink></li>
 								{isModerator || isAdmin ? 
@@ -142,7 +153,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 							<li className="desktop-nav-link"><NavLink to="/commands">Commands</NavLink></li>
 							<li className="desktop-nav-link"><NavLink to="/faq">FAQ</NavLink></li>
 							<li className="desktop-nav-link"><NavLink to="/blogs">Blog</NavLink></li>
-							<li className="desktop-nav-link"><NavLink to="/loot">Store</NavLink></li>
+							<li className={discount ? "desktop-nav-link discount" : "desktop-nav-link"}><NavLink to="/loot">Store</NavLink> {discount ? <span id="discount-countdown">SALE {discountCountdown}</span> : ''}</li>
 						</ul>
 					</div>
 					<div id="desktop-right">

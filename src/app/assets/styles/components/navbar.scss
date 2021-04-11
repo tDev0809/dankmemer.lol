@@ -121,6 +121,25 @@
                 .desktop-nav-link {
                     list-style: none;
                     display: inline-block;
+                    &.discount {
+                        a {
+                            color: #ffcb00!important;
+                            animation: discountFlash 2s infinite both;    
+                        }
+                        #discount-countdown {
+                            background: #ffcb00;
+                            font-size: 12px;
+                            padding: 3px 5px;
+                            font-weight: 600;
+                            color: #000000;
+                            border-radius: 2px;
+                            margin-left: 10px;
+                        }
+                        & > * {
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                    }
                     a {
                         font-size: 18px;
                         color: #ffffff;
