@@ -10,6 +10,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 	const [dropdown, setDropdown] = useState(false);
 	const [dropdownEventListener, setDropdownEventListener] = useState(false);
 
+	const [announcementMarquee, setAnnouncementMarquee] = useState(false);
 	const [announcementHidden, setAnnouncementHidden] = useState(false);
 	const [announcementContent, setAnnouncementContent] = useState("This is awkward. There is no announcement content.");
 	const [recentAnnouncementNum, setRecentAnnouncementNum] = useState("0");
@@ -37,14 +38,17 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 				if(req.data.announcement) {
 					setAnnouncementContent(req.data.announcement.content);
 					setRecentAnnouncementNum(req.data.announcement._id);
+
+					const announcementStorage = localStorage.getItem("announcement-hidden");
+					const announcementNum = localStorage.getItem("announcement-at");
+					if(!announcementStorage || announcementNum !== req.data.announcement._id.toString()) return;
+					if(announcementStorage === "hidden" && announcementNum === req.data.announcement._id.toString()) setAnnouncementHidden(true);
+			
+				} else {
+					setAnnouncementHidden(true);
 				}
 			} catch {}
 		})();
-
-		const announcementStorage = localStorage.getItem("announcement-hidden");
-		const announcementNum = localStorage.getItem("announcement-at");
-		if(!announcementStorage && !announcementNum) return;
-		if(announcementStorage === "hidden" && announcementNum === recentAnnouncementNum) setAnnouncementHidden(true);
 
 		// Add an event listener to the window to check if the 
 		// device is small enough for mobile navbar.
@@ -64,8 +68,12 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 	}, [discount])
 
 	useEffect(() => {
-		if(announcementHidden) localStorage.setItem("announcement-hidden", "hidden")
-		else localStorage.setItem("announcement-hidden", "no")
+		if(announcementHidden && recentAnnouncementNum !== "0") {
+			localStorage.setItem("announcement-hidden", "hidden")
+			localStorage.setItem("announcement-at", recentAnnouncementNum.toString())
+		} else if (!announcementHidden && recentAnnouncementNum !== "0") {
+			localStorage.setItem("announcement-hidden", "no");
+		}
 	}, [announcementHidden]);
 
 
@@ -97,6 +105,10 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 
 	const handleResize = () => {
 		let width = document.documentElement.clientWidth;
+		if(width <= document.getElementById("announcement-content").clientWidth) setAnnouncementMarquee(true)
+		else if(width >= document.getElementById("announcement-content").clientWidth) setAnnouncementMarquee(false)
+
+
 		if(width <= 730) {
 			setMobile(true);
 			setDropdown(false);
@@ -110,9 +122,8 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 		<div id="navigation-container">
 			{announcementHidden ? '' :
 				<div id="announcement">
-					<div id="announcement-content">
-						<p>{announcementContent}</p>
-						{/* <p><span className="announcement-bold">Bot Update</span>: Changes to Slots, Blackjack and Bet commands. <a className="announcement-link" target="_blank" href="https://www.reddit.com/r/dankmemer/comments/m7b1fn/dank_memer_update/" rel="noopener noreferrer">Read more</a></p> */}
+					<div id="announcement-content" className={announcementMarquee ? "marquee" : ''}>
+						<p dangerouslySetInnerHTML={{ __html: announcementContent }}></p>
 					</div>
 					<div id="announcement-action" onClick={() => setAnnouncementHidden(!announcementHidden)}>
 						<span className="material-icons">close</span>

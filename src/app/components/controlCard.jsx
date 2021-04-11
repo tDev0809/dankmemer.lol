@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import '../assets/styles/components/controlCard.scss';
 
-export default function ControlCard({ mainIcon, colour, title, options, resize, action={}, inputOptions = {}, dropdownOptions, finish}) {
+export default function ControlCard({ mainIcon, colour, title, options, fillRow, resize, action={}, inputOptions = {}, dropdownOptions, finish}) {
     const [submittable, setSubmittable] = useState(false);
     const [pending, setPending] = useState(false);
     const [accountID, setAccountID] = useState("");
@@ -12,6 +12,8 @@ export default function ControlCard({ mainIcon, colour, title, options, resize, 
     const [selectedCategory, setSelectedCategory] = useState(-1);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [hasEventListener, setHasEventListener] = useState(false);
+
+    const [bannerPreviewHTML, setBannerPreviewHTML] = useState("Write a message to display a preview");
 
     useEffect(() => {
 		if(!dropdownOpen && hasEventListener) {
@@ -35,6 +37,12 @@ export default function ControlCard({ mainIcon, colour, title, options, resize, 
 	}, [category]);
 
     useEffect(() => {
+        if(options.bannerPreview) {
+            let preview = accountID;
+
+            setBannerPreviewHTML(preview || "Write a message to display a preview");
+        }
+
         if(!dropdownOptions && accountID.length >= 1) return setSubmittable(true);
         if(accountID.length >= 1 && category !== dropdownOptions.initial) setSubmittable(true);
     }, [accountID, category]);
@@ -70,7 +78,7 @@ export default function ControlCard({ mainIcon, colour, title, options, resize, 
     }
 
     return (
-        <div className={resize ? "control-card resize" : "control-card"}>
+        <div className={resize ? "control-card resize" : fillRow ? "control-card fill" :  "control-card"}>
 			<div className="control-card-header">
 				<div className="control-card-icon">
 					<span className="material-icons">{mainIcon}</span>
@@ -92,6 +100,17 @@ export default function ControlCard({ mainIcon, colour, title, options, resize, 
                         else if(e.target.value > inputOptions.max) e.target.value = inputOptions.max;
                     }}/>
 			</div>
+            {options.bannerPreview ? 
+                <div id="announcement">
+                    <div id="announcement-content">
+                        <p dangerouslySetInnerHTML={{ __html: bannerPreviewHTML }}></p>
+                        {/* <p><span className="announcement-bold">Bot Update</span>: Changes to Slots, Blackjack and Bet commands. <a className="announcement-link" target="_blank" href="https://www.reddit.com/r/dankmemer/comments/m7b1fn/dank_memer_update/" rel="noopener noreferrer">Read more</a></p> */}
+                    </div>
+                    <div id="announcement-action">
+                        <span className="material-icons">close</span>
+                    </div>
+                </div>
+            : ''}
             {dropdownOptions ?
                 <div className="control-card-dropdown">
                     <div id="control-card-dropdown-container" onClick={() => setDropdownOpen(!dropdownOpen)}>
