@@ -44,8 +44,64 @@
             }
         }
     }
+    #mobile {
+        width: 100%;
+        height: 75px;
+        background: #121b13;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 20px;
+        &-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                margin-right: 15px;
+            }
+            h2 {
+                font-weight: 600;
+            }
+        }
+        &-hamburger {
+            user-select: none;
+        }
+        &-content {
+            position: absolute;
+            z-index: 99;
+            top: 105px;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #121b13;
+            box-sizing: border-box;
+            ul {
+                .mobile-nav-link {
+                    list-style: none;
+                    width: 100vw;
+                    display: block;
+                    border-bottom: 1px solid rgba(0,0,0,0.5);
+                    a {
+                        padding: 20px;
+                        width: 100%;
+                        font-size: 20px;
+                        display: block;
+                        color: #ffffff;
+                        &.active {
+                            color: #9ad4b2;
+                            background: rgba(255,255,255,0.05);
+                        }
+                    }
+                    &.red a {
+                        color: #ff6767;
+                    }
+                }
+            }
+        }
+    }
     #desktop {
-        width: 70%;
+        width: 95%;
         max-width: 1335px;
         margin-top: 25px;
         height: 75px;
@@ -413,15 +469,16 @@
         text-shadow: 0 0 5px #ffcb0050;
     }
 }
-@media only screen and (max-width: 550px) {
-    #navbar {
-        &-mobile {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        &-links {
-            display: none;
-        }
-    }
-}
+
+// @media only screen and (max-width: 1065px) {
+//     #navbar {
+//         &-mobile {
+//             display: flex;
+//             justify-content: space-between;
+//             align-items: center;
+//         }
+//         &-links {
+//             display: none;
+//         }
+//     }
+// }

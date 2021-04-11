@@ -92,7 +92,7 @@
 		}
 		&-content {
 			background: rgba($color: #000000, $alpha: .3);
-			width: 35vw;
+			width: 735px;
 			height: 25vh;
 			border-radius: 5px;
 			padding: 20px 30px;
@@ -183,45 +183,11 @@
 	}	
 }
 
-@media only screen and (min-width: 455px) and (max-width: 1500px) {
+@media only screen and (max-width: 1090px) {
 	#home {
 		&-hero {
-			&-text {
-				&-title {
-					font-size: 70px;
-					line-height: 70px;
-					text-align: center;
-				}
-				&-slogan {
-					width: 450px;
-				}
-			}
-		}
-		section, section.reverse {
-			flex-direction: column;
-			.text-area {
-				text-align: center!important;
-				.section-body {
-					width: 100%!important;
-					margin: unset;
-					margin-bottom: 30px;
-				}
-			}
-			img {
-				height: unset!important;
-				width: 80vw;
-			}
-		}
-
-	}
-}
-
-@media only screen and (max-width: 1000px) {
-	#home {
-		&-hero {
-			&-circles {
-				transform: scale(0.7);
-				overflow: hidden;
+			&-svg {
+				display: none;
 			}
 		}
 	}
