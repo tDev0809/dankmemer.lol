@@ -68,7 +68,7 @@ export default function Blog(props) {
 			</div> : ''}
 			<div id="blog-content" dangerouslySetInnerHTML={{ __html: content }}/>
 			<BottomCTA/>
-			<div id="nitropay-blog-bottom" class="nitropay" />
+			<div id="nitropay-blog-bottom" className="nitropay" />
 		</div>
 	);
 }

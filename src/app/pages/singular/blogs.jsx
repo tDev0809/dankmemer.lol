@@ -61,21 +61,21 @@ export default function Blogs() {
 				<h3 className="blogs-section-heading">Most recent posts</h3>
 				<div id="blogs-section-recent">
 					{blogs.slice(0, 3).map((blog, i) => (
-						<RecentBlog key={i} id={blog.id} title={blog.name} author={blog.author} description={blog.desc} date={blog.date} />
+						<RecentBlog key={i} id={blog._id} title={blog.name} author={blog.author} description={blog.desc} date={blog.date} />
 					))}
 				</div>
 			</section>
-			<div id="nitropay-blogs-middle" class="nitropay" />
+			<div id="nitropay-blogs-middle" className="nitropay" />
 			<section className="blogs-section">
 				<h3 className="blogs-section-heading">Older posts</h3>
 				<div id="blogs-section-older">
 					{blogs.slice(3, blogs.length - 1).map((blog, i) => (
-						<OlderBlog key={i} id={blog.id} title={blog.name} author={blog.author} description={blog.desc} date={blog.date} />
+						<OlderBlog key={i} id={blog._id} title={blog.name} author={blog.author} description={blog.desc} date={blog.date} />
 					))}
 				</div>
 			</section>
 			<BottomCTA/>
-			<div id="nitropay-blogs-bottom" class="nitropay" />
+			<div id="nitropay-blogs-bottom" className="nitropay" />
 		</div>
 	);
 }

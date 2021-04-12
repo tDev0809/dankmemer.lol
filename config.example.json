@@ -1,0 +1,26 @@
+{
+    "port": 3000,
+    "clientID": "",
+    "clientSecret": "",
+    "domain": "",
+    "secret": "",
+    "cryptKeys": [],
+    "mongoURL": "",
+   "devReportWebhook": {
+     "webhookID": "",
+     "webhook_token": ""
+    },
+    "devAppealsWebhook": {
+        "webhookID": "",
+        "webhook_token": ""
+    },
+    "cmAppealsWebhook": {
+      "webhookID": "",
+      "webhook_token": ""
+    },
+    "communityAppeals": {
+      "webhookID": "",
+      "webhook_token": ""
+    },
+    "admins": []
+}
