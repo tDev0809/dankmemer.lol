@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink, Link } from 'react-router-dom';
 import 'assets/styles/components/navbar.scss';
 import Logo from 'assets/img/memer.webp';
 import parseTime from '../util/parseTime.js';
+import Marquee from "react-fast-marquee";
 import * as axios from 'axios';
 
 const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, discriminator, avatar, id }}) => {
@@ -39,6 +40,8 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 					setAnnouncementContent(req.data.announcement.content);
 					setRecentAnnouncementNum(req.data.announcement._id);
 
+					handleMarquee();
+
 					const announcementStorage = localStorage.getItem("announcement-hidden");
 					const announcementNum = localStorage.getItem("announcement-at");
 					if(!announcementStorage || announcementNum !== req.data.announcement._id.toString()) return;
@@ -55,6 +58,10 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 		window.addEventListener("resize", (e) => {
 			handleResize();
 		});
+
+		document.querySelectorAll("#announcement-content > p")[0].addEventListener("resize", () => {
+			handleMarquee();
+		})
 	}, []);
 
 	useEffect(() => {
@@ -107,10 +114,6 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 
 	const handleResize = () => {
 		let width = document.documentElement.clientWidth;
-		if(width <= document.getElementById("announcement-content").clientWidth) setAnnouncementMarquee(true)
-		else if(width >= document.getElementById("announcement-content").clientWidth) setAnnouncementMarquee(false)
-
-
 		if(width <= 730) {
 			setMobile(true);
 			setDropdown(false);
@@ -120,12 +123,32 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 		}
 	}
 
+	const handleMarquee = () => {
+		let announcementContent = document.getElementById("announcement-content");
+
+		if(announcementContent.offsetWidth < announcementContent.scrollWidth) setAnnouncementMarquee(true);
+		else if(announcementContent.offsetWidth > announcementContent.scrollWidth) setAnnouncementMarquee(false);
+	}
+
 	return (
 		<div id="navigation-container">
 			{announcementHidden ? '' :
 				<div id="announcement">
-					<div id="announcement-content" className={announcementMarquee ? "marquee" : ''}>
-						<p dangerouslySetInnerHTML={{ __html: announcementContent }}></p>
+					<div id="announcement-content">
+						{announcementMarquee ?
+							<Marquee
+								gradient={false}
+								speed={50}
+								pauseOnHover={true}
+								style={{
+									height: "unset"
+								}}
+							>
+								<p dangerouslySetInnerHTML={{ __html: announcementContent }} style={{ marginRight: "60px" }}></p>
+							</Marquee>
+						: 
+							<p dangerouslySetInnerHTML={{ __html: announcementContent }}></p>
+						}
 					</div>
 					<div id="announcement-action" onClick={() => setAnnouncementHidden(!announcementHidden)}>
 						<span className="material-icons">close</span>
@@ -147,7 +170,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 								<li className="mobile-nav-link"><NavLink to="/commands">Commands</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/faq">FAQ</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/blogs">Blog</NavLink></li>
-								<li className={discount ? "mobile-nav-link discount" : "mobile-nav-link"}><NavLink to="/loot">Store</NavLink> {discount ? <span id="discount-countdown">SALE {discountCountdown}</span> : ''}</li>
+								<li className={discount ? "mobile-nav-link discount" : "mobile-nav-link"}><NavLink to="/loot">{discount ? <><p>Store</p> <span id="discount-countdown">SALE {discountCountdown}</span></>: 'Store'}</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/appeals">Appeal a ban</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/reports">Report a user</NavLink></li>
 								{isModerator || isAdmin ? 

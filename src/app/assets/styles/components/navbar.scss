@@ -22,9 +22,6 @@
             overflow: hidden;
             white-space: nowrap;
             width: calc(100% - 80px);
-            &.marquee {
-                animation: marquee 5s linear infinite;
-            }
             .announcement-bold {
                 font-weight: 600;
             }
@@ -88,6 +85,25 @@
                     width: 100vw;
                     display: block;
                     border-bottom: 1px solid rgba(0,0,0,0.5);
+                    &.discount {
+                        a {
+                            color: #ffcb00!important;
+                            animation: discountFlash 2s infinite both;    
+                        }
+                        #discount-countdown {
+                            background: #ffcb00;
+                            font-size: 12px;
+                            padding: 3px 5px;
+                            font-weight: 600;
+                            color: #000000;
+                            border-radius: 2px;
+                            margin-left: 10px;
+                        }
+                        & > * > * {
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                    }
                     a {
                         padding: 20px;
                         width: 100%;
@@ -492,14 +508,5 @@
     }
     100% {
         text-shadow: 0 0 5px #ffcb0050;
-    }
-}
-
-@keyframes marquee {
-    0% { 
-        left: 0; 
-    }
-    100% { 
-        left: -100%; 
     }
 }

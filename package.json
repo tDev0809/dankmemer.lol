@@ -27,6 +27,7 @@
     "marked": "^0.7.0",
     "mongodb": "^3.6.3",
     "react-day-picker": "^7.4.8",
+    "react-fast-marquee": "^1.1.2",
     "react-markdown-editor-lite": "^1.2.4",
     "react-paypal-button-v2": "^2.6.2",
     "react-toastify": "^6.2.0",
