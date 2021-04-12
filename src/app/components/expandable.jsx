@@ -64,7 +64,7 @@ export default function Expandable (props) {
                 <div className="expandable-body">
                     <section className="expandable-body-section">
                         <h5 className="expandable-body-section-title">Response</h5>
-                        <p className="expandable-body-section-content" dangerouslySetInnerHTML={{ __html: description }}></p>
+                        <p className="expandable-body-section-content">{description}</p>
                     </section>
                 </div>
                 }

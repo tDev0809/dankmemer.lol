@@ -1,6 +1,6 @@
 .expandable {
     width: 100%;
-    background: #222222;
+    background: #050b06;
     padding: 15px 40px;
     border-radius: 5px;
     border: 1px solid transparent;
@@ -74,7 +74,7 @@
         opacity: 1;
         margin-top: 20px;
         padding-top: 20px;
-        max-height: max-content;
+        max-height: 100%;
     }
 }
 
@@ -96,6 +96,6 @@
 @media only screen and (max-width: 790px) {
     .expandable {
         padding: 15px 20px;
-        height: max-content;
+        height: 100%;
     }
 }

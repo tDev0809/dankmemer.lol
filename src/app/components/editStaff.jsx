@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import StaffCard from './staff';
 import * as socials from '../pages/singular/util/socials.js';
+// import * as socials from '../pages/singular/util/socials.js';
 import * as axios from 'axios';
 
 export default function EditStaff({ discordAvatar, name, avatar, social, about }) {
@@ -44,7 +45,7 @@ export default function EditStaff({ discordAvatar, name, avatar, social, about }
 
     return (
         <div id="edit-staff-modal">
-            <h1 id="edit-staff-modal-title">Editing your staff card.</h1>
+            <h1 id="edit-staff-modal-title">Inspect a staff card.</h1>
             <div id="edit-staff-modal-content">
                 <div id="edit-staff-modal-content-preview">
                     <StaffCard name={name} avatar={tempPfp} social={tempSocial} about={tempAbout}/>
