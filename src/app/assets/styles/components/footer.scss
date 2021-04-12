@@ -1,9 +1,12 @@
 footer {
-	background: #050b06;
+	background: #1e1e1e;
+	z-index: 998;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	height: 200px;
 	width: 100vw;
-	display: grid;
-	place-items: center;
+
 	#footer-content {
 		display: flex;
 		justify-content: space-between;
@@ -11,8 +14,7 @@ footer {
 		font-family: 'Montserrat', sans-serif;
 		color: white;
 		height: 100%;
-		width: 95%;
-		max-width: 1335px;
+		width: 100%;
 		padding: 0 6%;
 		box-sizing: border-box;
 	}
@@ -53,7 +55,7 @@ footer {
 	}
 }
 
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 929px) {
 	footer {
 		#footer-content {
 			padding: 20px 0px;

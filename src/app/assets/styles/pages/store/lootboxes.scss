@@ -10,9 +10,9 @@
 		display: grid;
 		justify-content: center;
 		align-items: center;
-		min-height: calc(70vh - 240px);
+		min-height: calc(70vh + 50px);
 		&-content {
-			background: #050b06;
+			background: #1e1e1e;
 			width: calc(485px - 120px);
 			padding: 60px 50px;
 			&-title {
@@ -57,7 +57,7 @@
 				margin: 20px 0;
 				input {
 					appearance: none;
-					background: #000000;
+					background: rgba(0,0,0,0.3);
 					border: none;
 					text-align: center;
 					color: #ffffff;
@@ -114,7 +114,7 @@
 			justify-content: center;
 			position: relative;
 			text-align: center;
-			background: #050b06;
+			background: #1e1e1e;
 			border: 1px solid transparent;
 			width: 17vw;
 			min-width: 265px;
@@ -220,11 +220,11 @@
 			}
 			table {
 				margin-top: 30px;
-				border: 1px solid #000000;
+				border: 1px solid #1f1f1f;
 				border-collapse: collapse;
 				thead {
 					text-align: left;
-					background: #050b06;
+					background: #222222;
 					th {
 						padding: 10px 20px;
 						font-family: 'Inter', sans-serif;
@@ -241,12 +241,12 @@
 						td {
 							padding: 5px 20px;
 							&:nth-child(2n) {
-								border-left: 1px solid #000000;
+								border-left: 1px solid #1f1f1f;
 								text-align: center;
 							}
 						}
 						&:nth-child(2n) {
-							background: #050b06;
+							background: #252525;
 						}
 					}
 				}
@@ -255,7 +255,7 @@
 		#store-summary {
 			max-width: 30vw;
 			min-width: 470px;
-			border-left: 3px solid #050b06;
+			border-left: 3px solid #1a1a1a;
 			padding-left: 5vw;
 			height: 610px;
 			position: relative;
@@ -302,7 +302,7 @@
 						vertical-align: middle;
 						appearance: none;
 						margin-right: 10px;
-						background-color: #121b13;
+						background-color: #1a1a1a;
 						height: 20px;
 						width: 20px;
 						border-radius: 3px;
@@ -315,7 +315,7 @@
 						}
 					}
 					input[type=number] {
-						background: #121b13;
+						background: #1a1a1a;
 						height: 20px;
 						width: 165px;
 						padding: 5px;

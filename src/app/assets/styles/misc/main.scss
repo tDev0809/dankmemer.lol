@@ -7,7 +7,7 @@
     }
 }
 
-$bgMain: #0b110c;
+$bgMain: #292929;
 $darkGreen: #39923c;
 
 body {
@@ -90,41 +90,26 @@ body {
 			font-size: 18px;
 		}
 		&-button {
-            position: relative;
-            margin: 20px 0px;
-            &-invite {
-				position: relative;
-				display: block;
-				z-index: 2;
-				font-size: 20px;
-				font-family: 'Inter';
-				font-weight: 500;
-				text-transform: uppercase;
-				border: 3px solid #14763d;
-				background: #0b110c;
-				color: white;
-				padding: 10px 25px;
-				transition: transform ease-in-out .3s, box-shadow ease-in-out .3s;
-				box-sizing: border-box;
-			}
-			&-bg {
-				content: '';
-				position: absolute;
-				top: var(--cta-bg-dist);
-				left: var(--cta-bg-dist);
-				height: calc(100% - var(--cta-bg-dist));
-				width: calc(100% - var(--cta-bg-dist));
-				background: #0b110c;
-				border: 3px solid #14763d;
-				transition: all ease-in-out .1s;
-			}
-            &:hover {
-				#bottom-cta-button-bg {
-					top: 0;
-					left: 0;
-					height: calc(100% - var(--cta-bg-dist));
-					width: calc(100% - var(--cta-bg-dist));
-				}
+			display: block;
+			width: 180px;
+			font-size: 18px;
+			font-family: 'Montserrat';
+			font-weight: 700;
+			text-transform: uppercase;
+			background: #39923c;
+			color: #ffffff;
+			margin: 20px 0;
+			padding: 20px 30px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 35px rgba(57, 146, 60, 0.5),
+						inset 0px 0px 20px rgba(4, 214, 9, 0.3);
+			transition: transform ease-in-out .3s, box-shadow ease-in-out .3s;
+			box-sizing: border-box;
+			&:hover {
+				transform: translateY(-5px);
+				box-shadow: 0px 5px 15px rgba(57, 146, 60, 0.7),
+							inset 0px 0px 20px rgba(4, 214, 9, 0.3);
+
 			}
 		}
 		&-text {

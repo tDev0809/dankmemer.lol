@@ -8,7 +8,7 @@ const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
 const router = Router();
 const db = require('../util/db.js');
-const _blogs = require('../util/blogs.js');
+const blogs = require('../util/blogs.js');
 const axios = require('axios');
 const recentAppeals = new Set();
 const recentReports = new Set();
@@ -148,48 +148,45 @@ router.get('/boxes', (req, res) => {
 
 router.get('/emojis', (req, res) => {
 	res.json(emojis);
-});
+  });
 
 router.get('/discount', async (req, res) => {
- 	const discount = await db.collection('discounts').findOne({
-    	expiry: { $gt: Date.now() }
-  	});
-  	if (discount) {
-    	res.json({
-			percent: discount.percent,
-			name: discount.name || '',
-			expiry: discount.expiry
-    	});
-  	} else {
-    	res.json(null);
-  	}
-});
-
-router.get('/announcement', async (req, res) => {
-	const announcement = await db.collection('announcements').find({}).sort({ '_id': -1 }).toArray();
-	if(!announcement[0]) return res.status(204).json({ message: 'There are no announcements.' });
-	res.status(200).json({
-		announcement: announcement[0]
-	})
+  const discount = await db.collection('discounts').findOne({
+    expiry: { $gt: Date.now() }
+  });
+  if (discount) {
+    res.json({
+      percent: discount.percent,
+      name: discount.name || '',
+      expiry: discount.expiry
+    });
+  } else {
+    res.json(null);
+  }
 })
 
 router.use('/admin', adminRouter);
 router.use('/mods', modsRouter);
 
-router.get('/blogs', async (req, res) => {
-	let blogs = await db.collection('blogs').find({}).sort({ 'date': -1 }).toArray(); // Get all the available blog posts, sorted by oldest to newest (by timestamp in the document)
-	res.json(blogs)
-});
+router.get('/blogs', (req, res) =>
+  res.json(blogs.map(blog => ({
+    id: blog.id,
+    name: blog.name,
+    date: blog.date,
+    thumbnail: blog.thumbnail,
+    image: blog.image,
+    author: blog.author,
+    desc: blog.desc
+  })))
+);
 
-router.get('/blogs/:blogID', async (req, res) => {
-	const { blogID } = req.params;
-	let blog = await db.collection('blogs').find({ _id: blogID }).toArray();
-	blog = blog[0]
-	if(!blog) blog = _blogs.find(blog => blog.id === blogID); // Fallback if the id is not found in mongo get the file content
+router.get('/blogs/:blogID', (req, res) => {
+  const { blogID } = req.params;
+  const blog = blogs.find(blog => blog.id === blogID);
 
-  	return blog
-    	? res.status(200).send(blog)
-    	: res.status(404).send(`Blog "${blogID}" not found`);
+  return blog
+    ? res.status(200).send(blog)
+    : res.status(404).send(`Blog "${blogID}" not found`);
 });
 
 router.get('/staff', async (req, res) => {

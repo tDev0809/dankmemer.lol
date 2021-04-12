@@ -2,7 +2,6 @@ import React from 'react';
 import 'assets/styles/components/staffCard.scss';
 import * as socials from '../pages/singular/util/socials.js';
 import images from '../pages/singular/util/images.js';
-import fallbackAvatar from 'assets/img/staff/fallback.gif';
 const UWU = new Audio(`/static/audio/uwu.wav`);
 const playAudio = () => UWU.play();
 
@@ -10,14 +9,9 @@ export default function StaffCard({ name, avatar, social, about }) {
 	return (
   		<div className="staff-card">
     		<div className="staff-card-details">
-      			<img 
-					className="staff-card-details-picture" 
-					src={avatar || images[name.toLowerCase().replace(/ /g, '--')] || fallbackAvatar} 
-					alt={`${name.substr(0,1)}`}
-					onClick={() => {
-						name === 'Melmsie' ? playAudio() : console.log('Go click Mel\'s avatar')
-        			}}
-				/>
+      			<img className="staff-card-details-picture" src={avatar || images[name.toLowerCase().replace(/ /g, '-')]} alt={`${name}'s avatar`} onClick={() => {
+          			name === 'Melmsie' ? playAudio() : console.log('Go click Mel\'s avatar')
+        		}} />
 				<p className="staff-card-details-name">{name}</p>
       			<div className="staff-card-details-about-container">
 				  <p className={about.length > 120 ? "staff-card-details-about scroll" : "staff-card-details-about"} dangerouslySetInnerHTML={{ __html: about }} />	
