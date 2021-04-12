@@ -59,11 +59,13 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 
 	useEffect(() => {
 		if(!discount) return;
-		let expiry = discount.expiry - 1000;
-		setDiscountCountdown(new Date(expiry).toTimeString().split(' ')[0])
+		let difference = discount.expiry - Date.now();
+		let expiry = parseTime(discount.expiry - Date.now());
+		setDiscountCountdown(`${expiry.hours.toString().length === 1 ? '0' + expiry.hours : expiry.hours}:${expiry.minutes.toString().length === 1 ? '0' + expiry.minutes : expiry.minutes}:${expiry.seconds.toString().length === 1 ? '0' + expiry.seconds : expiry.seconds}`)
 		setInterval(() => {
-			expiry = expiry - 1000;
-			setDiscountCountdown(new Date(expiry).toTimeString().split(' ')[0])
+			difference = difference - 1000
+			expiry = parseTime(difference);
+			setDiscountCountdown(`${expiry.hours.toString().length === 1 ? '0' + expiry.hours : expiry.hours}:${expiry.minutes.toString().length === 1 ? '0' + expiry.minutes : expiry.minutes}:${expiry.seconds.toString().length === 1 ? '0' + expiry.seconds : expiry.seconds}`)
 		}, 1000);
 	}, [discount])
 
