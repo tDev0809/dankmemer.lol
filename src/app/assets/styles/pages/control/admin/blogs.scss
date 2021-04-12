@@ -1,0 +1,212 @@
+#admin-blogs {
+    &-nav {
+        position: fixed;
+        width: 360px;
+        height: 100vh;
+        background: #101811;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        .control-subtitle {
+            color: #c4c4c4;
+        }
+        #control-blogs {
+            margin-top: 20px;
+            .control-blog {
+                max-width: 80%;
+                margin-bottom: 10px;
+                padding: 10px 20px;
+                background: rgba(0, 0, 0, 0.4);
+                border-radius: 5px;
+                border: 1px solid rgba(0,0,0,0.5);
+                user-select: none;
+                cursor: pointer;
+                transition: border-color ease-in-out .2s;
+                &-title {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 17px;
+                }
+                &-description {
+                    color: #c4c4c4;
+                    font-size: 14px;
+                }
+                &:hover, &.selected{
+                    border-color: #39923c;
+                }
+            }
+            &-new {
+                height: 5vh;
+                margin-bottom: 20px;
+                background: rgba(0, 0, 0, 0.3);
+                max-width: 100%;
+                padding: 10px 20px;
+                color: #a5a5a5;
+                font-size: 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-sizing: border-box;
+                border-radius: 5px;
+                user-select: none;
+                transition: all ease-in-out .2s;
+                &:hover {
+                    cursor: pointer;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: #ffffff;
+                    span {
+                        pointer-events: none;
+                        color: #43b581;
+                    }
+                }
+            }
+        }
+    }
+    &-editor-container {
+        margin-left: 360px;
+        width: 100vw;
+        height: 100vh;
+        #blog-editor-details {
+            height: 15vh;
+            width: calc(100vw - 240px - 360px);
+            background: #101811;
+            border-left: 1px solid #0a0a0a;
+            padding-left: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            &-title {
+                font-size: 40px;
+                font-family: 'Montserrat';
+                font-weight: 600;
+                background: transparent;
+                color: #ffffff;
+                border: none;
+                outline: none;
+                max-width: 95%;
+                &::placeholder {
+                    opacity: .9;
+                }
+            }
+            &-desc {
+                color: #a5a5a5;
+                font-size: 16px;
+                background: transparent;
+                color: #a5a5a5;
+                border: none;
+                outline: none;
+                font-family: 'Inter', sans-serif;
+                max-width: 95%;
+                &::placeholder {
+                    opacity: .7;
+                }
+            }
+            #blog-details-buttons {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .blog-button {
+                    margin-top: 10px;
+                    color: #a5a5a5;
+                    border: 1.5px solid #050b06;
+                    border-radius: 5px;
+                    padding: 5px 10px;
+                    width: max-content;
+                    font-size: 14px;
+                    user-select: none;
+                    transition: color ease-in-out .2s;
+                    &:not(:last-child) {
+                        margin-right: 20px;
+                    }
+                    span {
+                        margin-right: 10px;
+                        transition: color ease-in-out .2s;
+                    }
+                    &:hover {
+                        background: #050b06;
+                        color: #ffffff;
+                        cursor: pointer;
+                    }
+                    &.disabled:hover {
+                        cursor: not-allowed;
+                        background: transparent;
+                        color: #a5a5a5;
+                    }
+                    &.publish:hover span {
+                        color: #43b581;
+                    }
+                    &.delete:hover span {
+                        color: #b54343;
+                    }
+                }
+            }
+        }
+        #blog-editor {
+            background: transparent;
+            border: none;
+            width: calc(100vw - 240px - 360px);
+            height: 85vh;
+            border-left: 1px solid #0a0a0a;
+            .rc-md-navigation {
+                background: rgba(0,0,0,0.3);
+                border: none;
+                .button-wrap .button {
+                    transition: color ease-in-out .2s;
+                    &:hover {
+                        color: #dddddd;  
+                    }
+                }
+                .drop-wrap {
+                    background: rgba(0,0,0,0.5);
+                    border: 1px solid #0a0a0a;
+                    li {
+                        &:hover {
+                            background:rgba(0, 0, 0, 0.4);
+                        }
+                    }
+                }
+                #publish-blog-button {
+                    font-size: 20px;
+                    transition: color ease-in-out .2s;
+                    &:hover {
+                        color: #43b581;
+                        cursor: pointer;
+                    }
+                }
+            }
+            textarea {
+                background: #0b110c;
+                color: #dddddd;
+            }
+            .custom-html-style {
+                & > * {
+                    color: #ffffff;
+                }
+                h1, h2, h3, h4, h5, h6 {
+                    font-family: 'Montserrat';
+                }
+                & > p + p {
+                    line-height: 1.2;
+                    margin-top: 10px;
+                }
+                table {
+                    td {
+                        border: 1px solid rgba(0,0,0,0.5);
+                    }
+                    th {
+                        border: 1px solid rgba(0,0,0,0.5);
+                        background: rgba(0,0,0,0.4);
+                    }
+                }
+                pre {
+                    background: rgba(0,0,0,0.4);
+                    code {
+                        background: none;
+                    }
+                }
+                code {
+                    background: rgba(0,0,0,0.4);
+                    padding: 0px 5px;
+                }
+            }
+        }
+    }
+}

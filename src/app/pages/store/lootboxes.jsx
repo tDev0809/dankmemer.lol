@@ -36,7 +36,7 @@ function Loot(props) {
 	const [constants, setConstants] = useState(null);
 	const [activeBox, setActiveBox] = useState(box);
 	const [country, setCountry] = useState("");
-	const [bannedCountry, setBannedCountry] = useState(false);
+	const [discount, setDiscount] = useState(props.discount);
 	const [bannedUser, setBannedUser] = useState(false);
 	const [agreedTOS, setAgreedTOS] = useState(false);
 	const [finishedPayment, setFinishedPayment] = useState(false);
@@ -64,6 +64,7 @@ function Loot(props) {
 			setConstants(Constants);
 			setCountry(country);
 			setBannedUser(req3.status === 403);
+			setDiscount(props.discount);
 		})).catch(e => {
 			console.error(e);
 		});
@@ -135,7 +136,7 @@ function Loot(props) {
     const getDiscountPercent = () => {
         const res = {};
         const subtotal = getSubtotal(true);
-        let discountPercent = 0;
+        let discountPercent = props.discount.percent * 100;
         const hypothetical = (subtotal * ((100 - (discountPercent + constants.FLAT_DISCOUNT_PERCENTAGE)) / 100));
         if (hypothetical >= constants.MINIMUM_DISCOUNT_VALUE) {
             discountPercent += constants.FLAT_DISCOUNT_PERCENTAGE;
@@ -268,12 +269,14 @@ function Loot(props) {
 								</tr>
 								<tr>
 									<td>Discount</td>
-									<td>{(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) > 20 ? <p id="store-summary-sale-amount">10% (${((boxCount * activeBox.price) / 10).toFixed(2)})</p> : '0%'}</td>
+									<td>{(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) > 20 ? <p id="store-summary-sale-amount">{getDiscountPercent().discountPercent}% (${((boxCount * activeBox.price) * (getDiscountPercent().discountPercent / 100)).toFixed(2)})</p> : '0%'}</td>
 								</tr>
 								<tr><td/><td/></tr>
 								<tr>
 									<td></td>
-									<td id="store-summary-total">Total: ${(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) < 20 ? Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 : ((Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) - ((boxCount * activeBox.price) / 10).toFixed(2)).toFixed(2)}</td>
+									<td id="store-summary-total">Total: ${(Math.round(((boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) < 20 ? 
+									Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100 :
+									((Math.round((parseFloat(constants ? (getDiscountedSubtotal(true) * 0.0675).toFixed(2) : 0) + parseFloat(boxCount * activeBox.price) + Number.EPSILON) * 100) / 100) - ((boxCount * activeBox.price) * (getDiscountPercent().discountPercent / 100)).toFixed(2)).toFixed(2)}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -325,7 +328,7 @@ function Loot(props) {
 								giftState={giftRecipient}
 								login={props.login}
 								Constants={constants}
-								discount={0}
+								discount={props.discount.percent * 100}
 								setFinishState={finishState}
 							/>
 							<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>
@@ -344,7 +347,7 @@ function Loot(props) {
 									giftState={null}
 									login={props.login}
 									Constants={constants}
-									discount={0}
+									discount={props.discount.percent * 100}
 									setFinishState={finishState}
 								/>
 								<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>

@@ -1,0 +1,97 @@
+#personalize-card {
+    &-title {
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        .show-mobile { display: none; }
+        &-preview {
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .input-singular {
+                background: #0e1610;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                padding: 5px 10px;
+                width: 260px;
+                height: 25px;
+                border: none;
+                outline: none;
+                color: #ffffff;
+                font-family: 'Inter', sans-serif;
+            }
+            &-save {
+                user-select: none;
+                display: block;
+                text-align: center;
+                width: 250px;
+                box-sizing: border-box;
+                color: #ffffff;
+                background: #39923c;
+                box-shadow: 0px 0px 10px rgba(57, 146, 60, 0.5),
+                inset 0px 0px 20px rgba(4, 214, 9, 0.3);
+                transition: transform ease-in-out .3s, box-shadow ease-in-out .3s;
+                box-sizing: border-box;
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0px 5px 20px rgba(57, 146, 60, 0.7),
+                                inset 0px 0px 20px rgba(4, 214, 9, 0.3);
+                }
+                padding: 12px 15px;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+        }
+        &-info {
+            margin-top: 20px;
+            width: 75%;
+            height: 100%;
+            textarea {
+                background:#0e1610;
+                width: 100%;
+                height: 70px;
+                color: #ffffff;
+                outline: none;
+                border: none;
+                border-radius: 5px;
+                padding: 5px 10px;
+                box-sizing: border-box;
+                font-family: 'Inter', sans-serif;
+                resize: none;
+            }
+            .input-group {
+                background: #0e1610;
+                margin: 10px 0px;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px 10px;
+                &-image {
+                    min-width: 25px; max-width: 25px;
+                    min-height: 25px; max-height: 25px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                input {
+                    margin-left: 10px;
+                    height: 90%;
+                    width: 100%;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    color: #ffffff;
+                    font-family: 'Inter', sans-serif;
+                }
+            }
+        }
+    }
+}

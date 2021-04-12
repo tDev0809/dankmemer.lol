@@ -5,7 +5,7 @@ $text-accent-3: rgb(189, 189, 189);
 
 #commands,
 #faq {
-	width: 80vw;
+	width: 70vw;
 	margin: 0 auto;
 	margin-bottom: 40px;
 
@@ -28,11 +28,12 @@ $text-accent-3: rgb(189, 189, 189);
 			color: #a5a5a5;
 		}
 
-		&-circles {
+		&-dots {
 			position: absolute;
-			top: -50px;
-			left: -30px;
+			top: -30px;
+			left: -20px;
 			z-index: -1;
+			width: 130px;
 		}
 	}
 

@@ -105,10 +105,13 @@ export default function FAQ(props) {
 			<div id="faq-header">
 				<h1 id="faq-header-title">Frequently Asked Questions</h1>
 				<p id="faq-header-message">The most frequently asked questions can be found below. Split into categories depending on what they are related to.</p>
-				<svg id="faq-header-circles" height="200" width="350">
-					<circle cx="23" cy="130" r="22.5" fill="#242424"/>
-					<circle cx="150" cy="73" r="73" fill="#242424"/>
-					<circle cx="300" cy="140" r="22.5" fill="#242424"/>
+				<svg id="faq-header-dots" viewBox="0 0 52 24" fill="#16c458">
+					<defs>
+						<pattern id="dots" x="0" y="0" width=".15" height=".28">
+							<circle cx="1" cy="1" r="1"></circle>
+						</pattern>
+					</defs>
+					<rect fill="url(#dots)" width="42" height="20"></rect>
 				</svg>
 			</div>
 			<div id="faq-top">
@@ -139,7 +142,7 @@ export default function FAQ(props) {
 						<circle cx="10" cy="10" r="7" />
 						<line x1="21" y1="21" x2="15" y2="15" />
 					</svg>
-					<input id="faq-search" name="search" placeholder="Search for a command..." onChange={(e) => setSearch(e.target.value)}/>
+					<input id="faq-search" name="search" placeholder="Find an answer for your question" onChange={(e) => setSearch(e.target.value)}/>
 				</div>
 			</div>
 			<div id="faq-list-wrapper">

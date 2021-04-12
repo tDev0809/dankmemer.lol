@@ -105,10 +105,13 @@ export default function Commands(props) {
 			<div id="commands-header">
 				<h1 id="commands-header-title">Commands</h1>
 				<p id="commands-header-message">Find all the information, including required permissions, regarding the extensive list of commands available to you with Dank Memer.</p>
-				<svg id="commands-header-circles" height="200" width="350">
-					<circle cx="23" cy="130" r="22.5" fill="#242424"/>
-					<circle cx="150" cy="73" r="73" fill="#242424"/>
-					<circle cx="300" cy="140" r="22.5" fill="#242424"/>
+				<svg id="commands-header-dots" viewBox="0 0 52 24" fill="#16c458">
+					<defs>
+						<pattern id="dots" x="0" y="0" width=".15" height=".28">
+							<circle cx="1" cy="1" r="1"></circle>
+						</pattern>
+					</defs>
+					<rect fill="url(#dots)" width="42" height="20"></rect>
 				</svg>
 			</div>
 			<div id="commands-top">

@@ -1,13 +1,13 @@
-const login = (state = { loggedIn: false }, action) => {
+const login = (state = { pending: true, loggedIn: false }, action) => {
   switch (action.type) {
     case 'LOGIN':
-      return { loggedIn: true, ...action.user };
+      return { pending: false, loggedIn: true, ...action.user };
 
     case 'LOGOUT':
-      return { loggedIn: false, ...action.user };
+      return { pending: false, loggedIn: false, ...action.user };
 
     default:
-      return state;
+      return { ...state, pending: false };
   }
 };
 
