@@ -36,7 +36,6 @@ function Loot(props) {
 	const [constants, setConstants] = useState(null);
 	const [activeBox, setActiveBox] = useState(box);
 	const [country, setCountry] = useState("");
-	const [discount, setDiscount] = useState(props.discount);
 	const [bannedUser, setBannedUser] = useState(false);
 	const [agreedTOS, setAgreedTOS] = useState(false);
 	const [finishedPayment, setFinishedPayment] = useState(false);
@@ -64,7 +63,6 @@ function Loot(props) {
 			setConstants(Constants);
 			setCountry(country);
 			setBannedUser(req3.status === 403);
-			setDiscount(props.discount);
 		})).catch(e => {
 			console.error(e);
 		});
@@ -136,7 +134,7 @@ function Loot(props) {
     const getDiscountPercent = () => {
         const res = {};
         const subtotal = getSubtotal(true);
-        let discountPercent = props.discount.percent * 100;
+        let discountPercent = props.discount && props.discount.percent * 100;
         const hypothetical = (subtotal * ((100 - (discountPercent + constants.FLAT_DISCOUNT_PERCENTAGE)) / 100));
         if (hypothetical >= constants.MINIMUM_DISCOUNT_VALUE) {
             discountPercent += constants.FLAT_DISCOUNT_PERCENTAGE;
@@ -328,7 +326,7 @@ function Loot(props) {
 								giftState={giftRecipient}
 								login={props.login}
 								Constants={constants}
-								discount={props.discount.percent * 100}
+								discount={props.discount && props.discount.percent * 100 || 0}
 								setFinishState={finishState}
 							/>
 							<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>
@@ -347,7 +345,7 @@ function Loot(props) {
 									giftState={null}
 									login={props.login}
 									Constants={constants}
-									discount={props.discount.percent * 100}
+									discount={props.discount && props.discount.percent * 100 || 0}
 									setFinishState={finishState}
 								/>
 								<p id="store-summary-actions-message">You are still able to use your credit/debit card without signing in through PayPal. Scroll down in the popup window.</p>

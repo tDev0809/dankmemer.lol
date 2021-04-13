@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import '../assets/styles/components/controlCard.scss';
 
-export default function ControlCard({ mainIcon, colour, title, options, fillRow, resize, action={}, inputOptions = {}, dropdownOptions, finish}) {
+export default function ControlCard({ mainIcon, colour, title, options={}, fillRow, resize, action={}, inputOptions = {}, dropdownOptions, finish}) {
     const [submittable, setSubmittable] = useState(false);
     const [pending, setPending] = useState(false);
     const [accountID, setAccountID] = useState("");
@@ -104,7 +104,6 @@ export default function ControlCard({ mainIcon, colour, title, options, fillRow,
                 <div id="announcement">
                     <div id="announcement-content">
                         <p dangerouslySetInnerHTML={{ __html: bannerPreviewHTML }}></p>
-                        {/* <p><span className="announcement-bold">Bot Update</span>: Changes to Slots, Blackjack and Bet commands. <a className="announcement-link" target="_blank" href="https://www.reddit.com/r/dankmemer/comments/m7b1fn/dank_memer_update/" rel="noopener noreferrer">Read more</a></p> */}
                     </div>
                     <div id="announcement-action">
                         <span className="material-icons">close</span>
