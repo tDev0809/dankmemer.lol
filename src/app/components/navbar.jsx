@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink, Link } from 'react-router-dom';
 import 'assets/styles/components/navbar.scss';
-import Logo from 'assets/img/memer.webp';
+import Logo from 'assets/img/memer.png';
 import parseTime from '../util/parseTime.js';
 import Marquee from "react-fast-marquee";
 import * as axios from 'axios';
@@ -114,6 +114,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 
 	const handleResize = () => {
 		let width = document.documentElement.clientWidth;
+		handleMarquee();
 		if(width <= 730) {
 			setMobile(true);
 			setDropdown(false);
