@@ -7,12 +7,12 @@ import parseTime from '../util/parseTime.js';
 import Marquee from "react-fast-marquee";
 import * as axios from 'axios';
 
-const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, discriminator, avatar, id }}) => {
+const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, avatar, id }}) => {
 	const [dropdown, setDropdown] = useState(false);
 	const [dropdownEventListener, setDropdownEventListener] = useState(false);
 
 	const [announcementMarquee, setAnnouncementMarquee] = useState(false);
-	const [announcementHidden, setAnnouncementHidden] = useState(false);
+	const [announcementHidden, setAnnouncementHidden] = useState(true);
 	const [announcementContent, setAnnouncementContent] = useState("This is awkward. There is no announcement content.");
 	const [recentAnnouncementNum, setRecentAnnouncementNum] = useState("0");
 
@@ -40,15 +40,12 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 					setAnnouncementContent(req.data.announcement.content);
 					setRecentAnnouncementNum(req.data.announcement._id);
 
-					handleMarquee();
-
 					const announcementStorage = localStorage.getItem("announcement-hidden");
 					const announcementNum = localStorage.getItem("announcement-at");
-					if(!announcementStorage || announcementNum !== req.data.announcement._id.toString()) return;
-					if(announcementStorage === "hidden" && announcementNum === req.data.announcement._id.toString()) setAnnouncementHidden(true);
-			
-				} else {
-					setAnnouncementHidden(true);
+					if((!announcementStorage || announcementStorage === "no") || announcementNum !== req.data.announcement._id.toString()) setAnnouncementHidden(false);
+					else if(announcementStorage === "hidden" && announcementNum === req.data.announcement._id.toString()) setAnnouncementContent(true);
+
+					handleMarquee();
 				}
 			} catch {}
 		})();
@@ -59,9 +56,9 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 			handleResize();
 		});
 
-		document.querySelectorAll("#announcement-content > p")[0].addEventListener("resize", () => {
+		document.querySelectorAll("#announcement-content")[0] && document.querySelectorAll("#announcement-content > p")[0].addEventListener("resize", () => {
 			handleMarquee();
-		})
+		});
 	}, []);
 
 	useEffect(() => {
@@ -126,7 +123,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 
 	const handleMarquee = () => {
 		let announcementContent = document.getElementById("announcement-content");
-
+		if(!announcementContent) return;
 		if(announcementContent.offsetWidth < announcementContent.scrollWidth) setAnnouncementMarquee(true);
 		else if(announcementContent.offsetWidth > announcementContent.scrollWidth) setAnnouncementMarquee(false);
 	}
@@ -177,7 +174,11 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, d
 								{isModerator || isAdmin ? 
 								<li className="mobile-nav-link"><NavLink to="/control">Control panel</NavLink></li> 
 								: ''}
-								<li className="mobile-nav-link red"><a href="/oauth/logout" rel="noreferrer noopener">Logout</a></li>
+								{loggedIn ?
+									<li className="mobile-nav-link red"><a href="/oauth/logout" rel="noreferrer noopener">Logout</a></li>
+								:
+									<li className="mobile-nav-link"><a href="/oauth/login?redirect=${window.location.pathname}" rel="noreferrer noopener">Login</a></li>
+								}
 							</ul>
 						</div>
 					: ''}

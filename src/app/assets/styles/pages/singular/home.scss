@@ -254,33 +254,6 @@
 					box-sizing: border-box;
 				}
 			}
-			&-cta {
-				text-align: center;
-				margin-top: 50px;
-				&-invite {
-					font-size: 23px;
-					display: inline;
-				}
-			}
-			&-circles {
-				transform: scale(0.4);
-				overflow: hidden;
-			}
-		}
-		section, section.reverse {
-			flex-direction: column;
-			.text-area {
-				text-align: center!important;
-				.section-body {
-					width: 100%!important;
-					margin: unset;
-					margin-bottom: 30px;
-				}
-			}
-			img {
-				height: unset!important;
-				width: 80vw;
-			}
 		}
 	}
 }
