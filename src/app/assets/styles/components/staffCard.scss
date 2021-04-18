@@ -16,10 +16,10 @@
       			0 1px 4px rgba(0, 0, 0, .1);
 	&-details {
 		&-picture {
-			width: 110px;
-			height: 110px;
-			object-fit: cover;
+			min-width: 110px; max-width: 110px;
+			min-height: 110px; max-height: 110px;
 			border-radius: 50%;
+			overflow: hidden;
 		}
 		&-name {
 			margin: 10px 0;
