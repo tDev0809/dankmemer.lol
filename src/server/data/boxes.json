@@ -277,5 +277,10 @@
         }
       ]
     }
-  ]
+  ],
+  "Constants": {
+    "MINIMUM_PURCHASE_VALUE": 3,
+    "MINIMUM_DISCOUNT_VALUE": 20,
+    "FLAT_DISCOUNT_PERCENTAGE": 10
+  }
 }
