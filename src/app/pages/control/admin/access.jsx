@@ -108,7 +108,7 @@ function AdminAccess(props) {
 								text: "Moderator"
 							},
 							{
-								text: "Honorable Mention"
+								text: "Honorable Mentions"
 							},
 							{
 								text: "Server Management"
