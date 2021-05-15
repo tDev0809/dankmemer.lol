@@ -305,7 +305,7 @@ function Loot(props) {
 								</tr>
 								<tr>
 									<td>Discount</td>
-									<td>{getDiscountPercent().discountPercent}% (${getDiscount()})</td>
+									<td>{getDiscountPercent().discountPercent || 0}% (${getDiscount()})</td>
 								</tr>
 								<tr><td/><td/></tr>
 								<tr>

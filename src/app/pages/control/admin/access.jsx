@@ -105,16 +105,20 @@ function AdminAccess(props) {
 						initial: "Staff type",
 						options: [
 							{
-								text: "Moderator"
+								text: "Moderator",
+								value: "Moderators"
 							},
 							{
-								text: "Honorable Mention"
+								text: "Honorable Mention",
+								value: "Honorable Mentions"
 							},
 							{
-								text: "Server Management"
+								text: "Server Management",
+								value: "Server Management"
 							},
 							{
-								text: "Developer"
+								text: "Developer",
+								value: "Developers"
 							}
 						]
 					}}

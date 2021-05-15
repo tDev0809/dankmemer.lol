@@ -89,7 +89,7 @@ function ControlPanelController(props) {
                                     <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
                                     <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
                                 </>
-                            : isModerator ? 
+                            : props.isModerator ? 
                                 <>
                                     <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
                                     <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
@@ -112,7 +112,7 @@ function ControlPanelController(props) {
                                                     <li><NavLink to="/control/mods/analytics">Support analytics</NavLink></li>
                                                     <li><NavLink to="/control/personalize/card">Card appearance</NavLink></li>
                                                 </>
-                                            : isModerator ? 
+                                            : props.isModerator ? 
                                                 <>
                                                     <li><NavLink to="/control/personalize/card">Card appearance</NavLink></li>
                                                     <li><NavLink to="/control/mods/inspect">Inspect a user</NavLink></li>
