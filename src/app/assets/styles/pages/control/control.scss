@@ -102,7 +102,6 @@
         #nav-logo-container {
             margin-left: 20px;
         }
-
         &-links {
             display: flex;
             align-items: center;
@@ -133,7 +132,7 @@
             align-items: center;
             height: 100%;
             &-account {
-                background: #101010;
+                background: #111712;
                 width: 80px;
                 height: 100%;
                 display: flex;
@@ -166,12 +165,14 @@
             }
             &-hamburger {
                 margin-right: 20px;
+                display: grid;
+                cursor: pointer;
                 &-links {
                     position: absolute;
                     left: 0;
                     top: 80px;
                     padding-top: 50px;
-                    background: #101010;
+                    background: #111712;
                     width: 100vw;
                     height: calc(100vh - 80px);
                     ul {
@@ -203,7 +204,7 @@
             }    
         }
         #nav-account-dropdown {
-            background: #101010;
+            background: #111712;
             position: absolute;
             right: 0;
             top: 80px;
@@ -295,6 +296,9 @@
 }
 
 @media only screen and (max-width: 1160px) {
+    .Toastify__toast-container--top-right {
+        top: 6em; // Extra space required because of the mobile navigation
+    }
     #control-panel {
         flex-direction: column;
         #mobile-nav {
@@ -337,17 +341,18 @@
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 980px) {
     #mobile-nav-links > li:nth-child(6) {
         display: none;
     }
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 830px) {
     #mobile-nav-links {
         display: none!important;
     }
 }
+
 // @media only screen and (max-width: 850px) {
 //     #control {
 //         display: grid;

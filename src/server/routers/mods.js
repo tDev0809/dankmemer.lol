@@ -23,12 +23,12 @@ router.put('/staff', async(req, res) => {
 });
 
 router.get('/checkBan', async (req, res) => {
-  	const { type, id } = req.query;
-  	if (!type || !id) return res.status(400).send('Missing type or id querystring parameter');
+	let { type, id } = req.query;
+	if (!type || !id) return res.status(400).send('Missing type or id querystring parameter');
+	
+  	let bans = await db.collection('bans').find({ id, ...(type.toLowerCase() == 'any' ? {} : { type }) }).toArray();
 
-  	res.status(200).json(
-		await db.collection('bans').find({ id, ...(type === 'any' ? {} : { type }) }).toArray()
-    	.then(res => res.map(entry => entry.type)));
+	res.status(200).json(bans.map(entry => entry.type));
 });
 
 module.exports = router;

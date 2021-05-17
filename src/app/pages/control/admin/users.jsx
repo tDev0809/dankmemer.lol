@@ -115,8 +115,8 @@ function AdminUsers(props) {
 							}
 						]
 					}}
-					finish={() => {
-						toast.dark("That user's access has been reinstated.", {
+					finish={({ data }) => {
+						toast.dark(<span>That user currently has <b>{data.length} ban{data.length === 1 ? '' : 's'}</b> related to <b>{data.length === 1 ? data[0].toLowerCase() === "appeal" ? "an " + data[0].toLowerCase() : 'a ' + data[0].toLowerCase() : 'both reasons'}</b></span>, {
 							position: "top-right",
 							autoClose: 10000,
 							hideProgressBar: true,
@@ -151,16 +151,16 @@ function AdminUsers(props) {
 							}
 						]
 					}}
-					finish={() => {
-						toast.dark("That user's access has been reinstated.", {
-							position: "top-right",
-							autoClose: 10000,
-							hideProgressBar: true,
-							pauseOnHover: true,
-							draggable: true,
-							progress: undefined,
-							toastId: 'bannedUser'
-						});
+					finish={(data) => {
+						// toast.dark("That user's access has been reinstated.", {
+						// 	position: "top-right",
+						// 	autoClose: 10000,
+						// 	hideProgressBar: true,
+						// 	pauseOnHover: true,
+						// 	draggable: true,
+						// 	progress: undefined,
+						// 	toastId: 'bannedUser'
+						// });
 					}}
 				/>
 			</div>

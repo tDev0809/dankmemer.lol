@@ -58,12 +58,13 @@ export default function ControlCard({ mainIcon, colour, title, options={}, fillR
               'Content-Type': 'application/json'
             },
             data: options && options.includeBody ? { id: accountID, type: category } : {}
-        }).then(() => {
-            if(typeof(finish) === "function") finish();
+        }).then((data) => {
+            if(typeof(finish) === "function") finish(data);
 			setPending(false);
 			setAccountID("");
             setSubmittable(false);
         }).catch((e) => {
+            console.error(e);
 			toast.error("Something went wrong while trying to perform that action.", {
 				position: "top-right",
 				autoClose: 10000,
