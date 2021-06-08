@@ -3,6 +3,14 @@
     &-title {
         font-size: 45px;
     }
+    &-modal {
+        width: 100%;
+        min-height: 100px;
+        .react-json-view {
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    }
     &-cards {
         margin: 5vh 0;
         display: flex;

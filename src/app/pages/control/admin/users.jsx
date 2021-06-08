@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
+import ReactJson from 'react-json-view';
+
 import 'react-toastify/dist/ReactToastify.css';
 import 'assets/styles/pages/control/admin/users.scss';
+
 import ControlCard from '../../../components/controlCard';
 
 function AdminUsers(props) {
+
+	const [showModal, setShowModal] = useState(true);
+	const [modalContent, setModalContent] = useState({})
+
+	useEffect(() => {
+		console.log(modalContent);
+		if(modalContent !== {}) setShowModal(true);
+		else setShowModal(false);
+	}, [modalContent])
+
 	return (
 		<div id="admin-users">
             <h1 id="admin-users-title">Control bot users</h1>
@@ -138,7 +151,8 @@ function AdminUsers(props) {
 						initial: "Find by",
 						options: [
 							{
-								text: 'Account ID'
+								text: 'Account ID',
+								value: 'Discord ID'
 							},
 							{
 								text: 'Payment ID'
@@ -147,23 +161,46 @@ function AdminUsers(props) {
 								text: 'PayPal E-Mail'
 							},
 							{
-								text: 'Full name'
+								text: 'Full name',
+								value: 'Full Name'
 							}
 						]
 					}}
-					finish={(data) => {
-						// toast.dark("That user's access has been reinstated.", {
-						// 	position: "top-right",
-						// 	autoClose: 10000,
-						// 	hideProgressBar: true,
-						// 	pauseOnHover: true,
-						// 	draggable: true,
-						// 	progress: undefined,
-						// 	toastId: 'bannedUser'
-						// });
+					finish={(res) => {
+						switch(res.status) {
+							case 200:
+								setModalContent(res.data);
+								break;
+							case 204:
+								toast.error(<span>No purchase with that information was found.</span>, {
+									position: "top-right",
+									autoClose: 10000,
+									hideProgressBar: true,
+									pauseOnHover: true,
+									draggable: true,
+									progress: undefined,
+									toastId: 'bannedUser'
+								});
+								break;
+							default:
+								toast.error(<span>Something went wrong while trying to find that purchase. Please try again.</span>, {
+									position: "top-right",
+									autoClose: 10000,
+									hideProgressBar: true,
+									pauseOnHover: true,
+									draggable: true,
+									progress: undefined,
+									toastId: 'bannedUser'
+								});
+						}
 					}}
 				/>
 			</div>
+			{showModal ?
+				<div id="admin-users-modal">
+					<ReactJson src={modalContent} collapsed={true} theme="codeschool" />
+				</div>
+			: modalContent.length}
 		</div>
 	)
 }
