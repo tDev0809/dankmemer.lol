@@ -102,11 +102,15 @@ router.get('/findTransaction', async (req, res) => {
     	}
   	}
 
-	if(Object.keys(obj).length === 0) return res.status(500).json({ message: "This is not right." })
+	try {
+		if(Object.keys(dbQuery).length === 0) return res.status(500).json({ message: "This is not right." })
 
-	const purchase = await db.collection('purchases').find(dbQuery).toArray();
-	if(!purchase[0]) res.status(204).json({ message: "No purchase found with that information." })
-  	else res.status(200).json(purchase);
+		const purchase = await db.collection('purchases').find(dbQuery).toArray();
+		if(!purchase[0]) res.status(204).json({ message: "No purchase found with that information." })
+		else res.status(200).json(purchase);
+	} catch (e) {
+		return res.status(500).json({ message: "This is not right." });
+	}
 });
 
 router.post('/blogs', async (req, res) => {
