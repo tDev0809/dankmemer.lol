@@ -22,11 +22,9 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, a
 
 	useEffect(() => {
 		if(dropdown && mobile) {
-			document.getElementById('pseudoBody').style.overflowY = 'hidden';
-			document.getElementById('pseudoBody').style.height = '100vh';
-			document.getElementsByTagName('footer')[0].style.display = 'none';
+			document.documentElement.style.overflow = 'hidden';
 		} else if(!dropdown && mobile){
-			document.getElementById('pseudoBody').style.overflowY = 'auto';
+			document.documentElement.style.overflow = 'auto';
 		}
 	}, [dropdown, mobile]);
 
