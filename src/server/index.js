@@ -43,11 +43,13 @@ require('./util/db.js')().then(db => {
     name: 'DankMemerHasABigSteamer',
     resave: false,
     saveUninitialized: true,
+    rolling: true,
     store: new MongoStore({
       db
     }),
     cookie: {
-      secure: process.env.NODE_ENV === 'production'
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 2628000
     }
   }));
 
