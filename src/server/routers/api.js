@@ -166,8 +166,8 @@ router.get('/discount', async (req, res) => {
 });
 
 router.get('/announcement', async (req, res) => {
-	const announcement = await db.collection('announcements').find({}).sort({ '_id': -1 }).toArray();
-	if(!announcement[0]) return res.status(204).json({ message: 'There are no announcements.' });
+	const announcement = await db.collection('announcements').find({}).sort({ 'createdAt': -1 }).toArray();
+	if(!announcement[0] || announcement[0]._id === -1) return res.status(204).json({ message: 'There are no announcements.' });
 	res.status(200).json({
 		announcement: announcement[0]
 	})

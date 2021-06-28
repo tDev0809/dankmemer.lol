@@ -141,37 +141,43 @@
             }
         }
     }
-    &-button {
+    &-buttons {
         position: absolute;
+        display: flex;
         bottom: 20px;
-        color: #39923c;
-        border: 2px solid #39923c;
-        border-radius: 5px;
-        width: max-content;
-        padding: 7px 15px;
-        user-select: none;
-        transition: all ease-in-out .1s;
-        &.filled {
-            color: #ffffff;
-            background: #39923c;
-            &:hover {
-                cursor: not-allowed;
+        .button {
+            color: #39923c;
+            border: 2px solid #39923c;
+            border-radius: 5px;
+            width: max-content;
+            padding: 7px 15px;
+            user-select: none;
+            transition: all ease-in-out .1s;
+            &.filled {
+                color: #ffffff;
+                background: #39923c;
+                &:hover {
+                    cursor: not-allowed;
+                }
             }
-        }
-        &.disabled {
-            color: #646464;
-            border: 2px solid #1d1d1d;
-            &:hover {
-                cursor: not-allowed;
+            &.disabled {
                 color: #646464;
                 border: 2px solid #1d1d1d;
-                background: none;
+                &:hover {
+                    cursor: not-allowed;
+                    color: #646464;
+                    border: 2px solid #1d1d1d;
+                    background: none;
+                }
             }
-        }
-        &:hover, &:focus-within {
-            color: #ffffff;
-            background: #39923c;
-            cursor: pointer;
+            &:hover, &:focus-within {
+                color: #ffffff;
+                background: #39923c;
+                cursor: pointer;
+            }   
+            &:nth-child(2) {
+                margin-left: 20px;
+            }
         }
     }
 }

@@ -57,17 +57,21 @@ export default function ControlCard({ mainIcon, colour, title, options={}, fillR
         if(accountID.length >= 1 && category !== dropdownOptions.initial) setSubmittable(true);
     }, [accountID, category]);
 
-    const submit = async () => {
+    const submit = async (override) => {
 		setPending(true);
         const endpoint = action.endpoint.replace("{{input}}", accountID).replace("{{dropdown}}", category);
         await axios({
             url: `/api${endpoint}`,
-            method: action.method,
+            method: override ? 'DELETE' : action.method,
             credentials: 'same-origin',
             headers: {
               'Content-Type': 'application/json'
             },
-            data: options && options.includeBody ? { id: accountID, type: category } : {}
+            data: options && options.includeBody ? {
+                id: options.submit === "announcement" ?
+                    bannerPreviewHTML : accountID,
+                type: category 
+            } : {}
         }).then((data) => {
             if(typeof(finish) === "function") finish(data);
 			setPending(false);
@@ -137,8 +141,13 @@ export default function ControlCard({ mainIcon, colour, title, options={}, fillR
                     : ''}
                 </div>
             : '' }
-			<p className={!submittable ? "control-card-button disabled" : pending ? "control-card-button filled" : "control-card-button"} onClick={() => { if(!pending && submittable) submit() }}>{pending ? "Pending" : "Confirm"}</p>
-		</div>
+            <div className="control-card-buttons">
+                <p className={!submittable ? "button disabled" : pending ? "button filled" : "button"} onClick={() => { if(!pending && submittable) submit() }}>{pending ? "Pending" : "Confirm"}</p>
+                {options.submit === "announcement" ?
+                <p className={pending ? "button filled" : "button"} onClick={() => { if(!pending) submit(true) }}>{pending ? "Pending" : "Clear announcement"}</p>    
+                : ''}
+            </div>
+        </div>
     );
 }
 

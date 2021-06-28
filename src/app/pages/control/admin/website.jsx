@@ -55,7 +55,8 @@ function AdminWebsite(props) {
 						title="Add a new announcement"
 						options={{
 							includeBody: true,
-							bannerPreview: true
+							bannerPreview: true,
+							submit: 'announcement'
 						}}
 						action={{ endpoint: "/admin/announcement", method: "POST" }}
 						inputOptions={{ icon: "chat_bubble", placeholder: "Banner message" }}

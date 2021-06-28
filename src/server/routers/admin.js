@@ -156,11 +156,27 @@ router.post('/announcement', async(req, res) => {
 	let { id: content } = req.body;
 	try {
 		let announcements = await db.collection('announcements').find({}).toArray();
+		let _id = announcements.filter(announcement => announcement._id === -1) ? announcements.length : announcements.length + 1
 		await db.collection('announcements').insertOne({
-			_id: announcements.length + 1,
-			content: content
+			_id,
+			content: content,
+			createdAt: new Date().getTime()
 		});
 		return res.status(200).json({ message: "Announcement made" });
+	} catch (e) {
+		res.status(500).json({ error: e });
+	}
+});
+
+router.delete('/announcement', async(req, res) => {
+	try {
+		await db.collection('announcements').deleteOne({ _id: -1 });
+		await db.collection('announcements').insertOne({
+			_id: -1,
+			content: "Placeholder announcement. This is being used to hide the announcement banner.",
+			createdAt: new Date().getTime()
+		});
+		return res.status(200).json({ message: "Announcement cleared" });
 	} catch (e) {
 		res.status(500).json({ error: e });
 	}
