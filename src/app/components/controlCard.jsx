@@ -38,9 +38,19 @@ export default function ControlCard({ mainIcon, colour, title, options={}, fillR
 
     useEffect(() => {
         if(options.bannerPreview) {
-            let preview = accountID;
-
-            setBannerPreviewHTML(preview || "Write a message to display a preview");
+            let preview = new DOMParser().parseFromString(accountID, 'text/html').body;
+            for(let i = 0; i < preview.querySelectorAll("a").length; i++) {
+                const anchor = preview.querySelectorAll("a")[i];
+                anchor.classList.add("announcement-link");
+            }
+            for(let i = 0; i < preview.querySelectorAll("b").length; i++) {
+                const _bold = preview.querySelectorAll("b")[i];
+                const bold = document.createElement("span")
+                bold.classList.add("announcement-bold");
+                bold.innerHTML = _bold.innerText;
+                _bold.parentNode.replaceChild(bold, _bold);
+            }
+            setBannerPreviewHTML(preview.innerHTML || "Write a message to display a preview");
         }
 
         if(!dropdownOptions && accountID.length >= 1) return setSubmittable(true);
