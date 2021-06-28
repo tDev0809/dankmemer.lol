@@ -28,7 +28,7 @@ export default function StaffCard({ name, avatar, social, about }) {
 				/>
 				<p className="staff-card-details-name">{name}</p>
       			<div className="staff-card-details-about-container">
-				  <p className={about.length > 120 ? "staff-card-details-about h-scroll" : "staff-card-details-about"} dangerouslySetInnerHTML={{ __html: about }} />	
+				  <p className={about.length > 120 ? "staff-card-details-about v-scroll" : "staff-card-details-about"} dangerouslySetInnerHTML={{ __html: about }} />	
 				</div>
 			</div>
     		<div className="staff-card-socials">
