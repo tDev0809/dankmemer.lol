@@ -29,10 +29,6 @@
         "a": "Sometimes you get a notification twice, the reason for that happening is due to a bug. If it’s a level up notification and you get the rewards twice, don’t worry about it, you won’t get any penalty or anything. This problem will be fixed once the rewrite of the bot is completed. (This also applies to quest rewards)"
       },
       {
-        "q": "How do I turn on/off auto-lottery?",
-        "a": "The command is pls settings auto-lottery enabled and pls settings autolottey disabled to turn it off.\nNote: It takes coins from your bank and not your wallet.\n To set up an interval: pls settings al interval 2 this means that every 2 hours 100 coins will be taken out of your bank to buy a lottery ticket.\nTo set up a minimum: pls settings al minimum amount 1000 This means that if you have less than 1000 coins in your bank. You won’t be charged for the lottery. (auto-lottery will stop once < 1000)"
-      },
-      {
         "q": "How do I get a job that’s locked?",
         "a": "If there’s certain jobs that have a red square or are locked in pls work list this means that you need to work more to unlock them. You can do pls work view (job) and it’ll tell you how many hours are required for whichever job you put. Then you can check how many hours you have by pls work info and figure out how much more you need to unlock it."
       },
