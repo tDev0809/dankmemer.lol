@@ -1,6 +1,16 @@
-@keyframes scroll {
-  from {}
-  to { transform: translateY(-100%); }
+@keyframes vScroll {
+	from {}
+
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes hScroll {
+	from {}
+	to {
+		transform: translateX(-100%);
+	}
 }
 
 .staff-card {
@@ -31,9 +41,13 @@
 			overflow: hidden;
 			white-space: pre-wrap;
 			margin-bottom: 10px;
-			.staff-card-details-about.scroll {
+			.staff-card-details-about.v-scroll {
 				transform: translateY(2em);
-				animation: scroll 25s infinite linear 1s;
+				animation: vScroll 25s infinite linear 1s;
+				display: block;
+			}
+			.staff-card-details-about.h-scroll {
+				animation: hScroll 25s infinite linear 1s;
 				display: block;
 			}
 		}
