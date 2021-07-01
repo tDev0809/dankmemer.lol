@@ -85,7 +85,7 @@ function AdminBlogs(props) {
     }, []);
 
     useEffect(() => {
-        if(blogTitle.length >= 5 && blogDescription.length >= 60 && blogContent.length >= 200) return setSubmittable(true);
+        if(blogTitle.length >= 5 && blogDescription.length >= 20 && blogContent.length >= 200) return setSubmittable(true);
         else setSubmittable(false);
     }, [blogTitle, blogDescription, blogContent])
 
