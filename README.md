@@ -10,7 +10,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Node.js v8.x.x or higher
 - MongoDB
-- Redis (soon?)
 
 ### Installing
 1. `git clone https://github.com/DankMemer/dankmemer.lol.git`
