@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { sanitize } from 'dompurify';
 import 'assets/styles/components/staffCard.scss';
 import * as socials from '../pages/singular/util/socials.js';
 import * as axios from 'axios';
@@ -9,13 +10,18 @@ const playAudio = () => UWU.play();
 
 export default function StaffCard({ name, avatar, social, about }) {
 
-	const [_avatar, _SetAvatar] = useState(avatar || images[name.toLowerCase().replace(/ /g, '--')]);
+	const [_avatar, _setAvatar] = useState(avatar || images[name.toLowerCase().replace(/ /g, '--')]);
+	const [_about, _setAbout] = useState(about)
 
  	useEffect(() => {
 		axios(_avatar).catch(e => {
-			_SetAvatar(fallbackAvatar);
-		})
+			_setAvatar(fallbackAvatar);
+		});
 	}, []);
+
+	useEffect(() => {
+		_setAbout(sanitize(about, { USE_PROFILES: { html: false } }));
+	}, [about])
 	
 
 	return (
@@ -28,7 +34,7 @@ export default function StaffCard({ name, avatar, social, about }) {
 				/>
 				<p className="staff-card-details-name">{name}</p>
       			<div className="staff-card-details-about-container">
-				  <p className={about.replace(/<(?<=<)(.*?)(?=>)>/g, '').length > 120 ? "staff-card-details-about v-scroll" : "staff-card-details-about"} dangerouslySetInnerHTML={{ __html: about.replace(/<(?<=<)(.*?)(?=>)>/g, '') }} />	
+				  <p className={_about.length > 120 ? "staff-card-details-about v-scroll" : "staff-card-details-about"} dangerouslySetInnerHTML={{ __html: _about }} />	
 				</div>
 			</div>
     		<div className="staff-card-socials">
