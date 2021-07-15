@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink, Link } from 'react-router-dom';
 import 'assets/styles/components/navbar.scss';
 import Logo from 'assets/img/memer.png';
 import parseTime from '../util/parseTime.js';
 import Marquee from "react-fast-marquee";
-import * as axios from 'axios';
 
-const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, avatar, id }}) => {
+const Navbar = ({ announcement, discount, login: { isAdmin, isModerator, loggedIn, username, avatar, id }}) => {
 	const [dropdown, setDropdown] = useState(false);
 	const [dropdownEventListener, setDropdownEventListener] = useState(false);
-
-	const [announcementMarquee, setAnnouncementMarquee] = useState(false);
-	const [announcementHidden, setAnnouncementHidden] = useState(true);
-	const [announcementContent, setAnnouncementContent] = useState("This is awkward. There is no announcement content.");
-	const [recentAnnouncementNum, setRecentAnnouncementNum] = useState("0");
 
 	const [mobile, setMobile] = useState(false);
 
 	const [discountCountdown, setDiscountCountdown] = useState("");
+
+	useEffect(() => {
+		handleResize();
+
+		window.addEventListener("resize", (e) => {
+			handleResize();
+		});
+	}, [])
 
 	useEffect(() => {
 		if(dropdown && mobile) {
@@ -27,37 +29,6 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, a
 			document.documentElement.style.overflow = 'auto';
 		}
 	}, [dropdown, mobile]);
-
-
-	useEffect(() => {
-		handleResize();
-		(async() => {
-			try {
-				let req = await axios('/api/announcement');
-				if(req.data.announcement) {
-					setAnnouncementContent(req.data.announcement.content);
-					setRecentAnnouncementNum(req.data.announcement._id);
-
-					const announcementStorage = localStorage.getItem("announcement-hidden");
-					const announcementNum = localStorage.getItem("announcement-at");
-					if((!announcementStorage || announcementStorage === "no") || announcementNum !== req.data.announcement._id.toString()) setAnnouncementHidden(false);
-					else if(announcementStorage === "hidden" && announcementNum === req.data.announcement._id.toString()) setAnnouncementContent(true);
-
-					handleMarquee();
-				}
-			} catch {}
-		})();
-
-		// Add an event listener to the window to check if the 
-		// device is small enough for mobile navbar.
-		window.addEventListener("resize", (e) => {
-			handleResize();
-		});
-
-		document.querySelectorAll("#announcement-content")[0] && document.querySelectorAll("#announcement-content > p")[0].addEventListener("resize", () => {
-			handleMarquee();
-		});
-	}, []);
 
 	useEffect(() => {
 		if(!discount) return;
@@ -69,17 +40,7 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, a
 			expiry = parseTime(difference);
 			setDiscountCountdown(`${expiry.hours.toString().length === 1 ? '0' + expiry.hours : expiry.hours}:${expiry.minutes.toString().length === 1 ? '0' + expiry.minutes : expiry.minutes}:${expiry.seconds.toString().length === 1 ? '0' + expiry.seconds : expiry.seconds}`)
 		}, 1000);
-	}, [discount])
-
-	useEffect(() => {
-		if(announcementHidden && recentAnnouncementNum !== "0") {
-			localStorage.setItem("announcement-hidden", "hidden")
-			localStorage.setItem("announcement-at", recentAnnouncementNum.toString())
-		} else if (!announcementHidden && recentAnnouncementNum !== "0") {
-			localStorage.setItem("announcement-hidden", "no");
-		}
-	}, [announcementHidden]);
-
+	}, [discount]);
 
 	/**
 	 * Account dropdown handler.
@@ -107,9 +68,8 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, a
 		}
 	}, [dropdown]);
 
-	const handleResize = () => {
+    const handleResize = () => {
 		let width = document.documentElement.clientWidth;
-		handleMarquee();
 		if(width <= 730) {
 			setMobile(true);
 			setDropdown(false);
@@ -119,19 +79,12 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, a
 		}
 	}
 
-	const handleMarquee = () => {
-		let announcementContent = document.getElementById("announcement-content");
-		if(!announcementContent) return;
-		if(announcementContent.offsetWidth < announcementContent.scrollWidth) setAnnouncementMarquee(true);
-		else if(announcementContent.offsetWidth > announcementContent.scrollWidth) setAnnouncementMarquee(false);
-	}
-
 	return (
 		<div id="navigation-container">
-			{announcementHidden ? '' :
-				<div id="announcement">
+			{announcement.hidden ? '' :
+				<div id="announcement" className={!announcement.loaded ? 'enter' : ''}>
 					<div id="announcement-content">
-						{announcementMarquee ?
+						{announcement.marquee ?
 							<Marquee
 								gradient={false}
 								speed={50}
@@ -140,13 +93,13 @@ const Navbar = ({ discount, login: { isAdmin, isModerator, loggedIn, username, a
 									height: "unset"
 								}}
 							>
-								<p dangerouslySetInnerHTML={{ __html: announcementContent }} style={{ marginRight: "60px" }}></p>
+								<p dangerouslySetInnerHTML={{ __html: announcement.content }} style={{ marginRight: "60px" }}></p>
 							</Marquee>
 						: 
-							<p dangerouslySetInnerHTML={{ __html: announcementContent }}></p>
+							<p dangerouslySetInnerHTML={{ __html: announcement.content }}></p>
 						}
 					</div>
-					<div id="announcement-action" onClick={() => setAnnouncementHidden(!announcementHidden)}>
+					<div id="announcement-action" onClick={() => announcement.hide(!announcement.hidden)}>
 						<span className="material-icons">close</span>
 					</div>
 				</div>

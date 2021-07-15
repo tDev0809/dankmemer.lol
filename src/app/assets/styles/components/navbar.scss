@@ -13,6 +13,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        &.enter {
+            height: 0px;
+            transform: translateY(-100vh);
+            animation: announcementBarEntry .5s 1 forwards;    
+        }
         &-content {
             display: flex;
             justify-content: center;
@@ -479,6 +484,16 @@
                 }
             }
         }
+    }
+}
+@keyframes announcementBarEntry {
+    from {
+        transform: translateY(-100vh);
+        height: 0px;
+    }
+    to {
+        transform: translateY(0);
+        height: 30px;
     }
 }
 @keyframes slideNav {
