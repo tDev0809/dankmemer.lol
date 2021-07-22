@@ -49,7 +49,7 @@ require('./util/db.js')().then(db => {
     }),
     cookie: {
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 2628000
+      maxAge: 2628000000
     }
   }));
 
