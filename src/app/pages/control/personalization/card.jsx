@@ -75,7 +75,7 @@ function PersonalizeCard(props) {
         <div id="personalize-card">
             <h1 id="personalize-card-title">Personalize your staff card.</h1>
             <div id="personalize-card-content">
-                <div id="personalize-card-content-preview">
+                <div id="personalize-card-content-preview" style={!props.isAdmin ? {marginRight: "20px"} : {}}>
                     {props.isAdmin ?
                         <LargeStaffCard name={username} role={role} avatar={tempPfp} social={tempSocial} about={tempAbout}/>
                         :
