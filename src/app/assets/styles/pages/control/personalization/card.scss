@@ -1,7 +1,7 @@
 #personalize-card {
     &-title {
-        margin-top: 20px;
-        margin-left: 20px;
+        margin-top: 10vh;
+        margin-bottom: 20px;
     }
     &-content {
         display: flex;
@@ -10,18 +10,21 @@
         position: relative;
         .show-mobile { display: none; }
         &-preview {
-            max-width: 320px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            .staff-card-large, .staff-card-compact {
+                margin-bottom: 20px;
+            }
             .input-singular {
                 background: #0e1610;
                 margin-bottom: 20px;
                 border-radius: 5px;
                 padding: 5px 10px;
-                width: 260px;
-                height: 25px;
+                width: 100%;
+                height: 40px;
+                box-sizing: border-box;
                 border: none;
                 outline: none;
                 color: #ffffff;
@@ -31,7 +34,7 @@
                 user-select: none;
                 display: block;
                 text-align: center;
-                width: 250px;
+                width: 100%;
                 box-sizing: border-box;
                 color: #ffffff;
                 background: #39923c;
@@ -50,7 +53,6 @@
             }
         }
         &-info {
-            margin-top: 20px;
             width: 75%;
             height: 100%;
             textarea {
@@ -92,6 +94,19 @@
                     font-family: 'Inter', sans-serif;
                 }
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 875px) {
+    #personalize-card {
+        &-title {
+            text-align: center;
+        }
+        &-content {
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

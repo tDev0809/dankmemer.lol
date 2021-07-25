@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import * as axios from 'axios';
 import 'assets/styles/pages/control/admin/access.scss';
 import ControlCard from '../../../components/controlCard';
-import EditStaff from '../../../components/editStaff';
 import createModal from '../../../components/modal';
 
 function AdminAccess(props) {
@@ -105,20 +104,20 @@ function AdminAccess(props) {
 						initial: "Staff type",
 						options: [
 							{
-								text: "Moderator",
-								value: "Moderators"
+								text: "Support Moderator",
+								value: "Support Moderators"
 							},
 							{
 								text: "Honorable Mention",
 								value: "Honorable Mentions"
 							},
 							{
-								text: "Server Management",
-								value: "Server Management"
+								text: "Bot Moderator",
+								value: "Bot Moderators"
 							},
 							{
-								text: "Developer",
-								value: "Developers"
+								text: "Team Member",
+								value: "Team"
 							}
 						]
 					}}

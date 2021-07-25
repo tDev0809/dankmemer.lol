@@ -1,16 +1,27 @@
 #staff {
     margin-bottom: 30px;
+    display: grid;
+    place-items: center;
     #staff-categories {
+        width: 95%;
+        max-width: 1335px;
         .staff-category-title {
-            font-size: 40px;
-            text-align: center;
+            font-size: 36px;
             margin-top: 10vh;
+            margin-bottom: 30px;
         }
         .staff-category-cards {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+            &.large-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));            
+                gap: 50px 58px;
+            }
+            &.compact-grid {
+                grid-template-columns: repeat(auto-fill, minmax(415px, 1fr));            
+                gap: 40px 45px;
+
+            }
+            display: grid;
+            box-sizing: border-box;
         }
     }
 }

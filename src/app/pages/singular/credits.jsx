@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import '../../assets/styles/pages/singular/credits.scss';
-// import users from './data/users.json';
 import * as axios from 'axios';
-import StaffCard from '../../components/staff';
-import images from './util/images.js';
+import LargeStaffCard from '../../components/staff-large';
+import CompactStaffCard from '../../components/staff-compact';
 import createAd from '../../util/createAd';
-
-// const categories = Object.entries(users);
 
 export default function Staff() {
 	const [users, setUsers] = useState([]);
@@ -58,15 +55,26 @@ export default function Staff() {
 				{categories.map(([category, users], i) => (
 					<div id={"staff-categories-" + category.toLowerCase().replace(/ /g, '-')} key={i}>
 						<h1 className="staff-category-title">{category}</h1>
-						<div className="staff-category-cards">
-							{users.sort(() => Math.random() * 0.5).sort((a, b) => getSocialIndex(a) - getSocialIndex(b)).map((user, i) => (
-								user.name !== '' ?
-									<StaffCard
-										{...user}
-										key={i}
-									/>
-								: ''
-							))}
+						<div className={category === "Team" ? "staff-category-cards large-grid" : "staff-category-cards compact-grid"}>
+							{category === "Team" ?
+								users.sort(() => Math.random() * 0.5).sort((a, b) => getSocialIndex(a) - getSocialIndex(b)).map((user, i) => (
+									user.name !== '' ?
+										<LargeStaffCard
+											{...user}
+											key={i}
+										/>
+									: ''
+								))
+							: 
+								users.sort(() => Math.random() * 0.5).sort((a, b) => getSocialIndex(a) - getSocialIndex(b)).map((user, i) => (
+									user.name !== '' ?
+										<CompactStaffCard
+											{...user}
+											key={i}
+										/>
+									: ''
+								))
+							}
 						</div>
 					</div>
 				))}

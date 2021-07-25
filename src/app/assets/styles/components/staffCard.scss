@@ -14,60 +14,158 @@
 }
 
 .staff-card {
-	position: relative;
-	text-align: center;
-	width: 250px;
-	height: 315px;
-	background:#050b06;
-    border-radius: 4px;
-    padding: 12px 15px;
-    margin: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .82),
-      			0 1px 4px rgba(0, 0, 0, .1);
-	&-details {
-		&-picture {
-			min-width: 110px; max-width: 110px;
-			min-height: 110px; max-height: 110px;
-			border-radius: 50%;
+	&-large {
+		position: relative;
+		overflow: hidden;
+		width: 250px;
+		height: 340px;
+		background: #121B13;
+		border-radius: 5px;
+		padding: 20px;
+		&-details {
+			display: flex;
 			overflow: hidden;
-		}
-		&-name {
-			margin: 10px 0;
-			font-size: 18px;
-			color: #39923c;
+			&-text {
+				max-width: calc(100% - 124px);
+				margin-top: 10px;
+				margin-left: 14px;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+			}
+			&-picture {
+				background-color: #414942;
+				min-width: 110px; max-width: 110px;
+				min-height: 110px; max-height: 110px;
+				border-radius: 5px;
+				overflow: hidden;
+			}
+			&-name {
+				font-size: 24px;
+				color: #ffffff;
+			}
+			&-role {
+				color: #E5E5E5;
+				margin-bottom: 20px;
+			}
+			&-socials {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				a {
+					height: 25px;
+					width: 25px;
+				}
+				&.no-grid {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					a {
+						margin-right: 15px;
+					}
+				}
+				&-account {
+					height: 25px;
+					width: 25px;
+					transition: transform ease-in-out .2s;
+					&:hover {
+						transform: scale(1.05);
+					}
+					&:active {
+						transform: scale(.95);
+					}
+				}
+			}	
 		}
 		&-about-container {
-			max-height: 100px;
+			height: 63%;
 			overflow: hidden;
 			white-space: pre-wrap;
-			margin-bottom: 10px;
-			.staff-card-details-about.v-scroll {
+			margin-top: 14px;
+			.staff-card-large-details-about.v-scroll {
 				transform: translateY(2em);
 				animation: vScroll 25s infinite linear 1s;
 				display: block;
 			}
-			.staff-card-details-about.h-scroll {
+			.staff-card-large-details-about.h-scroll {
 				animation: hScroll 25s infinite linear 1s;
 				display: block;
 			}
 		}
 	}
-	&-socials {
-		position: absolute;
-		bottom: 12px;
-		text-align: center;
-		width: 250px;
-		&-account {
-			height: 25px;
-			width: 25px;
-			margin: 5px;
-	
-			&:hover {
-			  	transform: scale(1.05);
+	&-compact {
+		position: relative;
+		overflow: hidden;
+		width: 395px;
+		height: 180px;
+		background: #121B13;
+		border-radius: 5px;
+		padding: 20px;
+		&-details {
+			display: flex;
+			overflow: hidden;
+			&-text {
+				max-width: calc(100% - 124px);
+				margin-top: 10px;
+				margin-left: 14px;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
 			}
-	
-			&:active {
-			  	transform: scale(.95);
+			&-picture {
+				background-color: #414942;
+				min-width: 110px; max-width: 110px;
+				min-height: 110px; max-height: 110px;
+				border-radius: 5px;
+				overflow: hidden;
+			}
+			&-name {
+				font-size: 24px;
+				color: #ffffff;
+				margin-bottom: 10px;
+			}
+			&-socials {
+				display: grid;
+				grid-template-columns: repeat(6, 1fr);
+				row-gap: 10px;
+				a {
+					height: 25px;
+					width: 25px;
+					margin-right: 10px;
+				}
+				&.no-grid {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					a {
+						margin-right: 20px;
+					}
+				}
+				&-account {
+					height: 25px;
+					width: 25px;
+					transition: transform ease-in-out .2s;
+					&:hover {
+						transform: scale(1.05);
+					}
+					&:active {
+						transform: scale(.95);
+					}
+				}
+			}	
+		}
+		&-about-container {
+			height: 33%;
+			overflow: hidden;
+			white-space: pre-wrap;
+			margin-top: 14px;
+			.staff-card-compact-details-about.v-scroll {
+				transform: translateY(2em);
+				animation: vScroll 25s infinite linear 1s;
+				display: block;
+			}
+			.staff-card-compact-details-about.h-scroll {
+				animation: hScroll 25s infinite linear 1s;
+				display: block;
 			}
 		}
 	}

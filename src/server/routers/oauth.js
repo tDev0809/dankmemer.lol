@@ -76,8 +76,8 @@ router.get('/callback', async (req, res) => {
 
 	req.session.user = {
 		...user,
-		isModerator: ['Moderators', 'Server Management', 'Developers', 'Honorable Mentions'].includes(staffUser?.category),
-		isAdmin: staffUser?.category === 'Developers',
+		isModerator: ['Support Moderators', 'Bot Moderators', 'Team', 'Honorable Mentions'].includes(staffUser?.category),
+		isAdmin: staffUser?.category === 'Team',
 		token: encrypt(user.id)
 	};
 

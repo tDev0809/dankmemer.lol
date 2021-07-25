@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import StaffCard from '../../../components/staff';
+import LargeStaffCard from '../../../components/staff-large';
+import CompactStaffCard from '../../../components/staff-compact';
 import '../../../assets/styles/pages/control/personalization/card.scss'
 import * as socials from '../../singular/util/socials.js';
 import * as axios from 'axios';
@@ -9,6 +10,7 @@ import * as axios from 'axios';
 function PersonalizeCard(props) {
 
     const [username, setUsername] = useState(props.username);
+    const [role, setRole] = useState("");
     const [avatar, setAvatar] = useState(`https://cdn.discordapp.com/avatars/${props.id}/${props.avatar}`);
     const [social, setSocial] = useState({});
 
@@ -22,10 +24,12 @@ function PersonalizeCard(props) {
             method: 'GET'
         }).then(({ data: user }) => {
             user = user[0];
+            console.log(user);
             setTempPfp(user.avatar);
             setTempAbout(user.about);
             setTempSocial(user.social);
-            setUsername(user.username);
+            setUsername(user.name);
+            setRole(user.role);
             setSocial(user.social);
         }).catch((e) => {
             console.group("Unable to retrieve staff card information.");
@@ -72,7 +76,11 @@ function PersonalizeCard(props) {
             <h1 id="personalize-card-title">Personalize your staff card.</h1>
             <div id="personalize-card-content">
                 <div id="personalize-card-content-preview">
-                    <StaffCard name={username} avatar={tempPfp} social={tempSocial} about={tempAbout}/>
+                    {props.isAdmin ?
+                        <LargeStaffCard name={username} role={role} avatar={tempPfp} social={tempSocial} about={tempAbout}/>
+                        :
+                        <CompactStaffCard name={username} avatar={tempPfp} social={tempSocial} about={tempAbout}/>
+                    }
                     <input className="input-singular" defaultValue={tempPfp.includes('cdn.discord') ? '' : tempPfp} onChange={(e) => setTempPfp(e.target.value || avatar)} placeholder={`Custom card picture`}/>
                     <span id="personalize-card-content-preview-save" className="hide-mobile" onClick={saveChanges}>Save changes</span>          
                 </div>
