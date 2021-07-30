@@ -100,6 +100,10 @@
 		background: #121B13;
 		border-radius: 5px;
 		padding: 20px;
+		&.hidden {
+			opacity: 0;
+			user-select: none;
+		}
 		&-details {
 			display: flex;
 			overflow: hidden;
@@ -172,8 +176,14 @@
 }
 
 @media only screen and (max-width: 786px) {
-  .staff-card {
-    width: 90%;
-  }
+  	.staff-card {
+    	width: 90%;
+  	}
+}
+
+@media only screen and (max-width: 460px) {
+	.staff-card-compact {
+		width: 80vw;
+	}
 }
 

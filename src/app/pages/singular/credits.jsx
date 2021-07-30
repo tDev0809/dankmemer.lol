@@ -47,7 +47,10 @@ export default function Staff() {
 		setCategories(Object.entries(users));
 	}, [users]);
 
-	const getSocialIndex = ({ social }) => Object.keys(social).length === 0 ? -1 : 1;
+	const getSocialIndex = (u) => {
+		// if(!u) return -1;
+		Object.keys(u.social).length === 0 ? -1 : 1
+	}
 
 	return (
 		<div id="staff">
@@ -65,6 +68,7 @@ export default function Staff() {
 										/>
 									: ''
 								))
+								
 							: 
 								users.sort(() => Math.random() * 0.5).sort((a, b) => getSocialIndex(a) - getSocialIndex(b)).map((user, i) => (
 									user.name !== '' ?
@@ -73,8 +77,8 @@ export default function Staff() {
 											key={i}
 										/>
 									: ''
-								))
-							}
+								)
+							)}
 						</div>
 					</div>
 				))}

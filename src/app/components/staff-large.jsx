@@ -38,7 +38,8 @@ export default function StaffCard({ name, avatar, social, about, role }) {
 								speed={20}
 								pauseOnHover={true}
 								style={{
-									height: "unset"
+									height: "unset",
+									overflowY: "hidden"
 								}}
 							>
 								{Object.entries(social).map(([ socialName, link ]) => (

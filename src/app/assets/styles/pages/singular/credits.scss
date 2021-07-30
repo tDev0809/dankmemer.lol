@@ -12,16 +12,35 @@
         }
         .staff-category-cards {
             &.large-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));            
-                gap: 50px 58px;
+                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+                grid-gap: 50px 58px;
             }
             &.compact-grid {
                 grid-template-columns: repeat(auto-fill, minmax(415px, 1fr));            
                 gap: 40px 45px;
-
             }
             display: grid;
-            box-sizing: border-box;
+            grid-auto-flow: row;
+            justify-content: space-between;
+            align-content: start;
+        }
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    #staff {
+        &-categories {
+            width: 100vw!important;
+            .staff-category-title {
+                text-align: center;
+            }
+            .staff-category-cards {
+                justify-content: center!important;
+                place-items: center;
+                &.compact-grid {
+                    grid-template-columns: none!important;
+                }
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 const UWU = new Audio(`/static/audio/uwu.wav`);
 const playAudio = () => UWU.play();
 
-export default function StaffCard({ name, avatar, social, about }) {
+export default function StaffCard({ name, avatar, social, about, empty = false }) {
 
 	const [_about, _setAbout] = useState(about);
 
@@ -15,27 +15,31 @@ export default function StaffCard({ name, avatar, social, about }) {
 	}, [about])
 	
 	return (
-  		<div className="staff-card-compact">
-    		<div className="staff-card-compact-details">
-				<img 
-					className="staff-card-compact-details-picture"
-					src={avatar}
-					onClick={() => { name === 'Melmsie' ? playAudio() : console.log('Go click Mel\'s avatar') }}
-				/>
-				<div className="staff-card-compact-details-text">
-					<h2 className="staff-card-compact-details-name">{name}</h2>
-					<div className="staff-card-compact-details-socials">
-						{Object.entries(social).map(([ socialName, link ]) => (
-							<a key={socialName} href={link}>
-								<img className="staff-card-compact-details-socials-account" alt={`${name}'s ${socialName} link`} src={socials[socialName]} />
-							</a>
-						))}
+  		<div className={!empty ? "staff-card-compact" : "staff-card-compact hidden"}>
+			{!empty ?
+				<>
+					<div className="staff-card-compact-details">
+						<img 
+							className="staff-card-compact-details-picture"
+							src={avatar}
+							onClick={() => { name === 'Melmsie' ? playAudio() : console.log('Go click Mel\'s avatar') }}
+						/>
+						<div className="staff-card-compact-details-text">
+							<h2 className="staff-card-compact-details-name">{name}</h2>
+							<div className="staff-card-compact-details-socials">
+								{Object.entries(social).map(([ socialName, link ]) => (
+									<a key={socialName} href={link}>
+										<img className="staff-card-compact-details-socials-account" alt={`${name}'s ${socialName} link`} src={socials[socialName]} />
+									</a>
+								))}
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div className="staff-card-compact-about-container">
-				<p className={(_about.length > 120) || ((_about.match(/\n/g,) || []).length >= 3) ? "staff-card-compact-details-about v-scroll" : "staff-card-compact-details-about"} dangerouslySetInnerHTML={{ __html: _about }} />	
-			</div>
+					<div className="staff-card-compact-about-container">
+						<p className={(_about.length > 120) || ((_about.match(/\n/g,) || []).length >= 3) ? "staff-card-compact-details-about v-scroll" : "staff-card-compact-details-about"} dangerouslySetInnerHTML={{ __html: _about }} />	
+					</div>
+				</>
+			: ''}
   		</div> 
   	)
 };

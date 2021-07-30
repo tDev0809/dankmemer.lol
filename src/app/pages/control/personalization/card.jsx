@@ -24,7 +24,6 @@ function PersonalizeCard(props) {
             method: 'GET'
         }).then(({ data: user }) => {
             user = user[0];
-            console.log(user);
             setTempPfp(user.avatar);
             setTempAbout(user.about);
             setTempSocial(user.social);
@@ -45,6 +44,20 @@ function PersonalizeCard(props) {
             return setTempSocial(rest);
         }
         setTempSocial({ ...tempSocial, [name]: value });
+    }
+
+    const pfpChange = (url) => {
+        url = url.match(/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/)[0];
+        if(!url) return toast.error("Invalid avatar provided. Please ensure you have provided an image link or leave it blank to use your Discord profile picture.", {
+            position: "top-right",
+            autoClose: 10000,
+            hideProgressBar: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            toastId: 'noStaff'
+        });
+        setTempPfp(url)
     }
 
     const saveChanges = () => {
@@ -71,6 +84,7 @@ function PersonalizeCard(props) {
         });
     }
 
+
     return (
         <div id="personalize-card">
             <h1 id="personalize-card-title">Personalize your staff card.</h1>
@@ -81,7 +95,7 @@ function PersonalizeCard(props) {
                         :
                         <CompactStaffCard name={username} avatar={tempPfp} social={tempSocial} about={tempAbout}/>
                     }
-                    <input className="input-singular" defaultValue={tempPfp.includes('cdn.discord') ? '' : tempPfp} onChange={(e) => setTempPfp(e.target.value || avatar)} placeholder={`Custom card picture`}/>
+                    <input className="input-singular" defaultValue={tempPfp.includes('cdn.discord') ? '' : tempPfp} onChange={(e) => pfpChange(e.target.value || avatar)} placeholder={`Custom card picture`}/>
                     <span id="personalize-card-content-preview-save" className="hide-mobile" onClick={saveChanges}>Save changes</span>          
                 </div>
                 <div id="personalize-card-content-info">
