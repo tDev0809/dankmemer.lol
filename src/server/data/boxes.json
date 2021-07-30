@@ -87,13 +87,17 @@
       "name": "Dank Box",
       "id": 1,
       "description": "Dank rewards for a dank user.",
-      "yield": "20,000 - 50,000",
+      "yield": "50,000 - 150,000",
       "randomItem": {
         "keyword": "high",
         "chance": 1
       },
       "price": 3.99,
       "items": [
+        {
+          "name": "pepecoin",
+          "amount": "1"
+        },
       {
         "name": "pepe",
         "amount": "1"
@@ -176,7 +180,7 @@
       "name": "God Box",
       "id": 2,
       "description": "This is a really op box.",
-      "yield": "50,000 - 100,000",
+      "yield": "200,000 - 300,000",
       "randomItem": {
         "keyword": "GOD",
         "chance": 1
@@ -189,15 +193,15 @@
         },
         {
           "name": "pepemedal",
-          "amount": "1"
+          "amount": "2"
         },
         {
           "name": "pepecoin",
-          "amount": "1"
+          "amount": "2"
         },
         {
           "name": "pepe",
-          "amount": "2"
+          "amount": "3"
         },
         {
           "name": "snowball",
@@ -212,20 +216,8 @@
           "amount": "20"
         },
         {
-          "name": "chillpill",
-          "amount": "10"
-        },
-        {
-          "name": "bread",
-          "amount": "10"
-        },
-        {
           "name": "pinkphallicobject",
           "amount": "420"
-        },
-        {
-          "name": "wishlist",
-          "amount": "2"
         },
         {
           "name": "lifesaver",
@@ -233,26 +225,14 @@
         },
         {
           "name": "banknote",
-          "amount": "10"
-        },
-        {
-          "name": "tidepod",
-          "amount": "10"
+          "amount": "15"
         },
         {
           "name": "coinbomb",
           "amount": "15"
         },
         {
-          "name": "huntingrifle",
-          "amount": "6"
-        },
-        {
           "name": "horseshoe",
-          "amount": "10"
-        },
-        {
-          "name": "fishingpole",
           "amount": "10"
         },
         {
@@ -260,20 +240,12 @@
           "amount": "420"
         },
         {
-          "name": "fakeid",
-          "amount": "10"
-        },
-        {
           "name": "cupidsbigtoe",
-          "amount": "1"
+          "amount": "3"
         },
         {
           "name": "jacky",
-          "amount": "1"
-        },
-        {
-          "name": "sand",
-          "amount": "15"
+          "amount": "2"
         }
       ]
     }
