@@ -53,7 +53,7 @@ export default function StaffCard({ name, avatar, social, about, role }) {
 				</div>
 			</div>
 			<div className="staff-card-large-about-container">
-				<p className={_about.length > 120 ? "staff-card-large-details-about v-scroll" : "staff-card-large-details-about"} dangerouslySetInnerHTML={{ __html: _about }} />	
+				<p className={_about.length > 280 ? "staff-card-large-details-about v-scroll" : "staff-card-large-details-about"} dangerouslySetInnerHTML={{ __html: _about }} />	
 			</div>
   		</div> 
   	)
