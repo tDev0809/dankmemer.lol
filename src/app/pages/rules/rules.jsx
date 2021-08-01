@@ -58,7 +58,7 @@ export default function Rules() {
 					<h3 className="rules-container-item-title">Rule Six</h3>
 					<p className="rules-container-item-subtitle">Real Money Trading</p>
 					<p className="rules-container-item-body">
-						Dank Memer's currency is not to be traded for real money or discord nitro. Buying anything with real money outside of our patreon and website, will get you a ban.
+					Dank Memer's currency is not to be traded for real money, discord nitro, or to other bot currency. Buying anything with real money outside of our patreon and website, will get you a ban.
 					</p>
 				</div>
 				<div className="rules-container-item">
