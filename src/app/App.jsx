@@ -18,6 +18,7 @@ const Refunds  = lazy(() => import('./pages/store/refunds'));
 const Privacy  = lazy(() => import('./pages/legal/privacy'));
 const Commands = lazy(() => import('./pages/info/commands'));
 const Faq      = lazy(() => import('./pages/info/faq'));
+const Items      = lazy(() => import('./pages/info/items'));
 const NotFound = lazy(() => import('./pages/singular/notfound'));
 
 import './assets/styles/misc/main.scss';
@@ -36,6 +37,7 @@ export default () => {
 				<NormalRoute path="/faq" component={<Faq />} />
 				<NormalRoute path="/staff" component={<Staff />} />
 				<NormalRoute path="/loot" component={<Loot />}/>
+				<NormalRoute path="/items" component={<Items />}/>
 				<NormalRoute path="/rules" component={<Rules />} />
 				<NormalRoute path="/about" component={<About />}/>
 				<NormalRoute exact path="/blogs" component={<Blogs />} />

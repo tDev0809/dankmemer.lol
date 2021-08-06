@@ -120,6 +120,7 @@ const Navbar = ({ announcement, discount, login: { isAdmin, isModerator, loggedI
 								<li className="mobile-nav-link"><NavLink to="/faq">FAQ</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/blogs">Blog</NavLink></li>
 								<li className={discount ? "mobile-nav-link discount" : "mobile-nav-link"}><NavLink to="/loot">{discount ? <><p>Store</p> <span id="discount-countdown">SALE {discountCountdown}</span></>: 'Store'}</NavLink></li>
+								<li className="mobile-nav-link"><NavLink to="/items">Items</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/appeals">Appeal a ban</NavLink></li>
 								<li className="mobile-nav-link"><NavLink to="/reports">Report a user</NavLink></li>
 								{isModerator || isAdmin ? 
@@ -143,6 +144,7 @@ const Navbar = ({ announcement, discount, login: { isAdmin, isModerator, loggedI
 							<li className="desktop-nav-link"><NavLink to="/faq">FAQ</NavLink></li>
 							<li className="desktop-nav-link"><NavLink to="/blogs">Blog</NavLink></li>
 							<li className={discount ? "desktop-nav-link discount" : "desktop-nav-link"}><NavLink to="/loot">Store</NavLink> {discount ? <span id="discount-countdown">SALE {discountCountdown}</span> : ''}</li>
+							<li className="desktop-nav-link"><NavLink to="/items">Items</NavLink></li>
 						</ul>
 					</div>
 					<div id="desktop-right">
