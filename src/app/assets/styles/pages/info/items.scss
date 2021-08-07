@@ -111,7 +111,7 @@
     &-info {
         margin-left: 10px;
         width: 430px;
-        height: 400px;
+        height: 550px;
         background: #171F19;
         padding: 30px 20px;
         border-radius: 5px;
@@ -130,6 +130,52 @@
             &-description {
                 margin-top: 20px;
             }
+            &-effects {
+                margin-top: 20px;
+                h3 { font-weight: 600; }
+            }
+            &-rewards {
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                h3 { font-weight: 600; }
+                &-icons {
+                    margin-top: 10px;
+                    display: grid; 
+                    grid-auto-columns: 1fr; 
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+                    grid-template-rows: 1fr 1fr 1fr; 
+                    gap: 10px;
+                    width: max-content;
+                    grid-template-areas: 
+                    ". . . . ."
+                    ". . . . ."
+                    ". . . . .";
+                    .reward-item {
+                        width: 43px;
+                        height: 43px;
+                        background: #263029;
+                        border-radius: 5px;
+                        list-style: none;
+                        cursor: pointer;
+                        display: grid;
+                        place-items: center;
+                    }
+                }
+            }
+        }
+        &-prices {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            position: absolute;
+            bottom: 30px;
+            width: calc(100% - 40px);
+            h3 { font-weight: 600; }
+            &-buy-num { color: #339A5D }
+            &-sell-num { color: #339A5D; }
         }
     }
 }

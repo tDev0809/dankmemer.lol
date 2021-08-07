@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import itemsFile from './data/items.json';
 import createAd from '../../util/createAd';
+import MarkdownIt from 'markdown-it';
 
 import 'assets/styles/pages/info/items.scss';
-
-// const chunk = (array, chunk_size) => Array(Math.ceil(array.length / chunk_size)).fill().map((_, index) => index * chunk_size).map(begin => array.slice(begin, begin + chunk_size));
 
 export default function Items() {
 	// Set the categories variable as an array of the type field from items.json,
@@ -12,12 +11,12 @@ export default function Items() {
 	const categories = useRef([...new Set(Object.values(itemsFile).map(({ type }) => type))]);
 	const items = useRef(Object.values(itemsFile).sort((a, b) => a.name.localeCompare(b.name)));
 	const [category, setCategory] = useState(null);
-	const [page, setPage] = useState(0);
-	// const [pages, setPages] = useState(chunk(items.current, 35));
 	const [viewable, setViewable] = useState(items.current);
-	const [chunked, setChunked] = useState(false);
 	const [selectedItem, setSelectedItem] = useState(items.current[0]);
+	const [rewards, setRewards] = useState([]);
 	const [search, setSearch] = useState('');
+
+	const mdParser = new MarkdownIt();
 
 	useEffect(() => {
 		createAd('nitropay-items-top', { sizes: [ [728, 90] ] }, 'desktop');
@@ -46,6 +45,23 @@ export default function Items() {
 	}, []);
 
 	useEffect(() => {
+		if(!selectedItem.reward) return;
+		const _rewards = [];
+		selectedItem.reward.items.forEach(reward => {
+			reward = Object.keys(reward)[0];
+			console.log(reward);
+			items.current.map((item) => {
+				if(item.name.toLowerCase().includes(reward.toLowerCase())) return _rewards.push(item);
+			})
+		});
+		setRewards(_rewards);
+		return () => {
+			setRewards([]);
+		}
+	}, [selectedItem]);
+
+	useEffect(() => {
+		if(!category) return setViewable(items.current);
 		const _catItems = [];
 		items.current.forEach(item => {
 			if(item.type !== category) return;
@@ -71,37 +87,6 @@ export default function Items() {
 		}
 	}, [search]);
 
-	useEffect(() => {
-		switch(selectedItem.type.toLowerCase()) {
-			case "box":
-				selectedItem.worth = selectedItem.cost;
-				break;
-			case "sellable":
-				selectedItem.worth = selectedItem.cost;
-				break;
-			default:
-				selectedItem.worth = Math.ceil(selectedItem.cost / 10);
-				break;
-		}
-	}, [selectedItem]);
-
-	// useEffect(() => {
-	// 	if(search.length >= 1) {
-	// 		setExpandedIndex(null);
-	// 		Object.values(itemsFile).flat().filter(question => {
-	// 			if(question.q.toLowerCase().includes(search.toLowerCase()) || question.a.toLowerCase().includes(search.toLowerCase())) {
-	// 				setQuestions(oldQuestions => [...oldQuestions, question]);
-	// 			}
-	// 		})
-	// 	} else {
-	// 		setCategory(categories.current[0]);
-	// 		setQuestions(Object.values(itemsFile)[Object.keys(itemsFile).indexOf(category)]);
-	// 	}
-	// 	return () => {
-	// 		setQuestions([]);
-	// 	}
-	// }, [search]);
-
 	// useEffect(() => {
 	// 	if(!categoryDropdown && hasEventListener) {
 	// 		document.getElementById('items').removeEventListener('click', () => {
@@ -124,6 +109,26 @@ export default function Items() {
 		if(categories.current[index] === category) return setCategory(null)
 		setCategory(categories.current[index]);
 	}
+
+	const buyPrice = (selectedItem) => 
+		selectedItem.type.toLowerCase() === "box"
+		|| selectedItem.type.toLowerCase() === "sellable"
+		|| selectedItem.type.toLowerCase() === "collectable"
+		|| selectedItem.type.toLowerCase() === "loot box"
+		|| (selectedItem.type.toLowerCase() === "power-up" && !selectedItem.showInShop)
+		|| (selectedItem.type.toLowerCase() === "collectable" && !selectedItem.name.toLowerCase().includes("phallic"))
+		? '---'
+		: "⏣ " + Math.ceil(selectedItem.cost).toLocaleString();
+	
+	const sellPrice = (selectedItem) =>
+		selectedItem.type.toLowerCase() === "collectable" 
+			? '---'
+			: selectedItem.type.toLowerCase() === "loot box" ? "⏣ " + selectedItem.cost.toLocaleString() 
+			: selectedItem.type.toLowerCase() === "tool"
+			|| selectedItem.type.toLowerCase() === "power-up"
+			|| selectedItem.type.toLowerCase() === "item pack"
+			? "⏣ " + Math.ceil(selectedItem.cost / 10).toLocaleString()
+			: "⏣ " + Math.ceil(selectedItem.cost).toLocaleString();
 
 	return (
 		<div id="items">
@@ -180,11 +185,38 @@ export default function Items() {
 								<img id="items-info-details-image"src={selectedItem.image} width={100} alt={selectedItem.name}/>
 								<h1 id="items-info-details-name">{selectedItem.name}</h1>
 								<p id="items-info-details-type">Type: {selectedItem.type}</p>
-								<p id="items-info-details-description">{selectedItem.longdescription || selectedItem.description}</p>
+								<p id="items-info-details-description" dangerouslySetInnerHTML={{ __html: mdParser.renderInline(selectedItem.longdescription || selectedItem.description) }}/>
+								{selectedItem.effects ?
+									<div id="items-info-details-effects">
+										<h3>Effects</h3>
+										<p id="items-info-details-effects-text">{selectedItem.effects}</p>
+									</div>
+								: ''}
+								{selectedItem.reward ?
+									<div id="items-info-details-rewards">
+										<h3>Possible items</h3>
+										<ul id="items-info-details-rewards-icons">
+											{rewards.map(reward => (
+												<li className="reward-item" onClick={() => setSelectedItem(reward)}>
+													<img src={reward.image} width={24}/>
+												</li>
+											))}
+										</ul>
+									</div>
+								: ''}
 							</div>
 							<div id="items-info-prices">
-								<p>sell: {selectedItem.worth}</p>
-								<p>buy: {selectedItem.cost}</p>
+								<div id="items-info-prices-buy">
+									<h3>Buy price:</h3>
+									<p id="items-info-prices-buy-num" style={buyPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{buyPrice(selectedItem)}</p>
+								</div>
+								<div id="items-info-prices-sell">
+									<h3>Sell price:</h3>
+									<p id="items-info-prices-sell-num" style={sellPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{sellPrice(selectedItem)}</p>
+								</div>
+								{/*<div id="items-info-prices-trade"> 
+									This can't be done yet, a connection to the database needs to be made.
+								</div>*/}
 							</div>
 						</div>	
 					</div>
