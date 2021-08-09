@@ -48,6 +48,7 @@
             align-items: center;
             background: #151B16;
             border-radius: 5px;
+            height: 38px;
             svg {
                 transition: stroke ease-in-out .1s;
                 padding: 8px 13px;
@@ -63,25 +64,47 @@
                 font-family: 'Inter', sans-serif;
             }
         }
+        &-dropdown {
+            position: relative;
+            margin-right: 20px;
+            width: 135px;
+            &-selected {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #151B16;
+                height: 38px;
+                padding: 0px 12px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            &-options {
+                position: absolute;
+                top: 45px;
+                background: #151B16;
+                padding: 3px 12px;
+                border-radius: 5px;
+                .items-filters-dropdown-option {
+                    padding: 5px 0px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
     &-list-wrapper {
         display: flex;
         justify-content: start;
         align-items: top;
     }
+    &-list-container {
+        width: 100%;
+    }
     &-list {
         display: grid; 
-        grid-auto-columns: 1fr; 
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+        grid-template-columns: repeat( auto-fit, minmax(110px, 1fr) );
         gap: 15px 15px; 
-        width: 890px;
-        grid-template-areas: 
-        ". . . . . . ."
-        ". . . . . . ."
-        ". . . . . . ."
-        ". . . . . . ."
-        ". . . . . . .";
         .item-container {
             width: 100px;
             height: 100px;
@@ -178,6 +201,17 @@
             h3 { font-weight: 600; }
             &-buy-num { color: #339A5D }
             &-sell-num { color: #339A5D; }
+        }
+    }
+}
+
+@media only screen and (max-width: 1053px) {
+    #items {
+        &-filters {
+
+        }
+        &-info {
+
         }
     }
 }
