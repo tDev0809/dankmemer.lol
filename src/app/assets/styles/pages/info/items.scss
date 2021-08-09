@@ -83,7 +83,9 @@
                 top: 45px;
                 background: #151B16;
                 padding: 3px 12px;
+                width: 135px;
                 border-radius: 5px;
+                box-sizing: border-box;
                 .items-filters-dropdown-option {
                     padding: 5px 0px;
                     &:hover {

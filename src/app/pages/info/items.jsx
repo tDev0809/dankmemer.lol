@@ -19,6 +19,9 @@ export default function Items() {
 	const [filterDropdown, setFilterDropdown] = useState(document.documentElement.clientWidth <= 1053);
 	const [dropdownActive, setDropdownActive] = useState(false);
 
+	const [mobileInfo, setMobileInfo] = useState(document.documentElement.clientWidth <= 845);
+	
+
 	const mdParser = new MarkdownIt();
 
 	useEffect(() => {
