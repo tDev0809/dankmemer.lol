@@ -45,16 +45,24 @@ export default function Items() {
 	}, []);
 
 	useEffect(() => {
-		if(!selectedItem.reward) return;
-		const _rewards = [];
-		selectedItem.reward.items.forEach(reward => {
-			reward = Object.keys(reward)[0];
-			console.log(reward);
-			items.current.map((item) => {
-				if(item.name.toLowerCase().includes(reward.toLowerCase())) return _rewards.push(item);
-			})
-		});
-		setRewards(_rewards);
+		if(selectedItem.reward) {
+			const _rewards = [];
+			selectedItem.reward.items.forEach(reward => {
+				reward = Object.keys(reward)[0];
+				items.current.map((item) => {
+					if(item.id === reward) return _rewards.push(item);
+				})
+			});
+			setRewards(_rewards);
+		} else if(selectedItem.items) {
+			const _rewards = [];
+			selectedItem.items.forEach(reward => {
+				items.current.map((item) => {
+					if(item.id === reward) return _rewards.push(item);
+				})
+			});
+			setRewards(_rewards);
+		}
 		return () => {
 			setRewards([]);
 		}
@@ -204,6 +212,18 @@ export default function Items() {
 										</ul>
 									</div>
 								: ''}
+								{selectedItem.items ?
+									<div id="items-info-details-rewards">
+										<h3>Items inside</h3>
+										<ul id="items-info-details-rewards-icons">
+											{rewards.map(item => (
+												<li className="reward-item" onClick={() => setSelectedItem(item)}>
+													<img src={item.image} width={24}/>
+												</li>
+											))}
+										</ul>
+									</div>
+								: ''}
 							</div>
 							<div id="items-info-prices">
 								<div id="items-info-prices-buy">
@@ -220,7 +240,6 @@ export default function Items() {
 							</div>
 						</div>	
 					</div>
-
                 </div>
                 <div id="nitropay-items-bottom" className="nitropay" />
             </div>
