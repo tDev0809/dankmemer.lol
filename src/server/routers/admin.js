@@ -165,8 +165,20 @@ router.post('/announcement', async(req, res) => {
 		return res.status(200).json({ message: "Announcement made" });
 	} catch (e) {
 		res.status(500).json({ error: e });
+		return console.error(e);
 	}
 });
+
+/**
+ * /** 
+* Paste one or more documents here
+*
+{
+    "_id": -1,
+    "content": "Placeholder announcement. This is being used to hide the announcement banner.",
+    "createdAt": 1628862778751  
+}
+ */
 
 router.delete('/announcement', async(req, res) => {
 	try {

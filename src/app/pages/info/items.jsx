@@ -19,17 +19,23 @@ export default function Items() {
 	const [filterDropdown, setFilterDropdown] = useState(document.documentElement.clientWidth <= 1053);
 	const [dropdownActive, setDropdownActive] = useState(false);
 
-	const [mobileInfo, setMobileInfo] = useState(document.documentElement.clientWidth <= 845);
-	
+	const [mobileInfo, setMobileInfo] = useState(document.documentElement.clientWidth <= 575);
+	const [mobileInfoPos, setMobileInfoPos] = useState(0);
 
 	const mdParser = new MarkdownIt();
 
 	useEffect(() => {
+		if(document.documentElement.clientWidth <= 575) setSelectedItem({ name: "Odd eye" });
 		window.addEventListener('resize', () => {
 			if(document.documentElement.clientWidth <= 1053) {
-				setFilterDropdown(true)
+				setFilterDropdown(true);
 			} else {
 				setFilterDropdown(false);
+			}
+			if(document.documentElement.clientWidth <= 575) {
+				setMobileInfo(true);
+			} else {
+				setMobileInfo(false);
 			}
 		});
 
@@ -60,15 +66,21 @@ export default function Items() {
 		return () => {
 			window.removeEventListener('resize', (e) => {
 				if(document.documentElement.clientWidth <= 1053) {
-					setFilterDropdown(true)
+					setFilterDropdown(true);
 				} else {
 					setFilterDropdown(false);
+				}
+				if(document.documentElement.clientWidth <= 575) {
+					setMobileInfo(true);
+				} else {
+					setMobileInfo(false);
 				}
 			});
 		}
 	}, []);
 
 	useEffect(() => {
+		if(document.querySelectorAll(".item-container.active")[0]) setMobileInfoPos(Math.floor(document.querySelectorAll(".item-container.active")[0].getBoundingClientRect().top + document.documentElement.scrollTop));
 		if(selectedItem.reward) {
 			const _rewards = [];
 			selectedItem.reward.items.forEach(reward => {
@@ -211,65 +223,124 @@ export default function Items() {
 					<div id="items-list-container">
 						<div id="items-list">
 							{viewable.map(item => (
+								<>
 								<div key={item.name} className={selectedItem.name === item.name ? "item-container active" : "item-container"} onClick={() => setSelectedItem(item)}>
 									<img src={item.image} height={55} alt={item.name}/>
 								</div>
+								{mobileInfo && selectedItem.name === item.name ? 
+									<div id="items-info-container" style={{ top: `${mobileInfoPos + 110}px` }}>
+										<div id="items-info">
+											<div id="items-info-details">
+												<img id="items-info-details-image"src={selectedItem.image} width={100} alt={selectedItem.name}/>
+												<h1 id="items-info-details-name">{selectedItem.name}</h1>
+												<p id="items-info-details-type">Type: {selectedItem.type}</p>
+												<p id="items-info-details-description" dangerouslySetInnerHTML={{ __html: mdParser.renderInline(selectedItem.longdescription || selectedItem.description) }}/>
+												{selectedItem.effects ?
+													<div id="items-info-details-effects">
+														<h3>Effects</h3>
+														<p id="items-info-details-effects-text">{selectedItem.effects}</p>
+													</div>
+												: ''}
+												{selectedItem.reward ?
+													<div id="items-info-details-rewards">
+														<h3>Possible items</h3>
+														<ul id="items-info-details-rewards-icons">
+															{rewards.map(reward => (
+																<li className="reward-item" onClick={() => setSelectedItem(reward)}>
+																	<img src={reward.image} width={24}/>
+																</li>
+															))}
+														</ul>
+													</div>
+												: ''}
+												{selectedItem.items ?
+													<div id="items-info-details-rewards">
+														<h3>Items inside</h3>
+														<ul id="items-info-details-rewards-icons">
+															{rewards.map(item => (
+																<li className="reward-item" onClick={() => setSelectedItem(item)}>
+																	<img src={item.image} width={24}/>
+																</li>
+															))}
+														</ul>
+													</div>
+												: ''}
+											</div>
+											<div id="items-info-prices">
+												<div id="items-info-prices-buy">
+													<h3>Buy price:</h3>
+													<p id="items-info-prices-buy-num" style={buyPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{buyPrice(selectedItem)}</p>
+												</div>
+												<div id="items-info-prices-sell">
+													<h3>Sell price:</h3>
+													<p id="items-info-prices-sell-num" style={sellPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{sellPrice(selectedItem)}</p>
+												</div>
+												{/*<div id="items-info-prices-trade"> 
+													This can't be done yet, a connection to the database needs to be made.
+												</div>*/}
+											</div>
+										</div>	
+									</div>								
+								: ''}
+								</>
 							))}
 						</div>
 					</div>
-					<div id="items-info-container">
-						<div id="items-info">
-							<div id="items-info-details">
-								<img id="items-info-details-image"src={selectedItem.image} width={100} alt={selectedItem.name}/>
-								<h1 id="items-info-details-name">{selectedItem.name}</h1>
-								<p id="items-info-details-type">Type: {selectedItem.type}</p>
-								<p id="items-info-details-description" dangerouslySetInnerHTML={{ __html: mdParser.renderInline(selectedItem.longdescription || selectedItem.description) }}/>
-								{selectedItem.effects ?
-									<div id="items-info-details-effects">
-										<h3>Effects</h3>
-										<p id="items-info-details-effects-text">{selectedItem.effects}</p>
-									</div>
-								: ''}
-								{selectedItem.reward ?
-									<div id="items-info-details-rewards">
-										<h3>Possible items</h3>
-										<ul id="items-info-details-rewards-icons">
-											{rewards.map(reward => (
-												<li className="reward-item" onClick={() => setSelectedItem(reward)}>
-													<img src={reward.image} width={24}/>
-												</li>
-											))}
-										</ul>
-									</div>
-								: ''}
-								{selectedItem.items ?
-									<div id="items-info-details-rewards">
-										<h3>Items inside</h3>
-										<ul id="items-info-details-rewards-icons">
-											{rewards.map(item => (
-												<li className="reward-item" onClick={() => setSelectedItem(item)}>
-													<img src={item.image} width={24}/>
-												</li>
-											))}
-										</ul>
-									</div>
-								: ''}
-							</div>
-							<div id="items-info-prices">
-								<div id="items-info-prices-buy">
-									<h3>Buy price:</h3>
-									<p id="items-info-prices-buy-num" style={buyPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{buyPrice(selectedItem)}</p>
+					{!mobileInfo ?
+						<div id="items-info-container">
+							<div id="items-info">
+								<div id="items-info-details">
+									<img id="items-info-details-image"src={selectedItem.image} width={100} alt={selectedItem.name}/>
+									<h1 id="items-info-details-name">{selectedItem.name}</h1>
+									<p id="items-info-details-type">Type: {selectedItem.type}</p>
+									<p id="items-info-details-description" dangerouslySetInnerHTML={{ __html: mdParser.renderInline(selectedItem.longdescription || selectedItem.description) }}/>
+									{selectedItem.effects ?
+										<div id="items-info-details-effects">
+											<h3>Effects</h3>
+											<p id="items-info-details-effects-text">{selectedItem.effects}</p>
+										</div>
+									: ''}
+									{selectedItem.reward ?
+										<div id="items-info-details-rewards">
+											<h3>Possible items</h3>
+											<ul id="items-info-details-rewards-icons">
+												{rewards.map(reward => (
+													<li className="reward-item" onClick={() => setSelectedItem(reward)}>
+														<img src={reward.image} width={24}/>
+													</li>
+												))}
+											</ul>
+										</div>
+									: ''}
+									{selectedItem.items ?
+										<div id="items-info-details-rewards">
+											<h3>Items inside</h3>
+											<ul id="items-info-details-rewards-icons">
+												{rewards.map(item => (
+													<li className="reward-item" onClick={() => setSelectedItem(item)}>
+														<img src={item.image} width={24}/>
+													</li>
+												))}
+											</ul>
+										</div>
+									: ''}
 								</div>
-								<div id="items-info-prices-sell">
-									<h3>Sell price:</h3>
-									<p id="items-info-prices-sell-num" style={sellPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{sellPrice(selectedItem)}</p>
+								<div id="items-info-prices">
+									<div id="items-info-prices-buy">
+										<h3>Buy price:</h3>
+										<p id="items-info-prices-buy-num" style={buyPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{buyPrice(selectedItem)}</p>
+									</div>
+									<div id="items-info-prices-sell">
+										<h3>Sell price:</h3>
+										<p id="items-info-prices-sell-num" style={sellPrice(selectedItem) === "---" ? { color: "#777777" } : {}}>{sellPrice(selectedItem)}</p>
+									</div>
+									{/*<div id="items-info-prices-trade"> 
+										This can't be done yet, a connection to the database needs to be made.
+									</div>*/}
 								</div>
-								{/*<div id="items-info-prices-trade"> 
-									This can't be done yet, a connection to the database needs to be made.
-								</div>*/}
-							</div>
-						</div>	
-					</div>
+							</div>	
+						</div>
+					: ''}
                 </div>
                 <div id="nitropay-items-bottom" className="nitropay" />
             </div>

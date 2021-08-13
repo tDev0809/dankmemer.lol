@@ -3,7 +3,7 @@
     place-items: center;
     vertical-align: top;
     .page-wrapper {
-        width: 95%;
+        width: 95vw;
         min-height: 100%;
         max-width: 1335px;
         margin: 10px 0;
@@ -86,6 +86,7 @@
                 width: 135px;
                 border-radius: 5px;
                 box-sizing: border-box;
+                z-index: 9;
                 .items-filters-dropdown-option {
                     padding: 5px 0px;
                     &:hover {
@@ -98,7 +99,6 @@
     &-list-wrapper {
         display: flex;
         justify-content: start;
-        align-items: top;
     }
     &-list-container {
         width: 100%;
@@ -214,6 +214,53 @@
         }
         &-info {
 
+        }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    #items {
+        display: grid;
+        place-items: center;
+        &-title {
+            text-align: center;
+        }
+        &-filters {
+            width: 100%;
+            justify-content: center;
+            &-search {
+                width: 50%;
+                input {
+                    width: 80%;
+                }
+            }
+        }
+        &-list-wrapper {
+            justify-content: center;
+        }
+        &-list-container {
+            width: unset;
+        }
+        &-list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: row;
+            .item-container {
+                &.active {
+                    margin-bottom: 570px;
+                }
+            }
+        }
+        &-info-container {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            #items-info {
+                position: absolute;
+                margin-left: 0;
+                width: 90%;
+            }
         }
     }
 }
