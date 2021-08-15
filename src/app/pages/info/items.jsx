@@ -155,12 +155,7 @@ export default function Items() {
 	}
 
 	const buyPrice = (selectedItem) => 
-		selectedItem.type.toLowerCase() === "box"
-		|| selectedItem.type.toLowerCase() === "sellable"
-		|| selectedItem.type.toLowerCase() === "collectable"
-		|| selectedItem.type.toLowerCase() === "loot box"
-		|| (selectedItem.type.toLowerCase() === "power-up" && !selectedItem.showInShop)
-		|| (selectedItem.type.toLowerCase() === "collectable" && !selectedItem.name.toLowerCase().includes("phallic"))
+		!selectedItem.showInShop
 		? '---'
 		: "⏣ " + Math.ceil(selectedItem.cost).toLocaleString();
 	
