@@ -156,12 +156,12 @@ export default function Items() {
 
 	const buyPrice = (selectedItem) => 
 		!selectedItem.showInShop
-		? '---'
+		? 'Not Buyable'
 		: "⏣ " + Math.ceil(selectedItem.cost).toLocaleString();
 	
 	const sellPrice = (selectedItem) =>
 		selectedItem.type.toLowerCase() === "collectable" 
-			? '---'
+			? 'Not Sellable'
 			: selectedItem.type.toLowerCase() === "loot box" ? "⏣ " + selectedItem.cost.toLocaleString() 
 			: selectedItem.type.toLowerCase() === "tool"
 			|| selectedItem.type.toLowerCase() === "power-up"
