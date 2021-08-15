@@ -53,6 +53,24 @@
 			margin: 20px auto;
 			display: block;
 		}
+		table {
+			width: 100%;
+			text-align: center;
+			thead {
+				background: #152017;
+				padding: 0 10px;
+				tr {
+					th {
+						padding: 10px 0px;
+					}
+				}
+			}
+			tbody {
+				tr:nth-child(2n) {
+					background: #111a12;
+				}
+			}
+		}
 	}
 }
 
