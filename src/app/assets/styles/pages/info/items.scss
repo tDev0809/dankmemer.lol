@@ -105,7 +105,7 @@
     }
     &-list {
         display: grid; 
-        grid-template-columns: repeat( auto-fit, minmax(110px, 1fr) );
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
         gap: 15px 15px; 
         .item-container {
             width: 100px;
@@ -203,17 +203,6 @@
             h3 { font-weight: 600; }
             &-buy-num { color: #339A5D }
             &-sell-num { color: #339A5D; }
-        }
-    }
-}
-
-@media only screen and (max-width: 1053px) {
-    #items {
-        &-filters {
-
-        }
-        &-info {
-
         }
     }
 }
