@@ -1,110 +1,72 @@
 #landing {
-	max-width: 1535px;
-	width: 80vw;
-	margin: 10vh auto;
+	display: grid;
+	place-items: center;
 	&-title {
 		text-align: center;
-		font-size: 50px;
+		font-size: 92px;
 		text-transform: uppercase;
-		span {
-			font-size: 70px;
-			text-shadow: 5px 10px 10px rgba(0,0,0,0.1), 0px 10px 10px rgba(0,0,0,0.02);
+		line-height: 60px;
+		&-upper {
+			text-align: center;
+			font-size: 36px;
+			text-transform: uppercase;
 		}
 	}
+	&-info {
+		text-align: center;
+		margin-top: 20px;
+		font-size: 18px;
+		color: #eafcf1;
+		max-width: 550px;
+		width: 80vw;
+	}
 	&-cards {
-		display: grid;
+		width: 95vw;
+        max-width: 1335px;
+        display: grid; 
 		place-items: center;
-		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-		row-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 15px 15px; 
 		.landing-card {
+			margin-top: 30px;
 			width: 300px;
 			height: 100px;
-			background: #1a1a1a;
+			background: #070B07;
 			padding: 20px 30px;
-			transition: transform ease-in-out .3s, box-shadow ease-in-out .3s;
+			transition: border ease-in-out .2s;
+			border-radius: 5px;
+			border: 1px solid transparent;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			&-icon {
+				display: grid;
+				place-items: center;
+				background: rgba(20, 118, 61, 0.09);
+				min-width: 45px;
+				min-height: 45px;
+				border-radius: 50%;
+				color: #199532;
+				margin-right: 20px;
+			}
 			&-name {
-				font-size: 25px;
-				text-align: center;
-				margin-bottom: 10px;
+				font-size: 22px;
+			}
+			&-text {
+				color: #eafcf1;
 			}
 			&:hover {
 				cursor: pointer;
-				transform: translateY(-5px);
-				box-shadow: 0px 0px 10px rgba(0,0,0,0.1),
-							0px 10px 10px rgba(0,0,0,0.02),
-							0px 0px 35px rgb(57, 146, 60, 0.2);
+				border: 1px solid #199532;
 			}
 		}
 	}
 }
 
-.eee {
-	margin-top: 10%;
-}
-
-.title {
-	font-family: 'Montserrat';
-	text-transform: uppercase;
-	font-size: 50px;
-	text-align: center;
-}
-
-.list {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	align-items: center;
-	height: 25vh;
-	font-family: 'Lato';
-
-	a {
-		text-decoration: none;
-		color: white;
-	}
-
-	.boxy {
-		background: #23272A;
-		border-radius: 4px;
-		width: 325px;
-		display: flex;
-		cursor: pointer;
-		flex-direction: column;
-		padding: 12px 15px;
-		margin: 20px;
-		box-shadow: 0 0 15px rgba(0, 0, 0, .82),
-			0 1px 4px rgba(0, 0, 0, .1);
-
-		.about-text {
-			max-height: 4.5em;
-			overflow: hidden;
-			text-align: center;
-			white-space: pre-wrap;
+@media only screen and (max-width: 680px) {
+	#landing {
+		&-title {
+			line-height: 80px;
 		}
-
-		.about {
-			transform: translateY(3em);
-			animation: scroll 80s infinite linear 1s;
-			display: block;
-		}
-
-		.name {
-			text-align: center;
-			font-weight: bold;
-			margin-bottom: 10px;
-		}
-	}
-}
-
-@media only screen and (max-width: 786px) {
-	#landing-cards {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		.landing-card {
-			width: 100%!important;
-			height: auto!important;
-			box-sizing: border-box;
-		}  
 	}
 }
