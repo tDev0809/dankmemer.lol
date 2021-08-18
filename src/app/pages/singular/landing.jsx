@@ -49,6 +49,15 @@ export default function Landing() {
 					</div>
 				</div>
 				<div className="landing-card">
+					<div className="landing-card-icon" onClick={() => window.location.href = "https://discord.gg/meme"}>
+						<span class="material-icons-outlined">support_agent</span>
+					</div>
+					<div className="landing-card-text">
+						<h4 className="landing-card-name">Support</h4>
+						<p className="landing-card-text">FAQ page not enough to help? Head over to our support server!</p>
+					</div>
+				</div>
+				<div className="landing-card">
 					<div className="landing-card-icon" onClick={() => history.push('/faq')}>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><path d="M21 21l-6 -6" /><line x1="10" y1="13" x2="10" y2="13.01" /><path d="M10 10a1.5 1.5 0 1 0 -1.14 -2.474" /></svg>					
 					</div>
@@ -64,15 +73,6 @@ export default function Landing() {
 					<div className="landing-card-text">
 						<h4 className="landing-card-name">Items</h4>
 						<p className="landing-card-text">See all of the commands Dank Memer has to offer your server!</p>
-					</div>
-				</div>
-				<div className="landing-card">
-					<div className="landing-card-icon" onClick={() => window.location.href = "https://discord.gg/meme"}>
-						<span class="material-icons-outlined">support_agent</span>
-					</div>
-					<div className="landing-card-text">
-						<h4 className="landing-card-name">Support</h4>
-						<p className="landing-card-text">FAQ page not enough to help? Head over to our support server!</p>
 					</div>
 				</div>
 				<div className="landing-card">
@@ -99,7 +99,7 @@ export default function Landing() {
 					</div>
 					<div className="landing-card-text">
 						<h4 className="landing-card-name">Twitter</h4>
-						<p className="landing-card-text">Follow us on Twitter! We love interacting with you all and shitposting!!</p>
+						<p className="landing-card-text">Follow us on Twitter! We love interacting with you all and shitposting :^&#41;</p>
 					</div>
 				</div>
 				<div className="landing-card">
@@ -113,11 +113,11 @@ export default function Landing() {
 				</div>
 				<div className="landing-card">
 					<div className="landing-card-icon" onClick={() => window.location.href = "https://www.youtube.com/c/DankMemerDiscordBot"}>
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="5" width="18" height="14" rx="4" /><path d="M10 9l5 3l-5 3z" /></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
 					</div>
 					<div className="landing-card-text">
-						<h4 className="landing-card-name">YouTube</h4>
-						<p className="landing-card-text">We post tutorial videos on our YouTube channel, subscribe to see new ones sooner!</p>
+						<h4 className="landing-card-name">Community</h4>
+						<p className="landing-card-text">Join and meet other users in our public server. <span className="hideToHover"><b>Just please don't ping the devs</b>!</span></p>
 					</div>
 				</div>
 			</div>

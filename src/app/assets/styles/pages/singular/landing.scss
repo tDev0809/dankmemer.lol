@@ -39,6 +39,11 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			user-select: none;
+			.hideToHover {
+				opacity: .06;
+				transition: opacity ease-in-out .2s;
+			}
 			&-icon {
 				display: grid;
 				place-items: center;
@@ -58,6 +63,9 @@
 			&:hover {
 				cursor: pointer;
 				border: 1px solid #199532;
+				.hideToHover {
+					opacity: 1;
+				}
 			}
 		}
 	}
