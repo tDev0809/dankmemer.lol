@@ -3,23 +3,27 @@ import NormalRoute from './util/routers/NormalRoute';
 import ControlRoute from './util/routers/ControlRoute';
 import { Switch } from 'react-router-dom';
 
-const Home     = lazy(() => import('./pages/singular/home'));
-const Loot     = lazy(() => import('./pages/store/lootboxes'));
-const Rules    = lazy(() => import('./pages/rules/rules'));
-const Blog     = lazy(() => import('./components/blog'));
-const Blogs    = lazy(() => import('./pages/singular/blogs'));
-const About    = lazy(() => import('./pages/singular/about'));
-const Staff    = lazy(() => import('./pages/singular/credits'));
-const Terms    = lazy(() => import('./pages/legal/terms'));
-const Landing  = lazy(() => import('./pages/singular/landing'));
-const Appeals  = lazy(() => import('./pages/rules/appeals'));
-const Reports  = lazy(() => import('./pages/rules/reports'));
-const Refunds  = lazy(() => import('./pages/store/refunds'));
-const Privacy  = lazy(() => import('./pages/legal/privacy'));
-const Commands = lazy(() => import('./pages/info/commands'));
-const Faq      = lazy(() => import('./pages/info/faq'));
-const Items      = lazy(() => import('./pages/info/items'));
-const NotFound = lazy(() => import('./pages/singular/notfound'));
+const Home             = lazy(() => import('./pages/singular/home'));
+const Loot             = lazy(() => import('./pages/store/lootboxes'));
+const Rules            = lazy(() => import('./pages/rules/rules'));
+const Blog             = lazy(() => import('./components/blog'));
+const Blogs            = lazy(() => import('./pages/singular/blogs'));
+const About            = lazy(() => import('./pages/singular/about'));
+const Staff            = lazy(() => import('./pages/singular/credits'));
+const Terms            = lazy(() => import('./pages/legal/terms'));
+const Landing          = lazy(() => import('./pages/singular/landing'));
+const Appeals          = lazy(() => import('./pages/rules/appeals'));
+const Reports          = lazy(() => import('./pages/rules/reports'));
+const Refunds          = lazy(() => import('./pages/store/refunds'));
+const Privacy          = lazy(() => import('./pages/legal/privacy'));
+const Commands         = lazy(() => import('./pages/info/commands'));
+const Faq              = lazy(() => import('./pages/info/faq'));
+const Items            = lazy(() => import('./pages/info/items'));
+const NotFound         = lazy(() => import('./pages/singular/notfound'));
+const Feedback         = lazy(() => import('./pages/feedback/home'));
+const FeedbackNew      = lazy(() => import('./pages/feedback/new'));
+const FeedbackPost     = lazy(() => import('./pages/feedback/post'));
+const FeedbackCategory = lazy(() => import('./pages/feedback/category'));
 
 import './assets/styles/misc/main.scss';
 
@@ -48,6 +52,10 @@ export default () => {
 				<NormalRoute path="/landing" component={<Landing />} />
 				<NormalRoute path="/refunds" component={<Refunds />} />
 				<NormalRoute path="/privacy" component={<Privacy />} />
+				<NormalRoute exact path="/feedback" component={<Feedback />} />
+				<NormalRoute exact path="/feedback/new" component={<FeedbackNew />} />
+				<NormalRoute exact path="/feedback/p/:post" component={<FeedbackPost />} />
+				<NormalRoute exact path="/feedback/:category" component={<FeedbackCategory />} />
 
 				<ControlRoute exact path={["/control", "/control/admin", "/control/mods"]} view="none:determine" />
 				<ControlRoute path="/control/admin/access" view="admin:access" />

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[24],{375:function(e,t,n){"use strict";n.r(t);var a=n(0),i=n.n(a),o=n(8);n(14);t.default=Object(o.b)(e=>e.login)(function(e){return i.a.createElement("div",{style:{width:"70vw",margin:"0 auto"}},"// TODO: (Blue) this page // TODO: (Badosz) this page")})}}]);
