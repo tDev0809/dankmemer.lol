@@ -53,14 +53,17 @@ function FeedbackCategory(props) {
             New Post
         </Link>
         {posts.map(post => 
-            <Link to={`/feedback/p/${post._id}`} key={post._id}>
+            <div key={post._id}>    
                 <div onClick={() => upvote(post._id)}>[UPVOTE]</div>
-                <div>{post.upvotes} upvotes</div>
-                <div>by {post.author.username}</div>
-                <div>{post.title}</div>
-                <div>{post.description}</div>
-                <br/>
-            </Link>
+                <Link to={`/feedback/p/${post._id}`}>
+                    <div>{post.upvotes} upvotes</div>
+                    <div>by {post.author.username}</div>
+                    <div>{post.title}</div>
+                    <div>{post.description}</div>
+                    <div>{new Date(post.createdAt).toLocaleString()}</div>
+                    <br/>
+                </Link>
+            </div>
         )}
         {!all && <div onClick={loadNewPosts}>
             Load More Posts

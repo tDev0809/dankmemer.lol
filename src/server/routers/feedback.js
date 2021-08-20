@@ -14,8 +14,20 @@ function generateReadableID () {
 	].join("-");
 }
 
+function hot (date, upvotes) {
+	const DAY = 86400000;
+	const THREE_DAYS = DAY * 3;
+	const WEEK = DAY * 7;
+	const MONTH = DAY * 31;
+	const YEAR = MONTH * 12;
+
+	return (1e9 * Math.max((1 - ((Date.now() - date) / THREE_DAYS)), 0)) +
+		   (1e6 * Math.max((1 - ((Date.now() - date) / WEEK)), 0)) +
+		   (1e4 * Math.max((1 - ((Date.now() - date) / MONTH)), 0)) +
+		   (upvotes * Math.max((1 - ((Date.now() - date) / YEAR)), 0));
+}
+
 router.use((req, res, next) => {
-	if (!req.session.user) return res.status(401).send('No mod for you, tsk tsk tsk');
   	next();
 });
 
@@ -58,6 +70,52 @@ router.get('/posts/:category', async (req, res) => {
 	return res.json({posts: posts, all: posts.length == 0 || posts.length < amount});
 });
 
+router.get('/post/:id', async (req, res) => {
+	const { id } = req.params;
+	
+	const post = await db
+		.collection("feedback")
+		.findOne({
+			_id: id
+		});
+
+	if (!post) {
+		return res.status(500).json({ message: 'This post does not exist.' });
+	}
+		
+	return res.json({post});
+});
+
+router.delete('/post/:id', async (req, res) => {
+	const { id } = req.params;
+	const { user } = req.session;
+	
+	const post = await db
+		.collection("feedback")
+		.findOne({
+			_id: id
+		});
+
+	if (!post) {
+		return res.status(500).json({ message: 'This post does not exist.' });
+	}
+
+	if (!user) {
+		return res.status(401).json({ error: 'Get away you sick filth.' });
+	}
+
+	if (!user.isAdmin && !user.isModerator && user.id !== post.author.id) {
+		return res.status(401).json({ error: 'It\'s not your post.' });
+	}
+
+
+	await db
+		.collection("feedback")
+		.deleteOne({_id: id});
+		
+	return res.status(200);
+});
+
 router.post('/new', async (req, res) => {
 	const { user } = req.session;
 
@@ -86,7 +144,7 @@ router.post('/new', async (req, res) => {
 		readableID = generateReadableID();
 	}
 
-	await db
+	const post = await db
 		.collection("feedback")
 		.insertOne({ 
 			_id: readableID, 
@@ -102,7 +160,7 @@ router.post('/new', async (req, res) => {
 			}	
 		});
 
-	await res.status(200).send();
+	await res.status(200).json({id: post.insertedId});
 });
 
 module.exports = router;

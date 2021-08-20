@@ -16,6 +16,7 @@ function New(props) {
     let [title, setTitle] = useState("");
     let [category, setCategory] = useState("items");
     let [postState, setPostState] = useState(0);
+	let [postID, setPostID] = useState(null);
 
 	const postFeedback = async () => {
 		if(!props.loggedIn) {
@@ -56,6 +57,7 @@ function New(props) {
       		})
     	});
 
+		setPostID((await res.json()).id);
 		setPostState(res.status);
 	}
 
@@ -63,7 +65,7 @@ function New(props) {
 		if (postState === 0) return;
 		switch(postState) {
 			case 200:
-                window.location.replace("/feedback") // TODO: (Badosz) go to /feedback/post/id
+                window.location.replace(`/feedback/p/${postID}`)
 				break;
 			case 401:
 				toast.update('feedbackState', {
