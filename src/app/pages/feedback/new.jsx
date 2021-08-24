@@ -46,7 +46,7 @@ function New(props) {
 		});
 
 
-		const res = await fetch('/api/feedback/new', {
+		const res = await fetch('/api/feedback/post', {
       		credentials: 'same-origin',
       		method: 'POST',
       		headers: {
