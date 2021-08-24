@@ -88,10 +88,7 @@ router.get('/posts/:category', async (req, res) => {
 								input: "$upvotedUsers",
 								as: "up",
 								cond: {
-									$and: [
-										{$eq: ["$$up.uID", user.id]},
-										{$eq: ["$$up.pID", "$_id"]}
-									]
+									$eq: ["$$up.uID", user.id]
 								}
 							}
 						} 
@@ -102,12 +99,10 @@ router.get('/posts/:category', async (req, res) => {
 					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]}
 				},
 			}, { 
-				$unset: "upvotedUsers" 
-			}, {
-				$unset: "upvotedUser"
+				$unset: ["upvotedUsers", "upvotedUser"]
 			}, {
 				$sort: {
-					numOfUpvotes: -1
+					upvotes: -1
 				}
 			}, {
 				$skip: from
