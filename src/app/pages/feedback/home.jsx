@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
-import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import createAd from '../../util/createAd';
+import '../../assets/styles/pages/feedback/home.scss';
 
 function Home(props) {
+    const history = useHistory();
     const [feedbackCategories, setFeedbackCategories] = useState(null);
     const [posts, setPosts] = useState([]);
 
@@ -15,6 +18,30 @@ function Home(props) {
         axios(`/api/feedback/posts/all?from=0&amount=5`).then(({data}) => {
             setPosts([...posts, ...data.posts]);
         });
+
+        createAd('nitropay-feedback-top', { sizes: [ [728, 90] ] }, 'desktop');
+		createAd('nitropay-feedback-top', { sizes: [
+			[320, 50],
+			[300, 50],
+			[300, 250]
+		] }, 'mobile');
+
+		createAd('nitropay-feedback-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-feedback-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
     }, []) 
 
     const upvote = async (id) => {
@@ -37,38 +64,39 @@ function Home(props) {
         });
     }
 
-    // TODO: (Blue) style this page
-    return <div style={{width: "70vw", margin: "0 auto"}}>
-        <div>Categories</div>
-        
-        <div style={{display: "flex", justifyContent: "space-between"}}>
-            {feedbackCategories && Object.entries(feedbackCategories).map(([category, posts]) => 
-                <Link to={`/feedback/${category}`} key={category}>
-                    <div>
-                        {category.charAt(0).toUpperCase() + category.substr(1).toLowerCase()}
+    // TODO: (Blue) Finish styling
+    return (
+        <div id="feedback-home">
+            <h1 id="feedback-home-title">Categories</h1>   
+            <div id="feedback-home-categories">
+                {feedbackCategories && Object.entries(feedbackCategories).map(([category, posts], i) => 
+                    <div tabIndex={i + 1} key={category} className="feedback-home-category" onClick={() => history.push(`/feedback/${category}`)}>
+                        <h2 className="feedback-home-category-title">{category.charAt(0).toUpperCase() + category.substr(1).toLowerCase()}</h2>
+                        <p className="feedback-home-category-posts">{`${posts} post${posts === 1 ? "": "s"}`}</p>
                     </div>
-                    <div>
-                        {`${posts} post${posts === 1 ? "": "s"}`}        
-                    </div>
-                </Link>
-            )}
-        </div>
-
-        {posts.map(post => 
-            <div key={post._id}>    
-                 <div onClick={() => upvote(post._id)}>{post.upvoted ? "[UNDO UPVOTE]" :"[UPVOTE]"}</div>
-                <Link to={`/feedback/p/${post._id}`}>
-                    <div>{post.upvotes} upvotes</div>
-                    <div>by {post.author.username}</div>
-                    <div>{post.title}</div>
-                    <div>{post.description}</div>
-                    <div>{new Date(post.createdAt).toLocaleString()}</div>
-                    <br/>
-                </Link>
+                )}
             </div>
-        )}
-        <ToastContainer />
-    </div>
+            <div id="nitropay-feedback-top" className="nitropay" />
+            {posts.map((post, i) => 
+                <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
+                    <div className="feedback-post-content">
+                        <h3>{post.title}</h3>
+                        <div>{post.description}</div>
+                        {/* <div>{new Date(post.createdAt).toLocaleString()}</div> */}
+                    </div>
+                    <div className={post.upvoted ? "feedback-post-button upvoted" : "feedback-post-button"} onClick={(e) => upvote(post._id) && e.stopPropagation()}>
+                        {/* using stopPropagation because the parent also has an onClick which would fire otherwise */}
+                        {post.upvoted
+                            ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14z"></path></svg>
+                            : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"></path></svg> 
+                        }
+                        <p>{post.upvotes}</p>
+                    </div>
+                </div>
+            )}
+            <ToastContainer />
+        </div>
+    )
 }
 
 export default connect(store => store.login)(Home);
