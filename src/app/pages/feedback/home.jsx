@@ -67,7 +67,13 @@ function Home(props) {
     // TODO: (Blue) Finish styling
     return (
         <div id="feedback-home">
-            <h1 id="feedback-home-title">Categories</h1>   
+            <div id="feedback-home-head">
+                <h1 id="feedback-home-head-title">Categories</h1>
+                <div id="feedback-home-head-button">
+                    <Link id="feedback-home-head-button-create" to="/feedback/new">New post</Link>
+                    <span id="feedback-home-head-button-bg"></span>
+                </div>
+            </div>
             <div id="feedback-home-categories">
                 {feedbackCategories && Object.entries(feedbackCategories).map(([category, posts], i) => 
                     <div tabIndex={i + 1} key={category} className="feedback-home-category" onClick={() => history.push(`/feedback/${category}`)}>
