@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import createAd from '../../util/createAd';
+import '../../assets/styles/pages/feedback/post.scss'
 
 function Post(props) {
     let [post, setPost] = useState(null);
@@ -32,7 +34,8 @@ function Post(props) {
         });
     }
 
-    const del = async (id) => {
+    const deletePost = async (id) => {
+        if(!confirm("Are you sure you want to delete this post? You will not be able to get anything back once it is gone.")) return;
         axios.delete(`/api/feedback/post/${id}`);
         window.location.replace(`/feedback/${post.category}`);
     }
@@ -40,25 +43,68 @@ function Post(props) {
     
     useEffect(() => {
         loadPost();
+
+        createAd('nitropay-feedback-post-top', { sizes: [ [728, 90] ] }, 'desktop');
+		createAd('nitropay-feedback-post-top', { sizes: [
+			[320, 50],
+			[300, 50],
+			[300, 250]
+		] }, 'mobile');
+
+		createAd('nitropay-feedback-post-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-feedback-post-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
     }, []);
     
     
     // TODO: (Blue) style this page
-    return <div style={{width: "70vw", margin: "0 auto"}}>
-        {post && <div>
-            <div onClick={() => upvote(post._id)}>{post.upvoted ? "[UNDO UPVOTE]" :"[UPVOTE]"}</div>
-            <div>{post.upvotes} upvotes</div>
-            <div>by {post.author.username}</div>
-            <div>{post.title}</div>
-            <div>{post.description}</div>
-            <div>{new Date(post.createdAt).toLocaleString()}</div>
-            {/* // TODO: (Blue) confirmation? */}
-            { (props.loggedIn && (props.id === post.author.id || props.isAdmin || props.isModerator)) &&
-                <div onClick={() => del(post._id)} style={{color: "red"}}>[DELETE]</div>
-            }
-        </div>}
-        <ToastContainer />
-    </div>
+    return (
+        <div id="feedback-post">
+            {post &&
+            <>
+                <div id="feedback-post-head">
+                    <div id="feedback-post-head-details">
+                        <h1 id="feedback-post-head-details-title">{post && post.title}</h1>
+                        <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {new Date(post.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(post.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(post.createdAt).toLocaleString().split(",")[0]}</p>
+                    </div>
+                    <div id="feedback-post-head-controls">
+                        {props.loggedIn && (props.id === post.author.id || props.isAdmin || props.isModerator) &&
+                            <div className="delete" onClick={() => deletePost(post._id)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
+                                <p>Delete post</p>
+                            </div>
+                        }
+                        <div className={post.upvoted ? "feedback-button upvote upvoted" : "feedback-button upvote"} onClick={() => upvote(post._id)}>
+                            {post.upvoted
+                                ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14z"></path></svg>
+                                : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"></path></svg> 
+                            }
+                            <p>{post.upvotes}</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="nitropay-feedback-post-top" className="nitropay" />
+                <div id="feedback-post-content">
+                    <p>{post.description}</p>
+                </div>
+                <div id="nitropay-feedback-post-bottom" className="nitropay" />
+                <ToastContainer />
+            </>}
+        </div>
+    );
 }
 
 export default connect(store => store.login)(Post);

@@ -19,14 +19,14 @@ function Home(props) {
             setPosts([...posts, ...data.posts]);
         });
 
-        createAd('nitropay-feedback-top', { sizes: [ [728, 90] ] }, 'desktop');
-		createAd('nitropay-feedback-top', { sizes: [
+        createAd('nitropay-feedback-home-top', { sizes: [ [728, 90] ] }, 'desktop');
+		createAd('nitropay-feedback-home-top', { sizes: [
 			[320, 50],
 			[300, 50],
 			[300, 250]
 		] }, 'mobile');
 
-		createAd('nitropay-feedback-bottom', {
+		createAd('nitropay-feedback-home-bottom', {
 			sizes: [
 				[728, 90],
 				[970, 90],
@@ -34,7 +34,7 @@ function Home(props) {
 			],
 			renderVisibleOnly: true
 		}, 'desktop');
-		createAd('nitropay-feedback-bottom', {
+		createAd('nitropay-feedback-home-bottom', {
 			sizes: [
 				[320, 50],
 				[300, 50],
@@ -82,7 +82,7 @@ function Home(props) {
                     </div>
                 )}
             </div>
-            <div id="nitropay-feedback-top" className="nitropay" />
+            <div id="nitropay-feedback-home-top" className="nitropay" />
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
@@ -100,6 +100,7 @@ function Home(props) {
                     </div>
                 </div>
             )}
+            <div id="nitropay-feedback-home-bottom" className="nitropay" />
             <ToastContainer />
         </div>
     )
