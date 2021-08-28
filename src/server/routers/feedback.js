@@ -4,6 +4,7 @@ const db = require('../util/db.js');
 const items = require('../data/items.json');
 const feedbackCategories = require('../data/feedbackCategories.json');
 const recentPosts = new Set();
+const recentComments = new Set();
 const config = require('../../../config.json');
 const axios = require('axios');
 const { toTitleCase } = require("../util/string.js");
@@ -76,9 +77,17 @@ router.get('/posts/:category', async (req, res) => {
 					foreignField: "pID",
 					as: "upvotedUsers"
 				}
+			},  {
+				$lookup: {
+					from: "feedback_comments",
+					localField: "_id",
+					foreignField: "pID",
+					as: "commentsData"
+				}
 			}, {
 				$addFields: {
-					upvotes: {$size: "$upvotedUsers"}
+					upvotes: {$size: "$upvotedUsers"},
+					comments: {$size: "$commentsData"}
 				},
 			}, {
 				$addFields: {
@@ -99,7 +108,7 @@ router.get('/posts/:category', async (req, res) => {
 					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]}
 				},
 			}, { 
-				$unset: ["upvotedUsers", "upvotedUser"]
+				$unset: ["upvotedUsers", "upvotedUser", "commentsData"]
 			}, {
 				$sort: {
 					upvotes: -1
@@ -120,33 +129,64 @@ router.get('/post/:id', async (req, res) => {
 	const { id } = req.params;
 	const { user } = req.session;
 	
-	const post = await db
+	let post = await db
 		.collection("feedback_posts")
-		.findOne({
-			_id: id
-		});
+		.aggregate([
+			{
+				$match: {_id: id}
+			}, {
+				$lookup: {
+					from: "feedback_upvotes",
+					localField: "_id",
+					foreignField: "pID",
+					as: "upvotedUsers"
+				}
+			}, {
+				$lookup: {
+					from: "feedback_comments",
+					localField: "_id",
+					foreignField: "pID",
+					as: "commentsData"
+				}
+			},
+			{
+				$addFields: {
+					upvotes: {$size: "$upvotedUsers"},
+					comments: {$size: "$commentsData"}
+				},
+			}, {
+				$addFields: {
+					upvotedUser: user 
+						? {
+							$filter: {
+								input: "$upvotedUsers",
+								as: "up",
+								cond: {
+									$eq: ["$$up.uID", user.id]
+								}
+							}
+						} 
+						: []
+				},
+			}, {
+				$addFields: {
+					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]}
+				},
+			}, { 
+				$unset: ["upvotedUsers", "upvotedUser", "commentsData"]
+			}, {
+				$sort: {
+					upvotes: -1
+				}
+			}	
+		])
+		.toArray();
+
+	post = post[0];
 
 	if (!post) {
 		return res.status(500).json({ message: 'This post does not exist.' });
 	}
-
-	const upvotes = await db
-		.collection("feedback_upvotes")
-		.find({
-			pID: id
-		})
-		.count();
-
-	const upvoted = await db
-		.collection("feedback_upvotes")
-		.find({
-			pID: id,
-			uID: user?.id || ""
-		})
-		.count();
-
-	post.upvotes = upvotes;
-	post.upvoted = !!upvoted;
 
 	return res.json({post});
 });
@@ -351,7 +391,7 @@ router.post('/post', async (req, res) => {
 			}	
 		});
 
-		const webhook = config.FeedbackWebhook
+	const webhook = config.FeedbackWebhook
 
 	await db
 		.collection("feedback_upvotes")
@@ -392,6 +432,145 @@ router.post('/post', async (req, res) => {
 	});
 
 	await res.status(200).json({id: post.insertedId});
+});
+
+router.post('/comment', async (req, res) => {
+	const { user } = req.session;
+
+  	if (!user) {
+		return res.status(401).json({ error: 'Get away you sick filth.' });
+	}
+  	if (recentComments.has(user.id)) {
+		return res.status(429).json({ error: 'You\'re doing that too often.' });
+	}
+  	if (!req.body.comment || !req.body.id) {
+	  	return res.status(400).json({ error: 'Malformed body' });
+	}
+
+	const post = await db
+		.collection("feedback_posts")
+		.findOne({
+			_id: req.body.id
+		});
+
+	if (!post) {
+		return res.status(500).json({ message: 'This post does not exist.' });
+	}
+
+	const accountCreated = new Date(Number(BigInt(user.id) >> 22n) + 1420070400000);
+
+	if (Date.now() - accountCreated.getTime() < (1000 * 60 * 60 * 24 * 30 * 3)) {
+		return res.status(406).json({ error: 'Your account is too new to post a comment.' });
+	}
+
+	const ban = await db
+		.collection("bans")
+		.findOne({id: user.id, type: "Feedback"});
+
+	if (ban) {
+		return res.status(403).json({ error: 'You are banned from posting comments.' });
+	}
+
+	if (!user.isAdmin) {
+		recentComments.add(user.id);
+		setTimeout(() => recentComments.delete(user.id), 5 * 60 * 1000);
+	}
+
+
+	const comment = await db
+		.collection("feedback_comments")
+		.insertOne({ 
+			pID: req.body.id,
+			comment: req.body.comment,
+			createdAt: Date.now(),
+			author: {
+				id: user.id,
+				discriminator: user.discriminator,
+				username: user.username,
+				developer: user.isAdmin
+			}	
+		});
+
+	// const webhook = config.FeedbackWebhook
+
+	// await db
+	// 	.collection("feedback_upvotes")
+	// 	.insertOne({
+	// 		uID: user.id,
+	// 		pID: readableID
+	// 	})
+
+	// await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
+	// 	embeds: [{
+	// 		title: `New Post`,
+	// 		color: 0x39923c,
+	// 		timestamp: new Date(),
+	// 		fields: [{
+	// 			name: 'Author',
+	// 			value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
+	// 			inline: true
+	// 		}, {
+	// 			name: 'Category',
+	// 			value: req.body.category,
+	// 			inline: true
+	// 		}, {
+	// 			name: 'Title',
+	// 			value: req.body.title,
+	// 			inline: false
+	// 		}, {
+	// 			name: 'Description',
+	// 			value: req.body.description,
+	// 			inline: false
+	// 		},  {
+	// 			name: 'Link',
+	// 			value: `${config.domain}/feedback/p/${readableID}`,
+	// 			inline: false,
+	// 		}]
+	// 	}]
+	// }, {
+	// 	headers: { 'Content-Type': 'application/json' }
+	// });
+
+	await res.status(200).json({});
+});
+
+router.get('/comments/:id', async (req, res) => {
+	const { id } = req.params;
+	
+	const post = await db
+		.collection("feedback_posts")
+		.findOne({
+			_id: id
+		});
+
+	if (!post) {
+		return res.status(500).json({ message: 'This post does not exist.' });
+	}
+
+	const from = Number(req.query.from) || 0;
+	const amount = Number(req.query.amount) || 10;
+	
+	const comments = await db
+		.collection("feedback_comments")
+		.aggregate([
+			{
+				$match: {
+					pID: id
+				}
+			}, {
+				$sort: {
+					createdAt: -1
+				}
+			}, {
+				$skip: from
+			}, {
+				$limit: amount
+			}
+			
+		])
+		.toArray();
+		
+	return res.json({comments: comments, all: comments.length == 0 || comments.length < amount});
 });
 
 module.exports = router;

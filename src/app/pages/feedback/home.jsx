@@ -90,6 +90,7 @@ function Home(props) {
                         <div>{post.description}</div>
                         {/* <div>{new Date(post.createdAt).toLocaleString()}</div> */}
                     </div>
+                    <div>{post.comments}</div>
                     <div className={post.upvoted ? "feedback-post-button upvoted" : "feedback-post-button"} onClick={(e) => upvote(post._id) && e.stopPropagation()}>
                         {/* using stopPropagation because the parent also has an onClick which would fire otherwise */}
                         {post.upvoted
