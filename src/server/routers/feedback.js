@@ -159,11 +159,30 @@ router.delete('/post/:id', async (req, res) => {
 		return res.status(500).json({ message: 'This post does not exist.' });
 	}
 
-	const post = await db
+	let post = await db
 		.collection("feedback_posts")
-		.findOne({
-			_id: id
-		});
+		.aggregate([
+			{
+				$match: {_id: id}
+			}, {
+				$lookup: {
+					from: "feedback_upvotes",
+					localField: "_id",
+					foreignField: "pID",
+					as: "upvotedUsers"
+				}
+			}, {
+				$addFields: {
+					upvotes: {$size: "$upvotedUsers"}
+				},
+			}, { 
+				$unset: ["upvotedUsers"]
+			}
+			
+		])
+		.toArray();
+
+	post = post[0]
 
 	if (!post) {
 		return res.status(500).json({ message: 'This post does not exist.' });
@@ -184,49 +203,45 @@ router.delete('/post/:id', async (req, res) => {
 
 	const webhook = config.FeedbackWebhook
 
-	try {
-		await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
-			embeds: [{
-				title: `Post Deleted`,
-				color: 0xBD3540,
-				timestamp: new Date(),
-				fields: [{
-					name: 'Author',
-					value: `${post.author.username}#${post.author.discriminator}\n(<@${post.author.id}> | ${post.author.id})`,
-					inline: true
-				}, {
-					name: 'Category',
-					value: toTitleCase(post.category),
-					inline: true
-				}, {
-					name: 'Upvotes',
-					value: post.upvotes,
-					inline: true
-				}, {
-					name: 'Title',
-					value: post.title,
-					inline: false
-				},
-				{
-					name: 'Description',
-					value: post.description,
-					inline: false
-				}, 
-				{
-					name: 'Deleted By',
-					value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
-					inline: false,
-				}]
+	await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
+		embeds: [{
+			title: `Post Deleted`,
+			color: 0xBD3540,
+			timestamp: new Date(),
+			fields: [{
+				name: 'Author',
+				value: `${post.author.username}#${post.author.discriminator}\n(<@${post.author.id}> | ${post.author.id})`,
+				inline: true
+			}, {
+				name: 'Category',
+				value: toTitleCase(post.category),
+				inline: true
+			}, {
+				name: 'Upvotes',
+				value: post.upvotes,
+				inline: true
+			}, {
+				name: 'Title',
+				value: post.title,
+				inline: false
+			},
+			{
+				name: 'Description',
+				value: post.description,
+				inline: false
+			}, 
+			{
+				name: 'Deleted By',
+				value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
+				inline: false,
 			}]
-		}, {
-			headers: { 'Content-Type': 'application/json' }
-		});
-			
-		return res.status(200).send();
-	} catch (e) {
-		console.error(`An error occurred while deleting a feedback post:\n${e.message.replace(/"/g, '')}`);
-		return res.status(500).send();
-	}
+		}]
+	}, {
+		headers: { 'Content-Type': 'application/json' }
+	});
+		
+	return res.status(200).send();
+
 });
 
 
@@ -247,6 +262,7 @@ router.patch('/post/upvote/:id', async (req, res) => {
 		.findOne({
 			_id: id
 		});
+
 
 	if (!post) {
 		return res.status(500).json({ message: 'This post does not exist.' });
