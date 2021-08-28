@@ -339,36 +339,43 @@ router.post('/post', async (req, res) => {
 
 		const webhook = config.FeedbackWebhook
 
-		await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
-			embeds: [{
-				title: `New Post`,
-				color: 0x39923c,
-				timestamp: new Date(),
-				fields: [{
-					name: 'Author',
-					value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
-					inline: true
-				}, {
-					name: 'Category',
-					value: req.body.category,
-					inline: true
-				}, {
-					name: 'Title',
-					value: req.body.title,
-					inline: false
-				}, {
-					name: 'Description',
-					value: req.body.description,
-					inline: false
-				},  {
-					name: 'Link',
-					value: `${config.domain}/feedback/p/${readableID}`,
-					inline: false,
-				}]
+	await db
+		.collection("feedback_upvotes")
+		.insertOne({
+			uID: user.id,
+			pID: readableID
+		})
+
+	await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
+		embeds: [{
+			title: `New Post`,
+			color: 0x39923c,
+			timestamp: new Date(),
+			fields: [{
+				name: 'Author',
+				value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
+				inline: true
+			}, {
+				name: 'Category',
+				value: req.body.category,
+				inline: true
+			}, {
+				name: 'Title',
+				value: req.body.title,
+				inline: false
+			}, {
+				name: 'Description',
+				value: req.body.description,
+				inline: false
+			},  {
+				name: 'Link',
+				value: `${config.domain}/feedback/p/${readableID}`,
+				inline: false,
 			}]
-		}, {
-			headers: { 'Content-Type': 'application/json' }
-		});
+		}]
+	}, {
+		headers: { 'Content-Type': 'application/json' }
+	});
 
 	await res.status(200).json({id: post.insertedId});
 });
