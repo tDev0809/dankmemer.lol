@@ -47,6 +47,10 @@ function AdminUsers(props) {
 							{
 								text: "Store ban",
 								value: "Lootbox"
+							},
+							{
+								text: "Feedback ban",
+								value: "Feedback"
 							}
 						]
 					}}
@@ -86,6 +90,10 @@ function AdminUsers(props) {
 							{
 								text: "Store ban",
 								value: "Lootbox"
+							},
+							{
+								text: "Feedback ban",
+								value: "Feedback"
 							}
 						]
 					}}
@@ -125,6 +133,10 @@ function AdminUsers(props) {
 							{
 								text: "Store ban",
 								value: "Lootbox"
+							},
+							{
+								text: "Feedback ban",
+								value: "Feedback"
 							}
 						]
 					}}

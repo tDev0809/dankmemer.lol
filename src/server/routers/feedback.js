@@ -307,6 +307,20 @@ router.post('/post', async (req, res) => {
 	  	return res.status(400).json({ error: 'Malformed body' });
 	}
 
+	const accountCreated = new Date(Number(BigInt(user.id) >> 22n) + 1420070400000);
+
+	if (Date.now() - accountCreated.getTime() < (1000 * 60 * 60 * 24 * 30 * 3)) {
+		return res.status(406).json({ error: 'Your account is too new to post feedback.' });
+	}
+
+	const ban = await db
+		.collection("bans")
+		.findOne({id: user.id, type: "Feedback"});
+
+	if (ban) {
+		return res.status(403).json({ error: 'You are banned from posting feedback.' });
+	}
+
 	if (!user.isAdmin) {
 		recentPosts.add(user.id);
 		setTimeout(() => recentPosts.delete(user.id), 5 * 60 * 1000);
