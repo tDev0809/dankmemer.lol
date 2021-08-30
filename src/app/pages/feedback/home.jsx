@@ -90,14 +90,19 @@ function Home(props) {
                         <div>{post.description}</div>
                         {/* <div>{new Date(post.createdAt).toLocaleString()}</div> */}
                     </div>
-                    <div>{post.comments}</div>
-                    <div className={post.upvoted ? "feedback-post-button upvoted" : "feedback-post-button"} onClick={(e) => upvote(post._id) && e.stopPropagation()}>
-                        {/* using stopPropagation because the parent also has an onClick which would fire otherwise */}
-                        {post.upvoted
-                            ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14z"></path></svg>
-                            : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"></path></svg> 
-                        }
-                        <p>{post.upvotes}</p>
+                    <div className="feedback-post-stats">
+                        <div className="feedback-post-stats-comments">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" /><path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" /></svg>
+                            <p className="feedback-post-stats-comments-count">{post.comments}</p>
+                        </div>
+                        <div className={post.upvoted ? "feedback-post-stats-button upvoted" : "feedback-post-stats-button"} onClick={(e) => upvote(post._id) && e.stopPropagation()}>
+                            {/* using stopPropagation because the parent also has an onClick which would fire otherwise */}
+                            {post.upvoted
+                                ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14z"></path></svg>
+                                : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"></path></svg> 
+                            }
+                            <p>{post.upvotes}</p>
+                        </div>
                     </div>
                 </div>
             )}

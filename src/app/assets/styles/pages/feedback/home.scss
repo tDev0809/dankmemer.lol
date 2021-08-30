@@ -93,26 +93,45 @@
         background: #171F19;
 
         cursor: pointer;
-        &-button {
+        &-stats {
             display: flex;
-            justify-content: center;
-            align-items: center;
 
             height: 70%;
-            width: 130px;
-            
-            border-radius: 5px;
+            &-comments {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
 
-            background: #28362A;  
+                width: 100px;
 
-            box-sizing: border-box; 
-            user-select: none;
-            cursor: pointer;
-            svg {
-                margin-right: 5px;
+                margin-right: 20px;
+
+                color: #afafaf;
+                &-count {
+                    margin-left: 5px;
+                }
             }
-            &.upvoted {
-                background: #199532;
+            &-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+    
+                height: 100%;
+                width: 130px;
+                
+                border-radius: 5px;
+    
+                background: #28362A;  
+    
+                box-sizing: border-box; 
+                user-select: none;
+                cursor: pointer;
+                svg {
+                    margin-right: 5px;
+                }
+                &.upvoted {
+                    background: #199532;
+                }
             }
         }
     }
