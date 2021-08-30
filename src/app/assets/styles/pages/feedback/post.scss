@@ -52,4 +52,76 @@
             }
         }
     }
+    &-comments {
+        margin-top: 3vh;
+        &-notice {
+            margin-bottom: 10px;
+
+            color: #afafaf;
+        }
+        &-ta {
+            width: 100%;
+            height: 135px;
+
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+
+            color: #ffffff;
+            background: #1C221D;
+
+            resize: none;
+            box-sizing: border-box;
+        }
+        .feedback-post-comments-submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            float: right;
+
+            height: 40px;
+            min-width: 100px;
+            
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #ffffff;
+
+            margin-top: 10px;
+            border: none;
+            border-radius: 3px;
+
+            box-sizing: border-box; 
+            user-select: none;
+            &.disabled {
+                background: #161F18;
+                cursor: not-allowed;
+            }
+            &.enabled {
+                background: #199532;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#feedback-comments {
+    margin-top: 70px;
+    .comment {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        span {
+            color: #B8B8B8;
+        }
+        &:nth-child(2n) {
+            background: rgba(0, 0, 0, 0.24);
+        }
+    }
 }

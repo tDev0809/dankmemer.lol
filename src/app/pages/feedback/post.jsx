@@ -187,7 +187,6 @@ function Post(props) {
                                 <p>Delete post</p>
                             </div>
                         }
-                        <div>{post.comments}</div>
                         <div className={post.upvoted ? "feedback-button upvote upvoted" : "feedback-button upvote"} onClick={() => upvote(post._id)}>
                             {post.upvoted
                                 ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14z"></path></svg>
@@ -202,31 +201,34 @@ function Post(props) {
                     <p>{post.description}</p>
                 </div>
                 <div id="nitropay-feedback-post-bottom" className="nitropay" />
-                
-                <div>
-                    <textarea 
-                        className="blue" 
-                        maxLength={1024} 
-                        onChange={(e) => setComment(e.target.value)} 
-                        placeholder={"Comment"}
-                    />
-                    { (comment.length >= 5 && comment.length <= 2000) &&
-                        <div onClick={postComment}>Submit</div>
-                    }
-                </div>
-                <br/>
-                <div>
-                    {comments.map(comment => 
-                        <div key={comment._id}>
-                            <div>{comment.comment}</div>
-                            <div>by {comment.author.username}#{comment.author.discriminator}</div>
-                            <div>{new Date(comment.createdAt).toLocaleString()}</div>
-                            <br/>
-                        </div>
-                    )}
-                    {!all && <div onClick={loadNewComments}>
-                        Load More Comments
-                    </div>}
+                <div id="feedback-post-comments">
+                    <h2>Comments ({post.comments})</h2>
+                    <p id="feedback-post-comments-notice">You're signed in as, {props && `${props.username}#${props.discriminator}`}. Ensure this is the account you want to appear as the comment author.</p>
+                    <div id="feedback-post-comments-form">
+                        <textarea 
+                            id="feedback-post-comments-ta"
+                            maxLength={1024} 
+                            onChange={(e) => setComment(e.target.value)} 
+                            placeholder={"Comment"}
+                        />
+                        {
+                            (comment.length >= 5 && comment.length <= 1024)
+                            ? <button className="feedback-post-comments-submit enabled" onClick={postComment}>Submit</button>
+                            : <button className="feedback-post-comments-submit disabled">Submit</button>
+                        }
+                    </div>
+                    <div id="feedback-comments">
+                        {comments.map(comment => 
+                            <div key={comment._id} className="comment">
+                                <p className="comment-author">{comment.author.username}#{comment.author.discriminator} <span>at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
+                                <p className="comment-content">{comment.comment}</p>
+                                <br/>
+                            </div>
+                        )}
+                        {!all && <div onClick={loadNewComments}>
+                            Load More Comments
+                        </div>}
+                    </div>
                 </div>
                 <ToastContainer />
             </>}
