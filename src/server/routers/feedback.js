@@ -106,10 +106,23 @@ router.get('/posts/:category', async (req, res) => {
 				},
 			}, {
 				$addFields: {
-					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]}
+					developerComments: {
+						$filter: {
+							input: "$commentsData",
+							as: "cm",
+							cond: {
+								$eq: ["$$cm.author.developer", true]
+							}
+						}
+					}
+				}
+			}, {
+				$addFields: {
+					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]},
+					developerResponse: {$ne: [{$size: "$developerComments"}, 0]}
 				},
 			}, { 
-				$unset: ["upvotedUsers", "upvotedUser", "commentsData"]
+				$unset: ["upvotedUsers", "upvotedUser", "commentsData", "developerComments"]
 			}, {
 				$sort: {
 					upvotes: -1
@@ -122,7 +135,7 @@ router.get('/posts/:category', async (req, res) => {
 			
 		])
 		.toArray();
-		
+
 	return res.json({posts: posts, all: posts.length == 0 || posts.length < amount});
 });
 
@@ -171,10 +184,23 @@ router.get('/post/:id', async (req, res) => {
 				},
 			}, {
 				$addFields: {
-					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]}
+					developerComments: {
+						$filter: {
+							input: "$commentsData",
+							as: "cm",
+							cond: {
+								$eq: ["$$cm.author.developer", true]
+							}
+						}
+					}
+				}
+			}, {
+				$addFields: {
+					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]},
+					developerResponse: {$ne: [{$size: "$developerComments"}, 0]}
 				},
 			}, { 
-				$unset: ["upvotedUsers", "upvotedUser", "commentsData"]
+				$unset: ["upvotedUsers", "upvotedUser", "commentsData", "developerComments"]
 			}, {
 				$sort: {
 					upvotes: -1
