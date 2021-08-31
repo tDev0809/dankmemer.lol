@@ -8,6 +8,7 @@ const recentComments = new Set();
 const config = require('../../../config.json');
 const axios = require('axios');
 const { toTitleCase } = require("../util/string.js");
+const { ObjectId } = require('mongodb');
 
 function generateReadableID () {
 	return [
@@ -491,47 +492,89 @@ router.post('/comment', async (req, res) => {
 			}	
 		});
 
-	// const webhook = config.FeedbackWebhook
+	const webhook = config.FeedbackWebhook
 
-	// await db
-	// 	.collection("feedback_upvotes")
-	// 	.insertOne({
-	// 		uID: user.id,
-	// 		pID: readableID
-	// 	})
-
-	// await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
-	// 	embeds: [{
-	// 		title: `New Post`,
-	// 		color: 0x39923c,
-	// 		timestamp: new Date(),
-	// 		fields: [{
-	// 			name: 'Author',
-	// 			value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
-	// 			inline: true
-	// 		}, {
-	// 			name: 'Category',
-	// 			value: req.body.category,
-	// 			inline: true
-	// 		}, {
-	// 			name: 'Title',
-	// 			value: req.body.title,
-	// 			inline: false
-	// 		}, {
-	// 			name: 'Description',
-	// 			value: req.body.description,
-	// 			inline: false
-	// 		},  {
-	// 			name: 'Link',
-	// 			value: `${config.domain}/feedback/p/${readableID}`,
-	// 			inline: false,
-	// 		}]
-	// 	}]
-	// }, {
-	// 	headers: { 'Content-Type': 'application/json' }
-	// });
+	await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
+		embeds: [{
+			title: `New Comment`,
+			color: 0x4287f5,
+			timestamp: new Date(),
+			fields: [{
+				name: 'Author',
+				value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
+				inline: true
+			}, {
+				name: 'Comment',
+				value: req.body.comment,
+				inline: false
+			}, {
+				name: 'Link',
+				value: `${config.domain}/feedback/p/${req.body.id}`,
+				inline: false,
+			}]
+		}]
+	}, {
+		headers: { 'Content-Type': 'application/json' }
+	});
 
 	await res.status(200).json({});
+});
+
+router.delete('/comment/:id', async (req, res) => {
+	const { id } = req.params;
+	const { user } = req.session;
+	
+	if (!id) {
+		return res.status(500).json({ message: 'This comment does not exist.' });
+	}
+	
+	const comment = await db
+		.collection("feedback_comments")
+		.findOne({_id: ObjectId(id)});
+	
+	if (!comment) {
+		return res.status(500).json({ message: 'This comment does not exist.' });
+	}
+
+	if (!user) {
+		return res.status(401).json({ error: 'Get away you sick filth.' });
+	}
+
+	if (!user.isAdmin && !user.isModerator && user.id !== comment.author.id) {
+		return res.status(401).json({ error: 'It\'s not your comment.' });
+	}
+
+	await db
+		.collection("feedback_comments")
+		.deleteOne({_id: ObjectId(id)});
+
+	const webhook = config.FeedbackWebhook
+
+	await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
+		embeds: [{
+			title: `Comment Deleted`,
+			color: 0xBD3540,
+			timestamp: new Date(),
+			fields: [{
+				name: 'Author',
+				value: `${comment.author.username}#${comment.author.discriminator}\n(<@${comment.author.id}> | ${comment.author.id})`,
+				inline: true
+			}, {
+				name: 'Comment',
+				value: comment.comment,
+				inline: false
+			}, 
+			{
+				name: 'Deleted By',
+				value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
+				inline: false,
+			}]
+		}]
+	}, {
+		headers: { 'Content-Type': 'application/json' }
+	});
+		
+	return res.status(200).send();
 });
 
 router.get('/comments/:id', async (req, res) => {

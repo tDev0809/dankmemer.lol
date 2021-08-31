@@ -61,6 +61,12 @@ function Post(props) {
         window.location.replace(`/feedback/${post.category}`);
     }
 
+    const deleteComment = async (id) => {
+        if(!confirm("Are you sure you want to delete this comment? You will not be able to get anything back once it is gone.")) return;
+        axios.delete(`/api/feedback/comment/${id}`);
+        location.reload();
+    }
+
 	const postComment = async () => {
 		if(!props.loggedIn) {
 			return toast.dark(<p><svg viewBox="0 0 16 16" fill="currentColor" style={{display: "inline-block", verticalAlign: "middle", width: "20px", height: "20px", boxSizing: "border-box", margin: "10px", color: "rgb(233, 76, 88)"}}><path fillRule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path></svg><span style={{ display: "inline-block", verticalAlign: "middle" }}>You need to be logged in!</span></p>, {
@@ -222,6 +228,12 @@ function Post(props) {
                             <div key={comment._id} className="comment">
                                 <p className="comment-author">{comment.author.username}#{comment.author.discriminator} <span>at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
                                 <p className="comment-content">{comment.comment}</p>
+                                {props.loggedIn && (props.id === comment.author.id || props.isAdmin || props.isModerator) &&
+                                   <div className="delete" onClick={() => deleteComment(comment._id)}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
+                                    <p>Delete post</p>
+                                </div>
+                        }
                                 <br/>
                             </div>
                         )}
