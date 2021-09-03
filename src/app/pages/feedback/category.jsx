@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+import '../../assets/styles/pages/feedback/category.scss';
 
 const LOAD_POSTS_AMOUNT = 10
 
 function FeedbackCategory(props) {
+    const history = useHistory();
+    const { current: category } = useRef(window.location.pathname.split("/")[2])
     let [posts, setPosts] = useState([]);
     let [from, setFrom] = useState(0);
     let [all, setAll] = useState(false);
     let [feedbackCategories, setFeedbackCategories] = useState(null);
-
-    const category = window.location.pathname.split("/")[2];
 
     const loadPosts = async () => {
         axios(`/api/feedback/posts/${category}?from=${from}&amount=${LOAD_POSTS_AMOUNT}`).then(({data}) => {
@@ -60,29 +62,43 @@ function FeedbackCategory(props) {
     }
 
     // TODO: (Badosz) sorting by upvotes, creation date
-    // TODO: (Blue) style this page
-    return <div style={{width: "70vw", margin: "0 auto"}}>
-        <Link to={`/feedback/new`}>
-            New Post
-        </Link>
-        {posts.map(post => 
-            <div key={post._id}>    
-                <div onClick={() => upvote(post._id)}>{post.upvoted ? "[UNDO UPVOTE]" :"[UPVOTE]"}</div>
-                <Link to={`/feedback/p/${post._id}`}>
-                    <div>{post.upvotes} upvotes</div>
-                    <div>by {post.author.username}</div>
-                    <div>{post.title}</div>
-                    <div>{post.description}</div>
-                    <div>{new Date(post.createdAt).toLocaleString()}</div>
-                    <br/>
-                </Link>
+    return (
+        <div id="feedback-category">
+            <div id="feedback-category-head">
+                <h1 id="feedback-category-head-title">{category.replace(category[0], category[0].toUpperCase())} Feedback</h1>
+                <div id="feedback-category-head-button">
+                    <Link id="feedback-category-head-button-create" to="/feedback/new">New post</Link>
+                    <span id="feedback-category-head-button-bg"></span>
+                </div>
             </div>
-        )}
-        {!all && <div onClick={loadNewPosts}>
-            Load More Posts
-        </div>}
-        <ToastContainer />
-    </div>
+            {posts.map((post, i) => 
+                <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
+                    <div className="feedback-post-content">
+                        <h3>{post.title}</h3>
+                        <div>{post.description}</div>
+                    </div>
+                    <div className="feedback-post-stats">
+                        <div className="feedback-post-stats-comments">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" /><path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" /></svg>
+                            <p className="feedback-post-stats-comments-count">{post.comments}</p>
+                        </div>
+                        <div className={post.upvoted ? "feedback-post-stats-button upvoted" : "feedback-post-stats-button"} onClick={(e) => upvote(post._id) && e.stopPropagation()}>
+                            {/* using stopPropagation because the parent also has an onClick which would fire otherwise */}
+                            {post.upvoted
+                                ? <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14z"></path></svg>
+                                : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"></path></svg> 
+                            }
+                            <p>{post.upvotes}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {!all && <div onClick={loadNewPosts}>
+                Load More Posts
+            </div>}
+            <ToastContainer />
+        </div>
+    );
 }
 
 export default connect(store => store.login)(FeedbackCategory);

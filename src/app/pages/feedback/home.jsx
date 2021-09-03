@@ -88,7 +88,6 @@ function Home(props) {
                     <div className="feedback-post-content">
                         <h3>{post.title}</h3>
                         <div>{post.description}</div>
-                        {/* <div>{new Date(post.createdAt).toLocaleString()}</div> */}
                     </div>
                     <div className="feedback-post-stats">
                         <div className="feedback-post-stats-comments">

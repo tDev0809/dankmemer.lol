@@ -1,4 +1,4 @@
-#feedback-home {
+#feedback-category {
     max-width: 1335px;
     width: 90vw;
     margin: 0 auto;
@@ -46,35 +46,6 @@
 				}
 			}
 		}    
-    }
-    &-categories {
-        display: flex;
-        justify-content: space-between;
-    }
-    .feedback-home-category {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        width: 30%;
-        height: 120px;
-
-        border-radius: 5px;
-        border: 1px solid transparent;
-        background: #171F19;
-
-        transition: border-color ease-in-out .2s;
-
-        user-select: none;
-        cursor: pointer;
-        &-posts {
-            color: #d6d6d6;
-        }
-        &:hover, &:focus-within {
-            border-color: #199532;
-            background: #141F16;
-        }
     }
     .feedback-post {
         display: flex;
