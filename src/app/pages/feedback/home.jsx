@@ -68,7 +68,7 @@ function Home(props) {
     return (
         <div id="feedback-home">
             <div id="feedback-home-head">
-                <h1 id="feedback-home-head-title">Categories</h1>
+                <h1 id="feedback-home-head-title">Feedback</h1>
                 <div id="feedback-home-head-button">
                     <Link id="feedback-home-head-button-create" to="/feedback/new">New post</Link>
                     <span id="feedback-home-head-button-bg"></span>
