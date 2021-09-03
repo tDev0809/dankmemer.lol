@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
+import createAd from '../../util/createAd';
 import { ToastContainer, toast } from 'react-toastify';
+
+import '../../assets/styles/pages/feedback/new.scss';
 
 function New(props) {
     const [feedbackCategories, setFeedbackCategories] = useState(null);
@@ -10,6 +13,30 @@ function New(props) {
         axios(`/api/feedback/categories`).then((data) => {
             setFeedbackCategories(data.data);
         });
+
+		createAd('nitropay-feedback-new-top', { sizes: [ [728, 90] ] }, 'desktop');
+		createAd('nitropay-feedback-new-top', { sizes: [
+			[320, 50],
+			[300, 50],
+			[300, 250]
+		] }, 'mobile');
+
+		createAd('nitropay-feedback-new-bottom', {
+			sizes: [
+				[728, 90],
+				[970, 90],
+				[970, 250]
+			],
+			renderVisibleOnly: true
+		}, 'desktop');
+		createAd('nitropay-feedback-new-bottom', {
+			sizes: [
+				[320, 50],
+				[300, 50],
+				[300, 250]
+			],
+			renderVisibleOnly: true
+		}, 'mobile');
     }, []);
 
     let [description, setDescription] = useState("");
@@ -97,36 +124,53 @@ function New(props) {
 	}, [postState]);
 
     // TODO: (Badosz) display discord login button when not logged in
-    // TODO: (Blue) style whole page
-    return <div style={{width: "70vw", margin: "0 auto"}}>
-            <div>
-                {feedbackCategories && feedbackCategories.map(fCategory =>
-                    // TODO: (Blue) fake checkbox - style
-                    <div key={fCategory}>
-						 <input name="category" type="radio" defaultChecked={fCategory === category} style={{appearance: "button"}} onClick={() => setCategory(fCategory) }/> 
-                         {fCategory}
-                    </div>    
-                )}
-
-            </div>
-            <textarea 
-                className="blue" 
-                maxLength={256} 
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder={"Title"}
-            />
-            <br/>
-        	<textarea 
-                className="blue" 
-                maxLength={1024} 
-                onChange={(e) => setDescription(e.target.value)} 
-                placeholder={"Description"}
-            />
-            { (title.length >= 3 && title.length <= 100 && description.length >= 20 && description.length <= 2000) &&
-                <div onClick={postFeedback}>Submit</div>
-            }
-            <ToastContainer />
-    </div>
+    return (
+		<div id="feedback-new">
+			<div id="nitropay-feedback-new-top" className="nitropay" />
+			<div id="feedback-new-header">
+				<h1 id="feedback-new-header-title">Give us Feedback</h1>
+				<p id="feedback-new-header-info">Do you have an opinion or suggestion about the bot? Fill out this form and we will look over them. Make sure that there isn't a feedback post on your topic by searching through the category feeds.</p>
+			</div>
+			<div id="feedback-new-category">
+				<h3 id="feedback-new-category-title">Select the category that best fits your feedback</h3>
+				<div id="feedback-new-category-inputs">
+					{feedbackCategories && feedbackCategories.map(fCategory =>
+						<div key={fCategory} className="feedback-category-input">
+							<label htmlFor={"category-"+fCategory} onClick={() => setCategory(fCategory) }>
+								<span className={fCategory === category ? "radioInput checked" : "radioInput"}/>
+								{fCategory.replace(fCategory[0], fCategory[0].toUpperCase())}
+							</label>
+						</div>    
+					)}
+				</div>
+			</div>
+			<div className="feedback-new-section">
+				<h3 className="feedback-new-section-title">Post title</h3>
+				<input 
+					className="feedback-new-section-input" 
+					maxLength={256} 
+					onChange={(e) => setTitle(e.target.value)}
+					placeholder={"Give me infinite money"}
+				/>
+			</div>
+			<div className="feedback-new-section">
+				<h3 className="feedback-new-section-title">Post content</h3>
+				<textarea 
+					className="feedback-new-section-input ta" 
+					maxLength={1024} 
+					onChange={(e) => setDescription(e.target.value)} 
+					placeholder={"This would benefit me and nobody else. It would allow a sole user to control the economy!"}
+				/>
+			</div>
+			{
+				(title.length >= 3 && description.length <= 100) && (description.length >= 20 && description.length <= 2000)
+				? <button className="feedback-new-submit enabled" onClick={postFeedback}>Submit</button>
+				: <button className="feedback-new-submit disabled">Submit</button>
+			}
+			<div id="nitropay-feedback-new-bottom" className="nitropay" />
+			<ToastContainer />
+		</div>
+	)
 }
 
 export default connect(store => store.login)(New);
