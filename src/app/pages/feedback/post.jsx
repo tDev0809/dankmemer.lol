@@ -62,7 +62,7 @@ function Post(props) {
     }
 
     const deleteComment = async (id) => {
-        if(!confirm("Are you sure you want to delete this comment? You will not be able to get anything back once it is gone.")) return;
+        if(!confirm("Are you sure you want to remove this comment? This will delete it from the post, like it did ever exist 😭")) return;
         axios.delete(`/api/feedback/comment/${id}`);
         location.reload();
     }
@@ -226,14 +226,18 @@ function Post(props) {
                     <div id="feedback-comments">
                         {comments.map(comment => 
                             <div key={comment._id} className="comment">
-                                <p className="comment-author">{comment.author.username}#{comment.author.discriminator} <span>at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
-                                <p className="comment-content">{comment.comment}</p>
-                                {props.loggedIn && (props.id === comment.author.id || props.isAdmin || props.isModerator) &&
-                                   <div className="delete" onClick={() => deleteComment(comment._id)}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
-                                    <p>Delete post</p>
+                                <div className="comment-content">
+                                    <p className="comment-content-author">{comment.author.username}#{comment.author.discriminator} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
+                                    <p className="comment-content-text">{comment.comment}</p>
                                 </div>
-                        }
+                                <div className="comment-actions">
+                                    {props.loggedIn && (props.id === comment.author.id || props.isAdmin || props.isModerator) &&
+                                        <div className="comment-actions-delete" onClick={() => deleteComment(comment._id)}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
+                                            <p>Remove comment</p>
+                                        </div>
+                                    }
+                                </div>
                                 <br/>
                             </div>
                         )}

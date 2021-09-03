@@ -112,16 +112,45 @@
     margin-top: 70px;
     .comment {
         display: flex;
-        justify-content: center;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         border-radius: 5px;
         padding: 5px 10px;
         margin-bottom: 5px;
-        span {
-            color: #B8B8B8;
+        &-content {
+            width: 100%;
+            &-author > .comment-post-time { color: #B8B8B8; }
+        }
+        &-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            opacity: 0;
+
+            transition: opacity ease-in-out .3s;
+
+            user-select: none;
+            &-delete {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;    
+                
+                width: 165px;
+
+                color: #ff4c4c;
+            }
+            & > * {
+                cursor: pointer;
+            }
         }
         &:nth-child(2n) {
             background: rgba(0, 0, 0, 0.24);
+        }
+        &:hover {
+            .comment-actions {
+                opacity: 1;
+            }
         }
     }
 }
