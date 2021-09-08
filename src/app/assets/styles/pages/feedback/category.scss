@@ -62,6 +62,11 @@
         background: #171F19;
 
         cursor: pointer;
+        &-content {
+            &-description {
+                color: #afafaf;
+            }
+        }
         &-stats {
             display: flex;
 

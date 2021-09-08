@@ -64,7 +64,6 @@ function Home(props) {
         });
     }
 
-    // TODO: (Blue) Finish styling
     return (
         <div id="feedback-home">
             <div id="feedback-home-head">
@@ -86,8 +85,11 @@ function Home(props) {
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
-                        <h3>{post.title}</h3>
-                        <div>{post.description}</div>
+                        <h3>
+                            {post.title}
+                            <span className={post.developerResponse && "feedback-post-tag developer-response"}>Developer Response</span>
+                        </h3>
+                        <p className="feedback-post-content-description">{post.description}</p>
                     </div>
                     <div className="feedback-post-stats">
                         <div className="feedback-post-stats-comments">

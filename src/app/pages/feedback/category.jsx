@@ -74,8 +74,8 @@ function FeedbackCategory(props) {
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
-                        <h3>{post.title}</h3>
-                        <div>{post.description}</div>
+                        <h3>{post.title} <span className={post.developerResponse ? "feedback-post-tag developer-response" : "feedback-post-tag"}>{post.developerResponse ? 'Dev' : ''}</span></h3>
+                        <p className="feedback-post-content-description">{post.description}</p>
                     </div>
                     <div className="feedback-post-stats">
                         <div className="feedback-post-stats-comments">
@@ -93,9 +93,9 @@ function FeedbackCategory(props) {
                     </div>
                 </div>
             )}
-            {!all && <div onClick={loadNewPosts}>
+            {!all && <p onClick={loadNewPosts} style={{ textAlign: 'center', cursor: 'pointer' }}>
                 Load More Posts
-            </div>}
+            </p>}
             <ToastContainer />
         </div>
     );
