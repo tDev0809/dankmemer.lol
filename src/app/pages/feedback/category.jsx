@@ -74,7 +74,10 @@ function FeedbackCategory(props) {
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
-                        <h3>{post.title} <span className={post.developerResponse ? "feedback-post-tag developer-response" : "feedback-post-tag"}>{post.developerResponse ? 'Dev' : ''}</span></h3>
+                        <h3>
+                            {post.title}
+                            {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
+                        </h3>
                         <p className="feedback-post-content-description">{post.description}</p>
                     </div>
                     <div className="feedback-post-stats">

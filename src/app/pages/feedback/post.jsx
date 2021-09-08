@@ -227,7 +227,7 @@ function Post(props) {
                         {comments.map(comment => 
                             <div key={comment._id} className="comment">
                                 <div className="comment-content">
-                                    <p className="comment-content-author">{comment.author.username}#{comment.author.discriminator} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
+                                    <p className={comment.author.developer ? "comment-content-author developer" : "comment-content-author"}>{comment.author.username}#{comment.author.discriminator} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
                                     <p className="comment-content-text">{comment.comment}</p>
                                 </div>
                                 <div className="comment-actions">

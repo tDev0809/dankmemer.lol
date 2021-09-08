@@ -119,7 +119,12 @@
         margin-bottom: 5px;
         &-content {
             width: 100%;
-            &-author > .comment-post-time { color: #B8B8B8; }
+            &-author {
+                .comment-post-time { color: #B8B8B8; }
+                &.developer {
+                    color: #199532
+                }
+            }
         }
         &-actions {
             display: flex;

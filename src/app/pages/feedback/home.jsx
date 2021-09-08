@@ -87,7 +87,7 @@ function Home(props) {
                     <div className="feedback-post-content">
                         <h3>
                             {post.title}
-                            <span className={post.developerResponse && "feedback-post-tag developer-response"}>Developer Response</span>
+                            {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
                         </h3>
                         <p className="feedback-post-content-description">{post.description}</p>
                     </div>
