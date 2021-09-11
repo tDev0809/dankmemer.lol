@@ -70,10 +70,10 @@ const Navbar = ({ announcement, discount, login: { isAdmin, isModerator, loggedI
 
     const handleResize = () => {
 		let width = document.documentElement.clientWidth;
-		if(width <= 730) {
+		if(width <= 855) {
 			setMobile(true);
 			setDropdown(false);
-		} else if(width > 730) {
+		} else if(width > 855) {
 			setMobile(false);
 			setDropdown(false);
 		}
