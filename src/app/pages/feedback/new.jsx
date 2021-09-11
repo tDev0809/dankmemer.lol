@@ -163,7 +163,7 @@ function New(props) {
 				/>
 			</div>
 			{
-				(title.length >= 3 && description.length <= 100) && (description.length >= 20 && description.length <= 2000)
+				(title.length >= 3 && title.length <= 100) && (description.length >= 20 && description.length <= 2000)
 				? <button className="feedback-new-submit enabled" onClick={postFeedback}>Submit</button>
 				: <button className="feedback-new-submit disabled">Submit</button>
 			}
