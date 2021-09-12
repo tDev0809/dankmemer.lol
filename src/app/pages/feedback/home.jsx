@@ -4,7 +4,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import createAd from '../../util/createAd';
+
 import '../../assets/styles/pages/feedback/home.scss';
+import '../../assets/styles/components/feedbackPost.scss';
+
 
 function Home(props) {
     const history = useHistory();

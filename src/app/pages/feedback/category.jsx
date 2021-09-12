@@ -5,6 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Link, useHistory } from 'react-router-dom';
 
 import '../../assets/styles/pages/feedback/category.scss';
+import '../../assets/styles/components/feedbackPost.scss';
+
 
 const LOAD_POSTS_AMOUNT = 10
 
