@@ -6,7 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import '../../assets/styles/pages/feedback/category.scss';
 import '../../assets/styles/components/feedbackPost.scss';
-
+import Logo from 'assets/img/memer.png';
 
 const LOAD_POSTS_AMOUNT = 10
 
@@ -73,6 +73,13 @@ function FeedbackCategory(props) {
                     <span id="feedback-category-head-button-bg"></span>
                 </div>
             </div>
+            {posts.length === 0 && 
+                // TODO: (Blue) move to scss?
+                <div style={{ textAlign: 'center', display: "flex", flexDirection: "column", alignItems: "center"}}>
+                    <img src={Logo} width={80} style={{marginBottom: "1vh"}}/>
+                    <i>Woah, so empty.</i>
+                </div>
+            }
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
