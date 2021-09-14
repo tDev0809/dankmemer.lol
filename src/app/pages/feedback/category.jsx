@@ -8,27 +8,26 @@ import '../../assets/styles/pages/feedback/category.scss';
 import '../../assets/styles/components/feedbackPost.scss';
 import Logo from 'assets/img/memer.png';
 
-const LOAD_POSTS_AMOUNT = 10
+const LOAD_POSTS_AMOUNT = 25;
 
 function FeedbackCategory(props) {
     const history = useHistory();
     const { current: category } = useRef(window.location.pathname.split("/")[2])
     let [posts, setPosts] = useState([]);
-    let [from, setFrom] = useState(0);
     let [all, setAll] = useState(false);
     let [feedbackCategories, setFeedbackCategories] = useState(null);
+    let [sorting, setSorting] = useState("Hot");
 
-    const loadPosts = async () => {
-        axios(`/api/feedback/posts/${category}?from=${from}&amount=${LOAD_POSTS_AMOUNT}`).then(({data}) => {
-            setPosts([...posts, ...data.posts]);
+    const loadPosts = async (newList = false) => {
+        axios(`/api/feedback/posts/${category}?from=${newList ? 0 : posts.length}&amount=${LOAD_POSTS_AMOUNT}&sorting=${sorting}`).then(({data}) => {
+            if (newList) {
+                setPosts([...data.posts]);
+            } else {
+                setPosts([...posts, ...data.posts]);
+            }
             setAll(data.all);
         });
     }
-
-    const loadNewPosts = async () => {
-        setFrom(from + LOAD_POSTS_AMOUNT);
-    }
-
     const upvote = async (id) => {
         if (!props.loggedIn) {
 			return toast.dark(<p><svg viewBox="0 0 16 16" fill="currentColor" style={{display: "inline-block", verticalAlign: "middle", width: "20px", height: "20px", boxSizing: "border-box", margin: "10px", color: "rgb(233, 76, 88)"}}><path fillRule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path></svg><span style={{ display: "inline-block", verticalAlign: "middle" }}>You need to be logged in!</span></p>, {
@@ -48,10 +47,11 @@ function FeedbackCategory(props) {
             setPosts([...posts]);
         });
     }
-
+    
     useEffect(() => {
-        loadPosts();
-    }, [from]);
+        loadPosts(true);
+    }, [sorting]);
+
 
     useEffect(() => {
         axios(`/api/feedback/categories`).then((data) => {
@@ -63,6 +63,16 @@ function FeedbackCategory(props) {
         window.location.replace("/feedback");
     }
 
+    const SortingButton = ({icon, label}) => {
+        return <div 
+            id="feedback-category-sorting-button" 
+            className={label == sorting ? "active" : ""}
+            onClick={() => setSorting(label)}>
+            <span className="material-icons">{icon}</span>
+            <span id="feedback-category-sorting-button-label">{label}</span>
+        </div> 
+    }
+
     // TODO: (Badosz) sorting by upvotes, creation date
     return (
         <div id="feedback-category">
@@ -72,6 +82,24 @@ function FeedbackCategory(props) {
                     <Link id="feedback-category-head-button-create" to="/feedback/new">New post</Link>
                     <span id="feedback-category-head-button-bg"></span>
                 </div>
+            </div>
+            <div id="feedback-category-sorting">
+                <SortingButton
+                    icon="local_fire_department"
+                    label="Hot"
+                />
+                <SortingButton
+                    icon="trending_up"
+                    label="Top"
+                />
+                <SortingButton
+                    icon="star"
+                    label="New"
+                />
+                <SortingButton
+                    icon="restore"
+                    label="Old"
+                />
             </div>
             {posts.length === 0 && 
                 // TODO: (Blue) move to scss?
@@ -103,7 +131,7 @@ function FeedbackCategory(props) {
                     </div>
                 </div>
             )}
-            {!all && <p onClick={loadNewPosts} style={{ textAlign: 'center', cursor: 'pointer' }}>
+            {!all && <p onClick={() => loadPosts()} style={{ textAlign: 'center', cursor: 'pointer' }}>
                 Load More Posts
             </p>}
             <ToastContainer />

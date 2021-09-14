@@ -63,7 +63,8 @@ router.get('/posts/:category', async (req, res) => {
 	}
 	const from = Number(req.query.from) || 0;
 	const amount = Number(req.query.amount) || 10;
-	
+	const sorting = req.query.sorting || "Hot";
+
 	const posts = await db
 		.collection("feedback_posts")
 		.aggregate([
@@ -88,8 +89,52 @@ router.get('/posts/:category', async (req, res) => {
 			}, {
 				$addFields: {
 					upvotes: {$size: "$upvotedUsers"},
-					comments: {$size: "$commentsData"}
+					comments: {$size: "$commentsData"},
 				},
+			}, {
+				$addFields: {
+					order: {
+						$ln: {
+							$divide: [
+								{ $add: ["$upvotes", 1] },
+								2.302585092994046
+							]
+						}
+					},
+				},
+			}, {
+				$addFields: {
+					hot: {
+						$divide: [
+							{ $round: [
+								{ $multiply: [
+									{ $add: [
+										{ $ln: {
+												$divide: [
+													{ $add: ["$upvotes", 1] },
+													2.302585092994046
+												]
+											}
+										} , 
+										{ $divide: [
+											{ $subtract: [
+												{ $divide: [
+													"$createdAt",
+													1000
+												] },
+												1631640684
+											] },
+											45000
+										] }
+									] },
+									10000000
+								] },
+								7
+							] },
+							10000000
+						]
+					}
+				}
 			}, {
 				$addFields: {
 					upvotedUser: user 
@@ -124,9 +169,15 @@ router.get('/posts/:category', async (req, res) => {
 			}, { 
 				$unset: ["upvotedUsers", "upvotedUser", "commentsData", "developerComments"]
 			}, {
-				$sort: {
-					upvotes: -1
-				}
+				$sort: sorting === "Top"
+					? { upvotes: -1, createdAt: -1 }
+					: (sorting === "New"
+						? { createdAt: -1 }
+						: (sorting === "Hot"
+							? { hot: -1, createdAt: -1 }
+							: { createdAt: 1 }
+						)
+					)
 			}, {
 				$skip: from
 			}, {

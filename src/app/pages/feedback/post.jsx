@@ -176,7 +176,6 @@ function Post(props) {
         loadComments();
     }, [from]);
     
-    console.log(props)
     return (
         <div id="feedback-post">
             {post &&
