@@ -4,6 +4,7 @@ import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import createAd from '../../util/createAd';
 import '../../assets/styles/pages/feedback/post.scss'
+import Logo from 'assets/img/memer.png';
 
 const LOAD_COMMENTS_AMOUNT = 10
 
@@ -178,6 +179,12 @@ function Post(props) {
     
     return (
         <div id="feedback-post">
+            {!post && 
+                // TODO: (Blue) move to scss?
+                <div style={{ textAlign: 'center', display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <img src={Logo} width={80} style={{marginBottom: "1vh"}}/>
+                <i>Woah, so empty.</i>
+            </div>}
             {post &&
             <>
                 <div id="feedback-post-head">
