@@ -79,7 +79,7 @@ function Home(props) {
             <div id="feedback-home-categories">
                 {feedbackCategories && Object.entries(feedbackCategories).map(([category, posts], i) => 
                     <div tabIndex={i + 1} key={category} className="feedback-home-category" onClick={() => history.push(`/feedback/${category}`)}>
-                        <h2 className="feedback-home-category-title">{category.charAt(0).toUpperCase() + category.substr(1).toLowerCase()}</h2>
+                        <h3 className="feedback-home-category-title">{category.charAt(0).toUpperCase() + category.substr(1).toLowerCase().replaceAll("_", " ")}</h3>
                         <p className="feedback-home-category-posts">{`${posts} post${posts === 1 ? "": "s"}`}</p>
                     </div>
                 )}

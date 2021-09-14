@@ -138,7 +138,7 @@ function New(props) {
 						<div key={fCategory} className="feedback-category-input">
 							<label htmlFor={"category-"+fCategory} onClick={() => setCategory(fCategory) }>
 								<span className={fCategory === category ? "radioInput checked" : "radioInput"}/>
-								{fCategory.replace(fCategory[0], fCategory[0].toUpperCase())}
+								{fCategory.replace(fCategory[0], fCategory[0].toUpperCase()).replaceAll("_", " ")}
 							</label>
 						</div>    
 					)}

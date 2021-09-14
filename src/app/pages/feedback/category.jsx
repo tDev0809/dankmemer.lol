@@ -77,7 +77,7 @@ function FeedbackCategory(props) {
     return (
         <div id="feedback-category">
             <div id="feedback-category-head">
-                <h1 id="feedback-category-head-title">{category.replace(category[0], category[0].toUpperCase())} Feedback</h1>
+                <h1 id="feedback-category-head-title">{category.replace(category[0], category[0].toUpperCase()).replaceAll("_", " ")} Feedback</h1>
                 <div id="feedback-category-head-button">
                     <Link id="feedback-category-head-button-create" to="/feedback/new">New post</Link>
                     <span id="feedback-category-head-button-bg"></span>
