@@ -8,7 +8,7 @@ import '../../assets/styles/pages/feedback/category.scss';
 import '../../assets/styles/components/feedbackPost.scss';
 import Logo from 'assets/img/memer.png';
 
-const LOAD_POSTS_AMOUNT = 2;
+const LOAD_POSTS_AMOUNT = 25;
 
 function FeedbackCategory(props) {
     const history = useHistory();
