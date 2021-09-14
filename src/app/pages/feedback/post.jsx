@@ -176,7 +176,7 @@ function Post(props) {
         loadComments();
     }, [from]);
     
-    // TODO: (Blue) style this page
+    console.log(props)
     return (
         <div id="feedback-post">
             {post &&
@@ -209,7 +209,7 @@ function Post(props) {
                 <div id="nitropay-feedback-post-bottom" className="nitropay" />
                 <div id="feedback-post-comments">
                     <h2>Comments ({post.comments})</h2>
-                    <p id="feedback-post-comments-notice">You're signed in as, {props && `${props.username}#${props.discriminator}`}. Ensure this is the account you want to appear as the comment author.</p>
+                    <p id="feedback-post-comments-notice">{props.loggedIn ? `You're signed in as, ${props.username}#${props.discriminator}. Ensure this is the account you want to appear as the comment author.` : 'You are not signed in. Do it to post a comment.'}</p>
                     <div id="feedback-post-comments-form">
                         <textarea 
                             id="feedback-post-comments-ta"
