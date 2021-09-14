@@ -8,7 +8,7 @@ import '../../assets/styles/pages/feedback/category.scss';
 import '../../assets/styles/components/feedbackPost.scss';
 import Logo from 'assets/img/memer.png';
 
-const LOAD_POSTS_AMOUNT = 25;
+const LOAD_POSTS_AMOUNT = 2;
 
 function FeedbackCategory(props) {
     const history = useHistory();
@@ -131,7 +131,7 @@ function FeedbackCategory(props) {
                     </div>
                 </div>
             )}
-            {!all && <p onClick={() => loadPosts()} style={{ textAlign: 'center', cursor: 'pointer' }}>
+            {!all && <p onClick={() => loadPosts()} id="feedback-category-more">
                 Load More Posts
             </p>}
             <ToastContainer />
