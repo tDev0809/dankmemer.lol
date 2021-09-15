@@ -613,6 +613,10 @@ router.delete('/comment/:id', async (req, res) => {
 		return res.status(500).json({ message: 'This comment does not exist.' });
 	}
 
+	if (comment.deleted) {
+		return res.status(500).json({ message: 'This comment was already deleted.' });
+	}
+
 	if (!user) {
 		return res.status(401).json({ error: 'Get away you sick filth.' });
 	}
@@ -623,7 +627,17 @@ router.delete('/comment/:id', async (req, res) => {
 
 	await db
 		.collection("feedback_comments")
-		.deleteOne({_id: ObjectId(id)});
+		.updateOne({_id: ObjectId(id)}, {
+			$set: {
+				comment: "[deleted]",
+				author: {
+					id: "[deleted]",
+					discriminator: "0000",
+					username: "[deleted]"
+				},
+				deleted: true
+			}
+		});
 
 	const webhook = config.FeedbackWebhook
 
@@ -679,7 +693,7 @@ router.get('/comments/:id', async (req, res) => {
 				}
 			}, {
 				$sort: {
-					createdAt: -1
+					createdAt: 1
 				}
 			}, {
 				$skip: from
