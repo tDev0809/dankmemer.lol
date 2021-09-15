@@ -9,12 +9,13 @@ import Logo from 'assets/img/memer.png';
 const LOAD_COMMENTS_AMOUNT = 10
 
 function Post(props) {
-    let [post, setPost] = useState(null);
-    let [comment, setComment] = useState("");
-    let [commentState, setCommentState] = useState("");
-    let [comments, setComments] = useState([]);
-    let [from, setFrom] = useState(0);
-    let [all, setAll] = useState(false);
+    const [post, setPost] = useState(null);
+    const [comment, setComment] = useState("");
+    const [commentState, setCommentState] = useState("");
+    const [comments, setComments] = useState([]);
+    const [from, setFrom] = useState(0);
+    const [all, setAll] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const pID = window.location.pathname.split("/")[3];
 
@@ -193,6 +194,24 @@ function Post(props) {
                         <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {new Date(post.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(post.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(post.createdAt).toLocaleString().split(",")[0]}</p>
                     </div>
                     <div id="feedback-post-head-controls">
+                        {props.loggedIn && (props.isAdmin || props.isModerator) &&
+                            <div id="feedback-post-head-controls-dropdown">
+                                <div id="feedback-post-head-controls-dropdown-container" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                                    <span className="icon material-icons-outlined">label</span>
+                                    <p id={dropdownOpen ? "feedback-post-head-controls-dropdown-container-selected" : "feedback-post-head-controls-dropdown-container-selected"}>Post label</p>
+                                    <span className="right material-icons">expand_more</span>
+                                </div>
+                                {dropdownOpen ? 
+                                    <div id="feedback-post-head-controls-dropdown-options">
+                                        {/* TODO: Add classes to the list items and also make them do something when clicked (update state of post) */}
+                                        <p>Accepted</p>
+                                        <p>Implemented</p>
+                                        <p>Duplicate</p>
+                                        <p>Denied</p>
+                                    </div>
+                                : ''}
+                            </div>
+                        }
                         {props.loggedIn && (props.id === post.author.id || props.isAdmin || props.isModerator) &&
                             <div className="delete" onClick={() => deletePost(post._id)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
