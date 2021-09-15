@@ -18,7 +18,7 @@
     cursor: pointer;
     &-tag {
         display: inline-flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
 
         margin-left: 10px;
@@ -27,6 +27,8 @@
         font-weight: 500;
         font-family: 'Inter', sans-serif;
         
+        min-width: max-content;
+
         border: 2px solid transparent;
         border-radius: 50px;
 
@@ -38,13 +40,18 @@
         }
     }
     &-content {
-        &-title {
-            word-wrap: break-word;
-            word-break: break-word;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
+        &-title { 
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            & > p {
+                word-wrap: break-word;
+                word-break: break-word;
+                display: -webkit-inline-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;  
+                overflow: hidden;
+            }
         }
         &-description {
             color: #afafaf;

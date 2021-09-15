@@ -88,8 +88,10 @@ function Home(props) {
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
-                        <h3 className="feedback-post-content-title">{post.title}</h3>
-                        {/* {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>} */}
+                        <h3 className="feedback-post-content-title">
+                            <p>{post.title}</p>
+                            {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
+                        </h3>
                         <p className="feedback-post-content-description">{post.description}</p>
                     </div>
                     <div className="feedback-post-stats">
