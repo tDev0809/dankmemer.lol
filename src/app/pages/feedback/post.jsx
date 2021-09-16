@@ -6,7 +6,13 @@ import createAd from '../../util/createAd';
 import '../../assets/styles/pages/feedback/post.scss'
 import Logo from 'assets/img/memer.png';
 
-const LOAD_COMMENTS_AMOUNT = 10
+const LOAD_COMMENTS_AMOUNT = 10;
+const LABELS = [
+    "accepted",
+    "implemented",
+    "duplicate",
+    "denied"
+]
 
 function Post(props) {
     const [post, setPost] = useState(null);
@@ -108,6 +114,13 @@ function Post(props) {
 		setCommentState(res.status);
 	}
 
+    // TODO: (Badosz), add API route for patching or posting label changes
+    // it will be a string from the LABELS array (line 10) or can be null if
+    // removing the current label
+    const changeLabel = (label) => {
+        return setDropdownOpen(false);
+    }
+
     useEffect(() => {
 		if (commentState === 0) return;
 		switch(commentState) {
@@ -180,10 +193,14 @@ function Post(props) {
     
     return (
         <div id="feedback-post">
-            {!post && 
-                // TODO: (Blue) move to scss?
-                <div style={{ textAlign: 'center', display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <img src={Logo} width={80} style={{marginBottom: "1vh"}}/>
+            {!post && !props.isLoading &&
+                <div style={{
+                    textAlign: 'center',
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center"
+                }}>
+                <img src={Logo} width={80} style={{ marginBottom: "1vh" }}/>
                 <i>Woah, so empty.</i>
             </div>}
             {post &&
@@ -198,16 +215,19 @@ function Post(props) {
                             <div id="feedback-post-head-controls-dropdown">
                                 <div id="feedback-post-head-controls-dropdown-container" onClick={() => setDropdownOpen(!dropdownOpen)}>
                                     <span className="icon material-icons-outlined">label</span>
-                                    <p id={dropdownOpen ? "feedback-post-head-controls-dropdown-container-selected" : "feedback-post-head-controls-dropdown-container-selected"}>Post label</p>
+                                    {/*
+                                        TODO: (Badosz) Possibly get the label from the post data on load and if it
+                                        has one of the LABELS (line 10) make default show it and remove it from LABELS array
+                                    */}
+                                    <p id="feedback-post-head-controls-dropdown-container-selected">Post label</p>
                                     <span className="right material-icons">expand_more</span>
                                 </div>
                                 {dropdownOpen ? 
                                     <div id="feedback-post-head-controls-dropdown-options">
-                                        {/* TODO: Add classes to the list items and also make them do something when clicked (update state of post) */}
-                                        <p>Accepted</p>
-                                        <p>Implemented</p>
-                                        <p>Duplicate</p>
-                                        <p>Denied</p>
+                                        {LABELS.map((label) => (
+                                            <p key={label} className="feedback-dropdown-item" onClick={() => changeLabel(label)}>{label.charAt(0).toUpperCase() + label.substr(1).toLowerCase()}</p>
+                                        ))}
+                                        <p className="feedback-dropdown-item" onClick={() => changeLabel(null)}>Remove label</p>
                                     </div>
                                 : ''}
                             </div>

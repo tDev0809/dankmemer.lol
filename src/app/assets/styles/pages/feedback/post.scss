@@ -107,12 +107,15 @@
 
                     border-radius: 5px;
                     box-sizing: border-box;
-                    // TODO: Add classes to post
-                    p {
+                    .feedback-dropdown-item {
+                        color: #b9b9b9;
+
                         padding: 5px 0;
+
+                        transition: color ease-in-out .2s;
                         cursor: pointer;
                         &:hover {
-                            color: #199532
+                            color: #ffffff
                         }
                     }
                 }
