@@ -28,8 +28,8 @@
                     input[type="radio"] { display: none; }
                     .radioInput {
                         display: inline-block;
-                        height: 15px;
-                        width: 15px;
+                        height: 15px; min-height: 15px; max-height: 15px;
+                        width: 15px; min-width: 15px; max-height: 15px;
                         margin-right: 10px;
                         border-radius: 50%;
                         background: rgba(255, 255, 255, 0.1);

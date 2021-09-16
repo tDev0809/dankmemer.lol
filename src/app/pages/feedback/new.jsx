@@ -41,7 +41,7 @@ function New(props) {
 
     let [description, setDescription] = useState("");
     let [title, setTitle] = useState("");
-    let [category, setCategory] = useState("items");
+    let [category, setCategory] = useState("currency_items");
     let [postState, setPostState] = useState(0);
 	let [postID, setPostID] = useState(null);
 
