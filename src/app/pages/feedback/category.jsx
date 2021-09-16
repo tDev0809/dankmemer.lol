@@ -9,14 +9,24 @@ import '../../assets/styles/components/feedbackPost.scss';
 import Logo from 'assets/img/memer.png';
 
 const LOAD_POSTS_AMOUNT = 25;
+const LABEL_FILTERS = [
+    "all posts",
+    "accepted",
+    "implemented",
+    // "developer response",
+    "duplicate",
+    "denied"
+];
 
 function FeedbackCategory(props) {
     const history = useHistory();
     const { current: category } = useRef(window.location.pathname.split("/")[2])
-    let [posts, setPosts] = useState([]);
-    let [all, setAll] = useState(false);
-    let [feedbackCategories, setFeedbackCategories] = useState(null);
-    let [sorting, setSorting] = useState("Hot");
+    const [posts, setPosts] = useState([]);
+    const [all, setAll] = useState(false);
+    const [feedbackCategories, setFeedbackCategories] = useState(null);
+    const [sorting, setSorting] = useState("Hot");
+    const [filter, setFilter] = useState("all posts");
+    const [filterOpen, setFilterOpen] = useState(false);
 
     const loadPosts = async (newList = false) => {
         axios(`/api/feedback/posts/${category}?from=${newList ? 0 : posts.length}&amount=${LOAD_POSTS_AMOUNT}&sorting=${sorting}`).then(({data}) => {
@@ -52,6 +62,13 @@ function FeedbackCategory(props) {
         loadPosts(true);
     }, [sorting]);
 
+    useEffect(() => {
+        if(filter.length < 1) return
+        
+        // TODO: (Badosz) send request to change results
+        
+        return setFilterOpen(false);
+    }, [filter])
 
     useEffect(() => {
         axios(`/api/feedback/categories`).then((data) => {
@@ -100,6 +117,20 @@ function FeedbackCategory(props) {
                     icon="restore"
                     label="Old"
                 />
+                <div className="sorting-seperator"/>
+                <div id="feedback-category-sorting-button" className="filter" title="Filter posts based on their label">
+                    <div id="filter-button" onClick={() => setFilterOpen(!filterOpen)}>
+                        <span className="material-icons-outlined">filter_alt</span>
+                        <span id="feedback-category-sorting-button-label">{filter.charAt(0).toUpperCase() + filter.substr(1).toLowerCase()}</span>
+                    </div>
+                    {filterOpen &&
+                        <div id="feedback-category-filter-options">
+                            {LABEL_FILTERS.map(labelFilter => (
+                                <p key={filter} onClick={() => setFilter(labelFilter)}>{labelFilter.charAt(0).toUpperCase() + labelFilter.substr(1).toLowerCase()}</p>
+                            ))}
+                        </div>
+                    }
+                </div> 
             </div>
             {posts.length === 0 && 
                 // TODO: (Blue) move to scss?
