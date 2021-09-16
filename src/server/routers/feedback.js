@@ -433,6 +433,42 @@ router.patch('/post/upvote/:id', async (req, res) => {
 
 });
 
+router.patch('/post/label/:id', async (req, res) => {
+	const { user } = req.session;
+	const { id } = req.params;
+	const label = req.query.label || "";
+
+	if (!id) {
+		return res.status(500).json({ message: 'This post does not exist.' });
+	}
+
+	if (!user || (!user.isAdmin && !user.isModerator)) {
+		return res.status(401).json({ error: 'Get away you sick filth.' });
+	}
+
+	const post = await db
+		.collection("feedback_posts")
+		.findOne({
+			_id: id
+		});
+
+
+	if (!post) {
+		return res.status(500).json({ message: 'This post does not exist.' });
+	}
+
+	await db
+		.collection("feedback_posts")
+		.updateOne({
+			_id: id
+		}, {
+			$set: {label}
+		});
+
+	await res.status(200).json({label});
+
+});
+
 router.post('/post', async (req, res) => {
 	const { user } = req.session;
 

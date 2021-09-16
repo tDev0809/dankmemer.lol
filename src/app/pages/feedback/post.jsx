@@ -115,10 +115,10 @@ function Post(props) {
 		setCommentState(res.status);
 	}
 
-    // TODO: (Badosz), add API route for patching or posting label changes
-    // it will be a string from the LABELS array (line 10) or can be null if
-    // removing the current label
-    const changeLabel = (label) => {
+    const changeLabel = (id, label) => {
+        axios.patch(`/api/feedback/post/label/${id}?label=${label}`).then(({data}) => {
+            localtion.reload(); // TODO: useState one day
+        });
         return setDropdownOpen(false);
     }
 
@@ -245,9 +245,9 @@ function Post(props) {
                                 {dropdownOpen ? 
                                     <div id="feedback-post-head-controls-dropdown-options">
                                         {LABELS.map((label) => (
-                                            <p key={label} className="feedback-dropdown-item" onClick={() => changeLabel(label)}>{label.charAt(0).toUpperCase() + label.substr(1).toLowerCase()}</p>
+                                            <p key={label} className="feedback-dropdown-item" onClick={() => changeLabel(post._id, label)}>{label.charAt(0).toUpperCase() + label.substr(1).toLowerCase()}</p>
                                         ))}
-                                        <p className="feedback-dropdown-item" onClick={() => changeLabel(null)}>Remove label</p>
+                                        <p className="feedback-dropdown-item" onClick={() => changeLabel(post._id, "")}>No label</p>
                                     </div>
                                 : ''}
                             </div>
