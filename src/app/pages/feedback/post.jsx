@@ -230,7 +230,7 @@ function Post(props) {
                         <h1 id="feedback-post-head-details-title">{post && post.title}</h1>
                         {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
                         {post.label && post.label.length >= 1 && <span className={"feedback-post-tag " + post.label.split(" ").join("-")}>{post.label.charAt(0).toUpperCase() + post.label.substr(1).toLowerCase()}</span>}
-                        <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {new Date(post.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(post.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(post.createdAt).toLocaleString().split(",")[0]}</p>
+                        <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {new Date(post.createdAt).toLocaleString()}</p>
                     </div>
                     <div id="feedback-post-head-controls">
                         {props.loggedIn && (props.isAdmin || props.isModerator) &&
