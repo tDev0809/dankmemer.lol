@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import createAd from '../../util/createAd';
 import '../../assets/styles/pages/feedback/post.scss'
 import Logo from 'assets/img/memer.png';
 
@@ -163,30 +162,6 @@ function Post(props) {
     useEffect(() => {
         loadPost();
 
-        createAd('nitropay-feedback-post-top', { sizes: [ [728, 90] ] }, 'desktop');
-		createAd('nitropay-feedback-post-top', { sizes: [
-			[320, 50],
-			[300, 50],
-			[300, 250]
-		] }, 'mobile');
-
-		createAd('nitropay-feedback-post-bottom', {
-			sizes: [
-				[728, 90],
-				[970, 90],
-				[970, 250]
-			],
-			renderVisibleOnly: true
-		}, 'desktop');
-		createAd('nitropay-feedback-post-bottom', {
-			sizes: [
-				[320, 50],
-				[300, 50],
-				[300, 250]
-			],
-			renderVisibleOnly: true
-		}, 'mobile');
-
         window.addEventListener("resize", () => {
             if(document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return setHeadColumn(true)
             else if(!document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return setHeadColumn(false); 
@@ -269,11 +244,9 @@ function Post(props) {
                         </div>
                     </div>
                 </div>
-                <div id="nitropay-feedback-post-top" className="nitropay" />
                 <div id="feedback-post-content">
                     <p>{post.description}</p>
                 </div>
-                <div id="nitropay-feedback-post-bottom" className="nitropay" />
                 <div id="feedback-post-comments">
                     <h2>Comments ({post.comments})</h2>
                     <p id="feedback-post-comments-notice">{props.loggedIn ? `You're signed in as, ${props.username}#${props.discriminator}. Ensure this is the account you want to appear as the comment author.` : 'You are not signed in. Do it to post a comment.'}</p>

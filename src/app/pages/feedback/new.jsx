@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
-import createAd from '../../util/createAd';
 import { ToastContainer, toast } from 'react-toastify';
 
 import '../../assets/styles/pages/feedback/new.scss';
@@ -13,30 +12,6 @@ function New(props) {
         axios(`/api/feedback/categories`).then((data) => {
             setFeedbackCategories(data.data);
         });
-
-		createAd('nitropay-feedback-new-top', { sizes: [ [728, 90] ] }, 'desktop');
-		createAd('nitropay-feedback-new-top', { sizes: [
-			[320, 50],
-			[300, 50],
-			[300, 250]
-		] }, 'mobile');
-
-		createAd('nitropay-feedback-new-bottom', {
-			sizes: [
-				[728, 90],
-				[970, 90],
-				[970, 250]
-			],
-			renderVisibleOnly: true
-		}, 'desktop');
-		createAd('nitropay-feedback-new-bottom', {
-			sizes: [
-				[320, 50],
-				[300, 50],
-				[300, 250]
-			],
-			renderVisibleOnly: true
-		}, 'mobile');
     }, []);
 
     let [description, setDescription] = useState("");
@@ -126,10 +101,9 @@ function New(props) {
     // TODO: (Badosz) display discord login button when not logged in
     return (
 		<div id="feedback-new">
-			<div id="nitropay-feedback-new-top" className="nitropay" />
 			<div id="feedback-new-header">
 				<h1 id="feedback-new-header-title">Give us Feedback</h1>
-				<p id="feedback-new-header-info">Do you have an opinion or suggestion about the bot? Fill out this form and we will look over them. Make sure that there isn't a feedback post on your topic by searching through the category feeds.</p>
+				<p id="feedback-new-header-info">Do you have an opinion or suggestion about the bot? Fill out this form and we will look over them. Make sure that there isn't a feedback post on your topic by searching through the category feeds. Warning: This is NOT for support, your post will just be deleted.</p>
 			</div>
 			<div id="feedback-new-category">
 				<h3 id="feedback-new-category-title">Select the category that best fits your feedback</h3>
@@ -167,7 +141,6 @@ function New(props) {
 				? <button className="feedback-new-submit enabled" onClick={postFeedback}>Submit</button>
 				: <button className="feedback-new-submit disabled">Submit</button>
 			}
-			<div id="nitropay-feedback-new-bottom" className="nitropay" />
 			<ToastContainer />
 		</div>
 	)

@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import createAd from '../../util/createAd';
 
 import '../../assets/styles/pages/feedback/home.scss';
 import '../../assets/styles/components/feedbackPost.scss';
@@ -21,30 +20,6 @@ function Home(props) {
         axios(`/api/feedback/posts/all?from=0&amount=5`).then(({data}) => {
             setPosts([...posts, ...data.posts]);
         });
-
-        createAd('nitropay-feedback-home-top', { sizes: [ [728, 90] ] }, 'desktop');
-		createAd('nitropay-feedback-home-top', { sizes: [
-			[320, 50],
-			[300, 50],
-			[300, 250]
-		] }, 'mobile');
-
-		createAd('nitropay-feedback-home-bottom', {
-			sizes: [
-				[728, 90],
-				[970, 90],
-				[970, 250]
-			],
-			renderVisibleOnly: true
-		}, 'desktop');
-		createAd('nitropay-feedback-home-bottom', {
-			sizes: [
-				[320, 50],
-				[300, 50],
-				[300, 250]
-			],
-			renderVisibleOnly: true
-		}, 'mobile');
     }, []) 
 
     const upvote = async (id) => {
@@ -84,7 +59,6 @@ function Home(props) {
                     </div>
                 )}
             </div>
-            <div id="nitropay-feedback-home-top" className="nitropay" />
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
@@ -111,7 +85,6 @@ function Home(props) {
                     </div>
                 </div>
             )}
-            <div id="nitropay-feedback-home-bottom" className="nitropay" />
             <ToastContainer />
         </div>
     )
