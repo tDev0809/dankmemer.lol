@@ -22,6 +22,7 @@ function Post(props) {
     const [from, setFrom] = useState(0);
     const [all, setAll] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [headColumn, setHeadColumn] = useState(false);
 
     const pID = window.location.pathname.split("/")[3];
 
@@ -185,7 +186,26 @@ function Post(props) {
 			],
 			renderVisibleOnly: true
 		}, 'mobile');
+
+        window.addEventListener("resize", () => {
+            if(document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return setHeadColumn(true)
+            else if(!document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return setHeadColumn(false); 
+            else return setHeadColumn(false)
+        });
+
+        return () => {
+            window.removeEventListener("resize", () => {
+                if(document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return document.getElementById("feedback-post-head").classList.add("column")
+                else if(!document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return document.getElementById("feedback-post-head").classList.remove("column") 
+                else return document.getElementById("feedback-post-head").classList.remove("column") 
+            });
+        }
     }, []);
+
+    useEffect(() => {
+        if(!post) return
+        if(document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) setHeadColumn(true)
+    }, [post]);
 
     useEffect(() => {
         loadComments();
@@ -205,7 +225,7 @@ function Post(props) {
             </div>}
             {post &&
             <>
-                <div id="feedback-post-head">
+                <div id="feedback-post-head" className={headColumn ? "column" : ""}>
                     <div id="feedback-post-head-details">
                         <h1 id="feedback-post-head-details-title">{post && post.title}</h1>
                         <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {new Date(post.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(post.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(post.createdAt).toLocaleString().split(",")[0]}</p>

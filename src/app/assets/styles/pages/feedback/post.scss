@@ -6,6 +6,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        &.column {
+            flex-direction: column;
+        }
         &-details {
             &-title {
                 word-break: break-all;
@@ -118,6 +121,12 @@
                             color: #ffffff
                         }
                     }
+                }
+            }
+            @media only screen and (max-width: 440px) {
+                flex-direction: column;
+                & > *:not(:last-child) {
+                    margin-bottom: 20px;
                 }
             }
         }
