@@ -59,6 +59,7 @@ function Home(props) {
                     </div>
                 )}
             </div>
+            <h3 id="feedback-home-head-hot">Latest hot posts:</h3>
             {posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
