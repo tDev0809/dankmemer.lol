@@ -38,6 +38,26 @@
             border-color: #196395;
             background-color: rgba(25, 83, 149, 0.33);
         }
+        &.accepted {
+            color: #cef0d0;
+            border-color: #199538;
+            background-color: rgba(25, 149, 77, 0.33);
+        }
+        &.implemented {
+            color: #eff0ce;
+            border-color: #958d19;
+            background-color: rgba(149, 141, 25, 0.33);
+        }
+        &.duplicate {
+            color: #e8cef0;
+            border-color: #801995;
+            background-color: rgba(128, 25, 149, 0.33);
+        }
+        &.denied {
+            color: #f0cece;
+            border-color: #951919;
+            background-color: rgba(149, 25, 25, 0.33);
+        }
     }
     &-content {
         &-title { 

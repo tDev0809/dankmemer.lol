@@ -117,7 +117,7 @@ function Post(props) {
 
     const changeLabel = (id, label) => {
         axios.patch(`/api/feedback/post/label/${id}?label=${label}`).then(({data}) => {
-            localtion.reload(); // TODO: useState one day
+            location.reload(); // TODO: useState one day
         });
         return setDropdownOpen(false);
     }
@@ -195,9 +195,9 @@ function Post(props) {
 
         return () => {
             window.removeEventListener("resize", () => {
-                if(document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return document.getElementById("feedback-post-head").classList.add("column")
-                else if(!document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return document.getElementById("feedback-post-head").classList.remove("column") 
-                else return document.getElementById("feedback-post-head").classList.remove("column") 
+                if(document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return setHeadColumn(true)
+                else if(!document.getElementById("feedback-post-head-details-title").clientHeight >= (window.innerHeight / 5)) return setHeadColumn(false); 
+                else return setHeadColumn(false)
             });
         }
     }, []);
@@ -228,6 +228,8 @@ function Post(props) {
                 <div id="feedback-post-head" className={headColumn ? "column" : ""}>
                     <div id="feedback-post-head-details">
                         <h1 id="feedback-post-head-details-title">{post && post.title}</h1>
+                        {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
+                        {post.label && post.label.length >= 1 && <span className={"feedback-post-tag " + post.label.split(" ").join("-")}>{post.label.charAt(0).toUpperCase() + post.label.substr(1).toLowerCase()}</span>}
                         <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {new Date(post.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(post.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(post.createdAt).toLocaleString().split(",")[0]}</p>
                     </div>
                     <div id="feedback-post-head-controls">

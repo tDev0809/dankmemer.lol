@@ -203,6 +203,7 @@ function FeedbackCategory(props) {
                         <h3 className="feedback-post-content-title">
                             <p>{post.title}</p>
                             {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
+                            {post.label && post.label.length >= 1 && <span className={"feedback-post-tag " + post.label.split(" ").join("-")}>{post.label.charAt(0).toUpperCase() + post.label.substr(1).toLowerCase()}</span>}
                         </h3>
                         <p className="feedback-post-content-description">{post.description}</p>
                     </div>

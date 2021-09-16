@@ -15,7 +15,52 @@
             }
             &-author {
                 color: #B8B8B8;
-            }        
+            }
+            .feedback-post-tag {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+        
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-right: 10px;
+        
+                font-size: 12px;
+                font-weight: 500;
+                font-family: 'Inter', sans-serif;
+                
+                min-width: max-content;
+        
+                border: 2px solid transparent;
+                border-radius: 50px;
+        
+                padding: 2.5px 10px 2.5px 7.5px;
+                &.developer-response {
+                    color: #cedef0;
+                    border-color: #196395;
+                    background-color: rgba(25, 83, 149, 0.33);
+                }
+                &.accepted {
+                    color: #cef0d0;
+                    border-color: #199538;
+                    background-color: rgba(25, 149, 77, 0.33);
+                }
+                &.implemented {
+                    color: #eff0ce;
+                    border-color: #958d19;
+                    background-color: rgba(149, 141, 25, 0.33);
+                }
+                &.duplicate {
+                    color: #e8cef0;
+                    border-color: #801995;
+                    background-color: rgba(128, 25, 149, 0.33);
+                }
+                &.denied {
+                    color: #f0cece;
+                    border-color: #951919;
+                    background-color: rgba(149, 25, 25, 0.33);
+                }
+            }              
         }
         &-controls {
             display: flex;
