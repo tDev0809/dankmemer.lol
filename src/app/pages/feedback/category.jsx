@@ -117,7 +117,7 @@ function FeedbackCategory(props) {
                     icon="restore"
                     label="Old"
                 />
-                <div className="sorting-seperator"/>
+                <div className="sorting-separator"/>
                 <div id="feedback-category-sorting-button" className="filter" title="Filter posts based on their label">
                     <div id="filter-button" onClick={() => setFilterOpen(!filterOpen)}>
                         <span className="material-icons-outlined">filter_alt</span>

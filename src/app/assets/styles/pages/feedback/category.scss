@@ -36,10 +36,13 @@
 				}
 			}
 		}
-		.sorting-seperator {
-			background: red;
-			width: 1px;
-			height: 100%;
+		.sorting-separator {
+			display: flex;
+			align-items: center;
+			background: rgba(0, 0, 0, 0.20);
+			margin-right: 10px;
+			width: 2px;
+			height: 28px;
 		}
 	}
 	&-filter-options {
