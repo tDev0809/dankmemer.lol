@@ -10,6 +10,15 @@ const axios = require('axios');
 const { toTitleCase } = require("../util/string.js");
 const { ObjectId } = require('mongodb');
 
+const LABEL_FILTERS = [
+    "all posts",
+    "accepted",
+    "implemented",
+    // "developer response",
+    "duplicate",
+    "denied"
+];
+
 function generateReadableID () {
 	return [
 		items[Math.floor(Math.random()*items.length)],
@@ -54,6 +63,8 @@ router.get('/categoriesCount', async (req, res) => {
 	return res.json(count);
 });
 
+
+
 router.get('/posts/:category', async (req, res) => {
 	const { category } = req.params;
 	const { user } = req.session;
@@ -64,6 +75,11 @@ router.get('/posts/:category', async (req, res) => {
 	const from = Number(req.query.from) || 0;
 	const amount = Number(req.query.amount) || 10;
 	const sorting = req.query.sorting || "Hot";
+	let filter = req.query.filter || "all posts"
+
+	if (!LABEL_FILTERS.includes(filter)) {
+		filter = "all posts" 
+	}
 
 	const posts = await db
 		.collection("feedback_posts")
@@ -71,7 +87,12 @@ router.get('/posts/:category', async (req, res) => {
 			{
 				$match: category === "all" 
 					? {_id: {$ne: ""}}
-					: {category: category}
+					: {
+						category: category,
+						label: filter === "all posts"
+							? {$ne: ""}
+							: filter 
+					}
 			}, {
 				$lookup: {
 					from: "feedback_upvotes",

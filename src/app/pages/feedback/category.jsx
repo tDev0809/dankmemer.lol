@@ -31,7 +31,7 @@ function FeedbackCategory(props) {
     const [mobileOptions, setMobileOptions] = useState(false);
 
     const loadPosts = async (newList = false) => {
-        axios(`/api/feedback/posts/${category}?from=${newList ? 0 : posts.length}&amount=${LOAD_POSTS_AMOUNT}&sorting=${sorting}`).then(({data}) => {
+        axios(`/api/feedback/posts/${category}?from=${newList ? 0 : posts.length}&amount=${LOAD_POSTS_AMOUNT}&sorting=${sorting}&filter=${filter}`).then(({data}) => {
             if (newList) {
                 setPosts([...data.posts]);
             } else {
@@ -66,9 +66,7 @@ function FeedbackCategory(props) {
 
     useEffect(() => {
         if(filter.length < 1) return
-        
-        // TODO: (Badosz) send request to change results
-        
+        loadPosts(true)
         return setFilterOpen(false);
     }, [filter])
 
