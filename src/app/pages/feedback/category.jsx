@@ -22,11 +22,13 @@ function FeedbackCategory(props) {
     const history = useHistory();
     const { current: category } = useRef(window.location.pathname.split("/")[2])
     const [posts, setPosts] = useState([]);
+    const [mobile, setMobile] = useState(window.innerWidth <= 560)
     const [all, setAll] = useState(false);
     const [feedbackCategories, setFeedbackCategories] = useState(null);
     const [sorting, setSorting] = useState("Hot");
     const [filter, setFilter] = useState("all posts");
     const [filterOpen, setFilterOpen] = useState(false);
+    const [mobileOptions, setMobileOptions] = useState(false);
 
     const loadPosts = async (newList = false) => {
         axios(`/api/feedback/posts/${category}?from=${newList ? 0 : posts.length}&amount=${LOAD_POSTS_AMOUNT}&sorting=${sorting}`).then(({data}) => {
@@ -74,19 +76,31 @@ function FeedbackCategory(props) {
         axios(`/api/feedback/categories`).then((data) => {
             setFeedbackCategories(data.data);
         });
+
+        window.addEventListener("resize", () => {
+            if(window.innerWidth <= 560) return setMobile(true);
+            else if(!window.innerWidth <= 560) return setMobile(false);
+        });
+
+        return () => {
+            window.removeEventListener("resize", () => {
+                if(window.innerWidth <= 560) return setMobile(true);
+                else if(!window.innerWidth <= 560) return setMobile(false);
+            });
+        }
     }, []);
 
     if (feedbackCategories && !feedbackCategories.includes(category)) {
         window.location.replace("/feedback");
     }
 
-    const SortingButton = ({icon, label}) => {
+    const SortingButton = ({ icon, label }) => {
         return <div 
-            id="feedback-category-sorting-button" 
+            id={mobile ? "feedback-category-sorting-mobile-button" : "feedback-category-sorting-desktop-button" }
             className={label == sorting ? "active" : ""}
             onClick={() => setSorting(label)}>
             <span className="material-icons">{icon}</span>
-            <span id="feedback-category-sorting-button-label">{label}</span>
+            <span id={mobile ? "feedback-category-sorting-mobile-button-label" : "feedback-category-sorting-desktop-button-label"}>{label}</span>
         </div> 
     }
 
@@ -100,38 +114,84 @@ function FeedbackCategory(props) {
                     <span id="feedback-category-head-button-bg"></span>
                 </div>
             </div>
-            <div id="feedback-category-sorting">
-                <SortingButton
-                    icon="local_fire_department"
-                    label="Hot"
-                />
-                <SortingButton
-                    icon="trending_up"
-                    label="Top"
-                />
-                <SortingButton
-                    icon="star"
-                    label="New"
-                />
-                <SortingButton
-                    icon="restore"
-                    label="Old"
-                />
-                <div className="sorting-separator"/>
-                <div id="feedback-category-sorting-button" className="filter" title="Filter posts based on their label">
-                    <div id="filter-button" onClick={() => setFilterOpen(!filterOpen)}>
-                        <span className="material-icons-outlined">filter_alt</span>
-                        <span id="feedback-category-sorting-button-label">{filter.charAt(0).toUpperCase() + filter.substr(1).toLowerCase()}</span>
+            {!mobile ?
+                <div id="feedback-category-sorting-desktop">
+                    <SortingButton
+                        icon="local_fire_department"
+                        label="Hot"
+                    />
+                    <SortingButton
+                        icon="trending_up"
+                        label="Top"
+                    />
+                    <SortingButton
+                        icon="star"
+                        label="New"
+                    />
+                    <SortingButton
+                        icon="restore"
+                        label="Old"
+                    />
+                    <div className="sorting-separator"/>
+                    <div id="feedback-category-sorting-desktop-button" className="filter" title="Filter posts based on their label">
+                        <div id="filter-button" onClick={() => setFilterOpen(!filterOpen)}>
+                            <span className="material-icons-outlined">filter_alt</span>
+                            <span id="feedback-category-sorting-button-label">{filter.charAt(0).toUpperCase() + filter.substr(1).toLowerCase()}</span>
+                        </div>
+                        {filterOpen &&
+                            <div id="feedback-category-filter-options">
+                                {LABEL_FILTERS.map(labelFilter => (
+                                    <p key={filter} onClick={() => setFilter(labelFilter)}>{labelFilter.charAt(0).toUpperCase() + labelFilter.substr(1).toLowerCase()}</p>
+                                ))}
+                            </div>
+                        }
+                    </div> 
+                </div>
+                :
+                <div id="feedback-category-sorting-mobile">
+                    <div 
+                        id="feedback-category-sorting-mobile-button-options"
+                        className={mobileOptions ? "active" : ""}
+                        onClick={() => { setMobileOptions(!mobileOptions); setFilterOpen(false); }}
+                    >
+                        <span className="material-icons">more_horiz</span>
+                        <span id="feedback-category-sorting-button-label">Options</span>
                     </div>
-                    {filterOpen &&
-                        <div id="feedback-category-filter-options">
-                            {LABEL_FILTERS.map(labelFilter => (
-                                <p key={filter} onClick={() => setFilter(labelFilter)}>{labelFilter.charAt(0).toUpperCase() + labelFilter.substr(1).toLowerCase()}</p>
-                            ))}
+                    {mobileOptions &&
+                        <div id="feedback-category-sorting-mobile-buttons">
+                            <SortingButton
+                                icon="local_fire_department"
+                                label="Hot"
+                            />
+                            <SortingButton
+                                icon="trending_up"
+                                label="Top"
+                            />
+                            <SortingButton
+                                icon="star"
+                                label="New"
+                            />
+                            <SortingButton
+                                icon="restore"
+                                label="Old"
+                            />
+                            <div id="feedback-category-sorting-mobile-button" className="filter" title="Filter posts based on their label">
+                                <div id="filter-button" onClick={() => setFilterOpen(!filterOpen)}>
+                                    <span className="material-icons-outlined">filter_alt</span>
+                                    <span id="feedback-category-sorting-mobile-button-label">{filter.charAt(0).toUpperCase() + filter.substr(1).toLowerCase()}</span>
+                                </div>
+                                {filterOpen &&
+                                    <div id="feedback-category-filter-options-mobile">
+                                        {LABEL_FILTERS.map(labelFilter => (
+                                            <p key={filter} onClick={() => setFilter(labelFilter)}>{labelFilter.charAt(0).toUpperCase() + labelFilter.substr(1).toLowerCase()}</p>
+                                        ))}
+                                    </div>
+                                }
+                            </div>
                         </div>
                     }
-                </div> 
-            </div>
+                </div>
+            }
             {posts.length === 0 && 
                 // TODO: (Blue) move to scss?
                 <div style={{ textAlign: 'center', display: "flex", flexDirection: "column", alignItems: "center"}}>
