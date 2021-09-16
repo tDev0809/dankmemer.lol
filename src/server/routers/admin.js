@@ -121,7 +121,8 @@ router.post('/blogs', async (req, res) => {
 			date: req.body.date || new Date().getTime(),
 			author: req.body.author,
 			desc: req.body.desc,
-			content: req.body.content
+			content: req.body.content,
+			draft: req.body.draft
 		}}, { upsert: true });
 		return res.status(200).send();
 	} catch (e) {
@@ -136,6 +137,11 @@ router.delete('/blogs', async(req, res) => {
 	} catch (e) {
 		return res.status(500).send();
 	}
+});
+
+router.get('/blogs', async (req, res) => {
+	let blogs = await db.collection('blogs').find({}).sort({ 'date': -1 }).toArray(); // Get all the available blog posts, sorted by oldest to newest (by timestamp in the document)
+	res.json(blogs)
 });
 
 router.post('/discount', async(req, res) => {

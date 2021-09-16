@@ -23,26 +23,33 @@ function AdminBlogs(props) {
     const [blogDate, setBlogDate] = useState("");
     const [blogDescription, setBlogDescription] = useState("");
     const [blogAuthor, setBlogAuthor] = useState(props.username);
+    const [blogDraft, setBlogDraft] = useState(false)
     const [blogs, setBlogs] = useState([]);
     const [htmlBlog, setHTMLBlog] = useState("");
     const [editingExisting, setEditingExisting] = useState(false);
     const [submittable, setSubmittable] = useState(false);
+    const [draftable, setDraftable] = useState(false);
 
-    const publish = () => {
-        if(!confirm("You are about to publish this blog post. Once you publish it you will be redirected to the blog page.\n\n Do you wish to continue?")) return;
+    const publish = (draft = false) => {
+        if(!draft && !confirm("You are about to publish this blog post. Once you publish it you will be redirected to the blog page.\n\n Do you wish to continue?")) return;
         axios({
             url: '/api/admin/blogs',
             method: 'POST',
             data: {
                 id: blogTitle.toLowerCase().replace(/ /g, '-').replace(/[^a-zA-Z0-9 -]/, ''),
                 name: blogTitle,
-                date: blogDate,
+                date: blogDraft && !draft ? Date.now() : blogDate,
                 desc: blogDescription,
                 author: blogAuthor,
-                content: htmlBlog
+                content: htmlBlog,
+                draft: draft
             }
         }).then(() => {
-            return history.push(`/blogs/${blogTitle.toLowerCase().replace(/ /g, '-')}`);
+            if (!draft) {
+                return history.push(`/blogs/${blogTitle.toLowerCase().replace(/ /g, '-')}`);
+            } else {
+                location.reload();
+            }
         }).catch((e) => {
             console.group("Blog publishing error");
             console.error(e.message);
@@ -79,14 +86,14 @@ function AdminBlogs(props) {
     }
 
     useEffect(() => {
-        axios('/api/blogs').then(({data: blogs}) => {
+        axios('/api/admin/blogs').then(({data: blogs}) => {
             setBlogs(blogs);
         });
     }, []);
 
     useEffect(() => {
-        if(blogTitle.length >= 5 && blogDescription.length >= 20 && blogContent.length >= 200) return setSubmittable(true);
-        else setSubmittable(false);
+        setDraftable(blogTitle.length >= 5 && blogContent.length >= 1)
+        setSubmittable(blogTitle.length >= 5 && blogDescription.length >= 20 && blogContent.length >= 200);
     }, [blogTitle, blogDescription, blogContent])
 
     useEffect(() => {
@@ -95,6 +102,7 @@ function AdminBlogs(props) {
         setBlogDate(blogs[currentBlog].date);
         setBlogAuthor(blogs[currentBlog].author);
         setBlogDescription(blogs[currentBlog].desc);
+        setBlogDraft(blogs[currentBlog].draft || false);
         axios(`/api/blogs/${blogs[currentBlog]._id || blogs[currentBlog].id}`).then(({data: blog}) =>  {
             setBlogContent(html2md(blog.content));
             setHTMLBlog(blog.content);
@@ -113,7 +121,7 @@ function AdminBlogs(props) {
         setCurrentBlog(i);
         setEditingExisting(true);
     }
-
+    
     const clearEditor = () => {
         if(!confirm("All unsaved changes will be lost. Do you wish to continue?\n\nIf you wish to save the changes, you will need to do so yourself, either online or on your personal computer.")) return;
         setCurrentBlog(null);
@@ -121,6 +129,7 @@ function AdminBlogs(props) {
         setBlogDescription("")
         setBlogAuthor(props.username);
         setBlogContent("");
+        setBlogDraft(false);
         setEditingExisting(false);
     }
 
@@ -137,6 +146,7 @@ function AdminBlogs(props) {
                     <SimpleBar style={{ maxHeight: "78vh" }}>
                         {blogs.map((blog, i) => (
                             <div className={currentBlog === i ? "control-blog selected" : "control-blog"} key={i} onClick={() => selectBlog(i)}>
+                                {blog.draft && <p className="control-blog-draft">DRAFT</p>}
                                 <h3 className="control-blog-title">{blog.name}</h3>
                                 <p className="control-blog-description">{blog.desc.substr(0,50)}...</p>
                             </div>
@@ -146,10 +156,11 @@ function AdminBlogs(props) {
             </div>
             <div id="admin-blogs-editor-container">
                 <div id="blog-editor-details">
-                    <input id="blog-editor-details-title" placeholder="Blog title" value={blogTitle} onChange={(e) => setBlogTitle(e.target.value)} disabled={editingExisting}/>
-                    <input id="blog-editor-details-desc" placeholder="Write a short description for your blog" value={blogDescription} onChange={(e)  => setBlogDescription(e.target.value)} disabled={editingExisting}/>
+                    <input id="blog-editor-details-title" placeholder="Blog title" value={blogTitle} onChange={(e) => setBlogTitle(e.target.value)} disabled={editingExisting && !blogDraft}/>
+                    <input id="blog-editor-details-desc" placeholder="Write a short description for your blog" value={blogDescription} onChange={(e)  => setBlogDescription(e.target.value)} disabled={editingExisting && !blogDraft}/>
                     <div id="blog-details-buttons">
                         <p className={!submittable ? "blog-button disabled" : "blog-button publish"} onClick={() => submittable ? publish() : ''} style={{ display: "flex", alignItems: "center" }}><span className="material-icons">publish</span> Publish this blog post</p>
+                        <p className={!draftable ? "blog-button disabled" : "blog-button publish"} onClick={() => draftable ? publish(true) : ''} style={{ display: "flex", alignItems: "center" }}><span className="material-icons">bookmark_border</span> {blogDraft ? "Save" : currentBlog !== null ? 'Move' : 'Add'} to drafts</p>
                         {currentBlog !== null ? <p className="blog-button delete" onClick={() => deleteBlog()} style={{ display: "flex", alignItems: "center" }}><span className="material-icons">delete</span> Delete blog post</p> : ''}
                     </div>
                 </div>

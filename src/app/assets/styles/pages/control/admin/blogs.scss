@@ -25,6 +25,11 @@
                     font-family: 'Montserrat', sans-serif;
                     font-size: 17px;
                 }
+                &-draft {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 10px;
+                    color: #39923c;
+                }
                 &-description {
                     color: #c4c4c4;
                     font-size: 14px;
@@ -132,6 +137,9 @@
                     }
                     &.publish:hover span {
                         color: #43b581;
+                    }
+                    &.draft:hover span {
+                        color: #81e4e6;
                     }
                     &.delete:hover span {
                         color: #b54343;

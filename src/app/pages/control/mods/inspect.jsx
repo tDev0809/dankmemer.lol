@@ -34,6 +34,10 @@ function ModsInspect(props) {
 							{
 								text: "Store ban",
 								value: "Lootbox"
+							},
+							{
+								text: "Feedback ban",
+								value: "Feedback"
 							}
 						]
 					}}

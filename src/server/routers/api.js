@@ -3,6 +3,7 @@ const { writeFileSync } = require('fs');
 const keys = require('../../../keys.json');
 const adminRouter = require('./admin.js');
 const modsRouter = require('./mods.js');
+const feedbackRouter = require('./feedback');
 const config = require('../../../config.json');
 const boxes = require('../data/boxes.json');
 const blockedCountries = require('../data/blockedCountries.json');
@@ -175,9 +176,10 @@ router.get('/announcement', async (req, res) => {
 
 router.use('/admin', adminRouter);
 router.use('/mods', modsRouter);
+router.use('/feedback', feedbackRouter);
 
 router.get('/blogs', async (req, res) => {
-	let blogs = await db.collection('blogs').find({}).sort({ 'date': -1 }).toArray(); // Get all the available blog posts, sorted by oldest to newest (by timestamp in the document)
+	let blogs = await db.collection('blogs').find({draft: {$in: [false, null]}}).sort({ 'date': -1 }).toArray(); // Get all the available blog posts, sorted by oldest to newest (by timestamp in the document)
 	res.json(blogs)
 });
 
