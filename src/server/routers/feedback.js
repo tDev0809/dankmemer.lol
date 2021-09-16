@@ -410,7 +410,8 @@ router.patch('/post/upvote/:id', async (req, res) => {
 	const upvote = await db
 		.collection("feedback_upvotes")
 		.findOne({
-			pID: id
+			pID: id,
+			uID: user.id
 		});
 
 	if (!upvote) {
