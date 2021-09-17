@@ -340,6 +340,10 @@ router.delete('/post/:id', async (req, res) => {
 		.collection("feedback_posts")
 		.deleteOne({_id: id});
 
+	await db
+		.collection("feedback_upvotes")
+		.deleteMany({pID: id});
+
 	const webhook = config.FeedbackWebhook
 
 	await axios.post(`https://discord.com/api/webhooks/${webhook.webhookID}/${webhook.webhook_token}?wait=true`, {
