@@ -16,7 +16,7 @@ function New(props) {
 
     let [description, setDescription] = useState("");
     let [title, setTitle] = useState("");
-    let [category, setCategory] = useState("currency_items");
+    let [category, setCategory] = useState("");
     let [postState, setPostState] = useState(0);
 	let [postID, setPostID] = useState(null);
 
@@ -35,6 +35,7 @@ function New(props) {
 		
         if (description.length < 20 || description.length > 2000) return;
 		if (title.length < 3 || title.length > 100) return;
+		if (category.length == 0) return
 
 
 		toast.dark(<p><svg viewBox="5 5 40 40" fill="currentColor" style={{display: "inline-block", verticalAlign: "middle", width: "20px", height: "20px", boxSizing: "border-box", margin: "10px", color: "rgb(65, 146, 255)"}}><path d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.5s" repeatCount="indefinite"></animateTransform></path></svg><span style={{ display: "inline-block", verticalAlign: "middle" }}>Submitting your feedback.</span></p>, {
@@ -137,7 +138,7 @@ function New(props) {
 				/>
 			</div>
 			{
-				(title.length >= 3 && title.length <= 100) && (description.length >= 20 && description.length <= 2000)
+				(title.length >= 3 && title.length <= 100) && (description.length >= 20 && description.length <= 2000) && category.length > 0
 				? <button className="feedback-new-submit enabled" onClick={postFeedback}>Submit</button>
 				: <button className="feedback-new-submit disabled">Submit</button>
 			}
