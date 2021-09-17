@@ -185,7 +185,6 @@ function Post(props) {
     useEffect(() => {
         loadComments();
     }, [from]);
-    
     return (
         <div id="feedback-post">
             {!post && !props.isLoading &&
@@ -267,7 +266,9 @@ function Post(props) {
                         {comments.map(comment => 
                             <div key={comment._id} className="comment">
                                 <div className="comment-content">
-                                    <p className={comment.author.developer ? "comment-content-author developer" : "comment-content-author"}>{comment.author.username}#{comment.author.discriminator} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
+                                    <p className={`comment-content-author ${comment.author.developer ? "developer" : comment.author.moderator ? "moderator" : ""}`}>
+                                        {comment.author.username}#{comment.author.discriminator}{(props.isAdmin || props.isModerator) && <span className="material-icons comment-content-author-badge">{props.isAdmin ? "construction" : "local_police"}</span>} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span>
+                                    </p>
                                     <p className="comment-content-text">{comment.comment.split('\n').map(str => <p>{str}</p>)}</p>
                                 </div>
                                 <div className="comment-actions">

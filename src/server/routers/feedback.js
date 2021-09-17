@@ -335,7 +335,6 @@ router.delete('/post/:id', async (req, res) => {
 		return res.status(401).json({ error: 'It\'s not your post.' });
 	}
 
-
 	await db
 		.collection("feedback_posts")
 		.deleteOne({_id: id});
@@ -627,7 +626,8 @@ router.post('/comment', async (req, res) => {
 				id: user.id,
 				discriminator: user.discriminator,
 				username: user.username,
-				developer: user.isAdmin
+				developer: user.isAdmin,
+				moderator: user.isModerator
 			}	
 		});
 
