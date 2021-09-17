@@ -113,11 +113,24 @@ function Post(props) {
     	});
 
 		setCommentState(res.status);
+        setComments([...comments, {
+            comment: comment,
+            createdAt: Date.now(),
+            author: {
+                id: props.id,
+                discriminator: props.discriminator,
+                username: props.username,
+                developer: props.isAdmin,
+                moderator: props.isModerator
+            }	
+        }]);
 	}
 
     const changeLabel = (id, label) => {
         axios.patch(`/api/feedback/post/label/${id}?label=${label}`).then(({data}) => {
-            location.reload(); // TODO: useState one day
+          const copy = {...post};
+          copy.label = label;
+          setPost(copy);
         });
         return setDropdownOpen(false);
     }
@@ -129,7 +142,6 @@ function Post(props) {
 				toast.update('commentState', {
 					render: <p><svg viewBox="0 0 16 16" fill="currentColor" style={{display: "inline-block", verticalAlign: "middle", width: "20px", height: "20px", boxSizing: "border-box", margin: "10px", color: "rgb(50, 211, 139)"}}><path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path></svg><span style={{ display: "inline-block", verticalAlign: "middle" }}>Your comment has been submitted.</span></p>
 				});
-                location.reload();
 				break;
 			case 401:
 				toast.update('commentState', {
