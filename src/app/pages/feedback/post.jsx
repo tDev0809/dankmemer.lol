@@ -245,7 +245,7 @@ function Post(props) {
                     </div>
                 </div>
                 <div id="feedback-post-content">
-                    <p>{post.description}</p>
+                    <p>{post.description.split('\n').map(str => <p>{str}</p>)}</p>
                 </div>
                 <div id="feedback-post-comments">
                     <h2>Comments ({post.comments})</h2>
@@ -268,7 +268,7 @@ function Post(props) {
                             <div key={comment._id} className="comment">
                                 <div className="comment-content">
                                     <p className={comment.author.developer ? "comment-content-author developer" : "comment-content-author"}>{comment.author.username}#{comment.author.discriminator} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span></p>
-                                    <p className="comment-content-text">{comment.comment}</p>
+                                    <p className="comment-content-text">{comment.comment.split('\n').map(str => <p>{str}</p>)}</p>
                                 </div>
                                 <div className="comment-actions">
                                     {!comment.deleted && props.loggedIn && (props.id === comment.author.id || props.isAdmin || props.isModerator) &&
