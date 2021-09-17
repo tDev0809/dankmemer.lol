@@ -68,10 +68,12 @@ router.get('/categoriesCount', async (req, res) => {
 router.get('/posts/:category', async (req, res) => {
 	const { category } = req.params;
 	const { user } = req.session;
-	
+	const staff = user?.isAdmin || user?.isModerator
+
 	if (!category && !feedbackCategories.includes(category)) {
 		return res.status(500).json({ message: 'This category does not exist.' });
 	}
+
 	const from = Number(req.query.from) || 0;
 	const amount = Number(req.query.amount) || 10;
 	const sorting = req.query.sorting || "Hot";
@@ -86,7 +88,9 @@ router.get('/posts/:category', async (req, res) => {
 		.aggregate([
 			{
 				$match: category === "all" 
-					? {_id: {$ne: ""}}
+					? {
+						_id: {$ne: ""}
+					}
 					: {
 						category: category,
 						label: filter === "all posts"
@@ -111,6 +115,7 @@ router.get('/posts/:category', async (req, res) => {
 				$addFields: {
 					upvotes: {$size: "$upvotedUsers"},
 					comments: {$size: "$commentsData"},
+					bad: {$or: [{$eq: ["$label", "invalid"]}, {$eq: ["$label", "duplicate"]}]}
 				},
 			}, {
 				$addFields: {
@@ -185,13 +190,17 @@ router.get('/posts/:category', async (req, res) => {
 			}, {
 				$addFields: {
 					upvoted: {$ne: [{$size: "$upvotedUser"}, 0]},
-					developerResponse: {$ne: [{$size: "$developerComments"}, 0]}
+					developerResponse: {$ne: [{$size: "$developerComments"}, 0]},
+					show: { $or: [
+						staff ? true : {$eq: ["$bad", false]},
+						{$eq: ["$author.id", user?.id]}
+					]},
 				},
 			}, { 
 				$unset: ["upvotedUsers", "upvotedUser", "commentsData", "developerComments"]
 			}, {
 				$sort: sorting === "Top"
-					? { upvotes: -1, createdAt: -1 }
+					? { upvotes: -1, createdAt: -1, }
 					: (sorting === "New"
 						? { createdAt: -1 }
 						: (sorting === "Hot"
@@ -199,6 +208,8 @@ router.get('/posts/:category', async (req, res) => {
 							: { createdAt: 1 }
 						)
 					)
+			}, {
+				$match: {show: true}
 			}, {
 				$skip: from
 			}, {
@@ -238,7 +249,8 @@ router.get('/post/:id', async (req, res) => {
 			{
 				$addFields: {
 					upvotes: {$size: "$upvotedUsers"},
-					comments: {$size: "$commentsData"}
+					comments: {$size: "$commentsData"},
+					bad: {$or: [{$eq: ["$label", "invalid"]}, {$eq: ["$label", "duplicate"]}]}
 				},
 			}, {
 				$addFields: {

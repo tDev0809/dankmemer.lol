@@ -202,6 +202,7 @@ function Post(props) {
             <>
                 <div id="feedback-post-head" className={headColumn ? "column" : ""}>
                     <div id="feedback-post-head-details">
+                        {post.bad && <h5 style={{color: "yellow"}}>This post is only visible to moderators and you.</h5>}
                         <h1 id="feedback-post-head-details-title">{post && post.title}</h1>
                         {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
                         {post.label && post.label.length >= 1 && <span className={"feedback-post-tag " + post.label.split(" ").join("-")}>{post.label.charAt(0).toUpperCase() + post.label.substr(1).toLowerCase()}</span>}
