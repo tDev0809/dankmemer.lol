@@ -58,6 +58,11 @@
             border-color: #951919;
             background-color: rgba(149, 25, 25, 0.33);
         }
+        &.invalid {
+            color: #f0cece;
+            border-color: #951919;
+            background-color: rgba(149, 25, 25, 0.33);
+        }
     }
     &-content {
         &-title { 

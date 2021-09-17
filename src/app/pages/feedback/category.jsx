@@ -15,7 +15,8 @@ const LABEL_FILTERS = [
     "implemented",
     // "developer response",
     "duplicate",
-    "denied"
+    "denied",
+    "invalid"
 ];
 
 function FeedbackCategory(props) {

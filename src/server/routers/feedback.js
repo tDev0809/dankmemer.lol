@@ -14,9 +14,9 @@ const LABEL_FILTERS = [
     "all posts",
     "accepted",
     "implemented",
-    // "developer response",
     "duplicate",
-    "denied"
+    "denied",
+	"invalid"
 ];
 
 function generateReadableID () {

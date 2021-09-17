@@ -10,7 +10,8 @@ const LABELS = [
     "accepted",
     "implemented",
     "duplicate",
-    "denied"
+    "denied",
+    "invalid"
 ]
 
 function Post(props) {
