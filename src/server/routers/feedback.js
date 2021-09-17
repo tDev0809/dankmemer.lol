@@ -4,6 +4,7 @@ const db = require('../util/db.js');
 const items = require('../data/items.json');
 const feedbackCategories = require('../data/feedbackCategories.json');
 const recentPosts = new Set();
+const recentUpvotes = new Set(); // TODO: move to redis one day, maybe in rewrite
 const recentComments = new Set();
 const config = require('../../../config.json');
 const axios = require('axios');
@@ -410,6 +411,13 @@ router.patch('/post/upvote/:id', async (req, res) => {
 	if (!user) {
 		return res.status(401).json({ error: 'Get away you sick filth.' });
 	}
+
+	if (recentUpvotes.has(user.id)) {
+		return res.status(429).json({ error: 'You\'re doing that too often.' });
+	}
+
+	recentUpvotes.add(user.id);
+	setTimeout(() => recentUpvotes.delete(user.id), 2 * 1000);
 
 	const post = await db
 		.collection("feedback_posts")
