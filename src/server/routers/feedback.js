@@ -90,7 +90,7 @@ router.get('/posts/:category', async (req, res) => {
 					: {
 						category: category,
 						label: filter === "all posts"
-							? {$ne: ""}
+							? {$ne: "."}
 							: filter 
 					}
 			}, {
