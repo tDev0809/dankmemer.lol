@@ -116,7 +116,8 @@ router.get('/posts/:category', async (req, res) => {
 				$addFields: {
 					upvotes: {$size: "$upvotedUsers"},
 					comments: {$size: "$commentsData"},
-					bad: {$or: [{$eq: ["$label", "invalid"]}, {$eq: ["$label", "duplicate"]}]}
+					bad: {$or: [{$eq: ["$label", "invalid"]}, {$eq: ["$label", "duplicate"]}]},
+					denyInt: {$cond: [{$eq: ["$label", "denied"]}, -1, 1]} 
 				},
 			}, {
 				$addFields: {
@@ -205,7 +206,7 @@ router.get('/posts/:category', async (req, res) => {
 					: (sorting === "New"
 						? { createdAt: -1 }
 						: (sorting === "Hot"
-							? { hot: -1, createdAt: -1 }
+							? { denyInt: -1, hot: -1, createdAt: -1}
 							: { createdAt: 1 }
 						)
 					)
