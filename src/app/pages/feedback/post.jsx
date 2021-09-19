@@ -283,8 +283,13 @@ function Post(props) {
                         {comments.map(comment => 
                             <div key={comment._id} className="comment">
                                 <div className="comment-content">
-                                    <p className={`comment-content-author ${comment.author.developer ? "developer" : comment.author.moderator ? "moderator" : ""}`}>
-                                        {comment.author.username}#{comment.author.discriminator}{(comment.author.moderator || comment.author.developer) && <span className="material-icons comment-content-author-badge" title="Dank Memer developer">{comment.author.developer ? "construction" : "local_police"}</span>} <span className="comment-post-time">{formatRelative(new Date(comment.createdAt), new Date())}</span>
+                                    <p className={`comment-content-author${comment.author.developer ? " developer" : comment.author.moderator ? " moderator" : ""}`}>
+                                        {comment.author.username}#{comment.author.discriminator}
+                                        {comment.author.developer ?
+                                        <span className="material-icons comment-content-author-badge" title="Dank Memer developer">construction</span>
+                                        : comment.author.moderator ?
+                                        <span className="material-icons comment-content-author-badge" title="Dank Memer moderator">local_police</span>
+                                        : ''} <span className="comment-post-time">{formatRelative(new Date(comment.createdAt), new Date())}</span>
                                     </p>
                                     <p className="comment-content-text">{comment.comment.split('\n').map(str => <p>{str}</p>)}</p>
                                 </div>
