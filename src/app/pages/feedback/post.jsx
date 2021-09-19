@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import { format as dateFormat, formatRelative } from 'date-fns';
+
 import '../../assets/styles/pages/feedback/post.scss'
 import Logo from 'assets/img/memer.png';
 
@@ -198,6 +200,7 @@ function Post(props) {
     useEffect(() => {
         loadComments();
     }, [from]);
+
     return (
         <div id="feedback-post">
             {!post && !props.isLoading &&
@@ -218,7 +221,7 @@ function Post(props) {
                         <h1 id="feedback-post-head-details-title">{post && post.title}</h1>
                         {post.developerResponse && <span className={"feedback-post-tag developer-response"}>Developer Response</span>}
                         {post.label && post.label.length >= 1 && <span className={"feedback-post-tag " + post.label.split(" ").join("-")}>{post.label.charAt(0).toUpperCase() + post.label.substr(1).toLowerCase()}</span>}
-                        <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {new Date(post.createdAt).toLocaleString()}</p>
+                        <p id="feedback-post-head-details-author">Suggested by {post.author.username}#{post.author.discriminator} at {dateFormat(new Date(post.createdAt), "dd/MM/yy, K:mm:ss aaa")}</p>
                     </div>
                     <div id="feedback-post-head-controls">
                         {props.loggedIn && (props.isAdmin || props.isModerator) &&
@@ -281,7 +284,7 @@ function Post(props) {
                             <div key={comment._id} className="comment">
                                 <div className="comment-content">
                                     <p className={`comment-content-author ${comment.author.developer ? "developer" : comment.author.moderator ? "moderator" : ""}`}>
-                                        {comment.author.username}#{comment.author.discriminator}{(comment.author.moderator || comment.author.developer) && <span className="material-icons comment-content-author-badge" title="Dank Memer developer">{comment.author.developer ? "construction" : "local_police"}</span>} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span>
+                                        {comment.author.username}#{comment.author.discriminator}{(comment.author.moderator || comment.author.developer) && <span className="material-icons comment-content-author-badge" title="Dank Memer developer">{comment.author.developer ? "construction" : "local_police"}</span>} <span className="comment-post-time">{formatRelative(new Date(comment.createdAt), new Date())}</span>
                                     </p>
                                     <p className="comment-content-text">{comment.comment.split('\n').map(str => <p>{str}</p>)}</p>
                                 </div>
