@@ -227,8 +227,8 @@ function FeedbackCategory(props) {
                 </div>
             )}
             {!all &&
-                <div onClick={loadPosts} className="load-more">
-                    <p>Load more comments...</p>
+                <div onClick={() => loadPosts()} className="load-more">
+                    <p>Load more posts...</p>
                 </div>
             }
             <ToastContainer />
