@@ -215,6 +215,12 @@ function Post(props) {
             </div>}
             {post &&
             <>
+                {window.history.length > 1 &&
+                    <p onClick={() => history.back()} className="go-back">
+                        <span className="material-icons">arrow_back</span>
+                        Go back
+                    </p>
+                }
                 <div id="feedback-post-head" className={headColumn ? "column" : ""}>
                     <div id="feedback-post-head-details">
                         {post.bad && <h5 style={{color: "yellow"}}>This post is only visible to moderators and you.</h5>}

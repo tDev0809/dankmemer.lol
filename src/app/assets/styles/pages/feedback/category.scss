@@ -2,6 +2,9 @@
     max-width: 1335px;
     width: 90vw;
     margin: 0 auto;
+	.go-back {
+		margin-top: 6vh;
+	}
 	&-sorting-desktop {
 		position: relative;
 		display: flex;
@@ -120,7 +123,6 @@
         justify-content: space-between;
         align-items: center;
 
-        margin-top: 6vh;
         margin-bottom: 20px;
         &-button {
 			position: relative;

@@ -102,6 +102,12 @@ function FeedbackCategory(props) {
     // TODO: (Badosz) sorting by upvotes, creation date
     return (
         <div id="feedback-category">
+            {window.history.length >= 1 &&
+                <p onClick={() => history.goBack()} className="go-back">
+                    <span className="material-icons">arrow_back</span>
+                    Go back
+                </p>
+            }
             <div id="feedback-category-head">
                 <h1 id="feedback-category-head-title">{category.replace(category[0], category[0].toUpperCase()).replaceAll("_", " ")} feedback</h1>
                 <div id="feedback-category-head-button">

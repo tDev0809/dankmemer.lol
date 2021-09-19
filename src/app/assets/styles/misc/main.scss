@@ -70,6 +70,23 @@ body {
         font-weight: inherit;
     }
 
+    .go-back {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        user-select: none;
+        max-width: max-content;
+        transition: color ease-in-out .2s;
+        .material-icons {
+            margin-right: 5px;
+            font-size: 18px;
+        }
+        &:hover {
+            color: #56c75a;
+            cursor: pointer;
+        }
+    }
+
 	#bottom-cta {
 		width: 100%;
 		display: grid;
