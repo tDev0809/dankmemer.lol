@@ -281,7 +281,7 @@ function Post(props) {
                             <div key={comment._id} className="comment">
                                 <div className="comment-content">
                                     <p className={`comment-content-author ${comment.author.developer ? "developer" : comment.author.moderator ? "moderator" : ""}`}>
-                                        {comment.author.username}#{comment.author.discriminator}{(comment.author.moderator || comment.author.developer) && <span className="material-icons comment-content-author-badge">{comment.author.developer ? "construction" : "local_police"}</span>} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span>
+                                        {comment.author.username}#{comment.author.discriminator}{(comment.author.moderator || comment.author.developer) && <span className="material-icons comment-content-author-badge" title="Dank Memer developer">{comment.author.developer ? "construction" : "local_police"}</span>} <span className="comment-post-time">at {new Date(comment.createdAt).toLocaleString().split(",")[1].split(":").slice(0,2).join(":")}{new Date(comment.createdAt).toLocaleString().split(",")[1].split(" ").pop()} {new Date(comment.createdAt).toLocaleString().split(",")[0]}</span>
                                     </p>
                                     <p className="comment-content-text">{comment.comment.split('\n').map(str => <p>{str}</p>)}</p>
                                 </div>

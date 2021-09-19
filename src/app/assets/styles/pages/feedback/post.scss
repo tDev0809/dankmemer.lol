@@ -12,7 +12,7 @@
         }
         &-details {
             &-title {
-                word-break: break-all;
+                overflow-wrap: break-word;
             }
             &-author {
                 color: #B8B8B8;
@@ -248,10 +248,14 @@
         &-content {
             width: 100%;
             &-author {
+                display: flex;
+                align-items: center;
                 .comment-post-time { color: #B8B8B8; }
                 &-badge {
                     font-size: 16px;
-                    margin-left: 5px;
+                    margin: 0 5px;
+                    cursor: default;
+                    user-select: none;
                 }
                 &.developer {
                     color: #199532
