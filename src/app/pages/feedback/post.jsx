@@ -268,7 +268,7 @@ function Post(props) {
                     </div>
                 </div>
                 <div id="feedback-post-content">
-                    <p>{post.description.split('\n').map(str => <p>{str}</p>)}</p>
+                    {post.description.split('\n').map(str => <p>{str}</p>)}
                 </div>
                 <div id="feedback-post-comments">
                     <h2>Comments ({post.comments})</h2>
@@ -312,9 +312,11 @@ function Post(props) {
                                 <br/>
                             </div>
                         )}
-                        {!all && <div onClick={loadNewComments}>
-                            Load More Comments
-                        </div>}
+                        {!all &&
+                            <div onClick={loadNewComments} className="load-more">
+                                <p>Load more comments...</p>
+                            </div>
+                        }
                     </div>
                 </div>
                 <ToastContainer />

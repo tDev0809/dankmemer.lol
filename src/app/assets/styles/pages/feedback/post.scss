@@ -181,8 +181,11 @@
             }
         }
     }
+    &-content {
+        color: #DEF4E7;
+    }
     &-comments {
-        margin-top: 3vh;
+        margin-top: 5vh;
         &-notice {
             margin-bottom: 10px;
 
@@ -239,6 +242,7 @@
 
 #feedback-comments {
     margin-top: 70px;
+    margin-bottom: 2vh;
     .comment {
         display: flex;
         justify-content: space-between;
@@ -251,6 +255,7 @@
             &-author {
                 display: flex;
                 align-items: center;
+                color: #CFECCB;
                 .comment-post-time {
                     color: #B8B8B8;
                     margin-left: 5px;
