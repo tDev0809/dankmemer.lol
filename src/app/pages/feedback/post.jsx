@@ -126,6 +126,7 @@ function Post(props) {
                 moderator: props.isModerator
             }	
         }]);
+        setComment("");
 	}
 
     const changeLabel = (id, label) => {
@@ -277,7 +278,8 @@ function Post(props) {
                             id="feedback-post-comments-ta"
                             maxLength={1024} 
                             onChange={(e) => setComment(e.target.value)} 
-                            placeholder={"Comment"}
+                            value={comment}
+                            placeholder={"Feedback for this feedback post... feedbackception"}
                         />
                         {
                             (comment.length >= 5 && comment.length <= 1024)
