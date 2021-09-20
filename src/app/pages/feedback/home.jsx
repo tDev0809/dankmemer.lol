@@ -12,12 +12,14 @@ function Home(props) {
     const history = useHistory();
     const [feedbackCategories, setFeedbackCategories] = useState(null);
     const [posts, setPosts] = useState([]);
+    const [postsLoaded, setPostsLoaded] = useState(false)
 
     useEffect(() => {
         axios(`/api/feedback/categoriesCount`).then((data) => {
             setFeedbackCategories(data.data);
         })
         axios(`/api/feedback/posts/all?from=0&amount=5`).then(({data}) => {
+            setPostsLoaded(true)
             setPosts([...posts, ...data.posts]);
         });
     }, []) 
@@ -58,9 +60,15 @@ function Home(props) {
                         <p className="feedback-home-category-posts">{`${posts} post${posts === 1 ? "": "s"}`}</p>
                     </div>
                 )}
+                {!feedbackCategories && new Array(4).fill("...").map((placeholder, i) => 
+                    <div tabIndex={i + 1} key={i} className="feedback-home-category">
+                        <h3 className="feedback-home-category-title">{placeholder}</h3>
+                        <p className="feedback-home-category-posts">{placeholder}</p>
+                    </div>
+                )}
             </div>
             <h3 id="feedback-home-head-hot">Latest hot posts:</h3>
-            {posts.map((post, i) => 
+            {postsLoaded && posts.map((post, i) => 
                 <div key={post._id} className="feedback-post" onClick={() => history.push(`/feedback/p/${post._id}`)}>    
                     <div className="feedback-post-content">
                         <h3 className="feedback-post-content-title">
@@ -82,6 +90,26 @@ function Home(props) {
                                 : <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"></path></svg> 
                             }
                             <p>{post.upvotes}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {!postsLoaded && new Array(5).fill("...").map((post, i) => 
+                <div key={i} className="feedback-post">    
+                    <div className="feedback-post-content">
+                        <h3 className="feedback-post-content-title">
+                            <p>...</p>
+                        </h3>
+                        <p className="feedback-post-content-description">.....................................</p>
+                    </div>
+                    <div className="feedback-post-stats">
+                        <div className="feedback-post-stats-comments">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" /><path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" /></svg>
+                            <p className="feedback-post-stats-comments-count">0</p>
+                        </div>
+                        <div className="feedback-post-stats-button">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601 17.919 12H15z"></path></svg> 
+                            <p>0</p>
                         </div>
                     </div>
                 </div>
