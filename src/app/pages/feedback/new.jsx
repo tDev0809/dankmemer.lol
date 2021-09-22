@@ -102,6 +102,7 @@ function New(props) {
     // TODO: (Badosz) display discord login button when not logged in
     return (
 		<div id="feedback-new">
+			<p id="feedback-new-notice">This is strictly for feedback only! We will not provide support through the feedback pages. If you are looking for help with Dank Memer join <a href="https://discord.gg/meme">our support server</a>.</p>
 			<div id="feedback-new-header">
 				<h1 id="feedback-new-header-title">Give us Feedback</h1>
 				<p id="feedback-new-header-info">Do you have an opinion or suggestion about the bot? Fill out this form and we will look over them. Make sure that there isn't a feedback post on your topic by searching through the category feeds. Warning: This is NOT for support, your post will just be deleted.</p>

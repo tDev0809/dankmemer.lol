@@ -2,6 +2,21 @@
     max-width: 1335px;
     width: 50vw;
     margin: 5vh auto 0 auto;
+    &-notice {
+        width: 80%;
+        margin: 0 auto 5vh auto;
+        padding: 10px 15px;
+        border-radius: 5px;
+
+        text-align: center;
+        color: #ffffff;
+        background: #db4747;
+        box-shadow: 0px 0px 20px #db4747b9;
+        a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    }
     &-header {
         margin-bottom: 30px;
         &-info {
