@@ -33,6 +33,7 @@
     "react-markdown-editor-lite": "^1.2.4",
     "react-paypal-button-v2": "^2.6.2",
     "react-toastify": "^6.2.0",
+    "react-tooltip": "^4.2.21",
     "simplebar-react": "^2.3.0",
     "string.prototype.matchall": "^4.0.0"
   },

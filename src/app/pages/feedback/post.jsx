@@ -6,6 +6,7 @@ import { format as dateFormat, formatRelative } from 'date-fns';
 
 import '../../assets/styles/pages/feedback/post.scss'
 import Logo from 'assets/img/memer.png';
+import ReactTooltip from 'react-tooltip';
 
 const LOAD_COMMENTS_AMOUNT = 10;
 const LABELS = [
@@ -202,6 +203,30 @@ function Post(props) {
         loadComments();
     }, [from]);
 
+    const copyAccountId = (id) => {
+        navigator.clipboard.writeText(id).then(() => {
+            toast.dark(<p><svg viewBox="0 0 16 16" fill="currentColor" style={{display: "inline-block", verticalAlign: "middle", width: "20px", height: "20px", boxSizing: "border-box", margin: "10px", color: "rgb(50, 211, 139)"}}><path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path></svg><span style={{ display: "inline-block", verticalAlign: "middle" }}>Account ID copied.</span></p>, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                toastId: 'commentState'
+            });
+        }).catch(() => {
+            toast.dark(<p><svg viewBox="0 0 16 16" fill="currentColor" style={{display: "inline-block", verticalAlign: "middle", width: "20px", height: "20px", boxSizing: "border-box", margin: "10px", color: "rgb(233, 76, 88)"}}><path fillRule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path></svg><span style={{ display: "inline-block", verticalAlign: "middle" }}>Unable to copy ID.</span></p>, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                toastId: 'commentState'
+            });
+        })
+    }
+
     return (
         <div id="feedback-post">
             {!post && !props.isLoading &&
@@ -292,12 +317,21 @@ function Post(props) {
                             <div key={comment._id} className="comment">
                                 <div className="comment-content">
                                     <p className={`comment-content-author${comment.author.developer ? " developer" : comment.author.moderator ? " moderator" : ""}`}>
-                                        {comment.author.username}#{comment.author.discriminator}
-                                        {comment.author.developer ?
-                                        <span className="material-icons comment-content-author-badge" title="Dank Memer developer">construction</span>
-                                        : comment.author.moderator ?
-                                        <span className="material-icons comment-content-author-badge" title="Dank Memer moderator">local_police</span>
-                                        : ''} <span className="comment-post-time">{formatRelative(new Date(comment.createdAt), new Date())}</span>
+                                        <span data-tip data-for="account-id" onClick={() => copyAccountId(comment.author.id)}>
+                                            {comment.author.username}#{comment.author.discriminator}
+                                            {comment.author.developer ?
+                                            <span className="material-icons comment-content-author-badge" title="Dank Memer developer">construction</span>
+                                            : comment.author.moderator ?
+                                            <span className="material-icons comment-content-author-badge" title="Dank Memer moderator">local_police</span>
+                                            : ''}
+                                        </span>
+                                        {props.isAdmin || props.isModerator ?
+                                        <ReactTooltip id="account-id" place="top" type="dark" effect="solid" delayHide={300}>
+                                            <span>User ID: {comment.author.id}</span>
+                                            <p>Click author to copy</p>
+                                        </ReactTooltip>
+                                    : ''}
+                                        <span className="comment-post-time">{formatRelative(new Date(comment.createdAt), new Date())}</span>
                                     </p>
                                     <p className="comment-content-text">{comment.comment.split('\n').map(str => <p>{str}</p>)}</p>
                                 </div>
