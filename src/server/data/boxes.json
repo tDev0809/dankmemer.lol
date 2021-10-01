@@ -3,7 +3,7 @@
       "name": "Meme Box",
       "id": 0,
       "description": "Something actually worth opening.",
-      "yield": "5,000 - 20,000",
+      "yield": "250,000 - 750,000",
       "randomItem": {
         "keyword": "medium",
         "chance": 1
@@ -87,12 +87,12 @@
       "name": "Dank Box",
       "id": 1,
       "description": "Dank rewards for a dank user.",
-      "yield": "50,000 - 150,000",
+      "yield": "500,000 - 1,000,000",
       "randomItem": {
         "keyword": "high",
         "chance": 1
       },
-      "price": 3.99,
+      "price": 2.49,
       "items": [
         {
           "name": "pepecoin",
@@ -180,13 +180,21 @@
       "name": "God Box",
       "id": 2,
       "description": "This is a really op box.",
-      "yield": "200,000 - 300,000",
+      "yield": "1,200,000 - 2,000,000",
       "randomItem": {
         "keyword": "GOD",
         "chance": 1
       },
       "price": 4.99,
       "items": [
+        {
+          "name": "cutters",
+          "amount": "1"
+        },
+        {
+          "name": "melmsiebeard",
+          "amount": "1"
+        },
         {
           "name": "pepetrophy",
           "amount": "1"
@@ -218,6 +226,14 @@
         {
           "name": "pinkphallicobject",
           "amount": "420"
+        },
+        {
+          "name": "multiphallicobject",
+          "amount": "5"
+        },
+        {
+          "name": "goldenphallicobject",
+          "amount": "5"
         },
         {
           "name": "lifesaver",
