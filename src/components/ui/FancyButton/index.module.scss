@@ -13,25 +13,4 @@
 	transition: transform ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
 	box-sizing: border-box;
 	cursor: pointer;
-
-	&-bg {
-		content: "";
-		position: absolute;
-		top: 7px;
-		left: 7px;
-		height: calc(100% - 7px);
-		width: calc(100% - 7px);
-		background: #0b110c;
-		border: 3px solid #14763d;
-		transition: all ease-in-out 0.1s;
-
-		// TODO: (Blue) figure out how to check hover on parent, couldn't make it
-		// useful to console.log(styles) in tsx file
-		&:hover {
-			top: 0;
-			left: 0;
-			height: calc(100% - 7px);
-			width: calc(100% - 7px);
-		}
-	}
 }

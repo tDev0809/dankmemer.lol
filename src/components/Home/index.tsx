@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BottomCTA from "../sections/BottomCTA";
 import Container from "../ui/Container";
 import FancyButton from "../ui/FancyButton";
 import styles from "./index.module.scss";
@@ -102,6 +103,7 @@ export function HomePage() {
 					{/* <div id="nitropay-home-top" className="nitropay" /> */}
 				</div>
 				<Quickinfo mobile={mobile} />
+				<BottomCTA />
 			</div>
 		</Container>
 	);

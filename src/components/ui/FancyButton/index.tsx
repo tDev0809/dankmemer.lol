@@ -13,7 +13,6 @@ export default function FancyButton({ text, link }: Props) {
 				<a className={styles["button"]} rel="noreferrer noopener">
 					{text}
 				</a>
-				<span className={styles["button-bg"]}></span>
 			</div>
 		</Link>
 	);
