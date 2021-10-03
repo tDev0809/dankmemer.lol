@@ -88,3 +88,30 @@
 		}
 	}
 }
+
+.info-cards {
+	display: grid;
+	place-items: center;
+	&-card {
+		background: #080c08;
+		border-radius: 5px;
+		padding: 20px 30px;
+		width: 240px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		margin-bottom: 40px;
+		&-icon {
+			display: grid;
+			place-items: center;
+			background: rgba(20, 118, 61, 0.09);
+			min-width: 45px;
+			min-height: 45px;
+			border-radius: 50%;
+			color: #199532;
+			margin-bottom: 20px;
+		}
+	}
+}

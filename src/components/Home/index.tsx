@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "../ui/Container";
 import FancyButton from "../ui/FancyButton";
 import styles from "./index.module.scss";
@@ -37,6 +37,18 @@ function Trianagle({ scale, translate, rotate }: TrianagleProps) {
 export function HomePage() {
 	const [perspective, setPerspective] = useState<[number, number]>([0, 0]);
 	const [mobile, setMobile] = useState(false);
+
+	const handleResize = () => {
+		setMobile(document.documentElement.clientWidth < 900);
+	};
+
+	useEffect(() => {
+		handleResize();
+
+		window.addEventListener("resize", () => {
+			handleResize();
+		});
+	}, []);
 
 	return (
 		<Container title="Home">
@@ -204,30 +216,16 @@ export function HomePage() {
 							</div>
 						</div>
 					) : (
-						<div id="home-info-cards">
-							<div className="home-card">
-								<div className="home-card-icon">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										strokeWidth="2"
-										strokeLinecap="square"
-										strokeLinejoin="bevel"
-									>
-										<line
-											x1="12"
-											y1="1"
-											x2="12"
-											y2="23"
-										></line>
-										<path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-									</svg>
+						<div className={styles["info-cards"]}>
+							<div className={styles["info-cards-card"]}>
+								<div className={styles["info-cards-card-icon"]}>
+									<FontAwesomeIcon icon={faDollarSign} />
 								</div>
-								<div className="home-card-content">
+								<div
+									className={
+										styles["info-cards-card-content"]
+									}
+								>
 									<h4>Money, Money, Money</h4>
 									<p>
 										Experience one of the most unique
@@ -235,13 +233,15 @@ export function HomePage() {
 									</p>
 								</div>
 							</div>
-							<div className="home-card">
-								<div className="home-card-icon">
-									<span className="material-icons-outlined">
-										emoji_emotions
-									</span>
+							<div className={styles["info-cards-card"]}>
+								<div className={styles["info-cards-card-icon"]}>
+									<FontAwesomeIcon icon={faSmileWink} />
 								</div>
-								<div className="home-card-content">
+								<div
+									className={
+										styles["info-cards-card-content"]
+									}
+								>
 									<h4>Even Some Funny Jokes</h4>
 									<p>
 										100+ meme-related commands, you can have
@@ -250,13 +250,15 @@ export function HomePage() {
 									</p>
 								</div>
 							</div>
-							<div className="home-card">
-								<div className="home-card-icon">
-									<span className="material-icons">
-										groups
-									</span>
+							<div className={styles["info-cards-card"]}>
+								<div className={styles["info-cards-card-icon"]}>
+									<FontAwesomeIcon icon={faUsers} />
 								</div>
-								<div className="home-card-content">
+								<div
+									className={
+										styles["info-cards-card-content"]
+									}
+								>
 									<h4>More Than I Can Count</h4>
 									<p>
 										Even if you don't have friends, there
@@ -265,13 +267,15 @@ export function HomePage() {
 									</p>
 								</div>
 							</div>
-							<div className="home-card">
-								<div className="home-card-icon">
-									<span className="material-icons">
-										settings
-									</span>
+							<div className={styles["info-cards-card"]}>
+								<div className={styles["info-cards-card-icon"]}>
+									<FontAwesomeIcon icon={faCog} />
 								</div>
-								<div className="home-card-content">
+								<div
+									className={
+										styles["info-cards-card-content"]
+									}
+								>
 									<h4>Just Right, For You</h4>
 									<p>
 										You are able to change specific elements
