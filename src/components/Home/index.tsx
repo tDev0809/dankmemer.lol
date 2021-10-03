@@ -2,6 +2,13 @@ import { useState } from "react";
 import Container from "../ui/Container";
 import FancyButton from "../ui/FancyButton";
 import styles from "./index.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faCog,
+	faDollarSign,
+	faSmileWink,
+	faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface TrianagleProps {
 	scale: number;
@@ -113,25 +120,7 @@ export function HomePage() {
 											]
 										}
 									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="24"
-											height="24"
-											viewBox="0 0 24 24"
-											fill="none"
-											stroke="currentColor"
-											strokeWidth="2"
-											strokeLinecap="square"
-											strokeLinejoin="bevel"
-										>
-											<line
-												x1="12"
-												y1="1"
-												x2="12"
-												y2="23"
-											></line>
-											<path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-										</svg>
+										<FontAwesomeIcon icon={faDollarSign} />
 									</div>
 									<div>
 										<h4>Money, Money, Money</h4>
@@ -153,9 +142,7 @@ export function HomePage() {
 											]
 										}
 									>
-										<span className="material-icons-outlined">
-											emoji_emotions
-										</span>
+										<FontAwesomeIcon icon={faSmileWink} />
 									</div>
 									<div>
 										<h4>Even Some Funny Jokes</h4>
@@ -180,9 +167,7 @@ export function HomePage() {
 											]
 										}
 									>
-										<span className="material-icons">
-											groups
-										</span>
+										<FontAwesomeIcon icon={faUsers} />
 									</div>
 									<div>
 										<h4>More Than I Can Count</h4>
@@ -205,9 +190,7 @@ export function HomePage() {
 											]
 										}
 									>
-										<span className="material-icons">
-											settings
-										</span>
+										<FontAwesomeIcon icon={faCog} />
 									</div>
 									<div>
 										<h4>Just Right, For You</h4>

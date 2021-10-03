@@ -2,6 +2,13 @@ import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles.scss";
+import { config, dom } from "@fortawesome/fontawesome-svg-core";
+import { createGlobalStyle } from "styled-components";
+
+config.autoAddCss = false;
+const GlobalStyles = createGlobalStyle`
+    ${dom.css()}
+`;
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
@@ -74,6 +81,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				href="https://fonts.googleapis.com/css2?family=Inter"
 				rel="stylesheet"
 			/>
+			<GlobalStyles />
 			<Component {...pageProps} />
 		</>
 	);
