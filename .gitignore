@@ -1,7 +1,0 @@
-node_modules/
-.vscode/
-.DS_STORE
-config\.json
-keys.json
-debug\.log
-yarn.lock
