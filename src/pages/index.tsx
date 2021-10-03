@@ -1,3 +1,1 @@
-export default function Index() {
-	return <div>Hello</div>;
-}
+export { HomePage as default } from "../components/Home";
