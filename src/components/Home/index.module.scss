@@ -38,3 +38,46 @@
 		position: relative;
 	}
 }
+
+@media only screen and (max-width: 1090px) {
+	.hero {
+		&-svg {
+			display: none;
+		}
+	}
+}
+
+@media only screen and (max-width: 690px) {
+	.hero {
+		&-text {
+			&-title {
+				font-size: 12vw;
+			}
+			&-slogan {
+				font-size: 4vw;
+				width: 400px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 454px) {
+	.hero {
+		height: calc(100vh - 150px);
+		&-text {
+			display: block;
+			text-align: center;
+			max-width: 100vw;
+			&-title {
+				font-size: 70px;
+				line-height: 70px;
+			}
+			&-slogan {
+				font-size: 18px;
+				width: 100vw;
+				padding: 0 5vw;
+				box-sizing: border-box;
+			}
+		}
+	}
+}
