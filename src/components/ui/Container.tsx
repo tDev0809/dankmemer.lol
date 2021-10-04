@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import { ReactNode } from "react";
-import Navbar from "../sections/Navbar";
+import Navbar from "../Navbar";
 
 interface Props {
 	children: ReactNode;

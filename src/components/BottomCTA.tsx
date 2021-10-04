@@ -1,5 +1,5 @@
-import FancyButton from "../../ui/FancyButton";
-import styles from "./index.module.scss";
+import FancyButton from "./ui/FancyButton";
+import styles from "../assets/styles/components/bottomCTA.module.scss";
 
 export default function BottomCTA() {
 	return (

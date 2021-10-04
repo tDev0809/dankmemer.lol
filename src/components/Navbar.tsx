@@ -1,4 +1,4 @@
-import styles from "./index.module.scss";
+import styles from "../assets/styles/components/navbar.module.scss";
 import Link from "next/link";
 
 interface Props {}

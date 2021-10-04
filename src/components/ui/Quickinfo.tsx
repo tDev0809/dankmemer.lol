@@ -5,7 +5,7 @@ import {
 	faSmileWink,
 	faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Quickinfo.module.scss";
+import styles from "../../assets/styles/components/ui/quickinfo.module.scss";
 
 interface Props {
 	mobile: boolean;

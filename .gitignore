@@ -1,4 +1,5 @@
 config.json
+keys.json
 
 /node_modules
 /.pnp
