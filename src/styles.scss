@@ -32,4 +32,11 @@ body {
 	h6 {
 		font-family: "Montserrat";
 	}
+	footer {
+		background: #050b06;
+		height: 200px;
+		width: 100vw;
+		display: grid;
+		place-items: center;
+	}
 }

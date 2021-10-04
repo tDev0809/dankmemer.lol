@@ -1,5 +1,6 @@
 import { NextSeo } from "next-seo";
 import { ReactNode } from "react";
+import Footer from "../Footer";
 import Navbar from "../Navbar";
 
 interface Props {
@@ -13,6 +14,7 @@ export default function Container({ children, title }: Props) {
 			{title && <NextSeo title={`Dank Memer | ${title}`} />}
 			<Navbar />
 			<div>{children}</div>
+			<Footer />
 		</>
 	);
 }
