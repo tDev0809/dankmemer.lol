@@ -1,9 +1,9 @@
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import "../styles.scss";
 import { config, dom } from "@fortawesome/fontawesome-svg-core";
 import { createGlobalStyle } from "styled-components";
+import "../globals.css";
 
 config.autoAddCss = false;
 const GlobalStyles = createGlobalStyle`
