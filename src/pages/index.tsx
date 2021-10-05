@@ -4,6 +4,11 @@ import Container from "../components/ui/Container";
 import FancyButton from "../components/ui/FancyButton";
 import { QUICK_INFO } from "../constants";
 import clsx from "clsx";
+import { GetServerSideProps } from "next";
+import { withSession } from "../util/session";
+import { unauthenticatedRoute } from "../util/redirects";
+import { PageProps } from "../types";
+import { useRouter } from "next/router";
 
 interface TriangleProps {
 	scale: number;
@@ -29,7 +34,9 @@ function Triangle({ scale, translate, rotate }: TriangleProps) {
 	);
 }
 
-export default function HomePage() {
+export default function HomePage({ user }: PageProps) {
+	const router = useRouter();
+
 	const [perspective, setPerspective] = useState<[number, number]>([0, 0]);
 	const [mobile, setMobile] = useState(false);
 
@@ -38,6 +45,10 @@ export default function HomePage() {
 	};
 
 	useEffect(() => {
+		if (router.query.r) {
+			location.replace("/");
+		}
+
 		handleResize();
 
 		window.addEventListener("resize", () => {
@@ -46,7 +57,7 @@ export default function HomePage() {
 	}, []);
 
 	return (
-		<Container title="Home">
+		<Container title="Home" user={user}>
 			<div
 				className="flex flex-col justify-center items-center mt-32 lg:mt-72"
 				onMouseMove={(e) => setPerspective([e.pageX, e.pageY])}
@@ -118,7 +129,10 @@ export default function HomePage() {
 					)}
 				>
 					{QUICK_INFO.map((info) => (
-						<div className="flex items-center align-middle rounded-lg bg-dank-400">
+						<div
+							className="flex items-center align-middle rounded-lg bg-dank-400"
+							key={info.icon}
+						>
 							<div
 								className={clsx(
 									"flex flex-col lg:flex-row items-center",
@@ -149,3 +163,6 @@ export default function HomePage() {
 		</Container>
 	);
 }
+
+export const getServerSideProps: GetServerSideProps =
+	withSession(unauthenticatedRoute);

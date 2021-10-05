@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { User } from "../types";
 
-interface Props {}
+interface Props {
+	user?: User;
+}
 
-export default function Navbar({}: Props) {
+export default function Navbar({ user }: Props) {
 	return (
 		<div className="flex justify-center items-center text-lg">
 			<nav className="max-w-7xl bg-dank-250 rounded-md w-11/12 flex justify-between p-4 mt-5">
@@ -38,6 +41,16 @@ export default function Navbar({}: Props) {
 							Support
 						</a>
 					</Link>
+					{!user && (
+						<Link href="/api/auth/login">
+							<a
+								className="inline-block text-dank-100 pl-4"
+								rel="noreferrer noopener"
+							>
+								Login
+							</a>
+						</Link>
+					)}
 				</div>
 			</nav>
 		</div>
