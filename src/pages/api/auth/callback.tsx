@@ -96,6 +96,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		].includes(staffUser?.category),
 		isAdmin: staffUser?.category === "Team",
 		token: encrypt(user.id),
+		avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 	});
 
 	await req.session.save();
