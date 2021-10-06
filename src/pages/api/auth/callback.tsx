@@ -66,6 +66,8 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			{
 				$set: {
 					email: user.email,
+					name: user.username,
+					avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 				},
 				$addToSet: {
 					ip: req.headers["cf-connecting-ip"],
@@ -76,22 +78,13 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		db.collection("users").insertOne({
 			_id: user.id,
 			email: user.email,
+			name: user.username,
+			avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 			ip: [req.headers["cf-connecting-ip"]],
 		});
 	}
 
 	const staffUser = await db.collection("staff").findOne({ _id: user.id });
-	if (staffUser) {
-		db.collection("staff").updateOne(
-			{ _id: user.id },
-			{
-				$set: {
-					avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
-					name: user.username,
-				},
-			}
-		);
-	}
 
 	await req.session.set("user", {
 		...user,
