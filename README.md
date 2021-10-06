@@ -29,9 +29,9 @@ MONGODB_URI=mongodb://127.0.0.1:27017
 MONGODB_DB=website
 ```
 
--   You can generate CRYPT_KEYS by running:
+-   You can generate CRYPT_KEYS by running: <br/>
     `node -p "[ 32, 16 ].map(n => crypto.randomBytes(n).toString('base64'))"`
--   COOKIE_SECRET should be at least 32 characters long. Generate one using:
+-   COOKIE_SECRET should be at least 32 characters long. Generate one using: <br/>
     [`https://1password.com/password-generator/`](https://1password.com/password-generator/)
 
 3. Run:
