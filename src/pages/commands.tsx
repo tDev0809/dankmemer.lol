@@ -54,7 +54,7 @@ export default function CommandsPage({ user }: PageProps) {
 	}, [search]);
 
 	return (
-		<Container title="Home" user={user}>
+		<Container title="Commands" user={user}>
 			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
 				<div className="my-40 flex flex-col space-y-8">
 					<div>
