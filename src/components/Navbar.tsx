@@ -117,7 +117,7 @@ export default function Navbar({ user }: Props) {
 					)}
 				</div>
 				<div
-					className="items-center relative flex lg:hidden cursor-pointer"
+					className="items-center relative flex lg:hidden cursor-pointer select-none"
 					onClick={() => setHamburger(!hamburger)}
 				>
 					<span className="material-icons">menu</span>
