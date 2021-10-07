@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 
 const variants = {
 	big: "px-3 py-2",
+	wide: "w-48 py-2",
 };
 
 interface Props {
@@ -46,7 +47,12 @@ export default function Dropdown({ children, content, variant }: Props) {
 				{content}
 			</div>
 			<div className="absolute w-full">
-				<div className={clsx(open ? "" : "hidden")}>{children}</div>
+				<div
+					className={clsx(open ? "" : "hidden")}
+					onClick={() => setOpen(false)}
+				>
+					{children}
+				</div>
 			</div>
 		</div>
 	);
