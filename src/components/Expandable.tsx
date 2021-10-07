@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface Props {
 	name: string;
+	description?: string;
 	fields: Record<string, string>;
 	setExpandedIds?: Dispatch<SetStateAction<string[]>>;
 	expandedIds?: string[];
@@ -10,6 +11,7 @@ interface Props {
 
 export default function Expandable({
 	name,
+	description,
 	fields,
 	setExpandedIds,
 	expandedIds,
@@ -42,6 +44,9 @@ export default function Expandable({
 		>
 			<div>
 				<div className="text-lg">{name}</div>
+				{description && (
+					<div className="text-gray-400 text-sm">{description}</div>
+				)}
 				<div
 					className={clsx(
 						"border-t-2 border-dank-250 mt-2 pt-2 flex flex-col space-y-3",
