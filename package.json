@@ -20,6 +20,7 @@
 		"@fortawesome/react-fontawesome": "^0.1.15",
 		"axios": "^0.21.1",
 		"clsx": "^1.1.1",
+		"date-fns": "^2.25.0",
 		"mongodb": "^4.1.2",
 		"next": "^10.2.0",
 		"next-auth": "^3.29.0",
@@ -31,6 +32,7 @@
 		"react-dom": "17.0.1",
 		"react-fast-marquee": "^1.2.1",
 		"react-markdown": "^5.0.3",
+		"react-toastify": "^8.0.3",
 		"sass": "^1.42.1",
 		"styled-components": "^5.3.1"
 	},

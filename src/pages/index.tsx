@@ -125,12 +125,12 @@ export default function HomePage({ user }: PageProps) {
 					className={clsx(
 						"grid grid-cols-1 lg:grid-cols-2 gap-8",
 						"max-w-sm lg:max-w-3xl md:rounded-lg p-8",
-						"bg-dank-300 lg:bg-dank-400"
+						"bg-dank-700 lg:bg-dank-800"
 					)}
 				>
 					{QUICK_INFO.map((info) => (
 						<div
-							className="flex items-center align-middle rounded-lg bg-dank-400"
+							className="flex items-center align-middle rounded-lg bg-dank-800"
 							key={info.icon}
 						>
 							<div
@@ -139,8 +139,8 @@ export default function HomePage({ user }: PageProps) {
 									"space-x-0 space-y-4 lg:space-x-8 lg:space-y-0 p-8 lg:p-0"
 								)}
 							>
-								<div className="grid place-items-center min-w-[45px] min-h-[45px] rounded-full w-10 h-10 bg-dank-300">
-									<span className="material-icons text-dank-100">
+								<div className="grid place-items-center min-w-[45px] min-h-[45px] rounded-full w-10 h-10 bg-dank-700">
+									<span className="material-icons text-dank-200">
 										{info.icon}
 									</span>
 								</div>

@@ -11,7 +11,7 @@ body {
 	scroll-behavior: smooth;
 	color: #ffffff;
 	font-family: "Inter", sans-serif;
-	@apply bg-dank-300;
+	@apply bg-dank-700;
 }
 
 h1,

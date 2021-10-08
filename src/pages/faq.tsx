@@ -86,7 +86,7 @@ export default function FaqPage({ user }: PageProps) {
 									className={clsx(
 										"text-lg cursor-pointer",
 										currentCategory == category &&
-											"text-dank-100"
+											"text-dank-200"
 									)}
 									onClick={() => setCurrentCategory(category)}
 								>
@@ -110,11 +110,11 @@ export default function FaqPage({ user }: PageProps) {
 								}
 								variant="wide"
 							>
-								<div className="rounded-md bg-dank-225 mt-2">
+								<div className="rounded-md bg-dank-400 mt-2">
 									{categories.map((category) => (
 										<div
 											className={clsx(
-												"cursor-pointer hover:bg-dank-250 py-1 px-2"
+												"cursor-pointer hover:bg-dank-600 py-1 px-2"
 											)}
 											onClick={() => {
 												setCurrentCategory(category);

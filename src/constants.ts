@@ -161,3 +161,19 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
 		},
 	],
 };
+
+export const FEEDBACK_LABELS = [
+	"all posts",
+	"accepted",
+	"implemented",
+	"duplicate",
+	"denied",
+	"invalid",
+];
+
+export const FEEDBACK_CATEGORIES = [
+	"currency_items",
+	"currency_commands",
+	"currency_balances",
+	"other",
+];

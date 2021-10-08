@@ -5,7 +5,7 @@ interface Props {}
 export default function Footer({}: Props) {
 	return (
 		<footer>
-			<div className="bg-dank-400 font-montserrat">
+			<div className="bg-dank-800 font-montserrat">
 				<div className="flex justify-center">
 					<div className="flex flex-col lg:flex-row space-x-0 lg:space-x-72 space-y-4 lg:space-y-0 p-14 items-center lg:items-start">
 						<div className="flex items-center space-x-4">

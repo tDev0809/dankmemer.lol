@@ -1,8 +1,10 @@
 import { NextSeo } from "next-seo";
 import { ReactNode } from "react";
+import { ToastContainer } from "react-toastify";
 import { User } from "../../types";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
 	children: ReactNode;
@@ -13,6 +15,7 @@ interface Props {
 export default function Container({ children, title, user }: Props) {
 	return (
 		<>
+			<ToastContainer />
 			{title && <NextSeo title={`Dank Memer | ${title}`} />}
 			<Navbar user={user} />
 			<div>{children}</div>

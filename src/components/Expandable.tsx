@@ -4,9 +4,9 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 interface Props {
 	name: string;
 	description?: string;
+	expandedIds?: string[];
 	fields: Record<string, string>;
 	setExpandedIds?: Dispatch<SetStateAction<string[]>>;
-	expandedIds?: string[];
 }
 
 export default function Expandable({
@@ -37,8 +37,8 @@ export default function Expandable({
 	return (
 		<div
 			className={clsx(
-				"bg-dank-400 rounded-md p-4 border select-none",
-				expanded ? "border-dank-100" : "border-dank-400"
+				"bg-dank-800 rounded-md p-4 border select-none",
+				expanded ? "border-dank-200" : "border-dank-800"
 			)}
 			onClick={() => setExpanded(!expanded)}
 		>
@@ -49,7 +49,7 @@ export default function Expandable({
 				)}
 				<div
 					className={clsx(
-						"border-t-2 border-dank-250 mt-2 pt-2 flex flex-col space-y-3",
+						"border-t-2 border-dank-600 mt-2 pt-2 flex flex-col space-y-3",
 						expanded ? "visible opacity-100" : "hidden opacity-0"
 					)}
 				>

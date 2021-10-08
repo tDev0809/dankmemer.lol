@@ -39,14 +39,14 @@ export default function Dropdown({ children, content, variant }: Props) {
 		<div className="select-none cursor-pointer relative" ref={dropdown}>
 			<div
 				className={clsx(
-					"bg-dank-225 flex items-center rounded-md",
+					"bg-dank-400 flex items-center rounded-md",
 					variants[variant]
 				)}
 				onClick={() => setOpen(!open)}
 			>
 				{content}
 			</div>
-			<div className="absolute w-full">
+			<div className="absolute w-full z-50">
 				<div
 					className={clsx(open ? "" : "hidden")}
 					onClick={() => setOpen(false)}

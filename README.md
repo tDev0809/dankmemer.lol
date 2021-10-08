@@ -27,6 +27,7 @@ CRYPT_KEYS=["key","key"]
 DOMAIN=http://localhost:3000
 MONGODB_URI=mongodb://127.0.0.1:27017
 MONGODB_DB=website
+FEEDBACK_WEBHOOK=webhook_url
 ```
 
 -   You can generate CRYPT_KEYS by running: <br/>
