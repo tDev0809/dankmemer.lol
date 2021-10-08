@@ -64,7 +64,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		setTimeout(() => recent.delete(user.id), 5 * 60 * 1000);
 	}
 
-	await db.collection("feedback_replies").insertOne({
+	const reply = await db.collection("feedback_replies").insertOne({
 		pID: req.body.id,
 		cID: new ObjectId(req.body.replyingTo),
 		reply: req.body.reply,
@@ -111,7 +111,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		}
 	);
 
-	await res.status(200).json({});
+	await res.status(200).json({ id: reply.insertedId });
 };
 
 export default withSession(handler);

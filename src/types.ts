@@ -59,12 +59,21 @@ export interface CommentAuthor {
 	moderator?: boolean;
 }
 
+export interface Reply {
+	_id: string;
+	cID: string;
+	author: CommentAuthor;
+	reply: string;
+	createdAt: number;
+	deleted?: boolean;
+}
+
 export interface Comment {
 	_id: string;
 	author: CommentAuthor;
 	comment: string;
 	createdAt: number;
-	replies: any[]; // TODO: define reply
+	replies: Reply[];
 	pID: string;
 	deleted?: boolean;
 	pinned?: boolean;
