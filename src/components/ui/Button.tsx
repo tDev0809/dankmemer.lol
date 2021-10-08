@@ -28,7 +28,6 @@ export default function Button({
 	size = "medium",
 	block = false,
 	align = "center",
-	color = "gray",
 	href,
 	disabled = false,
 	...props

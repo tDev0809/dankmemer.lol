@@ -15,8 +15,8 @@ interface Props {
 export default function Container({ children, title, user }: Props) {
 	return (
 		<>
-			<ToastContainer />
 			{title && <NextSeo title={`Dank Memer | ${title}`} />}
+			<ToastContainer />
 			<Navbar user={user} />
 			<div>{children}</div>
 			<Footer />
