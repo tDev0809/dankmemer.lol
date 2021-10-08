@@ -1,7 +1,7 @@
 import axios from "axios";
 import clsx from "clsx";
 import { formatDistance } from "date-fns";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { CommentAuthor, User } from "../../types";
 import { urlify } from "../../util/feedback";
 
@@ -50,10 +50,14 @@ export default function Comment({
 	deleted = false,
 	setReplyingTo,
 }: CommentProps) {
+	const [oAuthor, setAuthor] = useState(author);
+	const [oDeleted, setDeleted] = useState(deleted);
+	const [oContent, setContent] = useState(content);
+	const [oPinned, setPinned] = useState(pinned);
+
 	const pinComment = async () => {
-		await axios.post(`/api/feedback/comment/pin/${id}`);
-		// TODO: update instead of reloading
-		location.reload();
+		const r = await axios.post(`/api/feedback/comment/pin/${id}`);
+		setPinned(r.data.pinned);
 	};
 
 	const deleteComment = async () => {
@@ -64,9 +68,15 @@ export default function Comment({
 		)
 			return;
 		await axios.delete(`/api/feedback/${type.toLowerCase()}/delete/${id}`);
-
-		// TODO: update instead of reloading
-		location.reload();
+		setAuthor({
+			id: "[deleted]",
+			discriminator: "0000",
+			username: "[deleted]",
+			moderator: false,
+			developer: false,
+		});
+		setDeleted(deleted);
+		setContent("[deleted]");
 	};
 
 	return (
@@ -79,23 +89,25 @@ export default function Comment({
 				<div className="flex space-x-2">
 					<div
 						className={clsx(
-							author.developer
+							oAuthor.developer
 								? "text-blue-500"
-								: author.moderator
+								: oAuthor.moderator
 								? "text-yellow-600"
 								: "text-white"
 						)}
 					>
-						{author.username}#{author.discriminator}
+						{oAuthor.username}#{oAuthor.discriminator}
 					</div>
 					<div className="text-gray-400">
 						{formatDistance(new Date(createdAt), new Date(), {
 							addSuffix: true,
 						})}
 					</div>
-					{pinned && <span className="material-icons">push_pin</span>}
+					{oPinned && (
+						<span className="material-icons">push_pin</span>
+					)}
 				</div>
-				<div>{urlify(content)}</div>
+				<div>{urlify(oContent)}</div>
 			</div>
 
 			<div className="flex space-x-2">
@@ -107,7 +119,7 @@ export default function Comment({
 								onClick={() => pinComment()}
 							/>
 						)}
-						{!deleted && (
+						{!oDeleted && (
 							<CommentAction
 								icon="reply"
 								onClick={() => setReplyingTo?.(id)}
@@ -118,7 +130,7 @@ export default function Comment({
 				{(user?.isAdmin ||
 					user?.isModerator ||
 					user?.id === author.id) &&
-					!deleted && (
+					!oDeleted && (
 						<CommentAction
 							icon="delete"
 							onClick={() => deleteComment()}
