@@ -1,5 +1,4 @@
 import axios from "axios";
-import { ObjectId } from "bson";
 import { NextApiResponse } from "next";
 import { dbConnect } from "../../../../../util/mongodb";
 import { NextIronRequest, withSession } from "../../../../../util/session";

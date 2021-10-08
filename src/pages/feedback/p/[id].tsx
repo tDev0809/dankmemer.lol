@@ -59,16 +59,19 @@ export default function PostPage({ user }: PageProps) {
 
 		const comment = comments.find((c) => c._id == replyingTo);
 
-		comment!.replies.push({
-			reply: reply,
-			createdAt: Date.now(),
-			author: {
-				// TODO: remove hack
-				...user,
-				developer: user?.isAdmin,
-				moderator: user?.isModerator,
-			},
-		});
+		if (user) {
+			comment!.replies.push({
+				reply: reply,
+				createdAt: Date.now(),
+				author: {
+					id: user.id,
+					discriminator: user.discriminator,
+					username: user.username,
+					developer: user.isAdmin,
+					moderator: user.isModerator,
+				},
+			});
+		}
 
 		setComments([...comments]);
 		setReplyingTo("");
@@ -101,10 +104,10 @@ export default function PostPage({ user }: PageProps) {
 				createdAt: Date.now(),
 				author: {
 					id: user.id,
-					discriminator: user?.discriminator,
-					username: user?.username,
-					developer: user?.isAdmin,
-					moderator: user?.isModerator,
+					discriminator: user.discriminator,
+					username: user.username,
+					developer: user.isAdmin,
+					moderator: user.isModerator,
 				},
 			});
 		}
@@ -259,8 +262,6 @@ export default function PostPage({ user }: PageProps) {
 									key={comment._id}
 									pinned={comment.pinned}
 								/>
-
-								{/* Replies */}
 								{comment.replies.length > 0 && (
 									<div className="ml-8">
 										{comment.replies.map((reply) => (
