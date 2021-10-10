@@ -5,7 +5,7 @@ interface Props {}
 
 export default function Footer({}: Props) {
 	const { theme, setTheme } = useTheme();
-	console.log(theme);
+
 	return (
 		<footer>
 			<div className="bg-light-200  dark:bg-dark-400 font-inter">
