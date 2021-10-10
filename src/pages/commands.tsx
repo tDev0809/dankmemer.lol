@@ -58,7 +58,7 @@ export default function CommandsPage({ user }: PageProps) {
 			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
 				<div className="my-40 flex flex-col space-y-8">
 					<div>
-						<div className="text-4xl font-bold font-montserrat">
+						<div className="text-4xl font-bold font-montserrat text-dank-300 dark:text-white">
 							COMMANDS
 						</div>
 						<svg
@@ -83,7 +83,7 @@ export default function CommandsPage({ user }: PageProps) {
 								height="20"
 							></rect>
 						</svg>
-						<div className="text-gray-400 text-lg max-w-3xl">
+						<div className="text-light-100 dark:text-dark-100 text-lg max-w-3xl">
 							Find all the information, including required
 							permissions, regarding the extensive list of
 							commands available to you with Dank Memer.
@@ -95,8 +95,9 @@ export default function CommandsPage({ user }: PageProps) {
 								<div
 									className={clsx(
 										"text-lg cursor-pointer",
-										currentCategory == category &&
-											"text-dank-200"
+										currentCategory == category
+											? "text-dank-200"
+											: "text-light-100 dark:text-dark-100"
 									)}
 									onClick={() => setCurrentCategory(category)}
 								>
@@ -120,11 +121,11 @@ export default function CommandsPage({ user }: PageProps) {
 								}
 								variant="wide"
 							>
-								<div className="rounded-md bg-dank-400 mt-2">
+								<div className="rounded-md bg-dark-400 mt-2">
 									{categories.map((category) => (
 										<div
 											className={clsx(
-												"cursor-pointer hover:bg-dank-600 py-1 px-2"
+												"cursor-pointer hover:bg-dark-600 py-1 px-2"
 											)}
 											onClick={() => {
 												setCurrentCategory(category);
@@ -143,7 +144,7 @@ export default function CommandsPage({ user }: PageProps) {
 							/>
 						</div>
 					</div>
-					<div className="flex flex-col space-y-4">
+					<div className="flex flex-col space-y-4 cursor-pointer">
 						{commands?.map((command) => (
 							<Expandable
 								name={`${command.t[0]}${

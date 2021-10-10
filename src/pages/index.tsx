@@ -24,11 +24,11 @@ function Triangle({ scale, translate, rotate }: TriangleProps) {
 			)}) rotate(${rotate})`}
 		>
 			<polygon
-				fill="#0b110c"
 				stroke="#14763d"
 				strokeWidth="1.5px"
 				style={{ filter: "drop-shadow(0px 0px 18px #14763d)" }}
 				points="62.5,15 12.5,100 112.5,100"
+				className="fill-current text-light-600 dark:text-dark-700"
 			/>
 		</g>
 	);
@@ -64,10 +64,10 @@ export default function HomePage({ user }: PageProps) {
 			>
 				<div className="flex flex-col items-center space-y-8">
 					<div className="flex flex-col items-center max-w-3xl">
-						<h1 className="text-6xl sm:text-7xl md:text-8xl font-bold">
+						<h1 className="text-6xl sm:text-7xl md:text-8xl font-bold text-dank-200 dark:text-white">
 							DANK MEMER
 						</h1>
-						<p className="text-lg md:text-2xl max-w-lg md:max-w-xl text-center">
+						<p className="text-lg md:text-2xl max-w-lg md:max-w-xl text-center text-light-100 dark:text-gray-400">
 							Join millions of users around the world in Discord's
 							largest fun economic bot.
 						</p>
@@ -111,12 +111,12 @@ export default function HomePage({ user }: PageProps) {
 				{/* TODO */}
 				{/* <div id="nitropay-home-top" className="nitropay" /> */}
 			</div>
-			<div className="flex flex-col items-center mt-80 space-y-4 font-montserrat">
+			<div className="flex flex-col items-center mt-80 space-y-4 font-inter">
 				<div className="text-center">
-					<div className="text-3xl font-bold">
+					<div className="text-3xl font-bold text-dank-200 dark:text-white font-montserrat">
 						What is it all about?
 					</div>
-					<div>
+					<div className="text-light-100 dark:text-dark-100">
 						Here are a just a few of the things that makes Dank
 						Memer great.
 					</div>
@@ -125,12 +125,13 @@ export default function HomePage({ user }: PageProps) {
 					className={clsx(
 						"grid grid-cols-1 lg:grid-cols-2 gap-8",
 						"max-w-sm lg:max-w-3xl md:rounded-lg p-8",
-						"bg-dank-700 lg:bg-dank-800"
+						"bg-light-500 lg:bg-light-500 dark:bg-dark-700 lg:dark:bg-dark-800",
+						"text-dark-500 dark:text-dark-100"
 					)}
 				>
 					{QUICK_INFO.map((info) => (
 						<div
-							className="flex items-center align-middle rounded-lg bg-dank-800"
+							className="flex items-center align-middle rounded-lg"
 							key={info.icon}
 						>
 							<div
@@ -139,18 +140,18 @@ export default function HomePage({ user }: PageProps) {
 									"space-x-0 space-y-4 lg:space-x-8 lg:space-y-0 p-8 lg:p-0"
 								)}
 							>
-								<div className="grid place-items-center min-w-[45px] min-h-[45px] rounded-full w-10 h-10 bg-dank-700">
+								<div className="grid place-items-center min-w-[45px] min-h-[45px] rounded-full w-10 h-10 bg-gray-50 dark:bg-dark-700">
 									<span className="material-icons text-dank-200">
 										{info.icon}
 									</span>
 								</div>
-								<div className="flex flex-col tracking-tighter text-center lg:text-left">
-									<div className="font-bold">
+								<div className="flex flex-col text-center lg:text-left">
+									<h4 className="font-bold font-montserrat">
 										{info.title}
-									</div>
-									<div className="text-md lg:text-sm">
+									</h4>
+									<p className="text-md lg:text-sm">
 										{info.description}
-									</div>
+									</p>
 								</div>
 							</div>
 						</div>

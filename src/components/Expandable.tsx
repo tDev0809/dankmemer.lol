@@ -37,26 +37,34 @@ export default function Expandable({
 	return (
 		<div
 			className={clsx(
-				"bg-dank-800 rounded-md p-4 border select-none",
-				expanded ? "border-dank-200" : "border-dank-800"
+				"bg-light-800 dark:bg-dark-800 rounded-md p-4 border select-none",
+				expanded
+					? "border-dank-200"
+					: "bg-light-800 dark:border-dark-800"
 			)}
 			onClick={() => setExpanded(!expanded)}
 		>
 			<div>
-				<div className="text-lg">{name}</div>
+				<div className="text-lg text-dank-300 dark:text-white">
+					{name}
+				</div>
 				{description && (
-					<div className="text-gray-400 text-sm">{description}</div>
+					<div className="text-light-100 dark:text-gray-400 text-sm">
+						{description}
+					</div>
 				)}
 				<div
 					className={clsx(
-						"border-t-2 border-dank-600 mt-2 pt-2 flex flex-col space-y-3",
+						"border-t-2 dark:border-dark-600 mt-2 pt-2 flex flex-col space-y-3",
 						expanded ? "visible opacity-100" : "hidden opacity-0"
 					)}
 				>
 					{Object.entries(fields).map(([title, content]) => (
 						<div>
-							<div className="text-sm">{title}</div>
-							<div className="text-sm text-gray-400">
+							<div className="text-sm text-dank-300 dark:text-white">
+								{title}
+							</div>
+							<div className="text-sm text-light-100 dark:text-gray-400">
 								{content}
 							</div>
 						</div>

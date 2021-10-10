@@ -18,7 +18,7 @@ interface CommentActionProps {
 function CommentAction({ icon, onClick }: CommentActionProps) {
 	return (
 		<div
-			className="bg-dank-600 hover:bg-dank-500 p-2 rounded-md select-none cursor-pointer hidden group-hover:flex items-center"
+			className="bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-5 dark:hover:bg-opacity-10 hover:bg-opacity-40 p-2 rounded-md select-none cursor-pointer hidden group-hover:flex items-center"
 			onClick={onClick}
 			key={icon}
 		>
@@ -82,7 +82,7 @@ export default function Comment({
 	return (
 		<div
 			className={clsx(
-				"flex justify-between items-center p-4 rounded-md bg-dank-800 group w-full"
+				"flex justify-between items-center p-4 rounded-md bg-light-500 dark:bg-dark-800 group w-full"
 			)}
 		>
 			<div className="flex flex-col -space-y-1">
@@ -92,22 +92,24 @@ export default function Comment({
 							oAuthor.developer
 								? "text-blue-500"
 								: oAuthor.moderator
-								? "text-yellow-600"
+								? "text-yellow-400"
 								: "text-white"
 						)}
 					>
 						{oAuthor.username}#{oAuthor.discriminator}
 					</div>
-					<div className="text-gray-400">
+					<p className="text-gray-400">
 						{formatDistance(new Date(createdAt), new Date(), {
 							addSuffix: true,
 						})}
-					</div>
+					</p>
 					{oPinned && (
 						<span className="material-icons">push_pin</span>
 					)}
 				</div>
-				<div>{urlify(oContent)}</div>
+				<p className="text-light-200 dark:text-dark-100">
+					{urlify(oContent)}
+				</p>
 			</div>
 
 			<div className="flex space-x-2">

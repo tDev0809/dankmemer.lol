@@ -16,11 +16,6 @@
 		"baseUrl": ".",
 		"paths": {}
 	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"src/components/Home/Quickinfo,tsx"
-	],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules"]
 }

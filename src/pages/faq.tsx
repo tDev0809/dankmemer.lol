@@ -48,7 +48,7 @@ export default function FaqPage({ user }: PageProps) {
 			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
 				<div className="my-40 flex flex-col space-y-8">
 					<div>
-						<div className="text-4xl font-bold font-montserrat">
+						<div className="text-4xl font-bold font-montserrat text-dank-300 dark:text-white">
 							FREQUENTLY ASKED QUESTIONS
 						</div>
 						<svg
@@ -73,7 +73,7 @@ export default function FaqPage({ user }: PageProps) {
 								height="20"
 							></rect>
 						</svg>
-						<div className="text-gray-400 text-lg max-w-3xl">
+						<div className="text-light-100 dark:text-dark-100  text-lg max-w-3xl">
 							The most frequently asked questions can be found
 							below. Split into categories depending on what they
 							are related to.
@@ -85,8 +85,9 @@ export default function FaqPage({ user }: PageProps) {
 								<div
 									className={clsx(
 										"text-lg cursor-pointer",
-										currentCategory == category &&
-											"text-dank-200"
+										currentCategory == category
+											? "text-dank-200"
+											: "text-light-100 dark:text-dark-100"
 									)}
 									onClick={() => setCurrentCategory(category)}
 								>
@@ -110,11 +111,11 @@ export default function FaqPage({ user }: PageProps) {
 								}
 								variant="wide"
 							>
-								<div className="rounded-md bg-dank-400 mt-2">
+								<div className="rounded-md bg-dark-400 mt-2">
 									{categories.map((category) => (
 										<div
 											className={clsx(
-												"cursor-pointer hover:bg-dank-600 py-1 px-2"
+												"cursor-pointer hover:bg-dark-600 py-1 px-2"
 											)}
 											onClick={() => {
 												setCurrentCategory(category);

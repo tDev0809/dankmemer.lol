@@ -32,7 +32,7 @@ export default function FeedbackPage({ user }: PageProps) {
 			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
 				<div className="flex flex-col my-16 space-y-6">
 					<div className="flex justify-between items-center">
-						<div className="font-bold font-montserrat text-3xl">
+						<div className="font-bold font-montserrat text-3xl text-dank-200">
 							Feedback
 						</div>
 						<FancyButton
@@ -44,10 +44,10 @@ export default function FeedbackPage({ user }: PageProps) {
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 						{FEEDBACK_CATEGORIES.map((category) => (
 							<div
-								className="flex flex-col items-center justify-center bg-dank-500 py-8 rounded-md bg-dank -space-y-1 border border-dank-500 hover:border-dank-200"
+								className="flex flex-col items-center justify-center bg-light-500 dark:bg-dark-500 py-8 rounded-md bg-dank -space-y-1 border border-light-500 dark:border-dark-500 hover:border-dank-200 select-none cursor-pointer"
 								key={category}
 							>
-								<div className="text-xl font-bold font-montserrat">
+								<div className="text-xl font-bold font-montserrat text-dark-400 dark:text-white">
 									{sanitizeCategory(category)}
 								</div>
 								<div className="text-gray-400">
@@ -60,9 +60,9 @@ export default function FeedbackPage({ user }: PageProps) {
 						))}
 					</div>
 					<div className="flex flex-col space-y-1">
-						<div className="font-bold font-montserrat">
+						<h3 className="text-2xl font-bold font-montserrat text-dank-300">
 							Latest hot posts:
-						</div>
+						</h3>
 						<div className="flex flex-col space-y-4">
 							{postsLoaded &&
 								posts.map((post) => (
