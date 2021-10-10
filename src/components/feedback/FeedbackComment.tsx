@@ -93,7 +93,7 @@ export default function Comment({
 								? "text-blue-500"
 								: oAuthor.moderator
 								? "text-yellow-400"
-								: "text-white"
+								: "text-dark-400 dark:text-white"
 						)}
 					>
 						{oAuthor.username}#{oAuthor.discriminator}
@@ -107,7 +107,7 @@ export default function Comment({
 						<span className="material-icons">push_pin</span>
 					)}
 				</div>
-				<p className="text-dank-400 dark:text-light-300">
+				<p className="text-gray-500 dark:text-gray-400">
 					{urlify(oContent)}
 				</p>
 			</div>

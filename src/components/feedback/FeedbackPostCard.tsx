@@ -73,10 +73,10 @@ export default function FeedbackPostCard({ postData }: Props) {
 					</div>
 					<div
 						className={clsx(
-							"flex space-x-1 justify-center text-dark-400 dark:text-white font-montserrat",
-							"px-8 py-2 md:py-4",
-							"bg-light-200 dark:bg-dank-500 rounded-md",
-							"flex-1 md:flex-initial"
+							"flex space-x-1 justify-center font-montserrat",
+							"flex-1 md:flex-initial",
+							"px-8 py-2 md:py-4 rounded-md",
+							"bg-light-200 dark:bg-dank-500 text-dark-400 dark:text-white"
 						)}
 					>
 						<span className="material-icons-outlined">

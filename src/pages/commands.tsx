@@ -83,7 +83,7 @@ export default function CommandsPage({ user }: PageProps) {
 								height="20"
 							></rect>
 						</svg>
-						<div className="text-light-600 dark:text-light-300 text-lg max-w-3xl">
+						<div className="max-w-3xl text-lg  text-light-600 dark:text-light-300">
 							Find all the information, including required
 							permissions, regarding the extensive list of
 							commands available to you with Dank Memer.
@@ -121,11 +121,11 @@ export default function CommandsPage({ user }: PageProps) {
 								}
 								variant="wide"
 							>
-								<div className="rounded-md bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white mt-2">
+								<div className="rounded-md mt-2 bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
 									{categories.map((category) => (
 										<div
 											className={clsx(
-												"cursor-pointer hover:bg-light-200 dark:hover:bg-dark-200 py-1 px-2"
+												"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
 											)}
 											onClick={() => {
 												setCurrentCategory(category);

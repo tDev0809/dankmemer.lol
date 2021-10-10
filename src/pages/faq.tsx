@@ -73,7 +73,7 @@ export default function FaqPage({ user }: PageProps) {
 								height="20"
 							></rect>
 						</svg>
-						<div className="text-light-600 dark:text-light-300  text-lg max-w-3xl">
+						<div className="max-w-3xl text-lg text-light-600 dark:text-light-300">
 							The most frequently asked questions can be found
 							below. Split into categories depending on what they
 							are related to.
@@ -111,11 +111,11 @@ export default function FaqPage({ user }: PageProps) {
 								}
 								variant="wide"
 							>
-								<div className="rounded-md bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white mt-2">
+								<div className="mt-2 rounded-md bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
 									{categories.map((category) => (
 										<div
 											className={clsx(
-												"cursor-pointer hover:bg-light-200 dark:hover:bg-dark-200 py-1 px-2"
+												"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
 											)}
 											onClick={() => {
 												setCurrentCategory(category);

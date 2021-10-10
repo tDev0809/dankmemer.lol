@@ -113,7 +113,7 @@ export default function HomePage({ user }: PageProps) {
 			</div>
 			<div className="flex flex-col items-center mt-80 space-y-4 font-inter">
 				<div className="text-center">
-					<div className="text-3xl font-bold text-dank-300 dark:text-white font-montserrat">
+					<div className="text-3xl font-bold font-montserrat text-dank-300 dark:text-white">
 						What is it all about?
 					</div>
 					<div className="text-light-600 dark:text-light-300">

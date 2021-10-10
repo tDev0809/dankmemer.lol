@@ -138,7 +138,7 @@ export default function PostPage({ user }: PageProps) {
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
 						<div
-							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300"
+							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300 dark:text-light-100"
 							onClick={() => router.back()}
 						>
 							<span className="material-icons">arrow_back</span>
@@ -232,7 +232,7 @@ export default function PostPage({ user }: PageProps) {
 						<div className="flex justify-end">
 							<Button
 								size="medium"
-								className="bg-[#84db96] text-gray-800 dark:text-gray-500 dark:bg-dank-500 hover:bg-dank-300 dark:hover:bg-dank-300 hover:text-white dark:hover:text-white"
+								className="text-white bg-dank-300 hover:bg-opacity-75"
 								disabled={
 									comment.length < 5 || comment.length > 1024
 								}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import FeedbackPostCard from "../../components/feedback/FeedbackPostCard";
@@ -32,7 +33,7 @@ export default function FeedbackPage({ user }: PageProps) {
 			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
 				<div className="flex flex-col my-16 space-y-6">
 					<div className="flex justify-between items-center">
-						<div className="font-bold font-montserrat text-3xl text-dank-300">
+						<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 							Feedback
 						</div>
 						<FancyButton
@@ -44,7 +45,12 @@ export default function FeedbackPage({ user }: PageProps) {
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 						{FEEDBACK_CATEGORIES.map((category) => (
 							<div
-								className="flex flex-col items-center justify-center bg-light-500 dark:bg-dark-100 py-8 rounded-md bg-dank -space-y-1 border border-light-500 dark:border-dark-100 hover:border-dank-300 select-none cursor-pointer"
+								className={clsx(
+									"flex flex-col items-center justify-center -space-y-1",
+									"py-8 rounded-md select-none cursor-pointer",
+									"bg-light-500 dark:bg-dark-100",
+									"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
+								)}
 								key={category}
 							>
 								<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
@@ -60,7 +66,7 @@ export default function FeedbackPage({ user }: PageProps) {
 						))}
 					</div>
 					<div className="flex flex-col space-y-1">
-						<h3 className="text-2xl font-bold font-montserrat text-dank-200">
+						<h3 className="text-2xl font-bold font-montserrat text-dank-200 dark:text-light-100">
 							Latest hot posts:
 						</h3>
 						<div className="flex flex-col space-y-4">
