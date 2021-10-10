@@ -14,17 +14,17 @@ export default function FeedbackPostCard({ postData }: Props) {
 		<Link href={postData ? `/feedback/p/${postData._id}` : "#"}>
 			<div
 				className={clsx(
-					"bg-light-500 dark:bg-dark-500 rounded-md p-4 cursor-pointer",
+					"bg-light-500 dark:bg-dark-100 rounded-md p-4 cursor-pointer",
 					"w-full flex",
 					"flex-col md:flex-row",
 					"justify-start md:justify-between",
 					"items-start md:items-center",
-					"border border-light-500 dark:border-dark-500 hover:border-dank-200 bg-dan"
+					"border border-light-500 dark:border-dark-100 hover:border-dank-300 bg-dan"
 				)}
 			>
 				<div className="flex flex-col">
 					<div className="flex space-x-2 items-center">
-						<div className="text-lg font-montserrat line-clamp-1 font-bold text-dark-400 dark:text-white">
+						<div className="text-lg font-montserrat line-clamp-1 font-bold text-dank-500 dark:text-white">
 							{postData?.title || (
 								<div
 									className={clsx(
@@ -43,7 +43,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 							)}
 						</div>
 					</div>
-					<div className="text-light-100 dark:text-dark-100 line-clamp-2">
+					<div className="text-light-600 dark:text-light-300 line-clamp-2">
 						{postData?.description || (
 							<div
 								className={clsx(
@@ -73,9 +73,9 @@ export default function FeedbackPostCard({ postData }: Props) {
 					</div>
 					<div
 						className={clsx(
-							"flex space-x-1 justify-center text-white font-montserrat",
+							"flex space-x-1 justify-center text-dark-400 dark:text-white font-montserrat",
 							"px-8 py-2 md:py-4",
-							"bg-dark-400 rounded-md",
+							"bg-light-200 dark:bg-dank-500 rounded-md",
 							"flex-1 md:flex-initial"
 						)}
 					>

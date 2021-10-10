@@ -82,7 +82,7 @@ export default function Comment({
 	return (
 		<div
 			className={clsx(
-				"flex justify-between items-center p-4 rounded-md bg-light-500 dark:bg-dark-800 group w-full"
+				"flex justify-between items-center p-4 rounded-md bg-light-500 dark:bg-dark-400 group w-full"
 			)}
 		>
 			<div className="flex flex-col -space-y-1">
@@ -107,7 +107,7 @@ export default function Comment({
 						<span className="material-icons">push_pin</span>
 					)}
 				</div>
-				<p className="text-light-200 dark:text-dark-100">
+				<p className="text-dank-400 dark:text-light-300">
 					{urlify(oContent)}
 				</p>
 			</div>

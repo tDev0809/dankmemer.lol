@@ -48,7 +48,7 @@ export default function FaqPage({ user }: PageProps) {
 			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
 				<div className="my-40 flex flex-col space-y-8">
 					<div>
-						<div className="text-4xl font-bold font-montserrat text-dank-300 dark:text-white">
+						<div className="text-4xl font-bold font-montserrat text-dank-200 dark:text-white">
 							FREQUENTLY ASKED QUESTIONS
 						</div>
 						<svg
@@ -73,7 +73,7 @@ export default function FaqPage({ user }: PageProps) {
 								height="20"
 							></rect>
 						</svg>
-						<div className="text-light-100 dark:text-dark-100  text-lg max-w-3xl">
+						<div className="text-light-600 dark:text-light-300  text-lg max-w-3xl">
 							The most frequently asked questions can be found
 							below. Split into categories depending on what they
 							are related to.
@@ -86,8 +86,8 @@ export default function FaqPage({ user }: PageProps) {
 									className={clsx(
 										"text-lg cursor-pointer",
 										currentCategory == category
-											? "text-dank-200"
-											: "text-light-100 dark:text-dark-100"
+											? "text-dank-300"
+											: "text-light-600 dark:text-light-300"
 									)}
 									onClick={() => setCurrentCategory(category)}
 								>
@@ -98,7 +98,7 @@ export default function FaqPage({ user }: PageProps) {
 						<div className="visible lg:hidden">
 							<Dropdown
 								content={
-									<div className="flex justify-between w-full px-4">
+									<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">
 										<span>
 											{currentCategory.startsWith("all")
 												? "Search Results"
@@ -111,11 +111,11 @@ export default function FaqPage({ user }: PageProps) {
 								}
 								variant="wide"
 							>
-								<div className="rounded-md bg-dark-400 mt-2">
+								<div className="rounded-md bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white mt-2">
 									{categories.map((category) => (
 										<div
 											className={clsx(
-												"cursor-pointer hover:bg-dark-600 py-1 px-2"
+												"cursor-pointer hover:bg-light-200 dark:hover:bg-dark-200 py-1 px-2"
 											)}
 											onClick={() => {
 												setCurrentCategory(category);

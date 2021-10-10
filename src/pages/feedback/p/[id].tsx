@@ -138,7 +138,7 @@ export default function PostPage({ user }: PageProps) {
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
 						<div
-							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-700"
+							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300"
 							onClick={() => router.back()}
 						>
 							<span className="material-icons">arrow_back</span>
@@ -151,13 +151,13 @@ export default function PostPage({ user }: PageProps) {
 									post ? "-space-y-1" : "space-y-2"
 								)}
 							>
-								<div className="text-3xl font-bold font-montserrat text-dank-200 dark:text-white">
+								<div className="text-3xl font-bold font-montserrat text-dank-300 dark:text-white">
 									{post?.title || (
 										<div className="animate-pulse bg-gray-800 dark:bg-gray-300 rounded h-6 w-32" />
 									)}
 								</div>
 								{post && (
-									<div className="text-light-100">
+									<div className="text-light-600">
 										by {post.author.username}#
 										{post.author.discriminator}{" "}
 										{formatDistance(
@@ -185,7 +185,7 @@ export default function PostPage({ user }: PageProps) {
 									className={clsx(
 										"flex space-x-1 justify-center font-montserrat cursor-pointer",
 										"px-8 py-4",
-										"text-white bg-dark-400 rounded-md"
+										"text-white bg-dank-500 rounded-md"
 									)}
 								>
 									<span className="material-icons-outlined">
@@ -198,7 +198,7 @@ export default function PostPage({ user }: PageProps) {
 					</div>
 					<div>
 						{post && (
-							<div className="text-light-200 dark:text-dark-100 whitespace-pre-line">
+							<div className="text-dank-400 dark:text-light-300 whitespace-pre-line">
 								{urlify(post.description)}
 							</div>
 						)}
@@ -212,7 +212,7 @@ export default function PostPage({ user }: PageProps) {
 					</div>
 					<div className="flex flex-col space-y-2">
 						<div>
-							<div className="font-bold text-xl font-montserrat text-dank-200 dark:text-white">
+							<div className="font-bold text-xl font-montserrat text-dank-300 dark:text-white">
 								Comments ({post?.comments || "?"})
 							</div>
 							<div className="text-gray-400 text-sm">
@@ -223,7 +223,7 @@ export default function PostPage({ user }: PageProps) {
 							</div>
 						</div>
 						<textarea
-							className="w-full bg-light-500 dark:bg-dark-800 drop-shadow-xl dark:drop-shadow-none p-3 outline-none text-black dark:text-dark-100 text-sm resize-none h-24 rounded-md placeholder-gray-500"
+							className="w-full bg-light-500 dark:bg-dark-400 drop-shadow-xl dark:drop-shadow-none p-3 outline-none text-black dark:text-light-300 text-sm resize-none h-24 rounded-md placeholder-gray-500"
 							maxLength={1024}
 							onChange={(e) => setComment(e.target.value)}
 							value={comment}
@@ -232,7 +232,7 @@ export default function PostPage({ user }: PageProps) {
 						<div className="flex justify-end">
 							<Button
 								size="medium"
-								className="bg-[#84db96] text-gray-800 dark:text-gray-500 dark:bg-dark-400 hover:bg-dank-200 dark:hover:bg-dank-200 hover:text-white dark:hover:text-white"
+								className="bg-[#84db96] text-gray-800 dark:text-gray-500 dark:bg-dank-500 hover:bg-dank-300 dark:hover:bg-dank-300 hover:text-white dark:hover:text-white"
 								disabled={
 									comment.length < 5 || comment.length > 1024
 								}
@@ -288,9 +288,9 @@ export default function PostPage({ user }: PageProps) {
 								)}
 
 								{replyingTo === comment._id && (
-									<div className="ml-8 dark:bg-dark-800 p-4 flex space-x-4 rounded-md">
+									<div className="ml-8 dark:bg-dark-400 p-4 flex space-x-4 rounded-md">
 										<textarea
-											className="w-full bg-dark-400 p-3 outline-none text-sm resize-none h-10 overflow-hidden rounded-md placeholder-gray-500"
+											className="w-full bg-dank-500 p-3 outline-none text-sm resize-none h-10 overflow-hidden rounded-md placeholder-gray-500"
 											maxLength={1024}
 											onChange={(e) =>
 												setReply(e.target.value)
@@ -300,7 +300,7 @@ export default function PostPage({ user }: PageProps) {
 										/>
 										<Button
 											size="medium"
-											className="bg-dark-400 hover:bg-dark-500"
+											className="bg-dank-500 hover:bg-dark-100"
 											disabled={
 												reply.length < 5 ||
 												reply.length > 200

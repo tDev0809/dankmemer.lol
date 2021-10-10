@@ -4,6 +4,7 @@ import Head from "next/head";
 import { config, dom } from "@fortawesome/fontawesome-svg-core";
 import { createGlobalStyle } from "styled-components";
 import "../globals.css";
+import { ThemeProvider } from "next-themes";
 
 config.autoAddCss = false;
 const GlobalStyles = createGlobalStyle`
@@ -82,7 +83,14 @@ export default function App({ Component, pageProps }: AppProps) {
 				rel="stylesheet"
 			/>
 			<GlobalStyles />
-			<Component {...pageProps} />
+			<ThemeProvider
+				defaultTheme="dark"
+				attribute="class"
+				enableSystem={false}
+				disableTransitionOnChange
+			>
+				<Component {...pageProps} />
+			</ThemeProvider>
 		</>
 	);
 }

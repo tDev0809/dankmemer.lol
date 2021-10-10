@@ -1,4 +1,3 @@
-import Link from "next/link";
 import clsx from "clsx";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
@@ -39,7 +38,7 @@ export default function Dropdown({ children, content, variant }: Props) {
 		<div className="select-none cursor-pointer relative" ref={dropdown}>
 			<div
 				className={clsx(
-					"bg-dark-400 flex items-center rounded-md",
+					"bg-light-500 dark:bg-dank-500 flex items-center rounded-md",
 					variants[variant]
 				)}
 				onClick={() => setOpen(!open)}

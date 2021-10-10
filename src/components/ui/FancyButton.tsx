@@ -20,7 +20,7 @@ export default function FancyButton({ text, link, variant = "big" }: Props) {
 					className={clsx(
 						variants[variant],
 						"cursor-pointer relative block z-10",
-						"border-[3px] border-dank-300 bg-light-600 dark:bg-dark-700 text-black dark:text-white"
+						"border-[3px] border-dank-200 bg-light-200 dark:bg-dark-300 text-black dark:text-white"
 					)}
 					rel="noreferrer noopener"
 				>
@@ -29,7 +29,7 @@ export default function FancyButton({ text, link, variant = "big" }: Props) {
 				<div
 					className={clsx(
 						"absolute top-[7px] left-[7px] h-full w-full",
-						"border-[3px] border-dank-300",
+						"border-[3px] border-dank-200",
 						"group-hover:top-0 group-hover:left-0",
 						"transition-all duration-200 ease-in-out"
 					)}
