@@ -13,8 +13,6 @@ export default function FeedbackUpvote({ upvotes, upvoted, id }: Props) {
 	const [oUpvotes, setUpvotes] = useState(upvotes);
 	const [oUpvoted, setUpvoted] = useState(upvoted);
 
-	console.log(oUpvotes, oUpvoted, id);
-
 	const upvote = async () => {
 		axios
 			.patch(`/api/feedback/post/upvote/${id}`)
