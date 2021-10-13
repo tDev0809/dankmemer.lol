@@ -116,7 +116,7 @@ export default function Comment({
 						{oAuthor.username}#{oAuthor.discriminator}
 					</div>
 					<Tooltip content={format(createdAt, "MMMM dd, yyyy")}>
-						<p className="text-gray-400 cursor-pointer">
+						<p className="text-gray-400 cursor-default">
 							{formatDistance(new Date(createdAt), new Date(), {
 								addSuffix: true,
 							})}

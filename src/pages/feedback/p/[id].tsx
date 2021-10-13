@@ -168,7 +168,7 @@ export default function PostPage({ user }: PageProps) {
 												"MMMM dd, yyyy"
 											)}
 										>
-											<span className="cursor-pointer">
+											<span className="cursor-default">
 												{formatDistance(
 													new Date(post.createdAt),
 													new Date(),
