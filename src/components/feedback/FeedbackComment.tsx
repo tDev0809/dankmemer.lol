@@ -14,10 +14,16 @@ const commentType = {
 interface CommentActionProps {
 	icon: string;
 	description: string;
+	destructive?: boolean;
 	onClick?: () => void;
 }
 
-function CommentAction({ icon, description, onClick }: CommentActionProps) {
+function CommentAction({
+	icon,
+	description,
+	onClick,
+	destructive = false,
+}: CommentActionProps) {
 	return (
 		<Tooltip content={description}>
 			<div
@@ -25,7 +31,14 @@ function CommentAction({ icon, description, onClick }: CommentActionProps) {
 				onClick={onClick}
 				key={icon}
 			>
-				<span className="material-icons">{icon}</span>
+				<span
+					className={clsx(
+						"material-icons",
+						destructive && "text-red-400"
+					)}
+				>
+					{icon}
+				</span>
 			</div>
 		</Tooltip>
 	);
@@ -149,6 +162,7 @@ export default function Comment({
 					user?.id === author.id) &&
 					!oDeleted && (
 						<CommentAction
+							destructive
 							icon="delete"
 							description="Delete"
 							onClick={() => deleteComment()}
