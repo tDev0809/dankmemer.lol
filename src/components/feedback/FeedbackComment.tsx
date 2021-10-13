@@ -1,9 +1,10 @@
 import axios from "axios";
 import clsx from "clsx";
-import { formatDistance } from "date-fns";
+import { format, formatDistance } from "date-fns";
 import { Dispatch, SetStateAction, useState } from "react";
 import { CommentAuthor, User } from "../../types";
 import { urlify } from "../../util/feedback";
+import Tooltip from "../ui/Tooltip";
 
 const commentType = {
 	COMMENT: 0,
@@ -12,18 +13,21 @@ const commentType = {
 
 interface CommentActionProps {
 	icon: string;
+	description: string;
 	onClick?: () => void;
 }
 
-function CommentAction({ icon, onClick }: CommentActionProps) {
+function CommentAction({ icon, description, onClick }: CommentActionProps) {
 	return (
-		<div
-			className="bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-5 dark:hover:bg-opacity-10 hover:bg-opacity-40 p-1 rounded-md select-none cursor-pointer hidden group-hover:flex items-center"
-			onClick={onClick}
-			key={icon}
-		>
-			<span className="material-icons">{icon}</span>
-		</div>
+		<Tooltip content={description}>
+			<div
+				className="bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-5 dark:hover:bg-opacity-10 hover:bg-opacity-40 p-1 rounded-md select-none cursor-pointer hidden group-hover:flex items-center"
+				onClick={onClick}
+				key={icon}
+			>
+				<span className="material-icons">{icon}</span>
+			</div>
+		</Tooltip>
 	);
 }
 
@@ -98,11 +102,13 @@ export default function Comment({
 					>
 						{oAuthor.username}#{oAuthor.discriminator}
 					</div>
-					<p className="text-gray-400">
-						{formatDistance(new Date(createdAt), new Date(), {
-							addSuffix: true,
-						})}
-					</p>
+					<Tooltip content={format(createdAt, "MMMM dd, yyyy")}>
+						<p className="text-gray-400 cursor-pointer">
+							{formatDistance(new Date(createdAt), new Date(), {
+								addSuffix: true,
+							})}
+						</p>
+					</Tooltip>
 					{oPinned && (
 						<span className="flex items-center">
 							<span
@@ -125,12 +131,14 @@ export default function Comment({
 						{user?.isAdmin && (
 							<CommentAction
 								icon="push_pin"
+								description="Pin"
 								onClick={() => pinComment()}
 							/>
 						)}
 						{!oDeleted && (
 							<CommentAction
 								icon="reply"
+								description="Reply"
 								onClick={() => setReplyingTo?.(id)}
 							/>
 						)}
@@ -142,6 +150,7 @@ export default function Comment({
 					!oDeleted && (
 						<CommentAction
 							icon="delete"
+							description="Delete"
 							onClick={() => deleteComment()}
 						/>
 					)}

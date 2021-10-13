@@ -5,7 +5,7 @@ import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { formatDistance } from "date-fns";
+import { format, formatDistance } from "date-fns";
 import axios from "axios";
 import clsx from "clsx";
 import Button from "../../../components/ui/Button";
@@ -13,6 +13,7 @@ import FeedbackComment from "../../../components/feedback/FeedbackComment";
 import { urlify } from "../../../util/feedback";
 import FeedbackLabel from "../../../components/feedback/FeedbackLabel";
 import { toast } from "react-toastify";
+import Tooltip from "../../../components/ui/Tooltip";
 
 const LOAD_COMMENTS_AMOUNT = 10;
 
@@ -160,11 +161,20 @@ export default function PostPage({ user }: PageProps) {
 									<div className="text-light-600">
 										by {post.author.username}#
 										{post.author.discriminator}{" "}
-										{formatDistance(
-											new Date(post.createdAt),
-											new Date(),
-											{ addSuffix: true }
-										)}
+										<Tooltip
+											content={format(
+												post.createdAt,
+												"MMMM dd, yyyy"
+											)}
+										>
+											<span className="cursor-pointer">
+												{formatDistance(
+													new Date(post.createdAt),
+													new Date(),
+													{ addSuffix: true }
+												)}
+											</span>
+										</Tooltip>
 									</div>
 								)}
 								{!post && (
