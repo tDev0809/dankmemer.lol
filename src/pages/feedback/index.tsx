@@ -10,6 +10,7 @@ import { PageProps, Post } from "../../types";
 import { sanitizeCategory } from "../../util/feedback";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
+import Link from "next/link";
 
 export default function FeedbackPage({ user }: PageProps) {
 	const [feedbackCategories, setFeedbackCategories] = useState<
@@ -44,25 +45,27 @@ export default function FeedbackPage({ user }: PageProps) {
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 						{FEEDBACK_CATEGORIES.map((category) => (
-							<div
-								className={clsx(
-									"flex flex-col items-center justify-center -space-y-1",
-									"py-8 rounded-md select-none cursor-pointer",
-									"bg-light-500 dark:bg-dark-100",
-									"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
-								)}
-								key={category}
-							>
-								<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
-									{sanitizeCategory(category)}
+							<Link href={`/feedback/c/${category}`}>
+								<div
+									className={clsx(
+										"flex flex-col items-center justify-center -space-y-1",
+										"py-8 rounded-md select-none cursor-pointer",
+										"bg-light-500 dark:bg-dark-100",
+										"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
+									)}
+									key={category}
+								>
+									<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
+										{sanitizeCategory(category)}
+									</div>
+									<div className="text-gray-400">
+										{feedbackCategories[category] || 0} post
+										{feedbackCategories[category] === 1
+											? ""
+											: "s"}
+									</div>
 								</div>
-								<div className="text-gray-400">
-									{feedbackCategories[category] || 0} post
-									{feedbackCategories[category] === 1
-										? ""
-										: "s"}
-								</div>
-							</div>
+							</Link>
 						))}
 					</div>
 					<div className="flex flex-col space-y-1">

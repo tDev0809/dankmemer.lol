@@ -41,7 +41,6 @@ export default function PostPage({ user }: PageProps) {
 		});
 	};
 
-	// TODO: delete replies on post deletion
 	const postReply = async () => {
 		const res = await fetch("/api/feedback/reply/new", {
 			credentials: "same-origin",
@@ -381,9 +380,9 @@ export default function PostPage({ user }: PageProps) {
 								)}
 
 								{replyingTo === comment._id && (
-									<div className="ml-8 dark:bg-dark-400 p-4 flex space-x-4 rounded-md">
+									<div className="ml-8 p-4 flex space-x-4 rounded-md">
 										<textarea
-											className="w-full bg-dank-500 p-3 outline-none text-sm resize-none h-10 overflow-hidden rounded-md placeholder-gray-500"
+											className="w-full bg-gray-200 dark:bg-dank-500 p-3 outline-none text-sm resize-none h-10 overflow-hidden rounded-md placeholder-gray-500"
 											maxLength={1024}
 											onChange={(e) =>
 												setReply(e.target.value)
@@ -393,7 +392,7 @@ export default function PostPage({ user }: PageProps) {
 										/>
 										<Button
 											size="medium"
-											className="bg-dank-500 hover:bg-dark-100"
+											className="bg-gray-200 hover:bg-gray-300 dark:bg-dank-500 dark:hover:bg-dark-100 text-dark-400 dark:text-white"
 											disabled={
 												reply.length < 5 ||
 												reply.length > 200
@@ -430,6 +429,6 @@ export default function PostPage({ user }: PageProps) {
 		</Container>
 	);
 }
-// TODO: load more comments
+
 export const getServerSideProps: GetServerSideProps =
 	withSession(unauthenticatedRoute);
