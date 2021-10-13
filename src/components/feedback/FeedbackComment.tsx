@@ -120,7 +120,7 @@ export default function Comment({
 						</span>
 					)}
 				</div>
-				<p className="text-gray-500 dark:text-gray-400">
+				<p className="text-gray-500 dark:text-gray-300">
 					{urlify(oContent)}
 				</p>
 			</div>
