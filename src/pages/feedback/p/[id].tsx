@@ -124,6 +124,17 @@ export default function PostPage({ user }: PageProps) {
 		setFrom(from + LOAD_COMMENTS_AMOUNT);
 	};
 
+	const deletePost = async () => {
+		if (
+			!confirm(
+				"Are you sure you want to delete this post? You will not be able to get anything back once it is gone."
+			)
+		)
+			return;
+		axios.delete(`/api/feedback/post/delete/${id as string}`);
+		window.location.replace(`/feedback/`);
+	};
+
 	useEffect(() => {
 		axios(`/api/feedback/post/get/${id}`).then(({ data }) => {
 			setPost(data.post);
@@ -195,7 +206,23 @@ export default function PostPage({ user }: PageProps) {
 								</div>
 							</div>
 
-							<div>
+							<div className="flex space-x-4 items-center">
+								{user &&
+									post &&
+									(user.id === post.author.id ||
+										user.isAdmin ||
+										user.isModerator) && (
+										<Tooltip content="Delete this post">
+											<div
+												className="p-2 flex items-center rounded-md bg-red-500 hover:bg-red-700 cursor-pointer"
+												onClick={() => deletePost()}
+											>
+												<span className="material-icons">
+													delete
+												</span>
+											</div>
+										</Tooltip>
+									)}
 								<FeedbackUpvote
 									id={post?._id || ""}
 									upvotes={post?.upvotes || 0}
