@@ -48,7 +48,7 @@ export interface Post {
 	show: boolean;
 	title: string;
 	upvoted: boolean;
-	upvotes: boolean;
+	upvotes: number;
 }
 
 export interface CommentAuthor {

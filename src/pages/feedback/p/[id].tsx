@@ -14,6 +14,7 @@ import { urlify } from "../../../util/feedback";
 import FeedbackLabel from "../../../components/feedback/FeedbackLabel";
 import { toast } from "react-toastify";
 import Tooltip from "../../../components/ui/Tooltip";
+import FeedbackUpvote from "../../../components/feedback/FeedbackUpvote";
 
 const LOAD_COMMENTS_AMOUNT = 10;
 
@@ -120,7 +121,7 @@ export default function PostPage({ user }: PageProps) {
 	};
 
 	useEffect(() => {
-		axios(`/api/feedback/post/${id}`).then(({ data }) => {
+		axios(`/api/feedback/post/get/${id}`).then(({ data }) => {
 			setPost(data.post);
 		});
 	}, []);
@@ -191,18 +192,11 @@ export default function PostPage({ user }: PageProps) {
 							</div>
 
 							<div>
-								<div
-									className={clsx(
-										"flex space-x-1 justify-center font-montserrat cursor-pointer",
-										"px-8 py-4",
-										"text-white bg-dank-500 rounded-md"
-									)}
-								>
-									<span className="material-icons-outlined">
-										expand_less
-									</span>
-									<div>{post?.upvotes || 0}</div>
-								</div>
+								<FeedbackUpvote
+									id={post?._id || ""}
+									upvotes={post?.upvotes || 0}
+									upvoted={post?.upvoted || false}
+								/>
 							</div>
 						</div>
 					</div>

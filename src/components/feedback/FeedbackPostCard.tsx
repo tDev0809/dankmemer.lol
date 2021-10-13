@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Post, User } from "../../types";
 import { randomInArray } from "../../util/random";
 import FeedbackLabel from "./FeedbackLabel";
+import FeedbackUpvote from "./FeedbackUpvote";
 
 interface Props {
 	postData?: Post;
@@ -28,7 +29,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 							{postData?.title || (
 								<div
 									className={clsx(
-										"animate-pulse h-5 bg-gray-300 rounded",
+										"animate-pulse h-5 bg-gray-400 dark:bg-gray-300 rounded",
 										randomInArray(["w-32", "w-36", "w-44"])
 									)}
 								/>
@@ -47,7 +48,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 						{postData?.description || (
 							<div
 								className={clsx(
-									"animate-pulse mt-2 h-4 bg-gray-600 rounded",
+									"animate-pulse mt-2 h-4 bg-gray-300 dark:bg-gray-600 rounded",
 									randomInArray([
 										"w-52",
 										"w-60",
@@ -64,26 +65,18 @@ export default function FeedbackPostCard({ postData }: Props) {
 					className={clsx(
 						"flex items-center",
 						"space-x-0 md:space-x-4 space-y-2 md:space-y-0",
-						"w-full md:w-auto"
+						"w-full md:w-48"
 					)}
 				>
 					<div className="space-x-2 text-gray-400 hidden md:flex font-montserrat">
 						<span className="material-icons-outlined">forum</span>
 						<div>{postData?.comments || 0}</div>
 					</div>
-					<div
-						className={clsx(
-							"flex space-x-1 justify-center font-montserrat",
-							"flex-1 md:flex-initial",
-							"px-8 py-2 md:py-4 rounded-md",
-							"bg-light-200 dark:bg-dank-500 text-dark-400 dark:text-white"
-						)}
-					>
-						<span className="material-icons-outlined">
-							expand_less
-						</span>
-						<div>{postData?.upvotes || 0}</div>
-					</div>
+					<FeedbackUpvote
+						id={postData?._id || ""}
+						upvotes={postData?.upvotes || 0}
+						upvoted={postData?.upvoted || false}
+					/>
 				</div>
 			</div>
 		</Link>
