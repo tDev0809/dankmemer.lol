@@ -44,7 +44,7 @@ export default function Tooltip({
 			<div
 				className={clsx(
 					"absolute left-1/2 -translate-x-1/2 z-[100] whitespace-nowrap leading-none",
-					"p-2 bg-black rounded-md text-sm text-white",
+					"p-2 bg-[#18191c] rounded-md text-sm text-white",
 					margins[margin],
 					"transition-opacity duration-200 ease-in-out",
 					active ? "opacity-100" : "opacity-0"
@@ -52,7 +52,7 @@ export default function Tooltip({
 			>
 				{content}
 				<svg
-					className="absolute text-black h-3 w-full left-0 top-full"
+					className="absolute text-[#18191c] h-3 w-full left-0 top-full"
 					x="0px"
 					y="0px"
 					viewBox="0 0 255 255"
