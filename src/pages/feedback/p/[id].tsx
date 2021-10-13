@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 import Tooltip from "../../../components/ui/Tooltip";
 import FeedbackUpvote from "../../../components/feedback/FeedbackUpvote";
 
-const LOAD_COMMENTS_AMOUNT = 10;
+const LOAD_COMMENTS_AMOUNT = 25;
 
 export default function PostPage({ user }: PageProps) {
 	const [post, setPost] = useState<Post>();
@@ -120,6 +120,10 @@ export default function PostPage({ user }: PageProps) {
 		setComment("");
 	};
 
+	const loadNewComments = async () => {
+		setFrom(from + LOAD_COMMENTS_AMOUNT);
+	};
+
 	useEffect(() => {
 		axios(`/api/feedback/post/get/${id}`).then(({ data }) => {
 			setPost(data.post);
@@ -220,10 +224,14 @@ export default function PostPage({ user }: PageProps) {
 								Comments ({post?.comments || "?"})
 							</div>
 							<div className="text-gray-400 text-sm">
-								{/* TODO: Make the not-logged in text red or something? */}
-								{user
-									? `You're signed in as, ${user.username}#${user.discriminator}. Ensure this is the account you want to appear as the comment author.`
-									: "You need to be signed in to post a comment!"}
+								{user ? (
+									`You're signed in as, ${user.username}#${user.discriminator}. Ensure this is the account you want to appear as the comment author.`
+								) : (
+									<span className="text-red-400">
+										You need to be signed in to post a
+										comment!
+									</span>
+								)}
 							</div>
 						</div>
 						<textarea
@@ -253,7 +261,6 @@ export default function PostPage({ user }: PageProps) {
 							</Button>
 						</div>
 					</div>
-
 					<div className="flex flex-col space-y-4">
 						{comments.map((comment) => (
 							<div>
@@ -325,6 +332,17 @@ export default function PostPage({ user }: PageProps) {
 							</div>
 						))}
 					</div>
+					{!all && (
+						<div className="w-full">
+							<Button
+								block
+								className="bg-light-400 text-dark-300 dark:bg-dark-400 dark:text-white"
+								onClick={loadNewComments}
+							>
+								Load More
+							</Button>
+						</div>
+					)}
 				</div>
 			</div>
 		</Container>
