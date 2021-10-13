@@ -39,6 +39,7 @@ export interface Post {
 	developerResponse: boolean;
 	hot: number;
 	label:
+		| ""
 		| "accepted"
 		| "developer"
 		| "implemented"

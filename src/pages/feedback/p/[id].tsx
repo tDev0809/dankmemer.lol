@@ -15,6 +15,8 @@ import FeedbackLabel from "../../../components/feedback/FeedbackLabel";
 import { toast } from "react-toastify";
 import Tooltip from "../../../components/ui/Tooltip";
 import FeedbackUpvote from "../../../components/feedback/FeedbackUpvote";
+import Dropdown from "../../../components/ui/Dropdown";
+import { FEEDBACK_LABELS } from "../../../constants";
 
 const LOAD_COMMENTS_AMOUNT = 25;
 
@@ -135,6 +137,21 @@ export default function PostPage({ user }: PageProps) {
 		window.location.replace(`/feedback/`);
 	};
 
+	const changeLabel = (label: Post["label"]) => {
+		axios
+			.patch(
+				`/api/feedback/post/label/${id}?label=${label.replace(
+					"no label",
+					""
+				)}`
+			)
+			.then(({ data }) => {
+				const copy = { ...(post as Post) };
+				copy.label = data.label;
+				setPost(copy);
+			});
+	};
+
 	useEffect(() => {
 		axios(`/api/feedback/post/get/${id}`).then(({ data }) => {
 			setPost(data.post);
@@ -207,6 +224,44 @@ export default function PostPage({ user }: PageProps) {
 							</div>
 
 							<div className="flex space-x-4 items-center">
+								<Dropdown
+									content={
+										<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">
+											<span>Label</span>
+											<span className="material-icons">
+												expand_more
+											</span>
+										</div>
+									}
+									variant="big"
+								>
+									<div className="rounded-md mt-2 bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
+										{FEEDBACK_LABELS.filter(
+											(f) => !f.includes("all")
+										)
+											.concat("no label")
+											.map((label) => (
+												<div
+													className={clsx(
+														"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
+													)}
+													onClick={() => {
+														changeLabel(
+															label as Post["label"]
+														);
+													}}
+												>
+													{label
+														.charAt(0)
+														.toUpperCase() +
+														label
+															.substr(1)
+															.toLowerCase()}
+												</div>
+											))}
+									</div>
+								</Dropdown>
+
 								{user &&
 									post &&
 									(user.id === post.author.id ||
