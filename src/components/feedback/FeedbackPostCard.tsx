@@ -19,7 +19,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 					"flex-col md:flex-row",
 					"justify-start md:justify-between",
 					"items-start md:items-center",
-					"border border-light-500 dark:border-dark-100 hover:border-dank-300 bg-dan"
+					"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
 				)}
 			>
 				<div className="flex flex-col">

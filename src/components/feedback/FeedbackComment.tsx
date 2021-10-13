@@ -18,7 +18,7 @@ interface CommentActionProps {
 function CommentAction({ icon, onClick }: CommentActionProps) {
 	return (
 		<div
-			className="bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-5 dark:hover:bg-opacity-10 hover:bg-opacity-40 p-2 rounded-md select-none cursor-pointer hidden group-hover:flex items-center"
+			className="bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-5 dark:hover:bg-opacity-10 hover:bg-opacity-40 p-1 rounded-md select-none cursor-pointer hidden group-hover:flex items-center"
 			onClick={onClick}
 			key={icon}
 		>
@@ -82,7 +82,7 @@ export default function Comment({
 	return (
 		<div
 			className={clsx(
-				"flex justify-between items-center p-4 rounded-md bg-light-500 dark:bg-dark-400 group w-full"
+				"flex justify-between items-center p-2 group w-full hover:bg-gray-100 dark:hover:bg-dark-400"
 			)}
 		>
 			<div className="flex flex-col -space-y-1">
@@ -104,7 +104,14 @@ export default function Comment({
 						})}
 					</p>
 					{oPinned && (
-						<span className="material-icons">push_pin</span>
+						<span className="flex items-center">
+							<span
+								className="material-icons text-gray-400"
+								style={{ fontSize: "16px" }}
+							>
+								push_pin
+							</span>
+						</span>
 					)}
 				</div>
 				<p className="text-gray-500 dark:text-gray-400">
@@ -112,7 +119,7 @@ export default function Comment({
 				</p>
 			</div>
 
-			<div className="flex space-x-2">
+			<div className="flex space-x-2 mr-2">
 				{type == "COMMENT" && (
 					<>
 						{user?.isAdmin && (
