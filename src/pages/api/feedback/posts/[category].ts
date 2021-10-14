@@ -10,7 +10,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const user = req.session.get("user");
 	const staff = user?.isAdmin || user?.isModerator;
 
-	if (!category && !FEEDBACK_CATEGORIES.includes(category)) {
+	if (
+		!category ||
+		!FEEDBACK_CATEGORIES.concat("all").includes(category as string)
+	) {
 		return res
 			.status(500)
 			.json({ message: "This category does not exist." });

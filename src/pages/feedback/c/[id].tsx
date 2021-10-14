@@ -51,12 +51,12 @@ export default function CategoryPage({ user }: PageProps) {
 	};
 
 	useEffect(() => {
-		loadPosts(true);
+		if (FEEDBACK_CATEGORIES.concat("all").includes(id as string)) {
+			loadPosts(true);
+		} else {
+			router.push("/feedback");
+		}
 	}, [filter, sorting]);
-
-	if (!FEEDBACK_CATEGORIES.includes(id as string)) {
-		window.location.replace("/feedback");
-	}
 
 	return (
 		<Container title="Feedback" user={user}>
