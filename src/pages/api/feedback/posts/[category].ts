@@ -160,8 +160,15 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 					},
 					show: {
 						$or: [
-							staff ? true : { $eq: ["$bad", false] },
-							{ $eq: ["$author.id", user?.id] },
+							staff
+								? {
+										$or: [
+											{ $eq: ["$bad", false] },
+											{ $eq: ["$label", filter] },
+										],
+								  }
+								: { $eq: ["$bad", false] },
+							{ $eq: ["$author.idA", user?.id] },
 						],
 					},
 				},
