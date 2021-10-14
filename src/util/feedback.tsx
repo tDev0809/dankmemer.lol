@@ -1,6 +1,17 @@
 export function sanitizeCategory(category: string) {
+	const map = {
+		Qol: "QoL",
+	};
+
 	category = category.replace("_", " ");
-	return category[0].toUpperCase() + category.substr(1).toLowerCase();
+
+	let out = category[0].toUpperCase() + category.substr(1).toLowerCase();
+
+	Object.entries(map).forEach(([o, n]) => {
+		out = out.replace(o, n);
+	});
+
+	return out;
 }
 
 export function urlify(text: string) {

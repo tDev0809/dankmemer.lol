@@ -176,5 +176,6 @@ export const FEEDBACK_CATEGORIES = [
 	"currency_items",
 	"currency_commands",
 	"currency_balances",
+	"qol_changes",
 	"other",
 ];
