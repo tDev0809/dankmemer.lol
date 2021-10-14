@@ -78,7 +78,7 @@ export default function HomePage({ user }: PageProps) {
 					/>
 				</div>
 				<div
-					className="absolute hidden lg:block z-0"
+					className="absolute hidden lg:block z-[-99]"
 					style={{
 						transform: `translate(${
 							(perspective[0] * -1) / 100
