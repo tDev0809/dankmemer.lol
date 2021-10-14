@@ -12,6 +12,8 @@ const types = {
 	denied: "text-[#A24545] dark:text-[#f0cece] border-[#951919] bg-[#95191954]",
 	invalid:
 		"text-[#A24545] dark:text-[#f0cece] border-[#951919] bg-[#95191954]",
+	considered:
+		"text-[#6c39f7] dark:text-[#f0cece] border-[#6c39f7] bg-[#8960f754]",
 };
 
 const text = {
@@ -21,6 +23,7 @@ const text = {
 	duplicate: "Duplicate",
 	denied: "Denied",
 	invalid: "Invalid",
+	considered: "Considered",
 };
 
 interface Props {

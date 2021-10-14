@@ -169,6 +169,7 @@ export const FEEDBACK_LABELS = [
 	"duplicate",
 	"denied",
 	"invalid",
+	"considered",
 ];
 
 export const FEEDBACK_CATEGORIES = [

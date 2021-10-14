@@ -45,7 +45,8 @@ export interface Post {
 		| "implemented"
 		| "duplicate"
 		| "denied"
-		| "invalid";
+		| "invalid"
+		| "considered";
 	show: boolean;
 	title: string;
 	upvoted: boolean;
