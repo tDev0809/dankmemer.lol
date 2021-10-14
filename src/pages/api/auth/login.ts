@@ -1,11 +1,10 @@
 import { NextApiResponse } from "next";
-import { encode } from "querystring";
 import { NextIronRequest, withSession } from "../../../util/session";
 
 const OAuthScope = ["identify", "email"].join(" ");
-const OAuthData = encode({
+const OAuthData = new URLSearchParams({
 	response_type: "code",
-	client_id: process.env.CLIENT_ID,
+	client_id: process.env.CLIENT_ID as string,
 	redirect_uri: `${process.env.DOMAIN}/api/auth/callback`,
 	scope: OAuthScope,
 });
