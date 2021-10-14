@@ -15,7 +15,7 @@ interface Props {
 export default function FancyButton({ text, link, variant = "big" }: Props) {
 	return (
 		<Link href={link}>
-			<div className="relative group">
+			<div className="relative group block z-[-1]">
 				<a
 					className={clsx(
 						variants[variant],
