@@ -120,65 +120,65 @@ export default function Navbar({ user }: Props) {
 						)}
 					</div>
 					<div
-						className="items-center relative flex lg:hidden cursor-pointer select-none"
+						className="items-center relative flex lg:hidden cursor-pointer select-none text-dank-500 dark:text-light-100"
 						onClick={() => setHamburger(!hamburger)}
 					>
 						<span className="material-icons">menu</span>
 					</div>
 				</nav>
 				{hamburger && (
-					<ul className="absolute flex flex-col bg-light-200 box-border w-screen h-screen z-50 top-[105px]">
+					<ul className="absolute flex flex-col bg-light-200 dark:bg-dark-200 box-border w-screen h-screen z-50 top-[105px]">
 						<Link href="/commands">
-							<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Commands
 							</li>
 						</Link>
 						<Link href="/faq">
-							<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								FAQ
 							</li>
 						</Link>
 						<Link href="/blogs">
-							<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Blog
 							</li>
 						</Link>
 						<Link href="/items">
-							<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Items
 							</li>
 						</Link>
 						<Link href="/feedback">
-							<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Feedback
 							</li>
 						</Link>
 						<Link href="/appeals">
-							<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Appeal a ban
 							</li>
 						</Link>
 						<Link href="/reports">
-							<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Report a user
 							</li>
 						</Link>
 						{(user?.isModerator || user?.isAdmin) && (
 							<Link href="/control">
-								<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+								<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 									Control panel
 								</li>
 							</Link>
 						)}
 						{user ? (
 							<Link href="/reports">
-								<li className="text-red-400 hover:text-red-500 p-4 border-b-2 border-light-100">
+								<li className="text-red-400 hover:text-red-500 p-4 border-b-2 border-light-500 dark:border-dark-300">
 									Logout
 								</li>
 							</Link>
 						) : (
 							<Link href="/api/auth/logout">
-								<li className="hover:text-light-600 p-4 border-b-2 border-light-100">
+								<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500  dark:border-dark-300">
 									Login
 								</li>
 							</Link>
