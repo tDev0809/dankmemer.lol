@@ -34,6 +34,7 @@ export default function Button({
 }: ButtonProps) {
 	const content = (
 		<button
+			disabled={disabled}
 			className={clsx(
 				"inline-flex items-center focus:outline-none font-medium",
 				sizeClasses[size],
