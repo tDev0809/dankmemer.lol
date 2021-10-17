@@ -97,7 +97,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const post = posts[0];
 
 	if (!posts) {
-		return res.status(500).json({ message: "This post does not exist." });
+		return res.status(500).json({ error: "This post does not exist." });
 	}
 
 	return res.json({ post });
