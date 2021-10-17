@@ -80,3 +80,12 @@ export interface Comment {
 	deleted?: boolean;
 	pinned?: boolean;
 }
+
+export interface Blog {
+	_id: string;
+	author: string;
+	content: string;
+	date: number;
+	desc: string;
+	name: string;
+}
