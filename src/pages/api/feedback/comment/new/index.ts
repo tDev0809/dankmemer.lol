@@ -25,7 +25,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	if (req.body.comment.length > 1024) {
-		return res.status(400).json({ error: "Your comment is too short." });
+		return res.status(400).json({ error: "Your comment is too long." });
 	}
 
 	const post = await db.collection("feedback_posts").findOne({
