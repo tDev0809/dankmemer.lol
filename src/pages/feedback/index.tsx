@@ -45,8 +45,8 @@ export default function FeedbackPage({ user }: PageProps) {
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 						{FEEDBACK_CATEGORIES.map((category) => (
-							<Link href={`/feedback/c/${category}`}>
-								<div
+							<Link href={`/feedback/c/${category}`} passHref>
+								<a
 									className={clsx(
 										"flex flex-col items-center justify-center -space-y-1",
 										"py-8 rounded-md select-none cursor-pointer",
@@ -64,7 +64,7 @@ export default function FeedbackPage({ user }: PageProps) {
 											? ""
 											: "s"}
 									</div>
-								</div>
+								</a>
 							</Link>
 						))}
 					</div>

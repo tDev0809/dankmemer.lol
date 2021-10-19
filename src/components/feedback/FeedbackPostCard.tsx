@@ -12,8 +12,8 @@ interface Props {
 
 export default function FeedbackPostCard({ postData }: Props) {
 	return (
-		<Link href={postData ? `/feedback/p/${postData._id}` : "#"}>
-			<div
+		<Link href={postData ? `/feedback/p/${postData._id}` : "#"} passHref>
+			<a
 				className={clsx(
 					"bg-light-500 dark:bg-dark-100 rounded-md p-4 cursor-pointer",
 					"w-full flex",
@@ -78,7 +78,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 						upvoted={postData?.upvoted || false}
 					/>
 				</div>
-			</div>
+			</a>
 		</Link>
 	);
 }
