@@ -92,7 +92,12 @@ function StaffCard({ member }: StaffCardProps) {
 							(e.target as any).src = randomAvatar(member._id);
 						}}
 					/>
-					<div className="flex flex-col justify-between">
+					<div
+						className={clsx(
+							"flex flex-col",
+							member.category == "Team" && "justify-between"
+						)}
+					>
 						<div>
 							<div className="font-bold text-2xl font-montserrat">
 								{member.name}
