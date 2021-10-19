@@ -176,7 +176,10 @@ export const FEEDBACK_CATEGORIES = [
 	"currency_items",
 	"currency_commands",
 	"currency_balances",
+	"new_features",
 	"qol_changes",
+	"patreon_and_lootboxes",
+	"pipe_dream",
 	"other",
 ];
 

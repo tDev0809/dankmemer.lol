@@ -3,7 +3,7 @@ export function sanitizeCategory(category: string) {
 		Qol: "QoL",
 	};
 
-	category = category.replace("_", " ");
+	category = category.replaceAll("_", " ");
 
 	let out = category[0].toUpperCase() + category.substr(1).toLowerCase();
 
