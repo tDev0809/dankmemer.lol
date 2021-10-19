@@ -5,8 +5,6 @@ import { PageProps } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 
-export const EFFECTIVE_DATE = "February 02, 2019";
-
 interface RuleProps {
 	title: string;
 	description: string;
