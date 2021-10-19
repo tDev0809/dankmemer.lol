@@ -30,7 +30,7 @@ export default function Footer({}: Props) {
 								<span data-ccpa-link="1"></span>
 							</div>
 						</div>
-						<div className="flex space-x-12">
+						<div className="flex space-x-6 lg:space-x-12">
 							<div className="flex flex-col space-y-0">
 								<a
 									className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer"
