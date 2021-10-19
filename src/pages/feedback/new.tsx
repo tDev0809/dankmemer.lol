@@ -90,10 +90,10 @@ export default function FeedbackPage({ user }: PageProps) {
 								>
 									<span
 										className={clsx(
-											"absolute rounded-full h-4 w-4 border-2 border-gray-500 dark:border-dank-200",
+											"absolute rounded-full h-4 w-4 border-4 bg-gray-400 dark:bg-dank-400",
 											category === fcategory
-												? "bg-dank-100"
-												: "bg-gray-400 dark:bg-dank-400"
+												? "border-dank-300"
+												: "border-gray-400 dark:border-dank-400"
 										)}
 									/>
 									<span>{sanitizeCategory(fcategory)}</span>
