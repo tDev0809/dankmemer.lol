@@ -41,7 +41,7 @@ export default function BlogPage({ user }: PageProps) {
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-5 xl:gap-20">
 						{blogs.slice(0, 3).map((blog, i) => (
 							<Link href={`/blog/${blog._id}`}>
-								<div className="rounded-lg h-72 p-6 cursor-pointer border bg-light-500 dark:bg-dark-400 border-light-500 dark:border-dark-400 hover:border-dank-300">
+								<div className="rounded-lg h-72 p-6 cursor-pointer border bg-light-500 dark:bg-dark-400 border-light-500 dark:border-dark-400 hover:border-dank-300 dark:hover:border-dank-300">
 									<div className="flex flex-col space-y-4 text-dark-400 dark:text-white">
 										<div className="font-bold text-2xl font-montserrat">
 											{blog.name}
@@ -65,7 +65,7 @@ export default function BlogPage({ user }: PageProps) {
 					<div className="grid grid-cols-1 gap-4">
 						{blogs.slice(3, blogs.length - 1).map((blog, i) => (
 							<Link href={`/blog/${blog._id}`} key={i}>
-								<div className="rounded-lg p-6 cursor-pointer bg-light-500 dark:bg-dark-400 border-light-500 dark:border-dark-400 hover:border-dank-300">
+								<div className="rounded-lg p-6 cursor-pointer bg-light-500 dark:bg-dark-400 border-light-500 dark:border-dark-400 border hover:border-dank-300 dark:hover:border-dank-300">
 									<div className="flex flex-col space-y-2 text-dark-400 dark:text-white">
 										<div className="font-bold text-2xl font-montserrat">
 											{blog.name}

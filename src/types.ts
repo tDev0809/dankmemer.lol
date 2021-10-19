@@ -89,3 +89,17 @@ export interface Blog {
 	desc: string;
 	name: string;
 }
+
+export interface Staff {
+	_id: string;
+	category:
+		| "Team"
+		| "Bot Moderators"
+		| "Support Moderators"
+		| "Honorable Mentions";
+	name: string;
+	about: string;
+	social: Record<string, string>;
+	avatar: string;
+	role?: string;
+}

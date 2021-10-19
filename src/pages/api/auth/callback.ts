@@ -86,6 +86,17 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	const staffUser = await db.collection("staff").findOne({ _id: user.id });
 
+	if (staffUser) {
+		db.collection("staff").updateOne(
+			{ _id: user.id },
+			{
+				$set: {
+					avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
+				},
+			}
+		);
+	}
+
 	await req.session.set("user", {
 		...user,
 		isModerator: [
