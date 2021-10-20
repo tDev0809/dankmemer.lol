@@ -23,7 +23,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 					"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
 				)}
 			>
-				<div className="flex flex-col">
+				<div className="flex flex-col w-full md:w-4/5">
 					<div className="flex space-x-2 items-center">
 						<div className="text-lg font-montserrat line-clamp-1 font-bold text-dank-500 dark:text-white">
 							{postData?.title || (
@@ -44,7 +44,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 							)}
 						</div>
 					</div>
-					<div className="text-light-600 dark:text-light-300 line-clamp-2">
+					<p className="text-light-600 dark:text-light-300 line-clamp-2">
 						{postData?.description || (
 							<div
 								className={clsx(
@@ -59,7 +59,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 								)}
 							/>
 						)}
-					</div>
+					</p>
 				</div>
 				<div
 					className={clsx(
