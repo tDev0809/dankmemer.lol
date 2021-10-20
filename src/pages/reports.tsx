@@ -1,7 +1,6 @@
 import clsx from "clsx";
-import { ru } from "date-fns/locale";
 import { GetServerSideProps } from "next";
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Button from "../components/ui/Button";
 import Container from "../components/ui/Container";
