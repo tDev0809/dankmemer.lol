@@ -184,7 +184,7 @@ export default function PostPage({ user }: PageProps) {
 									post ? "-space-y-1" : "space-y-2"
 								)}
 							>
-								<div className="text-3xl font-bold font-montserrat text-dank-300 dark:text-white">
+								<div className="text-3xl break-all font-bold font-montserrat text-dank-300 dark:text-white">
 									{post?.title || (
 										<div className="animate-pulse bg-gray-800 dark:bg-gray-300 rounded h-6 w-32" />
 									)}
