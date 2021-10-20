@@ -21,7 +21,7 @@ export default function Navbar({ user }: Props) {
 	return (
 		<>
 			<div className="flex justify-center items-center text-lg">
-				<nav className="max-w-7xl drop-shadow-xl dark:drop-shadow-none bg-light-200 dark:bg-dark-200 rounded-md flex justify-between p-4 mt-0 lg:mt-5 w-full lg:w-11/12">
+				<nav className="max-w-7xl drop-shadow-xl dark:drop-shadow-none bg-light-200 dark:bg-dark-200 rounded-md flex justify-between p-4 mt-0 lg:mt-5 w-full lg:w-11/12 z-[1]">
 					<div className="flex items-center">
 						<Link href="/">
 							<img
