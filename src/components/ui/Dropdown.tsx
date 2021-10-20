@@ -45,7 +45,7 @@ export default function Dropdown({ children, content, variant }: Props) {
 			>
 				{content}
 			</div>
-			<div className="absolute w-full z-50">
+			<div className="absolute w-full min-h-full z-50">
 				<div
 					className={clsx(open ? "" : "hidden")}
 					onClick={() => setOpen(false)}
