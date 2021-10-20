@@ -1,14 +1,14 @@
 import axios from "axios";
+import clsx from "clsx";
+import { sanitize } from "dompurify";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
 import Container from "../components/ui/Container";
-import { PageProps, Post, Staff } from "../types";
+import { PageProps, Staff } from "../types";
+import { randomAvatar } from "../util/random";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
-import Marquee from "react-fast-marquee";
-import { sanitize } from "dompurify";
-import { randomAvatar } from "../util/random";
-import clsx from "clsx";
 
 interface SocialProps {
 	member: Staff;

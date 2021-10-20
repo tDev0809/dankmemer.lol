@@ -1,5 +1,5 @@
 import { NextApiResponse } from "next";
-import { encode, stringify } from "querystring";
+import { stringify } from "querystring";
 import { NextIronRequest, withSession } from "../../../util/session";
 import axios from "axios";
 import { dbConnect } from "../../../util/mongodb";
