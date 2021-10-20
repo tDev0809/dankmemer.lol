@@ -53,6 +53,10 @@ export default function Reports({ user }: PageProps) {
 		toast.dark("Your report has been submitted.");
 	};
 
+	useEffect(() => {
+		setBrokenRules([]);
+	}, [type]);
+
 	return (
 		<Container title="Reports" user={user}>
 			<div className="max-w-4xl xl:max-w-4xl mx-8 lg:mx-auto relative my-16 flex justify-center">
