@@ -120,7 +120,7 @@ export default function Reports({ user }: PageProps) {
 					<div className="flex flex-col p-4 space-y-2">
 						<div className="flex flex-col space-y-2">
 							<div className="text-lg font-bold font-montserrat text-dark-400 dark:text-white">
-								Please write your report below.
+								Which rules did they break?
 							</div>
 							<div className="flex flex-col space-y-1">
 								{REPORTS[type].map((rule, i) => (
