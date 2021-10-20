@@ -1,5 +1,4 @@
 import axios from "axios";
-import { ObjectId } from "bson";
 import { NextApiResponse } from "next";
 import { dbConnect } from "../../../util/mongodb";
 import { NextIronRequest, withSession } from "../../../util/session";
@@ -15,26 +14,22 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(401).json({ error: "You are not logged in." });
 	}
 
-	if (await db.collection("bans").findOne({ type: "report", id: user.id })) {
+	if (await db.collection("bans").findOne({ type: "appeal", id: user.id })) {
 		return res
 			.status(403)
-			.json({ error: "You are banned from reporting." });
+			.json({ error: "You are banned from appealing." });
 	}
 
 	if (recent.has(user.id)) {
 		return res.status(429).json({ error: "You're doing that too often." });
 	}
 
-	if (!req.body.type || !req.body.report || !req.body.id || !req.body.rules) {
+	if (!req.body.type || !req.body.appeal || !req.body.rules) {
 		return res.status(400).json({ error: "Malformed body" });
 	}
 
-	if (req.body.id.length <= 10 || req.body.id.length >= 25) {
-		return res.status(400).json({ error: "Your id is invalid" });
-	}
-
-	if (req.body.report.length < 20 || req.body.report.length >= 2000) {
-		return res.status(400).json({ error: "Your report is invalid" });
+	if (req.body.appeal.length < 20 || req.body.appeal.length >= 2000) {
+		return res.status(400).json({ error: "Your appeal is invalid" });
 	}
 
 	if (req.body.rules.length == 0) {
@@ -43,29 +38,25 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	if (!user.isAdmin) {
 		recent.add(user.id);
-		setTimeout(() => recent.delete(user.id), 10 * 60 * 1000);
+		setTimeout(() => recent.delete(user.id), 30 * 60 * 1000);
 	}
 
 	await axios.post(
-		req.body.type === "server"
-			? process.env.REPORTS_SERVER_WEBHOOK!
-			: process.env.REPORTS_USER_WEBHOOK!,
+		req.body.type === "Community Server Ban"
+			? process.env.APPEALS_COMMUNITY_WEBHOOK!
+			: req.body.type === "Support Server Ban"
+			? process.env.APPEALS_SUPPORT_WEBHOOK!
+			: process.env.APPEALS_USER_WEBHOOK!,
 		{
 			embeds: [
 				{
-					title: `Reporting a ${req.body.type}`,
+					title: `Appealing a ${req.body.type}`,
 					color: 0x39923c,
 					timestamp: new Date(),
 					fields: [
 						{
-							name: "Reporter",
-							value: `${user.username}#${user.discriminator}\n(<@${user.id}> | ${user.id})`,
-							inline: true,
-						},
-						{
-							name: "Reported",
-							value: req.body.id,
-							inline: true,
+							name: `Banned user`,
+							value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`,
 						},
 						{
 							name: "Rules that were broken",
@@ -74,8 +65,8 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 								.join("\n"),
 						},
 						{
-							name: "Report content",
-							value: req.body.report.slice(0, 1023),
+							name: "Appeal content",
+							value: req.body.appeal.slice(0, 1023),
 						},
 					],
 				},
