@@ -171,7 +171,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 										],
 								  }
 								: { $eq: ["$bad", false] },
-							{ $eq: ["$author.idA", user?.id] },
+							{ $eq: ["$author.id", user?.id] },
 						],
 					},
 				},
