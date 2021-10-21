@@ -35,10 +35,14 @@ export default function PostPage({ user }: PageProps) {
 	const loadComments = async () => {
 		axios(
 			`/api/feedback/comments/${id}?from=${from}&amount=${LOAD_COMMENTS_AMOUNT}`
-		).then(({ data }) => {
-			setComments([...comments, ...data.comments]);
-			setAll(data.all);
-		});
+		)
+			.then(({ data }) => {
+				setComments([...comments, ...data.comments]);
+				setAll(data.all);
+			})
+			.catch((e) => {
+				router.push("/feedback");
+			});
 	};
 
 	const postReply = async () => {
@@ -152,9 +156,13 @@ export default function PostPage({ user }: PageProps) {
 	};
 
 	useEffect(() => {
-		axios(`/api/feedback/post/get/${id}`).then(({ data }) => {
-			setPost(data.post);
-		});
+		axios(`/api/feedback/post/get/${id}`)
+			.then(({ data }) => {
+				setPost(data.post);
+			})
+			.catch((e) => {
+				router.push("/feedback");
+			});
 	}, []);
 
 	useEffect(() => {
