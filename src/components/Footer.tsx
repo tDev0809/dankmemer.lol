@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import { Expire } from "./ui/Expire";
 
 interface Props {}
 
@@ -83,18 +84,29 @@ export default function Footer({}: Props) {
 									</span>
 								</Link>
 							</div>
-							<div
-								className="flex flex-col"
-								onClick={() =>
-									setTheme(
-										theme === "dark" ? "light" : "dark"
-									)
-								}
-							>
-								<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer select-none">
-									{theme === "dark"
-										? "Light Mode"
-										: "Dark Mode"}
+							<div className="flex flex-col">
+								<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer select-none flex items-center">
+									<div
+										onClick={() =>
+											setTheme(
+												theme === "dark"
+													? "light"
+													: "dark"
+											)
+										}
+									>
+										{theme === "dark"
+											? "Light Mode"
+											: "Dark Mode"}
+									</div>
+									<Expire
+										added={new Date("10-21-2021")}
+										expireIn="month"
+									>
+										<div className="bg-red-500 ml-2 px-2 py-0.5 text-xs rounded-md text-white">
+											NEW
+										</div>
+									</Expire>
 								</span>
 							</div>
 						</div>
