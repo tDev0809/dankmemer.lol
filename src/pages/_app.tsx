@@ -82,6 +82,14 @@ export default function App({ Component, pageProps }: AppProps) {
 				href="https://fonts.googleapis.com/css2?family=Inter"
 				rel="stylesheet"
 			/>
+			<script
+				dangerouslySetInnerHTML={{
+					__html: `ga('send', 'pageview', {
+						hitType: 'pageview',
+						page: location.pathname
+					});`,
+				}}
+			/>
 			<GlobalStyles />
 			<ThemeProvider
 				defaultTheme="dark"
