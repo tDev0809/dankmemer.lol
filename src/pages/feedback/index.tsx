@@ -57,7 +57,7 @@ export default function FeedbackPage({ user }: PageProps) {
 								<Link href={`/feedback/c/${category}`} passHref>
 									<a
 										className={clsx(
-											"flex flex-col items-center justify-center space-y-1",
+											"flex flex-col items-center justify-center -space-y-1",
 											"py-8 rounded-md select-none cursor-pointer",
 											"bg-light-500 dark:bg-dark-100",
 											"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
@@ -67,7 +67,7 @@ export default function FeedbackPage({ user }: PageProps) {
 										<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
 											{sanitizeCategory(category)}
 										</div>
-										<div className="text-sm text-gray-400">
+										<div className="text-gray-400">
 											{feedbackCategories[category] || 0}{" "}
 											post
 											{feedbackCategories[category] === 1
