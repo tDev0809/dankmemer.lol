@@ -28,21 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
 				<link rel="icon" href="/img/memer.png" />
 				<meta property="og:image:width" content="64" />
 				<meta property="og:image:height" content="64" />
-				<script
-					async
-					src="https://www.google-analytics.com/analytics.js"
-				></script>
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-                            window.ga = window.ga || function () {
-                                (ga.q = ga.q || []).push(arguments)
-                            };
-                            ga.l = +new Date;
-                            ga('create', 'UA-89062206-3', 'auto');
-							`,
-					}}
-				/>
 			</Head>
 			<DefaultSeo
 				defaultTitle="Dank Memer"
