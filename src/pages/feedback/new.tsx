@@ -5,7 +5,10 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
-import { FEEDBACK_CATEGORIES } from "../../constants";
+import {
+	FEEDBACK_CATEGORIES,
+	FEEDBACK_CATEGORIES_DESCRIPTIONS,
+} from "../../constants";
 import { PageProps } from "../../types";
 import { sanitizeCategory } from "../../util/feedback";
 import { unauthenticatedRoute } from "../../util/redirects";
@@ -90,13 +93,23 @@ export default function FeedbackPage({ user }: PageProps) {
 								>
 									<span
 										className={clsx(
-											"absolute rounded-full h-4 w-4 border-4 bg-gray-400 dark:bg-dank-400",
+											"absolute rounded-full h-4 w-4",
 											category === fcategory
-												? "border-dank-300"
-												: "border-gray-400 dark:border-dank-400"
+												? "bg-dank-300"
+												: "bg-gray-400 dark:bg-dank-400"
 										)}
 									/>
-									<span>{sanitizeCategory(fcategory)}</span>
+									<span>
+										{sanitizeCategory(fcategory)}{" "}
+										<span className="text-sm text-gray-500">
+											-{" "}
+											{
+												FEEDBACK_CATEGORIES_DESCRIPTIONS[
+													fcategory
+												]
+											}
+										</span>
+									</span>
 								</label>
 							))}
 						</div>

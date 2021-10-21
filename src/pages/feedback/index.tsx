@@ -5,12 +5,16 @@ import { useEffect, useState } from "react";
 import FeedbackPostCard from "../../components/feedback/FeedbackPostCard";
 import Container from "../../components/ui/Container";
 import FancyButton from "../../components/ui/FancyButton";
-import { FEEDBACK_CATEGORIES } from "../../constants";
+import {
+	FEEDBACK_CATEGORIES,
+	FEEDBACK_CATEGORIES_DESCRIPTIONS,
+} from "../../constants";
 import { PageProps, Post } from "../../types";
 import { sanitizeCategory } from "../../util/feedback";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 import Link from "next/link";
+import Tooltip from "../../components/ui/Tooltip";
 
 export default function FeedbackPage({ user }: PageProps) {
 	const [feedbackCategories, setFeedbackCategories] = useState<
@@ -45,27 +49,34 @@ export default function FeedbackPage({ user }: PageProps) {
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 						{FEEDBACK_CATEGORIES.map((category) => (
-							<Link href={`/feedback/c/${category}`} passHref>
-								<a
-									className={clsx(
-										"flex flex-col items-center justify-center -space-y-1",
-										"py-8 rounded-md select-none cursor-pointer",
-										"bg-light-500 dark:bg-dark-100",
-										"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
-									)}
-									key={category}
-								>
-									<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
-										{sanitizeCategory(category)}
-									</div>
-									<div className="text-gray-400">
-										{feedbackCategories[category] || 0} post
-										{feedbackCategories[category] === 1
-											? ""
-											: "s"}
-									</div>
-								</a>
-							</Link>
+							<Tooltip
+								content={
+									FEEDBACK_CATEGORIES_DESCRIPTIONS[category]
+								}
+							>
+								<Link href={`/feedback/c/${category}`} passHref>
+									<a
+										className={clsx(
+											"flex flex-col items-center justify-center space-y-1",
+											"py-8 rounded-md select-none cursor-pointer",
+											"bg-light-500 dark:bg-dark-100",
+											"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
+										)}
+										key={category}
+									>
+										<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
+											{sanitizeCategory(category)}
+										</div>
+										<div className="text-sm text-gray-400">
+											{feedbackCategories[category] || 0}{" "}
+											post
+											{feedbackCategories[category] === 1
+												? ""
+												: "s"}
+										</div>
+									</a>
+								</Link>
+							</Tooltip>
 						))}
 					</div>
 					<div className="flex flex-col space-y-1">

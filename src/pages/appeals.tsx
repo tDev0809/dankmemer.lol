@@ -96,10 +96,10 @@ export default function Appeals({ user }: PageProps) {
 								>
 									<span
 										className={clsx(
-											"absolute rounded-full h-4 w-4 border-4 bg-gray-500 dark:bg-dank-400",
+											"absolute rounded-full h-4 w-4",
 											stype === type
-												? "border-dank-300"
-												: "border-gray-500 dark:border-dank-400"
+												? "bg-dank-300"
+												: "bg-gray-400 dark:bg-dank-400"
 										)}
 									/>
 									<span>{stype}</span>
