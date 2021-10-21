@@ -13,9 +13,7 @@ export default function BlogPage({ user }: PageProps) {
 
 	useEffect(() => {
 		axios("/api/blog/blogs").then((data) => {
-			setBlogs(
-				data.data.concat(data.data).concat(data.data).concat(data.data)
-			);
+			setBlogs(data.data);
 		});
 	}, []);
 
