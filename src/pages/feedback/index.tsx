@@ -50,6 +50,7 @@ export default function FeedbackPage({ user }: PageProps) {
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
 						{FEEDBACK_CATEGORIES.map((category) => (
 							<Tooltip
+								key={category}
 								content={
 									FEEDBACK_CATEGORIES_DESCRIPTIONS[category]
 								}
@@ -62,7 +63,6 @@ export default function FeedbackPage({ user }: PageProps) {
 											"bg-light-500 dark:bg-dark-100",
 											"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
 										)}
-										key={category}
 									>
 										<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
 											{sanitizeCategory(category)}

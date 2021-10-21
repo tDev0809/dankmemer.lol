@@ -44,7 +44,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 							)}
 						</div>
 					</div>
-					<p className="text-light-600 dark:text-light-300 line-clamp-2">
+					<div className="text-light-600 dark:text-light-300 line-clamp-2">
 						{postData?.description || (
 							<div
 								className={clsx(
@@ -59,7 +59,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 								)}
 							/>
 						)}
-					</p>
+					</div>
 				</div>
 				<div
 					className={clsx(
