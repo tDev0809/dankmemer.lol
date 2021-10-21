@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import BottomCTA from "../../components/BottomCTA";
 import Container from "../../components/ui/Container";
 import { PageProps } from "../../types";
+import { tailwindHtml } from "../../util/blog";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
@@ -58,8 +59,10 @@ export default function PostPage({ user }: PageProps) {
 						""
 					)}
 					<div
-						className="break-all text-dark-400 dark:text-white"
-						dangerouslySetInnerHTML={{ __html: content }}
+						className="text-dark-400 dark:text-white"
+						dangerouslySetInnerHTML={{
+							__html: tailwindHtml(content),
+						}}
 					/>
 					<BottomCTA />
 				</div>

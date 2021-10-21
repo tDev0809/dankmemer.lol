@@ -38,7 +38,9 @@ module.exports = {
 		},
 	},
 	variants: {
-		extend: {},
+		extend: {
+			backgroundColor: ["even"],
+		},
 	},
 	plugins: [require("@tailwindcss/line-clamp")],
 };
