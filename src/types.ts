@@ -103,3 +103,19 @@ export interface Staff {
 	avatar: string;
 	role?: string;
 }
+
+export interface Item {
+	id: string;
+	type: string;
+	name: string;
+	image: string;
+	cost: number;
+	showInShop: boolean;
+	items?: Item["id"][];
+	reward?: {
+		items: Item["id"][];
+	};
+	longdescription?: string;
+	description: string;
+	effects?: string;
+}
