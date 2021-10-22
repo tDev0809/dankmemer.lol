@@ -40,3 +40,16 @@ a {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+
+@keyframes peepo {
+	0% {
+	}
+	90% {
+		opacity: 0.8;
+	}
+	100% {
+		transform: translate(var(--delta-x), var(--delta-y))
+			rotate(var(--direction));
+		opacity: 0;
+	}
+}

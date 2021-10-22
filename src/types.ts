@@ -119,3 +119,19 @@ export interface Item {
 	description: string;
 	effects?: string;
 }
+
+export interface Box {
+	id: number;
+	name: string;
+	description: string;
+	yield: string;
+	randomItem: {
+		keyword: string;
+		change: number;
+	};
+	price: number;
+	items: {
+		name: string;
+		amount: string;
+	}[];
+}

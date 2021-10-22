@@ -248,3 +248,5 @@ export const APPEALS: Record<string, string[]> = {
 		"Unsure",
 	],
 };
+
+export const BLOCKED_COUNTRIES = ["BE"];
