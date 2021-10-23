@@ -63,7 +63,7 @@ export default function HomePage({ user }: PageProps) {
 				onMouseMove={(e) => setPerspective([e.pageX, e.pageY])}
 			>
 				<div className="flex flex-col items-center space-y-8">
-					<div className="flex flex-col items-center max-w-3xl">
+					<div className="flex flex-col items-center max-w-3xl text-center">
 						<h1 className="text-6xl sm:text-7xl md:text-8xl font-bold text-dank-300 dark:text-white">
 							DANK MEMER
 						</h1>

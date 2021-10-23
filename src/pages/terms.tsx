@@ -28,7 +28,7 @@ function Legal({ title, children }: LegalProps) {
 export default function Terms({ user }: PageProps) {
 	return (
 		<Container title="Terms" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl mx-8 lg:mx-auto relative my-16">
+			<div className="max-w-6xl relative my-16">
 				<div className="flex flex-col space-y-2">
 					<div className="text-dank-300 text-6xl font-bold font-montserrat">
 						TERMS OF SERVICE

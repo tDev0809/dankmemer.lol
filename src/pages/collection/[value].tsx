@@ -116,14 +116,12 @@ export default function CollectionPage({ user }: PageProps) {
 
 	return (
 		<Container title="Collection" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
-				<div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-6 my-16">
-					{collection.map((has, i) => (
-						<div key={i}>
-							<PepeCard index={i + 1} has={has} />
-						</div>
-					))}
-				</div>
+			<div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-6 my-16">
+				{collection.map((has, i) => (
+					<div key={i}>
+						<PepeCard index={i + 1} has={has} />
+					</div>
+				))}
 			</div>
 		</Container>
 	);

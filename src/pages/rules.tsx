@@ -30,7 +30,7 @@ function Rule({ title, description, children }: RuleProps) {
 export default function Rules({ user }: PageProps) {
 	return (
 		<Container title="Rules" user={user}>
-			<div className="max-w-4xl xl:max-w-4xl mx-8 lg:mx-auto relative my-16">
+			<div className="relative my-16">
 				<div className="flex flex-col space-y-2">
 					<div className="text-dark-400 dark:text-white text-6xl font-bold font-montserrat">
 						Dank Memer Rules

@@ -149,7 +149,7 @@ export default function FeedbackPage({ user }: PageProps) {
 
 	return (
 		<Container title="Staff" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
+			<div>
 				{staff && (
 					<div className="flex flex-col space-y-16 my-16">
 						{Object.entries(staff).map(([category, members]) => (

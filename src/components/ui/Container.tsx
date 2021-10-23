@@ -18,7 +18,9 @@ export default function Container({ children, title, user }: Props) {
 			{title && <NextSeo title={`Dank Memer | ${title}`} />}
 			<ToastContainer />
 			<Navbar user={user} />
-			<div>{children}</div>
+			<div className="flex justify-center">
+				<div className="max-w-7xl mx-8 relative w-full">{children}</div>
+			</div>
 			<Footer />
 		</>
 	);

@@ -28,7 +28,7 @@ function Section({ title, children }: SectionProps) {
 export default function Refunds({ user }: PageProps) {
 	return (
 		<Container title="Refunds" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl mx-8 lg:mx-auto relative my-16">
+			<div className="max-w-6xl relative my-16">
 				<div className="flex flex-col space-y-2">
 					<div className="text-dank-300 text-6xl font-bold font-montserrat">
 						Refund Policy

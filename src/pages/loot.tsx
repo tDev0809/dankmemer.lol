@@ -75,57 +75,55 @@ export default function ItemsPage({ user }: PageProps) {
 
 	return (
 		<Container title="Items" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
-				<div className="my-40 flex flex-col space-y-16">
-					{finishedPayment ? (
-						<Success id={paymentData?.id} />
-					) : (
-						<>
-							<div className="flex flex-col space-y-2">
-								<div className="text-6xl font-bold font-montserrat text-dank-200 dark:text-white">
-									Dank Memer Store
-								</div>
-								<div className="text-gray-400 max-w-4xl">
-									Dank Memer Store Welcome to the lootbox
-									shop! Here you can find a variety of
-									different purchasable items that grant you a
-									chance of winning something special!
-								</div>
+			<div className="my-40 flex flex-col space-y-16">
+				{finishedPayment ? (
+					<Success id={paymentData?.id} />
+				) : (
+					<>
+						<div className="flex flex-col space-y-2">
+							<div className="text-6xl font-bold font-montserrat text-dank-200 dark:text-white">
+								Dank Memer Store
 							</div>
-
-							{/* TODO discount */}
-
-							<div className="flex justify-between">
-								{boxes.map((box, i) => (
-									<Peepos key={i}>
-										<BoxOption
-											active={activeBox.id === i}
-											data={box}
-											setBoxCount={setBoxCount}
-											boxCount={boxCount}
-											setActiveBox={setActiveBox}
-										/>
-									</Peepos>
-								))}
+							<div className="text-gray-400 max-w-4xl">
+								Dank Memer Store Welcome to the lootbox shop!
+								Here you can find a variety of different
+								purchasable items that grant you a chance of
+								winning something special!
 							</div>
+						</div>
 
-							<div className="flex">
-								<div className="w-1/2">
-									<PossibleItems activeBox={activeBox} />
-								</div>
-								<div className="flex-1 pl-20">
-									<OrderSummary
-										activeBox={activeBox}
+						{/* TODO discount */}
+
+						<div className="flex justify-between">
+							{boxes.map((box, i) => (
+								<Peepos key={i}>
+									<BoxOption
+										active={activeBox.id === i}
+										data={box}
+										setBoxCount={setBoxCount}
 										boxCount={boxCount}
-										discount={discount}
-										setFinishState={setFinishState}
-										user={user!}
+										setActiveBox={setActiveBox}
 									/>
-								</div>
+								</Peepos>
+							))}
+						</div>
+
+						<div className="flex">
+							<div className="w-1/2">
+								<PossibleItems activeBox={activeBox} />
 							</div>
-						</>
-					)}
-				</div>
+							<div className="flex-1 pl-20">
+								<OrderSummary
+									activeBox={activeBox}
+									boxCount={boxCount}
+									discount={discount}
+									setFinishState={setFinishState}
+									user={user!}
+								/>
+							</div>
+						</div>
+					</>
+				)}
 			</div>
 		</Container>
 	);

@@ -19,7 +19,7 @@ export default function BlogPage({ user }: PageProps) {
 
 	return (
 		<Container title="Blogs" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative my-16">
+			<div className="relative my-16">
 				<div className="flex justify-center">
 					<div className="flex flex-col pb-16 space-y-6 items-center border-b border-light-500 dark:border-dark-100">
 						<div className="text-6xl font-bold font-montserrat text-dark-200 dark:text-white">

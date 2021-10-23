@@ -175,7 +175,7 @@ export default function PostPage({ user }: PageProps) {
 
 	return (
 		<Container title="Feedback" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative">
+			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
 						<div
