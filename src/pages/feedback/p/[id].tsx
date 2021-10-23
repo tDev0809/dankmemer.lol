@@ -185,7 +185,7 @@ export default function PostPage({ user }: PageProps) {
 							<span className="material-icons">arrow_back</span>
 							<div>Go Back</div>
 						</div>
-						<div className="flex justify-between">
+						<div className="flex flex-col xl:flex-row justify-start xl:justify-between space-y-8 xl:space-y-0">
 							<div
 								className={clsx(
 									"flex flex-col",
