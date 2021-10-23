@@ -94,7 +94,7 @@ export default function ItemsPage({ user }: PageProps) {
 
 						{/* TODO discount */}
 
-						<div className="flex justify-between">
+						<div className="flex flex-col xl:flex-row justify-start xl:justify-between space-y-8 xl:space-y-0">
 							{boxes.map((box, i) => (
 								<Peepos key={i}>
 									<BoxOption
@@ -108,11 +108,11 @@ export default function ItemsPage({ user }: PageProps) {
 							))}
 						</div>
 
-						<div className="flex">
-							<div className="w-1/2">
+						<div className="flex flex-col xl:flex-row space-y-8 xl:space-y-0">
+							<div className="w-full xl:w-1/2">
 								<PossibleItems activeBox={activeBox} />
 							</div>
-							<div className="flex-1 pl-20">
+							<div className="flex-1 pl-0 xl:pl-20">
 								<OrderSummary
 									activeBox={activeBox}
 									boxCount={boxCount}
