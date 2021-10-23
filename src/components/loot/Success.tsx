@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export function Success({ id }: { id?: string }) {
 	return (
-		<div className="mb-40">
-			<div className="text-xl text-white font-bold">Success!</div>
+		<div className="mb-40 flex flex-col items-center text-center text-dark-400 dark:text-white">
+			<div className="text-2xl font-bold">Success!</div>
 
 			<div className="flex flex-col space-y-4">
 				<div>
@@ -23,21 +23,22 @@ export function Success({ id }: { id?: string }) {
 					</a>{" "}
 					and mention a mod or a developer for assistance.
 				</div>
+				<div>Additionally, can find your Payment ID below.</div>
 				<div>
-					Additionally, can find your Payment ID below.
-					<br />
 					You should store this ID somewhere and make sure you don't
 					lose it - it is necessary if you are experiencing any
 					problems.
-					<br />
+				</div>
+				<div>
+					<div></div>
 					Payment ID:{" "}
 					<span className="bg-dark-200 p-1 rounded-md">{id}</span>
 				</div>
-			</div>
 
-			<a className="text-dank-300" href="/loot">
-				Go to store
-			</a>
+				<a className="text-dank-300" href="/loot">
+					Go back to store
+				</a>
+			</div>
 		</div>
 	);
 }

@@ -1,276 +1,269 @@
-{
-	"boxes": [
-		{
-			"name": "Meme Box",
-			"id": 0,
-			"description": "Something actually worth opening.",
-			"yield": "250,000 - 750,000",
-			"randomItem": {
-				"keyword": "medium",
-				"chance": 1
-			},
-			"price": 1.99,
-			"items": [
-				{
-					"name": "pizza",
-					"amount": "1"
-				},
-				{
-					"name": "chillpill",
-					"amount": "2"
-				},
-				{
-					"name": "bread",
-					"amount": "2"
-				},
-				{
-					"name": "pinkphallicobject",
-					"amount": "25"
-				},
-				{
-					"name": "wishlist",
-					"amount": "1"
-				},
-				{
-					"name": "lifesaver",
-					"amount": "3"
-				},
-				{
-					"name": "banknote",
-					"amount": "2"
-				},
-				{
-					"name": "tidepod",
-					"amount": "2"
-				},
-				{
-					"name": "coinbomb",
-					"amount": "3"
-				},
-				{
-					"name": "huntingrifle",
-					"amount": "2"
-				},
-				{
-					"name": "horseshoe",
-					"amount": "1"
-				},
-				{
-					"name": "fishingpole",
-					"amount": "3"
-				},
-				{
-					"name": "cookie",
-					"amount": "10"
-				},
-				{
-					"name": "fakeid",
-					"amount": "3"
-				},
-				{
-					"name": "sand",
-					"amount": "3"
-				},
-				{
-					"name": "laptop",
-					"amount": "3"
-				},
-				{
-					"name": "fish",
-					"amount": "6"
-				},
-				{
-					"name": "skunk",
-					"amount": "6"
-				}
-			]
+[
+	{
+		"name": "Meme Box",
+		"id": 0,
+		"description": "Something actually worth opening.",
+		"yield": "250,000 - 750,000",
+		"randomItem": {
+			"keyword": "medium",
+			"chance": 1
 		},
-		{
-			"name": "Dank Box",
-			"id": 1,
-			"description": "Dank rewards for a dank user.",
-			"yield": "500,000 - 1,000,000",
-			"randomItem": {
-				"keyword": "high",
-				"chance": 1
+		"price": 1.99,
+		"items": [
+			{
+				"name": "pizza",
+				"amount": "1"
 			},
-			"price": 2.49,
-			"items": [
-				{
-					"name": "pepecoin",
-					"amount": "1"
-				},
-				{
-					"name": "pepe",
-					"amount": "1"
-				},
-				{
-					"name": "pizza",
-					"amount": "2"
-				},
-				{
-					"name": "chillpill",
-					"amount": "3"
-				},
-				{
-					"name": "bread",
-					"amount": "3"
-				},
-				{
-					"name": "pinkphallicobject",
-					"amount": "69"
-				},
-				{
-					"name": "wishlist",
-					"amount": "1"
-				},
-				{
-					"name": "lifesaver",
-					"amount": "5"
-				},
-				{
-					"name": "banknote",
-					"amount": "5"
-				},
-				{
-					"name": "tidepod",
-					"amount": "5"
-				},
-				{
-					"name": "coinbomb",
-					"amount": "5"
-				},
-				{
-					"name": "huntingrifle",
-					"amount": "3"
-				},
-				{
-					"name": "horseshoe",
-					"amount": "2"
-				},
-				{
-					"name": "fishingpole",
-					"amount": "5"
-				},
-				{
-					"name": "cookie",
-					"amount": "25"
-				},
-				{
-					"name": "fakeid",
-					"amount": "6"
-				},
-				{
-					"name": "sand",
-					"amount": "3"
-				},
-				{
-					"name": "laptop",
-					"amount": "3"
-				},
-				{
-					"name": "fish",
-					"amount": "20"
-				},
-				{
-					"name": "skunk",
-					"amount": "6"
-				}
-			]
+			{
+				"name": "chillpill",
+				"amount": "2"
+			},
+			{
+				"name": "bread",
+				"amount": "2"
+			},
+			{
+				"name": "pinkphallicobject",
+				"amount": "25"
+			},
+			{
+				"name": "wishlist",
+				"amount": "1"
+			},
+			{
+				"name": "lifesaver",
+				"amount": "3"
+			},
+			{
+				"name": "banknote",
+				"amount": "2"
+			},
+			{
+				"name": "tidepod",
+				"amount": "2"
+			},
+			{
+				"name": "coinbomb",
+				"amount": "3"
+			},
+			{
+				"name": "huntingrifle",
+				"amount": "2"
+			},
+			{
+				"name": "horseshoe",
+				"amount": "1"
+			},
+			{
+				"name": "fishingpole",
+				"amount": "3"
+			},
+			{
+				"name": "cookie",
+				"amount": "10"
+			},
+			{
+				"name": "fakeid",
+				"amount": "3"
+			},
+			{
+				"name": "sand",
+				"amount": "3"
+			},
+			{
+				"name": "laptop",
+				"amount": "3"
+			},
+			{
+				"name": "fish",
+				"amount": "6"
+			},
+			{
+				"name": "skunk",
+				"amount": "6"
+			}
+		]
+	},
+	{
+		"name": "Dank Box",
+		"id": 1,
+		"description": "Dank rewards for a dank user.",
+		"yield": "500,000 - 1,000,000",
+		"randomItem": {
+			"keyword": "high",
+			"chance": 1
 		},
-		{
-			"name": "God Box",
-			"id": 2,
-			"description": "This is a really op box.",
-			"yield": "1,200,000 - 2,000,000",
-			"randomItem": {
-				"keyword": "GOD",
-				"chance": 1
+		"price": 2.49,
+		"items": [
+			{
+				"name": "pepecoin",
+				"amount": "1"
 			},
-			"price": 4.99,
-			"items": [
-				{
-					"name": "cutters",
-					"amount": "1"
-				},
-				{
-					"name": "melmsiebeard",
-					"amount": "1"
-				},
-				{
-					"name": "pepetrophy",
-					"amount": "1"
-				},
-				{
-					"name": "pepemedal",
-					"amount": "2"
-				},
-				{
-					"name": "pepecoin",
-					"amount": "2"
-				},
-				{
-					"name": "pepe",
-					"amount": "3"
-				},
-				{
-					"name": "snowball",
-					"amount": "10"
-				},
-				{
-					"name": "santashat",
-					"amount": "6"
-				},
-				{
-					"name": "pizza",
-					"amount": "20"
-				},
-				{
-					"name": "pinkphallicobject",
-					"amount": "420"
-				},
-				{
-					"name": "multiphallicobject",
-					"amount": "5"
-				},
-				{
-					"name": "goldenphallicobject",
-					"amount": "5"
-				},
-				{
-					"name": "lifesaver",
-					"amount": "10"
-				},
-				{
-					"name": "banknote",
-					"amount": "15"
-				},
-				{
-					"name": "coinbomb",
-					"amount": "15"
-				},
-				{
-					"name": "horseshoe",
-					"amount": "10"
-				},
-				{
-					"name": "cookie",
-					"amount": "420"
-				},
-				{
-					"name": "cupidsbigtoe",
-					"amount": "3"
-				},
-				{
-					"name": "jacky",
-					"amount": "2"
-				}
-			]
-		}
-	],
-	"Constants": {
-		"MINIMUM_PURCHASE_VALUE": 3,
-		"MINIMUM_DISCOUNT_VALUE": 20,
-		"FLAT_DISCOUNT_PERCENTAGE": 10
+			{
+				"name": "pepe",
+				"amount": "1"
+			},
+			{
+				"name": "pizza",
+				"amount": "2"
+			},
+			{
+				"name": "chillpill",
+				"amount": "3"
+			},
+			{
+				"name": "bread",
+				"amount": "3"
+			},
+			{
+				"name": "pinkphallicobject",
+				"amount": "69"
+			},
+			{
+				"name": "wishlist",
+				"amount": "1"
+			},
+			{
+				"name": "lifesaver",
+				"amount": "5"
+			},
+			{
+				"name": "banknote",
+				"amount": "5"
+			},
+			{
+				"name": "tidepod",
+				"amount": "5"
+			},
+			{
+				"name": "coinbomb",
+				"amount": "5"
+			},
+			{
+				"name": "huntingrifle",
+				"amount": "3"
+			},
+			{
+				"name": "horseshoe",
+				"amount": "2"
+			},
+			{
+				"name": "fishingpole",
+				"amount": "5"
+			},
+			{
+				"name": "cookie",
+				"amount": "25"
+			},
+			{
+				"name": "fakeid",
+				"amount": "6"
+			},
+			{
+				"name": "sand",
+				"amount": "3"
+			},
+			{
+				"name": "laptop",
+				"amount": "3"
+			},
+			{
+				"name": "fish",
+				"amount": "20"
+			},
+			{
+				"name": "skunk",
+				"amount": "6"
+			}
+		]
+	},
+	{
+		"name": "God Box",
+		"id": 2,
+		"description": "This is a really op box.",
+		"yield": "1,200,000 - 2,000,000",
+		"randomItem": {
+			"keyword": "GOD",
+			"chance": 1
+		},
+		"price": 4.99,
+		"items": [
+			{
+				"name": "cutters",
+				"amount": "1"
+			},
+			{
+				"name": "melmsiebeard",
+				"amount": "1"
+			},
+			{
+				"name": "pepetrophy",
+				"amount": "1"
+			},
+			{
+				"name": "pepemedal",
+				"amount": "2"
+			},
+			{
+				"name": "pepecoin",
+				"amount": "2"
+			},
+			{
+				"name": "pepe",
+				"amount": "3"
+			},
+			{
+				"name": "snowball",
+				"amount": "10"
+			},
+			{
+				"name": "santashat",
+				"amount": "6"
+			},
+			{
+				"name": "pizza",
+				"amount": "20"
+			},
+			{
+				"name": "pinkphallicobject",
+				"amount": "420"
+			},
+			{
+				"name": "multiphallicobject",
+				"amount": "5"
+			},
+			{
+				"name": "goldenphallicobject",
+				"amount": "5"
+			},
+			{
+				"name": "lifesaver",
+				"amount": "10"
+			},
+			{
+				"name": "banknote",
+				"amount": "15"
+			},
+			{
+				"name": "coinbomb",
+				"amount": "15"
+			},
+			{
+				"name": "horseshoe",
+				"amount": "10"
+			},
+			{
+				"name": "cookie",
+				"amount": "420"
+			},
+			{
+				"name": "cupidsbigtoe",
+				"amount": "3"
+			},
+			{
+				"name": "jacky",
+				"amount": "2"
+			}
+		]
 	}
-}
+]

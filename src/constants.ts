@@ -249,4 +249,8 @@ export const APPEALS: Record<string, string[]> = {
 	],
 };
 
-export const BLOCKED_COUNTRIES = ["BE"];
+export const LOOT_BLOCKED_COUNTRIES = ["BE"];
+
+export const LOOT_MINIMUM_PURCHASE_VALUE = 3;
+export const LOOT_MINIMUM_DISCOUNT_VALUE = 20;
+export const LOOT_FLAT_DISCOUNT_PERCENTAGE = 10;
