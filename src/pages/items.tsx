@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-import Expandable from "../components/Expandable";
 import Container from "../components/ui/Container";
 import Dropdown from "../components/ui/Dropdown";
 import Searchbox from "../components/ui/Searchbox";

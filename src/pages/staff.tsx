@@ -85,6 +85,12 @@ function StaffCard({ member }: StaffCardProps) {
 			<div className="flex flex-col space-y-4 text-dark-400 dark:text-white">
 				<div className="flex space-x-4">
 					<img
+						onClick={(e) => {
+							member.name === "Melmsie"
+								? new Audio(`/audio/uwu.wav`).play()
+								: console.log("Go click Mel's avatar");
+							e.stopPropagation();
+						}}
 						src={member.avatar}
 						width="100px"
 						className="bg-light-600 rounded-md"
