@@ -11,7 +11,8 @@ import { PossibleItems } from "../components/loot/PossibleItems";
 import { BoxOption } from "../components/loot/BoxOption";
 import { OrderSummary } from "../components/loot/OrderSummary";
 import { AgeCheck } from "../components/loot/AgeCheck";
-import { LOOT_AGE_VERIFICATION } from "../constants";
+import { LOOT_AGE_VERIFICATION, LOOT_BLOCKED_COUNTRIES } from "../constants";
+import { BlockedCountry } from "../components/loot/BlockedCountry";
 
 const boxes: Box[] = require("../data/boxes.json");
 
@@ -85,6 +86,8 @@ export default function ItemsPage({ user }: PageProps) {
 					<Success id={paymentData?.id} />
 				) : checkAge ? (
 					<AgeCheck checkAge={verifiedAge} />
+				) : LOOT_BLOCKED_COUNTRIES.includes(country) ? (
+					<BlockedCountry />
 				) : (
 					<>
 						<div className="flex flex-col space-y-2">
