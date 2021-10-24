@@ -10,6 +10,8 @@ import { Success } from "../components/loot/Success";
 import { PossibleItems } from "../components/loot/PossibleItems";
 import { BoxOption } from "../components/loot/BoxOption";
 import { OrderSummary } from "../components/loot/OrderSummary";
+import { AgeCheck } from "../components/loot/AgeCheck";
+import { LOOT_AGE_VERIFICATION } from "../constants";
 
 const boxes: Box[] = require("../data/boxes.json");
 
@@ -63,21 +65,26 @@ export default function ItemsPage({ user }: PageProps) {
 
 	useEffect(() => {
 		if (
-			["ES", "BE", "NL"].includes(country) &&
-			!localStorage.getItem("verified_age")
+			LOOT_AGE_VERIFICATION.includes(country) &&
+			localStorage.getItem("verified_age") !== "verified"
 		) {
-			if (localStorage.getItem("verified_age") !== "verified") {
-				setCheckAge(true);
-				localStorage.setItem("verified_age", "unverified");
-			}
+			setCheckAge(true);
+			localStorage.setItem("verified_age", "unverified");
 		}
 	}, [country]);
+
+	const verifiedAge = () => {
+		localStorage.setItem("verified_age", "verified");
+		setCheckAge(false);
+	};
 
 	return (
 		<Container title="Items" user={user}>
 			<div className="my-40 flex flex-col space-y-16">
 				{finishedPayment ? (
 					<Success id={paymentData?.id} />
+				) : checkAge ? (
+					<AgeCheck checkAge={verifiedAge} />
 				) : (
 					<>
 						<div className="flex flex-col space-y-2">
