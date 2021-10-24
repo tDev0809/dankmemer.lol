@@ -36,8 +36,9 @@ export default function FeedbackUpvote({ upvotes, upvoted, id }: Props) {
 				oUpvoted ? "bg-dank-300" : "bg-dank-100 dark:bg-dank-500"
 			)}
 			onClick={(e) => {
-				upvote();
 				e.stopPropagation();
+				e.preventDefault();
+				upvote();
 			}}
 		>
 			<span className="material-icons-outlined">expand_less</span>
