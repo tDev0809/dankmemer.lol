@@ -250,7 +250,7 @@ export const APPEALS: Record<string, string[]> = {
 };
 
 export const LOOT_BLOCKED_COUNTRIES = ["BE"];
-export const LOOT_AGE_VERIFICATION = ["ES", "BE", "NL"];
+export const LOOT_AGE_VERIFICATION = ["ES", "NL"];
 
 export const LOOT_MINIMUM_PURCHASE_VALUE = 3;
 export const LOOT_MINIMUM_DISCOUNT_VALUE = 20;
