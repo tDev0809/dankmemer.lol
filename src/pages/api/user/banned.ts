@@ -13,7 +13,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	if (
 		await db.collection("bans").findOne({
-			type: "lootbox",
+			type: "lootbox", // TODO
 			id: user.id,
 		})
 	) {
