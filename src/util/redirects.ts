@@ -63,3 +63,33 @@ export async function staffRoute(
 		props: user ? { user } : {},
 	};
 }
+
+export async function adminRoute(
+	ctx: GetServerSidePropsContext & { req: { session: Session } }
+) {
+	const user: User | undefined = ctx.req.session.get("user");
+
+	if (!user) {
+		return {
+			redirect: {
+				destination: `/api/auth/login?redirect=${encodeURIComponent(
+					ctx.resolvedUrl
+				)}`,
+				permanent: false,
+			},
+		};
+	}
+
+	if (!user.isAdmin) {
+		return {
+			redirect: {
+				destination: `/`,
+				permanent: true,
+			},
+		};
+	}
+
+	return {
+		props: user ? { user } : {},
+	};
+}
