@@ -27,7 +27,7 @@ export default function FeedbackPage({ user }: PageProps) {
 		axios("/api/feedback/categoriesCount").then((data) => {
 			setFeedbackCategories(data.data);
 		});
-		axios(`/api/feedback/posts/all?from=0&amount=5`).then(({ data }) => {
+		axios(`/api/feedback/posts/all?from=0&amount=10`).then(({ data }) => {
 			setPostsLoaded(true);
 			setPosts([...posts, ...data.posts]);
 		});
