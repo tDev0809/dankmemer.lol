@@ -7,7 +7,7 @@ import { ControlCard } from "../../components/ControlCard";
 import Container from "../../components/ui/Container";
 import { PageProps, Staff } from "../../types";
 import { randomAvatar } from "../../util/random";
-import { unauthenticatedRoute } from "../../util/redirects";
+import { adminRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function PostPage({ user }: PageProps) {
@@ -142,5 +142,4 @@ export default function PostPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps =
-	withSession(unauthenticatedRoute);
+export const getServerSideProps: GetServerSideProps = withSession(adminRoute);
