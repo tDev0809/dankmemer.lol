@@ -27,7 +27,7 @@ export default function FeedbackPage({ user }: PageProps) {
 		axios("/api/feedback/categoriesCount").then((data) => {
 			setFeedbackCategories(data.data);
 		});
-		axios(`/api/feedback/posts/all?from=0&amount=10`).then(({ data }) => {
+		axios(`/api/feedback/posts/all?from=0&amount=5`).then(({ data }) => {
 			setPostsLoaded(true);
 			setPosts([...posts, ...data.posts]);
 		});
@@ -46,34 +46,60 @@ export default function FeedbackPage({ user }: PageProps) {
 						variant="small"
 					/>
 				</div>
-				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-					{FEEDBACK_CATEGORIES.map((category) => (
-						<Tooltip
-							key={category}
-							content={FEEDBACK_CATEGORIES_DESCRIPTIONS[category]}
+				<div className="flex flex-col space-y-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+						{FEEDBACK_CATEGORIES.map((category) => (
+							<Tooltip
+								key={category}
+								content={
+									FEEDBACK_CATEGORIES_DESCRIPTIONS[category]
+								}
+							>
+								<Link href={`/feedback/c/${category}`} passHref>
+									<a
+										className={clsx(
+											"flex flex-col items-center justify-center -space-y-1",
+											"py-8 rounded-md select-none cursor-pointer",
+											"bg-light-500 dark:bg-dark-100",
+											"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
+										)}
+									>
+										<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
+											{sanitizeCategory(category)}
+										</div>
+										<div className="text-gray-400">
+											{feedbackCategories[category] || 0}{" "}
+											post
+											{feedbackCategories[category] === 1
+												? ""
+												: "s"}
+										</div>
+									</a>
+								</Link>
+							</Tooltip>
+						))}
+					</div>
+					<Link href={`/feedback/c/all`} passHref>
+						<a
+							className={clsx(
+								"flex flex-col items-center justify-center -space-y-1",
+								"py-2 rounded-md select-none cursor-pointer",
+								"bg-light-500 dark:bg-dark-100",
+								"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
+							)}
 						>
-							<Link href={`/feedback/c/${category}`} passHref>
-								<a
-									className={clsx(
-										"flex flex-col items-center justify-center -space-y-1",
-										"py-8 rounded-md select-none cursor-pointer",
-										"bg-light-500 dark:bg-dark-100",
-										"border border-light-500 dark:border-dark-100 hover:border-dank-300 dark:hover:border-dank-300"
-									)}
-								>
-									<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
-										{sanitizeCategory(category)}
-									</div>
-									<div className="text-gray-400">
-										{feedbackCategories[category] || 0} post
-										{feedbackCategories[category] === 1
-											? ""
-											: "s"}
-									</div>
-								</a>
-							</Link>
-						</Tooltip>
-					))}
+							<div className="text-xl font-bold font-montserrat text-dank-500 dark:text-white">
+								All
+							</div>
+							<div className="text-gray-400">
+								{Object.values(feedbackCategories).reduce(
+									(p, c) => p + c,
+									0
+								)}{" "}
+								posts
+							</div>
+						</a>
+					</Link>
 				</div>
 				<div className="flex flex-col space-y-1">
 					<h3 className="text-2xl font-bold font-montserrat text-dank-200 dark:text-light-100">
