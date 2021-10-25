@@ -104,34 +104,32 @@ export default function PostPage({ user }: PageProps) {
 						</div>
 						{staff && (
 							<div className="flex flex-col space-y-4">
-								{Object.entries(staff).map(
-									([category, members]) =>
-										members.map((member) => (
-											<div className="grid grid-cols-4 p-4 items-center rounded-md bg-dark-400 ">
-												<div>
-													{" "}
-													<img
-														src={member.avatar}
-														className="bg-light-600 rounded-full w-10"
-														onError={(e) => {
-															(
-																e.target as any
-															).onerror = null;
-															(
-																e.target as any
-															).src = randomAvatar(
+								{Object.entries(staff).map(([_, members]) =>
+									members.map((member) => (
+										<div className="grid grid-cols-4 p-4 items-center rounded-md bg-light-500 dark:bg-dark-400 text-dark-400 dark:text-white">
+											<div>
+												{" "}
+												<img
+													src={member.avatar}
+													className="bg-light-600 rounded-full w-10"
+													onError={(e) => {
+														(
+															e.target as any
+														).onerror = null;
+														(e.target as any).src =
+															randomAvatar(
 																member._id
 															);
-														}}
-													/>
-												</div>
-												<div>{member.name}</div>
-												<div>{member.category}</div>
-												<div className="whitespace-pre-wrap leading-5 overflow-y-auto no-scrollbar h-8">
-													{member.about}
-												</div>
+													}}
+												/>
 											</div>
-										))
+											<div>{member.name}</div>
+											<div>{member.category}</div>
+											<div className="whitespace-pre-wrap leading-5 overflow-y-auto no-scrollbar h-8">
+												{member.about}
+											</div>
+										</div>
+									))
 								)}
 							</div>
 						)}
