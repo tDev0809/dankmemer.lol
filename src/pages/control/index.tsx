@@ -39,17 +39,25 @@ export default function ControlPage({ user }: PageProps) {
 						Control Panel
 					</div>
 				</div>
-				<div className="flex flex-col">
-					<div className="font-bold font-montserrat text-xl text-dank-300 dark:text-light-100">
-						Administration
+				{user?.isAdmin && (
+					<div className="flex flex-col">
+						<div className="font-bold font-montserrat text-xl text-dank-300 dark:text-light-100">
+							Administration
+						</div>
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+							<Panel
+								link="/control/access"
+								label="Access Control"
+							/>
+							<Panel link="/control/users" label="User Control" />
+							<Panel link="/control/website" label="Website" />
+							<Panel
+								link="/control/blogs"
+								label="Blog Managment"
+							/>
+						</div>
 					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-						<Panel link="/control/access" label="Access Control" />
-						<Panel link="/control/users" label="User Control" />
-						<Panel link="/control/website" label="Website" />
-						<Panel link="/control/blogs" label="Blog Managment" />
-					</div>
-				</div>
+				)}
 				<div className="flex flex-col">
 					<div className="font-bold font-montserrat text-xl text-dank-300 dark:text-light-100">
 						Moderation
