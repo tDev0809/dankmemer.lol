@@ -18,7 +18,7 @@ export default function PostPage({ user }: PageProps) {
 		<Container title="Feedback" user={user}>
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
-					<div className="flex flex-col space-y-4">
+					<div className="flex flex-col space-y-4 mb-24">
 						<div
 							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300 dark:text-light-100"
 							onClick={() => router.back()}
