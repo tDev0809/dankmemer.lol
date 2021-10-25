@@ -35,7 +35,7 @@ export default function PostPage({ user }: PageProps) {
 						<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 							Manage Staff Members
 						</div>
-						<div className="flex justify-between">
+						<div className="flex justify-between flex-col lg:flex-row space-y-4 lg:space-y-0">
 							<ControlCard
 								endpoint="/api/staff/add?id={{input}}&category={{dropdown}}"
 								label="Add a new staff member"
