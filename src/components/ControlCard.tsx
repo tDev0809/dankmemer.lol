@@ -7,7 +7,7 @@ import Dropdown from "./ui/Dropdown";
 
 const types = {
 	normal: "border-8 border-dank-300 bg-dank-200",
-	destructive: "",
+	destructive: "border-8 border-red-600 bg-red-500",
 };
 
 interface Props {
@@ -124,6 +124,9 @@ export function ControlCard({
 						.replace("{{dropdown}}", dropdownData || "");
 					await axios(postEndpoint)
 						.then((data) => {
+							if (data.status !== 200) {
+								toast.dark(data.data.error);
+							}
 							if (finish) {
 								finish(data);
 							}
@@ -134,7 +137,7 @@ export function ControlCard({
 						.catch((e) => {
 							setProcessing(false);
 							console.error(e);
-							toast.dark(e.response.data.error);
+							toast.dark(e.response.statusText);
 						});
 				}}
 			>
