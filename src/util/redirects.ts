@@ -1,6 +1,6 @@
-import axios from "axios";
 import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { Session } from "next-iron-session";
+import { User } from "../types";
 
 export async function unauthenticatedRoute(
 	ctx: GetServerSidePropsContext & { req: { session: Session } }
@@ -31,5 +31,35 @@ export async function authenticatedRoute(
 
 	return {
 		props: { user },
+	};
+}
+
+export async function staffRoute(
+	ctx: GetServerSidePropsContext & { req: { session: Session } }
+) {
+	const user: User | undefined = ctx.req.session.get("user");
+
+	if (!user) {
+		return {
+			redirect: {
+				destination: `/api/auth/login?redirect=${encodeURIComponent(
+					ctx.resolvedUrl
+				)}`,
+				permanent: false,
+			},
+		};
+	}
+
+	if (!user.isModerator) {
+		return {
+			redirect: {
+				destination: `/`,
+				permanent: true,
+			},
+		};
+	}
+
+	return {
+		props: user ? { user } : {},
 	};
 }
