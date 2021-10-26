@@ -15,14 +15,17 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(401).json({ error: "You can't do this." });
 	}
 
-	if (!req.query?.id) {
-		return res.status(400).json({ error: "Missing parameters." });
-	}
-
 	try {
-		let staff = await db.collection("staff").findOne({ _id: req.query.id });
-
-		return res.status(200).json({ staff });
+		await db.collection("staff").updateOne(
+			{ _id: user.id },
+			{
+				$set: {
+					about: req.body.about,
+					social: req.body.social,
+				},
+			}
+		);
+		return res.status(200).json({});
 	} catch (e) {
 		return res.status(500).json({ error: e });
 	}
