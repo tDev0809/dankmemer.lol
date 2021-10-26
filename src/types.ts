@@ -136,3 +136,9 @@ export interface Box {
 		amount: string;
 	}[];
 }
+
+export interface Announcement {
+	_id: number;
+	content: string;
+	createdAt: number;
+}

@@ -18,6 +18,7 @@ interface Props {
 		icon: string;
 		placeholder: string;
 	};
+	alloweEmptyInput?: boolean;
 	dropdown?: {
 		icon: string;
 		initial: string;
@@ -35,6 +36,7 @@ export function ControlCard({
 	label,
 	type,
 	input,
+	alloweEmptyInput = false,
 	dropdown,
 	endpoint,
 	finish,
@@ -114,7 +116,7 @@ export function ControlCard({
 			<Button
 				disabled={
 					processing ||
-					(input && inputData.length === 0) ||
+					(input && inputData.length === 0 && !alloweEmptyInput) ||
 					(dropdown && (!dropdownData || dropdownData?.length == 0))
 				}
 				size="medium"

@@ -26,7 +26,7 @@ export default function ControlWebsitePage({ user }: PageProps) {
 					<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 						Website management
 					</div>
-					<div className="flex justify-between flex-col lg:flex-row space-y-4 lg:space-y-0">
+					<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
 						<ControlCard
 							endpoint="/api/discount/add?percent={{input}}&expiry={{dropdown}}"
 							label="Start a lootbox sale"
@@ -56,6 +56,22 @@ export default function ControlWebsitePage({ user }: PageProps) {
 							}}
 							finish={() => {
 								toast.dark("The discount has been added!");
+							}}
+						/>
+						<ControlCard
+							endpoint="/api/announcement/add?content={{input}}"
+							alloweEmptyInput={true}
+							label="Add a new announcement"
+							icon="campaign"
+							type="normal"
+							input={{
+								icon: "chat_bubble",
+								placeholder: "Banner message",
+							}}
+							finish={() => {
+								toast.dark(
+									"The announcement banner has been updated."
+								);
 							}}
 						/>
 					</div>
