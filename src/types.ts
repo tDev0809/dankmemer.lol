@@ -84,6 +84,7 @@ export interface Comment {
 export interface Blog {
 	_id: string;
 	author: string;
+	draft: boolean;
 	content: string;
 	date: number;
 	desc: string;
