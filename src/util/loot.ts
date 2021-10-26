@@ -77,48 +77,9 @@ export const getTotal = (
 	activeBox: Box,
 	discount: number
 ) => {
-	return Math.round((boxCount * activeBox.price + Number.EPSILON) * 100) /
-		100 <
-		20
-		? Math.round(
-				(parseFloat(
-					(
-						getDiscountedSubtotal(
-							boxCount,
-							activeBox,
-							discount,
-							true
-						) * 0.0675
-					).toFixed(2)
-				) +
-					boxCount * activeBox.price +
-					Number.EPSILON) *
-					100
-		  ) / 100
-		: (
-				Math.round(
-					(parseFloat(
-						(
-							getDiscountedSubtotal(
-								boxCount,
-								activeBox,
-								discount,
-								true
-							) * 0.0675
-						).toFixed(2)
-					) +
-						boxCount * activeBox.price +
-						Number.EPSILON) *
-						100
-				) /
-					100 -
-				boxCount *
-					activeBox.price *
-					parseFloat(
-						(
-							getDiscountPercent(boxCount, activeBox, discount)
-								.discountPercent / 100
-						).toFixed(2)
-					)
-		  ).toFixed(2);
+	return (
+		parseFloat(getSubtotal(boxCount, activeBox, true) as string) +
+		parseFloat(getSalesTax(boxCount, activeBox, discount)) -
+		parseFloat(getDiscount(boxCount, activeBox, discount) as string)
+	).toFixed(2);
 };

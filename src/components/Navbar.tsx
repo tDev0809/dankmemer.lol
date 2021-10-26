@@ -1,3 +1,5 @@
+import axios from "axios";
+import clsx from "clsx";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { User } from "../types";
@@ -9,6 +11,7 @@ interface Props {
 
 export default function Navbar({ user }: Props) {
 	const [hamburger, setHamburger] = useState(false);
+	const [discount, setDiscount] = useState(0);
 
 	useEffect(() => {
 		document.documentElement.style.overflow = hamburger ? "hidden" : "auto";
@@ -16,6 +19,10 @@ export default function Navbar({ user }: Props) {
 
 	useEffect(() => {
 		window.addEventListener("resize", () => setHamburger(false));
+
+		axios(`/api/discount/get`).then(({ data }) => {
+			setDiscount((data.percent || 0) * 100);
+		});
 	}, []);
 
 	return (
@@ -40,6 +47,25 @@ export default function Navbar({ user }: Props) {
 							</li>
 							<li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
 								<Link href="/blogs">Blog</Link>
+							</li>
+							<li
+								className={clsx(
+									"inline-block  ",
+									discount
+										? "text-yellow-300 dark:text-yellow-300 hover:text-yellow-400 dark:hover:text-yellow-400"
+										: "text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100"
+								)}
+							>
+								<Link href="/loot">
+									<div className="flex items-center space-x-2 cursor-pointer">
+										<span>Store</span>
+										{!!discount && (
+											<span className="text-xs bg-yellow-300 text-dark-400 rounded-md px-2 font-bold font-montserrat">
+												SALE: {discount}%
+											</span>
+										)}
+									</div>
+								</Link>
 							</li>
 							<li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
 								<Link href="/items">Items</Link>
@@ -141,6 +167,11 @@ export default function Navbar({ user }: Props) {
 						<Link href="/blogs">
 							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Blog
+							</li>
+						</Link>
+						<Link href="/loot">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
+								Store
 							</li>
 						</Link>
 						<Link href="/items">

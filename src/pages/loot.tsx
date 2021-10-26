@@ -14,6 +14,7 @@ import { AgeCheck } from "../components/loot/AgeCheck";
 import { LOOT_AGE_VERIFICATION, LOOT_BLOCKED_COUNTRIES } from "../constants";
 import { BlockedCountry } from "../components/loot/BlockedCountry";
 import { BannedUser } from "../components/loot/BannedUser";
+import { DiscountBanner } from "../components/loot/DiscountBanner";
 
 const boxes: Box[] = require("../data/boxes.json");
 
@@ -26,7 +27,8 @@ export default function ItemsPage({ user }: PageProps) {
 
 	const [finishedPayment, setFinishedPayment] = useState(false);
 	const [paymentData, setPaymentData] = useState<{ id: string } | null>(null);
-	const [discount, setDiscount] = useState(0); //props.discount && props.discount.percent * 100; TODO
+	const [discount, setDiscount] = useState(0);
+	const [discountExpire, setDiscountExpire] = useState(0);
 
 	const setFinishState = ({
 		finish,
@@ -49,12 +51,20 @@ export default function ItemsPage({ user }: PageProps) {
 
 	useEffect(() => {
 		axios
-			.all([axios("/api/country"), axios("/api/user/banned")])
+			.all([
+				axios("/api/country"),
+				axios("/api/user/banned"),
+				axios("/api/discount/get"),
+			])
 			.then(
-				axios.spread(async ({ data: { country } }, req3) => {
-					setCountry(country);
-					setBannedUser(req3.status === 403);
-				})
+				axios.spread(
+					async ({ data: { country } }, banned, discountData) => {
+						setCountry(country);
+						setBannedUser(banned.status === 403);
+						setDiscount((discountData.data.percent || 0) * 100);
+						setDiscountExpire(discountData.data.expiry || 0);
+					}
+				)
 			)
 			.catch((e) => {
 				console.error(e);
@@ -89,7 +99,7 @@ export default function ItemsPage({ user }: PageProps) {
 					<AgeCheck checkAge={verifiedAge} />
 				) : LOOT_BLOCKED_COUNTRIES.includes(country) ? (
 					<BlockedCountry />
-				) : !bannedUser ? (
+				) : bannedUser ? (
 					<BannedUser />
 				) : (
 					<>
@@ -105,7 +115,12 @@ export default function ItemsPage({ user }: PageProps) {
 							</div>
 						</div>
 
-						{/* TODO discount */}
+						{!!discount && (
+							<DiscountBanner
+								discount={discount}
+								expire={discountExpire}
+							/>
+						)}
 
 						<div className="flex flex-col xl:flex-row justify-start xl:justify-between space-y-8 xl:space-y-0">
 							{boxes.map((box, i) => (
