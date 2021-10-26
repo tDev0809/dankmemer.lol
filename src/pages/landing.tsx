@@ -19,12 +19,12 @@ function Block({ title, children, icon, customIcon, onClick }: BlockProps) {
 	return (
 		<div
 			className={clsx(
-				"flex justify-between space-x-4 items-center bg-dark-400 rounded-md p-8",
+				"flex justify-between space-x-4 items-center bg-light-500 dark:bg-dark-400 rounded-md p-8",
 				onClick && "cursor-pointer"
 			)}
 			onClick={onClick}
 		>
-			<div className="bg-dank-500 rounded-full flex items-center justify-center p-4 text-dank-300">
+			<div className="bg-gray-300 dark:bg-dank-500 rounded-full flex items-center justify-center p-4 text-dank-300">
 				{customIcon || <span className="material-icons">{icon}</span>}
 			</div>
 			<div className="flex flex-col ">
@@ -57,7 +57,7 @@ export default function LandingPage({ user }: PageProps) {
 							bot are documented.
 						</div>
 					</div>
-					<div className="grid grid-cols-3 gap-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 						<Block title="Commands" icon="article">
 							See all of the commands Dank Memer has to offer your
 							server!
