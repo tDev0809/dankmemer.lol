@@ -82,7 +82,9 @@ export function ControlCard({
 											{dropdown.icon}
 										</span>
 										<div className="text-dark-400 dark:text-gray-500">
-											{dropdownData || dropdown.initial}
+											{dropdown.options.find(
+												(o) => o.value === dropdownData
+											)?.text || dropdown.initial}
 										</div>
 									</div>
 
