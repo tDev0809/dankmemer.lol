@@ -32,7 +32,7 @@ function Panel({ link, label }: PanelProps) {
 
 export default function ControlPage({ user }: PageProps) {
 	return (
-		<Container title="Feedback" user={user}>
+		<Container title="Control" user={user}>
 			<div className="flex flex-col my-16 space-y-8 mx-8 xl:mx-0">
 				<div className="flex justify-between items-center">
 					<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">

@@ -10,12 +10,12 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 const DynamicReactJson = dynamic(import("react-json-view"), { ssr: false });
 
-export default function PostPage({ user }: PageProps) {
+export default function ControlUserPage({ user }: PageProps) {
 	const router = useRouter();
 	const [modalContent, setModalContent] = useState({});
 
 	return (
-		<Container title="Feedback" user={user}>
+		<Container title="Control" user={user}>
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4 mb-24">

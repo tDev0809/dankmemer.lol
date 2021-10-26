@@ -10,7 +10,7 @@ import { randomAvatar } from "../../util/random";
 import { adminRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
-export default function PostPage({ user }: PageProps) {
+export default function ControlAccessPage({ user }: PageProps) {
 	const router = useRouter();
 	const [staff, setStaff] = useState<Record<string, Staff[]>>({});
 
@@ -21,7 +21,7 @@ export default function PostPage({ user }: PageProps) {
 	}, []);
 
 	return (
-		<Container title="Feedback" user={user}>
+		<Container title="Control" user={user}>
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
