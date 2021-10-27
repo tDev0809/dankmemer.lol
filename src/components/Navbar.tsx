@@ -202,13 +202,13 @@ export default function Navbar({ user }: Props) {
 							</Link>
 						)}
 						{user ? (
-							<Link href="/reports">
+							<Link href="/api/auth/logout">
 								<li className="text-red-400 hover:text-red-500 p-4 border-b-2 border-light-500 dark:border-dark-300">
 									Logout
 								</li>
 							</Link>
 						) : (
-							<Link href="/api/auth/logout">
+							<Link href="/api/auth/login">
 								<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500  dark:border-dark-300">
 									Login
 								</li>
