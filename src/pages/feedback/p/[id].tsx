@@ -17,6 +17,7 @@ import Tooltip from "../../../components/ui/Tooltip";
 import FeedbackUpvote from "../../../components/feedback/FeedbackUpvote";
 import Dropdown from "../../../components/ui/Dropdown";
 import { FEEDBACK_LABELS } from "../../../constants";
+import Link from "next/link";
 
 const LOAD_COMMENTS_AMOUNT = 25;
 
@@ -198,9 +199,13 @@ export default function PostPage({ user }: PageProps) {
 									)}
 								</div>
 								{post && (
-									<div className="text-light-600">
+									<div className="text-light-600 cursor-pointer">
 										by {post.author.username}#
-										{post.author.discriminator}{" "}
+										<Link
+											href={`/profile/${post.author.id}`}
+										>
+											<a>{post.author.discriminator}</a>
+										</Link>{" "}
 										<Tooltip
 											content={format(
 												post.createdAt,

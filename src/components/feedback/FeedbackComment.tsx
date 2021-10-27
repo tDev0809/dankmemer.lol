@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { CommentAuthor, User } from "../../types";
 import { urlify } from "../../util/feedback";
 import Tooltip from "../ui/Tooltip";
+import Link from "next/link";
 
 const commentType = {
 	COMMENT: 0,
@@ -113,7 +114,11 @@ export default function Comment({
 								: "text-dark-400 dark:text-white"
 						)}
 					>
-						{oAuthor.username}#{oAuthor.discriminator}
+						<Link href={`/profile/${oAuthor.id}`}>
+							<a>
+								{oAuthor.username}#{oAuthor.discriminator}
+							</a>
+						</Link>
 					</div>
 					<Tooltip content={format(createdAt, "MMMM dd, yyyy")}>
 						<p className="text-gray-400 cursor-default">
