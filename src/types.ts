@@ -64,6 +64,7 @@ export interface CommentAuthor {
 export interface Reply {
 	_id: string;
 	cID: string;
+	pID: string;
 	author: CommentAuthor;
 	reply: string;
 	createdAt: number;
@@ -151,6 +152,7 @@ export interface Profile {
 	developer: boolean;
 	moderator: boolean;
 	upvotes: number;
-	comments: number;
+	comments: Comment[];
+	replies: Reply[];
 	posts: Post[];
 }

@@ -1,4 +1,5 @@
 import { NextApiResponse } from "next";
+import { Comment, Reply } from "../../../types";
 import { dbConnect } from "../../../util/mongodb";
 import { NextIronRequest, withSession } from "../../../util/session";
 
@@ -40,7 +41,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 					from: "feedback_comments",
 					localField: "_id",
 					foreignField: "author.id",
-					as: "commentedPosts",
+					as: "comments",
 				},
 			},
 			{
@@ -48,7 +49,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 					from: "feedback_replies",
 					localField: "_id",
 					foreignField: "author.id",
-					as: "repliedComments",
+					as: "replies",
 				},
 			},
 			{
@@ -61,16 +62,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						"Honorable Mentions",
 					].includes(staff?.category),
 					upvotes: { $size: "$upvotedPosts" },
-					comments: {
-						$add: [
-							{ $size: "$repliedComments" },
-							{ $size: "$commentedPosts" },
-						],
-					},
 				},
 			},
 			{
-				$unset: ["upvotedPosts", "repliedComments", "commentedPosts"],
+				$unset: ["upvotedPosts"],
 			},
 		])
 		.toArray();
@@ -181,6 +176,19 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.toArray();
 
 	profile.posts = posts;
+	profile.comments = profile.comments.map((comment: Comment) => {
+		return {
+			createdAt: comment.createdAt,
+			pID: comment.pID,
+		};
+	});
+
+	profile.replies = profile.replies.map((reply: Reply) => {
+		return {
+			createdAt: reply.createdAt,
+			pID: reply.pID,
+		};
+	});
 
 	return res.status(200).json(profile);
 };
