@@ -182,8 +182,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	profile.posts = posts;
 
-	console.log(profile);
-
 	return res.status(200).json(profile);
 };
 
