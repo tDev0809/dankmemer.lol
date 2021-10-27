@@ -2,10 +2,10 @@ import axios from "axios";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { DeveloperBadge, ModeratorBadge } from "../../components/Badge";
 import FeedbackPostCard from "../../components/feedback/FeedbackPostCard";
 import LoadingPepe from "../../components/LoadingPepe";
 import Container from "../../components/ui/Container";
-import Tooltip from "../../components/ui/Tooltip";
 import { PageProps, Profile } from "../../types";
 import { randomAvatar } from "../../util/random";
 import { unauthenticatedRoute } from "../../util/redirects";
@@ -62,18 +62,10 @@ export default function ProfilePage({ user }: PageProps) {
 									</div>
 									<div className="flex space-x-2">
 										{profile.developer && (
-											<Tooltip content="Developer">
-												<div className="material-icons cursor-default text-dank-300">
-													construction
-												</div>
-											</Tooltip>
+											<DeveloperBadge />
 										)}
 										{profile.moderator && (
-											<Tooltip content="Moderator">
-												<div className="material-icons cursor-default text-blue-400">
-													local_police
-												</div>
-											</Tooltip>
+											<ModeratorBadge />
 										)}
 									</div>
 									<div>

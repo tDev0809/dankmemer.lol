@@ -6,6 +6,7 @@ import { CommentAuthor, User } from "../../types";
 import { urlify } from "../../util/feedback";
 import Tooltip from "../ui/Tooltip";
 import Link from "next/link";
+import { DeveloperBadge, ModeratorBadge } from "../Badge";
 
 const commentType = {
 	COMMENT: 0,
@@ -120,6 +121,12 @@ export default function Comment({
 							</a>
 						</Link>
 					</div>
+					{(oAuthor.developer || oAuthor.moderator) && (
+						<div className="flex space-x-2">
+							{oAuthor.developer && <DeveloperBadge />}
+							{oAuthor.moderator && <ModeratorBadge />}
+						</div>
+					)}
 					<Tooltip content={format(createdAt, "MMMM dd, yyyy")}>
 						<p className="text-gray-400 cursor-default">
 							{formatDistance(new Date(createdAt), new Date(), {
