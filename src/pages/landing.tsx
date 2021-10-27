@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import Container from "../components/ui/Container";
 import { PageProps } from "../types";
+import createAd from "../util/createAd";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 
@@ -42,8 +43,48 @@ function Block({ title, children, icon, customIcon, onClick }: BlockProps) {
 export default function LandingPage({ user }: PageProps) {
 	const router = useRouter();
 
+	useEffect(() => {
+		createAd("nitropay-landing-top", { sizes: [[728, 90]] }, "desktop");
+		createAd(
+			"nitropay-landing-top",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+			},
+			"mobile"
+		);
+
+		createAd(
+			"nitropay-landing-bottom",
+			{
+				sizes: [
+					[728, 90],
+					[970, 90],
+				],
+				renderVisibleOnly: true,
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-landing-bottom",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
+	}, []);
+
 	return (
 		<Container title="Landing" user={user}>
+			<div id="nitropay-landing-top" className="nitropay" />
 			<div className="relative my-16">
 				<div className="flex flex-col items-center space-y-8">
 					<div className="text-dark-400 dark:text-white font-montserrat flex flex-col items-center -space-y-4">
@@ -217,6 +258,7 @@ export default function LandingPage({ user }: PageProps) {
 							</p>
 						</Block>
 					</div>
+					<div id="nitropay-landing-bottom" className="nitropay" />
 				</div>
 			</div>
 		</Container>

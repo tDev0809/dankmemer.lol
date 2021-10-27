@@ -8,6 +8,7 @@ import { Item, PageProps } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 import MarkdownIt from "markdown-it";
+import createAd from "../util/createAd";
 
 const itemsData = require("../data/itemsData.json");
 
@@ -73,9 +74,50 @@ export default function ItemsPage({ user }: PageProps) {
 		);
 	}, [search]);
 
+	useEffect(() => {
+		createAd("nitropay-items-top", { sizes: [[728, 90]] }, "desktop");
+		createAd(
+			"nitropay-items-top",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+			},
+			"mobile"
+		);
+
+		createAd(
+			"nitropay-items-bottom",
+			{
+				sizes: [
+					[728, 90],
+					[970, 90],
+					[970, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-items-bottom",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
+	});
+
 	return (
 		<Container title="Items" user={user}>
-			<div className="my-40 flex flex-col space-y-4">
+			<div id="nitropay-items-top" className="nitropay" />
+			<div className="my-20 flex flex-col space-y-4">
 				<div className="flex flex-col space-y-2">
 					<div className="text-4xl font-bold font-montserrat text-dank-200 dark:text-white">
 						Items directory
@@ -249,6 +291,7 @@ export default function ItemsPage({ user }: PageProps) {
 						</div>
 					</div>
 				</div>
+				<div id="nitropay-items-bottom" className="nitropay" />
 			</div>
 		</Container>
 	);

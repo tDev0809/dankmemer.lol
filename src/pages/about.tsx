@@ -1,7 +1,8 @@
 import { GetServerSideProps } from "next";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import Container from "../components/ui/Container";
 import { PageProps } from "../types";
+import createAd from "../util/createAd";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 
@@ -24,6 +25,30 @@ function Block({ title, children }: BlockProps) {
 }
 
 export default function AboutPage({ user }: PageProps) {
+	useEffect(() => {
+		createAd(
+			"nitropay-about-middle",
+			{
+				sizes: [
+					[728, 90],
+					[300, 250],
+				],
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-about-middle",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+			},
+			"mobile"
+		);
+	}, []);
+
 	return (
 		<Container title="About" user={user}>
 			<div className="relative max-w-4xl my-16">
@@ -54,6 +79,7 @@ export default function AboutPage({ user }: PageProps) {
 						Dank Memer, and created it's current account and listed
 						it publically in January of 2017. The rest is history!
 					</Block>
+					<div id="nitropay-about-middle" className="nitropay" />
 					<Block title="Why are there paid perks?">
 						For the first year of Dank Memer, there was little to no
 						paid features. We really did (and still do) push

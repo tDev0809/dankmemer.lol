@@ -7,6 +7,7 @@ import Dropdown from "../components/ui/Dropdown";
 import Searchbox from "../components/ui/Searchbox";
 import { FAQ } from "../constants";
 import { PageProps } from "../types";
+import createAd from "../util/createAd";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 
@@ -43,9 +44,50 @@ export default function FaqPage({ user }: PageProps) {
 		setCurrentCategory(search.length > 0 ? `all-${search}` : categories[0]);
 	}, [search]);
 
+	useEffect(() => {
+		createAd("nitropay-faq-top", { sizes: [[728, 90]] }, "desktop");
+		createAd(
+			"nitropay-faq-top",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+			},
+			"mobile"
+		);
+
+		createAd(
+			"nitropay-faq-bottom",
+			{
+				sizes: [
+					[728, 90],
+					[970, 90],
+					[970, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-faq-bottom",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
+	}, []);
+
 	return (
 		<Container title="FAQ" user={user}>
-			<div className="my-40 flex flex-col space-y-8 relative">
+			<div id="nitropay-faq-top" className="nitropay" />
+			<div className="my-20 flex flex-col space-y-8 relative">
 				<div>
 					<div className="text-4xl font-bold font-montserrat text-dank-200 dark:text-white">
 						FREQUENTLY ASKED QUESTIONS
@@ -141,6 +183,7 @@ export default function FaqPage({ user }: PageProps) {
 						/>
 					))}
 				</div>
+				<div id="nitropay-faq-bottom" className="nitropay" />
 			</div>
 		</Container>
 	);

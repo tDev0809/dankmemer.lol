@@ -8,6 +8,7 @@ import LoadingPepe from "../../components/LoadingPepe";
 import Container from "../../components/ui/Container";
 import { PageProps } from "../../types";
 import { tailwindHtml } from "../../util/blog";
+import createAd from "../../util/createAd";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
@@ -33,6 +34,30 @@ export default function PostPage({ user }: PageProps) {
 			.catch((e) => {
 				router.push("/blogs");
 			});
+		createAd(
+			"nitropay-blog-bottom",
+			{
+				sizes: [
+					[728, 90],
+					[970, 90],
+					[970, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-blog-bottom",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
 	}, []);
 
 	return (
@@ -71,7 +96,10 @@ export default function PostPage({ user }: PageProps) {
 									__html: tailwindHtml(content),
 								}}
 							/>
-
+							<div
+								id="nitropay-blog-bottom"
+								className="nitropay"
+							/>
 							<BottomCTA />
 						</>
 					) : (

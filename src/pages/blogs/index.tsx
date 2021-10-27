@@ -7,6 +7,7 @@ import { Blog, PageProps } from "../../types";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 import Link from "next/link";
+import createAd from "../../util/createAd";
 
 export default function BlogPage({ user }: PageProps) {
 	const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -15,6 +16,54 @@ export default function BlogPage({ user }: PageProps) {
 		axios("/api/blog/list").then((data) => {
 			setBlogs(data.data);
 		});
+		createAd(
+			"nitropay-blogs-middle",
+			{
+				sizes: [
+					[728, 90],
+					[970, 90],
+					[970, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-blogs-middle",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
+		createAd(
+			"nitropay-blogs-bottom",
+			{
+				sizes: [
+					[728, 90],
+					[970, 90],
+					[970, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-blogs-bottom",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
 	}, []);
 
 	return (
@@ -56,6 +105,7 @@ export default function BlogPage({ user }: PageProps) {
 						))}
 					</div>
 				</div>
+				<div id="nitropay-blogs-middle" className="nitropay" />
 				<div className="mt-8 flex flex-col space-y-4">
 					<div className="text-gray-400 text-3xl font-montserrat">
 						Older posts
@@ -80,6 +130,7 @@ export default function BlogPage({ user }: PageProps) {
 						))}
 					</div>
 				</div>
+				<div id="nitropay-blogs-bottom" className="nitropay" />
 			</div>
 		</Container>
 	);

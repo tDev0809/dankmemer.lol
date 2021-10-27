@@ -9,6 +9,7 @@ import { withSession } from "../util/session";
 import { unauthenticatedRoute } from "../util/redirects";
 import { PageProps } from "../types";
 import { useRouter } from "next/router";
+import createAd from "../util/createAd";
 
 interface TriangleProps {
 	scale: number;
@@ -54,6 +55,43 @@ export default function HomePage({ user }: PageProps) {
 		window.addEventListener("resize", () => {
 			handleResize();
 		});
+
+		createAd(
+			"nitropay-home-top",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
+
+		createAd(
+			"nitropay-home-bottom",
+			{
+				sizes: [
+					[728, 90],
+					[970, 90],
+				],
+				renderVisibleOnly: true,
+			},
+			"desktop"
+		);
+		createAd(
+			"nitropay-home-bottom",
+			{
+				sizes: [
+					[320, 50],
+					[300, 50],
+					[300, 250],
+				],
+				renderVisibleOnly: true,
+			},
+			"mobile"
+		);
 	}, []);
 
 	return (
@@ -108,8 +146,7 @@ export default function HomePage({ user }: PageProps) {
 						/>
 					</svg>
 				</div>
-				{/* TODO */}
-				{/* <div id="nitropay-home-top" className="nitropay" /> */}
+				<div id="nitropay-home-top" className="nitropay" />
 			</div>
 			<div className="flex flex-col items-center mt-80 space-y-4 font-inter">
 				<div className="text-center">
@@ -159,6 +196,7 @@ export default function HomePage({ user }: PageProps) {
 				</div>
 			</div>
 			<div className="m-24">
+				<div id="nitropay-home-bottom" className="nitropay" />
 				<BottomCTA />
 			</div>
 		</Container>
