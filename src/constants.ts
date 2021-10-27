@@ -224,7 +224,7 @@ export const REPORTS: Record<string, string[]> = {
 };
 
 export const APPEALS: Record<string, string[]> = {
-	user: [
+	server: [
 		"Discord's Terms of Service",
 		"Dank Memer’s rules",
 		"Pinging or DMing the Developers",
@@ -237,7 +237,7 @@ export const APPEALS: Record<string, string[]> = {
 		"Scamming",
 		"Unsure",
 	],
-	server: [
+	user: [
 		"Userbots, spamming or macros",
 		"Sharing exploits",
 		"Coin storage accounts/Farming accounts/Alts",
