@@ -126,9 +126,13 @@ export default function ProfilePage({ user }: PageProps) {
 								</div>
 								<div className="flex flex-col justify-between py-4 text-dark-400 dark:text-white">
 									<div>
-										<span className="text-3xl font-bold">
-											{profile.name}
-										</span>
+										{profile.name ? (
+											<span className="text-3xl font-bold">
+												{profile.name}
+											</span>
+										) : (
+											id
+										)}
 										{!!profile.discriminator && (
 											<span className="text-gray-500">
 												#{profile.discriminator}
