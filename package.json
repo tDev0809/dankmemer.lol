@@ -10,7 +10,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start -p 8080"
+		"start": "next start -p 3000"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.36",
