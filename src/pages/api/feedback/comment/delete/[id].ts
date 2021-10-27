@@ -67,7 +67,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						},
 						{
 							name: "Comment",
-							value: comment.comment,
+							value: comment.comment.slice(0, 1000),
 							inline: false,
 						},
 						{
