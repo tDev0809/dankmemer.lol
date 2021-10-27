@@ -195,7 +195,7 @@ export const FEEDBACK_CATEGORIES_DESCRIPTIONS: Record<string, string> = {
 	patreon_and_lootboxes:
 		"Ideas and feedback for any of our premium offerings such as patreon and lootboxes",
 	pipe_dream:
-		"Ideas that you don't think will ever be added, but would be to think about none the less",
+		"Ideas that you don't think will ever be added, but would be neat to think about none the less",
 	other: "Any ideas or feedback that don't fit into other categories",
 };
 
