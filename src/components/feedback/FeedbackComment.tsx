@@ -109,9 +109,9 @@ export default function Comment({
 					<div
 						className={clsx(
 							oAuthor.developer
-								? "text-blue-500"
+								? "text-dank-300"
 								: oAuthor.moderator
-								? "text-yellow-400"
+								? "text-blue-400"
 								: "text-dark-400 dark:text-white"
 						)}
 					>
