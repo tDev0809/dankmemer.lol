@@ -6,6 +6,7 @@ import { DeveloperBadge, ModeratorBadge } from "../../components/Badge";
 import FeedbackPostCard from "../../components/feedback/FeedbackPostCard";
 import LoadingPepe from "../../components/LoadingPepe";
 import Container from "../../components/ui/Container";
+import Tooltip from "../../components/ui/Tooltip";
 import { PageProps, Profile } from "../../types";
 import { randomAvatar } from "../../util/random";
 import { unauthenticatedRoute } from "../../util/redirects";
@@ -32,9 +33,11 @@ export default function ProfilePage({ user }: PageProps) {
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-4">
 					<div className="flex">
-						<div className="bg-yellow-400 px-2 text-dark-400 rounded-lg font-bold text-sm">
-							BETA
-						</div>
+						<Tooltip content="This page is currently in beta, we will add more things soon.">
+							<div className="bg-yellow-400 px-2 text-dark-400 rounded-lg font-bold text-sm cursor-pointer">
+								BETA
+							</div>
+						</Tooltip>
 					</div>
 					{profile && (
 						<div className="flex flex-col space-y-4">
