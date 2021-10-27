@@ -8,7 +8,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const user = req.session.get("user");
 
 	if (!user) {
-		res.status(200).json({});
+		return res.status(200).json({});
 	}
 
 	if (
