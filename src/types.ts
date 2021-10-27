@@ -142,3 +142,15 @@ export interface Announcement {
 	content: string;
 	createdAt: number;
 }
+
+export interface Profile {
+	_id: string;
+	name: string;
+	discriminator: string;
+	avatar: string;
+	developer: boolean;
+	moderator: boolean;
+	upvotes: number;
+	comments: number;
+	posts: Post[];
+}

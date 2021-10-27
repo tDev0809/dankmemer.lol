@@ -67,6 +67,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				$set: {
 					email: user.email,
 					name: user.username,
+					discriminator: user.discriminator,
 					avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 				},
 				$addToSet: {
@@ -79,6 +80,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			_id: user.id,
 			email: user.email,
 			name: user.username,
+			discriminator: user.discriminator,
 			avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 			ip: [req.headers["cf-connecting-ip"]],
 		});

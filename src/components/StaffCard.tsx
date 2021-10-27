@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { sanitize } from "dompurify";
+import { useRouter } from "next/router";
 import Marquee from "react-fast-marquee";
 import { Staff } from "../types";
 import { randomAvatar } from "../util/random";
@@ -67,6 +68,8 @@ interface StaffCardProps {
 }
 
 export function StaffCard({ member }: StaffCardProps) {
+	const router = useRouter();
+
 	return (
 		<div
 			className={clsx(
@@ -74,6 +77,7 @@ export function StaffCard({ member }: StaffCardProps) {
 				"rounded-lg p-6 cursor-pointer border",
 				"bg-light-500 dark:bg-dark-200 border-light-500 dark:border-dark-200 hover:border-dank-300 dark:hover:border-dank-300"
 			)}
+			onClick={() => router.push(`/profile/${member._id}`)}
 		>
 			<div className="flex flex-col space-y-4 text-dark-400 dark:text-white">
 				<div className="flex space-x-4">
