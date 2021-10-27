@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
+					<script src="/js/noflash.js"></script>
 					<script
 						data-ad-client="ca-pub-1439722543831764"
 						async
