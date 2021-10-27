@@ -67,7 +67,7 @@ export default function PostPage({ user }: PageProps) {
 					{date ? (
 						<>
 							<div className="flex flex-col items-center space-y-1">
-								<div className="text-5xl font-montserrat font-bold text-dark-400 dark:text-white">
+								<div className="text-5xl font-montserrat font-bold text-dark-400 dark:text-white text-center">
 									{title}
 								</div>
 								<div className="flex flex-col items-center -space-y-1">
