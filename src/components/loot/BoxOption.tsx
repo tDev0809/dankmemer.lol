@@ -22,7 +22,7 @@ export function BoxOption({
 	return (
 		<div
 			className={clsx(
-				"relative px-20 py-6 flex flex-col items-center cursor-pointer border-2 shadow-2xl h-full bg-light-500 dark:bg-dark-400",
+				"relative px-20 pt-14 pb-3 flex flex-col items-center cursor-pointer border-2 shadow-2xl h-full bg-light-500 dark:bg-dark-400",
 				active
 					? BOX_COLORS[data.id]
 					: "border-light-500 dark:border-dark-400"
