@@ -128,7 +128,7 @@ export default function CollectionPage({ user }: PageProps) {
 			<div className="flex justify-center w-full">
 				<Link href="https://frog.family/">
 					<a className="text-dank-300 underline my-8" target="_blank">
-						Get your own pepe!
+						Adopt your own pepe!
 					</a>
 				</Link>
 			</div>
@@ -142,7 +142,7 @@ export default function CollectionPage({ user }: PageProps) {
 			<div className="flex justify-center w-full">
 				<Link href="https://frog.family/">
 					<a className="text-dank-300 underline my-8" target="_blank">
-						Get your own pepe!
+						Adopt your own pepe!
 					</a>
 				</Link>
 			</div>
