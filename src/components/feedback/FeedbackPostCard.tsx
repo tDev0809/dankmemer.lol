@@ -63,7 +63,7 @@ export default function FeedbackPostCard({ postData }: Props) {
 				</div>
 				<div
 					className={clsx(
-						"flex items-center",
+						"flex items-center justify-end",
 						"space-x-0 md:space-x-4 space-y-2 md:space-y-0",
 						"w-full md:w-48"
 					)}
@@ -72,11 +72,13 @@ export default function FeedbackPostCard({ postData }: Props) {
 						<span className="material-icons-outlined">forum</span>
 						<div>{postData?.comments || 0}</div>
 					</div>
-					<FeedbackUpvote
-						id={postData?._id || ""}
-						upvotes={postData?.upvotes || 0}
-						upvoted={postData?.upvoted || false}
-					/>
+					<div className="w-full md:w-32">
+						<FeedbackUpvote
+							id={postData?._id || ""}
+							upvotes={postData?.upvotes || 0}
+							upvoted={postData?.upvoted || false}
+						/>
+					</div>
 				</div>
 			</a>
 		</Link>
