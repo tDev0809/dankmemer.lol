@@ -71,6 +71,7 @@ export default function PostPage({ user }: PageProps) {
 			comment!.replies.push({
 				_id: (await res.json()).id,
 				cID: replyingTo,
+				pID: id as string,
 				reply: reply,
 				createdAt: Date.now(),
 				author: {
