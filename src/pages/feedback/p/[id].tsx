@@ -300,11 +300,13 @@ export default function PostPage({ user }: PageProps) {
 											</div>
 										</Tooltip>
 									)}
-								<FeedbackUpvote
-									id={post?._id || ""}
-									upvotes={post?.upvotes || 0}
-									upvoted={post?.upvoted || false}
-								/>
+								{post && (
+									<FeedbackUpvote
+										id={post?._id || ""}
+										upvotes={post?.upvotes || 0}
+										upvoted={post?.upvoted || false}
+									/>
+								)}
 							</div>
 						</div>
 					</div>
