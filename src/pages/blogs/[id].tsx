@@ -62,7 +62,7 @@ export default function PostPage({ user }: PageProps) {
 
 	return (
 		<Container title="Blog" user={user}>
-			<div className="max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-8 lg:mx-auto relative flex justify-center">
+			<div className="mx-8 lg:mx-auto relative flex justify-center">
 				<div className="max-w-5xl flex flex-col items-center space-y-8 my-16">
 					{date ? (
 						<>
