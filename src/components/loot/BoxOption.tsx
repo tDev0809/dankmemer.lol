@@ -34,7 +34,7 @@ export function BoxOption({
 			<div className="text-3xl font-bold font-montserrat text-dark-400 dark:text-white">
 				{data.name.toUpperCase()}
 			</div>
-			<div className="text-2xl font-bold text-dank-300">
+			<div className="text-2xl font-bold font-montserrat text-dank-300">
 				${data.price}
 			</div>
 			{active && (
