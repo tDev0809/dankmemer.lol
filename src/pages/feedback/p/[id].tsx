@@ -200,11 +200,14 @@ export default function PostPage({ user }: PageProps) {
 								</div>
 								{post && (
 									<div className="text-light-600 cursor-pointer">
-										by {post.author.username}#
+										by{" "}
 										<Link
 											href={`/profile/${post.author.id}`}
 										>
-											<a>{post.author.discriminator}</a>
+											<a>
+												{post.author.username}#
+												{post.author.discriminator}
+											</a>
 										</Link>{" "}
 										<Tooltip
 											content={format(
