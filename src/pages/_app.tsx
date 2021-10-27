@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				<meta property="og:image:width" content="64" />
 				<meta property="og:image:height" content="64" />
 			</Head>
-			<DefaultSeo
+			{/* <DefaultSeo
 				defaultTitle="Dank Memer"
 				description="Dank Memer is a feature-rich Discord bot with the original twist of being sarcastic and memey. A MASSIVE currency system, tons of memes, and much more!"
 				canonical="https://dankmemer.lol"
@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					description:
 						"Dank Memer is a feature-rich Discord bot with the original twist of being sarcastic and memey. A MASSIVE currency system, tons of memes, and much more!",
 				}}
-			/>
+			/> */}
 			<link
 				href="https://fonts.googleapis.com/icon?family=Material+Icons"
 				rel="stylesheet"
