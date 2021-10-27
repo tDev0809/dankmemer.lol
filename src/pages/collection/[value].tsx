@@ -5,6 +5,7 @@ import Container from "../../components/ui/Container";
 import { PageProps } from "../../types";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
+import Link from "next/link";
 
 interface PepeCardProps {
 	index: number;
@@ -15,6 +16,7 @@ function PepeCard({ index, has }: PepeCardProps) {
 	const [cardTransform, setCardTransform] = useState("");
 	const [cardFilter, setCardFilter] = useState("");
 	const [zIndex, setZIndex] = useState(1);
+	const router = useRouter();
 
 	const maxTilt = 30;
 
@@ -70,6 +72,13 @@ function PepeCard({ index, has }: PepeCardProps) {
 			}}
 			onMouseMove={onMouseMove}
 			onMouseLeave={onMouseLeave}
+			onClick={() =>
+				has
+					? router.push(
+							`https://opensea.io/assets/0xb30823ece82f27e358330b76b33243a4f1f0539e/${index}`
+					  )
+					: null
+			}
 		>
 			<div>
 				<div className="">
@@ -116,12 +125,26 @@ export default function CollectionPage({ user }: PageProps) {
 
 	return (
 		<Container title="Collection" user={user}>
-			<div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-6 my-16">
+			<div className="flex justify-center w-full">
+				<Link href="https://frog.family/">
+					<a className="text-dank-300 underline my-8" target="_blank">
+						Get your own pepe!
+					</a>
+				</Link>
+			</div>
+			<div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-6">
 				{collection.map((has, i) => (
 					<div key={i}>
 						<PepeCard index={i + 1} has={has} />
 					</div>
 				))}
+			</div>
+			<div className="flex justify-center w-full">
+				<Link href="https://frog.family/">
+					<a className="text-dank-300 underline my-8" target="_blank">
+						Get your own pepe!
+					</a>
+				</Link>
 			</div>
 		</Container>
 	);
