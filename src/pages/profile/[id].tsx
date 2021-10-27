@@ -59,9 +59,11 @@ export default function ProfilePage({ user }: PageProps) {
 										<span className="text-3xl font-bold">
 											{profile.name}
 										</span>
-										<span className="text-gray-500">
-											#{profile.discriminator}
-										</span>
+										{!!profile.discriminator && (
+											<span className="text-gray-500">
+												#{profile.discriminator}
+											</span>
+										)}
 									</div>
 									<div className="flex space-x-2">
 										{profile.developer && (
