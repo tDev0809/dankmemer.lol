@@ -16,7 +16,7 @@ import "../temp.scss";
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
-			<Head>
+			{/* <Head>
 				<meta charSet="utf-8" />
 				<meta
 					name="viewport"
@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				<link rel="icon" href="/img/memer.png" />
 				<meta property="og:image:width" content="64" />
 				<meta property="og:image:height" content="64" />
-			</Head>
+			</Head> */}
 			{/* <DefaultSeo
 				defaultTitle="Dank Memer"
 				description="Dank Memer is a feature-rich Discord bot with the original twist of being sarcastic and memey. A MASSIVE currency system, tons of memes, and much more!"
