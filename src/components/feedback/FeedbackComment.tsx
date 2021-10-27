@@ -123,8 +123,11 @@ export default function Comment({
 					</div>
 					{(oAuthor.developer || oAuthor.moderator) && (
 						<div className="flex space-x-2">
-							{oAuthor.developer && <DeveloperBadge />}
-							{oAuthor.moderator && <ModeratorBadge />}
+							{oAuthor.developer ? (
+								<DeveloperBadge />
+							) : oAuthor.moderator ? (
+								<ModeratorBadge />
+							) : null}
 						</div>
 					)}
 					<Tooltip content={format(createdAt, "MMMM dd, yyyy")}>
