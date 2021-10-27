@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
 
 	render() {
 		return (
-			<Html>
+			<Html className="dark">
 				<Head>
 					<script
 						data-ad-client="ca-pub-1439722543831764"
@@ -50,7 +50,8 @@ export default class MyDocument extends Document {
 						href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"
 					/>
 				</Head>
-				<body className="bg-white dark:bg-dark-300">
+				<Head />
+				<body className="dark:bg-dark-300">
 					<Main />
 					<NextScript />
 				</body>
