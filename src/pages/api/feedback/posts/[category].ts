@@ -35,7 +35,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				$match:
 					category === "all"
 						? {
-								_id: { $ne: "" },
+								label:
+									filter === "all posts"
+										? { $ne: "." }
+										: filter,
 						  }
 						: {
 								category: category,
