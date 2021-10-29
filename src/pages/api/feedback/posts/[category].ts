@@ -12,7 +12,9 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	if (
 		!category ||
-		!FEEDBACK_CATEGORIES.concat("all").includes(category as string)
+		!(FEEDBACK_CATEGORIES as typeof FEEDBACK_CATEGORIES & "all")
+			.concat("all")
+			.includes(category as string)
 	) {
 		return res
 			.status(500)
