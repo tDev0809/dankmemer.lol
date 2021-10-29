@@ -51,7 +51,11 @@ export default function CategoryPage({ user }: PageProps) {
 	};
 
 	useEffect(() => {
-		if (FEEDBACK_CATEGORIES.concat("all").includes(id as string)) {
+		if (
+			(FEEDBACK_CATEGORIES as typeof FEEDBACK_CATEGORIES & "all")
+				.concat("all")
+				.includes(id as string)
+		) {
 			loadPosts(true);
 		} else {
 			router.push("/feedback");
