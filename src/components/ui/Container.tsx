@@ -59,11 +59,15 @@ export default function Container({ children, title, user }: Props) {
 					</div>
 				</div>
 			)}
-			<Navbar user={user} />
-			<div className="flex justify-center">
-				<div className="max-w-7xl mx-8 relative w-full">{children}</div>
+			<div className="flex flex-col h-screen justify-between">
+				<Navbar user={user} />
+				<div className="flex justify-center">
+					<div className="max-w-7xl mx-8 relative w-full">
+						{children}
+					</div>
+				</div>
+				<Footer />
 			</div>
-			<Footer />
 		</>
 	);
 }
