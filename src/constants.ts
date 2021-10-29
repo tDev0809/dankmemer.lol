@@ -181,7 +181,7 @@ export const FEEDBACK_CATEGORIES = [
 	"patreon_and_lootboxes",
 	"pipe_dream",
 	"other",
-];
+] as const;
 
 export const FEEDBACK_CATEGORIES_DESCRIPTIONS: Record<string, string> = {
 	currency_items:

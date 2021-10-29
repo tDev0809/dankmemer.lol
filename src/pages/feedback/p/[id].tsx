@@ -10,13 +10,13 @@ import axios from "axios";
 import clsx from "clsx";
 import Button from "../../../components/ui/Button";
 import FeedbackComment from "../../../components/feedback/FeedbackComment";
-import { urlify } from "../../../util/feedback";
+import { sanitizeCategory, urlify } from "../../../util/feedback";
 import FeedbackLabel from "../../../components/feedback/FeedbackLabel";
 import { toast } from "react-toastify";
 import Tooltip from "../../../components/ui/Tooltip";
 import FeedbackUpvote from "../../../components/feedback/FeedbackUpvote";
 import Dropdown from "../../../components/ui/Dropdown";
-import { FEEDBACK_LABELS } from "../../../constants";
+import { FEEDBACK_CATEGORIES, FEEDBACK_LABELS } from "../../../constants";
 import Link from "next/link";
 
 const LOAD_COMMENTS_AMOUNT = 25;
@@ -157,6 +157,16 @@ export default function PostPage({ user }: PageProps) {
 			});
 	};
 
+	const changeCategory = (category: typeof FEEDBACK_CATEGORIES[number]) => {
+		axios
+			.patch(`/api/feedback/post/category/${id}?category=${category}`)
+			.then(() => {
+				const copy = { ...(post as Post) };
+				copy.category = category;
+				setPost(copy);
+			});
+	};
+
 	useEffect(() => {
 		axios(`/api/feedback/post/get/${id}`)
 			.then(({ data }) => {
@@ -210,6 +220,17 @@ export default function PostPage({ user }: PageProps) {
 												{post.author.discriminator}
 											</a>
 										</Link>{" "}
+										in{" "}
+										<Link
+											href={`/feedback/c/${post.category}`}
+										>
+											<a className="hover:underline hover:text-dark-100 dark:hover:text-light-400">
+												{sanitizeCategory(
+													post.category
+												)}
+											</a>
+										</Link>
+										,{" "}
 										<Tooltip
 											content={format(
 												post.createdAt,
@@ -239,45 +260,79 @@ export default function PostPage({ user }: PageProps) {
 								</div>
 							</div>
 
-							<div className="flex space-x-4 items-center">
+							<div className="flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 items-center">
 								{user && post && user.isModerator && (
-									<Dropdown
-										content={
-											<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">
-												<span>Label</span>
-												<span className="material-icons">
-													expand_more
-												</span>
+									<div className="flex space-x-4">
+										<Dropdown
+											content={
+												<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">
+													<span>Label</span>
+													<span className="material-icons">
+														expand_more
+													</span>
+												</div>
+											}
+											variant="wide"
+										>
+											<div className="rounded-md mt-2 bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
+												{FEEDBACK_LABELS.filter(
+													(f) => !f.includes("all")
+												)
+													.concat("no label")
+													.map((label) => (
+														<div
+															className={clsx(
+																"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
+															)}
+															onClick={() => {
+																changeLabel(
+																	label as Post["label"]
+																);
+															}}
+														>
+															{label
+																.charAt(0)
+																.toUpperCase() +
+																label
+																	.substr(1)
+																	.toLowerCase()}
+														</div>
+													))}
 											</div>
-										}
-										variant="big"
-									>
-										<div className="rounded-md mt-2 bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
-											{FEEDBACK_LABELS.filter(
-												(f) => !f.includes("all")
-											)
-												.concat("no label")
-												.map((label) => (
-													<div
-														className={clsx(
-															"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
-														)}
-														onClick={() => {
-															changeLabel(
-																label as Post["label"]
-															);
-														}}
-													>
-														{label
-															.charAt(0)
-															.toUpperCase() +
-															label
-																.substr(1)
-																.toLowerCase()}
-													</div>
-												))}
-										</div>
-									</Dropdown>
+										</Dropdown>
+										<Dropdown
+											content={
+												<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">
+													<span>Move</span>
+													<span className="material-icons">
+														expand_more
+													</span>
+												</div>
+											}
+											variant="wide"
+										>
+											<div className="rounded-md mt-2 bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
+												{FEEDBACK_CATEGORIES.map(
+													(category) => (
+														<div
+															className={clsx(
+																"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
+															)}
+															onClick={() => {
+																changeCategory(
+																	category
+																);
+															}}
+														>
+															{sanitizeCategory(
+																category
+															)}
+														</div>
+													)
+												)}
+											</div>
+										</Dropdown>
+									</div>
 								)}
 
 								{user &&
@@ -286,7 +341,7 @@ export default function PostPage({ user }: PageProps) {
 										user.isModerator) && (
 										<Tooltip content="Delete this post">
 											<div
-												className="p-2 flex items-center rounded-md bg-red-500 hover:bg-red-700 cursor-pointer"
+												className="p-2 flex items-center rounded-md bg-red-500 hover:bg-red-700 cursor-pointer w-full"
 												onClick={() => deletePost()}
 											>
 												<span className="material-icons">
@@ -296,11 +351,13 @@ export default function PostPage({ user }: PageProps) {
 										</Tooltip>
 									)}
 								{post && (
-									<FeedbackUpvote
-										id={post?._id || ""}
-										upvotes={post?.upvotes || 0}
-										upvoted={post?.upvoted || false}
-									/>
+									<div className="w-full md:w-auto">
+										<FeedbackUpvote
+											id={post?._id || ""}
+											upvotes={post?.upvotes || 0}
+											upvoted={post?.upvoted || false}
+										/>
+									</div>
 								)}
 							</div>
 						</div>
