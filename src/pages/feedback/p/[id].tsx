@@ -262,7 +262,7 @@ export default function PostPage({ user }: PageProps) {
 
 							<div className="flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 items-center">
 								{user && post && user.isModerator && (
-									<div className="flex space-x-4">
+									<div className="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0">
 										<Dropdown
 											content={
 												<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">

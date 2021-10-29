@@ -104,49 +104,57 @@ export default function Comment({
 				"flex justify-between items-center p-2 group w-full hover:bg-gray-100 dark:hover:bg-dark-400"
 			)}
 		>
-			<div className="flex flex-col -space-y-1">
-				<div className="flex space-x-2">
-					<div
-						className={clsx(
-							oAuthor.developer
-								? "text-dank-300"
-								: oAuthor.moderator
-								? "text-blue-400"
-								: "text-dark-400 dark:text-white"
-						)}
-					>
-						<Link href={`/profile/${oAuthor.id}`}>
-							<a>
-								{oAuthor.username}#{oAuthor.discriminator}
-							</a>
-						</Link>
-					</div>
-					{(oAuthor.developer || oAuthor.moderator) && (
-						<div className="flex space-x-2">
-							{oAuthor.developer ? (
-								<DeveloperBadge />
-							) : oAuthor.moderator ? (
-								<ModeratorBadge />
-							) : null}
+			<div className="flex flex-col space-y-2 md:-space-y-1">
+				<div className="flex flex-col md:flex-row space-x-0 md:space-x-2 -space-y-2 md:space-y-0">
+					<div className="flex space-x-2">
+						<div
+							className={clsx(
+								oAuthor.developer
+									? "text-dank-300"
+									: oAuthor.moderator
+									? "text-blue-400"
+									: "text-dark-400 dark:text-white"
+							)}
+						>
+							<Link href={`/profile/${oAuthor.id}`}>
+								<a>
+									{oAuthor.username}#{oAuthor.discriminator}
+								</a>
+							</Link>
 						</div>
-					)}
-					<Tooltip content={format(createdAt, "MMMM dd, yyyy")}>
-						<p className="text-gray-400 cursor-default">
-							{formatDistance(new Date(createdAt), new Date(), {
-								addSuffix: true,
-							})}
-						</p>
-					</Tooltip>
-					{oPinned && (
-						<span className="flex items-center">
-							<span
-								className="material-icons text-gray-400"
-								style={{ fontSize: "16px" }}
-							>
-								push_pin
+						{(oAuthor.developer || oAuthor.moderator) && (
+							<div className="flex space-x-2">
+								{oAuthor.developer ? (
+									<DeveloperBadge />
+								) : oAuthor.moderator ? (
+									<ModeratorBadge />
+								) : null}
+							</div>
+						)}
+					</div>
+					<div className="flex space-x-2 items-center">
+						<Tooltip content={format(createdAt, "MMMM dd, yyyy")}>
+							<p className="text-gray-400 cursor-default">
+								{formatDistance(
+									new Date(createdAt),
+									new Date(),
+									{
+										addSuffix: true,
+									}
+								)}
+							</p>
+						</Tooltip>
+						{oPinned && (
+							<span className="flex items-center">
+								<span
+									className="material-icons text-gray-400"
+									style={{ fontSize: "16px" }}
+								>
+									push_pin
+								</span>
 							</span>
-						</span>
-					)}
+						)}
+					</div>
 				</div>
 				<p className="text-gray-500 dark:text-gray-300">
 					{urlify(oContent)}
