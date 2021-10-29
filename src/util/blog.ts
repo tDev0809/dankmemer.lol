@@ -1,5 +1,9 @@
+import { Item } from "../types";
+
+const items: Item[] = require("../data/itemsData.json");
+
 export function tailwindHtml(content: string) {
-	return content
+	content = content
 		.replaceAll("\\n", ``)
 		.replaceAll("<h1>", `<h1 class="text-3xl font-bold mt-8">`)
 		.replaceAll("<h2>", `<h2 class="text-2xl font-bold mt-8">`)
@@ -19,4 +23,14 @@ export function tailwindHtml(content: string) {
 		.replaceAll("<th", `<th class="bg-dank-400"`)
 		.replaceAll('\\"', "'")
 		.replaceAll("<p>", `<p class="text-dark-400 dark:text-gray-200">`);
+
+	Object.values(items).forEach((item) => {
+		content = content.replaceAll(
+			`item:${item.id}`,
+			`<img src="${item.image}" class="h-6 inline mr-1 mb-1"/><span class="inline">${item.name}</span>
+			`
+		);
+	});
+
+	return content;
 }

@@ -144,7 +144,7 @@ export default function ControlBlogsPage({ user }: PageProps) {
 		setSubmittable(
 			blogTitle.length >= 5 &&
 				blogDescription.length >= 20 &&
-				blogContent.length >= 200
+				blogContent.length >= 20
 		);
 	}, [blogTitle, blogDescription, blogContent]);
 
