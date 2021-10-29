@@ -114,9 +114,14 @@ export default function CollectionPage({ user }: PageProps) {
 	let collection = new Array(50).fill(false);
 
 	try {
-		collection = atob(value as string)
+		atob(value as string)
 			.split(",")
-			.map((i) => i === "1");
+			.forEach((pepe: string) => {
+				const index = parseInt(pepe);
+				if (index >= 0 && index <= 49) {
+					collection[index] = true;
+				}
+			});
 
 		if (collection.length !== 50) {
 			collection = new Array(50).fill(false);
