@@ -22,7 +22,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	const from = Number(req.query.from) || 0;
-	const amount = Number(req.query.amount) || 10;
+	const amount = Math.min(Number(req.query.amount) || 10, 100);
 	const sorting = req.query.sorting || "Hot";
 	let filter = req.query.filter || "all posts";
 

@@ -15,7 +15,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	const from = Number(req.query.from) || 0;
-	const amount = Number(req.query.amount) || 10;
+	const amount = Math.min(Number(req.query.amount) || 10, 100);
 
 	const comments = await db
 		.collection("feedback_comments")
