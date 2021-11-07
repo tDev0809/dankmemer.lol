@@ -270,6 +270,31 @@ export default function ItemsPage({ user }: PageProps) {
 									</div>
 								</div>
 							)}
+							{itemData.components && (
+								<div className="flex flex-col items-center">
+									<div className="text-lg font-bold text-dark-400 dark:text-white">
+										Craftable From
+									</div>
+									<div className="grid gap-2 grid-cols-6">
+										{Object.entries(
+											itemData.components
+										).map(([id, amount]) => (
+											<div
+												className="flex items-center justify-center p-2 bg-gray-300 dark:bg-dank-400 rounded-md cursor-pointer relative"
+												onClick={() => setItem(id)}
+											>
+												<img
+													src={itemsData[id].image}
+													className="w-6"
+												/>
+												<div className="absolute right-0.5 bottom-0 text-xs text-dark-400 dark:text-white">
+													x{amount}
+												</div>
+											</div>
+										))}
+									</div>
+								</div>
+							)}
 							<div className="flex justify-between w-2/3 flex-col sm:flex-row">
 								<div className="flex flex-col items-center">
 									<div className="text-lg font-bold font-montserrat text-dark-400 dark:text-white">

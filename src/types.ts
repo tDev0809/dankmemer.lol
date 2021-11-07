@@ -120,6 +120,7 @@ export interface Item {
 	longdescription?: string;
 	description: string;
 	effects?: string;
+	components?: Record<Item["id"], number>;
 }
 
 export interface Box {
