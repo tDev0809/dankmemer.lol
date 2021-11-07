@@ -155,7 +155,6 @@ export default function FeedbackPage({ user }: PageProps) {
 							<Link href={`/feedback/p/${randomPost._id}`}>
 								<a
 									className="text-dank-300 hover:underline my-8 italic"
-									target="_blank"
 								>
 									Take me to a random post...
 								</a>
