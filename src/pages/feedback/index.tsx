@@ -15,6 +15,8 @@ import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 import Link from "next/link";
 import Tooltip from "../../components/ui/Tooltip";
+import Button from "../../components/ui/Button";
+import { useRouter } from "next/router";
 
 export default function FeedbackPage({ user }: PageProps) {
 	const [feedbackCategories, setFeedbackCategories] = useState<
@@ -22,6 +24,7 @@ export default function FeedbackPage({ user }: PageProps) {
 	>({});
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [postsLoaded, setPostsLoaded] = useState(false);
+	const router = useRouter();
 
 	useEffect(() => {
 		axios("/api/feedback/categoriesCount").then((data) => {
@@ -40,11 +43,30 @@ export default function FeedbackPage({ user }: PageProps) {
 					<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 						Feedback
 					</div>
-					<FancyButton
-						link="/feedback/new"
-						text="New post"
-						variant="small"
-					/>
+					<div className="flex items-center space-x-4">
+						{user && (
+							<Button
+								className="bg-gray-200 hover:bg-gray-300 dark:bg-dank-500 dark:hover:bg-dark-100 text-dark-400 dark:text-white"
+								onClick={() =>
+									router.push(`/profile/${user?.id}`)
+								}
+							>
+								<div className="flex items-center space-x-2">
+									<div className="material-icons">person</div>
+									<div>Your Profile</div>
+								</div>
+							</Button>
+						)}
+						<Button
+							className="text-white bg-dank-300 hover:bg-opacity-75"
+							onClick={() => router.push(`/feedback/new`)}
+						>
+							<div className="flex items-center space-x-2">
+								<div className="material-icons">post_add</div>
+								<div>New Post</div>
+							</div>
+						</Button>
+					</div>
 				</div>
 				<div className="flex flex-col space-y-4">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
