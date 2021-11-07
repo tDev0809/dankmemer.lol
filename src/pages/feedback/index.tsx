@@ -43,7 +43,7 @@ export default function FeedbackPage({ user }: PageProps) {
 	return (
 		<Container title="Feedback" user={user}>
 			<div className="flex flex-col my-16 space-y-6 mx-8 xl:mx-0">
-				<div className="flex justify-between items-center">
+				<div className="flex justify-between items-center flex-col md:flex-row space-y-4 md:space-y-0">
 					<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 						Feedback
 					</div>
@@ -153,9 +153,7 @@ export default function FeedbackPage({ user }: PageProps) {
 					{randomPost && (
 						<div className="flex justify-center w-full">
 							<Link href={`/feedback/p/${randomPost._id}`}>
-								<a
-									className="text-dank-300 hover:underline my-8 italic"
-								>
+								<a className="text-dank-300 hover:underline my-8 italic">
 									Take me to a random post...
 								</a>
 							</Link>
