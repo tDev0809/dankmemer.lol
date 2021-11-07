@@ -50,11 +50,6 @@ export default function ItemsPage({ user }: PageProps) {
 
 	useEffect(() => {
 		setItemData(itemsData[item]);
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: "smooth",
-		});
 	}, [item]);
 
 	useEffect(() => {
@@ -159,18 +154,24 @@ export default function ItemsPage({ user }: PageProps) {
 								variant="wide"
 							>
 								<div className="mt-2 rounded-md bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
-									{categories.map((ccategory) => (
-										<div
-											className={clsx(
-												"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
-											)}
-											onClick={() => {
-												setCategory(ccategory);
-											}}
-										>
-											{ccategory}
-										</div>
-									))}
+									{categories
+										.concat("All")
+										.map((ccategory) => (
+											<div
+												className={clsx(
+													"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
+												)}
+												onClick={() => {
+													setCategory(
+														ccategory == "All"
+															? ""
+															: ccategory
+													);
+												}}
+											>
+												{ccategory}
+											</div>
+										))}
 								</div>
 							</Dropdown>
 						</div>
@@ -198,7 +199,7 @@ export default function ItemsPage({ user }: PageProps) {
 							</div>
 						))}
 					</div>
-					<div className="flex-1 h-full rounded-md p-8 lg:max-w-xl sticky top-0 align-top bg-light-500 dark:bg-dark-100">
+					<div className="flex-1 h-full rounded-md p-8 lg:max-w-xl align-top sticky top-0 lg:top-4 bg-light-500 dark:bg-dark-100">
 						<div className="flex flex-col items-center space-y-20">
 							<div className="flex flex-col items-center space-y-2">
 								<img src={itemData.image} className="w-20" />
