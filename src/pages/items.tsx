@@ -112,7 +112,7 @@ export default function ItemsPage({ user }: PageProps) {
 			},
 			"mobile"
 		);
-	});
+	}, []);
 
 	return (
 		<Container title="Items" user={user}>
