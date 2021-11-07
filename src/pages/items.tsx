@@ -202,7 +202,7 @@ export default function ItemsPage({ user }: PageProps) {
 						<div className="flex flex-col items-center space-y-20">
 							<div className="flex flex-col items-center space-y-2">
 								<img src={itemData.image} className="w-20" />
-								<div className="text-3xl font-bold font-montserrat text-dark-400 dark:text-white">
+								<div className="text-3xl text-center font-bold font-montserrat text-dark-400 dark:text-white">
 									{itemData.name}
 								</div>
 								<div className="text-gray-600 dark:text-gray-400">
@@ -291,7 +291,7 @@ export default function ItemsPage({ user }: PageProps) {
 						</div>
 					</div>
 				</div>
-				<div id="nitropay-items-bottom" className="nitropay" />
+				<div id="nitropay-items-bottom" className="nitropay pt-8" />
 			</div>
 		</Container>
 	);
