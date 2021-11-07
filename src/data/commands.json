@@ -131,6 +131,12 @@
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
+			"t": ["message"],
+			"u": "pls message",
+			"d": "Read last message from the developers!.",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
 			"t": ["prefix"],
 			"u": "pls prefix <prefix of your choice>",
 			"d": "Change Dank Memer's prefix for this server!",
@@ -157,6 +163,12 @@
 		}
 	],
 	"Currency": [
+		{
+			"t": ["badges"],
+			"u": "pls badges",
+			"d": "View your badges progress",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
 		{
 			"t": ["balance", "bal", "coins"],
 			"u": "pls balance [@user]",
@@ -191,6 +203,12 @@
 			"t": ["compare", "flexon"],
 			"u": "pls compare <user>",
 			"d": "Compare yourself with another user.",
+			"p": ["sendMessages", "readMessageHistory"]
+		},
+		{
+			"t": ["craft"],
+			"u": "pls craft",
+			"d": "This command is used to craft items!",
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
@@ -291,9 +309,15 @@
 		},
 		{
 			"t": ["multiplier", "multi"],
-			"u": "pls multiplier [@user]",
+			"u": "pls multiplier",
 			"d": "Check your current multiplier within the bot, including any secret multipliers you may have unlocked!",
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
+			"t": ["omega"],
+			"u": "pls omega",
+			"d": "Prestige used to be a challenge, and now it's child's play. Omega is prestige on crack, rewarding you things never throught possible otherwise. LITERALLY expanding the limits of the game for you.",
+			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
 			"t": ["pet"],
@@ -393,6 +417,18 @@
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
+			"t": ["taxcalc", "gettax", "tc"],
+			"u": "pls taxcalc <quantity>",
+			"d": "Calculate tax on a number according to dank memer tax rates",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
+			"t": ["title"],
+			"u": "pls title [title]",
+			"d": "Change title displayed on your profile.",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
 			"t": ["trade"],
 			"u": "pls trade <coins> <item amount> <item name> <@user>",
 			"d": "For now, you can only trade YOUR coins for someone ELSE'S items. This will be less restrictive in the rewrite.",
@@ -442,6 +478,12 @@
 			"u": "pls clap <what you want the bot to say>",
 			"d": "Make the bot say whatever you want with sass!",
 			"p": ["sendMessages", "readMessageHistory"]
+		},
+		{
+			"t": ["collection"],
+			"u": "pls collection",
+			"d": "Check progress of your pepe collection.",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
 			"t": ["dankrate", "memerate"],
@@ -1796,12 +1838,6 @@
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
-			"t": ["pun", "dadjoke"],
-			"u": "pls pun",
-			"d": "Are they dad jokes, or are they puns? Is there even a difference?",
-			"p": ["sendMessages", "readMessageHistory"]
-		},
-		{
 			"t": ["sequel", "smeme"],
 			"u": "pls sequel",
 			"d": "The force is NOT with these",
@@ -1933,13 +1969,6 @@
 			"t": ["group"],
 			"u": "pls group",
 			"d": "You need group therapy after this",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
-			"dO": true
-		},
-		{
-			"t": ["hentai"],
-			"u": "pls hentai",
-			"d": "owo lewd",
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
 			"dO": true
 		},
@@ -2136,15 +2165,9 @@
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
-			"t": ["taxcalc", "gettax", "tc"],
-			"u": "pls taxcalc <quantity>",
-			"d": "Calculate tax on a number according to dank memer tax rates",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
-		},
-		{
 			"t": ["userinfo", "ui"],
 			"u": "pls userinfo <@user>",
-			"d": "See info about some",
+			"d": "See info about a user",
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{

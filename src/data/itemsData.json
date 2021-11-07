@@ -20,6 +20,18 @@
 			"shovel"
 		]
 	},
+	"prestigepack": {
+		"id": "prestigepack",
+		"name": "Prestige Pack",
+		"image": "https://cdn.discordapp.com/emojis/898709240837976064.png",
+		"description": "A pack to get you back on your feet after prestiging.",
+		"type": "Item Pack",
+		"consumable": true,
+		"showInShop": false,
+		"rarity": 3,
+		"cost": 1000,
+		"items": ["fishingpole", "laptop", "phone", "huntingrifle", "shovel"]
+	},
 	"antirobpack": {
 		"id": "antirobpack",
 		"name": "Anti-Rob Pack",
@@ -174,7 +186,7 @@
 	},
 	"spinner": {
 		"name": "Fidget Spinner",
-		"image": "https://cdn.discordapp.com/emojis/573150030030962699.png",
+		"image": "https://cdn.discordapp.com/emojis/873970101479686194.gif",
 		"description": "Gain a temporary multiplier depending on how long you can spin your fidget spinner!",
 		"longdescription": "Spin your fidget spinner, and gain anywhere from a **5% to a 40%** multiplier boost for 10 minutes depending on how long your fidget spinner spins for.",
 		"id": "spinner",
@@ -349,6 +361,7 @@
 		"cost": 10000000,
 		"showInShop": true,
 		"consumable": false,
+		"components": { "pepecoin": 13, "ducttape": 1 },
 		"rarity": 3
 	},
 	"pepetrophy": {
@@ -393,7 +406,7 @@
 					"2021-12-30T05:00:00.000Z"
 				],
 				"stock": 1000000,
-				"specialCost": 50000,
+				"specialCost": 100000,
 				"limit": 2
 			}
 		]
@@ -405,17 +418,94 @@
 		"type": "Drop Item",
 		"description": "A true flex to carry.",
 		"longdescription": "This is a rare collectable, only found from drop sales.",
-		"cost": 1000000,
+		"cost": 100000,
 		"showInShop": false,
 		"rarity": 3,
 		"drops": [
 			{
 				"time": [
 					"2021-10-02T04:00:00.000Z",
-					"2021-10-03T04:00:00.000Z"
+					"2021-10-02T04:30:00.000Z"
 				],
-				"stock": 50000,
-				"specialCost": 5000000,
+				"stock": 24750,
+				"specialCost": 10000000,
+				"limit": 1
+			},
+			{
+				"time": [
+					"2021-10-02T16:00:00.000Z",
+					"2021-10-02T16:30:00.000Z"
+				],
+				"stock": 24750,
+				"specialCost": 10000000,
+				"limit": 1
+			},
+			{
+				"time": [
+					"2021-11-25T17:00:00.000Z",
+					"2021-11-25T06:00:00.000Z"
+				],
+				"stock": 5000,
+				"specialCost": 10000000,
+				"limit": 1
+			}
+		]
+	},
+	"sugarskull": {
+		"id": "sugarskull",
+		"name": "Sugar Skull",
+		"image": "https://cdn.discordapp.com/emojis/894597638161326091.png",
+		"type": "Drop Item",
+		"description": "Día de los Muertos 2021 limited time item",
+		"longdescription": "This item came from a limited stock of 100k sold on Día de los Muertos 2021",
+		"cost": 100000,
+		"showInShop": false,
+		"consumable": true,
+		"rarity": 3,
+		"drops": [
+			{
+				"time": [
+					"2021-11-01T03:00:00.000Z",
+					"2021-11-01T05:00:00.000Z"
+				],
+				"stock": 20000,
+				"specialCost": 500000,
+				"limit": 1
+			},
+			{
+				"time": [
+					"2021-11-01T15:00:00.000Z",
+					"2021-11-01T17:00:00.000Z"
+				],
+				"stock": 20000,
+				"specialCost": 500000,
+				"limit": 1
+			},
+			{
+				"time": [
+					"2021-11-02T03:00:00.000Z",
+					"2021-11-02T05:00:00.000Z"
+				],
+				"stock": 20000,
+				"specialCost": 500000,
+				"limit": 1
+			},
+			{
+				"time": [
+					"2021-11-02T15:00:00.000Z",
+					"2021-11-02T17:00:00.000Z"
+				],
+				"stock": 20000,
+				"specialCost": 500000,
+				"limit": 1
+			},
+			{
+				"time": [
+					"2021-11-03T00:00:00.000Z",
+					"2021-11-03T03:59:59.000Z"
+				],
+				"stock": 20000,
+				"specialCost": 500000,
 				"limit": 1
 			}
 		]
@@ -426,15 +516,24 @@
 		"description": "Pepe is looking a little SUS today",
 		"longdescription": "This is a rare collectable, only found from drop sales.",
 		"id": "pepesus",
-		"type": "Collectable",
+		"type": "Drop Item",
 		"rarity": 3,
 		"showInShop": false,
-		"cost": 1000000,
+		"cost": 100000,
 		"drops": [
 			{
 				"time": [
-					"2021-11-15T05:00:00.000Z",
-					"2021-11-16T05:00:00.000Z"
+					"2021-11-15T17:00:00.000Z",
+					"2021-11-15T18:00:00.000Z"
+				],
+				"stock": 5000,
+				"specialCost": 15000000,
+				"limit": 1
+			},
+			{
+				"time": [
+					"2021-11-16T05:00:01.000Z",
+					"2021-11-16T06:00:00.000Z"
 				],
 				"stock": 5000,
 				"specialCost": 15000000,
@@ -448,10 +547,47 @@
 		"description": "Use this credit card to buy a friend some premium perks!",
 		"longdescription": "You can use this card to \"buy\" someone 3 days of premium perks for Dank Memer. (The $2 perk value)",
 		"id": "creditcard",
+		"rarity": 3,
 		"type": "Power-up",
 		"cost": 2000000,
 		"consumable": true,
 		"showInShop": false
+	},
+	"ducttape": {
+		"name": "Duct Tape",
+		"image": "https://cdn.discordapp.com/emojis/903663686017749013.png",
+		"description": "Use this tape to craft certain items with the craft command!",
+		"longdescription": "This item is purely used in the craft command to bond items together! It is not purchasable, only found while running commands.",
+		"id": "ducttape",
+		"rarity": 2,
+		"type": "Tool",
+		"cost": 50000,
+		"consumable": false,
+		"showInShop": false
+	},
+	"goldencorndog": {
+		"name": "Golden Corndog",
+		"image": "https://cdn.discordapp.com/emojis/841405708007505930.png",
+		"description": "A corndog... BUT ITS GOLDEN!",
+		"id": "goldencorndog",
+		"rarity": 2,
+		"type": "Collectable",
+		"cost": 100000,
+		"components": { "ducttape": 1, "corndog": 1, "pepecoin": 1 },
+		"consumable": false,
+		"showInShop": false
+	},
+	"prestigecoin": {
+		"name": "Prestige Coin",
+		"image": "https://cdn.discordapp.com/emojis/899772669262700615.png",
+		"description": "Earned from prestiging, use this coin to activate your post-prestige bonus multi.",
+		"id": "prestigecoin",
+		"rarity": 3,
+		"type": "Power-up",
+		"cost": 100000,
+		"consumable": true,
+		"showInShop": false,
+		"notSharable": true
 	},
 	"aetheryxflower": {
 		"name": "Aetheryx' Flower",
@@ -472,7 +608,7 @@
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 1000000,
+		"cost": 100000,
 		"rarity": 4
 	},
 	"melmsiebeard": {
@@ -506,7 +642,7 @@
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 1000000,
+		"cost": 100000,
 		"rarity": 4
 	},
 	"cutters": {
@@ -518,7 +654,7 @@
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 250000000,
+		"cost": 100000,
 		"rarity": 4
 	},
 	"reversal": {
@@ -528,7 +664,7 @@
 		"image": "https://cdn.discordapp.com/emojis/573150370579087360.png",
 		"id": "reversal",
 		"type": "Collectable",
-		"cost": 3500000,
+		"cost": 100000,
 		"consumable": false,
 		"showInShop": false,
 		"rarity": 3
@@ -541,7 +677,7 @@
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 1000000000,
+		"cost": 100000,
 		"rarity": 4
 	},
 	"chillpill": {
@@ -550,7 +686,7 @@
 		"description": "Just take a chill pill and relax, sheesh",
 		"id": "chillpill",
 		"type": "Collectable",
-		"cost": 15000,
+		"cost": 100000,
 		"consumable": true,
 		"showInShop": false,
 		"usable": false,
@@ -563,7 +699,7 @@
 		"longdescription": "You can either use this note to expand your bank space by 5000-25000 or sell it for some coins. Your choice really. Expanded bank space does not reset on prestige (regular bank space earned via running commands does)",
 		"id": "banknote",
 		"type": "Power-up",
-		"cost": 100000,
+		"cost": 200000,
 		"consumable": true,
 		"showInShop": false,
 		"rarity": 1
@@ -627,10 +763,19 @@
 		"longdescription": "This is simply a collectable, and NOT for any type of use. ANY type of use guys, please.",
 		"id": "multiphallicobject",
 		"type": "Collectable",
-		"cost": 5000000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
+		"craftable": true,
+		"components": {
+			"pinkphallicobject": 5,
+			"purplephallicobject": 5,
+			"bluephallicobject": 5,
+			"orangephallicobject": 5,
+			"goldenphallicobject": 2,
+			"ducttape": 1
+		},
 		"rarity": 2
 	},
 	"pepestatue": {
@@ -639,7 +784,7 @@
 		"description": "A neat collectable statue, looks very similar to a coin you can buy.",
 		"id": "pepestatue",
 		"type": "Collectable",
-		"cost": 2500000,
+		"cost": 100000,
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
@@ -652,7 +797,7 @@
 		"longdescription": "A limited time item from the crime command, this is just something to decorate your home with (aka no use)",
 		"id": "urinal",
 		"type": "Collectable",
-		"cost": 50000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
@@ -665,7 +810,7 @@
 		"longdescription": "A limited time item from a random event, use this item to send it to someone who loves berries and cream!",
 		"id": "berriesandcream",
 		"type": "Collectable",
-		"cost": 50000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": true,
 		"rarity": 3
@@ -677,7 +822,7 @@
 		"longdescription": "Using this on a user will give them a fake notification that is ALMOST real, but can be told apart from the real thing if they look close enough...",
 		"id": "fool",
 		"type": "Collectable",
-		"cost": 30000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": true,
 		"rarity": 1
@@ -689,7 +834,7 @@
 		"longdescription": "Throw a snowball at someone else and prevent them from doing anything bad to you for a few minutes like robbing you, or putting negative items on you!",
 		"id": "snowball",
 		"type": "Tool",
-		"cost": 1000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": true,
 		"rarity": 1
@@ -701,7 +846,7 @@
 		"longdescription": "Equip Santa's hat and turn all embed colors (the color on the side of embeds) into Christmas themed colors!",
 		"id": "santashat",
 		"type": "Collectable",
-		"cost": 10000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": true,
 		"rarity": 1
@@ -713,7 +858,7 @@
 		"longdescription": "This item is not able to be opened, only sent. Once you use it with `pls use friend`, the person who receives it will be able to open a Gift Box (Holiday lootbox).",
 		"id": "gift",
 		"type": "Collectable",
-		"cost": 10000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": true,
 		"rarity": 2
@@ -725,7 +870,7 @@
 		"longdescription": "Equip this and turn all embed colors (the color on the side of embeds) into spooky season colors.",
 		"id": "jacky",
 		"type": "Collectable",
-		"cost": 10000,
+		"cost": 100000,
 		"showInShop": false,
 		"consumable": true,
 		"rarity": 3
@@ -737,7 +882,7 @@
 		"longdescription": "Consuming this candy will give you a random amount of coins. Yum!",
 		"id": "candy",
 		"type": "Power-up",
-		"cost": 5,
+		"cost": 1000,
 		"consumable": true,
 		"showInShop": false,
 		"rarity": 0
@@ -750,7 +895,7 @@
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 250000000,
+		"cost": 100000,
 		"rarity": 4
 	},
 	"cupidsbigtoe": {
@@ -762,7 +907,7 @@
 		"type": "Power-up",
 		"consumable": true,
 		"showInShop": false,
-		"cost": 35000,
+		"cost": 100000,
 		"rarity": 1
 	},
 	"giftbox": {
@@ -772,10 +917,10 @@
 		"type": "Loot Box",
 		"description": "A gift from a good friend",
 		"consumable": true,
-		"cost": 1000,
+		"cost": 20000,
 		"showInShop": false,
 		"rarity": 2,
-		"coins": { "min": 3000, "max": 10000 },
+		"coins": { "min": 10000, "max": 100000 },
 		"reward": {
 			"chance": 1,
 			"items": [
@@ -808,15 +953,16 @@
 		"type": "Loot Box",
 		"description": "A reward for voting for Dank Memer! Using this box also gives you a 10 minute double xp boost.",
 		"consumable": true,
-		"cost": 5000,
+		"cost": 20000,
 		"trade": false,
 		"showInShop": false,
 		"xpboost": 10,
 		"rarity": 1,
-		"coins": { "min": 5000, "max": 50000 },
+		"coins": { "min": 10000, "max": 100000 },
 		"reward": {
 			"chance": 1,
 			"items": [
+				{ "ducttape": [1] },
 				{ "pizza": [1] },
 				{ "chillpill": [1, 2] },
 				{ "bread": [1, 2] },
@@ -854,10 +1000,10 @@
 		"type": "Loot Box",
 		"description": "A gift for marrying someone!",
 		"consumable": true,
-		"cost": 5000,
+		"cost": 60000,
 		"showInShop": false,
 		"rarity": 2,
-		"coins": { "min": 6900, "max": 69000 },
+		"coins": { "min": 50000, "max": 100000 },
 		"reward": {
 			"chance": 1,
 			"items": [
@@ -875,18 +1021,19 @@
 	"normie": {
 		"id": "normie",
 		"name": "Normie Box",
-		"image": "https://cdn.discordapp.com/emojis/861390901405679626.gif?",
+		"image": "https://cdn.discordapp.com/emojis/861390901405679626.gif",
 		"opening": "https://cdn.discordapp.com/emojis/861390923451727923.gif",
 		"type": "Loot Box",
 		"description": "Can't get more basic than this",
 		"consumable": true,
-		"cost": 500,
+		"cost": 35000,
 		"showInShop": false,
 		"rarity": 2,
-		"coins": { "min": 3000, "max": 10000 },
+		"coins": { "min": 25000, "max": 100000 },
 		"reward": {
 			"chance": 1,
 			"items": [
+				{ "ducttape": [1] },
 				{ "chillpill": [1, 2] },
 				{ "bread": [1, 2] },
 				{ "pinkphallicobject": [10] },
@@ -911,10 +1058,10 @@
 		"type": "Loot Box",
 		"description": "Something actually worth opening",
 		"consumable": true,
-		"cost": 5000,
+		"cost": 300000,
 		"showInShop": false,
 		"rarity": 2,
-		"coins": { "min": 5000, "max": 25000 },
+		"coins": { "min": 250000, "max": 750000 },
 		"reward": {
 			"chance": 1,
 			"items": [
@@ -947,10 +1094,10 @@
 		"type": "Loot Box",
 		"description": "Dank rewards for a dank user",
 		"consumable": true,
-		"cost": 10000,
+		"cost": 600000,
 		"showInShop": false,
 		"rarity": 2,
-		"coins": { "min": 50000, "max": 150000 },
+		"coins": { "min": 500000, "max": 1000000 },
 		"reward": {
 			"chance": 1,
 			"items": [
@@ -985,18 +1132,17 @@
 		"type": "Loot Box",
 		"description": "What the hell this is op god tier box.",
 		"consumable": true,
-		"cost": 20000,
+		"cost": 1500000,
 		"showInShop": false,
 		"rarity": 3,
-		"coins": { "min": 1200000, "max": 1750000 },
+		"coins": { "min": 1200000, "max": 2000000 },
 		"reward": {
 			"chance": 1,
 			"items": [
 				{ "pepecoin": [1, 2] },
 				{ "pepetrophy": [1] },
 				{ "pepemedal": [1, 2] },
-				{ "peperibbon": [1] },
-				{ "pepe": [1, 3] },
+				{ "pepe": [2, 3] },
 				{ "snowball": [8, 10] },
 				{ "santashat": [2, 4, 6] },
 				{ "pizza": [5, 10, 20] },
@@ -1009,7 +1155,9 @@
 				{ "horseshoe": [5, 10] },
 				{ "cookie": [69, 420] },
 				{ "cupidsbigtoe": [1, 3] },
-				{ "jacky": [1, 2] }
+				{ "jacky": [1, 2] },
+				{ "cutters": [1] },
+				{ "melmsiebeard": [1] }
 			]
 		}
 	},
@@ -1021,10 +1169,11 @@
 		"type": "Loot Box",
 		"description": "This box is only for our loyal patrons!",
 		"consumable": true,
-		"cost": 100000,
+		"cost": 2000000,
+		"notSharable": true,
 		"rarity": 3,
 		"showInShop": false,
-		"coins": { "min": 1500000, "max": 2000000 },
+		"coins": { "min": 1750000, "max": 2500000 },
 		"reward": {
 			"chance": 1,
 			"items": [
@@ -1037,8 +1186,7 @@
 				{ "pepecoin": [2, 3] },
 				{ "pepe": [3, 5] },
 				{ "banknote": [10, 15] },
-				{ "coinbomb": [10, 15] },
-				{ "horseshoe": [10, 12] }
+				{ "coinbomb": [10, 15] }
 			]
 		}
 	},
@@ -1555,7 +1703,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 1750,
+		"cost": 1500,
 		"rarity": 1
 	},
 	"duck": {
@@ -1567,7 +1715,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 2000,
+		"cost": 1750,
 		"rarity": 1
 	},
 	"deer": {
@@ -1579,7 +1727,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 2500,
+		"cost": 2000,
 		"rarity": 1
 	},
 	"boar": {
@@ -1591,7 +1739,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 5000,
+		"cost": 4000,
 		"rarity": 1
 	},
 	"dragon": {
@@ -1616,7 +1764,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 500,
+		"cost": 250,
 		"rarity": 0
 	},
 	"fish": {
@@ -1628,7 +1776,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 1000,
+		"cost": 750,
 		"rarity": 0
 	},
 	"rarefish": {
@@ -1640,7 +1788,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 3000,
+		"cost": 2500,
 		"rarity": 1
 	},
 	"exoticfish": {
@@ -1664,7 +1812,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 10000,
+		"cost": 8000,
 		"rarity": 2
 	},
 	"legendaryfish": {
@@ -1676,7 +1824,7 @@
 		"type": "Sellable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 15000,
+		"cost": 20000,
 		"rarity": 3
 	},
 	"kraken": {
@@ -1689,7 +1837,7 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": true,
-		"cost": 75000,
+		"cost": 100000,
 		"rarity": 3
 	}
 }
