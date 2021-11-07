@@ -1,18 +1,16 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { StaffCard } from "../../components/StaffCard";
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
+import GoBack from "../../components/ui/GoBack";
 import { PageProps, Staff } from "../../types";
 import { staffRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function ControlAnalyticsPage({ user }: PageProps) {
-	const router = useRouter();
-
 	const [staff, setStaff] = useState<Staff | null>(null);
 	const [about, setAbout] = useState("");
 
@@ -53,13 +51,7 @@ export default function ControlAnalyticsPage({ user }: PageProps) {
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
-						<div
-							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300 dark:text-light-100"
-							onClick={() => router.back()}
-						>
-							<span className="material-icons">arrow_back</span>
-							<div>Go Back</div>
-						</div>
+						<GoBack />
 						<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 							Personalize your staff card.
 						</div>

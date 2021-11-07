@@ -1,27 +1,19 @@
 import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { ControlCard } from "../../components/ControlCard";
 import Container from "../../components/ui/Container";
+import GoBack from "../../components/ui/GoBack";
 import { PageProps } from "../../types";
-import { adminRoute, unauthenticatedRoute } from "../../util/redirects";
+import { adminRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function ControlWebsitePage({ user }: PageProps) {
-	const router = useRouter();
-
 	return (
 		<Container title="Control" user={user}>
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
-						<div
-							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300 dark:text-light-100"
-							onClick={() => router.back()}
-						>
-							<span className="material-icons">arrow_back</span>
-							<div>Go Back</div>
-						</div>
+						<GoBack />
 					</div>
 					<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 						Website management

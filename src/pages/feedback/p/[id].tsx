@@ -18,6 +18,7 @@ import FeedbackUpvote from "../../../components/feedback/FeedbackUpvote";
 import Dropdown from "../../../components/ui/Dropdown";
 import { FEEDBACK_CATEGORIES, FEEDBACK_LABELS } from "../../../constants";
 import Link from "next/link";
+import GoBack from "../../../components/ui/GoBack";
 
 const LOAD_COMMENTS_AMOUNT = 25;
 
@@ -190,13 +191,7 @@ export default function PostPage({ user }: PageProps) {
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
-						<div
-							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300 dark:text-light-100"
-							onClick={() => router.back()}
-						>
-							<span className="material-icons">arrow_back</span>
-							<div>Go Back</div>
-						</div>
+						<GoBack />
 						<div className="flex flex-col xl:flex-row justify-start xl:justify-between space-y-8 xl:space-y-0">
 							<div
 								className={clsx(

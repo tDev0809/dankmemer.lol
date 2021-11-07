@@ -9,6 +9,7 @@ import "react-markdown-editor-lite/lib/index.css";
 import { toast } from "react-toastify";
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
+import GoBack from "../../components/ui/GoBack";
 import { Blog, PageProps } from "../../types";
 import { adminRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
@@ -173,13 +174,7 @@ export default function ControlBlogsPage({ user }: PageProps) {
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col my-20 space-y-8">
 					<div className="flex flex-col space-y-4">
-						<div
-							className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300 dark:text-light-100"
-							onClick={() => router.back()}
-						>
-							<span className="material-icons">arrow_back</span>
-							<div>Go Back</div>
-						</div>
+						<GoBack />
 						<div className="flex">
 							<div className="flex flex-col space-y-4 w-1/4">
 								<div className="flex flex-col">

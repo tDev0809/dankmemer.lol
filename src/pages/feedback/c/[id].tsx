@@ -8,6 +8,7 @@ import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
 import Dropdown from "../../../components/ui/Dropdown";
 import FancyButton from "../../../components/ui/FancyButton";
+import GoBack from "../../../components/ui/GoBack";
 import { FEEDBACK_CATEGORIES, FEEDBACK_LABELS } from "../../../constants";
 import { PageProps, Post } from "../../../types";
 import { sanitizeCategory } from "../../../util/feedback";
@@ -66,14 +67,7 @@ export default function CategoryPage({ user }: PageProps) {
 		<Container title="Feedback" user={user}>
 			<div className="mx-8 xl:mx-0">
 				<div className="flex flex-col space-y-4 my-8">
-					<div
-						className="flex space-x-2 cursor-pointer text-sm items-center text-dark-300 dark:text-light-100"
-						onClick={() => router.back()}
-					>
-						<span className="material-icons">arrow_back</span>
-						<div>Go Back</div>
-					</div>
-
+					<GoBack />
 					<div className="flex justify-between items-center">
 						<div className="text-4xl font-bold font-montserrat">
 							{sanitizeCategory(id as string)} feedback
