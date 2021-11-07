@@ -24,15 +24,19 @@ export default function FeedbackPage({ user }: PageProps) {
 	>({});
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [postsLoaded, setPostsLoaded] = useState(false);
+	const [randomPost, setRandomPost] = useState<Post>();
 	const router = useRouter();
 
 	useEffect(() => {
 		axios("/api/feedback/categoriesCount").then((data) => {
 			setFeedbackCategories(data.data);
 		});
-		axios(`/api/feedback/posts/all?from=0&amount=5`).then(({ data }) => {
+		axios(`/api/feedback/posts/all?from=0&amount=10`).then(({ data }) => {
 			setPostsLoaded(true);
 			setPosts([...posts, ...data.posts]);
+		});
+		axios(`/api/feedback/post/random`).then(({ data }) => {
+			setRandomPost(data.post);
 		});
 	}, []);
 
@@ -144,6 +148,20 @@ export default function FeedbackPage({ user }: PageProps) {
 									<FeedbackPostCard key={post._id} />
 								))}
 					</div>
+				</div>
+				<div>
+					{randomPost && (
+						<div className="flex justify-center w-full">
+							<Link href={`/feedback/p/${randomPost._id}`}>
+								<a
+									className="text-dank-300 hover:underline my-8 italic"
+									target="_blank"
+								>
+									Take me to a random post...
+								</a>
+							</Link>
+						</div>
+					)}
 				</div>
 			</div>
 		</Container>
