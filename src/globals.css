@@ -57,3 +57,7 @@ a {
 .nitropay {
 	margin: 5vh auto;
 }
+
+html {
+	overflow: hidden !important;
+}
