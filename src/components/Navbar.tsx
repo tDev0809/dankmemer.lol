@@ -74,7 +74,7 @@ export default function Navbar({ user }: Props) {
 								<Link href="/feedback">Feedback</Link>
 							</li>
 						</ul>
-						<div className="ml-4 text-xl font-montserrat font-bold inline-block lg:hidden">
+						<div className="ml-4 text-xl font-montserrat font-bold inline-block lg:hidden text-gray-800 dark:text-light-200">
 							Dank Memer
 						</div>
 					</div>
