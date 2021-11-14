@@ -4,7 +4,7 @@
 
 > This is the repo for Dank Memer's current website.
 
-<img alt="Screenshot" src="https://imgur.com/t7x6wyA.png">
+<img alt="Screenshot" src="https://i.imgur.com/VnjqKe7.png">
 
 ## Setup
 
