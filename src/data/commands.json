@@ -125,13 +125,19 @@
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
+			"t": ["gainlog"],
+			"u": "pls gainlog <page number>",
+			"d": "See how you gained coins in your pocket.",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
 			"t": ["losslog"],
 			"u": "pls losslog <page number>",
 			"d": "See how you lost coins from your pocket.",
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
-			"t": ["message"],
+			"t": ["message", "mail"],
 			"u": "pls message",
 			"d": "Read last message from the developers!.",
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
@@ -163,6 +169,12 @@
 		}
 	],
 	"Currency": [
+		{
+			"t": ["achievements", "achievement", "achieve"],
+			"u": "pls achievements",
+			"d": "View your achievements progress",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
 		{
 			"t": ["badges"],
 			"u": "pls badges",
@@ -417,6 +429,12 @@
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
+			"t": ["stream", "streaming"],
+			"u": "pls stream",
+			"d": "A streamer simulator! The more involved you are the more coins you will receive!",
+			"p": ["sendMessages", "readMessageHistory"]
+		},
+		{
 			"t": ["taxcalc", "gettax", "tc"],
 			"u": "pls taxcalc <quantity>",
 			"d": "Calculate tax on a number according to dank memer tax rates",
@@ -430,8 +448,8 @@
 		},
 		{
 			"t": ["trade"],
-			"u": "pls trade <coins> <item amount> <item name> <@user>",
-			"d": "For now, you can only trade YOUR coins for someone ELSE'S items. This will be less restrictive in the rewrite.",
+			"u": "pls trade <your offer> <someone's offer> <@user>",
+			"d": "Trade with someone securely.",
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
@@ -721,12 +739,6 @@
 				"embedLinks",
 				"attachFiles"
 			]
-		},
-		{
-			"t": ["achievement", "minecraft", "mc"],
-			"u": "pls achievement",
-			"d": "Am I the only one that didnt know minecraft had achievements",
-			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
 			"t": ["affect"],
@@ -2162,6 +2174,12 @@
 			"t": ["supportinfo"],
 			"u": "pls supportinfo",
 			"d": "Returns basic information and statistics about Dank Memer for support staff to help with.",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
+			"t": ["tutorial"],
+			"u": "pls tutorial [command]",
+			"d": "See a tutorial for a specific command",
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
