@@ -26,7 +26,7 @@ export function tailwindHtml(content: string) {
 
 	Object.values(items).forEach((item) => {
 		content = content.replaceAll(
-			`item:${item.id}`,
+			`item:${item.id} `,
 			`<img src="${item.image}" class="h-6 inline mr-1 mb-1"/><span class="inline">${item.name}</span>
 			`
 		);
