@@ -16,7 +16,11 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	if (recent.has(user.id)) {
 		return res.status(429).json({ error: "You're doing that too often." });
 	}
-	if (!req.body.comment || !req.body.id) {
+	if (
+		!req.body.comment ||
+		!req.body.id ||
+		typeof req.body.comment !== "string"
+	) {
 		return res.status(400).json({ error: "Malformed body." });
 	}
 

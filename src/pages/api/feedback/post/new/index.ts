@@ -32,6 +32,8 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		!req.body.title ||
 		!req.body.content ||
 		!req.body.category ||
+		typeof req.body.title !== "string" ||
+		typeof req.body.content !== "string" ||
 		!FEEDBACK_CATEGORIES.includes(req.body.category)
 	) {
 		return res.status(400).json({ error: "Malformed body" });
