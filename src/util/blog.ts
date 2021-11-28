@@ -24,11 +24,12 @@ export function tailwindHtml(content: string) {
 		.replaceAll('\\"', "'")
 		.replaceAll("<p>", `<p class="text-dark-400 dark:text-gray-200">`);
 
+	const map = {};
+
 	Object.values(items).forEach((item) => {
 		content = content.replaceAll(
-			`item:${item.id} `,
-			`<img src="${item.image}" class="h-6 inline mr-1 mb-1"/><span class="inline">${item.name}</span>
-			`
+			`item:${item.id}:`,
+			`<img src="${item.image}" class="h-6 inline mr-1 mb-1"/><span class="inline">${item.name}</span>`
 		);
 	});
 
