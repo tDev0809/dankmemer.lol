@@ -120,6 +120,7 @@ export interface Item {
 	longdescription?: string;
 	description: string;
 	effects?: string;
+	notSharable?: boolean;
 	components?: Record<Item["id"], number>;
 }
 

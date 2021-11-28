@@ -81,9 +81,9 @@ type Trade = Record<
 >;
 
 export default function TradePage({ user }: PageProps) {
-	const allItems = Object.values(itemsData as Record<Item["id"], Item>).sort(
-		(a, z) => a.name.localeCompare(z.name)
-	);
+	const allItems = Object.values(itemsData as Record<Item["id"], Item>)
+		.sort((a, z) => a.name.localeCompare(z.name))
+		.filter((i) => !i.notSharable);
 	const [items, setItems] = useState(allItems);
 	const [trade, setTrade] = useState<Trade>({
 		left: { coins: 0, items: {} },
