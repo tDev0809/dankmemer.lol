@@ -45,9 +45,9 @@ export default function Navbar({ user }: Props) {
 							<li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
 								<Link href="/faq">FAQ</Link>
 							</li>
-							<li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
+							{/* <li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
 								<Link href="/blogs">Blog</Link>
-							</li>
+							</li> */}
 							<li
 								className={clsx(
 									"inline-block  ",
@@ -71,8 +71,11 @@ export default function Navbar({ user }: Props) {
 								<Link href="/items">Items</Link>
 							</li>
 							<li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
-								<Link href="/feedback">Feedback</Link>
+								<Link href="/community">Community</Link>
 							</li>
+							{/* <li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
+								<Link href="/feedback">Feedback</Link>
+							</li> */}
 						</ul>
 						<div className="ml-4 text-xl font-montserrat font-bold inline-block lg:hidden text-gray-800 dark:text-light-200">
 							Dank Memer
