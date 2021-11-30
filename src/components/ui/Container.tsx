@@ -61,10 +61,8 @@ export default function Container({ children, title, user }: Props) {
 			)}
 			<div className="flex flex-col h-screen justify-between">
 				<Navbar user={user} />
-				<div className="flex justify-center">
-					<div className="max-w-7xl mx-8 relative w-full">
-						{children}
-					</div>
+				<div className="flex justify-center mx-8">
+					<div className="max-w-7xl relative w-full">{children}</div>
 				</div>
 				<Footer />
 			</div>
