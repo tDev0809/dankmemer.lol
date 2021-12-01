@@ -126,6 +126,13 @@ export default function TradePage({ user }: PageProps) {
 		setTrade(copy);
 	};
 
+	const resetTrade = () => {
+		setTrade({
+			left: { coins: 0, items: {} },
+			right: { coins: 0, items: {} },
+		});
+	};
+
 	useEffect(() => {
 		let error = "";
 
@@ -243,6 +250,12 @@ export default function TradePage({ user }: PageProps) {
 									}}
 								>
 									Copy
+								</Button>
+								<Button
+									className="text-gray-900 dark:text-white bg-light-500 dark:bg-dark-100 dark:hover:bg-opacity-75 hover:bg-opacity-75 w-full md:w-auto"
+									onClick={() => resetTrade()}
+								>
+									Reset
 								</Button>
 							</div>
 							{error.length > 0 ? (
