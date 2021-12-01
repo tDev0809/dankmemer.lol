@@ -1,7 +1,7 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Button from "../ui/Button";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import TextLink from "../ui/TextLink";
 
 interface Props {
 	checkAge: () => void;
@@ -56,9 +56,7 @@ export function AgeCheck({ checkAge }: Props) {
 						>
 							Verify
 						</Button>
-						<Link href="/">
-							<a className="text-dank-300">Go Home</a>
-						</Link>
+						<TextLink href="/">Go Home</TextLink>
 					</div>
 				</div>
 			</div>

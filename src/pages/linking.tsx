@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
 import Container from "../components/ui/Container";
+import TextLink from "../components/ui/TextLink";
 import { PageProps } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
@@ -25,16 +25,9 @@ export default function LinkingPage({ user }: PageProps) {
 							<div>{message}</div>
 
 							{success ? (
-								<a className="text-dank-300" href="/">
-									Go Home
-								</a>
+								<TextLink href="/">Go Home</TextLink>
 							) : (
-								<a
-									className="text-dank-300"
-									href="https://link.dankmemer.lol"
-								>
-									Try again
-								</a>
+								<TextLink href="/">Try Again</TextLink>
 							)}
 						</div>
 					</div>

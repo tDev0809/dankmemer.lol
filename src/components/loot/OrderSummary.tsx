@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { Box, User } from "../../types";
-import Link from "next/link";
 import {
 	getDiscount,
 	getDiscountPercent,
@@ -10,6 +9,7 @@ import {
 } from "../../util/loot";
 import { LOOT_MINIMUM_PURCHASE_VALUE } from "../../constants";
 import PaypalButton from "../PayPalButton";
+import TextLink from "../ui/TextLink";
 
 interface Props {
 	boxCount: number;
@@ -102,17 +102,13 @@ export function OrderSummary({
 						</div>
 						<label htmlFor="tos-privacy">
 							I agree to Dank Memer’s{" "}
-							<Link href="/terms">
-								<a target="_blank" className="text-dank-300">
-									Terms of Service
-								</a>
-							</Link>{" "}
+							<TextLink href="/terms" blank>
+								Terms of Service
+							</TextLink>{" "}
 							and{" "}
-							<Link href="/refunds">
-								<a target="_blank" className="text-dank-300">
-									Refund Policy
-								</a>
-							</Link>
+							<TextLink href="/refunds" blank>
+								Refund Policy
+							</TextLink>
 							.
 						</label>
 					</div>

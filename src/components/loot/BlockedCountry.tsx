@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TextLink from "../ui/TextLink";
 
 export function BlockedCountry() {
 	return (
@@ -12,20 +13,16 @@ export function BlockedCountry() {
 					</div>
 					<div>
 						Alternatively, click{" "}
-						<Link href="https://www.google.com/search?q=flights+to+usa">
-							<a target="_blank" className="text-dank-300">
-								here
-							</a>
-						</Link>{" "}
+						<TextLink href="https://www.google.com/search?q=flights+to+usa">
+							here
+						</TextLink>{" "}
 						to find flights to the Land of Freedom.
 					</div>
 					<div className="text-[8px]">
 						also, your country gay lmao
 					</div>
 					<div className="flex space-x-2 items-center">
-						<Link href="/">
-							<a className="text-dank-300">Go Home</a>
-						</Link>
+						<TextLink href="/">Go Home</TextLink>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TextLink from "../ui/TextLink";
 
 export function BannedUser() {
 	return (
@@ -9,21 +9,15 @@ export function BannedUser() {
 					<div>
 						Your account has been banned from purchasing any of our
 						lootboxes! If you think this is a mistake, please join{" "}
-						<Link href="https://discord.gg/meme">
-							<a target="_blank" className="text-dank-300">
-								our support server
-							</a>
-						</Link>{" "}
+						<TextLink href="https://discord.gg/meme">
+							our support server
+						</TextLink>{" "}
 						for assistance. If this is correct, you may attempt to{" "}
-						<Link href="/appeals">
-							<a className="text-dank-300">appeal your ban</a>
-						</Link>
+						<TextLink href="/appeals">appeal your ban</TextLink>
 					</div>
 
 					<div className="flex space-x-2 items-center">
-						<Link href="/">
-							<a className="text-dank-300">Go Home</a>
-						</Link>
+						<TextLink href="/appeals">Go Home</TextLink>
 					</div>
 				</div>
 			</div>
