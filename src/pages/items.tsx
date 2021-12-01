@@ -11,6 +11,14 @@ import MarkdownIt from "markdown-it";
 import createAd from "../util/createAd";
 
 const itemsData = require("../data/itemsData.json");
+const rarityNames: Record<number, string> = {
+	0: "Common",
+	1: "Uncommon",
+	2: "Rare",
+	3: "Epic",
+	4: "Legendary",
+	5: "Godly",
+} as const;
 
 export default function ItemsPage({ user }: PageProps) {
 	const [search, setSearch] = useState("");
@@ -206,9 +214,15 @@ export default function ItemsPage({ user }: PageProps) {
 								<div className="text-3xl text-center font-bold font-montserrat text-dark-400 dark:text-white">
 									{itemData.name}
 								</div>
-								<div className="text-gray-600 dark:text-gray-400">
-									Type: {itemData.type}
+								<div className="flex flex-col items-center">
+									<div className="text-gray-600 dark:text-gray-400">
+										Type: {itemData.type}
+									</div>
+									<div className="text-gray-600 dark:text-gray-400">
+										Rarity: {rarityNames[itemData.rarity]}
+									</div>
 								</div>
+
 								<div
 									className="text-center leading-5 text-dark-400 dark:text-gray-200"
 									dangerouslySetInnerHTML={{

@@ -112,6 +112,7 @@ export interface Item {
 	name: string;
 	image: string;
 	cost: number;
+	rarity: number;
 	showInShop: boolean;
 	items?: Item["id"][];
 	reward?: {
