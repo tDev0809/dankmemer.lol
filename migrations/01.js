@@ -31,6 +31,8 @@ const migration = async () => {
 		});
 	}
 
+	await db.collection("blogs").drop();
+
 	process.exit();
 };
 
