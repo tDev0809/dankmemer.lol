@@ -2,6 +2,12 @@ const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const html2md = require("html-to-md");
 
+const authorsMap = {
+	Melmsie: "172571295077105664",
+	Badosz: "214858075650260992",
+	Kable: "363785301195358221",
+};
+
 const migration = async () => {
 	const client = await MongoClient.connect(process.env.MONGODB_URI);
 	const db = client.db(process.env.MONGODB_DB);
@@ -17,10 +23,7 @@ const migration = async () => {
 		await db.collection("community-blogs").insertOne({
 			_id: blog._id,
 			title: blog.name,
-			author:
-				blog.author == "Melmsie"
-					? "172571295077105664"
-					: "214858075650260992", // badosz
+			author: authorsMap[blog.author],
 			description: blog.desc,
 			date: blog.date,
 			draft: blog.draft == true, // will set false for old blogs
