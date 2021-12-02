@@ -255,3 +255,10 @@ export const LOOT_AGE_VERIFICATION = ["ES", "NL"];
 export const LOOT_MINIMUM_PURCHASE_VALUE = 3;
 export const LOOT_MINIMUM_DISCOUNT_VALUE = 20;
 export const LOOT_FLAT_DISCOUNT_PERCENTAGE = 10;
+
+export const TIME = {
+	day: 1000 * 60 * 60 * 24,
+	week: 1000 * 60 * 60 * 24 * 7,
+	month: 1000 * 60 * 60 * 24 * 30,
+	year: 1000 * 60 * 60 * 24 * 365,
+} as const;
