@@ -51,7 +51,6 @@ export default function UpdateBanner({ title, description, image, id }: Props) {
 				<div>
 					<Button
 						variant="primary"
-						// className=""
 						onClick={() => router.push(`/community/updates/${id}`)}
 					>
 						<div className="flex items-center space-x-2">
