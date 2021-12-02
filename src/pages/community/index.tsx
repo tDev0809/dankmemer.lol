@@ -16,7 +16,7 @@ export default function Community({ user }: PageProps) {
 
 	useEffect(() => {
 		axios("/api/blog/list").then(({ data }) => {
-			setBlogs(data.concat(data).concat(data));
+			setBlogs(data);
 		});
 	}, []);
 
