@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import Section from "../../components/community/Section";
 import UpdateBanner from "../../components/community/UpdateBanner";
 import { Title } from "../../components/Title";
 import Container from "../../components/ui/Container";
@@ -26,16 +27,11 @@ export default function Community({ user }: PageProps) {
 					image="https://i.ytimg.com/vi/1TZf8DsYv7I/maxresdefault.jpg"
 					id="xqc"
 				/>
-				<section>
-					<Title size="medium">Top Contributions</Title>
-					{/* <div className="bg-dark-100 h-20 rounded-md"></div> */}
-				</section>
-				<section>
-					<Title size="medium">Our Blog</Title>
-				</section>
-				<section>
-					<Title size="medium">Feedback</Title>
-				</section>
+				<Section title="Top Contributions">
+					<div className="bg-dark-100 h-20 rounded-md"></div>
+				</Section>
+				<Section title="Our Blog"></Section>
+				<Section title="Feedback"></Section>
 			</div>
 		</Container>
 	);
