@@ -1,6 +1,7 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
+import { Ad } from "../../../components/Ad";
 import { BlogPost } from "../../../components/community/blog/BlogPost";
 import { Title } from "../../../components/Title";
 import Container from "../../../components/ui/Container";
@@ -21,7 +22,24 @@ export default function Blogs({ user }: PageProps) {
 		<Container title="Blog Posts" user={user}>
 			<div className="flex flex-col my-16 space-y-4 mx-8 xl:mx-0">
 				<Title size="big">Blog Posts</Title>
-				<div id="nitropay-blogs-top" className="nitropay" />
+				<Ad
+					id="top"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+						[970, 250],
+					]}
+				/>
+				<Ad
+					id="top"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
 				<div className="flex flex-wrap justify-center">
 					{blogs.map((blog) => (
 						<div className="m-2">
@@ -29,6 +47,24 @@ export default function Blogs({ user }: PageProps) {
 						</div>
 					))}
 				</div>
+				<Ad
+					id="bottom"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad
+					id="bottom"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+						[970, 250],
+					]}
+				/>
 			</div>
 		</Container>
 	);
