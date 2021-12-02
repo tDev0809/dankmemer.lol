@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { TIME } from "../../../constants";
 import { Blog } from "../../../types";
 import Button from "../../ui/Button";
+import Link from "next/link";
 
 interface Props {
 	data: Blog;
@@ -22,7 +23,12 @@ export function BlogPost({ data }: Props) {
 							)}
 						</div>
 						<div className="text-light-600 text-sm">
-							Written by {data.authorName || "???"}
+							Written by{" "}
+							<Link href={`/community/profile/${data.author}`}>
+								<a className="hover:underline">
+									{data.authorName || "???"}
+								</a>
+							</Link>
 							<br /> On {format(data.date, "MMMM dd, yyyy")}
 						</div>
 					</div>
