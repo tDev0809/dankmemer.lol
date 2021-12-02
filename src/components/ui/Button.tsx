@@ -14,10 +14,16 @@ const alignClasses = {
 	right: "justify-end",
 };
 
+const variantClasses = {
+	primary: "text-white bg-dank-300 hover:bg-dank-200 transition-colors",
+	dark: "text-gray-900 dark:text-white bg-gray-300 hover:bg-gray-400 dark:bg-dank-400 dark:hover:bg-dank-500 transition-colors",
+};
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 	size?: keyof typeof sizeClasses;
 	align?: keyof typeof alignClasses;
+	variant?: keyof typeof variantClasses;
 	block?: boolean;
 	href?: string;
 }
@@ -28,6 +34,7 @@ export default function Button({
 	size = "medium",
 	block = false,
 	align = "center",
+	variant = "primary",
 	href,
 	disabled = false,
 	...props
@@ -39,6 +46,7 @@ export default function Button({
 				"inline-flex items-center focus:outline-none font-medium",
 				sizeClasses[size],
 				alignClasses[align],
+				variantClasses[variant],
 				block && "w-full",
 				className,
 				disabled ? "cursor-not-allowed" : "cursor-pointer"

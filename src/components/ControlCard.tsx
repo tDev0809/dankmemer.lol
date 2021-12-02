@@ -120,7 +120,7 @@ export function ControlCard({
 					(dropdown && (!dropdownData || dropdownData?.length == 0))
 				}
 				size="medium"
-				className="text-white bg-dank-300 hover:bg-opacity-75"
+				variant="primary"
 				onClick={async () => {
 					setProcessing(true);
 					const postEndpoint = endpoint

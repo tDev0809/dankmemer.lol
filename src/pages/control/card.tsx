@@ -61,7 +61,7 @@ export default function ControlAnalyticsPage({ user }: PageProps) {
 									<StaffCard member={staff} />
 									<Button
 										size="medium"
-										className="text-white bg-gray-300 dark:bg-dank-300 dark:hover:bg-opacity-75 hover:bg-opacity-75"
+										variant="primary"
 										onClick={() => save()}
 									>
 										Save

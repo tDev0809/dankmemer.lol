@@ -16,7 +16,7 @@ export default function Refunds({}: PageProps) {
 				</div>
 				<Button
 					size="medium"
-					className="text-white bg-dank-300 hover:bg-opacity-75"
+					variant="primary"
 					onClick={() => router.push("/")}
 				>
 					Go Home

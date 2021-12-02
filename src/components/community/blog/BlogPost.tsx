@@ -35,7 +35,7 @@ export function BlogPost({ data }: Props) {
 					<div className="text-sm">{data.description}</div>
 				</div>
 				<Button
-					className="text-white bg-dank-400 hover:bg-dank-500 transition-colors"
+					variant="dark"
 					// onClick={() => router.push(`/community/updates/${id}`)}
 				>
 					Continue Reading

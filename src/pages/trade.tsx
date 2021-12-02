@@ -240,7 +240,8 @@ export default function TradePage({ user }: PageProps) {
 									{command}
 								</div>
 								<Button
-									className="text-gray-900 dark:text-white bg-light-500 dark:bg-dark-100 dark:hover:bg-opacity-75 hover:bg-opacity-75 w-full md:w-auto"
+									className=" w-full md:w-auto"
+									variant="dark"
 									onClick={() => {
 										navigator.clipboard.writeText(
 											command.replaceAll("@user", "@")
@@ -251,7 +252,8 @@ export default function TradePage({ user }: PageProps) {
 									Copy
 								</Button>
 								<Button
-									className="text-gray-900 dark:text-white bg-light-500 dark:bg-dark-100 dark:hover:bg-opacity-75 hover:bg-opacity-75 w-full md:w-auto"
+									variant="dark"
+									className=" w-full md:w-auto"
 									onClick={() => resetTrade()}
 								>
 									Reset

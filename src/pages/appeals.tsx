@@ -157,7 +157,7 @@ export default function Appeals({ user }: PageProps) {
 
 					<div className="flex justify-end p-4">
 						<Button
-							className="text-gray-900 dark:text-white bg-light-500 dark:bg-dank-500 hover:bg-opacity-75"
+							variant="dark"
 							disabled={
 								!(
 									brokenRules.length >= 1 &&

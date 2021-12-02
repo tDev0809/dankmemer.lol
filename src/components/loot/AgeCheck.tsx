@@ -50,7 +50,7 @@ export function AgeCheck({ checkAge }: Props) {
 					<div className="flex space-x-2 items-center">
 						<Button
 							size="medium"
-							className="text-white bg-dank-300 hover:bg-opacity-75"
+							variant="primary"
 							disabled={date.length !== 10}
 							onClick={() => verifyAge()}
 						>

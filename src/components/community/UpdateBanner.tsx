@@ -48,14 +48,17 @@ export default function UpdateBanner({ title, description, image, id }: Props) {
 					{title}
 				</h1>
 				<p className="text-light-300 mb-3 drop-shadow">{description}</p>
-				<Button
-					className="text-white bg-dank-300 hover:bg-dank-200 transition-colors max-w-max"
-					onClick={() => router.push(`/community/updates/${id}`)}
-				>
-					<div className="flex items-center space-x-2">
-						<p>View the Changelog</p>
-					</div>
-				</Button>
+				<div>
+					<Button
+						variant="primary"
+						// className=""
+						onClick={() => router.push(`/community/updates/${id}`)}
+					>
+						<div className="flex items-center space-x-2">
+							<p>View the Changelog</p>
+						</div>
+					</Button>
+				</div>
 			</div>
 		</>
 	);
