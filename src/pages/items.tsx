@@ -1,15 +1,15 @@
 import clsx from "clsx";
+import MarkdownIt from "markdown-it";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
+import { Ad } from "../components/Ad";
+import { Title } from "../components/Title";
 import Container from "../components/ui/Container";
 import Dropdown from "../components/ui/Dropdown";
 import Searchbox from "../components/ui/Searchbox";
 import { Item, PageProps } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
-import MarkdownIt from "markdown-it";
-import createAd from "../util/createAd";
-import { Title } from "../components/Title";
 
 const itemsData = require("../data/itemsData.json");
 const rarityNames: Record<number, string> = {
@@ -78,49 +78,20 @@ export default function ItemsPage({ user }: PageProps) {
 		);
 	}, [search]);
 
-	useEffect(() => {
-		createAd("nitropay-items-top", { sizes: [[728, 90]] }, "desktop");
-		createAd(
-			"nitropay-items-top",
-			{
-				sizes: [
-					[320, 50],
-					[300, 50],
-					[300, 250],
-				],
-			},
-			"mobile"
-		);
-
-		createAd(
-			"nitropay-items-bottom",
-			{
-				sizes: [
-					[728, 90],
-					[970, 90],
-					[970, 250],
-				],
-				renderVisibleOnly: true,
-			},
-			"desktop"
-		);
-		createAd(
-			"nitropay-items-bottom",
-			{
-				sizes: [
-					[320, 50],
-					[300, 50],
-					[300, 250],
-				],
-				renderVisibleOnly: true,
-			},
-			"mobile"
-		);
-	}, []);
-
 	return (
 		<Container title="Items" user={user}>
-			<div id="nitropay-items-top" className="nitropay" />
+			<div className="mt-20">
+				<Ad
+					id="top"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad id="top" platform="desktop" sizes={[[728, 90]]} />
+			</div>
 			<div className="my-20 flex flex-col space-y-4">
 				<div className="flex flex-col space-y-2">
 					<Title size="big">Item directory</Title>
@@ -330,7 +301,24 @@ export default function ItemsPage({ user }: PageProps) {
 						</div>
 					</div>
 				</div>
-				<div id="nitropay-items-bottom" className="nitropay pt-8" />
+				<Ad
+					id="bottom"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad
+					id="bottom"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+						[970, 250],
+					]}
+				/>
 			</div>
 		</Container>
 	);

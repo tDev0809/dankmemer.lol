@@ -1,15 +1,15 @@
+import clsx from "clsx";
+import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Ad } from "../components/Ad";
 import BottomCTA from "../components/BottomCTA";
 import Container from "../components/ui/Container";
 import FancyButton from "../components/ui/FancyButton";
 import { QUICK_INFO } from "../constants";
-import clsx from "clsx";
-import { GetServerSideProps } from "next";
-import { withSession } from "../util/session";
-import { unauthenticatedRoute } from "../util/redirects";
 import { PageProps } from "../types";
-import { useRouter } from "next/router";
-import createAd from "../util/createAd";
+import { unauthenticatedRoute } from "../util/redirects";
+import { withSession } from "../util/session";
 
 interface TriangleProps {
 	scale: number;
@@ -55,43 +55,6 @@ export default function HomePage({ user }: PageProps) {
 		window.addEventListener("resize", () => {
 			handleResize();
 		});
-
-		createAd(
-			"nitropay-home-top",
-			{
-				sizes: [
-					[320, 50],
-					[300, 50],
-					[300, 250],
-				],
-				renderVisibleOnly: true,
-			},
-			"mobile"
-		);
-
-		createAd(
-			"nitropay-home-bottom",
-			{
-				sizes: [
-					[728, 90],
-					[970, 90],
-				],
-				renderVisibleOnly: true,
-			},
-			"desktop"
-		);
-		createAd(
-			"nitropay-home-bottom",
-			{
-				sizes: [
-					[320, 50],
-					[300, 50],
-					[300, 250],
-				],
-				renderVisibleOnly: true,
-			},
-			"mobile"
-		);
 	}, []);
 
 	return (
@@ -146,7 +109,17 @@ export default function HomePage({ user }: PageProps) {
 						/>
 					</svg>
 				</div>
-				<div id="nitropay-home-top" className="nitropay" />
+				<div className="mt-10">
+					<Ad
+						id="top"
+						platform="mobile"
+						sizes={[
+							[320, 50],
+							[300, 50],
+							[300, 250],
+						]}
+					/>
+				</div>
 			</div>
 			<div className="flex flex-col items-center mt-80 space-y-4 font-inter">
 				<div className="text-center">
@@ -195,8 +168,24 @@ export default function HomePage({ user }: PageProps) {
 					))}
 				</div>
 			</div>
-			<div className="m-24">
-				<div id="nitropay-home-bottom" className="nitropay" />
+			<div className="m-24 flex flex-col space-y-8">
+				<Ad
+					id="bottom"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad
+					id="bottom"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+					]}
+				/>
 				<BottomCTA />
 			</div>
 		</Container>

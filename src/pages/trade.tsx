@@ -2,11 +2,11 @@ import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Ad } from "../components/Ad";
 import { Title } from "../components/Title";
 import Button from "../components/ui/Button";
 import Container from "../components/ui/Container";
 import { Item, PageProps } from "../types";
-import createAd from "../util/createAd";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 
@@ -187,49 +187,20 @@ export default function TradePage({ user }: PageProps) {
 		setError(error);
 	}, [trade]);
 
-	useEffect(() => {
-		createAd("nitropay-items-top", { sizes: [[728, 90]] }, "desktop");
-		createAd(
-			"nitropay-items-top",
-			{
-				sizes: [
-					[320, 50],
-					[300, 50],
-					[300, 250],
-				],
-			},
-			"mobile"
-		);
-
-		createAd(
-			"nitropay-items-bottom",
-			{
-				sizes: [
-					[728, 90],
-					[970, 90],
-					[970, 250],
-				],
-				renderVisibleOnly: true,
-			},
-			"desktop"
-		);
-		createAd(
-			"nitropay-items-bottom",
-			{
-				sizes: [
-					[320, 50],
-					[300, 50],
-					[300, 250],
-				],
-				renderVisibleOnly: true,
-			},
-			"mobile"
-		);
-	}, []);
-
 	return (
 		<Container title="Trade Generator" user={user}>
-			<div id="nitropay-items-top" className="nitropay" />
+			<div className="mt-20">
+				<Ad
+					id="top"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad id="top" platform="desktop" sizes={[[728, 90]]} />
+			</div>
 			<div className="my-20 flex flex-col space-y-4">
 				<div className="flex flex-col space-y-2">
 					<Title size="big">Trade Generator</Title>
@@ -307,7 +278,23 @@ export default function TradePage({ user }: PageProps) {
 						</div>
 					</div>
 				</div>
-				<div id="nitropay-items-bottom" className="nitropay pt-8" />
+				<Ad
+					id="bottom"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad
+					id="bottom"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+					]}
+				/>
 			</div>
 		</Container>
 	);
