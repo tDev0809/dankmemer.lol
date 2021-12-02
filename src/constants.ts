@@ -257,6 +257,9 @@ export const LOOT_MINIMUM_DISCOUNT_VALUE = 20;
 export const LOOT_FLAT_DISCOUNT_PERCENTAGE = 10;
 
 export const TIME = {
+	second: 1000 * 1,
+	minute: 1000 * 60,
+	hour: 1000 * 60 * 60,
 	day: 1000 * 60 * 60 * 24,
 	week: 1000 * 60 * 60 * 24 * 7,
 	month: 1000 * 60 * 60 * 24 * 30,

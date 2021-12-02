@@ -85,11 +85,12 @@ export interface Comment {
 export interface Blog {
 	_id: string;
 	author: string;
+	authorName?: string;
 	draft: boolean;
 	content: string;
 	date: number;
-	desc: string;
-	name: string;
+	description: string;
+	title: string;
 }
 
 export interface Staff {

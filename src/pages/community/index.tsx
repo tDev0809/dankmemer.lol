@@ -15,7 +15,7 @@ export default function Community({ user }: PageProps) {
 	const [blogs, setBlogs] = useState<Blog[]>([]);
 
 	useEffect(() => {
-		axios("/api/blog/list").then(({ data }) => {
+		axios("/api/community/blogs/all").then(({ data }) => {
 			setBlogs(data);
 		});
 	}, []);
