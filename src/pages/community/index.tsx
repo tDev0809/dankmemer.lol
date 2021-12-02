@@ -28,7 +28,7 @@ export default function Community({ user }: PageProps) {
 				/>
 				<section>
 					<Title size="medium">Top Contributions</Title>
-					<div className="bg-dark-100 h-20 rounded-md"></div>
+					{/* <div className="bg-dark-100 h-20 rounded-md"></div> */}
 				</section>
 				<section>
 					<Title size="medium">Our Blog</Title>

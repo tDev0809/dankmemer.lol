@@ -4,6 +4,7 @@ import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import LoadingPepe from "../components/LoadingPepe";
 import { StaffCard } from "../components/StaffCard";
+import { Title } from "../components/Title";
 import Container from "../components/ui/Container";
 import { PageProps, Staff } from "../types";
 import createAd from "../util/createAd";
@@ -51,9 +52,7 @@ export default function FeedbackPage({ user }: PageProps) {
 					<div className="flex flex-col space-y-16 my-16">
 						{Object.entries(staff).map(([category, members]) => (
 							<div className="flex flex-col space-y-4">
-								<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
-									{category}
-								</div>
+								<Title size="big">{category}</Title>
 								<div
 									className={clsx(
 										"grid gap-8",

@@ -9,6 +9,7 @@ import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 import MarkdownIt from "markdown-it";
 import createAd from "../util/createAd";
+import { Title } from "../components/Title";
 
 const itemsData = require("../data/itemsData.json");
 const rarityNames: Record<number, string> = {
@@ -122,9 +123,7 @@ export default function ItemsPage({ user }: PageProps) {
 			<div id="nitropay-items-top" className="nitropay" />
 			<div className="my-20 flex flex-col space-y-4">
 				<div className="flex flex-col space-y-2">
-					<div className="text-4xl font-bold font-montserrat text-dank-200 dark:text-white">
-						Items directory
-					</div>
+					<Title size="big">Item directory</Title>
 					<div className="flex xl:space-x-2 items-center">
 						<div className="text-md hidden xl:flex space-x-2 text-light-600 dark:text-light-300 ">
 							{categories.map((ccategory) => (

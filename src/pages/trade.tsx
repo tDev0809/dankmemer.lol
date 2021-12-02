@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Title } from "../components/Title";
 import Button from "../components/ui/Button";
 import Container from "../components/ui/Container";
 import { Item, PageProps } from "../types";
@@ -231,9 +232,7 @@ export default function TradePage({ user }: PageProps) {
 			<div id="nitropay-items-top" className="nitropay" />
 			<div className="my-20 flex flex-col space-y-4">
 				<div className="flex flex-col space-y-2">
-					<div className="text-4xl font-bold font-montserrat text-dank-200 dark:text-white text-center md:text-left">
-						Trade Generator
-					</div>
+					<Title size="big">Trade Generator</Title>
 					<div className="flex flex-col space-y-8">
 						<div>
 							<div className="flex flex-col md:flex-row space-y-2 md:space-y-0 space-x-0 md:space-x-2 items-center">
