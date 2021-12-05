@@ -31,7 +31,26 @@ const migration = async () => {
 		});
 	}
 
-	await db.collection("blogs").drop();
+	if (blogs.length) {
+		await db.collection("blogs").drop();
+	}
+
+	// Migrate Posts to Community
+	const posts = await db.collection("feedback_posts").find({}).toArray();
+
+	for (const post of posts) {
+		await db.collection("community-posts").insertOne({
+			_id: post._id,
+			title: post.title,
+			content: post.description,
+			category: post.category,
+			createdAt: post.createdAt,
+			author: post.author.id,
+			label: post.label ? post.label : "",
+		});
+	}
+
+	// await db.collection("feedback_posts").drop(); TODO
 
 	process.exit();
 };
