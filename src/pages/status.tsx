@@ -196,7 +196,10 @@ export default function Status({ user }: PageProps) {
 							setSearch={setSearch}
 						/>
 						<div className="text-xs">
-							<TextLink href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-">
+							<TextLink
+								href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-"
+								blank
+							>
 								How do I find my server ID?
 							</TextLink>
 						</div>
