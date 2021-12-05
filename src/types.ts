@@ -1,3 +1,5 @@
+import { POST_CATEGORIES } from "./constants";
+
 export interface User {
 	accent_color: string;
 	avatar: string;
@@ -22,65 +24,78 @@ export interface PageProps {
 	user?: User;
 }
 
-export interface PostAuthor {
-	discriminator: string;
-	id: string;
-	username: string;
-}
+// export interface PostAuthor {
+// 	discriminator: string;
+// 	id: string;
+// 	username: string;
+// }
+
+// export interface Post {
+// 	_id: string;
+// 	author: PostAuthor;
+// 	bad: boolean;
+// 	category: string;
+// 	comments: boolean;
+// 	createdAt: number;
+// 	description: string;
+// 	developerResponse: boolean;
+// 	hot: number;
+// 	label:
+// 		| ""
+// 		| "accepted"
+// 		| "developer"
+// 		| "implemented"
+// 		| "duplicate"
+// 		| "denied"
+// 		| "invalid"
+// 		| "considered";
+// 	show: boolean;
+// 	title: string;
+// 	upvoted: boolean;
+// 	upvotes: number;
+// }
 
 export interface Post {
 	_id: string;
-	author: PostAuthor;
-	bad: boolean;
-	category: string;
-	comments: boolean;
-	createdAt: number;
-	description: string;
-	developerResponse: boolean;
-	hot: number;
-	label:
-		| ""
-		| "accepted"
-		| "developer"
-		| "implemented"
-		| "duplicate"
-		| "denied"
-		| "invalid"
-		| "considered";
-	show: boolean;
 	title: string;
-	upvoted: boolean;
+	content: string;
+	category: typeof POST_CATEGORIES[number];
+	createdAt: number;
+	author: string;
+	label: string;
+
 	upvotes: number;
+	comments: number;
 }
 
-export interface CommentAuthor {
-	discriminator: string;
-	id: string;
-	username: string;
-	developer?: boolean;
-	moderator?: boolean;
-}
+// export interface CommentAuthor {
+// 	discriminator: string;
+// 	id: string;
+// 	username: string;
+// 	developer?: boolean;
+// 	moderator?: boolean;
+// }
 
-export interface Reply {
-	_id: string;
-	cID: string;
-	pID: string;
-	author: CommentAuthor;
-	reply: string;
-	createdAt: number;
-	deleted?: boolean;
-}
+// export interface Reply {
+// 	_id: string;
+// 	cID: string;
+// 	pID: string;
+// 	author: CommentAuthor;
+// 	reply: string;
+// 	createdAt: number;
+// 	deleted?: boolean;
+// }
 
-export interface Comment {
-	_id: string;
-	author: CommentAuthor;
-	comment: string;
-	createdAt: number;
-	replies: Reply[];
-	pID: string;
-	deleted?: boolean;
-	pinned?: boolean;
-}
+// export interface Comment {
+// 	_id: string;
+// 	author: CommentAuthor;
+// 	comment: string;
+// 	createdAt: number;
+// 	replies: Reply[];
+// 	pID: string;
+// 	deleted?: boolean;
+// 	pinned?: boolean;
+// }
 
 export interface Blog {
 	_id: string;
@@ -148,15 +163,15 @@ export interface Announcement {
 	createdAt: number;
 }
 
-export interface Profile {
-	_id: string;
-	name: string;
-	discriminator: string;
-	avatar: string;
-	developer: boolean;
-	moderator: boolean;
-	upvotes: number;
-	comments: Comment[];
-	replies: Reply[];
-	posts: Post[];
-}
+// export interface Profile {
+// 	_id: string;
+// 	name: string;
+// 	discriminator: string;
+// 	avatar: string;
+// 	developer: boolean;
+// 	moderator: boolean;
+// 	upvotes: number;
+// 	comments: Comment[];
+// 	replies: Reply[];
+// 	posts: Post[];
+// }

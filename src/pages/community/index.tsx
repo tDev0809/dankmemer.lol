@@ -4,6 +4,7 @@ import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
 import { BlogPost } from "../../components/community/blog/BlogPost";
 import { ViewMore } from "../../components/community/blog/ViewMore";
+import { PostCard } from "../../components/community/PostCard";
 import Section from "../../components/community/Section";
 import UpdateBanner from "../../components/community/UpdateBanner";
 import { ViewingAs } from "../../components/community/ViewingAs";
@@ -55,7 +56,7 @@ export default function Community({ user }: PageProps) {
 					<div className="flex space-x-4">
 						<div className="flex flex-col space-y-2">
 							<div className="text-lg">Categories</div>
-							<div className="flex flex-col space-y-2">
+							<div className="flex flex-col space-y-2 w-52">
 								{POST_CATEGORIES.map((category) => (
 									<div
 										className={clsx(
@@ -73,8 +74,26 @@ export default function Community({ user }: PageProps) {
 								))}
 							</div>
 						</div>
-						<div>
+						<div className="flex flex-col space-y-2 w-full">
 							<div className="text-lg">Trending posts</div>
+							<div className="grid grid-cols-2 gap-4">
+								{new Array(10).fill(0).map((p) => (
+									<PostCard
+										data={{
+											_id: "normie-beaker-newplayerpack-newplayerpack",
+											title: "Be able to trade with the bot",
+											content:
+												"So say you wanted 100 dragons but no-one would trade you can trade with the bot or dank shop. You would give say 100k for every dragon.\nPlease do this",
+											category: "currency_commands",
+											createdAt: 1631790161382,
+											author: "825997660812083221",
+											label: "denied",
+											upvotes: 1234,
+											comments: 10,
+										}}
+									/>
+								))}
+							</div>
 						</div>
 					</div>
 				</Section>
