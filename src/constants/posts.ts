@@ -1,4 +1,4 @@
-export const FEEDBACK_LABELS = [
+export const POST_LABELS = [
 	"all posts",
 	"accepted",
 	"implemented",
@@ -8,7 +8,7 @@ export const FEEDBACK_LABELS = [
 	"considered",
 ];
 
-export const FEEDBACK_CATEGORIES = [
+export const POST_CATEGORIES = [
 	"currency_items",
 	"currency_commands",
 	"currency_balances",
@@ -19,7 +19,7 @@ export const FEEDBACK_CATEGORIES = [
 	"other",
 ] as const;
 
-export const FEEDBACK_CATEGORIES_DESCRIPTIONS: Record<string, string> = {
+export const POST_CATEGORIES_DESCRIPTIONS: Record<string, string> = {
 	currency_items:
 		"Ideas or feedback pertaining to items in Dank Memer's currency",
 	currency_commands:
