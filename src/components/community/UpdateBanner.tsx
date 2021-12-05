@@ -24,7 +24,7 @@ export default function UpdateBanner({ title, description, image, id }: Props) {
 				}}
 			>
 				<filter id="sharpBlur">
-					<feGaussianBlur stdDeviation="3"></feGaussianBlur>
+					<feGaussianBlur stdDeviation="2"></feGaussianBlur>
 					<feColorMatrix
 						type="matrix"
 						values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 9 0"
@@ -40,7 +40,7 @@ export default function UpdateBanner({ title, description, image, id }: Props) {
 				<div
 					className="absolute left-0 top-0 z-[-1] w-full min-h-full rounded-lg bg-blend-multiply bg-cover bg-center bg-no-repeat"
 					style={{
-						backgroundImage: `url("${image}"), linear-gradient(to bottom, rgba(50, 138, 65, 0.2) 64.72%, #00000080 94.9%)`,
+						backgroundImage: `url("${image}")`,
 						filter: "url(#sharpBlur)",
 					}}
 				></div>

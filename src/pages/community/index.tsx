@@ -5,6 +5,7 @@ import { BlogPost } from "../../components/community/blog/BlogPost";
 import { ViewMore } from "../../components/community/blog/ViewMore";
 import Section from "../../components/community/Section";
 import UpdateBanner from "../../components/community/UpdateBanner";
+import { ViewingAs } from "../../components/community/ViewingAs";
 import { Title } from "../../components/Title";
 import Container from "../../components/ui/Container";
 import { Blog, PageProps } from "../../types";
@@ -23,11 +24,14 @@ export default function Community({ user }: PageProps) {
 	return (
 		<Container title="Community" user={user}>
 			<div className="flex flex-col my-16 space-y-4 mx-8 xl:mx-0">
-				<Title size="big">Community</Title>
+				<div className="flex justify-between items-center">
+					<Title size="big">Community</Title>
+					<ViewingAs user={user} />
+				</div>
 				<UpdateBanner
-					title="xQc Simulator Update"
-					description="Become your favourite streamer and take money from people who think you are their friend in this exciting new update!"
-					image="https://i.ytimg.com/vi/1TZf8DsYv7I/maxresdefault.jpg"
+					title="Update 9.6.0 is OUT!"
+					description="Woah this update is so big! We added streaming and stuff"
+					image="https://imgur.com/kspUVKW.png"
 					id="xqc"
 				/>
 				<Section title="Our Blog">
