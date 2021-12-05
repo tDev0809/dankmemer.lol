@@ -23,7 +23,7 @@ export function PostCard({ data }: Props) {
 							link="http://example.com"
 							id={(~~(Math.random() * 1000)).toString()}
 						/>
-						<div className=" text-sm">
+						<div className="text-sm">
 							Posted by{" "}
 							<TextLink
 								href={`/community/profile/${data.author}`}
