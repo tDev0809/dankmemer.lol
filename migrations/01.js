@@ -48,6 +48,16 @@ const migration = async () => {
 			author: post.author.id,
 			label: post.label ? post.label : "",
 		});
+
+		await db.collection("community-activities").insertOne({
+			uID: post.author.id,
+			data: {
+				title: post.title,
+				id: post._id,
+			},
+			type: 0, // See src/constants/activities
+			createdAt: post.createdAt,
+		});
 	}
 
 	// await db.collection("feedback_posts").drop(); TODO
