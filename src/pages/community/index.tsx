@@ -1,4 +1,5 @@
 import axios from "axios";
+import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
 import { BlogPost } from "../../components/community/blog/BlogPost";
@@ -8,12 +9,17 @@ import UpdateBanner from "../../components/community/UpdateBanner";
 import { ViewingAs } from "../../components/community/ViewingAs";
 import { Title } from "../../components/Title";
 import Container from "../../components/ui/Container";
+import { FEEDBACK_CATEGORIES } from "../../constants";
 import { Blog, PageProps } from "../../types";
+import { sanitizeCategory } from "../../util/feedback";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function Community({ user }: PageProps) {
 	const [blogs, setBlogs] = useState<Blog[]>([]);
+	const [feedbackCategory, setFeedbackCategory] = useState<
+		typeof FEEDBACK_CATEGORIES[number]
+	>(FEEDBACK_CATEGORIES[0]);
 
 	useEffect(() => {
 		axios("/api/community/blogs/all").then(({ data }) => {
@@ -45,7 +51,35 @@ export default function Community({ user }: PageProps) {
 				<Section title="Top Contributions">
 					<div className="bg-dark-100 h-20 rounded-md"></div>
 				</Section>
-				<Section title="Feedback"></Section>
+				<Section title="Feedback">
+					<div className="flex space-x-4">
+						<div className="flex flex-col space-y-2">
+							<div className="text-lg">Categories</div>
+							<div className="flex flex-col space-y-2">
+								{FEEDBACK_CATEGORIES.map((category) => (
+									<div
+										className={clsx(
+											"py-2 px-4 bg-dark-100 rounded-md cursor-pointer select-none",
+											category == feedbackCategory
+												? "text-dank-300"
+												: "text-white"
+										)}
+										onClick={() =>
+											setFeedbackCategory(category)
+										}
+									>
+										{sanitizeCategory(category)}
+									</div>
+								))}
+							</div>
+						</div>
+						<div>
+							<div className="text-lg">
+								Trending feedback posts
+							</div>
+						</div>
+					</div>
+				</Section>
 			</div>
 		</Container>
 	);

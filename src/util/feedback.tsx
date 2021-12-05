@@ -1,11 +1,15 @@
 export function sanitizeCategory(category: string) {
 	const map = {
 		Qol: "QoL",
+		And: "and",
 	};
 
 	category = category.replaceAll("_", " ");
 
-	let out = category[0].toUpperCase() + category.substr(1).toLowerCase();
+	let out = category
+		.split(" ")
+		.map((p) => p[0].toUpperCase() + p.substr(1).toLowerCase())
+		.join(" ");
 
 	Object.entries(map).forEach(([o, n]) => {
 		out = out.replace(o, n);

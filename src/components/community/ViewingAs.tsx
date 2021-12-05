@@ -13,11 +13,11 @@ export function ViewingAs({ user }: Props) {
 	return (
 		<div
 			className={clsx(
-				"flex items-center space-x-2 px-2 py-1 rounded-md",
+				"flex items-center space-x-2 px-2 py-1 rounded-full text-sm",
 				user.isAdmin ? "bg-dank-300" : "bg-blue-400"
 			)}
 		>
-			<span className="material-icons">
+			<span className="material-icons" style={{ fontSize: "16px" }}>
 				{user.isAdmin ? "construction" : "local_police"}
 			</span>
 			<span> Viewing as {user.isAdmin ? "Admin" : "Moderator"}</span>
