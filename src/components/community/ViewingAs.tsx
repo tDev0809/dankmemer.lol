@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { User } from "../../types";
-import { DeveloperBadge } from "../Badge";
 
 interface Props {
 	user?: User;
