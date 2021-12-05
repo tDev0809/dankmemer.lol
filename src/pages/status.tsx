@@ -131,7 +131,7 @@ export default function Status({ user }: PageProps) {
 	}, [search]);
 
 	return (
-		<Container title="Refunds" user={user}>
+		<Container title="Status" user={user}>
 			<div className="relative my-16">
 				<div className="flex flex-col space-y-6">
 					<div>
