@@ -21,7 +21,6 @@ export default function Blogs({ user }: PageProps) {
 	return (
 		<Container title="Blog Posts" user={user}>
 			<div className="flex flex-col my-16 space-y-4 mx-8 xl:mx-0">
-				<Title size="big">Blog Posts</Title>
 				<Ad
 					id="top"
 					platform="desktop"
@@ -40,6 +39,7 @@ export default function Blogs({ user }: PageProps) {
 						[300, 250],
 					]}
 				/>
+				<Title size="big">Blog Posts</Title>
 				<div className="flex flex-wrap justify-center">
 					{blogs.map((blog) => (
 						<div className="m-2">
