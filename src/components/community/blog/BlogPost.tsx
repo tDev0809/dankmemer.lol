@@ -38,9 +38,9 @@ export function BlogPost({ data }: Props) {
 						</div>
 						<div className="text-light-600 text-sm">
 							Written by{" "}
-							<Link href={`/community/profile/${data.author}`}>
+							<Link href={`/community/profile/${data.author.id}`}>
 								<a className="hover:underline">
-									{data.authorName || "???"}
+									{data.author.name || "???"}
 								</a>
 							</Link>
 							<br /> On {format(data.date, "MMMM dd, yyyy")}

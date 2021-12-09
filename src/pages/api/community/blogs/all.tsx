@@ -23,10 +23,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.toArray()) as Blog[];
 
 	for (let blog of blogs) {
-		const user = await getUser(blog.author);
+		const user = await getUser(blog.author as unknown as string);
 
 		if (user) {
-			blog.authorName = user.name;
+			blog.author = user;
 		}
 	}
 

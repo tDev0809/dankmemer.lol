@@ -106,8 +106,7 @@ export interface Post {
 
 export interface Blog {
 	_id: string;
-	author: string;
-	authorName?: string;
+	author: UserData;
 	draft: boolean;
 	content: string;
 	date: number;
