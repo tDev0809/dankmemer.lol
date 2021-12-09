@@ -63,6 +63,37 @@ const migration = async () => {
 	await db.collection("feedback_posts").drop();
 	await db.collection("feedback_upvotes").rename("community-posts-upvotes");
 
+	// Migrate Comments to Community
+	const posts = await db.collection("community-posts").find({}).toArray();
+
+	const comments = await db
+		.collection("feedback_comments")
+		.find({})
+		.toArray();
+
+	for (const comment of comments) {
+		const post = posts.find((p) => p._id == comment.pID);
+
+		if (post) {
+			await db.collection("community-posts-comments").insertOne({
+				pID: comment.pID,
+				content: comment.comment,
+				author: comment.author.id,
+				createdAt: comment.createdAt,
+			});
+
+			await db.collection("community-activities").insertOne({
+				uID: comment.author.id,
+				data: {
+					postTitle: post.title,
+					postId: post._id,
+				},
+				type: 1, // See src/constants/activities
+				createdAt: comment.createdAt,
+			});
+		}
+	}
+
 	process.exit();
 };
 
