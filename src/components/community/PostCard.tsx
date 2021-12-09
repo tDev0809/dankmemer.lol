@@ -1,3 +1,4 @@
+import { truncate } from "../../util/string";
 import { Post } from "../../types";
 import { Avatar } from "../Avatar";
 import TextLink from "../ui/TextLink";
@@ -13,22 +14,28 @@ export function PostCard({ data }: Props) {
 				<span className="material-icons">arrow_upward</span>
 				<div>{data.upvotes.toLocaleString()}</div>
 			</div>
-			<div className="flex flex-col space-y-4">
-				<div className="font-bold font-montserrat">{data.title}</div>
-				<div className="text-light-600 leading-5">{data.content}</div>
+			<div className="flex flex-col justify-between space-y-4">
+				<div>
+					<div className="font-bold font-montserrat">
+						{data.title}
+					</div>
+					<div className="text-light-600 leading-5">
+						{truncate(data.content, 250)}
+					</div>
+				</div>
 				<div className="flex items-center justify-between text-light-600">
 					<div className="flex items-center space-x-2">
 						<Avatar
 							size="20px"
-							link="http://example.com"
-							id={(~~(Math.random() * 1000)).toString()}
+							link={data.author.avatar}
+							id={data.author.id}
 						/>
 						<div className="text-sm">
 							Posted by{" "}
 							<TextLink
-								href={`/community/profile/${data.author}`}
+								href={`/community/profile/${data.author.id}`}
 							>
-								Badosz
+								{data.author.name}
 							</TextLink>
 						</div>
 					</div>

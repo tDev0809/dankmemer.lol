@@ -16,6 +16,7 @@ export async function getUser(id: string): Promise<UserData | null> {
 
 		if (user) {
 			const data = {
+				id: user._id,
 				name: user.name,
 				discriminator: user.discriminator,
 				avatar: user.avatar,

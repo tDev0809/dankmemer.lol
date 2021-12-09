@@ -11,7 +11,7 @@ import { ViewingAs } from "../../components/community/ViewingAs";
 import { Title } from "../../components/Title";
 import Container from "../../components/ui/Container";
 import { POST_CATEGORIES } from "../../constants";
-import { Blog, PageProps } from "../../types";
+import { Blog, PageProps, Post } from "../../types";
 import { sanitizeCategory } from "../../util/feedback";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
@@ -21,10 +21,20 @@ export default function Community({ user }: PageProps) {
 	const [postCategory, setPostCategory] = useState<
 		typeof POST_CATEGORIES[number]
 	>(POST_CATEGORIES[0]);
+	const [posts, setPosts] = useState<Post[]>([]);
 
 	useEffect(() => {
 		axios("/api/community/blogs/all").then(({ data }) => {
 			setBlogs(data);
+		});
+		axios(
+			`/api/community/posts/all?${new URLSearchParams({
+				from: "0",
+				amount: "10",
+				category: postCategory,
+			})}`
+		).then(({ data }) => {
+			setPosts(data.posts);
 		});
 	}, []);
 
@@ -77,21 +87,8 @@ export default function Community({ user }: PageProps) {
 						<div className="flex flex-col space-y-2 w-full">
 							<div className="text-lg">Trending posts</div>
 							<div className="grid grid-cols-2 gap-4">
-								{new Array(10).fill(0).map((p) => (
-									<PostCard
-										data={{
-											_id: "normie-beaker-newplayerpack-newplayerpack",
-											title: "Be able to trade with the bot",
-											content:
-												"So say you wanted 100 dragons but no-one would trade you can trade with the bot or dank shop. You would give say 100k for every dragon.\nPlease do this",
-											category: "currency_commands",
-											createdAt: 1631790161382,
-											author: "825997660812083221",
-											label: "denied",
-											upvotes: 1234,
-											comments: 10,
-										}}
-									/>
+								{posts.map((data) => (
+									<PostCard data={data} />
 								))}
 							</div>
 						</div>

@@ -21,6 +21,7 @@ export interface User {
 }
 
 export interface UserData {
+	id: string;
 	name: string;
 	discriminator: string;
 	avatar: string;
@@ -67,9 +68,9 @@ export interface Post {
 	content: string;
 	category: typeof POST_CATEGORIES[number];
 	createdAt: number;
-	author: string;
 	label: string;
 
+	author: UserData;
 	upvotes: number;
 	comments: number;
 }
