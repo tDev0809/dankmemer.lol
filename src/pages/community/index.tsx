@@ -22,11 +22,16 @@ export default function Community({ user }: PageProps) {
 		typeof POST_CATEGORIES[number]
 	>(POST_CATEGORIES[0]);
 	const [posts, setPosts] = useState<Post[]>([]);
+	const [loadingPosts, setLoadingPosts] = useState(false);
 
 	useEffect(() => {
 		axios("/api/community/blogs/all").then(({ data }) => {
 			setBlogs(data);
 		});
+	}, []);
+
+	useEffect(() => {
+		setLoadingPosts(true);
 		axios(
 			`/api/community/posts/all?${new URLSearchParams({
 				from: "0",
@@ -35,8 +40,9 @@ export default function Community({ user }: PageProps) {
 			})}`
 		).then(({ data }) => {
 			setPosts(data.posts);
+			setLoadingPosts(false);
 		});
-	}, []);
+	}, [postCategory]);
 
 	return (
 		<Container title="Community" user={user}>
@@ -87,9 +93,11 @@ export default function Community({ user }: PageProps) {
 						<div className="flex flex-col space-y-2 w-full">
 							<div className="text-lg">Trending posts</div>
 							<div className="grid grid-cols-2 gap-4">
-								{posts.map((data) => (
-									<PostCard data={data} />
-								))}
+								{loadingPosts
+									? [...Array(10)].map((_) => <PostCard />)
+									: posts.map((data) => (
+											<PostCard data={data} />
+									  ))}
 							</div>
 						</div>
 					</div>
