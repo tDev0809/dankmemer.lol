@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 require("dotenv").config();
 const html2md = require("html-to-md");
 
@@ -35,7 +35,7 @@ const migration = async () => {
 		await db.collection("blogs").drop();
 	}
 
-	// Migrate Posts to Community
+	// // Migrate Posts to Community
 	const posts = await db.collection("feedback_posts").find({}).toArray();
 
 	for (const post of posts) {
@@ -63,7 +63,7 @@ const migration = async () => {
 	await db.collection("feedback_posts").drop();
 	await db.collection("feedback_upvotes").rename("community-posts-upvotes");
 
-	// Migrate Comments to Community
+	// // Migrate Comments to Community
 	const posts = await db.collection("community-posts").find({}).toArray();
 
 	const comments = await db
@@ -93,6 +93,35 @@ const migration = async () => {
 			});
 		}
 	}
+	await db.collection("feedback_comments").drop();
+
+	// Migrate Replies to Community
+	const replies = await db.collection("feedback_replies").find({}).toArray();
+
+	for (const reply of replies) {
+		const post = posts.find((p) => p._id == reply.pID);
+
+		if (post) {
+			await db.collection("community-posts-replies").insertOne({
+				pID: reply.pID,
+				cID: new ObjectId(reply.cID),
+				content: reply.reply,
+				author: reply.author.id,
+				createdAt: reply.createdAt,
+			});
+
+			await db.collection("community-activities").insertOne({
+				uID: reply.author.id,
+				data: {
+					postTitle: post.title,
+					postId: post._id,
+				},
+				type: 2, // See src/constants/activities
+				createdAt: reply.createdAt,
+			});
+		}
+	}
+	await db.collection("feedback-replies").drop();
 
 	process.exit();
 };
