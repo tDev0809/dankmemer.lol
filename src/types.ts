@@ -20,6 +20,12 @@ export interface User {
 	verified: boolean;
 }
 
+export interface UserData {
+	name: string;
+	discriminator: string;
+	avatar: string;
+}
+
 export interface PageProps {
 	user?: User;
 }

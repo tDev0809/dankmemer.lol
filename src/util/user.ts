@@ -1,9 +1,9 @@
 import { TIME } from "../constants";
+import { UserData } from "../types";
 import { dbConnect } from "./mongodb";
 import { redisConnect } from "./redis";
 
-// TODO: user type
-export async function getUser(id: string) {
+export async function getUser(id: string): Promise<UserData | null> {
 	const { db } = await dbConnect();
 	const redis = await redisConnect();
 
@@ -24,6 +24,8 @@ export async function getUser(id: string) {
 			await redis.set(`user:${id}`, JSON.stringify(data), "PX", TIME.day);
 
 			return data;
+		} else {
+			return null;
 		}
 	}
 }
