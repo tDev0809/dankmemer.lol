@@ -19,8 +19,8 @@ import { withSession } from "../../util/session";
 export default function Community({ user }: PageProps) {
 	const [blogs, setBlogs] = useState<Blog[]>([]);
 	const [postCategory, setPostCategory] = useState<
-		typeof POST_CATEGORIES[number]
-	>(POST_CATEGORIES[0]);
+		typeof POST_CATEGORIES[number] | "all"
+	>("all");
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [loadingPosts, setLoadingPosts] = useState(false);
 
@@ -73,21 +73,25 @@ export default function Community({ user }: PageProps) {
 						<div className="flex flex-col space-y-2">
 							<div className="text-lg">Categories</div>
 							<div className="flex flex-col space-y-2 w-52">
-								{POST_CATEGORIES.map((category) => (
-									<div
-										className={clsx(
-											"py-2 px-4 bg-dark-100 rounded-md cursor-pointer select-none",
-											category == postCategory
-												? "text-dank-300"
-												: "text-white"
-										)}
-										onClick={() =>
-											setPostCategory(category)
-										}
-									>
-										{sanitizeCategory(category)}
-									</div>
-								))}
+								{["all"]
+									.concat(POST_CATEGORIES)
+									.map((category) => (
+										<div
+											className={clsx(
+												"py-2 px-4 bg-dark-100 rounded-md cursor-pointer select-none",
+												category == postCategory
+													? "text-dank-300"
+													: "text-white"
+											)}
+											onClick={() =>
+												setPostCategory(
+													category as typeof postCategory
+												)
+											}
+										>
+											{sanitizeCategory(category)}
+										</div>
+									))}
 							</div>
 						</div>
 						<div className="flex flex-col space-y-2 w-full">
