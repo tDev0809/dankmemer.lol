@@ -1,17 +1,19 @@
 import { NextApiResponse } from "next";
-import { POST_CATEGORIES, POST_LABELS } from "../../../../constants";
+import { POST_CATEGORIES, POST_LABELS, TIME } from "../../../../constants";
 import { dbConnect } from "../../../../util/mongodb";
+import { redisConnect } from "../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../util/session";
 import { getUser } from "../../../../util/user";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
+	const redis = await redisConnect();
 
 	const user = req.session.get("user");
 	const staff: boolean = user?.isAdmin || user?.isModerator;
 
 	const from = Number(req.query.from) || 0;
-	const amount = Math.min(Number(req.query.amount) || 10, 100);
+	const amount = Math.min(Number(req.query.amount) || 10, 25);
 	const sorting = req.query.sorting || "Hot";
 	const category = req.query.category || "all";
 	let filter = req.query.filter || "all posts";
@@ -30,6 +32,17 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.json({ message: "This category does not exist." });
 	}
 
+	const cacheKey = `posts:${user?.id ?? "-"}:${
+		req.url?.split("?")[1] ?? "-"
+	}`;
+
+	const cached = await redis.get(cacheKey);
+
+	if (cached) {
+		return res.json({
+			posts: JSON.parse(cached),
+		});
+	}
 	const posts = await db
 		.collection("community-posts")
 		.aggregate([
@@ -200,9 +213,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		post.author = await getUser(post.author);
 	}
 
+	await redis.set(cacheKey, JSON.stringify(posts), "PX", TIME.day);
+
 	return res.json({
 		posts: posts,
-		all: posts.length == 0 || posts.length < amount,
 	});
 };
 
