@@ -60,7 +60,8 @@ const migration = async () => {
 		});
 	}
 
-	// await db.collection("feedback_posts").drop(); TODO
+	await db.collection("feedback_posts").drop();
+	await db.collection("feedback_upvotes").rename("community-posts-upvotes");
 
 	process.exit();
 };
