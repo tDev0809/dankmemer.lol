@@ -1,5 +1,6 @@
 import { NextApiResponse } from "next";
 import { POST_CATEGORIES, POST_LABELS, TIME } from "../../../../constants";
+import { hot } from "../../../../constants/hot";
 import { dbConnect } from "../../../../util/mongodb";
 import { redisConnect } from "../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../util/session";
@@ -94,55 +95,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			},
 			{
 				$addFields: {
-					hot: {
-						$divide: [
-							{
-								$round: [
-									{
-										$multiply: [
-											{
-												$add: [
-													{
-														$ln: {
-															$divide: [
-																{
-																	$add: [
-																		"$upvotes",
-																		1,
-																	],
-																},
-																2.302585092994046,
-															],
-														},
-													},
-													{
-														$divide: [
-															{
-																$subtract: [
-																	{
-																		$divide:
-																			[
-																				"$createdAt",
-																				1000,
-																			],
-																	},
-																	1631640684,
-																],
-															},
-															45000,
-														],
-													},
-												],
-											},
-											10000000,
-										],
-									},
-									7,
-								],
-							},
-							10000000,
-						],
-					},
+					hot: hot,
 				},
 			},
 			{
@@ -189,16 +142,18 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						: { createdAt: 1 },
 			},
 			{
+				$match: { show: true },
+			},
+			{
 				$unset: [
 					"upvotedUsers",
 					"upvotedUser",
 					"commentsData",
 					"developerComments",
 					"denyInt",
+					"hot",
+					"show",
 				],
-			},
-			{
-				$match: { show: true },
 			},
 			{
 				$skip: from,
