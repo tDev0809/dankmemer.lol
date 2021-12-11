@@ -168,7 +168,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		post.author = await getUser(post.author);
 	}
 
-	await redis.set(cacheKey, JSON.stringify(posts), "PX", TIME.day);
+	await redis.set(cacheKey, JSON.stringify(posts), "PX", TIME.hour);
 
 	return res.json({
 		posts: posts,
