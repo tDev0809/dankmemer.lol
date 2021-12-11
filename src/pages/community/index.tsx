@@ -101,9 +101,14 @@ export default function Community({ user }: PageProps) {
 							<div className="text-lg">Trending posts</div>
 							<div className="grid grid-cols-2 gap-4">
 								{loadingPosts
-									? [...Array(10)].map((_) => <PostCard />)
+									? [...Array(10)].map((i) => (
+											<PostCard key={i} />
+									  ))
 									: posts.map((data) => (
-											<PostCard data={data} />
+											<PostCard
+												data={data}
+												key={data._id}
+											/>
 									  ))}
 							</div>
 						</div>

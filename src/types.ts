@@ -72,6 +72,7 @@ export interface Post {
 
 	author: UserData;
 	upvotes: number;
+	upvoted: boolean;
 	comments: number;
 }
 

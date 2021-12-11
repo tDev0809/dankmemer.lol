@@ -1,20 +1,50 @@
-import { truncate } from "../../util/string";
+import axios from "axios";
+import clsx from "clsx";
+import { useState } from "react";
+import { toast } from "react-toastify";
 import { Post } from "../../types";
+import { truncate } from "../../util/string";
 import { Avatar } from "../Avatar";
 import TextLink from "../ui/TextLink";
-import clsx from "clsx";
-import { randomInArray } from "../../util/random";
 
 interface Props {
 	data?: Post;
 }
 
 export function PostCard({ data }: Props) {
+	const [upvotes, setUpvotes] = useState(data?.upvotes || 0);
+	const [upvoted, setUpvoted] = useState(data?.upvoted || false);
+
+	const upvote = async () => {
+		axios
+			.patch(`/api/community/post/upvote/${data?._id}`)
+			.then(({ data }) => {
+				setUpvotes(upvotes + data.upvote);
+				setUpvoted(data.upvote == 1);
+			})
+			.catch((e) => {
+				toast.dark(e.response.data.error);
+			});
+	};
+
 	return (
-		<div className="bg-dark-100 rounded-md w-full p-4 flex space-x-4">
-			<div className="flex flex-col items-center w-8 text-light-600 text-sm">
+		<div
+			className="bg-dark-100 rounded-md w-full p-4 flex space-x-4"
+			key={data?._id}
+		>
+			<div
+				className={clsx(
+					"flex flex-col items-center w-8text-sm cursor-pointer",
+					upvoted ? "text-dank-300" : "text-light-600 "
+				)}
+				onClick={(e) => {
+					e.stopPropagation();
+					e.preventDefault();
+					upvote();
+				}}
+			>
 				<span className="material-icons">arrow_upward</span>
-				<div>{data?.upvotes.toLocaleString() ?? 0}</div>
+				<div>{upvotes.toLocaleString()}</div>
 			</div>
 			<div className="flex flex-col justify-between space-y-4 relative w-full">
 				<div>
