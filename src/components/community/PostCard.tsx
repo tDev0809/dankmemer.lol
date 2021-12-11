@@ -34,7 +34,7 @@ export function PostCard({ data }: Props) {
 		>
 			<div
 				className={clsx(
-					"flex flex-col items-center w-8text-sm cursor-pointer",
+					"flex flex-col items-center w-8 text-sm cursor-pointer select-none",
 					upvoted ? "text-dank-300" : "text-light-600 "
 				)}
 				onClick={(e) => {
