@@ -36,7 +36,7 @@ export default function UpdateBanner({ title, description, image, id }: Props) {
 				</filter>
 			</svg>
 
-			<div className="relative flex flex-col justify-center h-52 rounded-lg px-24 bg-opacity-50">
+			<div className="relative flex flex-col justify-center h-auto py-4 md:py-0 md:h-52 rounded-lg px-10 md:px-24 bg-opacity-50 text-center md:text-left">
 				<div
 					className="absolute left-0 top-0 z-[-1] w-full min-h-full rounded-lg bg-blend-multiply bg-cover bg-center bg-no-repeat"
 					style={{
