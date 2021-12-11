@@ -40,7 +40,7 @@ export default function Blogs({ user }: PageProps) {
 					]}
 				/>
 				<Title size="big">Blog Posts</Title>
-				<div className="flex flex-wrap justify-center">
+				<div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 					{blogs.map((blog) => (
 						<div className="m-2">
 							<BlogPost data={blog} />
