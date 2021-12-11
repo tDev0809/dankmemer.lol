@@ -75,6 +75,9 @@ export interface Post {
 	comments: number;
 }
 
+export interface Contributor extends UserData {
+	score: number;
+}
 // export interface CommentAuthor {
 // 	discriminator: string;
 // 	id: string;

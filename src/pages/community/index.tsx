@@ -6,6 +6,7 @@ import { BlogPost } from "../../components/community/blog/BlogPost";
 import { ViewMore } from "../../components/community/blog/ViewMore";
 import { PostCard } from "../../components/community/PostCard";
 import Section from "../../components/community/Section";
+import { TopContributors } from "../../components/community/TopContributors";
 import UpdateBanner from "../../components/community/UpdateBanner";
 import { ViewingAs } from "../../components/community/ViewingAs";
 import { Title } from "../../components/Title";
@@ -46,17 +47,19 @@ export default function Community({ user }: PageProps) {
 
 	return (
 		<Container title="Community" user={user}>
-			<div className="flex flex-col my-16 space-y-4 mx-8 xl:mx-0">
-				<div className="flex justify-between items-center">
-					<Title size="big">Community</Title>
-					<ViewingAs user={user} />
+			<div className="flex flex-col my-16 space-y-8 mx-8 xl:mx-0">
+				<div className="flex flex-col space-y-2">
+					<div className="flex justify-between items-center">
+						<Title size="big">Community</Title>
+						<ViewingAs user={user} />
+					</div>
+					<UpdateBanner
+						title="Update 9.6.0 is OUT!"
+						description="Woah this update is so big! We added streaming and stuff"
+						image="https://imgur.com/kspUVKW.png"
+						id="xqc"
+					/>
 				</div>
-				<UpdateBanner
-					title="Update 9.6.0 is OUT!"
-					description="Woah this update is so big! We added streaming and stuff"
-					image="https://imgur.com/kspUVKW.png"
-					id="xqc"
-				/>
 				<Section title="Our Blog">
 					<div className="flex justify-between">
 						{blogs.slice(0, 4).map((blog) => (
@@ -65,8 +68,8 @@ export default function Community({ user }: PageProps) {
 						<ViewMore />
 					</div>
 				</Section>
-				<Section title="Top Contributions">
-					<div className="bg-dark-100 h-20 rounded-md"></div>
+				<Section title="Top Contributions This Month">
+					<TopContributors />
 				</Section>
 				<Section title="Community Posts">
 					<div className="flex space-x-4">

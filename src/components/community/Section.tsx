@@ -8,7 +8,7 @@ interface Props {
 
 export default function Section({ title, children }: Props) {
 	return (
-		<section className="flex flex-col space-y-4">
+		<section className="flex flex-col space-y-2">
 			<Title size="medium">{title}</Title>
 			{children}
 		</section>
