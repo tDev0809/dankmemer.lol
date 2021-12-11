@@ -10,7 +10,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
 	const redis = await redisConnect();
 
-	const cached = await redis.get("contributors");
+	const cached = await redis.get("community:contributors");
 
 	if (cached) {
 		return res.json(JSON.parse(cached));
@@ -44,7 +44,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			...{
 				score:
 					user.score * 1e6 +
-					parseInt(userData!.discriminator) +
+					parseInt(userData?.discriminator || "0") +
 					parseInt(userData!.id.slice(-4)),
 			},
 		};
