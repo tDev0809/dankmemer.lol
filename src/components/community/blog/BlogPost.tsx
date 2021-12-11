@@ -15,8 +15,8 @@ export function BlogPost({ data }: Props) {
 	const router = useRouter();
 
 	return (
-		<div className="p-4 bg-dark-100 rounded-md h-52 lg:h-72 w-full">
-			<div className="flex flex-col justify-between h-full">
+		<div className="p-4 bg-dark-100 rounded-md sm:h-52 lg:h-72 w-full">
+			<div className="flex flex-col justify-between space-y-4 h-full">
 				<div className="flex flex-col space-y-4">
 					<div className="flex flex-col">
 						<div
