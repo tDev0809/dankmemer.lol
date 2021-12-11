@@ -54,7 +54,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	contributors = contributors.sort((a, z) => z.score - a.score);
 
 	await redis.set(
-		"contributors",
+		"community:contributors",
 		JSON.stringify(contributors),
 		"PX",
 		TIME.hour

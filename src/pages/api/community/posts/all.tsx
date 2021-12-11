@@ -33,7 +33,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.json({ message: "This category does not exist." });
 	}
 
-	const cacheKey = `posts:${user?.id ?? "-"}:${
+	const cacheKey = `community:posts:${user?.id ?? "-"}:${
 		req.url?.split("?")[1] ?? "-"
 	}`;
 
