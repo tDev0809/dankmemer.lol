@@ -36,7 +36,7 @@ const migration = async () => {
 	}
 
 	// // Migrate Posts to Community
-	const posts = await db.collection("feedback_posts").find({}).toArray();
+	let posts = await db.collection("feedback_posts").find({}).toArray();
 
 	for (const post of posts) {
 		await db.collection("community-posts").insertOne({
@@ -64,7 +64,7 @@ const migration = async () => {
 	await db.collection("feedback_upvotes").rename("community-posts-upvotes");
 
 	// // Migrate Comments to Community
-	const posts = await db.collection("community-posts").find({}).toArray();
+	posts = await db.collection("community-posts").find({}).toArray();
 
 	const comments = await db
 		.collection("feedback_comments")
@@ -82,15 +82,17 @@ const migration = async () => {
 				createdAt: comment.createdAt,
 			});
 
-			await db.collection("community-activities").insertOne({
-				uID: comment.author.id,
-				data: {
-					postTitle: post.title,
-					postId: post._id,
-				},
-				type: 1, // See src/constants/activities
-				createdAt: comment.createdAt,
-			});
+			if (comment.author.id !== "[deleted]") {
+				await db.collection("community-activities").insertOne({
+					uID: comment.author.id,
+					data: {
+						postTitle: post.title,
+						postId: post._id,
+					},
+					type: 1, // See src/constants/activities
+					createdAt: comment.createdAt,
+				});
+			}
 		}
 	}
 	await db.collection("feedback_comments").drop();
@@ -110,18 +112,20 @@ const migration = async () => {
 				createdAt: reply.createdAt,
 			});
 
-			await db.collection("community-activities").insertOne({
-				uID: reply.author.id,
-				data: {
-					postTitle: post.title,
-					postId: post._id,
-				},
-				type: 2, // See src/constants/activities
-				createdAt: reply.createdAt,
-			});
+			if (reply.author.id !== "[deleted]") {
+				await db.collection("community-activities").insertOne({
+					uID: reply.author.id,
+					data: {
+						postTitle: post.title,
+						postId: post._id,
+					},
+					type: 2, // See src/constants/activities
+					createdAt: reply.createdAt,
+				});
+			}
 		}
 	}
-	await db.collection("feedback-replies").drop();
+	await db.collection("feedback_replies").drop();
 
 	process.exit();
 };
