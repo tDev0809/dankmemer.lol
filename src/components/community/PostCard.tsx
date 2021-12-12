@@ -31,7 +31,7 @@ export function PostCard({ data }: Props) {
 
 	return (
 		<Link href={data ? `/community/post/${data?._id}` : "#"}>
-			<div
+			<a
 				className="bg-dark-100 rounded-md w-full p-4 flex space-x-4 cursor-pointer"
 				key={data?._id}
 			>
@@ -120,7 +120,7 @@ export function PostCard({ data }: Props) {
 						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 		</Link>
 	);
 }
