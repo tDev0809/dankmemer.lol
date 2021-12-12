@@ -1,7 +1,6 @@
 module.exports = {
-	mode: "jit",
 	darkMode: "class",
-	purge: [
+	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx}",
 		"./src/util/**/*.{js,ts,jsx,tsx}",
 		"./src/components/**/*.{js,ts,jsx,tsx}",
@@ -35,11 +34,6 @@ module.exports = {
 					600: "#7f8a7f",
 				},
 			},
-		},
-	},
-	variants: {
-		extend: {
-			backgroundColor: ["even"],
 		},
 	},
 	plugins: [require("@tailwindcss/line-clamp")],
