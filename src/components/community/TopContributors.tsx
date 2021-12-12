@@ -11,7 +11,7 @@ export function TopContributors() {
 		axios("/api/community/contributors/top").then(({ data }) => {
 			setContributors(data);
 		});
-	});
+	}, []);
 
 	return (
 		<div className="bg-dark-100 rounded-md p-4 gap-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-start xl:justify-items-center">
