@@ -7,6 +7,7 @@ import { truncate } from "../../util/string";
 import { Avatar } from "../Avatar";
 import TextLink from "../ui/TextLink";
 import Link from "next/link";
+import { Label } from "./PostLabel";
 
 interface Props {
 	data?: Post;
@@ -49,7 +50,7 @@ export function PostCard({ data }: Props) {
 					<div>{upvotes.toLocaleString()}</div>
 				</div>
 				<div className="flex flex-col justify-between space-y-4 relative w-full">
-					<div>
+					<div className="flex flex-col space-y-1">
 						<div className="font-bold font-montserrat">
 							{data?.title ?? (
 								<div
@@ -59,6 +60,13 @@ export function PostCard({ data }: Props) {
 								/>
 							)}
 						</div>
+						{data && data.labels?.length > 0 && (
+							<div className="flex space-x-2">
+								{data.labels.map((label) => (
+									<Label label={label} />
+								))}
+							</div>
+						)}
 						<div className="text-light-600 leading-5">
 							{data ? (
 								truncate(data.content, 250)

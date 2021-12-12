@@ -68,8 +68,8 @@ export interface Post {
 	content: string;
 	category: typeof POST_CATEGORIES[number];
 	createdAt: number;
-	label: string;
 
+	labels: string[];
 	author: UserData;
 	upvotes: number;
 	upvoted: boolean;
