@@ -1,6 +1,8 @@
+import { AdOptions } from "../types";
+
 export default function createAd(
 	id: string,
-	opts: any, // TODO: (Badosz) type
+	opts: AdOptions,
 	device: "desktop" | "mobile"
 ) {
 	if (device === "desktop") {
@@ -16,7 +18,6 @@ export default function createAd(
 			demo: process.env.NODE_ENV === "development",
 			refreshLimit: 10,
 			refreshTime: 30,
-			renderVisibleOnly: false,
 			refreshVisibleOnly: true,
 			report: {
 				enabled: true,

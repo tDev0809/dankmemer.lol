@@ -79,6 +79,7 @@ export interface Post {
 export interface Contributor extends UserData {
 	score: number;
 }
+
 // export interface CommentAuthor {
 // 	discriminator: string;
 // 	id: string;
@@ -171,6 +172,12 @@ export interface Announcement {
 	_id: number;
 	content: string;
 	createdAt: number;
+}
+
+export interface AdOptions {
+	mediaQuery?: string;
+	renderVisibleOnly: boolean;
+	sizes: [number, number][];
 }
 
 // export interface Profile {
