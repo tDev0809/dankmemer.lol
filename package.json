@@ -13,11 +13,6 @@
 		"start": "next start -p 3000"
 	},
 	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^1.2.36",
-		"@fortawesome/free-brands-svg-icons": "^5.15.4",
-		"@fortawesome/free-regular-svg-icons": "^5.15.4",
-		"@fortawesome/free-solid-svg-icons": "^5.15.4",
-		"@fortawesome/react-fontawesome": "^0.1.15",
 		"axios": "^0.21.1",
 		"clsx": "^1.1.1",
 		"date-fns": "^2.25.0",
@@ -41,8 +36,7 @@
 		"react-paypal-button-v2": "^2.6.3",
 		"react-toastify": "^8.0.3",
 		"sass": "^1.42.1",
-		"socket.io-client": "^4.4.0",
-		"styled-components": "^5.3.1"
+		"socket.io-client": "^4.4.0"
 	},
 	"devDependencies": {
 		"@tailwindcss/line-clamp": "^0.3.0",
