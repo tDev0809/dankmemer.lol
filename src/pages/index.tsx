@@ -52,9 +52,11 @@ export default function HomePage({ user }: PageProps) {
 
 		handleResize();
 
-		window.addEventListener("resize", () => {
-			handleResize();
-		});
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
 	}, []);
 
 	return (

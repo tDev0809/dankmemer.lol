@@ -31,7 +31,15 @@ export default function Dropdown({ children, content, variant }: Props) {
 	}, [dropdown]);
 
 	useEffect(() => {
-		window.addEventListener("resize", () => setOpen(false));
+		function handleResize() {
+			setOpen(false);
+		}
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
 	}, []);
 
 	return (
