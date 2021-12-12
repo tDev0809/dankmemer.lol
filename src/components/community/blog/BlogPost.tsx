@@ -52,7 +52,7 @@ export function BlogPost({ data }: Props) {
 				</div>
 				<Button
 					variant="dark"
-					onClick={() => router.push(`/community/blogs/${data._id}`)}
+					onClick={() => router.push(`/community/blog/${data._id}`)}
 				>
 					Continue Reading
 				</Button>
