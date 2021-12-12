@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import "../globals.css";
 import { ThemeProvider } from "next-themes";
+import Script from 'next/script';
 
 import "../temp.scss";
 
@@ -62,14 +63,12 @@ export default function App({ Component, pageProps }: AppProps) {
 				href="https://fonts.googleapis.com/css2?family=Inter"
 				rel="stylesheet"
 			/>
-			<script
-				dangerouslySetInnerHTML={{
-					__html: `ga('send', 'pageview', {
+			<Script strategy="afterInteractive" dangerouslySetInnerHTML={{
+				__html: `ga('send', 'pageview', {
 						hitType: 'pageview',
 						page: location.pathname
-					});`,
-				}}
-			/>
+					});`
+			}} />
 			<ThemeProvider
 				defaultTheme="dark"
 				attribute="class"
