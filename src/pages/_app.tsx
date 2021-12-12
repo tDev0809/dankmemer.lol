@@ -1,15 +1,8 @@
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { config, dom } from "@fortawesome/fontawesome-svg-core";
-import { createGlobalStyle } from "styled-components";
 import "../globals.css";
 import { ThemeProvider } from "next-themes";
-
-config.autoAddCss = false;
-const GlobalStyles = createGlobalStyle`
-    ${dom.css()}
-`;
 
 import "../temp.scss";
 
@@ -77,7 +70,6 @@ export default function App({ Component, pageProps }: AppProps) {
 					});`,
 				}}
 			/>
-			<GlobalStyles />
 			<ThemeProvider
 				defaultTheme="dark"
 				attribute="class"

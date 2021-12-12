@@ -99,6 +99,7 @@ export default function ItemsPage({ user }: PageProps) {
 						<div className="text-md hidden xl:flex space-x-2 text-light-600 dark:text-light-300 ">
 							{categories.map((ccategory) => (
 								<div
+									key={ccategory}
 									className={clsx(
 										"bg-light-500 dark:bg-dark-100 px-4 py-1 rounded-md border-2 cursor-pointer text-dark-400 dark:text-white",
 										ccategory === category
@@ -136,6 +137,7 @@ export default function ItemsPage({ user }: PageProps) {
 										.concat("All")
 										.map((ccategory) => (
 											<div
+												key={ccategory}
 												className={clsx(
 													"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
 												)}
@@ -165,6 +167,7 @@ export default function ItemsPage({ user }: PageProps) {
 					<div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7 gap-4 content-start mt-4 lg:mt-0">
 						{items.map((citem) => (
 							<div
+								key={citem.id}
 								className={clsx(
 									"max-h-24 w-24 h-24 flex items-center justify-center rounded-md cursor-pointer bg-light-500  dark:bg-dark-100 border-4",
 									item == citem.id

@@ -50,7 +50,6 @@ export default class MyDocument extends Document {
 						href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"
 					/>
 				</Head>
-				<Head />
 				<body className="dark:bg-dark-300">
 					<Main />
 					<NextScript />

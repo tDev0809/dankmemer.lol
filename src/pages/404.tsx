@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Button from "../components/ui/Button";
 import { PageProps } from "../types";
 
-export default function Refunds({}: PageProps) {
+export default function Error({}: PageProps) {
 	const router = useRouter();
 
 	return (
