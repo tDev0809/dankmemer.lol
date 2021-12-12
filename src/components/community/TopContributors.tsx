@@ -17,7 +17,7 @@ export function TopContributors() {
 		<div className="bg-dark-100 rounded-md p-4 gap-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-start xl:justify-items-center">
 			{contributors.map((contributor, i) => (
 				<Link href={`/community/profile/${contributor.id}`}>
-					<div className="flex space-x-2 items-center cursor-pointer">
+					<a className="flex space-x-2 items-center cursor-pointer">
 						<Avatar
 							size="48px"
 							id={contributor.id}
@@ -39,7 +39,7 @@ export function TopContributors() {
 								#{i + 1}
 							</div>
 						</div>
-					</div>
+					</a>
 				</Link>
 			))}
 		</div>
