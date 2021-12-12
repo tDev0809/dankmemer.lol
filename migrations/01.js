@@ -38,7 +38,15 @@ const migration = async () => {
 	// // Migrate Posts to Community
 	let posts = await db.collection("feedback_posts").find({}).toArray();
 
+	const comments = await db
+		.collection("feedback_comments")
+		.find({})
+		.toArray();
+
 	for (const post of posts) {
+		const devResponse = comments.find(
+			(c) => c.pID == post._id && c.author.developer
+		);
 		await db.collection("community-posts").insertOne({
 			_id: post._id,
 			title: post.title,
@@ -46,7 +54,9 @@ const migration = async () => {
 			category: post.category,
 			createdAt: post.createdAt,
 			author: post.author.id,
-			label: post.label ? post.label : "",
+			labels: (post.label ? [post.label] : []).concat(
+				devResponse ? ["developer-response"] : []
+			),
 		});
 
 		await db.collection("community-activities").insertOne({
@@ -65,11 +75,6 @@ const migration = async () => {
 
 	// // Migrate Comments to Community
 	posts = await db.collection("community-posts").find({}).toArray();
-
-	const comments = await db
-		.collection("feedback_comments")
-		.find({})
-		.toArray();
 
 	for (const comment of comments) {
 		const post = posts.find((p) => p._id == comment.pID);
