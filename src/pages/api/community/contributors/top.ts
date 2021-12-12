@@ -31,7 +31,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				},
 			},
 			{ $sort: { score: -1 } },
-			{ $limit: 5 },
+			{ $limit: 25 },
 		])
 		.toArray();
 
@@ -51,7 +51,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		contributors.push(contributor);
 	}
 
-	contributors = contributors.sort((a, z) => z.score - a.score);
+	contributors = contributors.sort((a, z) => z.score - a.score).slice(0, 5);
 
 	await redis.set(
 		"community:contributors",
