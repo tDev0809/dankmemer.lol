@@ -127,6 +127,12 @@ const migration = async () => {
 	}
 	await db.collection("feedback_replies").drop();
 
+	// Create indexes
+	await db.collection("community-posts-upvotes").createIndex({ pID: "text" });
+	await db
+		.collection("community-posts-comments")
+		.createIndex({ pID: "text" });
+
 	process.exit();
 };
 
