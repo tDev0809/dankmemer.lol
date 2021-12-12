@@ -18,11 +18,19 @@ export default function Navbar({ user }: Props) {
 	}, [hamburger]);
 
 	useEffect(() => {
-		window.addEventListener("resize", () => setHamburger(false));
+		function handleResize() {
+			setHamburger(false);
+		}
+
+		window.addEventListener("resize", handleResize);
 
 		axios(`/api/discount/get`).then(({ data }) => {
 			setDiscount((data.percent || 0) * 100);
 		});
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
 	}, []);
 
 	return (
