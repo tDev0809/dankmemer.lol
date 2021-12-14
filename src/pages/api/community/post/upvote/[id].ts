@@ -43,25 +43,31 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		uID: user.id,
 	});
 
-	redis.keys(`community:posts:${user.id}*`, async (_, keys) => {
-		for (const key of keys) {
-			await redis.del(key);
-		}
-	});
+	const pipeline = redis.pipeline();
+
+	pipeline.del(`community:post:stats:${id}`);
 
 	if (!upvote) {
 		await db.collection("community-posts-upvotes").insertOne({
 			uID: user.id,
 			pID: id,
 		});
-		res.status(200).json({ upvote: 1 });
 	} else {
 		await db.collection("community-posts-upvotes").deleteOne({
 			uID: user.id,
 			pID: id,
 		});
-		res.status(200).json({ upvote: -1 });
 	}
+
+	await pipeline
+		.set(
+			`community:post:upvoted:${post._id}:${user.id}`,
+			!!upvote ? 0 : 1,
+			"PX",
+			TIME.day
+		)
+		.exec();
+	res.status(200).json({ upvote: !!upvote ? -1 : 1 });
 };
 
 export default withSession(handler);

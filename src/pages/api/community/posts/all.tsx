@@ -1,10 +1,11 @@
 import { NextApiResponse } from "next";
 import { POST_CATEGORIES, POST_LABELS, TIME } from "../../../../constants";
 import { hot } from "../../../../constants/hot";
+import { Post } from "../../../../types";
 import { dbConnect } from "../../../../util/mongodb";
 import { redisConnect } from "../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../util/session";
-import { getUser } from "../../../../util/user";
+import { getUsers } from "../../../../util/user";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
@@ -33,18 +34,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.json({ message: "This category does not exist." });
 	}
 
-	const cacheKey = `community:posts:${user?.id ?? "-"}:${
-		req.url?.split("?")[1] ?? "-"
-	}`;
-
-	const cached = await redis.get(cacheKey);
-
-	if (cached) {
-		return res.json({
-			posts: JSON.parse(cached),
-		});
-	}
-	const posts = await db
+	const posts = (await db
 		.collection("community-posts")
 		.aggregate([
 			{
@@ -65,25 +55,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						  },
 			},
 			{
-				$lookup: {
-					from: "community-posts-upvotes",
-					localField: "_id",
-					foreignField: "pID",
-					as: "upvotedUsers",
-				},
-			},
-			{
-				$lookup: {
-					from: "community-posts-comments",
-					localField: "_id",
-					foreignField: "pID",
-					as: "commentsData",
-				},
-			},
-			{
 				$addFields: {
-					upvotes: { $size: "$upvotedUsers" },
-					comments: { $size: "$commentsData" },
 					bad: {
 						$or: [
 							{ $eq: ["$label", "invalid"] },
@@ -91,31 +63,11 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						],
 					},
 					denyInt: { $cond: [{ $eq: ["$label", "denied"] }, -1, 1] },
-				},
-			},
-			{
-				$addFields: {
 					hot: hot,
 				},
 			},
 			{
 				$addFields: {
-					upvotedUser: user
-						? {
-								$filter: {
-									input: "$upvotedUsers",
-									as: "up",
-									cond: {
-										$eq: ["$$up.uID", user.id],
-									},
-								},
-						  }
-						: [],
-				},
-			},
-			{
-				$addFields: {
-					upvoted: { $ne: [{ $size: "$upvotedUser" }, 0] },
 					show: {
 						$or: [
 							staff
@@ -145,15 +97,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				$match: { show: true },
 			},
 			{
-				$unset: [
-					"upvotedUsers",
-					"upvotedUser",
-					"commentsData",
-					"developerComments",
-					"denyInt",
-					"hot",
-					"show",
-				],
+				$unset: ["hot", "show"],
 			},
 			{
 				$skip: from,
@@ -162,13 +106,73 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				$limit: amount,
 			},
 		])
-		.toArray();
+		.toArray()) as Post[];
+
+	const userData = await getUsers(posts.map((p) => p.author as string));
+	const statsPipeline = redis.pipeline();
+	const upvotedPipline = redis.pipeline();
 
 	for (const post of posts) {
-		post.author = await getUser(post.author);
+		statsPipeline.get(`community:post:stats:${post._id}`);
+		if (user) {
+			upvotedPipline.get(`community:post:upvoted:${post._id}:${user.id}`);
+		}
 	}
 
-	await redis.set(cacheKey, JSON.stringify(posts), "PX", TIME.hour);
+	const statsData = await statsPipeline.exec();
+	const upvotedData = await upvotedPipline.exec();
+
+	for (let i = 0; i < posts.length; i++) {
+		const post = posts[i];
+		post.author = userData[i];
+
+		if (!statsData[i][1]) {
+			const upvotesCount = await db
+				.collection("community-posts-upvotes")
+				.find({ pID: post._id })
+				.count();
+
+			const commentsCount = await db
+				.collection("community-posts-comments")
+				.find({ pID: post._id })
+				.count();
+
+			statsPipeline.set(
+				`community:post:stats:${post._id}`,
+				`${upvotesCount},${commentsCount}`,
+				"PX",
+				TIME.day
+			);
+
+			post.upvotes = upvotesCount;
+			post.comments = commentsCount;
+		} else {
+			post.upvotes = parseInt(statsData[i][1].split(",")[0]);
+			post.comments = parseInt(statsData[i][1].split(",")[1]);
+		}
+
+		if (user) {
+			if (!upvotedData[i][1]) {
+				const upvoted = await db
+					.collection("community-posts-upvotes")
+					.find({ pID: post._id, uID: user.id })
+					.count();
+
+				statsPipeline.set(
+					`community:post:upvoted:${post._id}:${user.id}`,
+					upvoted,
+					"PX",
+					TIME.day
+				);
+
+				post.upvoted = upvoted == 1;
+			} else {
+				post.upvoted = upvotedData[i][1] == "1";
+			}
+		}
+	}
+
+	await statsPipeline.exec();
 
 	return res.json({
 		posts: posts,

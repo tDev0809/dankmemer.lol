@@ -70,7 +70,7 @@ export interface Post {
 	createdAt: number;
 
 	labels: string[];
-	author: UserData;
+	author: UserData | string;
 	upvotes: number;
 	upvoted: boolean;
 	comments: number;

@@ -30,3 +30,48 @@ export async function getUser(id: string): Promise<UserData | null> {
 		}
 	}
 }
+
+export async function getUsers(ids: string[]): Promise<UserData[]> {
+	const { db } = await dbConnect();
+	const redis = await redisConnect();
+
+	const pipeline = redis.pipeline();
+
+	for (const id of ids) {
+		pipeline.get(`user:${id}`);
+	}
+
+	const results = await pipeline.exec();
+
+	const users = [];
+
+	for (let i = 0; i < ids.length; i++) {
+		if (results[i][1]) {
+			users.push(JSON.parse(results[i][1]));
+		} else {
+			const user = await db.collection("users").findOne({ _id: ids[i] });
+
+			if (user) {
+				const data = {
+					id: user._id,
+					name: user.name,
+					discriminator: user.discriminator,
+					avatar: user.avatar,
+				};
+
+				await redis.set(
+					`user:${ids[i]}`,
+					JSON.stringify(data),
+					"PX",
+					TIME.day
+				);
+
+				users.push(data);
+			} else {
+				users.push(null);
+			}
+		}
+	}
+
+	return users;
+}
