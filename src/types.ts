@@ -25,6 +25,7 @@ export interface UserData {
 	name: string;
 	discriminator: string;
 	avatar: string;
+	banner?: string;
 }
 
 export interface PageProps {
@@ -180,15 +181,16 @@ export interface AdOptions {
 	sizes: [number, number][];
 }
 
-// export interface Profile {
-// 	_id: string;
-// 	name: string;
-// 	discriminator: string;
-// 	avatar: string;
-// 	developer: boolean;
-// 	moderator: boolean;
-// 	upvotes: number;
-// 	comments: Comment[];
-// 	replies: Reply[];
-// 	posts: Post[];
-// }
+export interface Profile {
+	user: UserData;
+	posts: Post[];
+	comments: number;
+	upvotes: number;
+	activities: Activity[];
+}
+
+export interface Activity {
+	type: number;
+	data: Record<string, any>;
+	createdAt: number;
+}

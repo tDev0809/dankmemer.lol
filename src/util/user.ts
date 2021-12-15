@@ -20,6 +20,7 @@ export async function getUser(id: string): Promise<UserData | null> {
 				name: user.name,
 				discriminator: user.discriminator,
 				avatar: user.avatar,
+				banner: user.banner,
 			};
 
 			await redis.set(`user:${id}`, JSON.stringify(data), "PX", TIME.day);
@@ -57,6 +58,7 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					name: user.name,
 					discriminator: user.discriminator,
 					avatar: user.avatar,
+					banner: user.banner,
 				};
 
 				await redis.set(

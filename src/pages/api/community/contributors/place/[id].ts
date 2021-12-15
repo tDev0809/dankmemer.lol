@@ -20,11 +20,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.collection("community-activities")
 		.aggregate([
 			{
-				$match: {
-					createdAt: { $gt: Date.now() - TIME.month },
-				},
-			},
-			{
 				$group: {
 					_id: "$uID",
 					score: { $sum: 1 },
@@ -53,11 +48,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const sameScores = await db
 		.collection("community-activities")
 		.aggregate([
-			{
-				$match: {
-					createdAt: { $gt: Date.now() - TIME.month },
-				},
-			},
 			{
 				$group: {
 					_id: "$uID",
