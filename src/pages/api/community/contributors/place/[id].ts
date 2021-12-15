@@ -3,7 +3,7 @@ import { TIME } from "../../../../../constants";
 import { dbConnect } from "../../../../../util/mongodb";
 import { redisConnect } from "../../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../../util/session";
-import { getUser } from "../../../../../util/user";
+import { getUser, getUsers } from "../../../../../util/user";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
@@ -68,33 +68,51 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		])
 		.toArray();
 
-	let newScore = [];
+	if (contributor.position < 300) {
+		let newScore = [];
 
-	for (let user of sameScores) {
-		const userData = await getUser(user._id);
-		newScore.push({
-			id: user._id,
-			position: user.position,
-			score:
-				user.score * 1e6 +
-				parseInt(userData?.discriminator || "0") +
-				parseInt(userData!.id.slice(-4)),
-		});
+		const data = await getUsers(
+			sameScores.map((s) => s._id) as unknown as string[]
+		);
+
+		for (let user of sameScores) {
+			const userData = data.find((u) => u.id == user._id);
+
+			newScore.push({
+				id: user._id,
+				position: user.position,
+				score:
+					user.score * 1e6 +
+					parseInt(userData?.discriminator || "0") +
+					parseInt(userData!.id.slice(-4)),
+			});
+		}
+
+		newScore = newScore.sort((a, z) => z.score - a.score);
+
+		const minPosition = Math.min(...newScore.map((a) => a.position));
+		const newPlace = newScore.findIndex((s) => s.id == id);
+
+		await redis.set(
+			`community:place:${id}`,
+			(minPosition + newPlace).toString(),
+			"PX",
+			TIME.hour
+		);
+
+		return res.json({ place: minPosition + newPlace });
+	} else {
+		const place = Math.max(...sameScores.map((a) => a.position));
+
+		await redis.set(
+			`community:place:${id}`,
+			place.toString(),
+			"PX",
+			TIME.hour
+		);
+
+		return res.json({ place: place });
 	}
-
-	newScore = newScore.sort((a, z) => z.score - a.score);
-
-	const minPosition = Math.min(...newScore.map((a) => a.position));
-	const newPlace = newScore.findIndex((s) => s.id == id);
-
-	await redis.set(
-		`community:place:${id}`,
-		(minPosition + newPlace).toString(),
-		"PX",
-		TIME.hour
-	);
-
-	return res.json({ place: minPosition + newPlace });
 };
 
 export default withSession(handler);
