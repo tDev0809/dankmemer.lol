@@ -12,7 +12,9 @@ export async function getUser(id: string): Promise<UserData | null> {
 	if (cachedUser) {
 		return JSON.parse(cachedUser);
 	} else {
-		const user = await db.collection("users").findOne({ _id: id });
+		const user = await db
+			.collection("users")
+			.findOne({ $or: [{ _id: id }, { vanity: id }] });
 
 		if (user) {
 			const data = {

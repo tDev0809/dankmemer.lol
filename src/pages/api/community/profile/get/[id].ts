@@ -19,7 +19,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	let posts = (await db
 		.collection("community-posts")
-		.find({ author: id })
+		.find({ author: userData.id })
 		.sort({ createdAt: -1 })
 		.toArray()) as Post[];
 
@@ -27,17 +27,17 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	const comments = await db
 		.collection("community-posts-comments")
-		.find({ author: id })
+		.find({ author: userData.id })
 		.count();
 
 	const upvotes = await db
 		.collection("community-posts-upvotes")
-		.find({ uID: id })
+		.find({ uID: userData.id })
 		.count();
 
 	const activities = await db
 		.collection("community-activities")
-		.find({ uID: id })
+		.find({ uID: userData.id })
 		.sort({ createdAt: -1 })
 		.limit(10)
 		.toArray();

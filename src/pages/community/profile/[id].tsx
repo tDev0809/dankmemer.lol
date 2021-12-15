@@ -73,15 +73,16 @@ export default function ProfilePage({ user }: PageProps) {
 	useEffect(() => {
 		axios(`/api/community/profile/get/${id}`)
 			.then(({ data }) => {
-				console.log(data);
 				setProfile(data);
+				axios(`/api/community/contributors/place/${data.user.id}`).then(
+					({ data }) => {
+						setRank(data.place);
+					}
+				);
 			})
 			.catch(() => {
 				router.push("/community/");
 			});
-		axios(`/api/community/contributors/place/${id}`).then(({ data }) => {
-			setRank(data.place);
-		});
 	}, []);
 
 	return (
