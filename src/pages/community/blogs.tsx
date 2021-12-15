@@ -1,13 +1,13 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
-import { Ad } from "../../../components/Ad";
-import { BlogPost } from "../../../components/community/blog/BlogPost";
-import { Title } from "../../../components/Title";
-import Container from "../../../components/ui/Container";
-import { Blog, PageProps } from "../../../types";
-import { unauthenticatedRoute } from "../../../util/redirects";
-import { withSession } from "../../../util/session";
+import { Ad } from "../../components/Ad";
+import { BlogPost } from "../../components/community/blog/BlogPost";
+import { Title } from "../../components/Title";
+import Container from "../../components/ui/Container";
+import { Blog, PageProps } from "../../types";
+import { unauthenticatedRoute } from "../../util/redirects";
+import { withSession } from "../../util/session";
 
 export default function Blogs({ user }: PageProps) {
 	const [blogs, setBlogs] = useState<Blog[]>([]);
