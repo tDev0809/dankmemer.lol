@@ -132,6 +132,38 @@ const migration = async () => {
 	}
 	await db.collection("feedback_replies").drop();
 
+	// Migrate Staff
+	const staff = await db.collection("staff").find({}).toArray();
+
+	for (const user of staff) {
+		await db.collection("users").updateOne(
+			{ _id: user._id },
+			{
+				$set: {
+					about: user.about,
+					socials: user.social,
+					...(user.category == "Team"
+						? {
+								developer: true,
+								botModerator: true,
+								moderator: true,
+						  }
+						: {}),
+					...(user.category == "Support Moderators"
+						? { moderator: true }
+						: {}),
+					...(user.category == "Bot Moderators"
+						? { botModerator: true, moderator: true }
+						: {}),
+					...(user.category == "Honorable Mentions"
+						? { botModerator: true, moderator: true }
+						: {}),
+				},
+			}
+		);
+	}
+	// await db.collection("staff").drop(); TODO
+
 	// Create indexes
 	await db.collection("community-posts-upvotes").createIndex({ pID: "text" });
 	await db
