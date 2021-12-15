@@ -26,6 +26,10 @@ export interface UserData {
 	discriminator: string;
 	avatar: string;
 	banner?: string;
+	developer: boolean;
+	moderator: boolean;
+	botModerator: boolean;
+	honorable: boolean;
 }
 
 export interface PageProps {

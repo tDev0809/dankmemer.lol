@@ -19,3 +19,13 @@ export function ModeratorBadge() {
 		</Tooltip>
 	);
 }
+
+export function BotModeratorBadge() {
+	return (
+		<Tooltip content="Bot Moderator">
+			<div className="material-icons cursor-default text-orange-300">
+				smart_toy
+			</div>
+		</Tooltip>
+	);
+}

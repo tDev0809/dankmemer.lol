@@ -21,6 +21,10 @@ export async function getUser(id: string): Promise<UserData | null> {
 				discriminator: user.discriminator,
 				avatar: user.avatar,
 				banner: user.banner,
+				developer: user.developer == true,
+				moderator: user.moderator == true,
+				botModerator: user.moderator == true,
+				honorable: user.honorable == true,
 			};
 
 			await redis.set(`user:${id}`, JSON.stringify(data), "PX", TIME.day);
@@ -59,6 +63,10 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					discriminator: user.discriminator,
 					avatar: user.avatar,
 					banner: user.banner,
+					developer: user.developer == true,
+					moderator: user.moderator == true,
+					botModerator: user.moderator == true,
+					honorable: user.honorable == true,
 				};
 
 				await redis.set(

@@ -5,6 +5,11 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Avatar } from "../../../components/Avatar";
+import {
+	BotModeratorBadge,
+	DeveloperBadge,
+	ModeratorBadge,
+} from "../../../components/Badge";
 import { PostCard } from "../../../components/community/PostCard";
 import Container from "../../../components/ui/Container";
 import { Activity, PageProps, Profile } from "../../../types";
@@ -120,12 +125,23 @@ export default function ProfilePage({ user }: PageProps) {
 											#{profile.user.discriminator}
 										</div>
 									</div>
-									<div className="flex">
+									<div className="flex space-x-1 items-center">
 										<div className=" text-xs bg-dank-500 text-dank-100 px-2 py-0.5 rounded-md">
 											Rank #
 											{rank == -1
 												? "???"
 												: rank.toLocaleString()}
+										</div>
+										<div>
+											{profile.user.developer && (
+												<DeveloperBadge />
+											)}
+											{profile.user.moderator && (
+												<ModeratorBadge />
+											)}
+											{profile.user.botModerator && (
+												<BotModeratorBadge />
+											)}
 										</div>
 									</div>
 								</div>
