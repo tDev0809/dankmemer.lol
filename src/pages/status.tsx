@@ -17,7 +17,9 @@ import TextLink from "../components/ui/TextLink";
 
 const States = {
 	READY: "bg-dank-200",
+	INITIALISING: "bg-dank-200 animate-pulse",
 	UNINITIALIZED: "bg-[#8f8f8f]",
+	COLD: "bg-[#8f8f8f]",
 	GUILD_CREATE: "bg-[#00CC99] animate-pulse",
 	RESUMING: "bg-[#FEDC56] animate-pulse",
 	DISCONNECTED: "bg-[#C80032]",
@@ -89,6 +91,7 @@ export default function Status({ user }: PageProps) {
 		fetch(`https://dankmemer.party/internal/status/shards`)
 			.then((r) => r.json())
 			.then((data) => {
+				console.log(data);
 				setShards(data);
 			});
 	}, []);
@@ -99,6 +102,7 @@ export default function Status({ user }: PageProps) {
 		});
 
 		client.on("shardStatus", (data) => {
+			console.log(data);
 			setShardUpdate(data);
 		});
 	}, []);
@@ -160,7 +164,11 @@ export default function Status({ user }: PageProps) {
 								color="#0080FF"
 								setFilter={setFilter}
 								filter={filter}
-								states={["CONNECTED", "CONNECTING"]}
+								states={[
+									"CONNECTED",
+									"CONNECTING",
+									"INITIALISING",
+								]}
 							>
 								connecting
 							</Legend>
@@ -176,7 +184,11 @@ export default function Status({ user }: PageProps) {
 								color="#8f8f8f"
 								setFilter={setFilter}
 								filter={filter}
-								states={["UNINITIALIZED", "GUILD_CREATE"]}
+								states={[
+									"UNINITIALIZED",
+									"GUILD_CREATE",
+									"COLD",
+								]}
 							>
 								uninitialized
 							</Legend>
