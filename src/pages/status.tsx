@@ -4,6 +4,7 @@ import {
 	ReactNode,
 	SetStateAction,
 	useEffect,
+	useRef,
 	useState,
 } from "react";
 import Container from "../components/ui/Container";
@@ -35,16 +36,18 @@ interface ShardData {
 interface ShardProps {
 	id: ShardData["id"];
 	state: ShardData["state"];
+	fullscreen: boolean;
 }
 
-function Shard({ id, state }: ShardProps) {
+function Shard({ id, state, fullscreen }: ShardProps) {
 	return (
 		<div
 			className={clsx(
 				"flex justify-center items-center",
-				"h-12 w-12 m-2 rounded-md",
+				"rounded-md",
 				"transition-colors",
-				States[state]
+				States[state],
+				fullscreen ? "m-0.5 h-8 w-8 text-xs" : "m-2 h-12 w-12"
 			)}
 		>
 			{id}
@@ -86,12 +89,22 @@ export default function Status({ user }: PageProps) {
 	const [filter, setFilter] = useState<Array<keyof typeof States>>([]);
 	const [search, setSearch] = useState("");
 	const [id, setId] = useState(-1);
+	const [fullscreen, setFullscreen] = useState(false);
+	const shardContainer = useRef<HTMLDivElement>(null);
+
+	const handleFullscreen = (event: KeyboardEvent) => {
+		const key = event?.key;
+
+		if (key == "f" && !fullscreen) {
+			shardContainer.current!.requestFullscreen();
+			setFullscreen(true);
+		}
+	};
 
 	useEffect(() => {
 		fetch(`https://dankmemer.party/internal/status/shards`)
 			.then((r) => r.json())
 			.then((data) => {
-				console.log(data);
 				setShards(data);
 			});
 	}, []);
@@ -102,9 +115,16 @@ export default function Status({ user }: PageProps) {
 		});
 
 		client.on("shardStatus", (data) => {
-			console.log(data);
 			setShardUpdate(data);
 		});
+	}, []);
+
+	useEffect(() => {
+		window.addEventListener("keydown", handleFullscreen, false);
+
+		return () => {
+			window.removeEventListener("keydown", handleFullscreen);
+		};
 	}, []);
 
 	useEffect(() => {
@@ -216,7 +236,10 @@ export default function Status({ user }: PageProps) {
 							</TextLink>
 						</div>
 					</div>
-					<div className="flex flex-wrap">
+					<div
+						className="flex flex-wrap overflow-y-auto"
+						ref={shardContainer}
+					>
 						{shards
 							.filter((s) =>
 								filter.length
@@ -226,7 +249,11 @@ export default function Status({ user }: PageProps) {
 									: s.id == id
 							)
 							.map((shard) => (
-								<Shard id={shard.id} state={shard.state} />
+								<Shard
+									id={shard.id}
+									state={shard.state}
+									fullscreen={fullscreen}
+								/>
 							))}
 					</div>
 				</div>
