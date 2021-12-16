@@ -2,6 +2,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import MarkdownIt from "markdown-it";
 import { GetServerSideProps } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Ad } from "../../../../components/Ad";
@@ -10,9 +11,8 @@ import LoadingPepe from "../../../../components/LoadingPepe";
 import Container from "../../../../components/ui/Container";
 import { Blog, PageProps } from "../../../../types";
 import { tailwindHtml } from "../../../../util/blog";
-import { staffRoute, unauthenticatedRoute } from "../../../../util/redirects";
+import { moderatorRoute } from "../../../../util/redirects";
 import { withSession } from "../../../../util/session";
-import Link from "next/link";
 
 export default function BlogEditPage({ user }: PageProps) {
 	const [blog, setBlog] = useState<Blog>();
@@ -95,4 +95,5 @@ export default function BlogEditPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(staffRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(moderatorRoute);

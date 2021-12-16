@@ -4,7 +4,7 @@ import { ControlCard } from "../../components/ControlCard";
 import Container from "../../components/ui/Container";
 import GoBack from "../../components/ui/GoBack";
 import { PageProps } from "../../types";
-import { staffRoute } from "../../util/redirects";
+import { moderatorRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function ControlInspectPage({ user }: PageProps) {
@@ -80,4 +80,5 @@ export default function ControlInspectPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(staffRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(moderatorRoute);

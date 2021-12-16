@@ -6,7 +6,7 @@ import { ControlCard } from "../../components/ControlCard";
 import Container from "../../components/ui/Container";
 import GoBack from "../../components/ui/GoBack";
 import { PageProps } from "../../types";
-import { adminRoute } from "../../util/redirects";
+import { developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 const DynamicReactJson = dynamic(import("react-json-view"), { ssr: false });
 
@@ -217,4 +217,5 @@ export default function ControlUserPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(adminRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(developerRoute);

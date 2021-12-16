@@ -7,7 +7,7 @@ import Container from "../../components/ui/Container";
 import GoBack from "../../components/ui/GoBack";
 import { PageProps, Staff } from "../../types";
 import { randomAvatar } from "../../util/random";
-import { adminRoute } from "../../util/redirects";
+import { developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function ControlAccessPage({ user }: PageProps) {
@@ -133,4 +133,5 @@ export default function ControlAccessPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(adminRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(developerRoute);

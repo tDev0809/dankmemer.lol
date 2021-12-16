@@ -34,7 +34,7 @@ export async function authenticatedRoute(
 	};
 }
 
-export async function staffRoute(
+export async function moderatorRoute(
 	ctx: GetServerSidePropsContext & { req: { session: Session } }
 ) {
 	const user: User | undefined = ctx.req.session.get("user");
@@ -50,7 +50,7 @@ export async function staffRoute(
 		};
 	}
 
-	if (!user.isModerator) {
+	if (!user.moderator) {
 		return {
 			redirect: {
 				destination: `/`,
@@ -64,7 +64,7 @@ export async function staffRoute(
 	};
 }
 
-export async function adminRoute(
+export async function developerRoute(
 	ctx: GetServerSidePropsContext & { req: { session: Session } }
 ) {
 	const user: User | undefined = ctx.req.session.get("user");
@@ -80,7 +80,7 @@ export async function adminRoute(
 		};
 	}
 
-	if (!user.isAdmin) {
+	if (!user.developer) {
 		return {
 			redirect: {
 				destination: `/`,

@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import Container from "../../components/ui/Container";
 import { PageProps } from "../../types";
-import { staffRoute } from "../../util/redirects";
+import { moderatorRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function ControlAnalyticsPage({ user }: PageProps) {
@@ -36,4 +36,5 @@ export default function ControlAnalyticsPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(staffRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(moderatorRoute);

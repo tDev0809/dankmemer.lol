@@ -57,11 +57,9 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				);
 		}
 
-		const exists = await db
-			.collection("users")
-			.countDocuments({ _id: user.id });
+		let userData = await db.collection("users").findOne({ _id: user.id });
 
-		if (exists) {
+		if (userData) {
 			db.collection("users").updateOne(
 				{ _id: user.id },
 				{
@@ -77,40 +75,23 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				}
 			);
 		} else {
-			db.collection("users").insertOne({
+			userData = {
 				_id: user.id,
 				email: user.email,
 				name: user.username,
 				discriminator: user.discriminator,
 				avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 				ip: [req.headers["cf-connecting-ip"]],
-			});
-		}
-
-		const staffUser = await db
-			.collection("staff")
-			.findOne({ _id: user.id });
-
-		if (staffUser) {
-			db.collection("staff").updateOne(
-				{ _id: user.id },
-				{
-					$set: {
-						avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
-					},
-				}
-			);
+			};
+			db.collection("users").insertOne(userData);
 		}
 
 		await req.session.set("user", {
 			...user,
-			isModerator: [
-				"Support Moderators",
-				"Bot Moderators",
-				"Team",
-				"Honorable Mentions",
-			].includes(staffUser?.category),
-			isAdmin: staffUser?.category === "Team",
+			developer: userData.developer == true,
+			moderator: userData.developer == true,
+			botModerator: userData.developer == true,
+			honorable: userData.developer == true,
 			token: encrypt(user.id),
 			avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
 		});

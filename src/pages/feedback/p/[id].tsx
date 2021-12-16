@@ -79,7 +79,7 @@ export default function PostPage({ user }: PageProps) {
 					id: user.id,
 					discriminator: user.discriminator,
 					username: user.username,
-					developer: user.isAdmin,
+					developer: user.developer,
 					moderator: user.isModerator,
 				},
 			});
@@ -118,7 +118,7 @@ export default function PostPage({ user }: PageProps) {
 					id: user.id,
 					discriminator: user.discriminator,
 					username: user.username,
-					developer: user.isAdmin,
+					developer: user.developer,
 					moderator: user.isModerator,
 				},
 			});

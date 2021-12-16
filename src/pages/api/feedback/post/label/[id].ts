@@ -13,7 +13,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(500).json({ error: "This post does not exist." });
 	}
 
-	if (!user || (!user.isAdmin && !user.isModerator)) {
+	if (!user || (!user.developer && !user.isModerator)) {
 		return res.status(401).json({ error: "Get away you sick filth." });
 	}
 

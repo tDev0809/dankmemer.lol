@@ -9,8 +9,6 @@ export interface User {
 	email: string;
 	flags: number;
 	id: string;
-	isAdmin: boolean;
-	isModerator: boolean;
 	locale: string;
 	mfa_enabled: boolean;
 	premium_type: number;
@@ -18,6 +16,10 @@ export interface User {
 	token: string;
 	username: string;
 	verified: boolean;
+	developer: boolean;
+	moderator: boolean;
+	botModerator: boolean;
+	honorable: boolean;
 }
 
 export interface UserData {

@@ -11,7 +11,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(401).json({ error: "You are not logged in." });
 	}
 
-	if (!user.isAdmin) {
+	if (!user.developer) {
 		return res.status(401).json({ error: "You can't do this." });
 	}
 

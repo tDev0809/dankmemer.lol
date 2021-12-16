@@ -64,7 +64,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.json({ error: "You are banned from posting replies." });
 	}
 
-	if (!user.isAdmin) {
+	if (!user.developer) {
 		recent.add(user.id);
 		setTimeout(() => recent.delete(user.id), 5 * 60 * 1000);
 	}
@@ -78,7 +78,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			id: user.id,
 			discriminator: user.discriminator,
 			username: user.username,
-			developer: user.isAdmin,
+			developer: user.developer,
 			moderator: user.isModerator,
 		},
 	});

@@ -13,7 +13,7 @@ import Container from "../components/ui/Container";
 import Searchbox from "../components/ui/Searchbox";
 import TextLink from "../components/ui/TextLink";
 import { PageProps } from "../types";
-import { staffRoute } from "../util/redirects";
+import { moderatorRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 
 const States = {
@@ -262,4 +262,5 @@ export default function Status({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(staffRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(moderatorRoute);

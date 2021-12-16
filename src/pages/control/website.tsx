@@ -4,7 +4,7 @@ import { ControlCard } from "../../components/ControlCard";
 import Container from "../../components/ui/Container";
 import GoBack from "../../components/ui/GoBack";
 import { PageProps } from "../../types";
-import { adminRoute } from "../../util/redirects";
+import { developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function ControlWebsitePage({ user }: PageProps) {
@@ -73,4 +73,5 @@ export default function ControlWebsitePage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(adminRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(developerRoute);

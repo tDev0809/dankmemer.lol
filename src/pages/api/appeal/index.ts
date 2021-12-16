@@ -36,7 +36,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(400).json({ error: "Your rules are invalid" });
 	}
 
-	if (!user.isAdmin) {
+	if (!user.developer) {
 		recent.add(user.id);
 		setTimeout(() => recent.delete(user.id), 30 * 60 * 1000);
 	}

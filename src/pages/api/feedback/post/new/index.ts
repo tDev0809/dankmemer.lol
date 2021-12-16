@@ -75,7 +75,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.json({ error: "You are banned from posting feedback." });
 	}
 
-	if (!user.isAdmin) {
+	if (!user.developer) {
 		recent.add(user.id);
 		setTimeout(() => recent.delete(user.id), 5 * 60 * 1000);
 	}

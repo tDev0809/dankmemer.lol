@@ -8,7 +8,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { category } = req.query;
 
 	const user = req.session.get("user");
-	const staff = user?.isAdmin || user?.isModerator;
+	const staff = user?.developer || user?.isModerator;
 
 	if (
 		!category ||

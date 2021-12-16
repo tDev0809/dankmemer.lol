@@ -164,7 +164,7 @@ export default function Comment({
 			<div className="flex space-x-2 mr-2">
 				{type == "COMMENT" && (
 					<>
-						{user?.isAdmin && (
+						{user?.developer && (
 							<CommentAction
 								icon="push_pin"
 								description="Pin"
@@ -180,7 +180,7 @@ export default function Comment({
 						)}
 					</>
 				)}
-				{(user?.isAdmin ||
+				{(user?.developer ||
 					user?.isModerator ||
 					user?.id === author.id) &&
 					!oDeleted && (

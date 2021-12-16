@@ -49,7 +49,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(500).json({ error: "This post does not exist." });
 	}
 
-	if (!user.isAdmin && !user.isModerator && user.id !== post.author.id) {
+	if (!user.developer && !user.isModerator && user.id !== post.author.id) {
 		return res.status(401).json({ error: "It's not your post." });
 	}
 

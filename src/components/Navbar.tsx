@@ -129,7 +129,7 @@ export default function Navbar({ user }: Props) {
 									variant="big"
 								>
 									<ul className="rounded-md bg-light-500 dark:bg-dark-100 mt-2 py-2 text-sm text-dark-100 dark:text-white">
-										{(user.isModerator || user.isAdmin) && (
+										{user.moderator && (
 											<Link href="/control">
 												<li className="hover:bg-light-200 dark:hover:bg-dark-200 w-full px-4 py-1 transition duration-75 ease-in-out">
 													Control panel
@@ -205,7 +205,7 @@ export default function Navbar({ user }: Props) {
 								Report a user
 							</li>
 						</Link>
-						{(user?.isModerator || user?.isAdmin) && (
+						{user?.moderator && (
 							<Link href="/control">
 								<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 									Control panel

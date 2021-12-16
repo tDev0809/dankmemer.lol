@@ -12,7 +12,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
 
 	const user = req.session.get("user");
-	const staff: boolean = user?.isAdmin || user?.isModerator;
 
 	const from = Number(req.query.from) || 0;
 	const amount = Math.min(Number(req.query.amount) || 10, 25);
@@ -70,7 +69,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				$addFields: {
 					show: {
 						$or: [
-							staff
+							user?.moderator
 								? {
 										$or: [
 											{ $eq: ["$bad", false] },

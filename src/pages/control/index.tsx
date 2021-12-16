@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import Link from "next/link";
 import Container from "../../components/ui/Container";
 import { PageProps } from "../../types";
-import { staffRoute } from "../../util/redirects";
+import { moderatorRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 interface PanelProps {
@@ -39,7 +39,7 @@ export default function ControlPage({ user }: PageProps) {
 						Control Panel
 					</div>
 				</div>
-				{user?.isAdmin && (
+				{user?.developer && (
 					<div className="flex flex-col">
 						<div className="font-bold font-montserrat text-xl text-dank-300 dark:text-light-100">
 							Administration
@@ -83,4 +83,5 @@ export default function ControlPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps = withSession(staffRoute);
+export const getServerSideProps: GetServerSideProps =
+	withSession(moderatorRoute);

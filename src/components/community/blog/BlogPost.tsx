@@ -19,7 +19,7 @@ export function BlogPost({ data, user }: Props) {
 		<div
 			className={clsx(
 				"p-4 bg-dark-100 rounded-md w-full",
-				user?.isAdmin ? " sm:h-64 lg:h-80" : "sm:h-52 lg:h-72"
+				user?.developer ? " sm:h-64 lg:h-80" : "sm:h-52 lg:h-72"
 			)}
 		>
 			<div className="flex flex-col justify-between space-y-4 h-full">
@@ -57,7 +57,7 @@ export function BlogPost({ data, user }: Props) {
 					</div>
 				</div>
 				<div className="flex flex-col space-y-2">
-					{user?.isAdmin && (
+					{user?.developer && (
 						<Button
 							variant="dark"
 							onClick={() =>
