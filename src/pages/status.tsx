@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import {
 	Dispatch,
@@ -7,14 +8,13 @@ import {
 	useRef,
 	useState,
 } from "react";
-import Container from "../components/ui/Container";
-import { PageProps } from "../types";
-import { unauthenticatedRoute } from "../util/redirects";
-import { withSession } from "../util/session";
 import { io } from "socket.io-client";
-import clsx from "clsx";
+import Container from "../components/ui/Container";
 import Searchbox from "../components/ui/Searchbox";
 import TextLink from "../components/ui/TextLink";
+import { PageProps } from "../types";
+import { staffRoute } from "../util/redirects";
+import { withSession } from "../util/session";
 
 const States = {
 	READY: "bg-dank-200",
@@ -262,5 +262,4 @@ export default function Status({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps =
-	withSession(unauthenticatedRoute);
+export const getServerSideProps: GetServerSideProps = withSession(staffRoute);
