@@ -1,9 +1,11 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Ad } from "../../components/Ad";
 import { BlogPost } from "../../components/community/blog/BlogPost";
 import { Title } from "../../components/Title";
+import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
 import { Blog, PageProps } from "../../types";
 import { unauthenticatedRoute } from "../../util/redirects";
@@ -11,6 +13,7 @@ import { withSession } from "../../util/session";
 
 export default function Blogs({ user }: PageProps) {
 	const [blogs, setBlogs] = useState<Blog[]>([]);
+	const router = useRouter();
 
 	useEffect(() => {
 		axios("/api/community/blogs/all").then(({ data }) => {
@@ -39,7 +42,19 @@ export default function Blogs({ user }: PageProps) {
 						[300, 250],
 					]}
 				/>
-				<Title size="big">Blog Posts</Title>
+				<div className="flex justify-between items-center">
+					<Title size="big">Blog Posts</Title>
+					{user?.developer && (
+						<Button
+							onClick={() =>
+								router.push("/community/blog/new/edit")
+							}
+						>
+							New Blog
+						</Button>
+					)}
+				</div>
+
 				<div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 					{blogs.map((blog) => (
 						<div className="m-2">
