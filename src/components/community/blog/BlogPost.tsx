@@ -23,10 +23,10 @@ export function BlogPost({ data }: Props) {
 							className={clsx(
 								"flex items-center font-montserrat font-bold",
 								data.title.length > 30
-									? "text-lg"
+									? "text-md leading-1"
 									: data.title.length > 20
 									? "text-xl"
-									: "text-2xl"
+									: "text-2xl leading-2"
 							)}
 						>
 							<div>{data.title}</div>
