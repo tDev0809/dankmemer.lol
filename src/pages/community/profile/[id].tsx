@@ -15,51 +15,58 @@ import Container from "../../../components/ui/Container";
 import { Activity, PageProps, Profile } from "../../../types";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
+import Link from "next/link";
 
 function ActivityCard({ activity }: { activity: Activity }) {
 	let text = "???";
 	let icon = "???";
+	let link = "???";
 
 	switch (activity.type) {
 		case 0:
 			text = `Created a post titled '${activity.data.title}'`;
 			icon = "post_add";
+			link = `/community/post/${activity.data.id}`;
 			break;
 		case 1:
 			text = `Commented on a post titled '${activity.data.postTitle}'`;
 			icon = "chat_bubble_outline";
+			link = `/community/post/${activity.data.postId}`;
 			break;
 		case 2:
 			text = `Replied to a comment on a post titled '${activity.data.postTitle}'`;
 			icon = "reply";
+			link = `/community/post/${activity.data.postId}`;
 			break;
 	}
 
 	return (
-		<div className="bg-dark-100 rounded-md text-sm p-4">
-			<div className="flex space-x-4 items-center">
-				<div className="h-10 w-10  bg-dank-400 rounded-full flex items-center justify-center">
-					<div
-						className="material-icons"
-						style={{ fontSize: "20px" }}
-					>
-						{icon}
+		<Link href={link}>
+			<a className="bg-dark-100 rounded-md text-sm p-4">
+				<div className="flex space-x-4 items-center">
+					<div className="h-10 w-10  bg-dank-400 rounded-full flex items-center justify-center">
+						<div
+							className="material-icons"
+							style={{ fontSize: "20px" }}
+						>
+							{icon}
+						</div>
+					</div>
+					<div className="text-sm flex-1">
+						<div className="">{text}</div>
+						<div className="text-light-600">
+							{formatDistance(
+								new Date(activity.createdAt),
+								new Date(),
+								{
+									addSuffix: true,
+								}
+							)}
+						</div>
 					</div>
 				</div>
-				<div className="text-sm flex-1">
-					<div className="">{text}</div>
-					<div className="text-light-600">
-						{formatDistance(
-							new Date(activity.createdAt),
-							new Date(),
-							{
-								addSuffix: true,
-							}
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
+			</a>
+		</Link>
 	);
 }
 
