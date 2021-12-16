@@ -3,7 +3,7 @@ import Link from "next/link";
 export function ViewMore() {
 	return (
 		<Link href="/community/blogs">
-			<div className="flex items-center justify-center border-4 border-dark-100 rounded-md h-32 lg:h-72 w-full cursor-pointer">
+			<div className="flex items-center justify-center border-4 border-dark-100 rounded-md h-full w-full cursor-pointer">
 				<div className="text-light-600 font-bold">
 					<div>
 						View more

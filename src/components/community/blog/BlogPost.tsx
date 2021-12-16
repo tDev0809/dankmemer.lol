@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { TIME } from "../../../constants";
-import { Blog, User } from "../../../types";
+import { Blog, User, UserData } from "../../../types";
 import Button from "../../ui/Button";
 import Link from "next/link";
 import { truncate } from "../../../util/string";
@@ -25,6 +25,11 @@ export function BlogPost({ data, user }: Props) {
 			<div className="flex flex-col justify-between space-y-4 h-full">
 				<div className="flex flex-col space-y-4">
 					<div className="flex flex-col">
+						{data.draft && (
+							<div className="text-dank-100 font-bold text-xs">
+								DRAFT
+							</div>
+						)}
 						<div
 							className={clsx(
 								"flex items-center font-montserrat font-bold",
@@ -44,9 +49,13 @@ export function BlogPost({ data, user }: Props) {
 						</div>
 						<div className="text-light-600 text-sm">
 							Written by{" "}
-							<Link href={`/community/profile/${data.author.id}`}>
+							<Link
+								href={`/community/profile/${
+									(data.author as UserData).id
+								}`}
+							>
 								<a className="hover:underline">
-									{data.author.name || "???"}
+									{(data.author as UserData).name || "???"}
 								</a>
 							</Link>
 							<br /> On {format(data.date, "MMMM dd, yyyy")}

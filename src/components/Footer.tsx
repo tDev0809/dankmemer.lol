@@ -44,7 +44,7 @@ export default function Footer({}: Props) {
 										Commands
 									</span>
 								</Link>
-								<Link href="/blogs">
+								<Link href="/community/blogs">
 									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
 										Our blog
 									</span>

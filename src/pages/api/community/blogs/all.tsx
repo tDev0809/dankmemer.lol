@@ -9,16 +9,17 @@ import { getUser } from "../../../../util/user";
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
 	const redis = await redisConnect();
+	const user = req.session.get("user");
 
 	const cached = await redis.get("community:blogs");
 
-	if (cached) {
+	if (cached && (!user || !user.developer)) {
 		return res.json(JSON.parse(cached));
 	}
 
 	const blogs = (await db
 		.collection("community-blogs")
-		.find({ draft: false })
+		.find(user?.developer ? {} : { draft: false })
 		.sort({ date: -1 })
 		.toArray()) as Blog[];
 
@@ -30,7 +31,14 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		}
 	}
 
-	await redis.set("community:blogs", JSON.stringify(blogs), "PX", TIME.week);
+	if (!user || !user.developer) {
+		await redis.set(
+			"community:blogs",
+			JSON.stringify(blogs),
+			"PX",
+			TIME.week
+		);
+	}
 
 	return res.json(blogs);
 };

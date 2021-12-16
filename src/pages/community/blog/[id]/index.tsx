@@ -8,7 +8,7 @@ import { Ad } from "../../../../components/Ad";
 import BottomCTA from "../../../../components/BottomCTA";
 import LoadingPepe from "../../../../components/LoadingPepe";
 import Container from "../../../../components/ui/Container";
-import { Blog, PageProps } from "../../../../types";
+import { Blog, PageProps, UserData } from "../../../../types";
 import { tailwindHtml } from "../../../../util/blog";
 import { unauthenticatedRoute } from "../../../../util/redirects";
 import { withSession } from "../../../../util/session";
@@ -45,10 +45,12 @@ export default function BlogPage({ user }: PageProps) {
 									<div className="text-gray-400">
 										Written by{" "}
 										<Link
-											href={`/community/profile/${blog.author.id}`}
+											href={`/community/profile/${
+												(blog.author as UserData).id
+											}`}
 										>
 											<a className="hover:underline">
-												{blog.author.name}
+												{(blog.author as UserData).name}
 											</a>
 										</Link>
 									</div>

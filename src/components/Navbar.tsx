@@ -53,9 +53,6 @@ export default function Navbar({ user }: Props) {
 							<li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
 								<Link href="/faq">FAQ</Link>
 							</li>
-							{/* <li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
-								<Link href="/blogs">Blog</Link>
-							</li> */}
 							<li
 								className={clsx(
 									"inline-block  ",
@@ -175,11 +172,6 @@ export default function Navbar({ user }: Props) {
 								FAQ
 							</li>
 						</Link>
-						<Link href="/blogs">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
-								Blog
-							</li>
-						</Link>
 						<Link href="/loot">
 							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
 								Store
@@ -190,9 +182,9 @@ export default function Navbar({ user }: Props) {
 								Items
 							</li>
 						</Link>
-						<Link href="/feedback">
+						<Link href="/community">
 							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
-								Feedback
+								Community
 							</li>
 						</Link>
 						<Link href="/appeals">

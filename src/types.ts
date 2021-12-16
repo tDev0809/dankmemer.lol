@@ -118,7 +118,7 @@ export interface Contributor extends UserData {
 
 export interface Blog {
 	_id: string;
-	author: UserData;
+	author: UserData | string;
 	draft: boolean;
 	content: string;
 	date: number;

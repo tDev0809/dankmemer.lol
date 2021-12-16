@@ -262,7 +262,7 @@
 		{
 			"t": ["gamble", "bet", "roll"],
 			"u": "pls gamble <number>",
-			"d": "Take your chances at gambling. Warning, I am very good at stealing your money. Roll your dice against the bot, if you get higher than the bot you'll win! (Multiplier affects this command, https://dankmemer.lol/blogs/multipliers)",
+			"d": "Take your chances at gambling. Warning, I am very good at stealing your money. Roll your dice against the bot, if you get higher than the bot you'll win! (Multiplier affects this command, https://dankmemer.lol/community/blog/multipliers)",
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
