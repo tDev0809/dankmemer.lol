@@ -63,7 +63,7 @@ export default function Community({ user }: PageProps) {
 				<Section title="Our Blog">
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
 						{blogs.slice(0, 4).map((blog) => (
-							<BlogPost data={blog} />
+							<BlogPost data={blog} user={user} />
 						))}
 						<ViewMore />
 					</div>

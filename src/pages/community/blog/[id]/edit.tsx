@@ -4,17 +4,17 @@ import MarkdownIt from "markdown-it";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Ad } from "../../../components/Ad";
-import BottomCTA from "../../../components/BottomCTA";
-import LoadingPepe from "../../../components/LoadingPepe";
-import Container from "../../../components/ui/Container";
-import { Blog, PageProps } from "../../../types";
-import { tailwindHtml } from "../../../util/blog";
-import { unauthenticatedRoute } from "../../../util/redirects";
-import { withSession } from "../../../util/session";
+import { Ad } from "../../../../components/Ad";
+import BottomCTA from "../../../../components/BottomCTA";
+import LoadingPepe from "../../../../components/LoadingPepe";
+import Container from "../../../../components/ui/Container";
+import { Blog, PageProps } from "../../../../types";
+import { tailwindHtml } from "../../../../util/blog";
+import { staffRoute, unauthenticatedRoute } from "../../../../util/redirects";
+import { withSession } from "../../../../util/session";
 import Link from "next/link";
 
-export default function BlogPage({ user }: PageProps) {
+export default function BlogEditPage({ user }: PageProps) {
 	const [blog, setBlog] = useState<Blog>();
 
 	const router = useRouter();
@@ -32,7 +32,7 @@ export default function BlogPage({ user }: PageProps) {
 	}, []);
 
 	return (
-		<Container title="Blog" user={user}>
+		<Container title="Blog Editor" user={user}>
 			<div className="mx-8 lg:mx-auto relative flex justify-center">
 				<div className="max-w-5xl flex flex-col items-center space-y-8 my-16">
 					{blog ? (
@@ -95,5 +95,4 @@ export default function BlogPage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps =
-	withSession(unauthenticatedRoute);
+export const getServerSideProps: GetServerSideProps = withSession(staffRoute);

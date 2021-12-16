@@ -43,7 +43,7 @@ export default function Blogs({ user }: PageProps) {
 				<div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 					{blogs.map((blog) => (
 						<div className="m-2">
-							<BlogPost data={blog} />
+							<BlogPost data={blog} user={user} />
 						</div>
 					))}
 				</div>

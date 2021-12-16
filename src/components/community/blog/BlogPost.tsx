@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { TIME } from "../../../constants";
-import { Blog } from "../../../types";
+import { Blog, User } from "../../../types";
 import Button from "../../ui/Button";
 import Link from "next/link";
 import { truncate } from "../../../util/string";
@@ -9,22 +9,28 @@ import { useRouter } from "next/router";
 
 interface Props {
 	data: Blog;
+	user?: User;
 }
 
-export function BlogPost({ data }: Props) {
+export function BlogPost({ data, user }: Props) {
 	const router = useRouter();
 
 	return (
-		<div className="p-4 bg-dark-100 rounded-md sm:h-52 lg:h-72 w-full">
+		<div
+			className={clsx(
+				"p-4 bg-dark-100 rounded-md w-full",
+				user?.isAdmin ? " sm:h-64 lg:h-80" : "sm:h-52 lg:h-72"
+			)}
+		>
 			<div className="flex flex-col justify-between space-y-4 h-full">
 				<div className="flex flex-col space-y-4">
 					<div className="flex flex-col">
 						<div
 							className={clsx(
 								"flex items-center font-montserrat font-bold",
-								data.title.length > 30
+								data.title.length > 25
 									? "text-md leading-1"
-									: data.title.length > 20
+									: data.title.length > 15
 									? "text-xl"
 									: "text-2xl leading-2"
 							)}
@@ -50,12 +56,26 @@ export function BlogPost({ data }: Props) {
 						{truncate(data.description, 80)}
 					</div>
 				</div>
-				<Button
-					variant="dark"
-					onClick={() => router.push(`/community/blog/${data._id}`)}
-				>
-					Continue Reading
-				</Button>
+				<div className="flex flex-col space-y-2">
+					{user?.isAdmin && (
+						<Button
+							variant="dark"
+							onClick={() =>
+								router.push(`/community/blog/${data._id}/edit`)
+							}
+						>
+							Edit
+						</Button>
+					)}
+					<Button
+						variant="dark"
+						onClick={() =>
+							router.push(`/community/blog/${data._id}`)
+						}
+					>
+						Continue Reading
+					</Button>
+				</div>
 			</div>
 		</div>
 	);
