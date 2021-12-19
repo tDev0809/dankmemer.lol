@@ -156,7 +156,7 @@ const migration = async () => {
 						? { botModerator: true, moderator: true }
 						: {}),
 					...(user.category == "Honorable Mentions"
-						? { botModerator: true, moderator: true }
+						? { honorable: true }
 						: {}),
 				},
 			}

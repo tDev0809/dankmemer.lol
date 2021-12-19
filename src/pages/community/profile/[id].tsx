@@ -145,6 +145,9 @@ export default function ProfilePage({ user }: PageProps) {
 											{profile.user.botModerator && (
 												<Badge role="botModerator" />
 											)}
+											{profile.user.honorable && (
+												<Badge role="honorable" />
+											)}
 										</div>
 									</div>
 								</div>

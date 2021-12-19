@@ -5,18 +5,21 @@ const colors = {
 	developer: "text-dank-300",
 	moderator: "text-blue-400",
 	botModerator: "text-orange-300",
+	honorable: "text-purple-200",
 };
 
 const icons = {
 	developer: "construction",
 	moderator: "local_police",
 	botModerator: "smart_toy",
+	honorable: "public",
 };
 
 const names = {
 	developer: "Developer",
 	moderator: "Moderator",
 	botModerator: "Bot Moderator",
+	honorable: "Honorable",
 };
 
 interface Props {

@@ -25,7 +25,7 @@ export async function getUser(id: string): Promise<UserData | null> {
 				banner: user.banner,
 				developer: user.developer == true,
 				moderator: user.moderator == true,
-				botModerator: user.moderator == true,
+				botModerator: user.botModerator == true,
 				honorable: user.honorable == true,
 			};
 
@@ -72,7 +72,7 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					banner: user.banner,
 					developer: user.developer == true,
 					moderator: user.moderator == true,
-					botModerator: user.moderator == true,
+					botModerator: user.botModerator == true,
 					honorable: user.honorable == true,
 				};
 
