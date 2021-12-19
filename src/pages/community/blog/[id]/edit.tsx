@@ -159,7 +159,7 @@ export default function BlogEditPage({ user }: PageProps) {
 										Draft
 									</Button>
 									<Button
-										variant="dark"
+										variant="danger"
 										onClick={() => deleteBlog()}
 									>
 										Delete
