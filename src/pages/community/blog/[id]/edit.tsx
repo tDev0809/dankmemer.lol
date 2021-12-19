@@ -147,7 +147,7 @@ export default function BlogEditPage({ user }: PageProps) {
 								</div>
 								<div className="flex space-x-2">
 									<Button
-										variant="dark"
+										variant="primary"
 										onClick={() => publish(false)}
 									>
 										Publish
