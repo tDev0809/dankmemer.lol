@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import LoadingPepe from "../../../../components/LoadingPepe";
 import Button from "../../../../components/ui/Button";
 import Container from "../../../../components/ui/Container";
+import Input from "../../../../components/ui/Input";
 import { Blog, PageProps } from "../../../../types";
 import { tailwindHtml } from "../../../../util/blog";
 import { developerRoute } from "../../../../util/redirects";
@@ -103,37 +104,37 @@ export default function BlogEditPage({ user }: PageProps) {
 									DRAFT
 								</div>
 							)}
-							<input
+
+							<Input
 								onChange={(e) => {
 									const copy = { ...blog };
 									copy.title = e.target.value;
 									setBlog(copy);
 								}}
-								className="w-full bg-light-500 dark:bg-dank-600 drop-shadow-xl dark:drop-shadow-none p-3 outline-none text-black dark:text-light-300 text-sm resize-none h-10 overflow-hidden rounded-md placeholder-gray-500"
-								placeholder={"Blog title"}
+								variant="short"
+								placeholder="Blog Title"
 								value={blog.title}
 							/>
-							<input
+							<Input
 								onChange={(e) => {
 									const copy = { ...blog };
 									copy.description = e.target.value;
 									setBlog(copy);
 								}}
-								className="w-full bg-light-500 dark:bg-dank-600 drop-shadow-xl dark:drop-shadow-none p-3 outline-none text-black dark:text-light-300 text-sm resize-none h-10 overflow-hidden rounded-md placeholder-gray-500"
-								placeholder={"Blog Description"}
+								variant="short"
+								placeholder="Blog Description"
 								value={blog.description}
 							/>
-							<input
+							<Input
 								onChange={(e) => {
 									const copy = { ...blog };
 									copy._id = e.target.value;
 									setBlog(copy);
 								}}
-								className="w-full bg-light-500 dark:bg-dank-600 drop-shadow-xl dark:drop-shadow-none p-3 outline-none text-black dark:text-light-300 text-sm resize-none h-10 overflow-hidden rounded-md placeholder-gray-500"
-								placeholder={"Blog ID"}
+								variant="short"
+								placeholder="Blog ID"
 								value={blog._id}
 							/>
-
 							<div className="flex justify-between">
 								<div className="w-40">
 									<Button
@@ -177,15 +178,17 @@ export default function BlogEditPage({ user }: PageProps) {
 								}}
 							/>
 						) : (
-							<textarea
-								className="w-full bg-light-500 dark:bg-dank-600 outline-none text-black dark:text-light-300 text-sm p-3 h-96 rounded-md placeholder-gray-500"
+							<Input
 								onChange={(e) => {
 									const copy = { ...blog };
 									copy.content = e.target.value;
 									setBlog(copy);
 								}}
+								scrollable
+								resizable
+								variant="long"
+								placeholder="..."
 								value={blog.content}
-								placeholder={"..."}
 							/>
 						)}
 					</div>
