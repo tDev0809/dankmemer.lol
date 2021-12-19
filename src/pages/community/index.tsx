@@ -68,7 +68,7 @@ export default function Community({ user }: PageProps) {
 						<ViewMore />
 					</div>
 				</Section>
-				<Section title="Top Contributions This Month">
+				<Section title="Top Contributors This Month">
 					<TopContributors />
 				</Section>
 				<Section title="Community Posts">
