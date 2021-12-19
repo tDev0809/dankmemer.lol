@@ -46,11 +46,18 @@ export default function Blogs({ user }: PageProps) {
 					<Title size="big">Blog Posts</Title>
 					{user?.developer && (
 						<Button
+							size="small"
+							variant="primary"
 							onClick={() =>
-								router.push("/community/blog/new/edit")
+								router.push(`/community/blog/new/edit`)
 							}
 						>
-							New Blog
+							<div className="flex items-center space-x-2">
+								<div className="material-icons">
+									description
+								</div>
+								<div>New Blog</div>
+							</div>
 						</Button>
 					)}
 				</div>

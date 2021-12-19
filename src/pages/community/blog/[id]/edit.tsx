@@ -94,7 +94,7 @@ export default function BlogEditPage({ user }: PageProps) {
 
 	return (
 		<Container title="Blog Editor" user={user}>
-			<div className="flex flex-col my-16 space-y-8 mx-8 xl:mx-0">
+			<div className="flex flex-col my-16 space-y-8">
 				{blog ? (
 					<div className="flex flex-col space-y-4 bg-dark-100 p-4 rounded-md">
 						<div className="flex flex-col space-y-2">

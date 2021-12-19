@@ -33,7 +33,7 @@ export default function BlogPage({ user }: PageProps) {
 
 	return (
 		<Container title="Blog" user={user}>
-			<div className="mx-8 lg:mx-auto relative flex justify-center">
+			<div className="lg:mx-auto relative flex justify-center">
 				<div className="max-w-5xl flex flex-col items-center space-y-8 my-16">
 					{blog ? (
 						<>
@@ -61,7 +61,7 @@ export default function BlogPage({ user }: PageProps) {
 								</div>
 							</div>
 							<div
-								className="text-dark-400 dark:text-white"
+								className="text-dark-400 dark:text-white text-justify"
 								dangerouslySetInnerHTML={{
 									__html: tailwindHtml(
 										mdParser.render(blog.content)

@@ -49,10 +49,8 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	if (
-		!blog.draft &&
-		(await db
-			.collection("community-blogs")
-			.findOne({ _id: blog._id, draft: false }))
+		blog._id != id &&
+		(await db.collection("community-blogs").findOne({ _id: blog._id }))
 	) {
 		return res
 			.status(400)

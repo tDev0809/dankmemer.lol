@@ -1,6 +1,7 @@
 import axios from "axios";
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { BlogPost } from "../../components/community/blog/BlogPost";
 import { ViewMore } from "../../components/community/blog/ViewMore";
@@ -8,8 +9,8 @@ import { PostCard } from "../../components/community/PostCard";
 import Section from "../../components/community/Section";
 import { TopContributors } from "../../components/community/TopContributors";
 import UpdateBanner from "../../components/community/UpdateBanner";
-import { ViewingAs } from "../../components/community/ViewingAs";
 import { Title } from "../../components/Title";
+import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
 import { POST_CATEGORIES } from "../../constants";
 import { Blog, PageProps, Post } from "../../types";
@@ -24,6 +25,7 @@ export default function Community({ user }: PageProps) {
 	>("all");
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [loadingPosts, setLoadingPosts] = useState(false);
+	const router = useRouter();
 
 	useEffect(() => {
 		axios("/api/community/blogs/all").then(({ data }) => {
@@ -48,10 +50,25 @@ export default function Community({ user }: PageProps) {
 	return (
 		<Container title="Community" user={user}>
 			<div className="flex flex-col my-16 space-y-8 mx-8 xl:mx-0">
-				<div className="flex flex-col space-y-2">
-					<div className="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center">
+				<div className="flex flex-col space-y-4">
+					<div className="flex justify-between items-center">
 						<Title size="big">Community</Title>
-						<ViewingAs user={user} />
+						{user && (
+							<Button
+								size="small"
+								variant="dark"
+								onClick={() =>
+									router.push(
+										`/community/profile/${user?.id}`
+									)
+								}
+							>
+								<div className="flex items-center space-x-2">
+									<div className="material-icons">person</div>
+									<div>Your Profile</div>
+								</div>
+							</Button>
+						)}
 					</div>
 					<UpdateBanner
 						title="Update 9.6.0 is OUT!"
@@ -60,7 +77,27 @@ export default function Community({ user }: PageProps) {
 						id="xqc"
 					/>
 				</div>
-				<Section title="Our Blog">
+				<Section
+					title="Our Blog"
+					button={
+						user?.developer && (
+							<Button
+								size="small"
+								variant="primary"
+								onClick={() =>
+									router.push(`/community/blog/new/edit`)
+								}
+							>
+								<div className="flex items-center space-x-2">
+									<div className="material-icons">
+										description
+									</div>
+									<div>New Blog</div>
+								</div>
+							</Button>
+						)
+					}
+				>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
 						{blogs.slice(0, 4).map((blog) => (
 							<BlogPost data={blog} user={user} />

@@ -15,8 +15,8 @@ const alignClasses = {
 };
 
 const variantClasses = {
-	primary: "text-white bg-dank-300 hover:bg-dank-200 transition-colors",
-	dark: "text-gray-900 dark:text-white bg-gray-300 hover:bg-gray-400 dark:bg-dank-600 dark:hover:bg-opacity-75 transition-colors",
+	primary: "text-white bg-dank-300 hover:bg-opacity-80 transition-colors",
+	dark: "text-gray-900 dark:text-white bg-gray-300 hover:bg-opacity-80 dark:bg-dank-600 dark:hover:bg-opacity-75 transition-colors",
 };
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

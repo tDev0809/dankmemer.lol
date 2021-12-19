@@ -22,7 +22,7 @@ export function tailwindHtml(content: string) {
 		.replaceAll("<td", `<td class="border border-dark-300"`)
 		.replaceAll("<th", `<th class="bg-dank-400"`)
 		.replaceAll('\\"', "'")
-		.replaceAll("<p>", `<p class="text-dark-400 dark:text-gray-200">`);
+		.replaceAll("<p>", `<p class="text-dark-400 dark:text-gray-200 mb-3">`);
 
 	const map = {};
 
