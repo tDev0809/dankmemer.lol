@@ -29,7 +29,12 @@ export async function getUser(id: string): Promise<UserData | null> {
 				honorable: user.honorable == true,
 			};
 
-			await redis.set(`user:${id}`, JSON.stringify(data), "PX", TIME.day);
+			await redis.set(
+				`user:${id}`,
+				JSON.stringify(data),
+				"PX",
+				TIME.day * 3
+			);
 
 			return data;
 		} else {
@@ -75,7 +80,7 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					`user:${ids[i]}`,
 					JSON.stringify(data),
 					"PX",
-					TIME.day
+					TIME.day * 3
 				);
 
 				users.push(data);
