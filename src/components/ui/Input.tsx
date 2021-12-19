@@ -3,6 +3,7 @@ import { ChangeEvent } from "react";
 
 const variantClasses = {
 	short: "h-10",
+	medium: "h-48",
 	long: "h-96",
 };
 
@@ -25,7 +26,7 @@ export default function Input({
 	variant,
 	scrollable,
 }: Props) {
-	const Text = variant == "long" ? "textarea" : "input";
+	const Text = variant == "short" ? "input" : "textarea";
 
 	return (
 		<Text

@@ -87,34 +87,25 @@ export interface Contributor extends UserData {
 	score: number;
 }
 
-// export interface CommentAuthor {
-// 	discriminator: string;
-// 	id: string;
-// 	username: string;
-// 	developer?: boolean;
-// 	moderator?: boolean;
-// }
+export interface Reply {
+	_id: string;
+	cID: string;
+	pID: string;
+	author: UserData | string;
+	reply: string;
+	createdAt: number;
+	deleted?: boolean;
+}
 
-// export interface Reply {
-// 	_id: string;
-// 	cID: string;
-// 	pID: string;
-// 	author: CommentAuthor;
-// 	reply: string;
-// 	createdAt: number;
-// 	deleted?: boolean;
-// }
-
-// export interface Comment {
-// 	_id: string;
-// 	author: CommentAuthor;
-// 	comment: string;
-// 	createdAt: number;
-// 	replies: Reply[];
-// 	pID: string;
-// 	deleted?: boolean;
-// 	pinned?: boolean;
-// }
+export interface Comment {
+	_id: string;
+	author: UserData | string;
+	content: string;
+	createdAt: number;
+	replies: Reply[];
+	pID: string;
+	pinned?: boolean;
+}
 
 export interface Blog {
 	_id: string;

@@ -2,7 +2,7 @@ import axios from "axios";
 import clsx from "clsx";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { Post } from "../../types";
+import { Post, UserData } from "../../types";
 import { truncate } from "../../util/string";
 import { Avatar } from "../Avatar";
 import TextLink from "../ui/TextLink";
@@ -88,8 +88,8 @@ export function PostCard({ data }: Props) {
 							{data ? (
 								<Avatar
 									size="20px"
-									link={data.author.avatar}
-									id={data.author.id}
+									link={(data.author as UserData).avatar}
+									id={(data.author as UserData).id}
 								/>
 							) : (
 								<div className="animate-pulse bg-gray-600 rounded-full w-[20px] h-[20px]" />
@@ -99,11 +99,14 @@ export function PostCard({ data }: Props) {
 								<TextLink
 									href={
 										data
-											? `/community/profile/${data?.author.id}`
+											? `/community/profile/${
+													(data?.author as UserData)
+														.id
+											  }`
 											: "#"
 									}
 								>
-									{data?.author.name || "???"}
+									{(data?.author as UserData)?.name || "???"}
 								</TextLink>
 							</div>
 						</div>
