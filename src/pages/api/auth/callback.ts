@@ -4,11 +4,13 @@ import { NextIronRequest, withSession } from "../../../util/session";
 import axios from "axios";
 import { dbConnect } from "../../../util/mongodb";
 import { encrypt } from "../../../util/crypt";
+import { redisConnect } from "../../../util/redis";
 
 const OAuthScope = ["identify", "email"].join(" ");
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
+	const redis = await redisConnect();
 
 	if (!req.query.code) {
 		res.status(404).redirect("/404");
@@ -74,6 +76,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 					},
 				}
 			);
+			await redis.del(`user:${user.id}`);
+			if (userData.vanity) {
+				await redis.del(`user:${user.vanity}`);
+			}
 		} else {
 			userData = {
 				_id: user.id,
