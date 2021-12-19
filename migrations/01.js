@@ -12,6 +12,26 @@ const migration = async () => {
 	const client = await MongoClient.connect(process.env.MONGODB_URI);
 	const db = client.db(process.env.MONGODB_DB);
 
+	// Add discrim and username if not found
+	const addMissingFields = async (user) => {
+		const data = await db.collection("users").findOne({ _id: user.id });
+
+		if (!data.discriminator || !data.name || !data.avatar) {
+			await db.collection("users").updateOne(
+				{ _id: user.id },
+				{
+					$set: {
+						name: user.username,
+						discriminator: user.discriminator,
+						avatar: `https://cdn.discordapp.com/embed/avatars/${
+							parseFloat(user.id) % 5
+						}.png`,
+					},
+				}
+			);
+		}
+	};
+
 	// Migrate Blogs to Community
 	const blogs = await db.collection("blogs").find({}).toArray();
 
@@ -68,6 +88,8 @@ const migration = async () => {
 			type: 0, // See src/constants/activities
 			createdAt: post.createdAt,
 		});
+
+		await addMissingFields(post.author);
 	}
 
 	await db.collection("feedback_posts").drop();
@@ -85,6 +107,7 @@ const migration = async () => {
 				content: comment.comment,
 				author: comment.author.id,
 				createdAt: comment.createdAt,
+				...(comment.pinned ? { pinned: true } : {}),
 			});
 
 			if (comment.author.id !== "[deleted]") {
@@ -97,6 +120,8 @@ const migration = async () => {
 					type: 1, // See src/constants/activities
 					createdAt: comment.createdAt,
 				});
+
+				await addMissingFields(comment.author);
 			}
 		}
 	}
@@ -127,6 +152,8 @@ const migration = async () => {
 					type: 2, // See src/constants/activities
 					createdAt: reply.createdAt,
 				});
+
+				await addMissingFields(reply.author);
 			}
 		}
 	}
