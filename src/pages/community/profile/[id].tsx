@@ -1,21 +1,16 @@
 import axios from "axios";
-import clsx from "clsx";
 import { formatDistance } from "date-fns";
 import { GetServerSideProps } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Avatar } from "../../../components/Avatar";
-import {
-	BotModeratorBadge,
-	DeveloperBadge,
-	ModeratorBadge,
-} from "../../../components/Badge";
+import { Badge } from "../../../components/Badge";
 import { PostCard } from "../../../components/community/PostCard";
 import Container from "../../../components/ui/Container";
 import { Activity, PageProps, Profile } from "../../../types";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
-import Link from "next/link";
 
 function ActivityCard({ activity }: { activity: Activity }) {
 	let text = "???";
@@ -142,13 +137,13 @@ export default function ProfilePage({ user }: PageProps) {
 										</div>
 										<div>
 											{profile.user.developer && (
-												<DeveloperBadge />
+												<Badge role="developer" />
 											)}
 											{profile.user.moderator && (
-												<ModeratorBadge />
+												<Badge role="moderator" />
 											)}
 											{profile.user.botModerator && (
-												<BotModeratorBadge />
+												<Badge role="botModerator" />
 											)}
 										</div>
 									</div>
