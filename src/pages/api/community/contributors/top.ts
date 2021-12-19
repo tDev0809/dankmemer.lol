@@ -31,7 +31,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				},
 			},
 			{ $sort: { score: -1 } },
-			{ $limit: 25 },
+			{ $limit: 10 },
 		])
 		.toArray();
 
