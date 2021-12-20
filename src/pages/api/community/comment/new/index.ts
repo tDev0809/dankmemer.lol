@@ -91,6 +91,17 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		createdAt: Date.now(),
 	});
 
+	if (user.developer && !post.labels.includes("developer-response")) {
+		await db.collection("community-posts").updateOne(
+			{ _id: req.body.id },
+			{
+				$addToSet: {
+					labels: "developer-response",
+				},
+			}
+		);
+	}
+
 	await redis.del(`community:post:stats:${req.body.id}`);
 
 	await axios.post(
