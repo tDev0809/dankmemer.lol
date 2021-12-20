@@ -3,6 +3,8 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { User } from "../types";
+import { Avatar } from "./Avatar";
+import Button from "./ui/Button";
 import Dropdown from "./ui/Dropdown";
 
 interface Props {
@@ -112,9 +114,10 @@ export default function Navbar({ user }: Props) {
 								<Dropdown
 									content={
 										<div className="flex items-center space-x-2">
-											<img
-												className="w-8 rounded-full bg-light-200 dark:bg-dark-100"
-												src={user.avatar}
+											<Avatar
+												id={user.id}
+												link={user.avatar}
+												size="32px"
 											/>
 											<div className="text-dark-400 dark:text-white">
 												{user.username}
@@ -199,9 +202,11 @@ export default function Navbar({ user }: Props) {
 									}
 								>
 									<div className="flex items-center">
-										<img
-											className="w-16 rounded-full bg-light-200 dark:bg-dark-100 mr-4"
-											src={user.avatar}
+										<Avatar
+											id={user.id}
+											link={user.avatar}
+											size="64px"
+											className="mr-4"
 										/>
 										<div>
 											<h3 className="font-montserrat font-bold leading-none">
@@ -250,20 +255,26 @@ export default function Navbar({ user }: Props) {
 										</Link>
 									)}
 								</div>
-								<Link href="/api/auth/logout">
-									<li className="bg-red-500 text-center rounded-lg py-2">
-										Logout
-									</li>
-								</Link>
+								<Button
+									variant="danger"
+									size="medium"
+									block
+									href="/api/auth/logout"
+								>
+									Logout
+								</Button>
 							</div>
 						) : (
-							<Link href="/api/auth/login">
-								<div className="mt-5 pt-5 border-t-[1px] border-dank-600">
-									<li className="bg-dank-300 cursor-pointer text-dark-400 dark:text-white hover:text-light-600 text-center rounded-lg py-2">
-										Login
-									</li>
-								</div>
-							</Link>
+							<div className="mt-5 pt-5 border-t-[1px] border-dank-600">
+								<Button
+									variant="primary"
+									size="medium"
+									block
+									href="/api/auth/login"
+								>
+									Logout
+								</Button>
+							</div>
 						)}
 					</ul>
 				)}
