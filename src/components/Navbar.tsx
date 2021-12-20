@@ -14,7 +14,7 @@ interface Props {
 export default function Navbar({ user }: Props) {
 	const [hamburger, setHamburger] = useState(false);
 	const [discount, setDiscount] = useState(0);
-	const [mobile_AccountExpanded, setMobile_AccountExpanded] = useState(false);
+	const [mobileAccountExpanded, setMobileAccountExpanded] = useState(false);
 
 	useEffect(() => {
 		document.documentElement.style.overflow = hamburger ? "hidden" : "auto";
@@ -196,8 +196,8 @@ export default function Navbar({ user }: Props) {
 								<div
 									className="flex items-center justify-between w-full select-none"
 									onClick={() =>
-										setMobile_AccountExpanded(
-											!mobile_AccountExpanded
+										setMobileAccountExpanded(
+											!mobileAccountExpanded
 										)
 									}
 								>
@@ -221,7 +221,7 @@ export default function Navbar({ user }: Props) {
 										className="material-icons transition-transform ease-in-out"
 										style={{
 											transform: `rotate(${
-												mobile_AccountExpanded ? 180 : 0
+												mobileAccountExpanded ? 180 : 0
 											}deg)`,
 										}}
 									>
@@ -232,7 +232,7 @@ export default function Navbar({ user }: Props) {
 									id="account-links"
 									className="pl-3 mb-5 overflow-hidden transition-all ease"
 									style={{
-										height: mobile_AccountExpanded
+										height: mobileAccountExpanded
 											? "96px"
 											: "0px",
 									}}
