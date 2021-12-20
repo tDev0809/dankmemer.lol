@@ -3,10 +3,12 @@ import { ObjectId } from "bson";
 import { NextApiResponse } from "next";
 import { ActivityType } from "../../../../../constants/activities";
 import { dbConnect } from "../../../../../util/mongodb";
+import { redisConnect } from "../../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../../util/session";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
+	const redis = await redisConnect();
 	const { id } = req.query;
 
 	const user = req.session.get("user");
@@ -48,6 +50,8 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		uID: reply.author,
 		"data.postId": reply.pID,
 	});
+
+	await redis.del(`community:post:stats:${reply.pID}`);
 
 	await axios.post(
 		process.env.FEEDBACK_WEBHOOK!,
