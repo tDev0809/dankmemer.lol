@@ -2,9 +2,13 @@ interface Props {
 	label: string;
 }
 
-// TODO: all labels
 const colors: Record<string, string> = {
 	accepted: "#64b83d",
+	implemented: "#e6c365",
+	duplicate: "#e36da6",
+	denied: "#eb441a",
+	invalid: "#eb441a",
+	considered: "#9f50f2",
 	"developer-response": "#6891d9",
 };
 
