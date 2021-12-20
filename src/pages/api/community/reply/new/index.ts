@@ -17,7 +17,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(401).json({ error: "You are not logged in." });
 	}
 	if (
-		(await redis.get(`community:cooldown:comment:${user.id}`)) &&
+		(await redis.get(`community:cooldown:reply:${user.id}`)) &&
 		!user.moderator
 	) {
 		return res.status(429).json({ error: "You're doing that too often." });
@@ -41,7 +41,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	await redis.set(
-		`community:cooldown:comment:${user.id}`,
+		`community:cooldown:reply:${user.id}`,
 		req.body.id,
 		"PX",
 		TIME.minute * 5

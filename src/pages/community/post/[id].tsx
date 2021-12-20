@@ -254,12 +254,10 @@ export default function PostPage({ user }: PageProps) {
 										/>
 									</>
 								)}
-								{user?.id === (post.author as UserData).id ||
-									(user?.moderator && (
-										<Button variant={"danger"}>
-											Delete
-										</Button>
-									))}
+								{(user?.id === (post.author as UserData).id ||
+									user?.moderator) && (
+									<Button variant={"danger"}>Delete</Button>
+								)}
 								<Button
 									variant={post.upvoted ? "primary" : "dark"}
 									onClick={() => upvote()}

@@ -49,8 +49,8 @@ export default function Community({ user }: PageProps) {
 
 	return (
 		<Container title="Community" user={user}>
-			<div className="flex flex-col my-16 space-y-8 mx-8 xl:mx-0">
-				<div className="flex flex-col space-y-2">
+			<div className="flex flex-col my-16 space-y-12 mx-8 xl:mx-0">
+				<div className="flex flex-col space-y-4">
 					<div className="flex justify-between items-center">
 						<Title size="big">Community</Title>
 						{user && (
@@ -83,7 +83,7 @@ export default function Community({ user }: PageProps) {
 						user?.developer && (
 							<Button
 								size="small"
-								variant="primary"
+								variant="dark"
 								onClick={() =>
 									router.push(`/community/blog/new/edit`)
 								}
@@ -135,7 +135,22 @@ export default function Community({ user }: PageProps) {
 							</div>
 						</div>
 						<div className="flex flex-col space-y-2 w-full">
-							<div className="text-lg">Trending posts</div>
+							<div className="flex items-center justify-between">
+								<div className="text-lg">Trending posts</div>
+								<Button
+									size="small"
+									variant="dark"
+									href="/community/post/"
+								>
+									<div className="flex items-center space-x-2">
+										<div className="material-icons">
+											post_add
+										</div>
+										<div>New Post</div>
+									</div>
+								</Button>
+							</div>
+
 							<div className="grid grid-cols-2 gap-4">
 								{loadingPosts
 									? [...Array(10)].map((i) => (
