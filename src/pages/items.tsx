@@ -121,7 +121,7 @@ export default function ItemsPage({ user }: PageProps) {
 						<div className="inline-block xl:hidden">
 							<Dropdown
 								content={
-									<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">
+									<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white p-2 w-40">
 										<span>
 											{category == "" ? "All" : category}
 										</span>
@@ -130,30 +130,19 @@ export default function ItemsPage({ user }: PageProps) {
 										</span>
 									</div>
 								}
-								variant="wide"
-							>
-								<div className="mt-2 rounded-md bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
-									{categories
-										.concat("All")
-										.map((ccategory) => (
-											<div
-												key={ccategory}
-												className={clsx(
-													"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
-												)}
-												onClick={() => {
-													setCategory(
-														ccategory == "All"
-															? ""
-															: ccategory
-													);
-												}}
-											>
-												{ccategory}
-											</div>
-										))}
-								</div>
-							</Dropdown>
+								options={categories
+									.concat("All")
+									.map((ccategory) => ({
+										label: ccategory,
+										onClick: () => {
+											setCategory(
+												ccategory == "All"
+													? ""
+													: ccategory
+											);
+										},
+									}))}
+							/>
 						</div>
 						<div className="ml-2 xl:ml-0">
 							<Searchbox

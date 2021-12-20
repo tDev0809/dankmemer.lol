@@ -110,10 +110,10 @@ export default function Navbar({ user }: Props) {
 							</Link>
 						)}
 						{user && (
-							<div className="pl-4 h-full">
+							<div className="pl-4 h-full flex items-center">
 								<Dropdown
 									content={
-										<div className="flex items-center space-x-2">
+										<div className="flex items-center space-x-2 p-2">
 											<Avatar
 												id={user.id}
 												link={user.avatar}
@@ -127,33 +127,28 @@ export default function Navbar({ user }: Props) {
 											</span>
 										</div>
 									}
-									variant="big"
-								>
-									<ul className="rounded-md bg-light-500 dark:bg-dark-100 mt-2 py-2 text-sm text-dark-100 dark:text-white">
-										{user.moderator && (
-											<Link href="/control">
-												<li className="hover:bg-light-200 dark:hover:bg-dark-200 w-full px-4 py-1 transition duration-75 ease-in-out">
-													Control panel
-												</li>
-											</Link>
-										)}
-										<Link href="/appeals">
-											<li className="hover:bg-light-200 dark:hover:bg-dark-200 w-full px-4 py-1 transition duration-75 ease-in-out">
-												Appeal a ban
-											</li>
-										</Link>
-										<Link href="/reports">
-											<li className="hover:bg-light-200 dark:hover:bg-dark-200 w-full px-4 py-1 transition duration-75 ease-in-out">
-												Report a user
-											</li>
-										</Link>
-										<Link href="/api/auth/logout">
-											<li className="text-red-400 hover:bg-light-200 dark:hover:bg-dark-200 w-full px-4 py-1 transition duration-75 ease-in-out">
-												Logout
-											</li>
-										</Link>
-									</ul>
-								</Dropdown>
+									options={[
+										user.moderator
+											? {
+													label: "Control Panel",
+													link: "/control",
+											  }
+											: null,
+										{
+											label: "Appeal a ban",
+											link: "/appeals",
+										},
+										{
+											label: "Report a user",
+											link: "/reports",
+										},
+										{
+											label: "Logout",
+											link: "/api/auth/logout",
+											variant: "danger",
+										},
+									]}
+								/>
 							</div>
 						)}
 					</div>

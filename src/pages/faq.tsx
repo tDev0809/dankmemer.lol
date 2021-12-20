@@ -106,7 +106,7 @@ export default function FaqPage({ user }: PageProps) {
 					<div className="visible lg:hidden">
 						<Dropdown
 							content={
-								<div className="flex justify-between w-full px-4 text-dark-100 dark:text-white">
+								<div className="flex justify-between px-4 text-dark-100 dark:text-white p-2 w-40">
 									<span>
 										{currentCategory.startsWith("all")
 											? "Search Results"
@@ -117,23 +117,13 @@ export default function FaqPage({ user }: PageProps) {
 									</span>
 								</div>
 							}
-							variant="wide"
-						>
-							<div className="mt-2 rounded-md bg-light-500 dark:bg-dark-100 text-dark-100 dark:text-white">
-								{categories.map((category) => (
-									<div
-										className={clsx(
-											"cursor-pointer py-1 px-2 hover:bg-light-200 dark:hover:bg-dark-200"
-										)}
-										onClick={() => {
-											setCurrentCategory(category);
-										}}
-									>
-										{category}
-									</div>
-								))}
-							</div>
-						</Dropdown>
+							options={categories.map((category) => ({
+								label: category,
+								onClick: () => {
+									setCurrentCategory(category);
+								},
+							}))}
+						/>
 					</div>
 					<div className="pl-4 lg:pl-0">
 						<Searchbox

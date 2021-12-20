@@ -78,7 +78,7 @@ export function ControlCard({
 					{dropdown && (
 						<Dropdown
 							content={
-								<div className="flex items-center justify-between w-full">
+								<div className="flex items-center justify-between w-full p-2">
 									<div className="flex items-center space-x-2">
 										<span className="material-icons text-dark-400 dark:text-gray-500">
 											{dropdown.icon}
@@ -95,21 +95,13 @@ export function ControlCard({
 									</div>
 								</div>
 							}
-							variant="big"
-						>
-							<ul className="rounded-md mt-1 py-2 text-sm text-dark-100 dark:text-white bg-gray-100 dark:bg-dark-100">
-								{dropdown.options.map((option) => (
-									<li
-										className="hover:bg-light-200 dark:hover:bg-dark-200 w-full px-4 py-1 transition duration-75 ease-in-out"
-										onClick={(e) => {
-											setDropdownData(option.value);
-										}}
-									>
-										{option.text}
-									</li>
-								))}
-							</ul>
-						</Dropdown>
+							options={dropdown.options.map((option) => ({
+								onClick: (e) => {
+									setDropdownData(option.value);
+								},
+								label: option.text,
+							}))}
+						/>
 					)}
 				</div>
 			</div>
