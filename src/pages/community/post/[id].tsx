@@ -262,12 +262,17 @@ export default function PostPage({ user }: PageProps) {
 									variant={post.upvoted ? "primary" : "dark"}
 									onClick={() => upvote()}
 								>
-									<span
-										className="material-icons"
-										style={{ fontSize: "20px" }}
-									>
-										arrow_upward
-									</span>
+									<div className="flex items-center space-x-1">
+										<span
+											className="material-icons"
+											style={{ fontSize: "20px" }}
+										>
+											arrow_upward
+										</span>
+										<div>
+											{post.upvotes.toLocaleString()}
+										</div>
+									</div>
 								</Button>
 							</div>
 						</div>
