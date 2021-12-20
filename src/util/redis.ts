@@ -22,7 +22,12 @@ export async function redisConnect() {
 		return cachedClient;
 	}
 
-	const redis = new Redis(parseInt(port!), host!);
+	let redis;
+	!process.env.REDIS_PASS
+		? (redis = new Redis(parseInt(port!), host!))
+		: (redis = new Redis(parseInt(port!), host!, {
+				password: process.env.REDIS_PASS,
+		  }));
 
 	cachedClient = redis;
 

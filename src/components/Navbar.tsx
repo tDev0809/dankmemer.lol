@@ -12,6 +12,7 @@ interface Props {
 export default function Navbar({ user }: Props) {
 	const [hamburger, setHamburger] = useState(false);
 	const [discount, setDiscount] = useState(0);
+	const [mobile_AccountExpanded, setMobile_AccountExpanded] = useState(false);
 
 	useEffect(() => {
 		document.documentElement.style.overflow = hamburger ? "hidden" : "auto";
@@ -36,7 +37,7 @@ export default function Navbar({ user }: Props) {
 	return (
 		<>
 			<div className="flex justify-center items-center text-lg">
-				<nav className="max-w-7xl drop-shadow-xl dark:drop-shadow-none bg-light-200 dark:bg-dark-200 rounded-md flex justify-between p-4 mt-0 lg:mt-5 w-full lg:w-11/12 z-[1]">
+				<nav className="max-w-7xl drop-shadow-xl dark:drop-shadow-none bg-light-200 dark:bg-dark-200 lg:rounded-md flex justify-between p-4 mt-0 lg:mt-5 w-full lg:w-11/12 z-[1]">
 					<div className="flex items-center">
 						<Link href="/">
 							<img
@@ -161,60 +162,107 @@ export default function Navbar({ user }: Props) {
 					</div>
 				</nav>
 				{hamburger && (
-					<ul className="absolute flex flex-col bg-light-200 dark:bg-dark-200 box-border w-screen h-screen z-50 top-[105px]">
+					<ul className="absolute flex flex-col bg-light-200 dark:bg-dark-200 box-border w-screen h-screen z-50 px-6 top-[74px]">
 						<Link href="/commands">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
 								Commands
 							</li>
 						</Link>
 						<Link href="/faq">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
-								FAQ
+							<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
+								Frequently asked questions
+							</li>
+						</Link>
+						<Link href="/community">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
+								Community
 							</li>
 						</Link>
 						<Link href="/loot">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
 								Store
 							</li>
 						</Link>
 						<Link href="/items">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
+							<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
 								Items
 							</li>
 						</Link>
-						<Link href="/community">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
-								Community
-							</li>
-						</Link>
-						<Link href="/appeals">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
-								Appeal a ban
-							</li>
-						</Link>
-						<Link href="/reports">
-							<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
-								Report a user
-							</li>
-						</Link>
-						{user?.moderator && (
-							<Link href="/control">
-								<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500 dark:border-dark-300">
-									Control panel
-								</li>
-							</Link>
-						)}
 						{user ? (
-							<Link href="/api/auth/logout">
-								<li className="text-red-400 hover:text-red-500 p-4 border-b-2 border-light-500 dark:border-dark-300">
-									Logout
-								</li>
-							</Link>
+							<div className="mt-5 pt-5 border-t-[1px] border-dank-600">
+								<div
+									className="flex items-center justify-between w-full select-none"
+									onClick={() =>
+										setMobile_AccountExpanded(
+											!mobile_AccountExpanded
+										)
+									}
+								>
+									<div className="flex items-center">
+										<img
+											className="w-16 rounded-full bg-light-200 dark:bg-dark-100 mr-4"
+											src={user.avatar}
+										/>
+										<div>
+											<h3 className="font-montserrat font-bold leading-none">
+												{user.username}
+											</h3>
+											<p className="text-sm italic text-light-600 font-medium leading-none">
+												#{user.discriminator}
+											</p>
+										</div>
+									</div>
+									<span
+										className="material-icons transition-transform ease-in-out"
+										style={{
+											transform: `rotate(${
+												mobile_AccountExpanded ? 180 : 0
+											}deg)`,
+										}}
+									>
+										expand_more
+									</span>
+								</div>
+								<div
+									id="account-links"
+									className="pl-3 mb-5 overflow-hidden transition-all ease"
+									style={{
+										height: mobile_AccountExpanded
+											? "96px"
+											: "0px",
+									}}
+								>
+									<Link href="/appeals">
+										<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
+											Appeal a ban
+										</li>
+									</Link>
+									<Link href="/reports">
+										<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
+											Report a user
+										</li>
+									</Link>
+									{user?.moderator && (
+										<Link href="/control">
+											<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
+												Control panel
+											</li>
+										</Link>
+									)}
+								</div>
+								<Link href="/api/auth/logout">
+									<li className="bg-red-500 text-center rounded-lg py-2">
+										Logout
+									</li>
+								</Link>
+							</div>
 						) : (
 							<Link href="/api/auth/login">
-								<li className="text-dark-400 dark:text-white hover:text-light-600 p-4 border-b-2 border-light-500  dark:border-dark-300">
-									Login
-								</li>
+								<div className="mt-5 pt-5 border-t-[1px] border-dank-600">
+									<li className="bg-dank-300 cursor-pointer text-dark-400 dark:text-white hover:text-light-600 text-center rounded-lg py-2">
+										Login
+									</li>
+								</div>
 							</Link>
 						)}
 					</ul>
