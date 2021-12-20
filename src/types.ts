@@ -92,9 +92,8 @@ export interface Reply {
 	cID: string;
 	pID: string;
 	author: UserData | string;
-	reply: string;
+	content: string;
 	createdAt: number;
-	deleted?: boolean;
 }
 
 export interface Comment {

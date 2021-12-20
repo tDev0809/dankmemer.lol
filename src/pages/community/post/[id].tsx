@@ -19,7 +19,9 @@ const LOAD_COMMENTS_AMOUNT = 10;
 export default function PostPage({ user }: PageProps) {
 	const [post, setPost] = useState<Post>();
 	const [comment, setComment] = useState("");
+	const [reply, setReply] = useState("");
 	const [comments, setComments] = useState<Comment[]>([]);
+	const [replyingTo, setReplyingTo] = useState("");
 
 	const [from, setFrom] = useState(0);
 	const [allComments, setAllComments] = useState(false);
@@ -39,6 +41,94 @@ export default function PostPage({ user }: PageProps) {
 			.catch((e) => {
 				toast.dark(e.response.data.error);
 			});
+	};
+
+	const postComment = async () => {
+		const res = await fetch("/api/community/comment/new", {
+			credentials: "same-origin",
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				id,
+				comment,
+			}),
+		});
+
+		if (res.status !== 200) {
+			toast.dark((await res.json()).error);
+			return;
+		}
+
+		if (user) {
+			comments.push({
+				_id: (await res.json()).id,
+				pID: id as string,
+				content: comment,
+				replies: [],
+				createdAt: Date.now(),
+				author: {
+					id: user.id,
+					avatar: user.avatar,
+					discriminator: user.discriminator,
+					name: user.username,
+					developer: user.developer,
+					moderator: user.moderator,
+					botModerator: user.botModerator,
+					honorable: user.honorable,
+				},
+			});
+		}
+
+		setComments([...comments]);
+		setComment("");
+	};
+
+	const postReply = async () => {
+		const res = await fetch("/api/community/reply/new", {
+			credentials: "same-origin",
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				reply,
+				id,
+				replyingTo,
+			}),
+		});
+		if (res.status !== 200) {
+			toast.dark((await res.json()).error);
+			return;
+		}
+		const comment = comments.find((c) => c._id == replyingTo);
+		if (user) {
+			comment!.replies.push({
+				_id: (await res.json()).id,
+				cID: replyingTo,
+				pID: id as string,
+				content: reply,
+				createdAt: Date.now(),
+				author: {
+					id: user.id,
+					avatar: user.avatar,
+					discriminator: user.discriminator,
+					name: user.username,
+					developer: user.developer,
+					moderator: user.moderator,
+					botModerator: user.botModerator,
+					honorable: user.honorable,
+				},
+			});
+		}
+		setComments([...comments]);
+		setReplyingTo("");
+		setReply("");
+	};
+
+	const loadNewComments = async () => {
+		setFrom(from + LOAD_COMMENTS_AMOUNT);
 	};
 
 	useEffect(() => {
@@ -133,16 +223,84 @@ export default function PostPage({ user }: PageProps) {
 								placeholder={"..."}
 							/>
 							<div className="flex justify-end">
-								<Button variant="primary" onClick={() => {}}>
+								<Button
+									variant="primary"
+									disabled={
+										comment.length < 5 ||
+										comment.length > 1024 ||
+										!user
+									}
+									onClick={() => postComment()}
+								>
 									Submit
 								</Button>
 							</div>
 						</div>
-						<div className="flex flex-col space-y-6 border-t-4 pt-4 border-dark-200">
-							{comments.map((comment) => (
-								<CommentCard comment={comment} />
-							))}
-						</div>
+						{comments.length > 0 && (
+							<div className="flex flex-col space-y-6 border-t-4 pt-4 border-dark-200">
+								{comments.map((comment) => (
+									<div>
+										<CommentCard
+											data={comment}
+											setReplyingTo={setReplyingTo}
+											user={user}
+										/>
+										{comment.replies.length > 0 && (
+											<div className="border-l-4 border-dark-200 mt-3 flex flex-col space-y-3">
+												{comment.replies.map(
+													(reply) => (
+														<CommentCard
+															data={reply}
+															reply={true}
+															user={user}
+														/>
+													)
+												)}
+											</div>
+										)}
+										{replyingTo === comment._id && (
+											<div className="p-4 flex space-x-2 rounded-md">
+												<Input
+													block
+													variant="short"
+													onChange={(e) =>
+														setReply(e.target.value)
+													}
+													value={reply}
+													placeholder={`Replying to ${
+														(
+															comment.author as UserData
+														).name
+													}`}
+												/>
+												<Button
+													size="medium"
+													variant="dark"
+													disabled={
+														reply.length < 5 ||
+														reply.length > 200
+													}
+													onClick={() => {
+														postReply();
+													}}
+												>
+													Reply
+												</Button>
+											</div>
+										)}
+									</div>
+								))}
+							</div>
+						)}
+						{!allComments && (
+							<Button
+								block
+								variant="dark"
+								onClick={loadNewComments}
+							>
+								Load More
+							</Button>
+						)}
 					</div>
 				)}
 			</div>

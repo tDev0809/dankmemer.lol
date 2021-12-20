@@ -1,6 +1,7 @@
 import { NextApiResponse } from "next";
 import { Comment } from "../../../../../types";
 import { dbConnect } from "../../../../../util/mongodb";
+import { randomAvatar } from "../../../../../util/random";
 import { NextIronRequest, withSession } from "../../../../../util/session";
 import { getUsers } from "../../../../../util/user";
 
@@ -29,7 +30,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			},
 			{
 				$lookup: {
-					from: "community-posts-comments",
+					from: "community-posts-replies",
 					localField: "_id",
 					foreignField: "cID",
 					as: "replies",
@@ -64,16 +65,43 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	for (let i = 0; i < userDataComments.length; i++) {
 		const comment = comments[i];
-		comment.author = userDataComments[i];
+		if (userDataComments[i]) {
+			comment.author = userDataComments[i];
+		} else {
+			comment.author = {
+				id: "#",
+				name: "[deleted]",
+				discriminator: "0000",
+				avatar: randomAvatar("0"),
+				developer: false,
+				moderator: false,
+				botModerator: false,
+				honorable: false,
+			};
+		}
 
 		if (comment.replies.length) {
 			const userDataReplies = await getUsers(
 				comment.replies.map((r) => r.author as string)
 			);
 
-			for (let j = 0; i < userDataReplies.length; j++) {
-				const reply = comment.replies[i];
-				reply.author = userDataReplies[i];
+			for (let j = 0; j < userDataReplies.length; j++) {
+				const reply = comment.replies[j];
+
+				if (userDataReplies[j]) {
+					reply.author = userDataReplies[j];
+				} else {
+					reply.author = {
+						id: "#",
+						name: "[deleted]",
+						discriminator: "0000",
+						avatar: randomAvatar("0"),
+						developer: false,
+						moderator: false,
+						botModerator: false,
+						honorable: false,
+					};
+				}
 			}
 		}
 	}

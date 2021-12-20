@@ -24,16 +24,19 @@ const names = {
 
 interface Props {
 	role: keyof typeof colors;
+	size?: number;
+	tooltip?: boolean;
 }
 
-export function Badge({ role }: Props) {
-	return (
-		<Tooltip content={names[role]}>
-			<div
-				className={clsx("material-icons cursor-default", colors[role])}
-			>
-				{icons[role]}
-			</div>
-		</Tooltip>
+export function Badge({ role, size = 22, tooltip = true }: Props) {
+	const badge = (
+		<div
+			className={clsx("material-icons cursor-default", colors[role])}
+			style={{ fontSize: `${size}px` }}
+		>
+			{icons[role]}
+		</div>
 	);
+
+	return tooltip ? <Tooltip content={names[role]}>{badge}</Tooltip> : badge;
 }
