@@ -8,7 +8,9 @@ import CommentCard from "../../../components/community/post/CommentCard";
 import { Label } from "../../../components/community/PostLabel";
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
+import Dropdown from "../../../components/ui/Dropdown";
 import Input from "../../../components/ui/Input";
+import { POST_LABELS } from "../../../constants";
 import { Comment, PageProps, Post, UserData } from "../../../types";
 import { urlify } from "../../../util/feedback";
 import { unauthenticatedRoute } from "../../../util/redirects";
@@ -131,6 +133,21 @@ export default function PostPage({ user }: PageProps) {
 		setFrom(from + LOAD_COMMENTS_AMOUNT);
 	};
 
+	const changeLabel = (label: string) => {
+		axios
+			.patch(
+				`/api/community/post/label/${id}?label=${label.replace(
+					"no label",
+					""
+				)}`
+			)
+			.then(({ data }) => {
+				const copy = { ...(post as Post) };
+				copy.labels = data.labels;
+				setPost(copy);
+			});
+	};
+
 	useEffect(() => {
 		axios(`/api/community/post/get/${id}`)
 			.then(({ data }) => {
@@ -177,6 +194,34 @@ export default function PostPage({ user }: PageProps) {
 								)}
 							</div>
 							<div className="flex space-x-2 items-center">
+								{user?.moderator && (
+									<>
+										{" "}
+										<Dropdown
+											content={
+												<Button variant="dark">
+													Change Label
+												</Button>
+											}
+											options={POST_LABELS.filter(
+												(f) => !f.includes("all")
+											)
+												.concat("no label")
+												.map((label) => ({
+													label:
+														label
+															.charAt(0)
+															.toUpperCase() +
+														label
+															.substring(1)
+															.toLowerCase(),
+													onClick: () => {
+														changeLabel(label);
+													},
+												}))}
+										/>
+									</>
+								)}
 								{user?.id === (post.author as UserData).id ||
 									(user?.moderator && (
 										<Button variant={"danger"}>
