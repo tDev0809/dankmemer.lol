@@ -269,7 +269,7 @@ export default function Navbar({ user }: Props) {
 									block
 									href="/api/auth/login"
 								>
-									Logout
+									Login
 								</Button>
 							</div>
 						)}
