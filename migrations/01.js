@@ -103,6 +103,7 @@ const migration = async () => {
 
 		if (post) {
 			await db.collection("community-posts-comments").insertOne({
+				_id: comment._id,
 				pID: comment.pID,
 				content: comment.comment,
 				author: comment.author.id,
@@ -136,7 +137,7 @@ const migration = async () => {
 		if (post) {
 			await db.collection("community-posts-replies").insertOne({
 				pID: reply.pID,
-				cID: new ObjectId(reply.cID),
+				cID: reply.cID,
 				content: reply.reply,
 				author: reply.author.id,
 				createdAt: reply.createdAt,
