@@ -233,7 +233,9 @@ export default function Navbar({ user }: Props) {
 									className="pl-3 mb-5 overflow-hidden transition-all ease"
 									style={{
 										height: mobileAccountExpanded
-											? "96px"
+											? user.moderator
+												? "144px"
+												: "96px"
 											: "0px",
 									}}
 								>
