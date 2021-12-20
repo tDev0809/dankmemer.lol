@@ -10,9 +10,9 @@ import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
 import Dropdown from "../../../components/ui/Dropdown";
 import Input from "../../../components/ui/Input";
-import { POST_LABELS } from "../../../constants";
+import { POST_CATEGORIES, POST_LABELS } from "../../../constants";
 import { Comment, PageProps, Post, UserData } from "../../../types";
-import { urlify } from "../../../util/feedback";
+import { sanitizeCategory, urlify } from "../../../util/feedback";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
 
@@ -148,6 +148,16 @@ export default function PostPage({ user }: PageProps) {
 			});
 	};
 
+	const changeCategory = (category: Post["category"]) => {
+		axios
+			.patch(`/api/community/post/category/${id}?category=${category}`)
+			.then(() => {
+				const copy = { ...(post as Post) };
+				copy.category = category;
+				setPost(copy);
+			});
+	};
+
 	useEffect(() => {
 		axios(`/api/community/post/get/${id}`)
 			.then(({ data }) => {
@@ -219,6 +229,28 @@ export default function PostPage({ user }: PageProps) {
 														changeLabel(label);
 													},
 												}))}
+										/>
+										<Dropdown
+											content={
+												<Button
+													variant="dark"
+													className="w-40"
+												>
+													Move
+												</Button>
+											}
+											options={POST_CATEGORIES.map(
+												(category) => ({
+													label: sanitizeCategory(
+														category
+													),
+													onClick: () => {
+														changeCategory(
+															category
+														);
+													},
+												})
+											)}
 										/>
 									</>
 								)}
