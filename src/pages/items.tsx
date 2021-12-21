@@ -183,6 +183,9 @@ export default function ItemsPage({ user }: PageProps) {
 									<div className="text-gray-600 dark:text-gray-400">
 										Rarity: {rarityNames[itemData.rarity]}
 									</div>
+									<div className="text-gray-600 dark:text-gray-400">
+										ID: {itemData.id}
+									</div>
 								</div>
 
 								<div
