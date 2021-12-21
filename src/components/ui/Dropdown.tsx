@@ -18,9 +18,10 @@ interface Option {
 interface Props {
 	content: ReactNode;
 	options: Array<Option | null>;
+	className?: string;
 }
 
-export default function Dropdown({ content, options }: Props) {
+export default function Dropdown({ content, options, className = "" }: Props) {
 	const [open, setOpen] = useState(false);
 	const dropdown = useRef<any>(null);
 
@@ -51,7 +52,10 @@ export default function Dropdown({ content, options }: Props) {
 	}, []);
 
 	return (
-		<div className="select-none cursor-pointer relative" ref={dropdown}>
+		<div
+			className={clsx("select-none cursor-pointer relative", className)}
+			ref={dropdown}
+		>
 			<div
 				className={clsx(
 					"bg-light-500 dark:bg-dank-500 flex items-center rounded-md"

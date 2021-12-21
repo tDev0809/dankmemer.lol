@@ -187,7 +187,7 @@ export default function PostPage({ user }: PageProps) {
 			<div className="my-8 p-4 bg-dark-100 rounded-md">
 				{post && (
 					<div className="flex flex-col space-y-8 w-full">
-						<div className="flex justify-between items-start">
+						<div className="flex flex-col lg:flex-row justify-between items-start space-y-2 lg:space-y-0">
 							<div className="flex flex-col space-y-2">
 								<div>
 									<div className="text-2xl font-bold font-montserrat">
@@ -203,13 +203,14 @@ export default function PostPage({ user }: PageProps) {
 									</div>
 								)}
 							</div>
-							<div className="flex space-x-2 items-center">
+							<div className="flex flex-col lg:flex-row space-x-0 lg:space-x-2 space-y-2 lg:space-y-0 items-center w-full lg:w-auto">
 								{user?.moderator && (
 									<>
 										{" "}
 										<Dropdown
+											className="w-full lg:w-auto"
 											content={
-												<Button variant="dark">
+												<Button variant="dark" block>
 													Change Label
 												</Button>
 											}
@@ -231,10 +232,12 @@ export default function PostPage({ user }: PageProps) {
 												}))}
 										/>
 										<Dropdown
+											className="w-full lg:w-auto"
 											content={
 												<Button
+													block
 													variant="dark"
-													className="w-40"
+													className="lg:w-40"
 												>
 													Move
 												</Button>
@@ -256,11 +259,17 @@ export default function PostPage({ user }: PageProps) {
 								)}
 								{(user?.id === (post.author as UserData).id ||
 									user?.moderator) && (
-									<Button variant={"danger"}>Delete</Button>
+									<Button
+										variant={"danger"}
+										className="w-full lg:w-auto"
+									>
+										Delete
+									</Button>
 								)}
 								<Button
 									variant={post.upvoted ? "primary" : "dark"}
 									onClick={() => upvote()}
+									className="w-full lg:w-auto"
 								>
 									<div className="flex items-center space-x-1">
 										<span

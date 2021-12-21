@@ -55,7 +55,7 @@ export default function CommentCard({
 	return (
 		<div
 			className={clsx(
-				"flex items-center justify-between group",
+				"flex flex-col md:flex-row items-start md:items-center justify-between group",
 				reply && "ml-4"
 			)}
 		>
