@@ -51,7 +51,7 @@ export default function Posts({ user }: PageProps) {
 	const [loadingPosts, setLoadingPosts] = useState(false);
 
 	const loadPosts = () => {
-		router.push({
+		router.replace({
 			pathname: router.pathname,
 			query: {
 				sorting,
