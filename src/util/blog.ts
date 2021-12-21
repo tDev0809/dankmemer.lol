@@ -13,7 +13,7 @@ export function tailwindHtml(content: string) {
 		.replaceAll("<li>", `<li class="list-disc ml-4 space-y-1">`)
 		.replaceAll("<ul>", `<ul class="list-disc ml-4 space-y-1">`)
 		.replaceAll("<img", `<img class="w-1/2 block mx-auto my-4"`)
-		.replaceAll("<a", `<a target="_blank" class="text-dank-200"`)
+		.replaceAll("<a", `<a target="_blank" class="text-dank-200 break-all"`)
 		.replaceAll("<table", `<table class="w-full text-center text-white"`)
 		.replaceAll(
 			"<tr",
@@ -23,8 +23,6 @@ export function tailwindHtml(content: string) {
 		.replaceAll("<th", `<th class="bg-dank-400"`)
 		.replaceAll('\\"', "'")
 		.replaceAll("<p>", `<p class="text-dark-400 dark:text-gray-200 mb-3">`);
-
-	const map = {};
 
 	Object.values(items).forEach((item) => {
 		content = content.replaceAll(

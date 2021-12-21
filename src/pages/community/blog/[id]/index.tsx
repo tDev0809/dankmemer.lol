@@ -33,7 +33,7 @@ export default function BlogPage({ user }: PageProps) {
 
 	return (
 		<Container title="Blog" user={user}>
-			<div className="lg:mx-auto relative flex justify-center">
+			<div className="relative flex justify-center">
 				<div className="max-w-5xl flex flex-col items-center space-y-8 my-16">
 					{blog ? (
 						<>
