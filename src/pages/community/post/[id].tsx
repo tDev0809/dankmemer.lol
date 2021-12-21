@@ -214,7 +214,7 @@ export default function PostPage({ user }: PageProps) {
 												</Button>
 											}
 											options={POST_LABELS.filter(
-												(f) => !f.includes("all")
+												(f) => f != "all"
 											)
 												.concat("no label")
 												.map((label) => ({

@@ -15,12 +15,12 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	const from = Number(req.query.from) || 0;
 	const amount = Math.min(Number(req.query.amount) || 10, 25);
-	const sorting = req.query.sorting || "Hot";
+	const sorting = req.query.sorting || "hot";
 	const category = req.query.category || "all";
-	let filter = req.query.filter || "all posts";
+	let filter = req.query.filter || "all";
 
 	if (!POST_LABELS.includes(filter as string)) {
-		filter = "all posts";
+		filter = "all";
 	}
 
 	if (
@@ -40,25 +40,21 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				$match:
 					category === "all"
 						? {
-								label:
-									filter === "all posts"
-										? { $ne: "." }
-										: filter,
+								labels:
+									filter === "all" ? { $ne: "." } : filter,
 						  }
 						: {
 								category: category,
-								label:
-									filter === "all posts"
-										? { $ne: "." }
-										: filter,
+								labels:
+									filter === "all" ? { $ne: "." } : filter,
 						  },
 			},
 			{
 				$addFields: {
 					bad: {
 						$or: [
-							{ $eq: ["$label", "invalid"] },
-							{ $eq: ["$label", "duplicate"] },
+							{ $in: ["duplicate", "$labels"] },
+							{ $in: ["denied", "$labels"] },
 						],
 					},
 					denyInt: { $cond: [{ $eq: ["$label", "denied"] }, -1, 1] },
@@ -73,7 +69,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 								? {
 										$or: [
 											{ $eq: ["$bad", false] },
-											{ $eq: ["$label", filter] },
+											{ $in: [filter, "$labels"] },
 										],
 								  }
 								: { $eq: ["$bad", false] },
@@ -84,11 +80,11 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			},
 			{
 				$sort:
-					sorting === "Top"
+					sorting === "top"
 						? { upvotes: -1, createdAt: -1 }
-						: sorting === "New"
+						: sorting === "new"
 						? { createdAt: -1 }
-						: sorting === "Hot"
+						: sorting === "hot"
 						? { denyInt: -1, hot: -1, createdAt: -1 }
 						: { createdAt: 1 },
 			},

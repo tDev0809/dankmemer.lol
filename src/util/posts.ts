@@ -11,46 +11,39 @@ export async function getPostsData(
 	const { db } = await dbConnect();
 	const redis = await redisConnect();
 	const userData = await getUsers(posts.map((p) => p.author as string));
-	const statsPipeline = redis.pipeline();
+	const commentsPipeline = redis.pipeline();
 	const upvotedPipline = redis.pipeline();
 
 	for (const post of posts) {
-		statsPipeline.get(`community:post:stats:${post._id}`);
+		commentsPipeline.get(`community:post:comments:${post._id}`);
 		if (user) {
 			upvotedPipline.get(`community:post:upvoted:${post._id}:${user.id}`);
 		}
 	}
 
-	const statsData = await statsPipeline.exec();
+	const commentsData = await commentsPipeline.exec();
 	const upvotedData = await upvotedPipline.exec();
 
 	for (let i = 0; i < posts.length; i++) {
 		const post = posts[i];
 		post.author = userData[i];
 
-		if (!statsData[i][1]) {
-			const upvotesCount = await db
-				.collection("community-posts-upvotes")
-				.find({ pID: post._id })
-				.count();
-
+		if (!commentsData[i][1]) {
 			const commentsCount = await db
 				.collection("community-posts-comments")
 				.find({ pID: post._id })
 				.count();
 
-			statsPipeline.set(
-				`community:post:stats:${post._id}`,
-				`${upvotesCount},${commentsCount}`,
+			commentsPipeline.set(
+				`community:post:comments:${post._id}`,
+				commentsCount,
 				"PX",
 				TIME.day
 			);
 
-			post.upvotes = upvotesCount;
 			post.comments = commentsCount;
 		} else {
-			post.upvotes = parseInt(statsData[i][1].split(",")[0]);
-			post.comments = parseInt(statsData[i][1].split(",")[1]);
+			post.comments = parseInt(commentsData[i][1]);
 		}
 
 		if (user) {
@@ -60,11 +53,11 @@ export async function getPostsData(
 					.find({ pID: post._id, uID: user.id })
 					.count();
 
-				statsPipeline.set(
+				commentsPipeline.set(
 					`community:post:upvoted:${post._id}:${user.id}`,
 					upvoted,
 					"PX",
-					TIME.day
+					TIME.day * 3
 				);
 
 				post.upvoted = upvoted == 1;
@@ -74,7 +67,7 @@ export async function getPostsData(
 		}
 	}
 
-	await statsPipeline.exec();
+	await commentsPipeline.exec();
 
 	return posts;
 }

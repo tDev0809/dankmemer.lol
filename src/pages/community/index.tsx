@@ -163,6 +163,14 @@ export default function Community({ user }: PageProps) {
 											/>
 									  ))}
 							</div>
+
+							<Button
+								block
+								variant="dark"
+								href={`/community/posts?category=${postCategory}`}
+							>
+								View More
+							</Button>
 						</div>
 					</div>
 				</Section>

@@ -67,6 +67,12 @@ const migration = async () => {
 		const devResponse = comments.find(
 			(c) => c.pID == post._id && c.author.developer
 		);
+
+		const upvotes = await db
+			.collection("feedback_upvotes")
+			.find({ pID: post._id })
+			.count();
+
 		await db.collection("community-posts").insertOne({
 			_id: post._id,
 			title: post.title,
@@ -74,6 +80,7 @@ const migration = async () => {
 			category: post.category,
 			createdAt: post.createdAt,
 			author: post.author.id,
+			upvotes: upvotes,
 			labels: (post.label ? [post.label] : []).concat(
 				devResponse ? ["developer-response"] : []
 			),

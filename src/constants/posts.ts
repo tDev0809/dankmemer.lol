@@ -1,5 +1,5 @@
 export const POST_LABELS = [
-	"all posts",
+	"all",
 	"accepted",
 	"implemented",
 	"duplicate",
