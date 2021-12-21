@@ -6,6 +6,7 @@ const colors = {
 	moderator: "text-blue-400",
 	botModerator: "text-orange-300",
 	honorable: "text-purple-200",
+	modManager: "text-rose-400",
 };
 
 const icons = {
@@ -13,6 +14,7 @@ const icons = {
 	moderator: "local_police",
 	botModerator: "smart_toy",
 	honorable: "public",
+	modManager: "next_week",
 };
 
 const names = {
@@ -20,6 +22,7 @@ const names = {
 	moderator: "Moderator",
 	botModerator: "Bot Moderator",
 	honorable: "Honorable",
+	modManager: "Mod Manager",
 };
 
 interface Props {

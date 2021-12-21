@@ -77,6 +77,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				moderator: false,
 				botModerator: false,
 				honorable: false,
+				modManager: false,
 			};
 		}
 
@@ -100,6 +101,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						moderator: false,
 						botModerator: false,
 						honorable: false,
+						modManager: false,
 					};
 				}
 			}

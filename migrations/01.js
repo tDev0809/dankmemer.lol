@@ -182,6 +182,7 @@ const migration = async () => {
 								developer: true,
 								botModerator: true,
 								moderator: true,
+								modManager: true,
 						  }
 						: {}),
 					...(user.category == "Support Moderators"
@@ -192,6 +193,14 @@ const migration = async () => {
 						: {}),
 					...(user.category == "Honorable Mentions"
 						? { honorable: true }
+						: {}),
+					...([
+						"266432078222983169",
+						"371659212025233422",
+						"327272032863649793",
+						"675855839369625631",
+					].includes(user._id)
+						? { modManager: true }
 						: {}),
 				},
 			}

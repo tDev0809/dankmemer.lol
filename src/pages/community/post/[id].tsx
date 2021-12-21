@@ -80,6 +80,7 @@ export default function PostPage({ user }: PageProps) {
 					moderator: user.moderator,
 					botModerator: user.botModerator,
 					honorable: user.honorable,
+					modManager: user.modManager,
 				},
 			});
 		}
@@ -122,6 +123,7 @@ export default function PostPage({ user }: PageProps) {
 					moderator: user.moderator,
 					botModerator: user.botModerator,
 					honorable: user.honorable,
+					modManager: user.modManager,
 				},
 			});
 		}

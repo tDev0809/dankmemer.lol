@@ -104,6 +104,14 @@ export default function CommentCard({
 											tooltip={false}
 										/>
 									)}
+									{(comment.author as UserData)
+										.modManager && (
+										<Badge
+											role="modManager"
+											size={16}
+											tooltip={false}
+										/>
+									)}
 								</div>
 							</a>
 						</Link>

@@ -26,6 +26,7 @@ export async function getUser(id: string): Promise<UserData | null> {
 				developer: user.developer == true,
 				moderator: user.moderator == true,
 				botModerator: user.botModerator == true,
+				modManager: user.modManager == true,
 				honorable: user.honorable == true,
 				vanity: user.vanity,
 			};
@@ -74,6 +75,7 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					developer: user.developer == true,
 					moderator: user.moderator == true,
 					botModerator: user.botModerator == true,
+					modManager: user.modManager == true,
 					honorable: user.honorable == true,
 					vanity: user.vanity,
 				};

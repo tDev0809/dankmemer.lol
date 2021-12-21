@@ -20,6 +20,7 @@ export interface User {
 	moderator: boolean;
 	botModerator: boolean;
 	honorable: boolean;
+	modManager: boolean;
 }
 
 export interface UserData {
@@ -32,6 +33,7 @@ export interface UserData {
 	moderator: boolean;
 	botModerator: boolean;
 	honorable: boolean;
+	modManager: boolean;
 }
 
 export interface PageProps {

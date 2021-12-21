@@ -97,6 +97,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			developer: userData.developer == true,
 			moderator: userData.moderator == true,
 			botModerator: userData.botModerator == true,
+			modManager: userData.modManager == true,
 			honorable: userData.honorable == true,
 			token: encrypt(user.id),
 			avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
