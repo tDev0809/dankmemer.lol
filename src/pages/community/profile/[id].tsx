@@ -186,20 +186,32 @@ export default function ProfilePage({ user }: PageProps) {
 							</div>
 							<div className="flex justify-between space-x-4">
 								<div className="flex flex-col space-y-2 flex-1">
-									<div>Recent Posts</div>
-									<div className="flex flex-col space-y-2">
-										{profile.posts.map((post) => (
-											<PostCard data={post} />
-										))}
-									</div>
+									{profile.posts.length > 0 && (
+										<>
+											<div>Recent Posts</div>
+											<div className="flex flex-col space-y-2">
+												{profile.posts.map((post) => (
+													<PostCard data={post} />
+												))}
+											</div>
+										</>
+									)}
 								</div>
 								<div className="flex flex-col space-y-2 w-4/12">
-									<div className="">Recent Activity</div>
-									<div className="flex flex-col space-y-2">
-										{profile.activities.map((activity) => (
-											<ActivityCard activity={activity} />
-										))}
-									</div>
+									{profile.activities.length > 0 && (
+										<>
+											<div>Recent Activity</div>
+											<div className="flex flex-col space-y-2">
+												{profile.activities.map(
+													(activity) => (
+														<ActivityCard
+															activity={activity}
+														/>
+													)
+												)}
+											</div>
+										</>
+									)}
 								</div>
 							</div>
 						</div>
