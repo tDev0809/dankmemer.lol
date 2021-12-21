@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { format } from "date-fns";
 import Link from "next/link";
-import router from "next/router";
 import { TIME } from "../../../constants";
 import { Blog, User, UserData } from "../../../types";
 import { truncate } from "../../../util/string";

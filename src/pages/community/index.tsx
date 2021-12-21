@@ -4,6 +4,7 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { BlogPost } from "../../components/community/blog/BlogPost";
+import { BlogPostPlaceholder } from "../../components/community/blog/BlogPostPlaceholder";
 import { ViewMore } from "../../components/community/blog/ViewMore";
 import { PostCard } from "../../components/community/PostCard";
 import Section from "../../components/community/Section";
@@ -99,9 +100,13 @@ export default function Community({ user }: PageProps) {
 					}
 				>
 					<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-						{blogs.slice(0, 4).map((blog) => (
-							<BlogPost data={blog} user={user} />
-						))}
+						{blogs.length > 0
+							? blogs
+									.slice(0, 4)
+									.map((blog) => (
+										<BlogPost data={blog} user={user} />
+									))
+							: [...Array(4)].map(() => <BlogPostPlaceholder />)}
 						<ViewMore />
 					</div>
 				</Section>

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Ad } from "../../components/Ad";
 import { BlogPost } from "../../components/community/blog/BlogPost";
+import { BlogPostPlaceholder } from "../../components/community/blog/BlogPostPlaceholder";
 import { Title } from "../../components/Title";
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
@@ -63,11 +64,17 @@ export default function Blogs({ user }: PageProps) {
 				</div>
 
 				<div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-					{blogs.map((blog) => (
-						<div className="m-2">
-							<BlogPost data={blog} user={user} />
-						</div>
-					))}
+					{blogs.length > 0
+						? blogs.map((blog) => (
+								<div className="m-2">
+									<BlogPost data={blog} user={user} />
+								</div>
+						  ))
+						: [...Array(20)].map(() => (
+								<div className="m-2">
+									<BlogPostPlaceholder />{" "}
+								</div>
+						  ))}
 				</div>
 				<Ad
 					id="bottom"
