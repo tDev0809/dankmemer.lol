@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import AuthorInfo from "../../../components/community/post/AuthorInfo";
 import CommentCard from "../../../components/community/post/CommentCard";
 import { Label } from "../../../components/community/PostLabel";
+import LoadingPepe from "../../../components/LoadingPepe";
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
 import Dropdown from "../../../components/ui/Dropdown";
@@ -382,6 +383,7 @@ export default function PostPage({ user }: PageProps) {
 						)}
 					</div>
 				)}
+				{!post && <LoadingPepe />}
 			</div>
 		</Container>
 	);
