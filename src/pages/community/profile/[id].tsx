@@ -78,7 +78,7 @@ export default function ProfilePage({ user }: PageProps) {
 				setProfile(data);
 
 				if (data.user.vanity) {
-					router.push(`/community/profile/${data.user.vanity}`);
+					router.replace(`/community/profile/${data.user.vanity}`);
 				}
 
 				axios(`/api/community/contributors/place/${data.user.id}`).then(
