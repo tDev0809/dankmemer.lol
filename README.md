@@ -55,7 +55,7 @@ $ npm run dev
 -   **Mel** - _Initial design_ - [Melmsie](https://github.com/melmsie)
 -   **Aetheryx** - _Basically the whole thing_ - [Aetheryx](https://github.com/aetheryx)
 -   **InBlue** - _Taken over work for redesign_ - [InBlue](https://github.com/inblue)
--   **Badosz** - _Rewrite and feedback page_ - [badosz0](https://github.com/badosz0)
+-   **Badosz** - _Rewrite and the community page_ - [badosz0](https://github.com/badosz0)
 
 ## License
 
