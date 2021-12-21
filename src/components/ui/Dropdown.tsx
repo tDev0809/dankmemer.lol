@@ -10,6 +10,7 @@ const optionVariants = {
 interface Option {
 	label: string;
 	link?: string;
+	icon?: string;
 	variant?: keyof typeof optionVariants;
 	onClick?: (e: any) => void;
 }
@@ -69,8 +70,8 @@ export default function Dropdown({ content, options }: Props) {
 				>
 					{options
 						.filter((o) => o)
-						.map((option) => (
-							<Link href={option?.link || "#"}>
+						.map((option) => {
+							const content = (
 								<div
 									onClick={(e) =>
 										option?.onClick
@@ -84,10 +85,28 @@ export default function Dropdown({ content, options }: Props) {
 										]
 									)}
 								>
-									{option?.label}
+									<div className="flex items-center space-x-2">
+										{option?.icon && (
+											<div
+												className="material-icons"
+												style={{ fontSize: "16px" }}
+											>
+												{option.icon}
+											</div>
+										)}
+										<div>{option?.label}</div>
+									</div>
 								</div>
-							</Link>
-						))}
+							);
+
+							return option?.link ? (
+								<Link href={option?.link || "#"}>
+									{content}
+								</Link>
+							) : (
+								content
+							);
+						})}
 				</div>
 			</div>
 		</div>
