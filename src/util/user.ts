@@ -33,7 +33,7 @@ export async function getUser(id: string): Promise<UserData | null> {
 				`user:${id}`,
 				JSON.stringify(data),
 				"PX",
-				TIME.day * 3
+				TIME.week
 			);
 
 			return data;
@@ -80,7 +80,7 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					`user:${ids[i]}`,
 					JSON.stringify(data),
 					"PX",
-					TIME.day * 3
+					TIME.week
 				);
 
 				users.push(data);

@@ -40,7 +40,7 @@ export async function getPostsData(
 				`community:post:comments:${post._id}`,
 				commentsCount,
 				"PX",
-				TIME.day
+				TIME.week
 			);
 
 			post.comments = commentsCount;
@@ -73,7 +73,7 @@ export async function getPostsData(
 				`community:post:upvoted:${postID}:${user.id}`,
 				!!upvoted ? 1 : 0,
 				"PX",
-				TIME.day * 3
+				TIME.day
 			);
 
 			posts.find((p) => p._id == postID)!.upvoted = !!upvoted;

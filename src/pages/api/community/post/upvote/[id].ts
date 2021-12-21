@@ -63,7 +63,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		`community:post:upvoted:${post._id}:${user.id}`,
 		!!upvote ? 0 : 1,
 		"PX",
-		TIME.day * 3
+		TIME.day
 	);
 	res.status(200).json({ upvote: !!upvote ? -1 : 1 });
 };
