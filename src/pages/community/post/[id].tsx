@@ -175,7 +175,6 @@ export default function PostPage({ user }: PageProps) {
 			.then(({ data }) => {
 				setComments([...comments, ...data.comments]);
 				setAllComments(data.all);
-				console.log(data);
 			})
 			.catch((e) => {
 				router.push("/community");

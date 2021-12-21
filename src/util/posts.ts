@@ -24,6 +24,8 @@ export async function getPostsData(
 	const commentsData = await commentsPipeline.exec();
 	const upvotedData = await upvotedPipline.exec();
 
+	const upvotedNotCached: Post["_id"][] = [];
+
 	for (let i = 0; i < posts.length; i++) {
 		const post = posts[i];
 		post.author = userData[i];
@@ -48,22 +50,33 @@ export async function getPostsData(
 
 		if (user) {
 			if (!upvotedData[i][1]) {
-				const upvoted = await db
-					.collection("community-posts-upvotes")
-					.find({ pID: post._id, uID: user.id })
-					.count();
-
-				commentsPipeline.set(
-					`community:post:upvoted:${post._id}:${user.id}`,
-					upvoted,
-					"PX",
-					TIME.day * 3
-				);
-
-				post.upvoted = upvoted == 1;
+				upvotedNotCached.push(post._id);
 			} else {
 				post.upvoted = upvotedData[i][1] == "1";
 			}
+		}
+	}
+
+	if (user) {
+		const upvotedPosts = await db
+			.collection("community-posts-upvotes")
+			.find({
+				uID: user.id,
+				pID: { $in: upvotedNotCached },
+			})
+			.toArray();
+
+		for (const postID of upvotedNotCached) {
+			const upvoted = upvotedPosts.find((u) => u.pID == postID);
+
+			commentsPipeline.set(
+				`community:post:upvoted:${postID}:${user.id}`,
+				!!upvoted ? 1 : 0,
+				"PX",
+				TIME.day * 3
+			);
+
+			posts.find((p) => p._id == postID)!.upvoted = !!upvoted;
 		}
 	}
 

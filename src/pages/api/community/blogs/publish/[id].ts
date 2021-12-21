@@ -84,7 +84,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		);
 		return res.status(200).json({});
 	} catch (e) {
-		console.log(e);
 		return res.status(500).json({ error: e });
 	}
 };
