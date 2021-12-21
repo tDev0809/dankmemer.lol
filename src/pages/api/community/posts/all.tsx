@@ -1,18 +1,15 @@
 import { NextApiResponse } from "next";
-import { POST_CATEGORIES, POST_LABELS, TIME } from "../../../../constants";
+import { POST_CATEGORIES, POST_LABELS } from "../../../../constants";
 import { hot } from "../../../../constants/hot";
 import { Post } from "../../../../types";
 import { dbConnect } from "../../../../util/mongodb";
 import { getPostsData } from "../../../../util/posts";
-import { redisConnect } from "../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../util/session";
-import { getUsers } from "../../../../util/user";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
 
 	const user = req.session.get("user");
-
 	const from = Number(req.query.from) || 0;
 	const amount = Math.min(Number(req.query.amount) || 10, 25);
 	const sorting = req.query.sorting || "hot";

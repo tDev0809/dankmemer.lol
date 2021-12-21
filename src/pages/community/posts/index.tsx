@@ -42,7 +42,12 @@ export default function Posts({ user }: PageProps) {
 			? (router.query.filter as string)
 			: "all"
 	);
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState(
+		Math.max(
+			1,
+			router.query.page ? Number(router.query.page as string) || 1 : 1
+		)
+	);
 	const [loadingPosts, setLoadingPosts] = useState(false);
 
 	const loadPosts = () => {
@@ -75,12 +80,15 @@ export default function Posts({ user }: PageProps) {
 	}, [page]);
 
 	useEffect(() => {
-		setPage(1);
-		loadPosts();
+		setPage(-1);
 	}, [sorting, filter, category]);
 
 	useEffect(() => {
-		loadPosts();
+		if (page == -1) {
+			setPage(1);
+		} else {
+			loadPosts();
+		}
 	}, [page]);
 
 	return (
