@@ -112,7 +112,7 @@ export default function ProfilePage({ user }: PageProps) {
 						<div className="flex flex-col space-y-8 px-8">
 							<div className="flex space-x-2 items-center relative">
 								<div className="w-[120px]">
-									<div className="absolute -top-16">
+									<div className="absolute -top-16 hidden md:inline-block">
 										<Avatar
 											id={profile.user.id}
 											link={
@@ -120,6 +120,17 @@ export default function ProfilePage({ user }: PageProps) {
 												"?size=512"
 											}
 											size="120px"
+											className="border-4 border-dark-300 rounded-full"
+										/>
+									</div>
+									<div className="inline-block md:hidden">
+										<Avatar
+											id={profile.user.id}
+											link={
+												profile.user.avatar +
+												"?size=512"
+											}
+											size="96px"
 											className="border-4 border-dark-300 rounded-full"
 										/>
 									</div>
@@ -133,12 +144,14 @@ export default function ProfilePage({ user }: PageProps) {
 											#{profile.user.discriminator}
 										</div>
 									</div>
-									<div className="flex space-x-1 items-center">
-										<div className=" text-xs bg-dank-500 text-dank-100 px-2 py-0.5 rounded-md">
-											Rank #
-											{rank == -1
-												? "???"
-												: rank.toLocaleString()}
+									<div className="flex flex-col md:flex-row space-x-1 md:items-center space-y-1">
+										<div className="flex md:inline-block">
+											<div className="text-xs bg-dank-500 text-dank-100 px-2 py-0.5 rounded-md">
+												Rank #
+												{rank == -1
+													? "???"
+													: rank.toLocaleString()}
+											</div>
 										</div>
 										<div>
 											{profile.user.developer && (
@@ -157,7 +170,7 @@ export default function ProfilePage({ user }: PageProps) {
 									</div>
 								</div>
 							</div>
-							<div className="bg-dark-100 rounded-md flex justify-between py-4 px-8">
+							<div className="bg-dark-100 rounded-md flex flex-col md:flex-row justify-between py-4 px-8 space-y-2 md:space-y-0">
 								{[
 									[profile.posts.length, `Post?s made`],
 									[profile.comments, "Comment?s made"],
@@ -175,7 +188,7 @@ export default function ProfilePage({ user }: PageProps) {
 										<div className="text-lg font-bold">
 											{count}
 										</div>
-										<div className="text-sm text-light-600">
+										<div className="text-sm text-light-600 text-center">
 											{(title as string).replaceAll(
 												"?s",
 												count == 1 ? "" : "s"
@@ -184,7 +197,7 @@ export default function ProfilePage({ user }: PageProps) {
 									</div>
 								))}
 							</div>
-							<div className="flex justify-between space-x-4">
+							<div className="flex flex-col md:flex-row justify-between space-x-0 md:space-x-4 space-y-4 md:space-y-0">
 								<div className="flex flex-col space-y-2 flex-1">
 									{profile.posts.length > 0 && (
 										<>
@@ -197,7 +210,7 @@ export default function ProfilePage({ user }: PageProps) {
 										</>
 									)}
 								</div>
-								<div className="flex flex-col space-y-2 w-4/12">
+								<div className="flex flex-col space-y-2 w-full md:w-4/12">
 									{profile.activities.length > 0 && (
 										<>
 											<div>Recent Activity</div>

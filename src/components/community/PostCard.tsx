@@ -67,7 +67,7 @@ export function PostCard({ data }: Props) {
 								))}
 							</div>
 						)}
-						<div className="text-light-600 leading-5">
+						<div className="text-light-600 leading-5 break-all  md:break-words">
 							{data ? (
 								truncate(data.content, 250)
 							) : (
