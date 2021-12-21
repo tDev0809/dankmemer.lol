@@ -76,6 +76,11 @@ export default function ProfilePage({ user }: PageProps) {
 		axios(`/api/community/profile/get/${id}`)
 			.then(({ data }) => {
 				setProfile(data);
+
+				if (data.user.vanity) {
+					router.push(`/community/profile/${data.user.vanity}`);
+				}
+
 				axios(`/api/community/contributors/place/${data.user.id}`).then(
 					({ data }) => {
 						setRank(data.place);
