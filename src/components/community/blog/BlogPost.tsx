@@ -1,11 +1,11 @@
+import clsx from "clsx";
 import { format } from "date-fns";
+import Link from "next/link";
+import router from "next/router";
 import { TIME } from "../../../constants";
 import { Blog, User, UserData } from "../../../types";
-import Button from "../../ui/Button";
-import Link from "next/link";
 import { truncate } from "../../../util/string";
-import clsx from "clsx";
-import { useRouter } from "next/router";
+import Button from "../../ui/Button";
 
 interface Props {
 	data: Blog;
@@ -13,8 +13,6 @@ interface Props {
 }
 
 export function BlogPost({ data, user }: Props) {
-	const router = useRouter();
-
 	return (
 		<div
 			className={clsx(
@@ -68,19 +66,17 @@ export function BlogPost({ data, user }: Props) {
 				<div className="flex flex-col space-y-2">
 					{user?.developer && (
 						<Button
+							block
 							variant="dark"
-							onClick={() =>
-								router.push(`/community/blog/${data._id}/edit`)
-							}
+							href={`/community/blog/${data._id}/edit`}
 						>
 							Edit
 						</Button>
 					)}
 					<Button
 						variant="dark"
-						onClick={() =>
-							router.push(`/community/blog/${data._id}`)
-						}
+						href={`/community/blog/${data._id}`}
+						block
 					>
 						Continue Reading
 					</Button>
