@@ -95,7 +95,9 @@ export function PostCard({ data }: Props) {
 								<div className="animate-pulse bg-gray-600 rounded-full w-[20px] h-[20px]" />
 							)}
 							<div className="text-sm">
-								Posted by{" "}
+								<span className="hidden md:inline-block">
+									Posted by{" "}
+								</span>
 								<TextLink
 									href={
 										data

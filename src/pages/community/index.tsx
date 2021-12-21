@@ -13,6 +13,7 @@ import UpdateBanner from "../../components/community/UpdateBanner";
 import { Title } from "../../components/Title";
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
+import Dropdown from "../../components/ui/Dropdown";
 import { POST_CATEGORIES } from "../../constants";
 import { Blog, PageProps, Post } from "../../types";
 import { sanitizeCategory } from "../../util/feedback";
@@ -52,11 +53,12 @@ export default function Community({ user }: PageProps) {
 		<Container title="Community" user={user}>
 			<div className="flex flex-col my-16 space-y-12 mx-8 xl:mx-0">
 				<div className="flex flex-col space-y-4">
-					<div className="flex justify-between items-center">
+					<div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
 						<Title size="big">Community</Title>
 						{user && (
 							<Button
 								size="small"
+								className="w-full sm:w-auto"
 								variant="dark"
 								onClick={() =>
 									router.push(
@@ -114,8 +116,8 @@ export default function Community({ user }: PageProps) {
 					<TopContributors />
 				</Section>
 				<Section title="Community Posts">
-					<div className="flex space-x-4">
-						<div className="flex flex-col space-y-2">
+					<div className="flex space-x-0 md:space-x-4">
+						<div className="hidden md:flex flex-col space-y-3 ">
 							<div className="text-lg">Categories</div>
 							<div className="flex flex-col space-y-2 w-52">
 								{["all"]
@@ -140,23 +142,52 @@ export default function Community({ user }: PageProps) {
 							</div>
 						</div>
 						<div className="flex flex-col space-y-2 w-full">
-							<div className="flex items-center justify-between">
+							<div className="flex flex-col md:flex-row items-start justify-between">
 								<div className="text-lg">Trending posts</div>
-								<Button
-									size="small"
-									variant="dark"
-									href="/community/post/"
-								>
-									<div className="flex items-center space-x-2">
-										<div className="material-icons">
-											post_add
+								<div className="flex justify-between space-x-4 w-full md:w-auto">
+									<Button
+										size="small"
+										variant="dark"
+										href="/community/post/"
+									>
+										<div className="flex items-center space-x-2 w-20 sm:w-32 md:w-auto">
+											<div className="material-icons">
+												post_add
+											</div>
+											<div>
+												New{" "}
+												<span className="hidden sm:inline-block">
+													Post
+												</span>
+											</div>
 										</div>
-										<div>New Post</div>
+									</Button>
+									<div className="inline-block md:hidden w-full">
+										<Dropdown
+											content={
+												<Button variant="dark" block>
+													{sanitizeCategory(
+														postCategory
+													)}
+												</Button>
+											}
+											options={["all"]
+												.concat(POST_CATEGORIES)
+												.map((category) => ({
+													label: sanitizeCategory(
+														category
+													),
+													onClick: () =>
+														setPostCategory(
+															category as typeof postCategory
+														),
+												}))}
+										/>
 									</div>
-								</Button>
+								</div>
 							</div>
 
-							<div className="grid grid-cols-2 gap-4">
+							<div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
 								{loadingPosts
 									? [...Array(10)].map((i) => (
 											<PostCard key={i} />
