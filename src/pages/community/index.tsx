@@ -51,7 +51,7 @@ export default function Community({ user }: PageProps) {
 
 	return (
 		<Container title="Community" user={user}>
-			<div className="flex flex-col my-16 space-y-12 mx-8 xl:mx-0">
+			<div className="flex flex-col my-16 space-y-12">
 				<div className="flex flex-col space-y-4">
 					<div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
 						<Title size="big">Community</Title>
