@@ -7,10 +7,83 @@ import { useEffect, useState } from "react";
 import { Avatar } from "../../../components/Avatar";
 import { Badge } from "../../../components/Badge";
 import { PostCard } from "../../../components/community/PostCard";
+import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
-import { Activity, PageProps, Profile } from "../../../types";
+import Dropdown from "../../../components/ui/Dropdown";
+import { Activity, PageProps, Profile, User } from "../../../types";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
+
+function Actions({ user, profile }: { user: User; profile: Profile }) {
+	const swap = (role: string) => {
+		// TODO
+	};
+
+	const ban = () => {
+		// TODO
+	};
+
+	return (
+		<div className="hidden md:inline-block">
+			<Dropdown
+				content={
+					<Button variant="dark" className="w-48">
+						Perform Action
+					</Button>
+				}
+				options={[
+					user?.modManager
+						? {
+								label: `${
+									profile.user.moderator ? "Remove" : "Add"
+								} Moderator`,
+								onClick: () => {
+									swap("moderator");
+								},
+						  }
+						: null,
+					user?.developer
+						? {
+								label: `${
+									profile.user.modManager ? "Remove" : "Add"
+								}  Mod Manager`,
+								onClick: () => {
+									swap("modManager");
+								},
+						  }
+						: null,
+					user?.developer
+						? {
+								label: `${
+									profile.user.botModerator ? "Remove" : "Add"
+								} Bot Moderator`,
+								onClick: () => {
+									swap("botModerator");
+								},
+						  }
+						: null,
+					user?.developer
+						? {
+								label: `${
+									profile.user.honorable ? "Remove" : "Add"
+								} Honorable`,
+								onClick: () => {
+									swap("honorable");
+								},
+						  }
+						: null,
+					{
+						label: "Ban",
+						onClick: () => {
+							ban();
+						},
+						variant: "danger",
+					},
+				]}
+			/>
+		</div>
+	);
+}
 
 function ActivityCard({ activity }: { activity: Activity }) {
 	let text = "???";
@@ -110,68 +183,73 @@ export default function ProfilePage({ user }: PageProps) {
 						</div>
 
 						<div className="flex flex-col space-y-8 px-8">
-							<div className="flex space-x-2 items-center relative">
-								<div className="w-[120px]">
-									<div className="absolute -top-16 hidden md:inline-block">
-										<Avatar
-											id={profile.user.id}
-											link={
-												profile.user.avatar +
-												"?size=512"
-											}
-											size="120px"
-											className="border-4 border-dark-300 rounded-full"
-										/>
-									</div>
-									<div className="inline-block md:hidden">
-										<Avatar
-											id={profile.user.id}
-											link={
-												profile.user.avatar +
-												"?size=512"
-											}
-											size="96px"
-											className="border-4 border-dark-300 rounded-full"
-										/>
-									</div>
-								</div>
-								<div className="flex flex-col">
-									<div className="flex items-baseline">
-										<div className="text-2xl font-bold">
-											{profile.user.name}
+							<div className="flex justify-between">
+								<div className="flex space-x-2 items-center relative">
+									<div className="w-[120px]">
+										<div className="absolute -top-16 hidden md:inline-block">
+											<Avatar
+												id={profile.user.id}
+												link={
+													profile.user.avatar +
+													"?size=512"
+												}
+												size="120px"
+												className="border-4 border-dark-300 rounded-full"
+											/>
 										</div>
-										<div className="text-sm text-light-600 font-bold">
-											#{profile.user.discriminator}
+										<div className="inline-block md:hidden">
+											<Avatar
+												id={profile.user.id}
+												link={
+													profile.user.avatar +
+													"?size=512"
+												}
+												size="96px"
+												className="border-4 border-dark-300 rounded-full"
+											/>
 										</div>
 									</div>
-									<div className="flex flex-col md:flex-row space-x-1 md:items-center space-y-1">
-										<div className="flex md:inline-block">
-											<div className="text-xs bg-dank-500 text-dank-100 px-2 py-0.5 rounded-md">
-												Rank #
-												{rank == -1
-													? "???"
-													: rank.toLocaleString()}
+									<div className="flex flex-col">
+										<div className="flex items-baseline">
+											<div className="text-2xl font-bold">
+												{profile.user.name}
+											</div>
+											<div className="text-sm text-light-600 font-bold">
+												#{profile.user.discriminator}
 											</div>
 										</div>
-										<div>
-											{profile.user.developer && (
-												<Badge role="developer" />
-											)}
-											{profile.user.moderator && (
-												<Badge role="moderator" />
-											)}
-											{profile.user.botModerator && (
-												<Badge role="botModerator" />
-											)}
-											{profile.user.modManager && (
-												<Badge role="modManager" />
-											)}
-											{profile.user.honorable && (
-												<Badge role="honorable" />
-											)}
+										<div className="flex flex-col md:flex-row space-x-1 md:items-center space-y-1">
+											<div className="flex md:inline-block">
+												<div className="text-xs bg-dank-500 text-dank-100 px-2 py-0.5 rounded-md">
+													Rank #
+													{rank == -1
+														? "???"
+														: rank.toLocaleString()}
+												</div>
+											</div>
+											<div>
+												{profile.user.developer && (
+													<Badge role="developer" />
+												)}
+												{profile.user.moderator && (
+													<Badge role="moderator" />
+												)}
+												{profile.user.botModerator && (
+													<Badge role="botModerator" />
+												)}
+												{profile.user.modManager && (
+													<Badge role="modManager" />
+												)}
+												{profile.user.honorable && (
+													<Badge role="honorable" />
+												)}
+											</div>
 										</div>
 									</div>
 								</div>
+								{user?.moderator && (
+									<Actions user={user!} profile={profile} />
+								)}
 							</div>
 							<div className="bg-dark-100 rounded-md flex flex-col md:flex-row justify-between py-4 px-8 space-y-2 md:space-y-0">
 								{[
