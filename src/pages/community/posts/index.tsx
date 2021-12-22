@@ -95,13 +95,17 @@ export default function Posts({ user }: PageProps) {
 		<Container title="Posts" user={user}>
 			<div className="flex flex-col space-y-4 my-16">
 				<div
-					className="flex justify-between items-center p-2 rounded-md bg-dark-100"
+					className="flex flex-col md:flex-row space-y-2 md:space-y-0 justify-between md:items-center p-2 rounded-md bg-dark-100"
 					ref={top}
 				>
 					<div className="flex space-x-4">
 						<Dropdown
+							className="w-full md:w-auto"
 							content={
-								<Button variant="dark">
+								<Button
+									variant="dark"
+									className="w-full md:w-auto"
+								>
 									<div className="flex space-x-2 items-center">
 										<div
 											className="material-icons"
@@ -122,8 +126,12 @@ export default function Posts({ user }: PageProps) {
 							)}
 						/>
 						<Dropdown
+							className="w-full md:w-auto"
 							content={
-								<Button variant="dark">
+								<Button
+									variant="dark"
+									className="w-full md:w-auto"
+								>
 									<div className="flex space-x-2 items-center w-28">
 										<div
 											className="material-icons"
@@ -152,8 +160,12 @@ export default function Posts({ user }: PageProps) {
 					</div>
 					<div>
 						<Dropdown
+							className="w-full md:w-auto"
 							content={
-								<Button variant="dark" className="w-48">
+								<Button
+									variant="dark"
+									className="w-full md:w-48"
+								>
 									{sanitizeCategory(category)}
 								</Button>
 							}
@@ -172,7 +184,7 @@ export default function Posts({ user }: PageProps) {
 						/>
 					</div>
 				</div>
-				<div className="grid grid-cols-2 gap-4">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 					{loadingPosts
 						? [...Array(10)].map((i) => <PostCard key={i} />)
 						: posts.map((data) => (
