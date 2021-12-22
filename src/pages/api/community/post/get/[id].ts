@@ -2,12 +2,10 @@ import { NextApiResponse } from "next";
 import { Post } from "../../../../../types";
 import { dbConnect } from "../../../../../util/mongodb";
 import { getPostsData } from "../../../../../util/posts";
-import { redisConnect } from "../../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../../util/session";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
-	const redis = await redisConnect();
 	const { id } = req.query;
 
 	const user = req.session.get("user");

@@ -161,6 +161,17 @@ export default function PostPage({ user }: PageProps) {
 			});
 	};
 
+	const deletePost = async () => {
+		if (
+			!confirm(
+				"Are you sure you want to delete this post? You will not be able to get anything back once it is gone."
+			)
+		)
+			return;
+		axios.delete(`/api/community/post/delete/${id as string}`);
+		window.location.replace(`/community/`);
+	};
+
 	useEffect(() => {
 		axios(`/api/community/post/get/${id}`)
 			.then(({ data }) => {
@@ -264,6 +275,7 @@ export default function PostPage({ user }: PageProps) {
 									<Button
 										variant={"danger"}
 										className="w-full lg:w-auto"
+										onClick={() => deletePost()}
 									>
 										Delete
 									</Button>
