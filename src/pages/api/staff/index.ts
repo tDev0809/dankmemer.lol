@@ -9,7 +9,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
 	const redis = await redisConnect();
 
-	const cached = await redis.get("community:blogs");
+	const cached = await redis.get("staff");
 
 	if (cached) {
 		return res.json(JSON.parse(cached));
@@ -41,7 +41,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		}
 	}
 
-	await redis.set("community:blogs", JSON.stringify(result), "PX", TIME.week);
+	await redis.set("staff", JSON.stringify(result), "PX", TIME.week);
 
 	return res.json(result);
 };
