@@ -28,48 +28,22 @@ export interface UserData {
 	name: string;
 	discriminator: string;
 	avatar: string;
-	banner?: string;
 	developer: boolean;
 	moderator: boolean;
 	botModerator: boolean;
 	honorable: boolean;
 	modManager: boolean;
+
+	_id?: string;
+	banner?: string;
+	vanity?: string;
+	socials?: Record<string, string>;
+	about?: string;
 }
 
 export interface PageProps {
 	user?: User;
 }
-
-// export interface PostAuthor {
-// 	discriminator: string;
-// 	id: string;
-// 	username: string;
-// }
-
-// export interface Post {
-// 	_id: string;
-// 	author: PostAuthor;
-// 	bad: boolean;
-// 	category: string;
-// 	comments: boolean;
-// 	createdAt: number;
-// 	description: string;
-// 	developerResponse: boolean;
-// 	hot: number;
-// 	label:
-// 		| ""
-// 		| "accepted"
-// 		| "developer"
-// 		| "implemented"
-// 		| "duplicate"
-// 		| "denied"
-// 		| "invalid"
-// 		| "considered";
-// 	show: boolean;
-// 	title: string;
-// 	upvoted: boolean;
-// 	upvotes: number;
-// }
 
 export interface Post {
 	_id: string;
@@ -116,20 +90,6 @@ export interface Blog {
 	date: number;
 	description: string;
 	title: string;
-}
-
-export interface Staff {
-	_id: string;
-	category:
-		| "Team"
-		| "Bot Moderators"
-		| "Support Moderators"
-		| "Honorable Mentions";
-	name: string;
-	about: string;
-	social: Record<string, string>;
-	avatar: string;
-	role?: string;
 }
 
 export interface Item {
