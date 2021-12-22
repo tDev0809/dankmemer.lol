@@ -4,6 +4,7 @@ import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Avatar } from "../../../components/Avatar";
 import { Badge } from "../../../components/Badge";
 import { PostCard } from "../../../components/community/PostCard";
@@ -16,11 +17,25 @@ import { withSession } from "../../../util/session";
 
 function Actions({ user, profile }: { user: User; profile: Profile }) {
 	const swap = (role: string) => {
-		// TODO
+		axios
+			.patch(`/api/user/role/?role=${role}&id=${profile.user.id}`)
+			.then(({}) => {
+				location.reload();
+			})
+			.catch((e) => {
+				toast.dark(e.response.data.error);
+			});
 	};
 
 	const ban = () => {
-		// TODO
+		axios
+			.patch(`/api/user/ban/?type=Community&id=${profile.user.id}`)
+			.then(({}) => {
+				location.reload();
+			})
+			.catch((e) => {
+				toast.dark(e.response.data.error);
+			});
 	};
 
 	return (
