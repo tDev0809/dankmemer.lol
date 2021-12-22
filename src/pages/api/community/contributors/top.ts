@@ -57,7 +57,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		"community:contributors",
 		JSON.stringify(contributors),
 		"PX",
-		TIME.hour
+		TIME.day
 	);
 
 	return res.json(contributors);
