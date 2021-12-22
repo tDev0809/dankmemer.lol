@@ -15,7 +15,7 @@ import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
 import Dropdown from "../../components/ui/Dropdown";
 import { POST_CATEGORIES } from "../../constants";
-import { Blog, PageProps, Post } from "../../types";
+import { Banner, Blog, PageProps, Post } from "../../types";
 import { sanitizeCategory } from "../../util/community";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
@@ -28,6 +28,7 @@ export default function Community({ user }: PageProps) {
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [loadingPosts, setLoadingPosts] = useState(false);
 	const router = useRouter();
+	const [banner, setBanner] = useState<Banner>();
 
 	useEffect(() => {
 		axios("/api/community/blogs/all").then(({ data }) => {
@@ -73,12 +74,14 @@ export default function Community({ user }: PageProps) {
 							</Button>
 						)}
 					</div>
-					<UpdateBanner
-						title="Update 9.6.0 is OUT!"
-						description="Woah this update is so big! We added streaming and stuff"
-						image="https://imgur.com/kspUVKW.png"
-						id="xqc"
-					/>
+					{banner && (
+						<UpdateBanner
+							title={banner.title}
+							description={banner.description}
+							image={banner.image}
+							url={banner.url}
+						/>
+					)}
 				</div>
 				<Section
 					title="Our Blog"

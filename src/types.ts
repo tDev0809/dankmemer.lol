@@ -152,3 +152,10 @@ export interface Activity {
 	data: Record<string, any>;
 	createdAt: number;
 }
+
+export interface Banner {
+	title: string;
+	description: string;
+	image: string;
+	url: string;
+}
