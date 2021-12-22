@@ -45,6 +45,11 @@ module.exports = {
 				destination: `/community`,
 				permanent: true,
 			},
+			{
+				source: "/feedback/p/:path*",
+				destination: "/community/post/:path*",
+				permanent: true,
+			},
 		];
 	},
 	async rewrites() {
