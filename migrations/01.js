@@ -206,7 +206,7 @@ const migration = async () => {
 			}
 		);
 	}
-	// await db.collection("staff").drop(); TODO
+	await db.collection("staff").drop();
 
 	// Create indexes
 	await db.collection("community-posts-upvotes").createIndex({ pID: "text" });
