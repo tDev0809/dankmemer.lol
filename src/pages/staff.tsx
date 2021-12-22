@@ -11,7 +11,7 @@ import { PageProps, Staff } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
 
-export default function FeedbackPage({ user }: PageProps) {
+export default function StaffPage({ user }: PageProps) {
 	const [staff, setStaff] = useState<Record<string, Staff[]>>({});
 
 	useEffect(() => {

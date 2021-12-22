@@ -13,7 +13,7 @@ import Dropdown from "../../../components/ui/Dropdown";
 import Input from "../../../components/ui/Input";
 import { POST_CATEGORIES, POST_LABELS } from "../../../constants";
 import { Comment, PageProps, Post, UserData } from "../../../types";
-import { sanitizeCategory, urlify } from "../../../util/feedback";
+import { sanitizeCategory, urlify } from "../../../util/community";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
 

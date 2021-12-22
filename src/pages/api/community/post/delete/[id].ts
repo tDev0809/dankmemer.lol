@@ -1,6 +1,6 @@
 import axios from "axios";
 import { NextApiResponse } from "next";
-import { sanitizeCategory } from "../../../../../util/feedback";
+import { sanitizeCategory } from "../../../../../util/community";
 import { dbConnect } from "../../../../../util/mongodb";
 import { NextIronRequest, withSession } from "../../../../../util/session";
 
@@ -44,7 +44,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.deleteMany({ type: 2, "data.postId": id });
 
 	await axios.post(
-		process.env.FEEDBACK_WEBHOOK!,
+		process.env.COMMUNITY_WEBHOOK!,
 		{
 			embeds: [
 				{

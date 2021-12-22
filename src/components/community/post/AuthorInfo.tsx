@@ -1,7 +1,7 @@
 import { Post, UserData } from "../../../types";
 import Link from "next/link";
 import { Avatar } from "../../Avatar";
-import { sanitizeCategory } from "../../../util/feedback";
+import { sanitizeCategory } from "../../../util/community";
 import { format, formatDistance } from "date-fns";
 import Tooltip from "../../ui/Tooltip";
 

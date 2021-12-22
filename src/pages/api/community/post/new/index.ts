@@ -124,7 +124,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	});
 
 	await axios.post(
-		process.env.FEEDBACK_WEBHOOK!,
+		process.env.COMMUNITY_WEBHOOK!,
 		{
 			embeds: [
 				{

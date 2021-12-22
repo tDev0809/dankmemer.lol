@@ -81,9 +81,6 @@ export default function Navbar({ user }: Props) {
 							<li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
 								<Link href="/community">Community</Link>
 							</li>
-							{/* <li className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100">
-								<Link href="/feedback">Feedback</Link>
-							</li> */}
 						</ul>
 						<div className="ml-4 text-xl font-montserrat font-bold inline-block lg:hidden text-gray-800 dark:text-light-200">
 							Dank Memer

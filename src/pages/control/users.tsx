@@ -49,8 +49,8 @@ export default function ControlUserPage({ user }: PageProps) {
 											value: "Lootbox",
 										},
 										{
-											text: "Feedback ban",
-											value: "Feedback",
+											text: "Community ban",
+											value: "Community",
 										},
 									],
 								}}
@@ -86,8 +86,8 @@ export default function ControlUserPage({ user }: PageProps) {
 											value: "Lootbox",
 										},
 										{
-											text: "Feedback ban",
-											value: "Feedback",
+											text: "Community ban",
+											value: "Community",
 										},
 									],
 								}}
@@ -123,8 +123,8 @@ export default function ControlUserPage({ user }: PageProps) {
 											value: "Lootbox",
 										},
 										{
-											text: "Feedback ban",
-											value: "Feedback",
+											text: "Community ban",
+											value: "Community",
 										},
 									],
 								}}

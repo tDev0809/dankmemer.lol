@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Badge } from "../../Badge";
 import clsx from "clsx";
 import Button from "../../ui/Button";
-import { urlify } from "../../../util/feedback";
+import { urlify } from "../../../util/community";
 import { Dispatch, SetStateAction, useState } from "react";
 import axios from "axios";
 import { randomAvatar } from "../../../util/random";

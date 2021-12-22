@@ -11,7 +11,7 @@ import {
 	POST_CATEGORIES_DESCRIPTIONS,
 } from "../../../constants";
 import { PageProps } from "../../../types";
-import { sanitizeCategory } from "../../../util/feedback";
+import { sanitizeCategory } from "../../../util/community";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
 

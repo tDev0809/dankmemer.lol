@@ -16,7 +16,7 @@ import Container from "../../components/ui/Container";
 import Dropdown from "../../components/ui/Dropdown";
 import { POST_CATEGORIES } from "../../constants";
 import { Blog, PageProps, Post } from "../../types";
-import { sanitizeCategory } from "../../util/feedback";
+import { sanitizeCategory } from "../../util/community";
 import { unauthenticatedRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 

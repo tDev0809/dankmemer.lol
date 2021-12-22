@@ -105,7 +105,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	await redis.del(`community:post:stats:${req.body.id}`);
 
 	await axios.post(
-		process.env.FEEDBACK_WEBHOOK!,
+		process.env.COMMUNITY_WEBHOOK!,
 		{
 			embeds: [
 				{

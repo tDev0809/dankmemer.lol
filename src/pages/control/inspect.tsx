@@ -44,8 +44,8 @@ export default function ControlInspectPage({ user }: PageProps) {
 											value: "Lootbox",
 										},
 										{
-											text: "Feedback ban",
-											value: "Feedback",
+											text: "Community ban",
+											value: "Community",
 										},
 									],
 								}}

@@ -1,5 +1,4 @@
 import { NextApiResponse } from "next";
-import { FEEDBACK_CATEGORIES } from "../../../constants";
 import { Staff } from "../../../types";
 import { dbConnect } from "../../../util/mongodb";
 import { NextIronRequest, withSession } from "../../../util/session";

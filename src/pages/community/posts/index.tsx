@@ -8,7 +8,7 @@ import Container from "../../../components/ui/Container";
 import Dropdown from "../../../components/ui/Dropdown";
 import { POST_CATEGORIES, POST_LABELS } from "../../../constants";
 import { PageProps, Post } from "../../../types";
-import { sanitizeCategory } from "../../../util/feedback";
+import { sanitizeCategory } from "../../../util/community";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
 import { toTitleCase } from "../../../util/string";
