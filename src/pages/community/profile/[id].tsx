@@ -39,7 +39,7 @@ function Actions({ user, profile }: { user: User; profile: Profile }) {
 	};
 
 	return (
-		<div className="hidden md:inline-block">
+		<div>
 			<Dropdown
 				content={
 					<Button variant="dark" className="w-48">
@@ -180,6 +180,19 @@ export default function ProfilePage({ user }: PageProps) {
 			});
 	}, []);
 
+	const updateVanity = () => {
+		const vanity = prompt("Enter new Vanity URL", "");
+
+		axios
+			.patch(`/api/user/vanity/?id=${profile!.user.id}&vanity=${vanity}`)
+			.then(({}) => {
+				location.reload();
+			})
+			.catch((e) => {
+				toast.dark(e.response.data.error);
+			});
+	};
+
 	return (
 		<Container title="Profile" user={user}>
 			<div className="flex flex-col my-8 space-y-4">
@@ -220,7 +233,7 @@ export default function ProfilePage({ user }: PageProps) {
 													"?size=512"
 												}
 												size="96px"
-												className="border-4 border-light-500 dark:border-dark-3000 rounded-full"
+												className="border-4 border-light-500 dark:border-dark-300 rounded-full"
 											/>
 										</div>
 									</div>
@@ -262,9 +275,24 @@ export default function ProfilePage({ user }: PageProps) {
 										</div>
 									</div>
 								</div>
-								{user?.moderator && (
-									<Actions user={user!} profile={profile} />
-								)}
+								<div className="space-x-4 items-center hidden md:flex">
+									{(user?.moderator || user?.honorable) &&
+										(user.id == profile.user.id ||
+											user.developer) && (
+											<Button
+												variant="dark"
+												onClick={() => updateVanity()}
+											>
+												Update Vanity URL
+											</Button>
+										)}
+									{user?.moderator && (
+										<Actions
+											user={user!}
+											profile={profile}
+										/>
+									)}
+								</div>
 							</div>
 							<div className="bg-light-500 dark:bg-dark-100 rounded-md flex flex-col md:flex-row justify-between py-4 px-8 space-y-2 md:space-y-0">
 								{[
