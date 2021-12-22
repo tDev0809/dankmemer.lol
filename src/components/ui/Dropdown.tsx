@@ -28,7 +28,6 @@ export default function Dropdown({ content, options, className = "" }: Props) {
 	useEffect(() => {
 		function outside(event: Event) {
 			if (!dropdown.current!.contains(event.target)) {
-				console.log("a");
 				setOpen(false);
 			}
 		}

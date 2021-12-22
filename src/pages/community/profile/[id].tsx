@@ -183,14 +183,41 @@ export default function ProfilePage({ user }: PageProps) {
 	const updateVanity = () => {
 		const vanity = prompt("Enter new Vanity URL", "");
 
-		axios
-			.patch(`/api/user/vanity/?id=${profile!.user.id}&vanity=${vanity}`)
-			.then(({}) => {
-				location.reload();
-			})
-			.catch((e) => {
-				toast.dark(e.response.data.error);
-			});
+		if (vanity !== null) {
+			axios
+				.patch(
+					`/api/user/vanity/?id=${profile!.user.id}&vanity=${vanity}`
+				)
+				.then(({}) => {
+					if (!vanity) {
+						router.replace(
+							`/community/profile/${profile!.user.id}`
+						);
+					} else {
+						router.replace(`/community/profile/${vanity}`);
+					}
+				})
+				.catch((e) => {
+					toast.dark(e.response.data.error);
+				});
+		}
+	};
+
+	const updateBanner = () => {
+		const banner = prompt("Enter new banner URL", "");
+
+		if (banner !== null) {
+			axios
+				.patch(
+					`/api/user/banner/?id=${profile!.user.id}&banner=${banner}`
+				)
+				.then(({}) => {
+					location.reload();
+				})
+				.catch((e) => {
+					toast.dark(e.response.data.error);
+				});
+		}
 	};
 
 	return (
@@ -284,6 +311,16 @@ export default function ProfilePage({ user }: PageProps) {
 												onClick={() => updateVanity()}
 											>
 												Update Vanity URL
+											</Button>
+										)}
+									{(user?.moderator || user?.honorable) &&
+										(user.id == profile.user.id ||
+											user.developer) && (
+											<Button
+												variant="dark"
+												onClick={() => updateBanner()}
+											>
+												Update Banner
 											</Button>
 										)}
 									{user?.moderator && (

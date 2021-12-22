@@ -29,7 +29,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.collection("users")
 		.findOne({ _id: req.query.id });
 
-	if (req.query.vanity.length == 0 || !req.query?.vanity) {
+	if (req.query.banner.length == 0 || !req.query?.banner) {
 		await redis.del(`user:${req.query.id}`);
 		if (userData?.vanity) {
 			await redis.del(`user:${userData.vanity}`);
@@ -41,7 +41,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				.collection("users")
 				.updateOne(
 					{ _id: req.query.id as string },
-					{ $unset: { vanity: 1 } }
+					{ $unset: { banner: 1 } }
 				);
 
 			return res.status(200).json({});
@@ -50,25 +50,12 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		}
 	}
 
-	if (req.query.vanity.length < 3) {
-		return res.status(400).json({ error: "Vanity URL too short." });
+	if (req.query.banner.length < 3) {
+		return res.status(400).json({ error: "Banner URL too short." });
 	}
 
-	if (req.query.vanity.length > 20) {
-		return res.status(400).json({ error: "Vanity URL too long." });
-	}
-
-	if (
-		req.query.vanity.includes(" ") ||
-		req.query.vanity.includes("?") ||
-		req.query.vanity.includes("&") ||
-		req.query.vanity.includes("/")
-	) {
-		return res.status(400).json({ error: "Invalid Vanity URL." });
-	}
-
-	if (await db.collection("users").findOne({ vanity: req.query.vanity })) {
-		return res.status(401).json({ error: "Vanity URL already taken." });
+	if (req.query.banner.length > 250) {
+		return res.status(400).json({ error: "Banner URL too long." });
 	}
 
 	await redis.del(`user:${req.query.id}`);
@@ -82,7 +69,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.collection("users")
 			.updateOne(
 				{ _id: req.query.id as string },
-				{ $set: { vanity: req.query.vanity } }
+				{ $set: { banner: req.query.banner } }
 			);
 
 		return res.status(200).json({});
