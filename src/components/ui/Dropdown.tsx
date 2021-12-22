@@ -28,6 +28,7 @@ export default function Dropdown({ content, options, className = "" }: Props) {
 	useEffect(() => {
 		function outside(event: Event) {
 			if (!dropdown.current!.contains(event.target)) {
+				console.log("a");
 				setOpen(false);
 			}
 		}
@@ -64,55 +65,56 @@ export default function Dropdown({ content, options, className = "" }: Props) {
 			>
 				{content}
 			</div>
-			<div className="absolute w-full min-h-full z-50 mt-2">
-				<div
-					className={clsx(
-						"bg-[#18191c] flex flex-col rounded-md space-y-1 p-2",
-						open ? "" : "hidden"
-					)}
-					onClick={() => setOpen(false)}
-				>
-					{options
-						.filter((o) => o)
-						.map((option) => {
-							const content = (
-								<div
-									onClick={(e) =>
-										option?.onClick
-											? option?.onClick(e)
-											: null
-									}
-									className={clsx(
-										"text-sm hover:bg-[#131417] rounded-sm px-2 py-1",
-										optionVariants[
-											option?.variant || "normal"
-										]
-									)}
-								>
-									<div className="flex items-center space-x-2">
-										{option?.icon && (
-											<div
-												className="material-icons"
-												style={{ fontSize: "16px" }}
-											>
-												{option.icon}
-											</div>
+			{open && (
+				<div className="absolute w-full min-h-full z-50 mt-2">
+					<div
+						className={clsx(
+							"bg-[#18191c] flex flex-col rounded-md space-y-1 p-2"
+						)}
+						onClick={() => setOpen(false)}
+					>
+						{options
+							.filter((o) => o)
+							.map((option) => {
+								const content = (
+									<div
+										onClick={(e) =>
+											option?.onClick
+												? option?.onClick(e)
+												: null
+										}
+										className={clsx(
+											"text-sm hover:bg-[#131417] rounded-sm px-2 py-1",
+											optionVariants[
+												option?.variant || "normal"
+											]
 										)}
-										<div>{option?.label}</div>
+									>
+										<div className="flex items-center space-x-2">
+											{option?.icon && (
+												<div
+													className="material-icons"
+													style={{ fontSize: "16px" }}
+												>
+													{option.icon}
+												</div>
+											)}
+											<div>{option?.label}</div>
+										</div>
 									</div>
-								</div>
-							);
+								);
 
-							return option?.link ? (
-								<Link href={option?.link || "#"}>
-									{content}
-								</Link>
-							) : (
-								content
-							);
-						})}
+								return option?.link ? (
+									<Link href={option?.link || "#"}>
+										{content}
+									</Link>
+								) : (
+									content
+								);
+							})}
+					</div>
 				</div>
-			</div>
+			)}
 		</div>
 	);
 }
