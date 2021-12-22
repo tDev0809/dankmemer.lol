@@ -36,8 +36,13 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(400).json({ error: "ID can't include space." });
 	}
 
-	if (blog._id.includes("/")) {
-		return res.status(400).json({ error: "ID can't include '/'." });
+	if (
+		blog._id.includes("/") ||
+		blog._id.includes(" ") ||
+		blog._id.includes("&") ||
+		blog._id.includes("?")
+	) {
+		return res.status(400).json({ error: "Invalid ID can't include" });
 	}
 
 	if (blog.content.length == 0) {
