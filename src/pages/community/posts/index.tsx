@@ -95,7 +95,7 @@ export default function Posts({ user }: PageProps) {
 		<Container title="Posts" user={user}>
 			<div className="flex flex-col space-y-4 my-16">
 				<div
-					className="flex flex-col md:flex-row space-y-2 md:space-y-0 justify-between md:items-center p-2 rounded-md bg-dark-100"
+					className="flex flex-col md:flex-row space-y-2 md:space-y-0 justify-between md:items-center p-2 rounded-md bg-light-500 dark:bg-dark-100"
 					ref={top}
 				>
 					<div className="flex space-x-4">
@@ -191,7 +191,7 @@ export default function Posts({ user }: PageProps) {
 								<PostCard data={data} key={data._id} />
 						  ))}
 				</div>
-				<div className="flex justify-between items-center p-2 space-x-4 rounded-md bg-dark-100">
+				<div className="flex justify-between items-center p-2 space-x-4 rounded-md bg-light-500 dark:bg-dark-100">
 					<Button
 						block
 						variant="dark"

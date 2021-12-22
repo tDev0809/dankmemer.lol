@@ -32,7 +32,7 @@ export default function Input({
 		<Text
 			onChange={onChange}
 			className={clsx(
-				"bg-light-500 dark:bg-dank-600",
+				"bg-light-200 dark:bg-dank-600",
 				"text-black dark:text-light-300",
 				"placeholder-gray-500",
 				"p-3 outline-none text-sm rounded-md",

@@ -77,7 +77,7 @@ export default function CommentCard({
 									link={(comment.author as UserData).avatar}
 									size="16px"
 								/>
-								<a className="hover:underline hover:text-dark-100 dark:hover:text-light-400">
+								<a className="hover:underline text-black dark:text-white">
 									{(comment.author as UserData).name}#
 									{(comment.author as UserData).discriminator}
 								</a>

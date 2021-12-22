@@ -14,7 +14,7 @@ export function TopContributors() {
 	}, []);
 
 	return (
-		<div className="bg-dark-100 rounded-md p-4 gap-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-start xl:justify-items-center">
+		<div className="bg-light-500 dark:bg-dark-100 rounded-md p-4 gap-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-start xl:justify-items-center">
 			{contributors.map((contributor, i) => (
 				<Link href={`/community/profile/${contributor.id}`}>
 					<a className="flex space-x-2 items-center cursor-pointer">
@@ -25,7 +25,7 @@ export function TopContributors() {
 						/>
 						<div className="flex flex-col -space-y-1">
 							<div className="flex items-end">
-								<div className="font-bold text-sm sm:text-md">
+								<div className="font-bold text-sm sm:text-md text-black dark:text-white">
 									{contributor.name.replace(
 										/[^\x00-\x7F]/g,
 										""

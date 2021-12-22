@@ -45,8 +45,8 @@ export default function NewPostPage({ user }: PageProps) {
 
 	return (
 		<Container title="New Post" user={user}>
-			<div className="my-8 p-4 bg-dark-100 rounded-md flex flex-col space-y-4">
-				<div className="text-2xl font-bold font-montserrat">
+			<div className="my-8 p-4 bg-light-500 dark:bg-dark-100 rounded-md flex flex-col space-y-4">
+				<div className="text-2xl font-bold font-montserrat text-black dark:text-white">
 					New Post
 				</div>
 				<div>
@@ -65,7 +65,7 @@ export default function NewPostPage({ user }: PageProps) {
 										: "bg-gray-400 dark:bg-dank-400"
 								)}
 							/>
-							<span>
+							<span className="text-black dark:text-white">
 								{sanitizeCategory(fcategory)}{" "}
 								<span className="text-sm text-light-600">
 									- {POST_CATEGORIES_DESCRIPTIONS[fcategory]}
@@ -75,7 +75,9 @@ export default function NewPostPage({ user }: PageProps) {
 					))}
 				</div>
 				<div>
-					<div className="font-montserrat">Post Title</div>
+					<div className="font-montserrat text-black dark:text-white">
+						Post Title
+					</div>
 					<Input
 						variant="short"
 						block
@@ -85,7 +87,9 @@ export default function NewPostPage({ user }: PageProps) {
 					/>
 				</div>
 				<div>
-					<div className="font-montserrat">Post Content</div>
+					<div className="font-montserrat text-black dark:text-white">
+						Post Content
+					</div>
 					<Input
 						variant="medium"
 						block

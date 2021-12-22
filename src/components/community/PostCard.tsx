@@ -32,7 +32,7 @@ export function PostCard({ data }: Props) {
 	return (
 		<Link href={data ? `/community/post/${data?._id}` : "#"}>
 			<a
-				className="bg-dark-100 rounded-md w-full p-4 flex space-x-4 cursor-pointer"
+				className="bg-light-500 dark:bg-dark-100 rounded-md w-full p-4 flex space-x-4 cursor-pointer"
 				key={data?._id}
 			>
 				<div
@@ -51,7 +51,7 @@ export function PostCard({ data }: Props) {
 				</div>
 				<div className="flex flex-col justify-between space-y-4 relative w-full">
 					<div className="flex flex-col space-y-1">
-						<div className="font-bold font-montserrat">
+						<div className="font-bold font-montserrat text-black dark:text-white">
 							{data?.title ?? (
 								<div
 									className={clsx(

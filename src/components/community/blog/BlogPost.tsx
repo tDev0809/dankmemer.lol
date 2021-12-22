@@ -15,7 +15,7 @@ export function BlogPost({ data, user }: Props) {
 	return (
 		<div
 			className={clsx(
-				"p-4 bg-dark-100 rounded-md w-full",
+				"p-4 bg-light-500 dark:bg-dark-100 rounded-md w-full",
 				user?.developer ? " sm:h-64 lg:h-80" : "sm:h-52 lg:h-72"
 			)}
 		>
@@ -29,7 +29,7 @@ export function BlogPost({ data, user }: Props) {
 						)}
 						<div
 							className={clsx(
-								"flex items-center font-montserrat font-bold",
+								"flex items-center font-montserrat font-bold text-black dark:text-white",
 								data.title.length > 25
 									? "text-md leading-1"
 									: data.title.length > 15
@@ -58,7 +58,7 @@ export function BlogPost({ data, user }: Props) {
 							<br /> On {format(data.date, "MMMM dd, yyyy")}
 						</div>
 					</div>
-					<div className="text-sm">
+					<div className="text-sm text-black dark:text-white">
 						{truncate(data.description, 80)}
 					</div>
 				</div>

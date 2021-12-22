@@ -118,17 +118,19 @@ export default function Community({ user }: PageProps) {
 				<Section title="Community Posts">
 					<div className="flex space-x-0 md:space-x-4">
 						<div className="hidden md:flex flex-col space-y-3 ">
-							<div className="text-lg">Categories</div>
+							<div className="text-lg text-black dark:text-white">
+								Categories
+							</div>
 							<div className="flex flex-col space-y-2 w-52">
 								{["all"]
 									.concat(POST_CATEGORIES)
 									.map((category) => (
 										<div
 											className={clsx(
-												"py-2 px-4 bg-dark-100 rounded-md cursor-pointer select-none",
+												"py-2 px-4 bg-light-500 dark:bg-dark-100 rounded-md cursor-pointer select-none",
 												category == postCategory
 													? "text-dank-300"
-													: "text-white"
+													: "text-black dark:text-white"
 											)}
 											onClick={() =>
 												setPostCategory(
@@ -143,7 +145,9 @@ export default function Community({ user }: PageProps) {
 						</div>
 						<div className="flex flex-col space-y-2 w-full">
 							<div className="flex flex-col md:flex-row items-start justify-between">
-								<div className="text-lg">Trending posts</div>
+								<div className="text-lg text-black dark:text-white">
+									Trending posts
+								</div>
 								<div className="flex justify-between space-x-4 w-full md:w-auto">
 									<Button
 										size="small"

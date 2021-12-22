@@ -5,7 +5,7 @@ export function BlogPostPlaceholder() {
 	return (
 		<div
 			className={clsx(
-				"p-4 bg-dark-100 rounded-md w-full",
+				"p-4 bg-light-500 dark:bg-dark-100 rounded-md w-full",
 				"sm:h-52 lg:h-72"
 			)}
 		>

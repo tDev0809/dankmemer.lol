@@ -197,13 +197,13 @@ export default function PostPage({ user }: PageProps) {
 
 	return (
 		<Container title="Post" user={user}>
-			<div className="my-8 p-4 bg-dark-100 rounded-md">
+			<div className="my-8 p-4 bg-light-500 dark:bg-dark-100 rounded-md text">
 				{post && (
 					<div className="flex flex-col space-y-8 w-full">
 						<div className="flex flex-col lg:flex-row justify-between items-start space-y-2 lg:space-y-0">
 							<div className="flex flex-col space-y-2">
 								<div>
-									<div className="text-2xl font-bold font-montserrat">
+									<div className="text-2xl font-bold font-montserrat text-black dark:text-white">
 										{post.title}
 									</div>
 									<AuthorInfo post={post} />
@@ -299,12 +299,12 @@ export default function PostPage({ user }: PageProps) {
 								</Button>
 							</div>
 						</div>
-						<div className="whitespace-pre-line">
+						<div className="whitespace-pre-line text-black dark:text-white">
 							{urlify(post.content)}
 						</div>
-						<div className="flex flex-col space-y-2 border-t-4 pt-4 border-dark-200">
+						<div className="flex flex-col space-y-2 border-t-4 pt-4 border-light-400 dark:border-dark-200">
 							<div>
-								<div className="text-lg font-bold font-montserrat">
+								<div className="text-lg font-bold font-montserrat text-black dark:text-white">
 									Comments ({post.comments})
 								</div>
 								<div className="text-sm text-light-600">
@@ -340,7 +340,7 @@ export default function PostPage({ user }: PageProps) {
 							</div>
 						</div>
 						{comments.length > 0 && (
-							<div className="flex flex-col space-y-6 border-t-4 pt-4 border-dark-200">
+							<div className="flex flex-col space-y-6 border-t-4 pt-4 border-light-400 dark:border-dark-200">
 								{comments.map((comment) => (
 									<div>
 										<CommentCard
@@ -349,7 +349,7 @@ export default function PostPage({ user }: PageProps) {
 											user={user}
 										/>
 										{comment.replies.length > 0 && (
-											<div className="border-l-4 border-dark-200 mt-3 flex flex-col space-y-3">
+											<div className="border-l-4 border-light-400 dark:border-dark-200 mt-3 flex flex-col space-y-3">
 												{comment.replies.map(
 													(reply) => (
 														<CommentCard

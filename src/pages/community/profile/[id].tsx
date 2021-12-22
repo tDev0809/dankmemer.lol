@@ -125,9 +125,9 @@ function ActivityCard({ activity }: { activity: Activity }) {
 
 	return (
 		<Link href={link}>
-			<a className="bg-dark-100 rounded-md text-sm p-4">
+			<a className="bg-light-500 dark:bg-dark-100 rounded-md text-sm p-4">
 				<div className="flex space-x-4 items-center">
-					<div className="h-10 w-10  bg-dank-400 rounded-full flex items-center justify-center">
+					<div className="h-10 w-10  bg-light-400 dark:bg-dank-400 rounded-full flex items-center justify-center text-black dark:text-white">
 						<div
 							className="material-icons"
 							style={{ fontSize: "20px" }}
@@ -136,7 +136,7 @@ function ActivityCard({ activity }: { activity: Activity }) {
 						</div>
 					</div>
 					<div className="text-sm flex-1">
-						<div className="">{text}</div>
+						<div className="text-black dark:text-white">{text}</div>
 						<div className="text-light-600">
 							{formatDistance(
 								new Date(activity.createdAt),
@@ -209,7 +209,7 @@ export default function ProfilePage({ user }: PageProps) {
 													"?size=512"
 												}
 												size="120px"
-												className="border-4 border-dark-300 rounded-full"
+												className="border-4 border-light-500 dark:border-dark-300 rounded-full"
 											/>
 										</div>
 										<div className="inline-block md:hidden">
@@ -220,13 +220,13 @@ export default function ProfilePage({ user }: PageProps) {
 													"?size=512"
 												}
 												size="96px"
-												className="border-4 border-dark-300 rounded-full"
+												className="border-4 border-light-500 dark:border-dark-3000 rounded-full"
 											/>
 										</div>
 									</div>
 									<div className="flex flex-col">
 										<div className="flex items-baseline">
-											<div className="text-2xl font-bold">
+											<div className="text-2xl font-bold text-black dark:text-white">
 												{profile.user.name}
 											</div>
 											<div className="text-sm text-light-600 font-bold">
@@ -235,7 +235,7 @@ export default function ProfilePage({ user }: PageProps) {
 										</div>
 										<div className="flex flex-col md:flex-row space-x-1 md:items-center space-y-1">
 											<div className="flex md:inline-block">
-												<div className="text-xs bg-dank-500 text-dank-100 px-2 py-0.5 rounded-md">
+												<div className="text-xs bg-light-500 dark:bg-dank-500 text-dank-200 dark:text-dank-100 px-2 py-0.5 rounded-md">
 													Rank #
 													{rank == -1
 														? "???"
@@ -266,7 +266,7 @@ export default function ProfilePage({ user }: PageProps) {
 									<Actions user={user!} profile={profile} />
 								)}
 							</div>
-							<div className="bg-dark-100 rounded-md flex flex-col md:flex-row justify-between py-4 px-8 space-y-2 md:space-y-0">
+							<div className="bg-light-500 dark:bg-dark-100 rounded-md flex flex-col md:flex-row justify-between py-4 px-8 space-y-2 md:space-y-0">
 								{[
 									[profile.posts.length, `Post?s made`],
 									[profile.comments, "Comment?s made"],
@@ -281,7 +281,7 @@ export default function ProfilePage({ user }: PageProps) {
 									[0, "Award?s received"],
 								].map(([count, title]) => (
 									<div className="flex flex-col items-center -space-y-1">
-										<div className="text-lg font-bold">
+										<div className="text-lg font-bold text-black dark:text-white">
 											{count}
 										</div>
 										<div className="text-sm text-light-600 text-center">

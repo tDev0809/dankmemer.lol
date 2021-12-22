@@ -14,7 +14,7 @@ const colors: Record<string, string> = {
 
 export function Label({ label }: Props) {
 	return (
-		<div className="flex items-center space-x-2 bg-dark-300 px-2 py-1 rounded-md text-xs">
+		<div className="flex items-center space-x-2 bg-light-400 dark:bg-dark-300 px-2 py-1 rounded-md text-xs text-black dark:text-white">
 			<div
 				className="h-3 w-3 rounded-full"
 				style={{ backgroundColor: colors[label] ?? "#a4adbd" }}

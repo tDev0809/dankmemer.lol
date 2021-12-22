@@ -104,6 +104,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		content: req.body.content,
 		category: req.body.category,
 		createdAt: Date.now(),
+		upvotes: 1,
 		author: user.id,
 		labels: [],
 	});
