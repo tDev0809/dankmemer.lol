@@ -12,7 +12,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.sort({ createdAt: -1 })
 			.toArray();
 
-		console.log(update);
 		if (!update[0] || update[0].content === "") {
 			return res.status(200).json({});
 		}
