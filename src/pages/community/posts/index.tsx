@@ -150,7 +150,11 @@ export default function Posts({ user }: PageProps) {
 									</div>
 								</Button>
 							}
-							options={POST_LABELS.map((name) => ({
+							options={POST_LABELS.filter((l) =>
+								user?.moderator
+									? true
+									: !["denied", "duplicate"].includes(l)
+							).map((name) => ({
 								label: toTitleCase(
 									name.replace("all", "all posts")
 								),
