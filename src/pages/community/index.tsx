@@ -96,7 +96,7 @@ export default function Community({ user }: PageProps) {
 							</div>
 						)}
 					</div>
-					{banner && (
+					{banner?.title && (
 						<UpdateBanner
 							title={banner.title}
 							description={banner.description}
