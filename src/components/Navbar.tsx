@@ -157,7 +157,7 @@ export default function Navbar({ user }: Props) {
 					</div>
 				</nav>
 				{hamburger && (
-					<ul className="absolute flex flex-col bg-light-200 dark:bg-dark-200 box-border w-screen h-screen z-50 px-6 top-[74px]">
+					<ul className="absolute flex flex-col bg-light-200 dark:bg-dark-200 box-border w-screen h-screen z-[9999999] px-6 top-[74px]">
 						<Link href="/commands">
 							<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
 								Commands
