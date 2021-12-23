@@ -51,6 +51,9 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.findOne({ _id: req.query.id as string });
 
 	await redis.del(`user:${req.query.id}`);
+	if (userData?.vanity) {
+		await redis.del(`user:${userData.vanity}`);
+	}
 	await redis.del("staff");
 
 	try {
