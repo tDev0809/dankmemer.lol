@@ -158,4 +158,5 @@ export interface Banner {
 	description: string;
 	image: string;
 	url: string;
+	buttonText: string;
 }

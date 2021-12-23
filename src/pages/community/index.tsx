@@ -34,6 +34,9 @@ export default function Community({ user }: PageProps) {
 		axios("/api/community/blogs/all").then(({ data }) => {
 			setBlogs(data);
 		});
+		axios("/api/community/update/get").then(({ data }) => {
+			setBanner(data);
+		});
 	}, []);
 
 	useEffect(() => {
@@ -57,21 +60,40 @@ export default function Community({ user }: PageProps) {
 					<div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
 						<Title size="big">Community</Title>
 						{user && (
-							<Button
-								size="small"
-								className="w-full sm:w-auto"
-								variant="dark"
-								onClick={() =>
-									router.push(
-										`/community/profile/${user?.id}`
-									)
-								}
-							>
-								<div className="flex items-center space-x-2">
-									<div className="material-icons">person</div>
-									<div>Your Profile</div>
-								</div>
-							</Button>
+							<div className="flex space-x-2">
+								{user.developer && (
+									<Button
+										size="small"
+										className="w-full sm:w-auto"
+										variant="dark"
+										href="/community/update"
+									>
+										<div className="flex items-center space-x-2">
+											<div className="material-icons">
+												aspect_ratio
+											</div>
+											<div>New Update</div>
+										</div>
+									</Button>
+								)}
+								<Button
+									size="small"
+									className="w-full sm:w-auto"
+									variant="dark"
+									onClick={() =>
+										router.push(
+											`/community/profile/${user?.id}`
+										)
+									}
+								>
+									<div className="flex items-center space-x-2">
+										<div className="material-icons">
+											person
+										</div>
+										<div>Your Profile</div>
+									</div>
+								</Button>
+							</div>
 						)}
 					</div>
 					{banner && (
@@ -80,6 +102,7 @@ export default function Community({ user }: PageProps) {
 							description={banner.description}
 							image={banner.image}
 							url={banner.url}
+							buttonText={banner.buttonText}
 						/>
 					)}
 				</div>

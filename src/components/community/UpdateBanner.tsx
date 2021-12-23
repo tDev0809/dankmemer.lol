@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useRouter } from "next/router";
 import Button from "../ui/Button";
 
@@ -6,6 +7,7 @@ interface Props {
 	description: string;
 	image: string;
 	url: string;
+	buttonText: string;
 }
 
 export default function UpdateBanner({
@@ -13,6 +15,7 @@ export default function UpdateBanner({
 	description,
 	image,
 	url,
+	buttonText,
 }: Props) {
 	const router = useRouter();
 
@@ -43,7 +46,11 @@ export default function UpdateBanner({
 
 			<div className="relative flex flex-col justify-center h-auto py-4 md:py-0 md:h-52 rounded-lg px-10 md:px-24 bg-opacity-50 text-center md:text-left">
 				<div
-					className="absolute left-0 top-0 z-[-1] w-full min-h-full rounded-lg bg-blend-multiply bg-cover bg-center bg-no-repeat"
+					className={clsx(
+						"absolute left-0 top-0 z-[-1] w-full min-h-full rounded-lg bg-blend-multiply bg-cover bg-center bg-no-repeat",
+						(!image || image.length == 0) &&
+							"bg-light-500 dark:bg-dark-100"
+					)}
 					style={{
 						backgroundImage: `url("${image}")`,
 						filter: "url(#sharpBlur)",
@@ -56,7 +63,7 @@ export default function UpdateBanner({
 				<div>
 					<Button variant="primary" onClick={() => router.push(url)}>
 						<div className="flex items-center space-x-2">
-							<p>View the Changelog</p>
+							<p>{buttonText}</p>
 						</div>
 					</Button>
 				</div>
