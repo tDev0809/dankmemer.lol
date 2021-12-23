@@ -32,7 +32,7 @@ export default function AuthorInfo({ post }: AuthorProps) {
 			</div>
 			<div className="flex space-x-1">
 				<span>in</span>
-				<Link href={`/community/posts/${post.category}`}>
+				<Link href={`/community/posts?category=${post.category}`}>
 					<a className="hover:underline hover:text-dark-100 dark:hover:text-light-400">
 						{sanitizeCategory(post.category)}
 					</a>
