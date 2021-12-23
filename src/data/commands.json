@@ -97,8 +97,7 @@
 			"t": ["autonsfw"],
 			"u": "pls autonsfw [webhook URL] [type] [interval in minutes]",
 			"d": "Set up a webhook to automatically post porn to a channel, you nasties",
-			"p": ["sendMessages", "readMessageHistory", "manageWebhooks"],
-			"pS": true
+			"p": ["sendMessages", "readMessageHistory", "manageWebhooks"]
 		},
 		{
 			"t": ["ar", "autoresponse"],
@@ -206,6 +205,12 @@
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
+			"t": ["bundles", "bundle"],
+			"u": "pls bundles",
+			"d": "View your collection bundles progress.",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
 			"t": ["buy", "purchase"],
 			"u": "pls buy <item> [quantity]/[\"max\"]",
 			"d": "Buy currency items from the shop. Some items are useful and give extended functionality, some are made just for selling/collecting, and some are only to FLEX on the normies! Not all items in the game are purchasable in the shop.",
@@ -262,7 +267,7 @@
 		{
 			"t": ["gamble", "bet", "roll"],
 			"u": "pls gamble <number>",
-			"d": "Take your chances at gambling. Warning, I am very good at stealing your money. Roll your dice against the bot, if you get higher than the bot you'll win! (Multiplier affects this command, https://dankmemer.lol/community/blog/multipliers)",
+			"d": "Take your chances at gambling. Warning, I am very good at stealing your money. Roll your dice against the bot, if you get higher than the bot you'll win! (Multiplier affects this command, https://dankmemer.lol/blogs/multipliers)",
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
@@ -448,7 +453,7 @@
 		},
 		{
 			"t": ["trade"],
-			"u": "pls trade <your offer> <someone's offer> <@user>",
+			"u": "pls trade <your offer>, <someone's offer> <@user>",
 			"d": "Trade with someone securely.",
 			"p": ["sendMessages", "readMessageHistory"]
 		},
@@ -1885,185 +1890,185 @@
 			"t": ["4k", "HD", "4kporn"],
 			"u": "pls 4k",
 			"d": "See some 4k nudes!",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["anal", "asshole"],
 			"u": "pls anal",
 			"d": "owo lewd",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["bdsm"],
 			"u": "pls bdsm",
 			"d": "I do not like to be dominated, but these people do",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["black"],
 			"u": "pls black",
 			"d": "Black is back",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["blowjob", "bjb"],
 			"u": "pls blowjob",
 			"d": "Blowjob, ok",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["boobies", "boobs", "tits"],
 			"u": "pls boobies",
 			"d": "See some cute ~~birbs~~ boobs!",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
 			"t": ["booty", "ass"],
 			"u": "pls booty",
 			"d": "Come get you some ass.",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
 			"t": ["bottomless"],
 			"u": "pls bottomless",
 			"d": "My dad use to walk around bottomless. It was nothing like this though.",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["collared"],
 			"u": "pls collared",
 			"d": "yo ok whats this",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["cumslut"],
 			"u": "pls cumslut",
 			"d": "cumsluts, ok",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["dpgirls"],
 			"u": "pls dpgirls",
 			"d": "Double penetration",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["easter"],
 			"u": "pls easter",
 			"d": "Easter based porn",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["yaoi"],
 			"u": "pls yaoi",
 			"d": "yo ok whats this",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["gayp", "gayporn"],
 			"u": "pls gayp",
 			"d": "See some 4k nudes!",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["group"],
 			"u": "pls group",
 			"d": "You need group therapy after this",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["lesbian", "girlongirl"],
 			"u": "pls lesbian",
 			"d": "So apparently naked guys weren't enough for you. Have some girls.",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["pawg"],
 			"u": "pls pawg",
 			"d": "phat ass white girl",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["pegged"],
 			"u": "pls pegged",
 			"d": "yo ok whats this",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["pokeporn", "ewitspokemonhavingsex"],
 			"u": "pls pokeporn",
 			"d": "Why tf would someone want pokeporn",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["porngif", "porn"],
 			"u": "pls porngif",
 			"d": "Basically a porn video but with gifs",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
 			"t": ["tats", "tattoos"],
 			"u": "pls tats",
 			"d": "women with tattoos",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["thighs"],
 			"u": "pls thighs",
 			"d": "sexiness is held in the thighs",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["tiny"],
 			"u": "pls tiny",
 			"d": "tiny porn?",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["toys", "sextoys"],
 			"u": "pls toys",
 			"d": "Relive your childhood, except very different!",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["traps"],
 			"u": "pls traps",
 			"d": "TRAPS!!!",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
 			"t": ["vday"],
 			"u": "pls vday",
 			"d": "vday based pron",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		},
 		{
 			"t": ["xmas"],
 			"u": "pls xmas",
 			"d": "christmas themed pron",
-			"p": ["sendMessages", "readMessageHistory", "embedLinks"],
+			"p": ["sendMessages", "readMessageHistory"],
 			"dO": true
 		}
 	],
@@ -2180,6 +2185,12 @@
 			"t": ["tutorial"],
 			"u": "pls tutorial [command]",
 			"d": "See a tutorial for a specific command",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
+			"t": ["usage"],
+			"u": "pls usage",
+			"d": "See your commands usage",
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
