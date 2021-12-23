@@ -34,7 +34,7 @@ interface Props {
 export function Badge({ role, size = 22, tooltip = true }: Props) {
 	const badge = (
 		<div
-			className={clsx("material-icons cursor-default", colors[role])}
+			className={clsx("material-icons cursor-default px-1", colors[role])}
 			style={{ fontSize: `${size}px` }}
 		>
 			{icons[role]}
