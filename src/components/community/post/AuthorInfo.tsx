@@ -37,8 +37,8 @@ export default function AuthorInfo({ post }: AuthorProps) {
 						{sanitizeCategory(post.category)}
 					</a>
 				</Link>
+				,{" "}
 			</div>
-			<span className="hidden md:inline-block">,</span>
 			<Tooltip content={format(post.createdAt, "MMMM dd, yyyy")}>
 				<span className="cursor-default">
 					{formatDistance(new Date(post.createdAt), new Date(), {

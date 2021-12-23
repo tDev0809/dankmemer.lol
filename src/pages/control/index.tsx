@@ -62,14 +62,6 @@ export default function ControlPage({ user }: PageProps) {
 						/>
 					</div>
 				</div>
-				<div className="flex flex-col">
-					<div className="font-bold font-montserrat text-xl text-dank-300 dark:text-light-100">
-						Personalization
-					</div>
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-						<Panel link="/control/card" label="Card Appearance" />
-					</div>
-				</div>
 			</div>
 		</Container>
 	);
