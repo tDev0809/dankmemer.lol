@@ -203,7 +203,7 @@ export default function PostPage({ user }: PageProps) {
 						<div className="flex flex-col lg:flex-row justify-between items-start space-y-2 lg:space-y-0">
 							<div className="flex flex-col space-y-2">
 								<div>
-									<div className="text-2xl font-bold font-montserrat text-black dark:text-white">
+									<div className="text-2xl font-bold font-montserrat text-black dark:text-white break-all mr-2">
 										{post.title}
 									</div>
 									<AuthorInfo post={post} />

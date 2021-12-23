@@ -127,7 +127,7 @@ function ActivityCard({ activity }: { activity: Activity }) {
 		<Link href={link}>
 			<a className="bg-light-500 dark:bg-dark-100 rounded-md text-sm p-4">
 				<div className="flex space-x-4 items-center">
-					<div className="h-10 w-10  bg-light-400 dark:bg-dank-400 rounded-full flex items-center justify-center text-black dark:text-white">
+					<div className="h-10 w-10 bg-light-400 dark:bg-dank-400 rounded-full flex items-center justify-center text-black dark:text-white">
 						<div
 							className="material-icons"
 							style={{ fontSize: "20px" }}
@@ -136,7 +136,9 @@ function ActivityCard({ activity }: { activity: Activity }) {
 						</div>
 					</div>
 					<div className="text-sm flex-1">
-						<div className="text-black dark:text-white">{text}</div>
+						<div className="text-black dark:text-white break-all">
+							{text}
+						</div>
 						<div className="text-light-600">
 							{formatDistance(
 								new Date(activity.createdAt),
@@ -359,7 +361,7 @@ export default function ProfilePage({ user }: PageProps) {
 								))}
 							</div>
 							<div className="flex flex-col md:flex-row justify-between space-x-0 md:space-x-4 space-y-4 md:space-y-0">
-								<div className="flex flex-col space-y-2 flex-1">
+								<div className="relative flex flex-col space-y-2 flex-1 md:w-3/5 break-all">
 									{profile.posts.length > 0 && (
 										<>
 											<div>Recent Posts</div>
