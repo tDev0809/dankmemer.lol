@@ -1,3 +1,5 @@
+import { toTitleCase } from "src/util/string";
+
 interface Props {
 	label: string;
 }
@@ -19,7 +21,7 @@ export function Label({ label }: Props) {
 				className="h-3 w-3 rounded-full"
 				style={{ backgroundColor: colors[label] ?? "#a4adbd" }}
 			></div>
-			<div>{label.replaceAll("-", " ")}</div>
+			<div>{toTitleCase(label.replaceAll("-", " "))}</div>
 		</div>
 	);
 }
