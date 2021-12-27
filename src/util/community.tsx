@@ -4,7 +4,7 @@ export function sanitizeCategory(category: string) {
 		And: "and",
 	};
 
-	category = category.replaceAll("_", " ");
+	category = category.replace(/\_/g, " ");
 
 	let out = category
 		.split(" ")

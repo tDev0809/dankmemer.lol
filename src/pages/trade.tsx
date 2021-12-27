@@ -215,7 +215,7 @@ export default function TradePage({ user }: PageProps) {
 									variant="dark"
 									onClick={() => {
 										navigator.clipboard.writeText(
-											command.replaceAll("@user", "@")
+											command.replace(/\@user/g, "@")
 										);
 										toast.dark("Copied!");
 									}}

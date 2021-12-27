@@ -4,6 +4,7 @@ import Head from "next/head";
 import "../globals.css";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (

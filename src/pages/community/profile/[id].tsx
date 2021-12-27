@@ -374,8 +374,8 @@ export default function ProfilePage({ user }: PageProps) {
 											{count}
 										</div>
 										<div className="text-sm text-light-600 text-center">
-											{(title as string).replaceAll(
-												"?s",
+											{(title as string).replace(
+												/\?s/g,
 												count == 1 ? "" : "s"
 											)}
 										</div>

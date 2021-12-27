@@ -21,7 +21,7 @@ export function Label({ label }: Props) {
 				className="h-3 w-3 rounded-full"
 				style={{ backgroundColor: colors[label] ?? "#a4adbd" }}
 			></div>
-			<div>{toTitleCase(label.replaceAll("-", " "))}</div>
+			<div>{toTitleCase(label.replace(/\-/g, " "))}</div>
 		</div>
 	);
 }
