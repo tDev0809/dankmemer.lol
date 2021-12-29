@@ -298,14 +298,14 @@ export default function ProfilePage({ user }: PageProps) {
 											</div>
 										</div>
 										<div className="flex flex-col md:flex-row space-x-1 md:items-center space-y-1">
-											<div className="flex md:inline-block">
-												<div className="text-xs bg-light-500 dark:bg-dank-500 text-dank-200 dark:text-dank-100 px-2 py-0.5 rounded-md">
-													Rank #
-													{rank == -1
-														? "???"
-														: rank.toLocaleString()}
+											{rank != -1 && (
+												<div className="flex md:inline-block">
+													<div className="text-xs bg-light-500 dark:bg-dank-500 text-dank-200 dark:text-dank-100 px-2 py-0.5 rounded-md">
+														Rank #
+														{rank.toLocaleString()}
+													</div>
 												</div>
-											</div>
+											)}
 											<div>
 												{profile.user.developer && (
 													<Badge role="developer" />
