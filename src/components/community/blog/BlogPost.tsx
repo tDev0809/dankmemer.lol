@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { format } from "date-fns";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { TIME } from "../../../constants";
 import { Blog, User, UserData } from "../../../types";
 import { truncate } from "../../../util/string";
@@ -12,6 +13,18 @@ interface Props {
 }
 
 export function BlogPost({ data, user }: Props) {
+	const [read, setRead] = useState(false);
+
+	useEffect(() => {
+		if (data && localStorage.getItem(`read-${data._id}`)) {
+			if (Date.now() - data.createdAt > TIME.week * 2) {
+				localStorage.removeItem(`read-${data._id}`);
+			} else {
+				setRead(true);
+			}
+		}
+	}, []);
+
 	return (
 		<div
 			className={clsx(
@@ -38,11 +51,12 @@ export function BlogPost({ data, user }: Props) {
 							)}
 						>
 							<div>{data.title}</div>
-							{Date.now() - data.date < TIME.week * 2 && (
-								<div className="bg-red-500 ml-2 px-2 py-0.5 text-xs rounded-full text-white">
-									NEW
-								</div>
-							)}
+							{Date.now() - data.date < TIME.week * 2 &&
+								!read && (
+									<div className="bg-red-500 ml-2 px-2 py-0.5 text-xs rounded-full text-white">
+										NEW
+									</div>
+								)}
 						</div>
 						<div className="text-light-600 text-sm">
 							Written by{" "}

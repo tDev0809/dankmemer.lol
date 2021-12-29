@@ -90,6 +90,7 @@ export interface Blog {
 	date: number;
 	description: string;
 	title: string;
+	createdAt: number;
 }
 
 export interface Item {

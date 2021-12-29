@@ -13,6 +13,7 @@ import { tailwindHtml } from "../../../../util/blog";
 import { unauthenticatedRoute } from "../../../../util/redirects";
 import { withSession } from "../../../../util/session";
 import Link from "next/link";
+import { TIME } from "../../../../constants";
 
 export default function BlogPage({ user }: PageProps) {
 	const [blog, setBlog] = useState<Blog>();
@@ -25,6 +26,12 @@ export default function BlogPage({ user }: PageProps) {
 		axios(`/api/community/blogs/get/${id}`)
 			.then(({ data }) => {
 				setBlog(data);
+
+				if (Date.now() - data.createdAt > TIME.week * 2) {
+					localStorage.removeItem(`read-${data._id}`);
+				} else {
+					localStorage.setItem(`read-${data._id}`, "1");
+				}
 			})
 			.catch(() => {
 				router.push("/community/blogs");
