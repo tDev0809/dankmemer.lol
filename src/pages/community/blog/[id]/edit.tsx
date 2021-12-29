@@ -111,8 +111,9 @@ export default function BlogEditPage({ user }: PageProps) {
 									copy.title = e.target.value;
 									setBlog(copy);
 								}}
+								label={"Blog Tile"}
 								variant="short"
-								placeholder="Blog Title"
+								placeholder="..."
 								value={blog.title}
 							/>
 							<Input
@@ -122,49 +123,39 @@ export default function BlogEditPage({ user }: PageProps) {
 									setBlog(copy);
 								}}
 								variant="short"
-								placeholder="Blog Description"
+								label="Blog Description"
+								placeholder="..."
 								value={blog.description}
 							/>
-							<Input
-								onChange={(e) => {
-									const copy = { ...blog };
-									copy._id = e.target.value;
-									setBlog(copy);
-								}}
-								variant="short"
-								placeholder="Blog ID"
-								value={blog._id}
-							/>
-							<div className="flex justify-between">
-								<div className="w-40">
-									<Button
-										variant="dark"
-										onClick={() => setPreview(!preview)}
-										block
-									>
-										{preview ? "Edit " : "Preview"}
-									</Button>
+							<div className="flex items-end space-x-4 w-full">
+								<div className="w-full">
+									<Input
+										onChange={(e) => {
+											const copy = { ...blog };
+											copy._id = e.target.value;
+											setBlog(copy);
+										}}
+										variant="short"
+										label="Blog ID"
+										placeholder="..."
+										value={blog._id}
+									/>
 								</div>
-								<div className="flex space-x-2">
-									<Button
-										variant="primary"
-										onClick={() => publish(false)}
-									>
-										Publish
-									</Button>
-									<Button
-										variant="dark"
-										onClick={() => publish(true)}
-									>
-										Draft
-									</Button>
-									<Button
-										variant="danger"
-										onClick={() => deleteBlog()}
-									>
-										Delete
-									</Button>
-								</div>
+								<Button
+									className="h-10"
+									variant="dark"
+									size="medium"
+									onClick={() => {
+										const copy = { ...blog };
+										copy._id = blog.title
+											.toLowerCase()
+											.replace(/ /g, "-")
+											.replace(/[^a-zA-Z0-9 -]/, "");
+										setBlog(copy);
+									}}
+								>
+									Generate
+								</Button>
 							</div>
 						</div>
 
@@ -179,6 +170,7 @@ export default function BlogEditPage({ user }: PageProps) {
 							/>
 						) : (
 							<Input
+								label="Blog Content"
 								onChange={(e) => {
 									const copy = { ...blog };
 									copy.content = e.target.value;
@@ -191,6 +183,37 @@ export default function BlogEditPage({ user }: PageProps) {
 								value={blog.content}
 							/>
 						)}
+						<div className="flex justify-between">
+							<div className="w-40">
+								<Button
+									variant="dark"
+									onClick={() => setPreview(!preview)}
+									block
+								>
+									{preview ? "Edit " : "Preview"}
+								</Button>
+							</div>
+							<div className="flex space-x-2">
+								<Button
+									variant="primary"
+									onClick={() => publish(false)}
+								>
+									Publish
+								</Button>
+								<Button
+									variant="dark"
+									onClick={() => publish(true)}
+								>
+									Draft
+								</Button>
+								<Button
+									variant="danger"
+									onClick={() => deleteBlog()}
+								>
+									Delete
+								</Button>
+							</div>
+						</div>
 					</div>
 				) : (
 					<LoadingPepe />
