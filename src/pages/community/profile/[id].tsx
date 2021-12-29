@@ -1,4 +1,5 @@
 import axios from "axios";
+import clsx from "clsx";
 import { formatDistance } from "date-fns";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
@@ -228,35 +229,15 @@ export default function ProfilePage({ user }: PageProps) {
 				{profile && (
 					<div className="flex flex-col space-y-2">
 						<div className="relative flex flex-col justify-end h-auto">
-							<svg
-								className="imageBlur"
-								style={{
-									height: "1px",
-									width: "1px",
-									margin: "-1px",
-									position: "absolute",
-									zIndex: -1,
-								}}
-							>
-								<filter id="sharpBlur">
-									<feGaussianBlur stdDeviation="2"></feGaussianBlur>
-									<feColorMatrix
-										type="matrix"
-										values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 9 0"
-									></feColorMatrix>
-									<feComposite
-										in2="SourceGraphic"
-										operator="in"
-									></feComposite>
-								</filter>
-							</svg>
 							<div
-								className="z-[-1] w-full h-32 rounded-lg bg-blend-multiply bg-cover bg-center bg-no-repeat"
+								className={clsx(
+									"z-[-1] w-full rounded-lg bg-blend-multiply bg-cover bg-center bg-no-repeat",
+									profile.user.banner ? "h-56" : "h-32"
+								)}
 								style={{
 									backgroundImage: `url("${
 										profile.user.banner || "/img/banner.png"
 									}")`,
-									filter: "url(#sharpBlur)",
 								}}
 							></div>
 						</div>
