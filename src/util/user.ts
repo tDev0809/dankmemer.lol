@@ -29,6 +29,8 @@ export async function getUser(id: string): Promise<UserData | null> {
 				modManager: user.modManager == true,
 				honorable: user.honorable == true,
 				vanity: user.vanity,
+				about: user.about,
+				socials: user.socials,
 			};
 
 			await redis.set(
@@ -78,6 +80,8 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					modManager: user.modManager == true,
 					honorable: user.honorable == true,
 					vanity: user.vanity,
+					about: user.about,
+					socials: user.socials,
 				};
 
 				await redis.set(

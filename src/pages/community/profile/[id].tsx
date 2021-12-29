@@ -14,6 +14,7 @@ import { PostCard } from "../../../components/community/PostCard";
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
 import Dropdown from "../../../components/ui/Dropdown";
+import Input from "../../../components/ui/Input";
 import { Activity, PageProps, Profile, User } from "../../../types";
 import { unauthenticatedRoute } from "../../../util/redirects";
 import { withSession } from "../../../util/session";
@@ -161,6 +162,7 @@ function ActivityCard({ activity }: { activity: Activity }) {
 export default function ProfilePage({ user }: PageProps) {
 	const [profile, setProfile] = useState<Profile>();
 	const [rank, setRank] = useState(0);
+	const [editing, setEditing] = useState(false);
 
 	const router = useRouter();
 	const { id } = router.query;
@@ -169,7 +171,7 @@ export default function ProfilePage({ user }: PageProps) {
 		axios(`/api/community/profile/get/${id}`)
 			.then(({ data }) => {
 				setProfile(data);
-
+				console.log(data);
 				if (data.user.vanity) {
 					router.replace(`/community/profile/${data.user.vanity}`);
 				}
@@ -185,44 +187,22 @@ export default function ProfilePage({ user }: PageProps) {
 			});
 	}, []);
 
-	const updateVanity = () => {
-		const vanity = prompt("Enter new Vanity URL", "");
-
-		if (vanity !== null) {
-			axios
-				.patch(
-					`/api/user/vanity/?id=${profile!.user.id}&vanity=${vanity}`
-				)
-				.then(({}) => {
-					if (!vanity) {
-						router.replace(
-							`/community/profile/${profile!.user.id}`
-						);
-					} else {
-						router.replace(`/community/profile/${vanity}`);
-					}
-				})
-				.catch((e) => {
-					toast.dark(e.response.data.error);
-				});
-		}
-	};
-
-	const updateBanner = () => {
-		const banner = prompt("Enter new banner URL", "");
-
-		if (banner !== null) {
-			axios
-				.patch(
-					`/api/user/banner/?id=${profile!.user.id}&banner=${banner}`
-				)
-				.then(({}) => {
-					location.reload();
-				})
-				.catch((e) => {
-					toast.dark(e.response.data.error);
-				});
-		}
+	const updateProfile = () => {
+		axios
+			.patch(`/api/user/update/`, {
+				data: profile!.user,
+			})
+			.then(({}) => {
+				router.replace(
+					`/community/profile/${
+						profile!.user.vanity || profile!.user.id
+					}`
+				);
+				toast.dark("Saved!");
+			})
+			.catch((e) => {
+				toast.dark(e.response.data.error);
+			});
 	};
 
 	return (
@@ -315,21 +295,14 @@ export default function ProfilePage({ user }: PageProps) {
 											user.developer) && (
 											<Button
 												variant="dark"
-												onClick={() => updateVanity()}
+												onClick={() =>
+													setEditing(!editing)
+												}
 											>
-												Update Vanity URL
+												Edit Profile
 											</Button>
 										)}
-									{(user?.moderator || user?.honorable) &&
-										(user.id == profile.user.id ||
-											user.developer) && (
-											<Button
-												variant="dark"
-												onClick={() => updateBanner()}
-											>
-												Update Banner
-											</Button>
-										)}
+
 									{user?.moderator && (
 										<Actions
 											user={user!}
@@ -338,6 +311,94 @@ export default function ProfilePage({ user }: PageProps) {
 									)}
 								</div>
 							</div>
+
+							{editing && (
+								<div className="bg-light-500 dark:bg-dark-100 rounded-md flex flex-col space-y-2 p-4">
+									<Input
+										onChange={(e) => {
+											const copy = { ...profile };
+											copy.user.vanity = e.target.value;
+											setProfile(copy);
+										}}
+										variant="short"
+										placeholder="dankmemer"
+										label="Vanity"
+										value={profile.user.vanity || ""}
+									/>
+									<Input
+										onChange={(e) => {
+											const copy = { ...profile };
+											copy.user.banner = e.target.value;
+											setProfile(copy);
+										}}
+										variant="short"
+										label="Banner URL"
+										placeholder="https://imgur.com/nVqkxS0.png"
+										value={profile.user.banner || ""}
+									/>
+									<Input
+										onChange={(e) => {
+											const copy = { ...profile };
+											copy.user.about = e.target.value;
+											setProfile(copy);
+										}}
+										variant="short"
+										label="About"
+										placeholder="I love dank memer"
+										value={profile.user.about || ""}
+									/>
+									<div className="text-sm text-black dark:text-white">
+										Socials
+									</div>
+									{[
+										"Discord",
+										"GitHub",
+										"GitLab",
+										"Instagram",
+										"Reddit",
+										"Spotify",
+										"Twitch",
+										"Twitter",
+										"Website",
+										"YouTube",
+									].map((social) => (
+										<div className="flex items-center space-x-2">
+											<div>
+												<img
+													src={`/img/socials/${social}.svg`}
+													className="w-8"
+												/>
+											</div>
+											<Input
+												onChange={(e) => {
+													const copy = { ...profile };
+													if (!copy.user.socials) {
+														copy.user.socials = {};
+													}
+													copy.user.socials[social] =
+														e.target.value;
+													setProfile(copy);
+												}}
+												variant="short"
+												block
+												placeholder="https://dankmemer.lol/"
+												value={
+													profile.user.socials?.[
+														social
+													] || ""
+												}
+											/>
+										</div>
+									))}
+									<Button
+										variant="primary"
+										onClick={() => updateProfile()}
+									>
+										Save
+									</Button>
+								</div>
+							)}
+
 							<div className="bg-light-500 dark:bg-dark-100 rounded-md flex flex-col md:flex-row justify-between py-4 px-8 space-y-2 md:space-y-0">
 								{[
 									[profile.posts.length, `Post?s made`],

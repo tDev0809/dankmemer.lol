@@ -15,6 +15,7 @@ interface Props {
 	resizable?: boolean;
 	block?: boolean;
 	scrollable?: boolean;
+	label?: string;
 }
 
 export default function Input({
@@ -23,12 +24,13 @@ export default function Input({
 	placeholder = "",
 	resizable,
 	block,
+	label,
 	variant,
 	scrollable,
 }: Props) {
 	const Text = variant == "short" ? "input" : "textarea";
 
-	return (
+	const inp = (
 		<Text
 			onChange={onChange}
 			className={clsx(
@@ -44,5 +46,14 @@ export default function Input({
 			placeholder={placeholder}
 			value={value}
 		/>
+	);
+
+	return label ? (
+		<div className="flex flex-col space-y-1">
+			<div className="text-sm text-black dark:text-white">{label}</div>
+			{inp}
+		</div>
+	) : (
+		inp
 	);
 }
