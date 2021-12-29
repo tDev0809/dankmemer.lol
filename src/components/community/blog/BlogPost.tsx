@@ -17,7 +17,7 @@ export function BlogPost({ data, user }: Props) {
 
 	useEffect(() => {
 		if (data && localStorage.getItem(`read-${data._id}`)) {
-			if (Date.now() - data.createdAt > TIME.week * 2) {
+			if (Date.now() - data.date > TIME.week * 2) {
 				localStorage.removeItem(`read-${data._id}`);
 			} else {
 				setRead(true);

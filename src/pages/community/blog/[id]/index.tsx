@@ -27,7 +27,7 @@ export default function BlogPage({ user }: PageProps) {
 			.then(({ data }) => {
 				setBlog(data);
 
-				if (Date.now() - data.createdAt > TIME.week * 2) {
+				if (Date.now() - data.date > TIME.week * 2) {
 					localStorage.removeItem(`read-${data._id}`);
 				} else {
 					localStorage.setItem(`read-${data._id}`, "1");

@@ -42,12 +42,20 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.limit(10)
 		.toArray();
 
+	const blogs = await db
+		.collection("community-blogs")
+		.find({ author: userData.id, draft: false })
+		.sort({ date: -1 })
+		.limit(4)
+		.toArray();
+
 	return res.json({
 		user: userData,
 		posts,
 		comments,
 		upvotes,
 		activities,
+		blogs,
 	});
 };
 

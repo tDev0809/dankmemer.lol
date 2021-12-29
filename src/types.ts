@@ -90,7 +90,6 @@ export interface Blog {
 	date: number;
 	description: string;
 	title: string;
-	createdAt: number;
 }
 
 export interface Item {
@@ -146,6 +145,7 @@ export interface Profile {
 	comments: number;
 	upvotes: number;
 	activities: Activity[];
+	blogs: Blog[];
 }
 
 export interface Activity {

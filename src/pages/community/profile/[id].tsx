@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Avatar } from "../../../components/Avatar";
 import { Badge } from "../../../components/Badge";
+import { BlogPost } from "../../../components/community/blog/BlogPost";
+import { ViewMore } from "../../../components/community/blog/ViewMore";
 import { PostCard } from "../../../components/community/PostCard";
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
@@ -363,6 +365,19 @@ export default function ProfilePage({ user }: PageProps) {
 									</div>
 								))}
 							</div>
+
+							{profile.blogs.length > 0 && (
+								<div className="relative flex flex-col space-y-2">
+									<div>Recent Blogs</div>
+									<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+										{profile.blogs.map((blog) => (
+											<BlogPost data={blog} user={user} />
+										))}
+										<ViewMore />
+									</div>
+								</div>
+							)}
+
 							<div className="flex flex-col md:flex-row justify-between space-x-0 md:space-x-4 space-y-4 md:space-y-0">
 								<div className="relative flex flex-col space-y-2 flex-1 md:w-3/5 break-all">
 									{profile.posts.length > 0 && (
