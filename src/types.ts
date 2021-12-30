@@ -21,6 +21,7 @@ export interface User {
 	botModerator: boolean;
 	honorable: boolean;
 	modManager: boolean;
+	perks: boolean;
 }
 
 export interface UserData {
@@ -39,6 +40,7 @@ export interface UserData {
 	vanity?: string;
 	socials?: Record<string, string>;
 	about?: string;
+	perks?: boolean;
 }
 
 export interface PageProps {
@@ -146,6 +148,7 @@ export interface Profile {
 	upvotes: number;
 	activities: Activity[];
 	blogs: Blog[];
+	perks?: boolean;
 }
 
 export interface Activity {

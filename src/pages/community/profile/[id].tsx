@@ -171,7 +171,6 @@ export default function ProfilePage({ user }: PageProps) {
 		axios(`/api/community/profile/get/${id}`)
 			.then(({ data }) => {
 				setProfile(data);
-				console.log(data);
 				if (data.user.vanity) {
 					router.replace(`/community/profile/${data.user.vanity}`);
 				}
@@ -198,6 +197,20 @@ export default function ProfilePage({ user }: PageProps) {
 						profile!.user.vanity || profile!.user.id
 					}`
 				);
+				toast.dark("Saved!");
+			})
+			.catch((e) => {
+				toast.dark(e.response.data.error);
+			});
+	};
+
+	const switchPerks = () => {
+		axios
+			.patch(`/api/user/perks?id=${profile?.user.id}`)
+			.then(({}) => {
+				const copy = { ...profile } as Profile;
+				copy.user.perks = !!!profile!.user.perks;
+				setProfile(copy);
 				toast.dark("Saved!");
 			})
 			.catch((e) => {
@@ -290,7 +303,9 @@ export default function ProfilePage({ user }: PageProps) {
 									</div>
 								</div>
 								<div className="space-x-4 items-center hidden md:flex">
-									{(user?.moderator || user?.honorable) &&
+									{(user?.moderator ||
+										user?.honorable ||
+										user?.perks) &&
 										(user.id == profile.user.id ||
 											user.developer) && (
 											<Button
@@ -308,6 +323,18 @@ export default function ProfilePage({ user }: PageProps) {
 											user={user!}
 											profile={profile}
 										/>
+									)}
+
+									{user?.moderator && (
+										<Button
+											variant="dark"
+											onClick={() => switchPerks()}
+										>
+											{profile.user.perks
+												? "Remove"
+												: "Grant"}{" "}
+											Perks
+										</Button>
 									)}
 								</div>
 							</div>
@@ -336,60 +363,74 @@ export default function ProfilePage({ user }: PageProps) {
 										placeholder="https://imgur.com/nVqkxS0.png"
 										value={profile.user.banner || ""}
 									/>
-									<Input
-										onChange={(e) => {
-											const copy = { ...profile };
-											copy.user.about = e.target.value;
-											setProfile(copy);
-										}}
-										variant="short"
-										label="About"
-										placeholder="I love dank memer"
-										value={profile.user.about || ""}
-									/>
-									<div className="text-sm text-black dark:text-white">
-										Socials
-									</div>
-									{[
-										"Discord",
-										"GitHub",
-										"GitLab",
-										"Instagram",
-										"Reddit",
-										"Spotify",
-										"Twitch",
-										"Twitter",
-										"Website",
-										"YouTube",
-									].map((social) => (
-										<div className="flex items-center space-x-2">
-											<div>
-												<img
-													src={`/img/socials/${social}.svg`}
-													className="w-8"
-												/>
-											</div>
+									{(user?.moderator || user?.honorable) && (
+										<>
 											<Input
 												onChange={(e) => {
 													const copy = { ...profile };
-													if (!copy.user.socials) {
-														copy.user.socials = {};
-													}
-													copy.user.socials[social] =
+													copy.user.about =
 														e.target.value;
 													setProfile(copy);
 												}}
 												variant="short"
-												block
-												placeholder="https://dankmemer.lol/"
-												value={
-													profile.user.socials?.[
-														social
-													] || ""
-												}
+												label="About"
+												placeholder="I love dank memer"
+												value={profile.user.about || ""}
 											/>
-										</div>
-									))}
+
+											<div className="text-sm text-black dark:text-white">
+												Socials
+											</div>
+											{[
+												"Discord",
+												"GitHub",
+												"GitLab",
+												"Instagram",
+												"Reddit",
+												"Spotify",
+												"Twitch",
+												"Twitter",
+												"Website",
+												"YouTube",
+											].map((social) => (
+												<div className="flex items-center space-x-2">
+													<div>
+														<img
+															src={`/img/socials/${social}.svg`}
+															className="w-8"
+														/>
+													</div>
+													<Input
+														onChange={(e) => {
+															const copy = {
+																...profile,
+															};
+															if (
+																!copy.user
+																	.socials
+															) {
+																copy.user.socials =
+																	{};
+															}
+															copy.user.socials[
+																social
+															] = e.target.value;
+															setProfile(copy);
+														}}
+														variant="short"
+														block
+														placeholder="https://dankmemer.lol/"
+														value={
+															profile.user
+																.socials?.[
+																social
+															] || ""
+														}
+													/>
+												</div>
+											))}
+										</>
+									)}
 									<Button
 										variant="primary"
 										onClick={() => updateProfile()}

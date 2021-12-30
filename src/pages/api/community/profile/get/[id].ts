@@ -49,6 +49,15 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.limit(4)
 		.toArray();
 
+	// TODO: make this a function like with posts
+	for (let blog of blogs) {
+		const user = await getUser(blog.author as unknown as string);
+
+		if (user) {
+			blog.author = user;
+		}
+	}
+
 	return res.json({
 		user: userData,
 		posts,

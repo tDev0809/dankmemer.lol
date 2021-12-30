@@ -94,13 +94,14 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 		await req.session.set("user", {
 			...user,
-			developer: userData.developer == true,
-			moderator: userData.moderator == true,
-			botModerator: userData.botModerator == true,
-			modManager: userData.modManager == true,
-			honorable: userData.honorable == true,
+			developer: !!userData.developer,
+			moderator: !!userData.moderator,
+			botModerator: !!userData.botModerator,
+			modManager: !!userData.modManager,
+			honorable: !!userData.honorable,
 			token: encrypt(user.id),
 			avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
+			perks: !!user.perks,
 		});
 	} catch (e) {
 		res.redirect("/?r=true");

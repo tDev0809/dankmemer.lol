@@ -15,7 +15,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(401).json({ error: "You are not logged in." });
 	}
 
-	if (!user.moderator && !user.honorable) {
+	if (!user.moderator && !user.honorable && !user.perks) {
 		return res.status(401).json({ error: "You can't do this." });
 	}
 
@@ -181,7 +181,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		}
 	}
 
-	if (profile.about != userData.about) {
+	if (profile.about != userData.about && (user.honorable || user.moderator)) {
 		if (profile.about.length == 0) {
 			try {
 				await db
@@ -213,15 +213,17 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	const socials = profile.socials || {};
 
-	try {
-		await db
-			.collection("users")
-			.updateOne(
-				{ _id: profile.id as string },
-				{ $set: { socials: socials } }
-			);
-	} catch (e) {
-		return res.status(500).json({ error: e });
+	if (user.honorable || user.moderator) {
+		try {
+			await db
+				.collection("users")
+				.updateOne(
+					{ _id: profile.id as string },
+					{ $set: { socials: socials } }
+				);
+		} catch (e) {
+			return res.status(500).json({ error: e });
+		}
 	}
 
 	await redis.del(`user:${profile.id}`);

@@ -3,12 +3,17 @@ import { TIME } from "../../../../../constants";
 import { dbConnect } from "../../../../../util/mongodb";
 import { redisConnect } from "../../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../../util/session";
-import { getUser, getUsers } from "../../../../../util/user";
+import { getUsers } from "../../../../../util/user";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
 	const redis = await redisConnect();
 	const { id } = req.query;
+
+	// Kable's easter egg
+	if (id == "363785301195358221") {
+		return res.json({ place: 69420 });
+	}
 
 	const cached = await redis.get(`community:place:${id}`);
 

@@ -23,6 +23,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.sort({ date: -1 })
 		.toArray()) as Blog[];
 
+	// TODO: make this a function like with posts
 	for (let blog of blogs) {
 		const user = await getUser(blog.author as unknown as string);
 
