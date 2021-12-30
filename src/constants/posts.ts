@@ -31,7 +31,7 @@ export const POST_CATEGORIES_DESCRIPTIONS: Record<string, string> = {
 	qol_changes: "Ideas and feedback for quality of life changes on dank memer",
 	patreon_and_lootboxes:
 		"Ideas and feedback for any of our premium offerings such as patreon and lootboxes",
-	webiste: "Ideas and feedback for our website",
+	website: "Ideas and feedback for our website",
 	pipe_dream:
 		"Ideas that you don't think will ever be added, but would be neat to think about none the less",
 	other: "Any ideas or feedback that don't fit into other categories",
