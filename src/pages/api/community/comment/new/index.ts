@@ -43,7 +43,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		`community:cooldown:comment:${user.id}`,
 		req.body.id,
 		"PX",
-		TIME.minute * 5
+		TIME.minute
 	);
 
 	const post = await db.collection("community-posts").findOne({
