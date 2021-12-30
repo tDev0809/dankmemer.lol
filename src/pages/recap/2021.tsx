@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import { PageProps } from "../../types";
-import { unauthenticatedRoute } from "../../util/redirects";
+import { unauthenticatedRoute, developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 import { sanitizeCategory } from "../../util/community";
 
@@ -301,4 +301,4 @@ export default function Recap({ user }: PageProps) {
 }
 
 export const getServerSideProps: GetServerSideProps =
-	withSession(unauthenticatedRoute);
+	withSession(developerRoute);
