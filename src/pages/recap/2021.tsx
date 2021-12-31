@@ -90,9 +90,9 @@ export default function Recap({ user }: PageProps) {
 			<div className="flex flex-col items-center">
 				<img
 					src="/img/recap/2021/blurs/one.png"
-					className="absolute w-full h-full"
+					className="absolute w-full h-full z-[-10]"
 				/>
-				<div className="flex space-x-0 lg:space-x-12 mt-60">
+				<div className="flex space-x-0 lg:space-x-12 mt-80">
 					{Array.from({ length: 5 }, (_, i: number) => 2017 + i).map(
 						(year) => (
 							<div className="relative hidden lg:inline-block">
@@ -176,7 +176,7 @@ export default function Recap({ user }: PageProps) {
 				<div className="w-full">
 					<img
 						src="/img/recap/2021/blurs/two.png"
-						className="absolute w-full h-full"
+						className="absolute w-full h-full z-[-10]"
 					/>
 					<div className="mt-52 flex flex-col text-center relative items-center space-y-8">
 						<div>
@@ -257,10 +257,10 @@ export default function Recap({ user }: PageProps) {
 						/>
 						<img
 							src="/img/recap/2021/blurs/three.png"
-							className="absolute w-full h-full"
+							className="absolute w-full h-full z-[-10]"
 						/>
 					</div>
-					<div className="text-center">
+					<div className="text-center mx-8">
 						<div className="text-3xl font-bold font-montserrat">
 							SEEMS LIKE YOU HAVE SOME FAVOURITES
 						</div>
@@ -357,7 +357,7 @@ export default function Recap({ user }: PageProps) {
 				<div className="w-full">
 					<img
 						src="/img/recap/2021/blurs/two.png"
-						className="absolute w-full h-full"
+						className="absolute w-full h-full z-[-10]"
 					/>
 					<div className="mt-52 flex flex-col text-center relative items-center space-y-8">
 						<div>
