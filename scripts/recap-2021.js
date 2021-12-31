@@ -24,11 +24,17 @@ const data = async () => {
 		.aggregate([
 			{
 				$match: {
-					labels: "developer-response",
+					labels: { $nin: ["invalid"] },
+				},
+			},
+			{
+				$match: {
+					labels: { $not: { $size: 0 } },
 				},
 			},
 		])
 		.toArray();
+
 	const implemented = await db
 		.collection("community-posts")
 		.aggregate([
