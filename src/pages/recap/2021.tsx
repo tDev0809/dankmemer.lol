@@ -76,17 +76,19 @@ export default function Recap({ user }: PageProps) {
 				}}
 			/>
 
-			<NextSeo title={`Dank Memer | 2021`} />
-			<Head>
-				<meta
-					property="og:image"
-					content="/img/recap/2021/misc/preview.png"
-				/>
-				<meta
-					name="twitter:image"
-					content="/img/recap/2021/misc/preview.png"
-				/>
-			</Head>
+			<NextSeo
+				title={`Dank Memer | 2021`}
+				openGraph={{
+					images: [
+						{
+							url: "/img/recap/2021/misc/preview.png",
+							alt: "Preview",
+							type: "image/png",
+						},
+					],
+				}}
+			/>
+
 			<div className="flex flex-col items-center">
 				<img
 					src="/img/recap/2021/blurs/one.png"
@@ -269,7 +271,7 @@ export default function Recap({ user }: PageProps) {
 							specific aspects of the bot much
 						</div>
 						<div className="text-neutral-300">
-							more than others. No hard feelings,
+							more than others. No hard feelings.
 						</div>
 					</div>
 					<div className="flex justify-center">
