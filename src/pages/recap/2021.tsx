@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
@@ -372,23 +373,33 @@ export default function Recap({ user }: PageProps) {
 									that are using Dank Memer, the number
 								</div>
 								<div>
-									of users and subsequent commands sent have
-									been astounding this year
+									of everything else have been astounding this
+									year!
 								</div>
 							</div>
 						</div>
-						<div className="flex flex-col xl:flex-row space-x-0 xl:space-x-12 space-y-6 xl:space-y-0">
+						<div className="grid gap-4 xl:grid-cols-3">
 							{[
-								["8 BILLION", "COMMANDS SENT"],
-								["?", "⏣ GENERATED"],
-								["?", "NEW UNIQUE USERS"],
+								["9 BILLION", "COMMANDS SENT"],
+								["11 TRILLION", "COINS GENERATED"],
+								["13 MILLION", "NEW UNIQUE USERS"],
+								["53 TRILLION", "WORTH OF ITEMS GENERATED"],
+								["+69%", "PATREON REVENUE"],
+								["40 THOUSAND", "NEW LINES OF CODE"],
 							].map(([amount, name]) => (
-								<div className="bg-dark-100 px-12 py-8 rounded-md w-72">
-									<div className="flex flex-col">
+								<div className="bg-dark-100 px-12 py-8 rounded-md w-72 flex justify-center">
+									<div className="flex flex-col justify-center">
 										<div className="text-dank-100 font-bold font-montserrat text-2xl">
 											{amount}
 										</div>
-										<div className="font-bold font-montserrat">
+										<div
+											className={clsx(
+												"font-bold font-montserrat",
+												name.length > 18
+													? "text-sm"
+													: "text-md"
+											)}
+										>
 											{name}
 										</div>
 									</div>
@@ -415,7 +426,8 @@ export default function Recap({ user }: PageProps) {
 						style={{ fontFamily: "Handlee" }}
 						className="text-xl max-w-lg"
 					>
-						- Melmsie, Aetheryx, Yeng, InBlue, Bunny, Badosz
+						- Melmsie, Aetheryx, Yeng, InBlue, Bunny, Badosz,
+						Amathine, Kable, Dauntless, Aiphey and TheLazyTownie
 					</div>
 				</div>
 			</div>
