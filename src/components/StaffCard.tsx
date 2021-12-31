@@ -99,6 +99,11 @@ export function StaffCard({ member }: StaffCardProps) {
 							<div className="font-bold text-2xl font-montserrat">
 								{member.name || "???"}
 							</div>
+							{member.position && (
+								<div className="font-montserrat">
+									{member.position}
+								</div>
+							)}
 						</div>
 						<div>
 							<Socials member={member} />

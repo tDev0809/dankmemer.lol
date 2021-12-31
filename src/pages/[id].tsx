@@ -376,6 +376,20 @@ export default function ProfilePage({ user }: PageProps) {
 										placeholder="https://imgur.com/nVqkxS0.png"
 										value={profile.user.banner || ""}
 									/>
+									{user?.developer && profile.user.developer && (
+										<Input
+											onChange={(e) => {
+												const copy = { ...profile };
+												copy.user.position =
+													e.target.value;
+												setProfile(copy);
+											}}
+											variant="short"
+											label="Position"
+											placeholder="CEO"
+											value={profile.user.position || ""}
+										/>
+									)}
 									{(user?.moderator || user?.honorable) && (
 										<>
 											<Input

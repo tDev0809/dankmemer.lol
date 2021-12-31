@@ -41,6 +41,7 @@ export interface UserData {
 	socials?: Record<string, string>;
 	about?: string;
 	perks?: boolean;
+	position?: string;
 }
 
 export interface PageProps {

@@ -211,6 +211,36 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		}
 	}
 
+	if (profile.position != userData.position && user.developer) {
+		if (profile.position.length == 0) {
+			try {
+				await db
+					.collection("users")
+					.updateOne(
+						{ _id: profile.id as string },
+						{ $unset: { position: 1 } }
+					);
+			} catch (e) {
+				return res.status(500).json({ error: e });
+			}
+		} else {
+			if (profile.position.length > 30) {
+				return res.status(400).json({ error: "Position too long." });
+			}
+
+			try {
+				await db
+					.collection("users")
+					.updateOne(
+						{ _id: profile.id as string },
+						{ $set: { position: profile.position } }
+					);
+			} catch (e) {
+				return res.status(500).json({ error: e });
+			}
+		}
+	}
+
 	const socials = profile.socials || {};
 
 	if (user.honorable || user.moderator) {
