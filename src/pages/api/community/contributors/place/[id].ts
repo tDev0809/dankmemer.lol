@@ -32,7 +32,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.json({ place: -1 });
 	}
 
-	const sameScores = scores.filter((s) => (s.score = score.score));
+	const sameScores = scores.filter((s) => s.score == score.score);
 
 	if (score.position! < 300) {
 		let newScore = [];
