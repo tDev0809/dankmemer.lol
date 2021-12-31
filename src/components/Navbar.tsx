@@ -132,6 +132,10 @@ export default function Navbar({ user }: Props) {
 											  }
 											: null,
 										{
+											label: "Profile",
+											link: `/@${user.id}`,
+										},
+										{
 											label: "Appeal a ban",
 											link: "/appeals",
 										},
