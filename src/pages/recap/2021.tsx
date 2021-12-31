@@ -165,9 +165,9 @@ export default function Recap({ user }: PageProps) {
 						</div>
 						<div>
 							Gaining an additional{" "}
-							<span className="text-dank-300">3.6 million</span>{" "}
+							<span className="text-dank-100">3.6 million</span>{" "}
 							servers in 2021, slingshotting us past the{" "}
-							<span className="text-dank-300">8 million</span>
+							<span className="text-dank-100">8 million</span>
 						</div>
 						<div>mark by the end of the year!</div>
 					</div>
