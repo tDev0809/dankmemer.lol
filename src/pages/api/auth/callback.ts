@@ -78,7 +78,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			);
 			await redis.del(`user:${user.id}`);
 			if (userData.vanity) {
-				await redis.del(`user:${user.vanity}`);
+				await redis.del(`user:${userData.vanity}`);
 			}
 		} else {
 			userData = {
@@ -101,7 +101,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			honorable: !!userData.honorable,
 			token: encrypt(user.id),
 			avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`,
-			perks: !!user.perks,
+			perks: !!userData.perks,
 		});
 	} catch (e) {
 		res.redirect("/?r=true");
