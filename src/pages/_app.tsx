@@ -20,6 +20,10 @@ export default function App({ Component, pageProps }: AppProps) {
 					content="/img/memer.png"
 					key="og-image"
 				/>
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:site" content="@dankmemerbot" />
+				<meta name="twitter:creator" content="@dankmemerbot" />
+				<meta name="theme-color" content="#598D3E" />
 				<link rel="icon" href="/img/memer.png" />
 				<meta property="og:image:width" content="64" />
 				<meta property="og:image:height" content="64" />
