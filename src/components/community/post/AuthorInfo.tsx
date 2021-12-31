@@ -15,7 +15,10 @@ export default function AuthorInfo({ post }: AuthorProps) {
 			<div className="flex space-x-1">
 				<span>by</span>
 				<Link
-					href={`/community/profile/${(post.author as UserData).id}`}
+					href={`/@${
+						(post.author as UserData).vanity ||
+						(post.author as UserData).id
+					}`}
 				>
 					<a className="flex space-x-1 items-center">
 						<Avatar

@@ -101,7 +101,9 @@ export function PostCard({ data }: Props) {
 								<TextLink
 									href={
 										data
-											? `/community/profile/${
+											? `/@${
+													(data?.author as UserData)
+														.vanity ||
 													(data?.author as UserData)
 														.id
 											  }`

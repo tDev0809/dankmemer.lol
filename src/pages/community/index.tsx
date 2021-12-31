@@ -80,11 +80,7 @@ export default function Community({ user }: PageProps) {
 									size="small"
 									className="w-full sm:w-auto"
 									variant="dark"
-									onClick={() =>
-										router.push(
-											`/community/profile/${user?.id}`
-										)
-									}
+									onClick={() => router.push(`/@${user?.id}`)}
 								>
 									<div className="flex items-center space-x-2">
 										<div className="material-icons">

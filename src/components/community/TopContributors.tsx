@@ -16,7 +16,7 @@ export function TopContributors() {
 	return (
 		<div className="bg-light-500 dark:bg-dark-100 rounded-md p-4 gap-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-start xl:justify-items-center">
 			{contributors.map((contributor, i) => (
-				<Link href={`/community/profile/${contributor.id}`}>
+				<Link href={`/@${contributor.vanity || contributor.id}`}>
 					<a className="flex space-x-2 items-center cursor-pointer">
 						<Avatar
 							size="48px"

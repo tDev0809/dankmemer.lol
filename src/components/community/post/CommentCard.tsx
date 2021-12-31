@@ -66,9 +66,7 @@ export default function CommentCard({
 							href={
 								(comment.author as UserData).id == "#"
 									? "#"
-									: `/community/profile/${
-											(comment.author as UserData).id
-									  }`
+									: `/@${(comment.author as UserData).id}`
 							}
 						>
 							<a className="flex space-x-1 items-center">

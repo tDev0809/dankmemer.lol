@@ -75,7 +75,7 @@ export function StaffCard({ member }: StaffCardProps) {
 				"rounded-lg p-6 cursor-pointer border",
 				"bg-light-500 dark:bg-dark-200 border-light-500 dark:border-dark-200 hover:border-dank-300 dark:hover:border-dank-300"
 			)}
-			onClick={() => router.push(`community/profile/${member._id}`)}
+			onClick={() => router.push(`/@${member.vanity || member._id}`)}
 		>
 			<div className="flex flex-col space-y-4 text-dark-400 dark:text-white">
 				<div className="flex space-x-4">

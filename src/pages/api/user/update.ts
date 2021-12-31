@@ -101,7 +101,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 									},
 									{
 										name: "Link",
-										value: `${process.env.DOMAIN}/community/profile/${profile.id}`,
+										value: `${process.env.DOMAIN}/@${profile.id}`,
 										inline: false,
 									},
 								],
@@ -164,7 +164,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 									},
 									{
 										name: "Link",
-										value: `${process.env.DOMAIN}/community/profile/${profile.id}`,
+										value: `${process.env.DOMAIN}/@${profile.id}`,
 										inline: false,
 									},
 								],

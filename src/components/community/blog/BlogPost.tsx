@@ -61,7 +61,8 @@ export function BlogPost({ data, user }: Props) {
 						<div className="text-light-600 text-sm">
 							Written by{" "}
 							<Link
-								href={`/community/profile/${
+								href={`/@${
+									(data.author as UserData).vanity ||
 									(data.author as UserData).id
 								}`}
 							>

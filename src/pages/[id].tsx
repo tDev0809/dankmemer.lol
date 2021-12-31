@@ -6,18 +6,18 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { Avatar } from "../../../components/Avatar";
-import { Badge } from "../../../components/Badge";
-import { BlogPost } from "../../../components/community/blog/BlogPost";
-import { ViewMore } from "../../../components/community/blog/ViewMore";
-import { PostCard } from "../../../components/community/PostCard";
-import Button from "../../../components/ui/Button";
-import Container from "../../../components/ui/Container";
-import Dropdown from "../../../components/ui/Dropdown";
-import Input from "../../../components/ui/Input";
-import { Activity, PageProps, Profile, User } from "../../../types";
-import { unauthenticatedRoute } from "../../../util/redirects";
-import { withSession } from "../../../util/session";
+import { Avatar } from "../components/Avatar";
+import { Badge } from "../components/Badge";
+import { BlogPost } from "../components/community/blog/BlogPost";
+import { ViewMore } from "../components/community/blog/ViewMore";
+import { PostCard } from "../components/community/PostCard";
+import Button from "../components/ui/Button";
+import Container from "../components/ui/Container";
+import Dropdown from "../components/ui/Dropdown";
+import Input from "../components/ui/Input";
+import { Activity, PageProps, Profile, User } from "../types";
+import { unauthenticatedRoute } from "../util/redirects";
+import { withSession } from "../util/session";
 
 function Actions({ user, profile }: { user: User; profile: Profile }) {
 	const swap = (role: string) => {
@@ -165,14 +165,21 @@ export default function ProfilePage({ user }: PageProps) {
 	const [editing, setEditing] = useState(false);
 
 	const router = useRouter();
-	const { id } = router.query;
+
+	useEffect(() => {
+		if (!(router.query.id as string).startsWith("@")) {
+			location.replace("/404");
+		}
+	}, []);
+
+	let id = (router.query.id as string).slice(1);
 
 	useEffect(() => {
 		axios(`/api/community/profile/get/${id}`)
 			.then(({ data }) => {
 				setProfile(data);
 				if (data.user.vanity) {
-					router.replace(`/community/profile/${data.user.vanity}`);
+					router.replace(`/@${data.user.vanity}`);
 				}
 
 				axios(`/api/community/contributors/place/${data.user.id}`).then(
@@ -192,11 +199,7 @@ export default function ProfilePage({ user }: PageProps) {
 				data: profile!.user,
 			})
 			.then(({}) => {
-				router.replace(
-					`/community/profile/${
-						profile!.user.vanity || profile!.user.id
-					}`
-				);
+				router.replace(`/@${profile!.user.vanity || profile!.user.id}`);
 				toast.dark("Saved!");
 			})
 			.catch((e) => {

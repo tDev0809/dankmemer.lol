@@ -52,7 +52,9 @@ export default function BlogPage({ user }: PageProps) {
 									<div className="text-gray-400">
 										Written by{" "}
 										<Link
-											href={`/community/profile/${
+											href={`/@${
+												(blog.author as UserData)
+													.vanity ||
 												(blog.author as UserData).id
 											}`}
 										>
