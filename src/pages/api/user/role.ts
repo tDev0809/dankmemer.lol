@@ -23,9 +23,13 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	if (
-		!["modManager", "moderator", "botModerator", "honorable"].includes(
-			req.query?.role as string
-		)
+		![
+			"modManager",
+			"moderator",
+			"botModerator",
+			"honorable",
+			"developer",
+		].includes(req.query?.role as string)
 	) {
 		return res.status(400).json({ error: "This role doesn't exist." });
 	}
