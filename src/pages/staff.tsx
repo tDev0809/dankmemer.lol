@@ -13,7 +13,6 @@ import { withSession } from "../util/session";
 
 const names: Record<string, string> = {
 	team: "Team",
-	botModerators: "Bot Moderators",
 	moderators: "Moderators",
 	honorable: "Honorable Mention",
 };

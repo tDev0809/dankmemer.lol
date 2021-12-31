@@ -32,8 +32,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 		if (user.developer) {
 			result.team.push(user as UserData);
-		} else if (user.botModerator) {
-			result.botModerators.push(user as UserData);
 		} else if (user.moderator) {
 			result.moderators.push(user as UserData);
 		} else {
