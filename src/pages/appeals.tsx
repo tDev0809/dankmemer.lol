@@ -107,7 +107,18 @@ export default function Appeals({ user }: PageProps) {
 							))}
 						</div>
 					</div>
-
+					{type == "Bot Blacklist" && (
+						<div className="text-rose-600 px-4">
+							If a blacklist duration is under a week, it will be
+							not appealed.
+						</div>
+					)}
+					{type == "Bot Ban" && (
+						<div className="text-yellow-300 px-4">
+							If your ban is temporary, that is a blacklist and
+							not a ban.
+						</div>
+					)}
 					<div className="flex flex-col p-4 space-y-2">
 						<div className="flex flex-col space-y-2">
 							<div className="text-lg font-bold font-montserrat text-dark-400 dark:text-white">
