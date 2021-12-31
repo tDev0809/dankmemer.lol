@@ -51,6 +51,16 @@ function Actions({ user, profile }: { user: User; profile: Profile }) {
 					</Button>
 				}
 				options={[
+					user?.developer
+						? {
+								label: `${
+									profile.user.developer ? "Remove" : "Add"
+								} Developer`,
+								onClick: () => {
+									swap("developer");
+								},
+						  }
+						: null,
 					user?.modManager
 						? {
 								label: `${

@@ -30,6 +30,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(400).json({ error: "This role doesn't exist." });
 	}
 
+	if (role == "developer" && !user.developer) {
+		return res.status(401).json({ error: "You can't do this." });
+	}
+
 	if (role == "moderator" && !user.modManager) {
 		return res.status(401).json({ error: "You can't do this." });
 	}
