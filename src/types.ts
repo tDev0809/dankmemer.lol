@@ -164,3 +164,9 @@ export interface Banner {
 	url: string;
 	buttonText: string;
 }
+
+export interface Score {
+	_id: string;
+	score: number;
+	position?: number;
+}

@@ -1,12 +1,11 @@
 import { NextApiResponse } from "next";
 import { TIME } from "../../../../../constants";
-import { dbConnect } from "../../../../../util/mongodb";
+import { getTopContributions } from "../../../../../util/contributions";
 import { redisConnect } from "../../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../../util/session";
 import { getUsers } from "../../../../../util/user";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
-	const { db } = await dbConnect();
 	const redis = await redisConnect();
 	const { id } = req.query;
 
@@ -21,59 +20,21 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.json({ place: parseInt(cached) });
 	}
 
-	const contributors = await db
-		.collection("community-activities")
-		.aggregate([
-			{
-				$group: {
-					_id: "$uID",
-					score: { $sum: 1 },
-				},
-			},
-			{
-				$setWindowFields: {
-					sortBy: { score: -1 },
-					output: { place: { $documentNumber: {} } },
-				},
-			},
-			{
-				$match: {
-					_id: id,
-				},
-			},
-		])
-		.toArray();
+	const scores = await getTopContributions(TIME.year);
 
-	if (contributors.length == 0) {
+	for (let i = 0; i < scores.length; i++) {
+		scores[i].position = i + 1;
+	}
+
+	const score = scores.find((s) => s._id == id);
+
+	if (!score) {
 		return res.json({ place: -1 });
 	}
 
-	const contributor = contributors[0];
+	const sameScores = scores.filter((s) => (s.score = score.score));
 
-	const sameScores = await db
-		.collection("community-activities")
-		.aggregate([
-			{
-				$group: {
-					_id: "$uID",
-					score: { $sum: 1 },
-				},
-			},
-			{
-				$setWindowFields: {
-					sortBy: { score: -1 },
-					output: { position: { $documentNumber: {} } },
-				},
-			},
-			{
-				$match: {
-					score: contributor.score,
-				},
-			},
-		])
-		.toArray();
-
-	if (contributor.position < 300) {
+	if (score.position! < 300) {
 		let newScore = [];
 
 		const data = await getUsers(
@@ -95,7 +56,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 		newScore = newScore.sort((a, z) => z.score - a.score);
 
-		const minPosition = Math.min(...newScore.map((a) => a.position));
+		const minPosition = Math.min(...newScore.map((a) => a.position!));
 		const newPlace = newScore.findIndex((s) => s.id == id);
 
 		await redis.set(
@@ -107,7 +68,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 		return res.json({ place: minPosition + newPlace });
 	} else {
-		const place = Math.max(...sameScores.map((a) => a.position));
+		const place = Math.max(...sameScores.map((a) => a.position!));
 
 		await redis.set(
 			`community:place:${id}`,
