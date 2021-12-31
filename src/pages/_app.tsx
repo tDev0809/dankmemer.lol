@@ -66,6 +66,11 @@ export default function App({ Component, pageProps }: AppProps) {
 				href="https://fonts.googleapis.com/css2?family=Inter"
 				rel="stylesheet"
 			/>
+
+			<link
+				href="https://fonts.googleapis.com/css2?family=Handlee&display=swap"
+				rel="stylesheet"
+			/>
 			<Script
 				data-ad-client="ca-pub-1439722543831764"
 				async
