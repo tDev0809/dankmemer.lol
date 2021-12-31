@@ -32,6 +32,7 @@ export async function getUser(id: string): Promise<UserData | null> {
 				about: user.about,
 				socials: user.socials,
 				perks: user.perks,
+				position: user.position,
 			};
 
 			await redis.set(
@@ -84,6 +85,7 @@ export async function getUsers(ids: string[]): Promise<UserData[]> {
 					about: user.about,
 					socials: user.socials,
 					perks: user.perks,
+					position: user.position,
 				};
 
 				await redis.set(

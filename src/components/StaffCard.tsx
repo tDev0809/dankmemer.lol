@@ -94,13 +94,13 @@ export function StaffCard({ member }: StaffCardProps) {
 							(e.target as any).src = randomAvatar(member._id);
 						}}
 					/>
-					<div className={clsx("flex flex-col")}>
+					<div className="flex flex-col space-y-1">
 						<div>
 							<div className="font-bold text-2xl font-montserrat">
 								{member.name || "???"}
 							</div>
 							{member.position && (
-								<div className="font-montserrat">
+								<div className="font-montserrat leading-5">
 									{member.position}
 								</div>
 							)}
