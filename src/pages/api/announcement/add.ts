@@ -1,9 +1,11 @@
 import { NextApiResponse } from "next";
 import { dbConnect } from "../../../util/mongodb";
+import { redisConnect } from "../../../util/redis";
 import { NextIronRequest, withSession } from "../../../util/session";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
+	const redis = await redisConnect();
 
 	const user = req.session.get("user");
 
@@ -16,6 +18,8 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	const { content } = req.query;
+
+	await redis.del("announcements");
 
 	try {
 		await db.collection("announcements").insertOne({
