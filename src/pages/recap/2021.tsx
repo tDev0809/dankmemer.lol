@@ -370,11 +370,11 @@ export default function Recap({ user }: PageProps) {
 							<div className="text-neutral-300 text-lg leading-6 px-8">
 								<div>
 									Along with the increased number of servers
-									that are using Dank Memer, the number
+									that are using Dank Memer,
 								</div>
 								<div>
-									of everything else have been astounding this
-									year!
+									everything else have been astounding this
+									year as well!
 								</div>
 							</div>
 						</div>
