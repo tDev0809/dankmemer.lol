@@ -11,10 +11,10 @@ interface SocialProps {
 
 function Socials({ member }: SocialProps) {
 	return (
-		<div className={clsx(member.developer && "w-48 lg:w-28 2xl:w-32")}>
+		<div className={clsx(member.developer && "2xl:w-52")}>
 			{member.developer ||
 			Object.entries(member.socials || []).length <= 3 ? (
-				<div className="grid grid-cols-4 gap-1 items-center">
+				<div className="grid grid-cols-8 gap-1 items-center">
 					{Object.entries(member?.socials || []).map(
 						([socialName, link]) => (
 							<a key={socialName} href={link} target="_blank">
