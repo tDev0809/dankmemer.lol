@@ -89,6 +89,9 @@ export default function Recap({ user }: PageProps) {
 					],
 				}}
 			/>
+			<Head>
+				<meta name="twitter:card" content="summary_large_image" />
+			</Head>
 
 			<div className="flex flex-col items-center">
 				<img

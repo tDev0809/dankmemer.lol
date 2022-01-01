@@ -15,7 +15,6 @@ export default function App({ Component, pageProps }: AppProps) {
 					name="viewport"
 					content="width=device-width, initial-scale=1, shrink-to-fit=no"
 				/>
-				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:site" content="@dankmemerbot" />
 				<meta name="twitter:creator" content="@dankmemerbot" />
 				<meta name="theme-color" content="#598D3E" />
