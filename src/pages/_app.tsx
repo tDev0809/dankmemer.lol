@@ -19,6 +19,13 @@ export default function App({ Component, pageProps }: AppProps) {
 				<meta name="twitter:site" content="@dankmemerbot" />
 				<meta name="twitter:creator" content="@dankmemerbot" />
 				<meta name="theme-color" content="#598D3E" />
+				<meta property="og:image:width" content="64" />
+				<meta property="og:image:height" content="64" />
+				<meta
+					property="og:image"
+					content="/img/memer.png"
+					key="og-image"
+				/>
 				<link rel="icon" href="/img/memer.png" />
 			</Head>
 			<DefaultSeo
@@ -37,15 +44,6 @@ export default function App({ Component, pageProps }: AppProps) {
 					title: "Dank Memer",
 					description:
 						"Dank Memer is a feature-rich Discord bot with the original twist of being sarcastic and memey. A MASSIVE currency system, tons of memes, and much more!",
-					images: [
-						{
-							url: "/img/memer.png",
-							width: 64,
-							height: 64,
-							alt: "Memer",
-							type: "image/png",
-						},
-					],
 				}}
 			/>
 			<link
