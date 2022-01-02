@@ -42,7 +42,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	await redis.set(
 		`community:cooldown:appeal:${user.id}`,
-		req.body.id,
+		user.id,
 		"PX",
 		TIME.week
 	);
