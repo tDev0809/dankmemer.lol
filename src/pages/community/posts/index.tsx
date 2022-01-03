@@ -6,6 +6,7 @@ import { PostCard } from "../../../components/community/PostCard";
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/ui/Container";
 import Dropdown from "../../../components/ui/Dropdown";
+import Input from "../../../components/ui/Input";
 import { POST_CATEGORIES, POST_LABELS } from "../../../constants";
 import { PageProps, Post } from "../../../types";
 import { sanitizeCategory } from "../../../util/community";
@@ -49,6 +50,8 @@ export default function Posts({ user }: PageProps) {
 		)
 	);
 	const [loadingPosts, setLoadingPosts] = useState(false);
+	const [search, setSearch] = useState((router.query.search as string) || "");
+	const [oldSearch, setOldSearch] = useState(search);
 
 	const loadPosts = () => {
 		router.replace({
@@ -58,9 +61,11 @@ export default function Posts({ user }: PageProps) {
 				category,
 				filter,
 				page,
+				...(search.length > 0 ? { search } : {}),
 			},
 		});
 		setLoadingPosts(true);
+
 		axios(
 			`/api/community/posts/all?${new URLSearchParams({
 				from: (LOAD_AMOUNT * (page - 1)).toString(),
@@ -68,6 +73,7 @@ export default function Posts({ user }: PageProps) {
 				category: category,
 				filter: filter,
 				sorting: sorting,
+				search: search,
 			})}`
 		).then(({ data }) => {
 			setPosts(data.posts);
@@ -80,13 +86,10 @@ export default function Posts({ user }: PageProps) {
 	}, [page]);
 
 	useEffect(() => {
-		setPage(-1);
-	}, [sorting, filter, category]);
-
-	useEffect(() => {
 		if (page == -1) {
 			setPage(1);
 		} else {
+			setOldSearch("");
 			loadPosts();
 		}
 	}, [page]);
@@ -121,7 +124,10 @@ export default function Posts({ user }: PageProps) {
 								([name, icon]) => ({
 									label: toTitleCase(name),
 									icon: icon,
-									onClick: () => setSorting(name),
+									onClick: () => {
+										setSorting(name);
+										setPage(-1);
+									},
 								})
 							)}
 						/>
@@ -158,7 +164,11 @@ export default function Posts({ user }: PageProps) {
 								label: toTitleCase(
 									name.replace("all", "all posts")
 								),
-								onClick: () => setFilter(name),
+								onClick: () => {
+									setFilter(name);
+									setSearch("");
+									setPage(-1);
+								},
 							}))}
 						/>
 					</div>
@@ -176,25 +186,81 @@ export default function Posts({ user }: PageProps) {
 							options={[
 								{
 									label: "All",
-									onClick: () => setCategory("all"),
+									onClick: () => {
+										setCategory("all");
+										setSearch("");
+										setPage(-1);
+									},
 								},
 							].concat(
 								POST_CATEGORIES.map((postCategory) => ({
 									label: sanitizeCategory(postCategory),
 
-									onClick: () => setCategory(postCategory),
+									onClick: () => {
+										setCategory(postCategory);
+										setSearch("");
+										setPage(-1);
+									},
 								}))
 							)}
 						/>
 					</div>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-					{loadingPosts
-						? [...Array(10)].map((i) => <PostCard key={i} />)
-						: posts.map((data) => (
-								<PostCard data={data} key={data._id} />
-						  ))}
+				<div className="flex flex-col md:flex-row space-y-2 md:space-y-0 space-x-0 md:space-x-4 md:items-center p-2 rounded-md bg-light-500 dark:bg-dark-100">
+					<Input
+						onChange={(e) => {
+							setSearch(e.target.value);
+						}}
+						onKeyDown={(e) => {
+							if (e.key === "Enter") {
+								if (search != oldSearch) {
+									setOldSearch(search);
+									setCategory("all");
+									setFilter("all");
+									setPage(-1);
+								}
+							}
+						}}
+						block
+						variant="short"
+						placeholder="..."
+						value={search}
+					/>
+					<Button
+						className="h-10"
+						variant="dark"
+						disabled={search.length < 3 && search.length != 0}
+						onClick={() => {
+							if (search != oldSearch) {
+								setOldSearch(search);
+								setCategory("all");
+								setFilter("all");
+								setPage(-1);
+							}
+						}}
+					>
+						Search
+					</Button>
 				</div>
+				{(loadingPosts || posts.length > 0) && (
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+						{loadingPosts
+							? [...Array(10)].map((i) => <PostCard key={i} />)
+							: posts.map((data) => (
+									<PostCard data={data} key={data._id} />
+							  ))}
+					</div>
+				)}
+				{posts.length == 0 && (
+					<div className="flex flex-col items-center space-y-2 bg-light-500 dark:bg-dark-100 p-4 rounded-md">
+						<img
+							src="/img/memer.png"
+							width={160}
+							className="grayscale"
+						/>
+						<div className="italic">Woah... so empty</div>
+					</div>
+				)}
 				<div className="flex justify-between items-center p-2 space-x-4 rounded-md bg-light-500 dark:bg-dark-100">
 					<Button
 						block

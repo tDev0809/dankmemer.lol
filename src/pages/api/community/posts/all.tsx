@@ -13,8 +13,14 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const from = Number(req.query.from) || 0;
 	const amount = Math.min(Number(req.query.amount) || 10, 25);
 	const sorting = req.query.sorting || "hot";
-	const category = req.query.category || "all";
+	const search = req.query.search || "";
+	let category = req.query.category || "all";
 	let filter = req.query.filter || "all";
+
+	if (search.length > 0) {
+		filter = "all";
+		category = "all";
+	}
 
 	if (!POST_LABELS.includes(filter as string)) {
 		filter = "all";
@@ -35,7 +41,9 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.aggregate([
 			{
 				$match:
-					category === "all"
+					search.length > 0
+						? { $text: { $search: search } }
+						: category === "all"
 						? {
 								labels:
 									filter === "all" ? { $ne: "." } : filter,
