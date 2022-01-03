@@ -1,12 +1,13 @@
 import axios from "axios";
 import { NextApiResponse } from "next";
+import { TIME } from "../../../constants";
 import { dbConnect } from "../../../util/mongodb";
+import { redisConnect } from "../../../util/redis";
 import { NextIronRequest, withSession } from "../../../util/session";
-
-const recent = new Set();
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { db } = await dbConnect();
+	const redis = await redisConnect();
 
 	const user = req.session.get("user");
 
@@ -20,7 +21,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			.json({ error: "You are banned from reporting." });
 	}
 
-	if (recent.has(user.id)) {
+	if (
+		(await redis.get(`community:cooldown:report:${user.id}`)) &&
+		!user.moderator
+	) {
 		return res.status(429).json({ error: "You're doing that too often." });
 	}
 
@@ -40,11 +44,12 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(400).json({ error: "Your rules are invalid" });
 	}
 
-	if (!user.developer) {
-		recent.add(user.id);
-		setTimeout(() => recent.delete(user.id), 10 * 60 * 1000);
-	}
-
+	await redis.set(
+		`community:cooldown:report:${user.id}`,
+		user.id,
+		"PX",
+		TIME.minute * 10
+	);
 	await axios.post(
 		req.body.type === "server"
 			? process.env.REPORTS_SERVER_WEBHOOK!
