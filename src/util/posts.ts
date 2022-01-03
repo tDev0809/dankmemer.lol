@@ -8,7 +8,7 @@ export async function getPostsData(
 	posts: Post[],
 	user: User | null
 ): Promise<Post[]> {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const redis = await redisConnect();
 	const userData = await getUsers(posts.map((p) => p.author as string));
 	const commentsPipeline = redis.pipeline();

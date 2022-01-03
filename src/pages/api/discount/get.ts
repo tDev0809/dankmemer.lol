@@ -3,7 +3,7 @@ import { dbConnect } from "../../../util/mongodb";
 import { NextIronRequest, withSession } from "../../../util/session";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const discount = await db.collection("discounts").findOne({
 		expiry: { $gt: Date.now() },
 	});

@@ -4,7 +4,7 @@ import { dbConnect } from "./mongodb";
 import { redisConnect } from "./redis";
 
 export async function getTopContributions(limit: number): Promise<Score[]> {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const redis = await redisConnect();
 
 	const cached = await redis.get(`community:contributors:${limit}`);

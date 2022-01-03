@@ -18,7 +18,7 @@ function generateReadableID() {
 }
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const redis = await redisConnect();
 
 	const user = req.session.get("user");

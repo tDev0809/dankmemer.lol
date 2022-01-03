@@ -5,7 +5,7 @@ import { redisConnect } from "../../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../../util/session";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const redis = await redisConnect();
 	const { id } = req.query;
 

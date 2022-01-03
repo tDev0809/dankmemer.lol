@@ -4,7 +4,7 @@ import { dbConnect } from "./mongodb";
 import { redisConnect } from "./redis";
 
 export async function getUser(id: string): Promise<UserData | null> {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const redis = await redisConnect();
 
 	const cachedUser = await redis.get(`user:${id}`);
@@ -50,7 +50,7 @@ export async function getUser(id: string): Promise<UserData | null> {
 }
 
 export async function getUsers(ids: string[]): Promise<UserData[]> {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const redis = await redisConnect();
 
 	const pipeline = redis.pipeline();

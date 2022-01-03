@@ -7,7 +7,7 @@ import { getPostsData } from "../../../../util/posts";
 import { NextIronRequest, withSession } from "../../../../util/session";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 
 	const user = req.session.get("user");
 	const from = Number(req.query.from) || 0;

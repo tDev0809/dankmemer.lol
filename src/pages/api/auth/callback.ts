@@ -9,7 +9,7 @@ import { redisConnect } from "../../../util/redis";
 const OAuthScope = ["identify", "email"].join(" ");
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const redis = await redisConnect();
 
 	if (!req.query.code) {

@@ -6,7 +6,7 @@ import { NextIronRequest, withSession } from "../../../../../util/session";
 import { getUsers } from "../../../../../util/user";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
-	const { db } = await dbConnect();
+	const db = await dbConnect();
 	const { id } = req.query;
 
 	const post = await db.collection("community-posts").findOne({

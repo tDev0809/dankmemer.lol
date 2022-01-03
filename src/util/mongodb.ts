@@ -19,8 +19,8 @@ if (!dbName) {
 }
 
 export async function dbConnect() {
-	if (cachedClient && cachedDb) {
-		return { client: cachedClient, db: cachedDb };
+	if (cachedDb) {
+		return cachedDb;
 	}
 
 	const client = await MongoClient.connect(uri!);
@@ -30,5 +30,5 @@ export async function dbConnect() {
 	cachedClient = client;
 	cachedDb = db;
 
-	return { client, db };
+	return db;
 }
