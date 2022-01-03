@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ChangeEvent } from "react";
+import { ChangeEvent, KeyboardEvent } from "react";
 
 const variantClasses = {
 	short: "h-10",
@@ -9,6 +9,9 @@ const variantClasses = {
 
 interface Props {
 	onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+	onKeyDown?: (
+		e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => void;
 	placeholder?: string;
 	value: string;
 	variant: keyof typeof variantClasses;
@@ -20,6 +23,7 @@ interface Props {
 
 export default function Input({
 	onChange,
+	onKeyDown,
 	value,
 	placeholder = "",
 	resizable,
@@ -45,6 +49,7 @@ export default function Input({
 			)}
 			placeholder={placeholder}
 			value={value}
+			onKeyDown={onKeyDown}
 		/>
 	);
 
