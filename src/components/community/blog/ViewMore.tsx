@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon } from "../../Icon";
 
 export function ViewMore() {
 	return (
@@ -11,9 +12,7 @@ export function ViewMore() {
 						blog posts
 					</div>
 					<div className="text-center">
-						<span className="material-icons">
-							keyboard_arrow_right
-						</span>
+						<Icon id="keyboard_arrow_right" />
 					</div>
 				</div>
 			</div>
