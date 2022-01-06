@@ -70,7 +70,7 @@ export default function BlogPage({ user }: PageProps) {
 								</div>
 							</div>
 							<div
-								className="text-dark-400 dark:text-white text-justify"
+								className="text-dark-400 dark:text-white text-justify max-w-[80vw]"
 								dangerouslySetInnerHTML={{
 									__html: tailwindHtml(
 										mdParser.render(blog.content)
