@@ -44,13 +44,13 @@ export default function Rules({ user }: PageProps) {
 				<div className="mt-8 flex flex-col space-y-4">
 					<Rule
 						title="Rule One"
-						description="User-bots, Spamming and Macros"
+						description="User-bots, Spamming, Alts, and Macros"
 					>
 						Usage of user-bots, macros, scripts, auto-typers or
 						anything else enabling automation of commands is
 						strictly forbidden. In addition to this, massive amounts
 						of spam is not allowed and will be punished with equal
-						severity.
+						severity. Lastly, alts that are used to bypass bans or bypass systems in Dank Memer such as (but not limited to) the lottery, drops, or vote rewards are not allowed.
 					</Rule>
 					<Rule title="Rule Two" description="Sharing Exploits">
 						<div>
