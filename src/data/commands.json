@@ -136,10 +136,16 @@
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
 		},
 		{
-			"t": ["message", "mail"],
+			"t": ["message", "mail", "alert"],
 			"u": "pls message",
 			"d": "Read last message from the developers!.",
 			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
+			"t": ["permtrace", "pt"],
+			"u": "pls permtrace <command>",
+			"d": "Use this command to see all enable and disable rules for a specific command",
+			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
 			"t": ["prefix"],
@@ -265,6 +271,12 @@
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{
+			"t": ["flashsell", "fs", "ffs"],
+			"u": "pls flashsell",
+			"d": "Trade a certain number of items with Dank Memer for a random reward.",
+			"p": ["sendMessages", "readMessageHistory", "embedLinks"]
+		},
+		{
 			"t": ["gamble", "bet", "roll"],
 			"u": "pls gamble <number>",
 			"d": "Take your chances at gambling. Warning, I am very good at stealing your money. Roll your dice against the bot, if you get higher than the bot you'll win! (Multiplier affects this command, https://dankmemer.lol/blogs/multipliers)",
@@ -333,7 +345,7 @@
 		{
 			"t": ["omega"],
 			"u": "pls omega",
-			"d": "Prestige used to be a challenge, and now it's child's play. Omega is prestige on crack, rewarding you things never throught possible otherwise. LITERALLY expanding the limits of the game for you.",
+			"d": "Prestige used to be a challenge, and now it's child's play. Omega is prestige on crack, rewarding you things never thought possible otherwise. LITERALLY expanding the limits of the game for you.",
 			"p": ["sendMessages", "readMessageHistory"]
 		},
 		{

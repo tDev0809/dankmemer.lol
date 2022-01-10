@@ -29,7 +29,7 @@
 		"showInShop": false,
 		"rarity": 3,
 		"cost": 1000,
-		"notSharable": true,
+		"notSharable": false,
 		"items": ["fishingpole", "laptop", "phone", "huntingrifle", "shovel"]
 	},
 	"antirobpack": {
@@ -382,7 +382,7 @@
 		"longdescription": "Having this crown raises the max wallet to gamble to 100 million. This does not stack. This item doesn't have as much function as some other collectables, but has double the style.",
 		"id": "pepecrown",
 		"type": "Collectable",
-		"cost": 250069420,
+		"cost": 250000000,
 		"consumable": false,
 		"showInShop": true,
 		"usable": true,
@@ -393,17 +393,19 @@
 		"name": "Fart In A Bottle",
 		"image": "https://cdn.discordapp.com/emojis/860285654009511936.png",
 		"type": "Drop Item",
-		"description": "A really stinky bottle. Should you huff it?",
+		"description": "A really stinky bottle. Should you sniff it? \"You're either a smart fella, or a fart smella.\" -TheLazyTownie",
 		"cost": 100000,
 		"showInShop": false,
+		"usable": true,
+		"consumable": true,
 		"rarity": 1,
 		"drops": [
 			{
 				"time": [
-					"2021-12-29T23:00:00.000Z",
+					"2021-12-27T05:00:01.000Z",
 					"2021-12-30T04:59:00.000Z"
 				],
-				"stock": 10000,
+				"stock": 20000,
 				"specialCost": 75000,
 				"limit": 5,
 				"patreon": true
@@ -424,7 +426,7 @@
 				],
 				"stock": 500000,
 				"specialCost": 125000,
-				"limit": 1
+				"limit": 3
 			}
 		]
 	},
@@ -434,7 +436,6 @@
 		"image": "https://cdn.discordapp.com/emojis/890646381482614824.png",
 		"type": "Drop Item",
 		"description": "A true flex to carry.",
-		"longdescription": "This is a rare collectable, only found from drop sales.",
 		"cost": 5000000,
 		"showInShop": false,
 		"rarity": 3,
@@ -474,7 +475,6 @@
 		"image": "https://cdn.discordapp.com/emojis/894597638161326091.png",
 		"type": "Drop Item",
 		"description": "Día de los Muertos 2021 limited time item",
-		"longdescription": "This item came from a limited stock of 100k sold on Día de los Muertos 2021",
 		"cost": 1000000,
 		"showInShop": false,
 		"consumable": true,
@@ -531,7 +531,6 @@
 		"name": "Pepe Sus",
 		"image": "https://cdn.discordapp.com/emojis/890646381189009438.png",
 		"description": "Pepe is looking a little SUS today",
-		"longdescription": "This is a rare collectable, only found from drop sales.",
 		"id": "pepesus",
 		"type": "Drop Item",
 		"rarity": 4,
@@ -558,11 +557,58 @@
 			}
 		]
 	},
+	"toiletpaper": {
+		"name": "Toilet Paper",
+		"image": "https://cdn.discordapp.com/emojis/928399081112469544.png",
+		"description": "If we learned anything during the pandemic, it's that TP is VALUABLE",
+		"id": "toiletpaper",
+		"type": "Drop Item",
+		"rarity": 4,
+		"showInShop": false,
+		"cost": 50000000,
+		"drops": [
+			{
+				"time": [
+					"2022-01-10T17:00:00.000Z",
+					"2022-01-10T23:00:00.000Z"
+				],
+				"stock": 6000,
+				"specialCost": 20000000,
+				"limit": 6
+			},
+			{
+				"time": [
+					"2022-01-11T05:00:01.000Z",
+					"2022-01-11T11:00:00.000Z"
+				],
+				"stock": 5000,
+				"specialCost": 25000000,
+				"limit": 6
+			},
+			{
+				"time": [
+					"2022-01-11T17:00:00.000Z",
+					"2022-01-11T23:00:00.000Z"
+				],
+				"stock": 5000,
+				"specialCost": 28000000,
+				"limit": 6
+			},
+			{
+				"time": [
+					"2022-01-12T05:00:01.000Z",
+					"2022-01-12T17:00:00.000Z"
+				],
+				"stock": 4000,
+				"specialCost": 30000000,
+				"limit": 6
+			}
+		]
+	},
 	"stocking": {
 		"name": "Holiday Stocking",
 		"image": "https://cdn.discordapp.com/emojis/920812196567597067.png",
-		"description": "A holiday 2021 limited time lootbox from item drops only",
-		"longdescription": "This is a rare collectable, only found from drop sales. It was a holiday 2021 item containing a few holiday themed items",
+		"description": "A holiday 2021 limited time item from drop sales only",
 		"id": "stocking",
 		"type": "Drop Item",
 		"rarity": 2,
@@ -585,7 +631,7 @@
 					"2021-12-24T23:00:00.000Z",
 					"2021-12-25T04:59:00.000Z"
 				],
-				"stock": 1000,
+				"stock": 5000,
 				"specialCost": 25000,
 				"limit": 1,
 				"patreon": true
@@ -595,7 +641,7 @@
 					"2021-12-25T05:00:01.000Z",
 					"2021-12-25T11:00:00.000Z"
 				],
-				"stock": 2500,
+				"stock": 10000,
 				"specialCost": 50000,
 				"limit": 1
 			},
@@ -604,11 +650,47 @@
 					"2021-12-25T17:00:00.000Z",
 					"2021-12-25T23:00:00.000Z"
 				],
-				"stock": 5000,
+				"stock": 15000,
 				"specialCost": 100000,
 				"limit": 1
 			}
 		]
+	},
+	"scepter": {
+		"name": "Cxorpy's Scepter",
+		"image": "https://cdn.discordapp.com/emojis/926573136558850139.gif",
+		"description": "A royal scepter such as this is worth close to 50k gold carats, dang! You can either use this item to obtain royalty embedded colours or keep it in your collection.",
+		"id": "scepter",
+		"type": "Collectable",
+		"consumable": true,
+		"showInShop": false,
+		"usable": true,
+		"cost": 25000,
+		"rarity": 0
+	},
+	"letter": {
+		"name": "The Letter",
+		"image": "https://cdn.discordapp.com/emojis/926522932560269413.gif",
+		"description": "A custom item containing a message from ANANT#5998, NotARSenic#0709 and Dauntless#0711. What's that message? Open it up to find out!",
+		"id": "letter",
+		"type": "Collectable",
+		"consumable": true,
+		"showInShop": false,
+		"usable": true,
+		"cost": 25000,
+		"rarity": 0
+	},
+	"armpithair": {
+		"name": "Armpit Hair",
+		"image": "https://cdn.discordapp.com/emojis/926267869258457139.png",
+		"description": "It tastes funny!",
+		"id": "armpithair",
+		"type": "Collectable",
+		"consumable": true,
+		"showInShop": false,
+		"usable": true,
+		"cost": 25000,
+		"rarity": 0
 	},
 	"camera": {
 		"name": "Camera",
@@ -764,7 +846,7 @@
 		"cost": 1000000,
 		"consumable": true,
 		"showInShop": false,
-		"notSharable": true
+		"notSharable": false
 	},
 	"aetheryxflower": {
 		"name": "Aetheryx' Flower",
@@ -827,6 +909,28 @@
 		"showInShop": false,
 		"cost": 5000000,
 		"rarity": 3
+	},
+	"bunnysapron": {
+		"name": "Bunny's Apron",
+		"image": "https://cdn.discordapp.com/emojis/928417989357891675.png",
+		"description": "A handmade pink apron with bunny ears stitched to the pocket, finely crafted for Michelin Star chefs, it is mainly found in the Kitchen.",
+		"id": "bunnysapron",
+		"type": "Collectable",
+		"consumable": false,
+		"showInShop": false,
+		"cost": 1000000,
+		"rarity": 2
+	},
+	"yengpaw": {
+		"name": "Yeng Gang",
+		"image": "https://cdn.discordapp.com/emojis/927305405988753468.gif",
+		"description": "A squishy paw that can relieve stress and make you smile. SQUISH! SQUISH! SQUISH!",
+		"id": "yengpaw",
+		"type": "Collectable",
+		"consumable": false,
+		"showInShop": false,
+		"cost": 1000000,
+		"rarity": 2
 	},
 	"lotterywinner": {
 		"name": "Winning Lottery Ticket",
@@ -1001,7 +1105,6 @@
 		"name": "School Urinal",
 		"image": "https://cdn.discordapp.com/emojis/889266191808471114.png",
 		"description": "The most devious lick",
-		"longdescription": "A limited time item from the crime command, this is just something to decorate your home with (aka no use)",
 		"id": "urinal",
 		"type": "Collectable",
 		"cost": 1000000,
@@ -1014,7 +1117,6 @@
 		"name": "Snowflake",
 		"image": "https://cdn.discordapp.com/emojis/920796800774991932.png",
 		"description": "Every snowflake is unique... but not in this bot",
-		"longdescription": "A Holiday 2021 item that can be collected or turned into snowballs with crafting",
 		"id": "snowflake",
 		"type": "Collectable",
 		"cost": 100000,
@@ -1027,7 +1129,6 @@
 		"name": "Ornament",
 		"image": "https://cdn.discordapp.com/emojis/921193342501539891.png",
 		"description": "qt little ornament for christmas",
-		"longdescription": "A Holiday 2021 item. It can be collected or turned into a christmas tree with crafting",
 		"id": "ornament",
 		"type": "Collectable",
 		"cost": 100000,
@@ -1040,7 +1141,6 @@
 		"name": "Candy Cane",
 		"image": "https://cdn.discordapp.com/emojis/920796779405000714.png",
 		"description": "A tasty treat",
-		"longdescription": "A Holiday 2021 item. You can lick it. Why? Who knows but it's gone after you lick it.",
 		"id": "candycane",
 		"type": "Tool",
 		"cost": 100000,
@@ -1071,13 +1171,7 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 3,
-		"components": {
-			"candycane": 3,
-			"ornament": 3,
-			"tree": 1,
-			"ducttape": 1
-		}
+		"rarity": 3
 	},
 	"berriesandcream": {
 		"name": "Berries and Cream",
@@ -1112,7 +1206,6 @@
 		"type": "Tool",
 		"cost": 25000,
 		"showInShop": false,
-		"components": { "snowflake": 4 },
 		"consumable": true,
 		"rarity": 0
 	},
@@ -1201,7 +1294,7 @@
 		"reward": {
 			"chance": 1,
 			"items": [
-				{ "tree": [1] },
+				{ "pizza": [1] },
 				{ "chillpill": [1, 2] },
 				{ "bread": [1, 2] },
 				{ "santashat": [1, 2] },
@@ -1215,8 +1308,8 @@
 				{ "fishingpole": [1, 3] },
 				{ "cookie": [1, 10] },
 				{ "fakeid": [1, 3] },
-				{ "snowflake": [1, 3] },
-				{ "candycane": [1, 3] },
+				{ "sand": [1, 3] },
+				{ "laptop": [1, 3] },
 				{ "snowball": [3, 6] },
 				{ "candy": [4, 6] }
 			]
@@ -1436,7 +1529,8 @@
 				{ "cupidsbigtoe": [1, 3] },
 				{ "jacky": [1, 2] },
 				{ "cutters": [1] },
-				{ "melmsiebeard": [1] }
+				{ "melmsiebeard": [1] },
+				{ "yengpaw": [1] }
 			]
 		}
 	},
@@ -1459,6 +1553,8 @@
 				{ "melmsiebeard": [1] },
 				{ "aetheryxflower": [1] },
 				{ "badoszcard": [1] },
+				{ "bunnysapron": [1] },
+				{ "yengpaw": [1] },
 				{ "pepetrophy": [1] },
 				{ "pepemedal": [1, 2] },
 				{ "pepecoin": [2, 3] },
@@ -1617,7 +1713,7 @@
 				{ "pepecoin": [1, 2] },
 				{ "multiphallicobject": [2] },
 				{ "goldenphallicobject": [2] },
-				{ "pepetrophy": [1, 2] },
+				{ "pepetrophy": [1] },
 				{ "pepemedal": [2] },
 				{ "pepe": [3, 5] },
 				{ "snowball": [8, 10] },
@@ -1626,7 +1722,7 @@
 				{ "banknote": [10, 12, 20] },
 				{ "cupidsbigtoe": [1, 3] },
 				{ "jacky": [1, 2] },
-				{ "aetheryxflower": [1, 2] },
+				{ "aetheryxflower": [1] },
 				{ "badoszcard": [1] }
 			]
 		}
