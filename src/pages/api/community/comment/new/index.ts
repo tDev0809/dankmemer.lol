@@ -3,6 +3,7 @@ import { NextApiResponse } from "next";
 import { TIME } from "../../../../../constants";
 import { ActivityType } from "../../../../../constants/activities";
 import { dbConnect } from "../../../../../util/mongodb";
+import { sendNotification } from "../../../../../util/notifications";
 import { redisConnect } from "../../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../../util/session";
 
@@ -100,6 +101,15 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				},
 			}
 		);
+	}
+
+	if (post.author != user.id) {
+		await sendNotification({
+			user: post.author,
+			content: `${user.username}#${user.discriminator} commented on your post.`,
+			icon: "chat_bubble_outline",
+			link: `/community/post/${post._id}`,
+		});
 	}
 
 	await redis.del(`community:post:comments:${req.body.id}`);
