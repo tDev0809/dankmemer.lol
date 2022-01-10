@@ -1,5 +1,5 @@
 import { NextApiResponse } from "next";
-import { POST_CATEGORIES, POST_LABELS } from "../../../../constants";
+import { POST_CATEGORIES, POST_LABELS, TIME } from "../../../../constants";
 import { hot } from "../../../../constants/hot";
 import { Post } from "../../../../types";
 import { dbConnect } from "../../../../util/mongodb";
@@ -12,10 +12,14 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const user = req.session.get("user");
 	const from = Number(req.query.from) || 0;
 	const amount = Math.min(Number(req.query.amount) || 10, 25);
-	const sorting = req.query.sorting || "hot";
-	const search = req.query.search || "";
-	let category = req.query.category || "all";
-	let filter = req.query.filter || "all";
+	const sorting = req.query.sorting ?? "hot";
+	const search = req.query.search ?? "";
+	const time = Math.min(
+		Math.max(Number(req.query.time) || 365 * 10, 1),
+		365 * 10
+	);
+	let category = req.query.category ?? "all";
+	let filter = req.query.filter ?? "all";
 
 	if (search.length > 0) {
 		filter = "all";
@@ -45,10 +49,16 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						? { $text: { $search: search } }
 						: category === "all"
 						? {
+								createdAt: {
+									$gt: Date.now() - time * TIME.day,
+								},
 								labels:
 									filter === "all" ? { $ne: "." } : filter,
 						  }
 						: {
+								createdAt: {
+									$gt: Date.now() - time * TIME.day,
+								},
 								category: category,
 								labels:
 									filter === "all" ? { $ne: "." } : filter,
