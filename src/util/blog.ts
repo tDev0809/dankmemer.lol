@@ -14,7 +14,11 @@ export function tailwindHtml(content: string) {
 		.replace(/\<ul\>/g, `<ul class="list-disc ml-4 space-y-1">`)
 		.replace(/\<img/g, `<img class="w-1/2 block mx-auto my-4"`)
 		.replace(/\<a/g, `<a target="_blank" class="text-dank-200 break-all"`)
-		.replace(/\<table/g, `<table class="w-full text-center text-white"`)
+		.replace(
+			/\<table/g,
+			`<div class="max-w-[80vw] overflow-x-auto"><table class="w-full text-center text-white table-auto overflow-scroll"`
+		)
+		.replace(/\<\/table/g, `</table></div`)
 		.replace(
 			/\<tr/g,
 			`<tr class="table-row align-[inherit] border border-dank-500 even:bg-dank-500 bg-dark-300"`
