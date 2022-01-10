@@ -149,6 +149,7 @@ export interface Profile {
 	upvotes: number;
 	activities: Activity[];
 	blogs: Blog[];
+	banned: boolean;
 	perks?: boolean;
 }
 

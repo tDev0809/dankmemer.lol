@@ -49,6 +49,11 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.limit(4)
 		.toArray();
 
+	const banned = await db.collection("bans").findOne({
+		type: "Community",
+		id: userData.id,
+	});
+
 	// TODO: make this a function like with posts
 	for (let blog of blogs) {
 		const user = await getUser(blog.author as unknown as string);
@@ -60,6 +65,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	return res.json({
 		user: userData,
+		banned: banned ?? false,
 		posts,
 		comments,
 		upvotes,

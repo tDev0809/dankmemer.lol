@@ -42,6 +42,17 @@ function Actions({ user, profile }: { user: User; profile: Profile }) {
 			});
 	};
 
+	const unban = () => {
+		axios
+			.patch(`/api/user/unban/?type=Community&id=${profile.user.id}`)
+			.then(({}) => {
+				location.reload();
+			})
+			.catch((e) => {
+				toast.dark(e.response.data.error);
+			});
+	};
+
 	return (
 		<div>
 			<Dropdown
@@ -102,9 +113,9 @@ function Actions({ user, profile }: { user: User; profile: Profile }) {
 						  }
 						: null,
 					{
-						label: "Ban",
+						label: profile.banned ? "Unban" : "Ban",
 						onClick: () => {
-							ban();
+							(profile.banned ? unban : ban)();
 						},
 						variant: "danger",
 					},
