@@ -106,9 +106,13 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	if (post.author != user.id) {
 		await sendNotification({
 			user: post.author,
-			content: `${user.username}#${user.discriminator} commented on your post.`,
+			title: "You received a comment!",
+			content: `${user.username}#${user.discriminator} commented on your post "${post.title}".`,
 			icon: "chat_bubble_outline",
 			link: `/community/post/${post._id}`,
+			data: {
+				postId: post._id,
+			},
 		});
 	}
 

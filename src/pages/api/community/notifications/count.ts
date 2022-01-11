@@ -1,4 +1,5 @@
 import { NextApiResponse } from "next";
+import { TIME } from "../../../../constants";
 import { dbConnect } from "../../../../util/mongodb";
 import { redisConnect } from "../../../../util/redis";
 import { NextIronRequest, withSession } from "../../../../util/session";
@@ -24,9 +25,16 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	)?.lastNotification;
 
 	const count = await db
-		.collection("notifications")
+		.collection("community-notifications")
 		.find({ uID: user.id, createdAt: { $gt: lastNotification ?? 0 } })
 		.count();
+
+	await redis.set(
+		`community:notifications:count:${user.id}`,
+		count,
+		"PX",
+		TIME.day
+	);
 
 	return res.status(200).json({ count });
 };

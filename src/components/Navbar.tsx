@@ -15,21 +15,26 @@ export default function Navbar({ user }: Props) {
 	const [hamburger, setHamburger] = useState(false);
 	const [discount, setDiscount] = useState(0);
 	const [mobileAccountExpanded, setMobileAccountExpanded] = useState(false);
+	const [notifications, setNotifications] = useState(0);
 
 	useEffect(() => {
 		document.documentElement.style.overflow = hamburger ? "hidden" : "auto";
 	}, [hamburger]);
 
 	useEffect(() => {
-		function handleResize() {
+		const handleResize = () => {
 			setHamburger(false);
-		}
-
-		window.addEventListener("resize", handleResize);
+		};
 
 		axios(`/api/discount/get`).then(({ data }) => {
 			setDiscount((data.percent || 0) * 100);
 		});
+
+		axios(`/api/community/notifications/count`).then(({ data }) => {
+			setNotifications(data.count);
+		});
+
+		window.addEventListener("resize", handleResize);
 
 		return () => {
 			window.removeEventListener("resize", handleResize);
@@ -108,9 +113,12 @@ export default function Navbar({ user }: Props) {
 						)}
 						{user && (
 							<div className="pl-4 h-full flex items-center relative">
-								<div className="absolute -right-1 -top-1 bg-rose-500 z-50 text-xs rounded-full w-5 h-5 flex items-center justify-center">
-									9+
-								</div>
+								{notifications > 0 && (
+									<div className="absolute -right-1 -top-1 bg-rose-500 z-50 text-xs rounded-full w-5 h-5 flex items-center justify-center">
+										{Math.min(notifications, 9)}
+										{notifications > 9 ? "+" : ""}
+									</div>
+								)}
 								<Dropdown
 									content={
 										<div className="flex items-center space-x-2 p-2">
@@ -137,6 +145,25 @@ export default function Navbar({ user }: Props) {
 										{
 											label: "Profile",
 											link: `/@${user.id}`,
+										},
+										{
+											label: (
+												<div className="flex items-center space-x-2">
+													<div>Notifications</div>
+													{notifications > 0 && (
+														<div className="bg-rose-500 z-50 text-xs rounded-full w-4 h-4 flex items-center justify-center">
+															{Math.min(
+																notifications,
+																9
+															)}
+															{notifications > 9
+																? "+"
+																: ""}
+														</div>
+													)}
+												</div>
+											),
+											link: `/community/notifications`,
 										},
 										{
 											label: "Appeal a ban",
