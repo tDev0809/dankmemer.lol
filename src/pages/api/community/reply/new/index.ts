@@ -106,18 +106,18 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	await redis.del(`community:post:stats:${req.body.id}`);
 
-	// if (comment.author != user.id) {
-	await sendNotification({
-		user: post.author,
-		title: "You received a reply!",
-		content: `${user.username}#${user.discriminator} replied to your comment.`,
-		icon: "reply",
-		link: `/community/post/${post._id}`,
-		data: {
-			postId: post._id,
-		},
-	});
-	// }
+	if (comment.author != user.id) {
+		await sendNotification({
+			user: comment.author,
+			title: "You received a reply!",
+			content: `${user.username}#${user.discriminator} replied to your comment.`,
+			icon: "reply",
+			link: `/community/post/${post._id}`,
+			data: {
+				postId: post._id,
+			},
+		});
+	}
 
 	await axios.post(
 		process.env.COMMUNITY_WEBHOOK!,
