@@ -115,6 +115,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			link: `/community/post/${post._id}`,
 			data: {
 				postId: post._id,
+				replyId: reply.insertedId,
 			},
 		});
 	}

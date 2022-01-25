@@ -52,6 +52,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		"data.postId": comment.pID,
 	});
 
+	await db.collection("community-notifications").deleteMany({
+		"data.commentId": comment._id,
+	});
+
 	await redis.del(`community:post:stats:${comment.pID}`);
 
 	await axios.post(

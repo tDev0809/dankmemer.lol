@@ -40,8 +40,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 					postId: post._id,
 				},
 			});
-		} else {
-			// TODO: delete
 		}
 	}
 
