@@ -1,7 +1,7 @@
 import axios from "axios";
 import clsx from "clsx";
 import { formatDistance } from "date-fns";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -18,6 +18,7 @@ import Input from "../components/ui/Input";
 import { Activity, PageProps, Profile, User } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
 import { withSession } from "../util/session";
+import { Session } from "next-iron-session";
 
 function Actions({ user, profile }: { user: User; profile: Profile }) {
 	const swap = (role: string) => {
@@ -188,12 +189,13 @@ export default function ProfilePage({ user }: PageProps) {
 	const router = useRouter();
 
 	useEffect(() => {
+		// Just in case, should never run
 		if (!(router.query.id as string).startsWith("@")) {
 			location.replace("/404");
 		}
 	}, []);
 
-	let id = (router.query.id as string).slice(1);
+	let id = (router.query.id as string)?.slice(1);
 
 	useEffect(() => {
 		axios(`/api/community/profile/get/${id}`)
@@ -556,5 +558,16 @@ export default function ProfilePage({ user }: PageProps) {
 	);
 }
 
-export const getServerSideProps: GetServerSideProps =
-	withSession(unauthenticatedRoute);
+export const getServerSideProps: GetServerSideProps = withSession(
+	(ctx: GetServerSidePropsContext & { req: { session: Session } }) => {
+		if (!(ctx.query?.id as string)?.startsWith("@")) {
+			return {
+				redirect: {
+					destination: `/404`,
+					permanent: true,
+				},
+			};
+		}
+		return unauthenticatedRoute(ctx);
+	}
+);
