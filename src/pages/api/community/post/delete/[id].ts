@@ -43,6 +43,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		.collection("community-activities")
 		.deleteMany({ type: 2, "data.postId": id });
 
+	await db.collection("community-notifications").deleteMany({
+		"data.postId": post._id,
+	});
+
 	await axios.post(
 		process.env.COMMUNITY_WEBHOOK!,
 		{

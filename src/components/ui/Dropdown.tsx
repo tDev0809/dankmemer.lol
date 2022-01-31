@@ -8,7 +8,7 @@ const optionVariants = {
 };
 
 interface Option {
-	label: string;
+	label: string | ReactNode;
 	link?: string;
 	icon?: string;
 	variant?: keyof typeof optionVariants;

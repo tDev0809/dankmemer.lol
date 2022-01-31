@@ -1,7 +1,9 @@
 import { NextApiResponse } from "next";
 import { Post } from "../../../../../types";
 import { dbConnect } from "../../../../../util/mongodb";
+import { sendNotification } from "../../../../../util/notifications";
 import { NextIronRequest, withSession } from "../../../../../util/session";
+import { toTitleCase } from "../../../../../util/string";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const db = await dbConnect();
@@ -20,6 +22,25 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	if (!post) {
 		return res.status(500).json({ message: "This post does not exist." });
+	}
+
+	if (post.author != user.id) {
+		if (label != "") {
+			await sendNotification({
+				user: post.author as string,
+				title: "Your post received an update!",
+				content: `${user.username}#${
+					user.discriminator
+				} labeled your post as '${toTitleCase(
+					(label as string).replace(/\-/g, " ")
+				)}'.`,
+				icon: "reply",
+				link: `/community/post/${post._id}`,
+				data: {
+					postId: post._id,
+				},
+			});
+		}
 	}
 
 	const labels = ([] as string[])

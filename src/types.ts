@@ -172,3 +172,14 @@ export interface Score {
 	score: number;
 	position?: number;
 }
+
+export interface Notification {
+	_id: string;
+	uID: string;
+	title: string;
+	content: string;
+	icon: string;
+	link: string;
+	data: Record<string, any>;
+	createdAt: number;
+}
