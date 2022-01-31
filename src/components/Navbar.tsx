@@ -260,11 +260,16 @@ export default function Navbar({ user }: Props) {
 									style={{
 										height: mobileAccountExpanded
 											? user.moderator
-												? "144px"
-												: "96px"
+												? "194px"
+												: "146px"
 											: "0px",
 									}}
 								>
+									<Link href="/community/notifications">
+										<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
+											Notifications
+										</li>
+									</Link>
 									<Link href="/appeals">
 										<li className="text-dark-400 dark:text-white hover:text-light-600 pt-5">
 											Appeal a ban
