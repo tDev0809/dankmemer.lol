@@ -2,7 +2,7 @@
 	"newplayerpack": {
 		"id": "newplayerpack",
 		"name": "New Player Pack",
-		"image": "https://cdn.discordapp.com/emojis/873172443529891871.png",
+		"image": "https://cdn.discordapp.com/emojis/873172443529891871.webp?quality=lossless",
 		"description": "A pack to get you started with Dank Memer.",
 		"type": "Item Pack",
 		"consumable": true,
@@ -17,13 +17,12 @@
 			"phone",
 			"huntingrifle",
 			"shovel"
-		],
-		"emoji": "<:NewPlayerPack:873172443529891871>"
+		]
 	},
 	"prestigepack": {
 		"id": "prestigepack",
 		"name": "Prestige Pack",
-		"image": "https://cdn.discordapp.com/emojis/898709240837976064.png",
+		"image": "https://cdn.discordapp.com/emojis/898709240837976064.webp?quality=lossless",
 		"description": "A pack to get you back on your feet after prestiging.",
 		"type": "Item Pack",
 		"consumable": true,
@@ -37,13 +36,12 @@
 			"phone",
 			"huntingrifle",
 			"shovel"
-		],
-		"emoji": "<:PrestigePack:898709240837976064>"
+		]
 	},
 	"antirobpack": {
 		"id": "antirobpack",
 		"name": "Anti-Rob Pack",
-		"image": "https://cdn.discordapp.com/emojis/873172443462791200.png",
+		"image": "https://cdn.discordapp.com/emojis/873172443462791200.webp?quality=lossless",
 		"description": "A pack containing basic items to not get robbed.",
 		"type": "Item Pack",
 		"consumable": true,
@@ -56,13 +54,12 @@
 			"banknote",
 			"sand",
 			"landmine"
-		],
-		"emoji": "<:AntiRobPack:873172443462791200>"
+		]
 	},
 	"grindpack": {
 		"id": "grindpack",
 		"name": "Grind Pack",
-		"image": "https://cdn.discordapp.com/emojis/873172443685064744.png",
+		"image": "https://cdn.discordapp.com/emojis/873172443685064744.webp?quality=lossless",
 		"description": "A pack containing items to start your adventure with grinding.",
 		"type": "Item Pack",
 		"consumable": true,
@@ -75,13 +72,12 @@
 			"lifesaver",
 			"spinner",
 			"tidepod"
-		],
-		"emoji": "<:GrindPack:873172443685064744>"
+		]
 	},
 	"patreonpack": {
 		"id": "patreonpack",
 		"name": "Patreon Pack",
-		"image": "https://cdn.discordapp.com/emojis/921546973218218064.png",
+		"image": "https://cdn.discordapp.com/emojis/921546973218218064.webp?quality=lossless",
 		"description": "A pack you get once per week for being a patron!",
 		"type": "Item Pack",
 		"consumable": true,
@@ -90,27 +86,26 @@
 		"cost": 1000,
 		"items": [
 			"streakfreeze",
-			"coupon"
-		],
-		"emoji": "<:PatreonPack:921546973218218064>"
+			"coupon",
+			"adventureticket"
+		]
 	},
 	"phone": {
 		"name": "Cell Phone",
-		"image": "https://cdn.discordapp.com/emojis/830509316632346625.png",
+		"image": "https://cdn.discordapp.com/emojis/830509316632346625.webp?quality=lossless",
 		"description": "Text your friends! Fun for the entire family",
 		"longdescription": "Use your cell phone to text your friends via the notifications system, or ring the police in the case of an emergency or robbery. Your phone won't be removed on use, however mis-using it (such as dialing police when there's no emergency) may cost you money.",
 		"id": "phone",
 		"type": "Tool",
-		"cost": 3500,
+		"cost": 3000,
 		"consumable": false,
 		"showInShop": true,
 		"usable": true,
-		"rarity": 0,
-		"emoji": "<:phone:830509316632346625>"
+		"rarity": 0
 	},
 	"padlock": {
 		"name": "Padlock",
-		"image": "https://cdn.discordapp.com/emojis/830509316900651059.png",
+		"image": "https://cdn.discordapp.com/emojis/830509316900651059.webp?quality=lossless",
 		"description": "Lock a padlock on your wallet to prevent people from robbing you",
 		"longdescription": "Lock a padlock on your wallet to prevent people from robbing you. This is a one-time use item; once the lock is broken or removed, it won't come back or do anything unless you buy another one. It will not ALWAYS break, but it has a chance to break when someone tries to steal from you.",
 		"id": "padlock",
@@ -118,12 +113,11 @@
 		"cost": 5000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 0,
-		"emoji": "<:padlock:830509316900651059>"
+		"rarity": 0
 	},
 	"laptop": {
 		"name": "Laptop",
-		"image": "https://cdn.discordapp.com/emojis/830509316674813974.png",
+		"image": "https://cdn.discordapp.com/emojis/830509316674813974.webp?quality=lossless",
 		"description": "Post some sweet sweet memes for that sweet sweet ad revenue",
 		"longdescription": "Use the laptop to post memes using the `postmemes` command, which can either get you bad or good reviews. Depending on the review, you could earn some cash!",
 		"id": "laptop",
@@ -131,12 +125,11 @@
 		"cost": 5000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0,
-		"emoji": "<:laptop:830509316674813974>"
+		"rarity": 0
 	},
 	"sand": {
 		"name": "Box of Sand",
-		"image": "https://cdn.discordapp.com/emojis/830509316901175366.png",
+		"image": "https://cdn.discordapp.com/emojis/830509316901175366.webp?quality=lossless",
 		"description": "Chuck some sand in someone's face to prevent them from robbing you",
 		"longdescription": "Throw a box of sand in someone's eyes to prevent them from robbing anyone for 30 minutes.",
 		"id": "sand",
@@ -146,12 +139,11 @@
 		"activecheck": false,
 		"showInShop": true,
 		"effects": "There's a chance the sand will blow back into your face, and you won't be able to steal from the person you mentioned.",
-		"rarity": 1,
-		"emoji": "<:sand:830509316901175366>"
+		"rarity": 1
 	},
 	"apple": {
 		"name": "Apple",
-		"image": "https://cdn.discordapp.com/emojis/887000049266069575.png",
+		"image": "https://cdn.discordapp.com/emojis/887000049266069575.webp?quality=lossless",
 		"description": "An apple a day keeps the what away? Avoid item loss on death!",
 		"longdescription": "Eating this once a day makes it so you do not lose any inventory items or active items if you die. The lifesaver takes priority over this effect. (Lasts 24 hours)",
 		"id": "apple",
@@ -159,12 +151,11 @@
 		"cost": 7500,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1,
-		"emoji": "<:Apple:887000049266069575>"
+		"rarity": 1
 	},
 	"landmine": {
 		"name": "Landmine",
-		"image": "https://cdn.discordapp.com/emojis/887000049354145792.png",
+		"image": "https://cdn.discordapp.com/emojis/887000049354145792.webp?quality=lossless",
 		"description": "Blows up when someone steps on it when trying to steal from you, potentially killing them",
 		"longdescription": "If someone tries to steal from you there's a 50% chance they will die from blowing up. Lasts 24 hours.",
 		"id": "landmine",
@@ -172,12 +163,11 @@
 		"cost": 10000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 0,
-		"emoji": "<:Landmine:887000049354145792>"
+		"rarity": 0
 	},
 	"fakeid": {
 		"name": "Fake ID",
-		"image": "https://cdn.discordapp.com/emojis/573151946911776798.png",
+		"image": "https://cdn.discordapp.com/emojis/573151946911776798.webp?quality=lossless",
 		"description": "Disguise your identity on the rich leaderboard command!",
 		"longdescription": "Disguise your identity on the rich with a random fake name! Lasts for 1 week. Also, will hide you from robbers wishlists.",
 		"id": "fakeid",
@@ -185,12 +175,11 @@
 		"cost": 10000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1,
-		"emoji": "<:fakeid:573151946911776798>"
+		"rarity": 1
 	},
 	"alcohol": {
 		"name": "Alcohol",
-		"image": "https://cdn.discordapp.com/emojis/887000049555501127.png",
+		"image": "https://cdn.discordapp.com/emojis/887000049555501127.webp?quality=lossless",
 		"description": "Down some alcohol and maybe you'll get lucky! Maybe.",
 		"longdescription": "Drink a bottle of alcohol, and have the potential to gain a small luck boost that will grant you better luck in stealing from others. However, you become more susceptible to being stolen from!",
 		"id": "alcohol",
@@ -199,25 +188,23 @@
 		"consumable": true,
 		"showInShop": true,
 		"effects": "There's a 10% chance you'll die from alcohol poisoning (meaning you'll lose all of your coins). You're also more prone to losing coins and being stolen from.",
-		"rarity": 1,
-		"emoji": "<:Alcohol:887000049555501127>"
+		"rarity": 1
 	},
 	"shovel": {
 		"name": "Shovel",
-		"image": "https://cdn.discordapp.com/emojis/842779232819478619.png",
+		"image": "https://cdn.discordapp.com/emojis/868263822035669002.webp?quality=lossless",
 		"description": "Use this to dig!",
 		"longdescription": "This shovel allows you to use the dig command, which can give you lots of different types of items!",
 		"id": "shovel",
 		"type": "Tool",
-		"cost": 20000,
+		"cost": 25000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0,
-		"emoji": "<:shovel:842779232819478619>"
+		"rarity": 0
 	},
 	"fishingpole": {
 		"name": "Fishing Pole",
-		"image": "https://cdn.discordapp.com/emojis/714998788397465732.png",
+		"image": "https://cdn.discordapp.com/emojis/868519722759630858.webp?quality=lossless",
 		"description": "Use this to go fishing!",
 		"longdescription": "This fishing pole allows you to use the fish command, which can give you lots of different types of items!",
 		"id": "fishingpole",
@@ -225,12 +212,11 @@
 		"cost": 25000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0,
-		"emoji": "<:fishingpole:714998788397465732>"
+		"rarity": 0
 	},
 	"huntingrifle": {
 		"name": "Hunting Rifle",
-		"image": "https://cdn.discordapp.com/emojis/714543607947722822.png",
+		"image": "https://cdn.discordapp.com/emojis/868286178070261760.webp?quality=lossless",
 		"description": "Use this to go hunting!",
 		"longdescription": "This hunting rifle allows you to use the hunt command, which can give you lots of different types of items!",
 		"id": "huntingrifle",
@@ -238,12 +224,11 @@
 		"cost": 25000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0,
-		"emoji": "<:huntingrifle:714543607947722822>"
+		"rarity": 0
 	},
 	"coinbomb": {
 		"name": "Coin Bomb",
-		"image": "https://cdn.discordapp.com/emojis/688456543372312594.png",
+		"image": "https://cdn.discordapp.com/emojis/688456543372312594.webp?quality=lossless",
 		"description": "A bomb that explodes coins for other people to pick up",
 		"longdescription": "A bomb that explodes coins for other people to pick up. Dispenses anywhere from ⏣ 2,000 - ⏣ 15,000 for other people on the server to pick up in chat. Basically used to get people active in chat and share some coins!",
 		"id": "coinbomb",
@@ -251,12 +236,11 @@
 		"cost": 30000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1,
-		"emoji": "<:coinbomb:688456543372312594>"
+		"rarity": 1
 	},
 	"horseshoe": {
 		"name": "Lucky Horseshoe",
-		"image": "https://cdn.discordapp.com/attachments/693517202879414312/813911606907240448/horseshoe.png",
+		"image": "https://cdn.discordapp.com/attachments/693517202879414312/813911606907240448/horseshoe.webp?quality=lossless",
 		"description": "Using this increases your luck in some commands for 15 minutes!",
 		"longdescription": "No one is sure exactly how much this increased your luck by, but it's different for each command! This affects hunt, fish, beg, search, crime, postmemes, steal, dig, and gamble!",
 		"id": "horseshoe",
@@ -264,12 +248,11 @@
 		"cost": 50000,
 		"consumable": true,
 		"showInShop": true,
-		"rarity": 1,
-		"emoji": "<:horseshoe:813911522975678476>"
+		"rarity": 1
 	},
 	"spinner": {
 		"name": "Fidget Spinner",
-		"image": "https://cdn.discordapp.com/emojis/873970101479686194.gif",
+		"image": "https://cdn.discordapp.com/emojis/873970101479686194.gif?quality=lossless",
 		"description": "Gain a temporary multiplier depending on how long you can spin your fidget spinner!",
 		"longdescription": "Spin your fidget spinner, and gain anywhere from a **5% to a 40%** multiplier boost for 10 minutes depending on how long your fidget spinner spins for.",
 		"id": "spinner",
@@ -277,12 +260,11 @@
 		"cost": 50000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1,
-		"emoji": "<a:FidgetSpinner:873970101479686194>"
+		"rarity": 1
 	},
 	"lifesaver": {
 		"name": "Life Saver",
-		"image": "https://cdn.discordapp.com/emojis/573151706641203210.png",
+		"image": "https://cdn.discordapp.com/emojis/935147848977219635.gif?quality=lossless",
 		"description": "Quite literally saves your life and keeps you from dying!",
 		"longdescription": "Having one in your inventory prevents death and uses one when you almost die. This is used BEFORE the apple's effects.",
 		"id": "lifesaver",
@@ -290,12 +272,11 @@
 		"cost": 50000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 1,
-		"emoji": "<:lifesaver:573151706641203210>"
+		"rarity": 1
 	},
 	"tidepod": {
 		"name": "Tidepod",
-		"image": "https://cdn.discordapp.com/emojis/887000049740030032.png",
+		"image": "https://cdn.discordapp.com/emojis/887000049740030032.webp?quality=lossless",
 		"description": "Risking your life for a multiplier? Sounds great!",
 		"longdescription": "Eat a Tidepod, risking your life to have the potential to gain a **50%** multiplier for **2 whole hours**.",
 		"id": "tidepod",
@@ -304,26 +285,24 @@
 		"consumable": true,
 		"showInShop": true,
 		"effects": "There's a high chance you'll injure yourself from the tidepod and die (meaning you lose all coins).",
-		"rarity": 1,
-		"emoji": "<:Tidepod:887000049740030032>"
+		"rarity": 1
 	},
 	"wishlist": {
 		"name": "Robbers Wishlist",
-		"image": "https://cdn.discordapp.com/emojis/723641465615548447.png",
+		"image": "https://cdn.discordapp.com/emojis/723641465615548447.webp?quality=lossless",
 		"description": "A robber's best friend! List all robbable users in a server!",
-		"longdescription": "This item when used, gives something similar to pls rich. The difference is, it only shows people who: aren't passive, have over ⏣ 5000, do not have a fake ID on. Basically, anyone who is robbable :D",
+		"longdescription": "This item when used gives a list of users that aren't passive and do not have a fake ID on. Basically, anyone who is robbable :D",
 		"id": "wishlist",
 		"type": "Tool",
 		"cost": 50000,
-		"consumable": false,
+		"consumable": true,
 		"showInShop": true,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:wishlist:723641465615548447>"
+		"rarity": 1
 	},
 	"pepe": {
 		"name": "Rare Pepe",
-		"image": "https://cdn.discordapp.com/emojis/668945671427981312.gif",
+		"image": "https://cdn.discordapp.com/emojis/936007340736536626.webp?quality=lossless",
 		"description": "A lone rare pepe, made to collect and flex how many you can get compared to your friends.",
 		"longdescription": "The rare pepe is only used for collecting or flexing on normies who cannot afford one. Although basically anyone can afford one these days...",
 		"id": "pepe",
@@ -331,12 +310,11 @@
 		"cost": 50000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 2,
-		"emoji": "<a:feelsweirdman:668945671427981312>"
+		"rarity": 2
 	},
 	"cheese": {
 		"name": "Shredded Cheese",
-		"image": "https://cdn.discordapp.com/emojis/830509316933943307.png",
+		"image": "https://cdn.discordapp.com/emojis/830509316933943307.webp?quality=lossless",
 		"description": "A mystic bag of light-golden shredded cheese. Earn an XP multiplier!",
 		"longdescription": "Dump an entire bag of shredded cheese into your face hole. For every bag of shredded cheese consumed, you get a stacking EXP multiplier, capping at **85%** (**30** bags of cheese consumed).",
 		"id": "cheese",
@@ -351,12 +329,11 @@
 			"MAX_CHEESE_ATE": 30,
 			"MAX_MULTIPLIER": 85
 		},
-		"rarity": 1,
-		"emoji": "<:shreddedcheese:830509316933943307>"
+		"rarity": 1
 	},
 	"pizza": {
 		"name": "Pizza Slice",
-		"image": "https://cdn.discordapp.com/attachments/693517202879414312/788070266579189790/pizza-export2.png",
+		"image": "https://cdn.discordapp.com/attachments/693517202879414312/788070266579189790/pizza-export2.webp?quality=lossless",
 		"description": "Eat this for a chunky xp multiplier!",
 		"longdescription": "Eating this perfect pizza slice will give you +250% xp gains for an hour.",
 		"id": "pizza",
@@ -364,12 +341,11 @@
 		"cost": 250000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 2,
-		"emoji": "<:pizza:788070334640422942>"
+		"rarity": 2
 	},
 	"ring": {
 		"name": "Engagement Ring",
-		"image": "https://cdn.discordapp.com/emojis/862369027984064552.png",
+		"image": "https://cdn.discordapp.com/emojis/862369027984064552.webp?quality=lossless",
 		"description": "Propose to someone!",
 		"longdescription": "Propose to someone!\nMarriage has a lot of benefits and downsides, be careful!",
 		"id": "ring",
@@ -379,12 +355,11 @@
 		"consumable": false,
 		"usable": true,
 		"notSharable": true,
-		"rarity": 2,
-		"emoji": "<:Ring:862369027984064552>"
+		"rarity": 2
 	},
 	"pepecoin": {
 		"name": "Pepe Coin",
-		"image": "https://cdn.discordapp.com/emojis/718138332982280272.gif",
+		"image": "https://cdn.discordapp.com/emojis/718138332982280272.gif?quality=lossless",
 		"description": "A pretty rare coin, probably only fairly rich people have this!",
 		"longdescription": "This coin is primarily for flexing on normies who cannot afford one. Once upon a time it was the most expensive item on the bot!",
 		"id": "pepecoin",
@@ -392,12 +367,11 @@
 		"cost": 500000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 2,
-		"emoji": "<a:pepecoin:718138332982280272>"
+		"rarity": 2
 	},
 	"pepemedal": {
 		"name": "Pepe Medal",
-		"image": "https://cdn.discordapp.com/emojis/716848179022397462.gif",
+		"image": "https://cdn.discordapp.com/emojis/716848179022397462.gif?quality=lossless",
 		"description": "A medal only the top 5% of players have!",
 		"longdescription": "Owning this medal gives you an extra 5% steal shields (does not stack). Otherwise, it is used to flex on normies who cannot afford one!",
 		"id": "pepemedal",
@@ -409,12 +383,11 @@
 			"pepecoin": 13,
 			"ducttape": 1
 		},
-		"rarity": 3,
-		"emoji": "<a:pepemedal:716848179022397462>"
+		"rarity": 3
 	},
 	"pepetrophy": {
 		"name": "Pepe Trophy",
-		"image": "https://cdn.discordapp.com/emojis/718136428219072662.gif",
+		"image": "https://cdn.discordapp.com/emojis/718136428219072662.gif?quality=lossless",
 		"description": "A trophy to flex how rich you are! You are rich enough to afford this... right?",
 		"longdescription": "Having this trophy gives you a 5% multiplier, an extra 10% steal shields, and an extra 5% chance at random events spawning (does not stack). Otherwise, it is used to flex on normies who cannot afford one!",
 		"id": "pepetrophy",
@@ -423,12 +396,11 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": false,
-		"rarity": 4,
-		"emoji": "<a:pepetrophy:718136428219072662>"
+		"rarity": 4
 	},
 	"pepecrown": {
 		"name": "Pepe Crown",
-		"image": "https://cdn.discordapp.com/emojis/834862725120917544.png",
+		"image": "https://cdn.discordapp.com/emojis/834862725120917544.webp?quality=lossless",
 		"description": "Literally only the richest of the richest of the richest of the richest of the richest of the rich will hold these beloved crowns. At least until another expensive item comes along LOL.",
 		"longdescription": "Having this crown raises the max wallet to gamble to 100 million. This does not stack. This item doesn't have as much function as some other collectables, but has double the style.",
 		"id": "pepecrown",
@@ -437,13 +409,12 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": true,
-		"rarity": 5,
-		"emoji": "<:pepecrown:834862725120917544>"
+		"rarity": 5
 	},
 	"fartinabottle": {
 		"id": "fartinabottle",
 		"name": "Fart In A Bottle",
-		"image": "https://cdn.discordapp.com/emojis/860285654009511936.png",
+		"image": "https://cdn.discordapp.com/emojis/860285654009511936.webp?quality=lossless",
 		"type": "Drop Item",
 		"description": "A really stinky bottle. Should you sniff it? \"You're either a smart fella, or a fart smella.\" -TheLazyTownie",
 		"cost": 100000,
@@ -454,8 +425,8 @@
 		"drops": [
 			{
 				"time": [
-					"2021-12-26T23:00:01.000Z",
-					"2021-12-29T22:59:00.000Z"
+					"2021-12-27T05:00:01.000Z",
+					"2021-12-30T04:59:00.000Z"
 				],
 				"stock": 20000,
 				"specialCost": 75000,
@@ -464,8 +435,8 @@
 			},
 			{
 				"time": [
-					"2021-12-29T23:00:01.000Z",
-					"2021-12-30T11:00:00.000Z"
+					"2021-12-30T05:00:01.000Z",
+					"2021-12-30T17:00:00.000Z"
 				],
 				"stock": 500000,
 				"specialCost": 100000,
@@ -473,20 +444,19 @@
 			},
 			{
 				"time": [
-					"2021-12-30T17:00:00.000Z",
-					"2021-12-31T22:59:59.000Z"
+					"2021-12-30T23:00:00.000Z",
+					"2022-01-01T04:59:59.000Z"
 				],
 				"stock": 500000,
 				"specialCost": 125000,
 				"limit": 3
 			}
-		],
-		"emoji": "<:FartInABottle:860285654009511936>"
+		]
 	},
 	"peperibbon": {
 		"id": "peperibbon",
 		"name": "Pepe Ribbon",
-		"image": "https://cdn.discordapp.com/emojis/890646381482614824.png",
+		"image": "https://cdn.discordapp.com/emojis/890646381482614824.webp?quality=lossless",
 		"type": "Drop Item",
 		"description": "A true flex to carry.",
 		"cost": 5000000,
@@ -495,8 +465,8 @@
 		"drops": [
 			{
 				"time": [
-					"2021-10-01T22:00:00.000Z",
-					"2021-10-01T22:30:00.000Z"
+					"2021-10-02T04:00:00.000Z",
+					"2021-10-02T04:30:00.000Z"
 				],
 				"stock": 24750,
 				"specialCost": 10000000,
@@ -504,8 +474,8 @@
 			},
 			{
 				"time": [
-					"2021-10-02T10:00:00.000Z",
-					"2021-10-02T10:30:00.000Z"
+					"2021-10-02T16:00:00.000Z",
+					"2021-10-02T16:30:00.000Z"
 				],
 				"stock": 24750,
 				"specialCost": 10000000,
@@ -513,20 +483,19 @@
 			},
 			{
 				"time": [
-					"2021-11-25T11:00:00.000Z",
-					"2021-11-25T12:00:00.000Z"
+					"2021-11-25T17:00:00.000Z",
+					"2021-11-25T18:00:00.000Z"
 				],
 				"stock": 5000,
 				"specialCost": 12000000,
 				"limit": 1
 			}
-		],
-		"emoji": "<:PepeRibbon:890646381482614824>"
+		]
 	},
 	"sugarskull": {
 		"id": "sugarskull",
 		"name": "Sugar Skull",
-		"image": "https://cdn.discordapp.com/emojis/894597638161326091.png",
+		"image": "https://cdn.discordapp.com/emojis/894597638161326091.webp?quality=lossless",
 		"type": "Drop Item",
 		"description": "Día de los Muertos 2021 limited time item",
 		"cost": 1000000,
@@ -536,8 +505,8 @@
 		"drops": [
 			{
 				"time": [
-					"2021-10-31T22:00:00.000Z",
-					"2021-11-01T00:00:00.000Z"
+					"2021-11-01T03:00:00.000Z",
+					"2021-11-01T05:00:00.000Z"
 				],
 				"stock": 20000,
 				"specialCost": 500000,
@@ -545,8 +514,8 @@
 			},
 			{
 				"time": [
-					"2021-11-01T10:00:00.000Z",
-					"2021-11-01T12:00:00.000Z"
+					"2021-11-01T15:00:00.000Z",
+					"2021-11-01T17:00:00.000Z"
 				],
 				"stock": 20000,
 				"specialCost": 500000,
@@ -554,8 +523,8 @@
 			},
 			{
 				"time": [
-					"2021-11-01T22:00:00.000Z",
-					"2021-11-02T00:00:00.000Z"
+					"2021-11-02T03:00:00.000Z",
+					"2021-11-02T05:00:00.000Z"
 				],
 				"stock": 20000,
 				"specialCost": 500000,
@@ -563,8 +532,8 @@
 			},
 			{
 				"time": [
-					"2021-11-02T10:00:00.000Z",
-					"2021-11-02T12:00:00.000Z"
+					"2021-11-02T15:00:00.000Z",
+					"2021-11-02T17:00:00.000Z"
 				],
 				"stock": 20000,
 				"specialCost": 500000,
@@ -572,19 +541,18 @@
 			},
 			{
 				"time": [
-					"2021-11-02T19:00:00.000Z",
-					"2021-11-02T22:59:59.000Z"
+					"2021-11-03T00:00:00.000Z",
+					"2021-11-03T03:59:59.000Z"
 				],
 				"stock": 20000,
 				"specialCost": 500000,
 				"limit": 1
 			}
-		],
-		"emoji": "<:SugarSkull:894597638161326091>"
+		]
 	},
 	"pepesus": {
 		"name": "Pepe Sus",
-		"image": "https://cdn.discordapp.com/emojis/890646381189009438.png",
+		"image": "https://cdn.discordapp.com/emojis/890646381189009438.webp?quality=lossless",
 		"description": "Pepe is looking a little SUS today",
 		"id": "pepesus",
 		"type": "Drop Item",
@@ -594,8 +562,8 @@
 		"drops": [
 			{
 				"time": [
-					"2021-11-15T09:00:00.000Z",
-					"2021-11-15T14:00:00.000Z"
+					"2021-11-15T15:00:00.000Z",
+					"2021-11-15T20:00:00.000Z"
 				],
 				"stock": 5000,
 				"specialCost": 25000000,
@@ -603,19 +571,18 @@
 			},
 			{
 				"time": [
-					"2021-11-15T23:00:01.000Z",
-					"2021-11-16T04:00:00.000Z"
+					"2021-11-16T05:00:01.000Z",
+					"2021-11-16T10:00:00.000Z"
 				],
 				"stock": 5000,
 				"specialCost": 25000000,
 				"limit": 1
 			}
-		],
-		"emoji": "<:peperibbonsus:890646381189009438>"
+		]
 	},
 	"toiletpaper": {
 		"name": "Toilet Paper",
-		"image": "https://cdn.discordapp.com/emojis/928399081112469544.png",
+		"image": "https://cdn.discordapp.com/emojis/928399081112469544.webp?quality=lossless",
 		"description": "If we learned anything during the pandemic, it's that TP is VALUABLE",
 		"id": "toiletpaper",
 		"type": "Drop Item",
@@ -625,8 +592,8 @@
 		"drops": [
 			{
 				"time": [
-					"2022-01-10T11:00:00.000Z",
-					"2022-01-10T17:00:00.000Z"
+					"2022-01-10T17:00:00.000Z",
+					"2022-01-10T23:00:00.000Z"
 				],
 				"stock": 6000,
 				"specialCost": 20000000,
@@ -634,8 +601,8 @@
 			},
 			{
 				"time": [
-					"2022-01-10T23:00:01.000Z",
-					"2022-01-11T05:00:00.000Z"
+					"2022-01-11T05:00:01.000Z",
+					"2022-01-11T11:00:00.000Z"
 				],
 				"stock": 5000,
 				"specialCost": 25000000,
@@ -643,8 +610,8 @@
 			},
 			{
 				"time": [
-					"2022-01-11T11:00:00.000Z",
-					"2022-01-11T17:00:00.000Z"
+					"2022-01-11T17:00:00.000Z",
+					"2022-01-11T23:00:00.000Z"
 				],
 				"stock": 5000,
 				"specialCost": 28000000,
@@ -652,19 +619,18 @@
 			},
 			{
 				"time": [
-					"2022-01-11T23:00:01.000Z",
-					"2022-01-12T11:00:00.000Z"
+					"2022-01-12T05:00:01.000Z",
+					"2022-01-12T17:00:00.000Z"
 				],
 				"stock": 4000,
 				"specialCost": 30000000,
 				"limit": 6
 			}
-		],
-		"emoji": "<:ToiletPaper:928399081112469544>"
+		]
 	},
 	"stocking": {
 		"name": "Holiday Stocking",
-		"image": "https://cdn.discordapp.com/emojis/920812196567597067.png",
+		"image": "https://cdn.discordapp.com/emojis/920812196567597067.webp?quality=lossless",
 		"description": "A holiday 2021 limited time item from drop sales only",
 		"id": "stocking",
 		"type": "Drop Item",
@@ -708,8 +674,8 @@
 		"drops": [
 			{
 				"time": [
-					"2021-12-24T17:00:00.000Z",
-					"2021-12-24T22:59:00.000Z"
+					"2021-12-24T23:00:00.000Z",
+					"2021-12-25T04:59:00.000Z"
 				],
 				"stock": 5000,
 				"specialCost": 25000,
@@ -718,8 +684,8 @@
 			},
 			{
 				"time": [
-					"2021-12-24T23:00:01.000Z",
-					"2021-12-25T05:00:00.000Z"
+					"2021-12-25T05:00:01.000Z",
+					"2021-12-25T11:00:00.000Z"
 				],
 				"stock": 10000,
 				"specialCost": 50000,
@@ -727,19 +693,18 @@
 			},
 			{
 				"time": [
-					"2021-12-25T11:00:00.000Z",
-					"2021-12-25T17:00:00.000Z"
+					"2021-12-25T17:00:00.000Z",
+					"2021-12-25T23:00:00.000Z"
 				],
 				"stock": 15000,
 				"specialCost": 100000,
 				"limit": 1
 			}
-		],
-		"emoji": "<:Stocking:920812196567597067>"
+		]
 	},
 	"enchantedbad": {
 		"name": "Enchanted Badosz's Card",
-		"image": "https://cdn.discordapp.com/emojis/931295850292989973.gif",
+		"image": "https://cdn.discordapp.com/emojis/931295850292989973.gif?quality=lossless",
 		"description": "Perfectly balanced, as all things should be. Change your pet to any other type and keep their stats, consumed on use.",
 		"id": "enchantedbad",
 		"type": "Drop Item",
@@ -751,19 +716,64 @@
 		"drops": [
 			{
 				"time": [
-					"2022-01-31T23:00:00.000Z",
-					"2022-02-01T23:00:00.000Z"
+					"2022-02-01T05:00:00.000Z",
+					"2022-02-02T05:00:00.000Z"
 				],
 				"stock": 6969,
 				"specialCost": 69696969,
 				"limit": 1
 			}
-		],
-		"emoji": "<a:BadoszCard2:931295850292989973>"
+		]
+	},
+	"cursedpepe": {
+		"id": "cursedpepe",
+		"name": "Cursed Pepe",
+		"image": "https://cdn.discordapp.com/emojis/933194488241864704.webp?quality=lossless",
+		"type": "Drop Item",
+		"description": "A pepe that NOT EVEN a mother could love.",
+		"cost": 1000000,
+		"showInShop": false,
+		"usable": true,
+		"consumable": true,
+		"rarity": 2,
+		"drops": [
+			{
+				"time": [
+					"2022-02-27T05:00:00.000Z",
+					"2022-02-28T05:00:00.000Z"
+				],
+				"stock": 50000,
+				"specialCost": 5000000,
+				"limit": 3
+			}
+		]
+	},
+	"boxedchocolates": {
+		"id": "boxedchocolates",
+		"name": "Boxed Chocolates",
+		"image": "https://cdn.discordapp.com/emojis/936271905357459508.webp?quality=lossless",
+		"type": "Drop Item",
+		"description": "A boxy box of boxed chocolates to give to your partner to prove your love!",
+		"cost": 1000000,
+		"showInShop": false,
+		"usable": true,
+		"consumable": true,
+		"rarity": 2,
+		"drops": [
+			{
+				"time": [
+					"2022-02-14T03:00:00.000Z",
+					"2022-02-15T05:00:00.000Z"
+				],
+				"stock": 100000,
+				"specialCost": 2000000,
+				"limit": 3
+			}
+		]
 	},
 	"scepter": {
 		"name": "Cxorpy's Scepter",
-		"image": "https://cdn.discordapp.com/emojis/926573136558850139.gif",
+		"image": "https://cdn.discordapp.com/emojis/926573136558850139.gif?quality=lossless",
 		"description": "A royal scepter such as this is worth close to 50k gold carats, dang! You can either use this item to obtain royalty embedded colours or keep it in your collection.",
 		"id": "scepter",
 		"type": "Collectable",
@@ -771,12 +781,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 25000,
-		"rarity": 0,
-		"emoji": "<a:Scepter:926573136558850139>"
+		"rarity": 0
 	},
 	"letter": {
 		"name": "The Letter",
-		"image": "https://cdn.discordapp.com/emojis/926522932560269413.gif",
+		"image": "https://cdn.discordapp.com/emojis/926522932560269413.gif?quality=lossless",
 		"description": "A custom item containing a message from ANANT#5998, NotARSenic#0709 and Dauntless#0711. What's that message? Open it up to find out!",
 		"id": "letter",
 		"type": "Collectable",
@@ -784,12 +793,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 25000,
-		"rarity": 0,
-		"emoji": "<a:Letter:926522932560269413>"
+		"rarity": 0
 	},
 	"armpithair": {
 		"name": "Armpit Hair",
-		"image": "https://cdn.discordapp.com/emojis/926267869258457139.png",
+		"image": "https://cdn.discordapp.com/emojis/926267869258457139.webp?quality=lossless",
 		"description": "It tastes funny!",
 		"id": "armpithair",
 		"type": "Collectable",
@@ -797,12 +805,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 25000,
-		"rarity": 0,
-		"emoji": "<:ArmpitHair:926267869258457139>"
+		"rarity": 0
 	},
 	"camera": {
 		"name": "Camera",
-		"image": "https://cdn.discordapp.com/emojis/903730591294439496.png",
+		"image": "https://cdn.discordapp.com/emojis/903730591294439496.webp?quality=lossless",
 		"description": "A streamer item that helps you with amount of viewers.",
 		"id": "camera",
 		"type": "Tool",
@@ -810,12 +817,11 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:Camera:903730591294439496>"
+		"rarity": 1
 	},
 	"microphone": {
 		"name": "Microphone",
-		"image": "https://cdn.discordapp.com/emojis/903784794398294036.png",
+		"image": "https://cdn.discordapp.com/emojis/903784794398294036.webp?quality=lossless",
 		"description": "A streamer item that helps you with stability of your stream.",
 		"id": "microphone",
 		"type": "Tool",
@@ -823,12 +829,11 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:Microphone:903784794398294036>"
+		"rarity": 1
 	},
 	"mouse": {
 		"name": "Mouse",
-		"image": "https://cdn.discordapp.com/emojis/904821818425241600.png",
+		"image": "https://cdn.discordapp.com/emojis/904821818425241600.webp?quality=lossless",
 		"description": "A basic streaming item!",
 		"id": "mouse",
 		"type": "Tool",
@@ -836,12 +841,11 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:Mouse:904821818425241600>"
+		"rarity": 1
 	},
 	"keyboard": {
 		"name": "Keyboard",
-		"image": "https://cdn.discordapp.com/emojis/904821868312268850.png",
+		"image": "https://cdn.discordapp.com/emojis/904821868312268850.webp?quality=lossless",
 		"description": "A basic streaming item!",
 		"id": "keyboard",
 		"type": "Tool",
@@ -849,12 +853,11 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:Keyboard:904821868312268850>"
+		"rarity": 1
 	},
 	"soundcard": {
 		"name": "Sound Card",
-		"image": "https://cdn.discordapp.com/emojis/905572838847684648.png",
+		"image": "https://cdn.discordapp.com/emojis/905572838847684648.webp?quality=lossless",
 		"description": "A meta streamer item that helps you get other streamer items.",
 		"id": "soundcard",
 		"type": "Tool",
@@ -862,12 +865,11 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:SoundCard:905572838847684648>"
+		"rarity": 1
 	},
 	"ringlight": {
 		"name": "Ring Light",
-		"image": "https://cdn.discordapp.com/emojis/905501619523829780.png",
+		"image": "https://cdn.discordapp.com/emojis/905501619523829780.webp?quality=lossless",
 		"description": "A streamer item that lowers your min time between stream interactions.",
 		"id": "ringlight",
 		"type": "Tool",
@@ -875,12 +877,11 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:RingLight:905501619523829780>"
+		"rarity": 1
 	},
 	"greenscreen": {
 		"name": "Green Screen",
-		"image": "https://cdn.discordapp.com/emojis/904821937807716352.png",
+		"image": "https://cdn.discordapp.com/emojis/904821937807716352.webp?quality=lossless",
 		"description": "A streamer item that increases your revenue.",
 		"id": "greenscreen",
 		"type": "Tool",
@@ -888,12 +889,11 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:GreenScreen:904821937807716352>"
+		"rarity": 1
 	},
 	"headphones": {
 		"name": "Headphones",
-		"image": "https://cdn.discordapp.com/emojis/904886213087989761.png",
+		"image": "https://cdn.discordapp.com/emojis/904886213087989761.webp?quality=lossless",
 		"description": "A streamer item that increases your max idle time.",
 		"id": "headphones",
 		"type": "Tool",
@@ -901,12 +901,11 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:Headphones:904886213087989761>"
+		"rarity": 1
 	},
 	"creditcard": {
 		"name": "Credit Card",
-		"image": "https://cdn.discordapp.com/emojis/892546328406663168.png",
+		"image": "https://cdn.discordapp.com/emojis/892546328406663168.webp?quality=lossless",
 		"description": "Use this credit card to buy a friend some premium perks!",
 		"longdescription": "You can use this card to \"buy\" someone 5 days of premium perks for Dank Memer. (The $2 perk value)",
 		"id": "creditcard",
@@ -914,12 +913,11 @@
 		"type": "Power-up",
 		"cost": 2000000,
 		"consumable": true,
-		"showInShop": false,
-		"emoji": "<:CreditCard:892546328406663168>"
+		"showInShop": false
 	},
 	"streakfreeze": {
 		"name": "Streak Freeze",
-		"image": "https://cdn.discordapp.com/emojis/921501533273751682.png",
+		"image": "https://cdn.discordapp.com/emojis/921501533273751682.webp?quality=lossless",
 		"description": "This item will prevent you from losing your daily streak ONE time.",
 		"longdescription": "Using this item will turn it into an active item that lasts 30 days. After it's active, if you run daily after missing 1+ days you will retain your streak. This is automatically destroyed at that point.",
 		"id": "streakfreeze",
@@ -927,12 +925,11 @@
 		"type": "Power-up",
 		"cost": 2000000,
 		"consumable": true,
-		"showInShop": false,
-		"emoji": "<:StreakFreeze:921501533273751682>"
+		"showInShop": false
 	},
 	"ducttape": {
 		"name": "Duct Tape",
-		"image": "https://cdn.discordapp.com/emojis/903663686017749013.png",
+		"image": "https://cdn.discordapp.com/emojis/903663686017749013.webp?quality=lossless",
 		"description": "Use this tape to craft certain items with the craft command!",
 		"longdescription": "This item is purely used in the craft command to bond items together!",
 		"id": "ducttape",
@@ -940,12 +937,11 @@
 		"type": "Tool",
 		"cost": 900000,
 		"consumable": false,
-		"showInShop": true,
-		"emoji": "<:DuctTape:903663686017749013>"
+		"showInShop": true
 	},
 	"goldencorndog": {
 		"name": "Golden Corndog",
-		"image": "https://cdn.discordapp.com/emojis/841405708007505930.png",
+		"image": "https://cdn.discordapp.com/emojis/841405708007505930.webp?quality=lossless",
 		"description": "A corndog... BUT ITS GOLDEN!",
 		"id": "goldencorndog",
 		"rarity": 2,
@@ -957,12 +953,11 @@
 			"pepecoin": 1
 		},
 		"consumable": false,
-		"showInShop": false,
-		"emoji": "<:goldencorndog:841405708007505930>"
+		"showInShop": false
 	},
 	"prestigecoin": {
 		"name": "Prestige Coin",
-		"image": "https://cdn.discordapp.com/emojis/899772669262700615.png",
+		"image": "https://cdn.discordapp.com/emojis/899772669262700615.webp?quality=lossless",
 		"description": "Earned from prestiging, use this coin to activate your post-prestige bonus multi. It gives you 6 hours worth of 350% multiplier.",
 		"id": "prestigecoin",
 		"rarity": 2,
@@ -970,48 +965,44 @@
 		"cost": 1000000,
 		"consumable": true,
 		"showInShop": false,
-		"notSharable": false,
-		"emoji": "<:PrestigeCoin:899772669262700615>"
+		"notSharable": false
 	},
 	"aetheryxflower": {
 		"name": "Aetheryx' Flower",
-		"image": "https://cdn.discordapp.com/emojis/834800790605791232.png",
-		"description": "A vibrant red flower. You'd eat it if you could.",
+		"image": "https://cdn.discordapp.com/emojis/936688654531825764.webp?quality=lossless",
+		"description": "A no longer vibrant red flower, a wisp of it's former self.",
 		"id": "aetheryxflower",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000000,
-		"rarity": 3,
-		"emoji": "<:aetheryxflower:834800790605791232>"
+		"rarity": 3
 	},
 	"karen": {
 		"name": "Literally Karen",
-		"image": "https://cdn.discordapp.com/emojis/860196324762452028.png",
+		"image": "https://cdn.discordapp.com/emojis/860196324762452028.webp?quality=lossless",
 		"description": "The karens on this bot are really annoying. You know who they are.",
 		"id": "karen",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 100000000,
-		"rarity": 5,
-		"emoji": "<:Karen:860196324762452028>"
+		"rarity": 5
 	},
 	"melmsiebeard": {
 		"name": "Melmsie's Beard",
-		"image": "https://cdn.discordapp.com/emojis/834815537921916938.png",
+		"image": "https://cdn.discordapp.com/emojis/934601991097819216.webp?quality=lossless",
 		"description": "Who shaved this off their face, that seems gross.",
 		"id": "melmsiebeard",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000000,
-		"rarity": 3,
-		"emoji": "<:melmsiebeard:834815537921916938>"
+		"rarity": 3
 	},
 	"beanmp3": {
 		"name": "Bean Mp3 Player",
-		"image": "https://cdn.discordapp.com/emojis/922652278308093952.png",
+		"image": "https://cdn.discordapp.com/emojis/922652278308093952.webp?quality=lossless",
 		"description": "The long lost voice of a bean. This item can only be used once before it explodes from too much B E A N.",
 		"id": "beanmp3",
 		"type": "Collectable",
@@ -1025,48 +1016,55 @@
 			"headphones": 1,
 			"ducttape": 1
 		},
-		"rarity": 4,
-		"emoji": "<:BeanPlayer:922652278308093952>"
+		"rarity": 4
 	},
 	"badoszcard": {
 		"name": "Badosz's Card",
-		"image": "https://cdn.discordapp.com/emojis/869294028385038354.gif",
+		"image": "https://cdn.discordapp.com/emojis/869294028385038354.gif?quality=lossless",
 		"description": "A real king in the sleeve.",
 		"id": "badoszcard",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000000,
-		"rarity": 3,
-		"emoji": "<a:King:869294028385038354>"
+		"rarity": 3
 	},
 	"bunnysapron": {
 		"name": "Bunny's Apron",
-		"image": "https://cdn.discordapp.com/emojis/928417989357891675.png",
+		"image": "https://cdn.discordapp.com/emojis/928417989357891675.webp?quality=lossless",
 		"description": "A handmade pink apron with bunny ears stitched to the pocket, finely crafted for Michelin Star chefs, it is mainly found in the Kitchen.",
 		"id": "bunnysapron",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1000000,
-		"rarity": 2,
-		"emoji": "<:BunnysApron:928417989357891675>"
+		"rarity": 2
+	},
+	"bluesplane": {
+		"name": "Blue's Plane",
+		"image": "https://cdn.discordapp.com/emojis/931691006754189342.gif?quality=lossless",
+		"description": "This top of-the-line aircraft carries only the most prestigious of passengers",
+		"id": "bluesplane",
+		"type": "Collectable",
+		"consumable": false,
+		"showInShop": false,
+		"cost": 1000000,
+		"rarity": 2
 	},
 	"yengpaw": {
 		"name": "Yeng Gang",
-		"image": "https://cdn.discordapp.com/emojis/927305405988753468.gif",
+		"image": "https://cdn.discordapp.com/emojis/927305405988753468.gif?quality=lossless",
 		"description": "A squishy paw that can relieve stress and make you smile. SQUISH! SQUISH! SQUISH!",
 		"id": "yengpaw",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1000000,
-		"rarity": 2,
-		"emoji": "<a:YengsPaw:927305405988753468>"
+		"rarity": 2
 	},
 	"lotterywinner": {
 		"name": "Winning Lottery Ticket",
-		"image": "https://cdn.discordapp.com/emojis/828630267983298580.png",
+		"image": "https://cdn.discordapp.com/emojis/828630267983298580.webp?quality=lossless",
 		"description": "Proof that you won the lottery once upon a time",
 		"longdescription": "This allows you to brag to your friends or enemies about winning the lottery, and also gives you a 2% higher chance at random events. The ultimate flex.",
 		"id": "lotterywinner",
@@ -1074,12 +1072,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000000,
-		"rarity": 3,
-		"emoji": "<:winninglotteryticket:828630267983298580>"
+		"rarity": 3
 	},
 	"cutters": {
 		"name": "Bolt Cutters",
-		"image": "https://cdn.discordapp.com/emojis/831023529255632898.png",
+		"image": "https://cdn.discordapp.com/emojis/831023529255632898.webp?quality=lossless",
 		"description": "This will bypass any padlocks while robbing.",
 		"longdescription": "Originally for developers only, this item instantly breaks all padlocks.",
 		"id": "cutters",
@@ -1087,37 +1084,34 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 100000000,
-		"rarity": 5,
-		"emoji": "<:cutters:831023529255632898>"
+		"rarity": 5
 	},
 	"reversal": {
 		"name": "Reversal Card",
 		"description": "A legacy item from a simpler time in Dank Memer. This item is now just a collectable for those who already had them in the past.",
 		"longdescription": "Reversal cards used to reverse a steal that someone performed on you. Due to being SUPER buggy and causing multiple exploits, they were removed. They are now back for those who already had them in their inventories, but not functional and just for collecting.",
-		"image": "https://cdn.discordapp.com/emojis/573150370579087360.png",
+		"image": "https://cdn.discordapp.com/emojis/573150370579087360.webp?quality=lossless",
 		"id": "reversal",
 		"type": "Collectable",
 		"cost": 1000000,
 		"consumable": false,
 		"showInShop": false,
-		"rarity": 2,
-		"emoji": "<:reversal:573150370579087360>"
+		"rarity": 2
 	},
 	"eye": {
 		"name": "Odd Eye",
-		"image": "https://cdn.discordapp.com/emojis/787964747848089642.gif",
+		"image": "https://cdn.discordapp.com/emojis/787964747848089642.gif?quality=lossless",
 		"description": "This eye is odd, and fairly creepy. It has probably close to 20k veins, ew.",
 		"id": "eye",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 100000000,
-		"rarity": 5,
-		"emoji": "<a:eye:787964747848089642>"
+		"rarity": 5
 	},
 	"chillpill": {
 		"name": "Chill Pill",
-		"image": "https://cdn.discordapp.com/emojis/716825781908537395.png",
+		"image": "https://cdn.discordapp.com/emojis/716825781908537395.webp?quality=lossless",
 		"description": "Just take a chill pill and relax, sheesh",
 		"id": "chillpill",
 		"type": "Collectable",
@@ -1125,12 +1119,11 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:chillpill:716825781908537395>"
+		"rarity": 0
 	},
 	"banknote": {
 		"name": "Bank Note",
-		"image": "https://cdn.discordapp.com/emojis/830509316888985621.png",
+		"image": "https://cdn.discordapp.com/emojis/830509316888985621.webp?quality=lossless",
 		"description": "Use this to expand your bank space!",
 		"longdescription": "You can either use this note to expand your bank space by 10000-100000 or sell it for some coins. Your choice really. Expanded bank space does not reset on prestige (regular bank space earned via running commands does)",
 		"id": "banknote",
@@ -1138,12 +1131,11 @@
 		"cost": 300000,
 		"consumable": true,
 		"showInShop": true,
-		"rarity": 1,
-		"emoji": "<:banknote:830509316888985621>"
+		"rarity": 1
 	},
 	"pinkphallicobject": {
 		"name": "Pink Phallic Object",
-		"image": "https://cdn.discordapp.com/emojis/834192945019617280.png",
+		"image": "https://cdn.discordapp.com/emojis/834192945019617280.webp?quality=lossless",
 		"description": "Swear on me mum's life it's not a dildo. Send it to a friend!",
 		"longdescription": "Send people the gift of pink phallic shaped items. Using this will send it to the person of your choice's inventory for them to find later.",
 		"id": "pinkphallicobject",
@@ -1151,12 +1143,11 @@
 		"cost": 12,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0,
-		"emoji": "<:pinkphallicobject:834192945019617280>"
+		"rarity": 0
 	},
 	"bluephallicobject": {
 		"name": "Blue Phallic Object",
-		"image": "https://cdn.discordapp.com/emojis/834192945124474983.png",
+		"image": "https://cdn.discordapp.com/emojis/834192945124474983.webp?quality=lossless",
 		"description": "A blue twist on a pink favorite!",
 		"longdescription": "This is simply a collectable, and NOT for any type of use. ANY type of use guys, please.",
 		"id": "bluephallicobject",
@@ -1165,12 +1156,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:bluephallicobjectt:834192945124474983>"
+		"rarity": 0
 	},
 	"purplephallicobject": {
 		"name": "Purple Phallic Object",
-		"image": "https://cdn.discordapp.com/emojis/834192945334452244.png",
+		"image": "https://cdn.discordapp.com/emojis/834192945334452244.webp?quality=lossless",
 		"description": "A purple twist on a pink favorite!",
 		"longdescription": "This is simply a collectable, and NOT for any type of use. ANY type of use guys, please.",
 		"id": "purplephallicobject",
@@ -1179,12 +1169,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:purplephallicobject:834192945334452244>"
+		"rarity": 0
 	},
 	"orangephallicobject": {
 		"name": "Orange Phallic Object",
-		"image": "https://cdn.discordapp.com/emojis/834192945132601426.png",
+		"image": "https://cdn.discordapp.com/emojis/834192945132601426.webp?quality=lossless",
 		"description": "An orange twist on a pink favorite!",
 		"longdescription": "This is simply a collectable, and NOT for any type of use. ANY type of use guys, please.",
 		"id": "orangephallicobject",
@@ -1193,12 +1182,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:orangephallicobject:834192945132601426>"
+		"rarity": 0
 	},
 	"goldenphallicobject": {
 		"name": "Golden Phallic Object",
-		"image": "https://cdn.discordapp.com/emojis/834192944956702746.png",
+		"image": "https://cdn.discordapp.com/emojis/834192944956702746.webp?quality=lossless",
 		"description": "A golden twist on a pink favorite!",
 		"longdescription": "This is simply a collectable, and NOT for any type of use. ANY type of use guys, please.",
 		"id": "goldenphallicobject",
@@ -1207,12 +1195,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:goldenphallicobject:834192944956702746>"
+		"rarity": 1
 	},
 	"multiphallicobject": {
 		"name": "Multi Colored Phallic Object",
-		"image": "https://cdn.discordapp.com/emojis/841123648911966219.gif",
+		"image": "https://cdn.discordapp.com/emojis/841123648911966219.gif?quality=lossless",
 		"description": "A colorful twist on a pink favorite!",
 		"longdescription": "This is simply a collectable, and NOT for any type of use. ANY type of use guys, please.",
 		"id": "multiphallicobject",
@@ -1230,12 +1217,11 @@
 			"goldenphallicobject": 3,
 			"ducttape": 1
 		},
-		"rarity": 2,
-		"emoji": "<a:multicoloredphallicobject:841123648911966219>"
+		"rarity": 2
 	},
 	"pepestatue": {
 		"name": "Pepe Statue",
-		"image": "https://cdn.discordapp.com/emojis/834978069629894663.png",
+		"image": "https://cdn.discordapp.com/emojis/834978069629894663.webp?quality=lossless",
 		"description": "A neat collectable statue, looks very similar to a coin you can buy.",
 		"id": "pepestatue",
 		"type": "Collectable",
@@ -1243,12 +1229,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 2,
-		"emoji": "<:pepestatue:834978069629894663>"
+		"rarity": 2
 	},
 	"urinal": {
 		"name": "School Urinal",
-		"image": "https://cdn.discordapp.com/emojis/889266191808471114.png",
+		"image": "https://cdn.discordapp.com/emojis/889266191808471114.webp?quality=lossless",
 		"description": "The most devious lick",
 		"id": "urinal",
 		"type": "Collectable",
@@ -1256,12 +1241,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 2,
-		"emoji": "<:Urinal:889266191808471114>"
+		"rarity": 2
 	},
 	"snowflake": {
 		"name": "Snowflake",
-		"image": "https://cdn.discordapp.com/emojis/920796800774991932.png",
+		"image": "https://cdn.discordapp.com/emojis/920796800774991932.webp?quality=lossless",
 		"description": "Every snowflake is unique... but not in this bot",
 		"id": "snowflake",
 		"type": "Collectable",
@@ -1269,12 +1253,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:Snowflake:920796800774991932>"
+		"rarity": 1
 	},
 	"ornament": {
 		"name": "Ornament",
-		"image": "https://cdn.discordapp.com/emojis/921193342501539891.png",
+		"image": "https://cdn.discordapp.com/emojis/921193342501539891.webp?quality=lossless",
 		"description": "qt little ornament for christmas",
 		"id": "ornament",
 		"type": "Collectable",
@@ -1282,12 +1265,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:Ornament:921193342501539891>"
+		"rarity": 1
 	},
 	"candycane": {
 		"name": "Candy Cane",
-		"image": "https://cdn.discordapp.com/emojis/920796779405000714.png",
+		"image": "https://cdn.discordapp.com/emojis/920796779405000714.webp?quality=lossless",
 		"description": "A tasty treat",
 		"id": "candycane",
 		"type": "Tool",
@@ -1295,12 +1277,11 @@
 		"showInShop": false,
 		"consumable": true,
 		"usable": true,
-		"rarity": 1,
-		"emoji": "<:CandyCane:920796779405000714>"
+		"rarity": 1
 	},
 	"tree": {
 		"name": "Literally a Tree",
-		"image": "https://cdn.discordapp.com/emojis/923005301421113344.png",
+		"image": "https://cdn.discordapp.com/emojis/923005301421113344.webp?quality=lossless",
 		"description": "This is just a plain tree",
 		"id": "tree",
 		"type": "Sellable",
@@ -1308,12 +1289,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:ChristmasTree:923005301421113344>"
+		"rarity": 1
 	},
 	"christmastree": {
 		"name": "Christmas Tree",
-		"image": "https://cdn.discordapp.com/emojis/923011690126254170.png",
+		"image": "https://cdn.discordapp.com/emojis/923011690126254170.webp?quality=lossless",
 		"description": "A beautiful Christmas tree, purely for collecting",
 		"id": "christmastree",
 		"type": "Collectable",
@@ -1321,12 +1301,11 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 3,
-		"emoji": "<:ChristmasTreeDeco:923011690126254170>"
+		"rarity": 3
 	},
 	"berriesandcream": {
 		"name": "Berries and Cream",
-		"image": "https://cdn.discordapp.com/emojis/890365752534761472.png",
+		"image": "https://cdn.discordapp.com/emojis/890365752534761472.webp?quality=lossless",
 		"description": "I'm a little lad who loves...",
 		"longdescription": "A limited time item from a random event, use this item to send it to someone who loves berries and cream!",
 		"id": "berriesandcream",
@@ -1334,12 +1313,11 @@
 		"cost": 5000000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 3,
-		"emoji": "<:BerriesAndCream:890365752534761472>"
+		"rarity": 3
 	},
 	"fool": {
 		"name": "Fool's Notif",
-		"image": "https://cdn.discordapp.com/emojis/826974895295692840.png",
+		"image": "https://cdn.discordapp.com/emojis/826974895295692840.webp?quality=lossless",
 		"description": "Fool a friend with this item, give them a random fake notification!",
 		"longdescription": "Using this on a user will give them a fake notification that is ALMOST real, but can be told apart from the real thing if they look close enough...",
 		"id": "fool",
@@ -1347,12 +1325,11 @@
 		"cost": 25000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0,
-		"emoji": "<:fool:826974895295692840>"
+		"rarity": 0
 	},
 	"snowball": {
 		"name": "Snowball",
-		"image": "https://cdn.discordapp.com/emojis/573150143524765699.png",
+		"image": "https://cdn.discordapp.com/emojis/573150143524765699.webp?quality=lossless",
 		"description": "Chuck a snowball at someone and stun them!",
 		"longdescription": "Throw a snowball at someone else and prevent them from doing anything bad to you for a few minutes like robbing you, or putting negative items on you!",
 		"id": "snowball",
@@ -1360,12 +1337,11 @@
 		"cost": 25000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0,
-		"emoji": "<:snowball:573150143524765699>"
+		"rarity": 0
 	},
 	"santashat": {
 		"name": "Santa's Hat",
-		"image": "https://cdn.discordapp.com/emojis/921546940032880660.png",
+		"image": "https://cdn.discordapp.com/emojis/921546940032880660.webp?quality=lossless",
 		"description": "Put on Santa's hat and join in on the holiday spirit!",
 		"longdescription": "Equip Santa's hat and turn all embed colors (the color on the side of embeds) into Christmas themed colors!",
 		"id": "santashat",
@@ -1373,12 +1349,11 @@
 		"cost": 25000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0,
-		"emoji": "<:SantasHat:921546940032880660>"
+		"rarity": 0
 	},
 	"gift": {
 		"name": "Friend's Gift",
-		"image": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.png",
+		"image": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.webp?quality=lossless",
 		"description": "Buy this to send to a friend to open",
 		"longdescription": "This item is not able to be opened, only sent. Once you use it with `pls use friend`, the person who receives it will be able to open a Gift Box (Holiday lootbox).",
 		"id": "gift",
@@ -1386,12 +1361,11 @@
 		"cost": 1000000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 2,
-		"emoji": "<:present:784505770603184148>"
+		"rarity": 2
 	},
 	"jacky": {
 		"name": "Jacky o' Lanty",
-		"image": "https://cdn.discordapp.com/emojis/758662115841802271.png",
+		"image": "https://cdn.discordapp.com/emojis/758662115841802271.webp?quality=lossless",
 		"description": "Put on a Jacky and join in on the spooky season!",
 		"longdescription": "Equip this and turn all embed colors (the color on the side of embeds) into spooky season colors.",
 		"id": "jacky",
@@ -1399,12 +1373,11 @@
 		"cost": 5000000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 3,
-		"emoji": "<:jacky:758662115841802271>"
+		"rarity": 3
 	},
 	"candy": {
 		"name": "Candy",
-		"image": "https://cdn.discordapp.com/emojis/792397132828114965.png",
+		"image": "https://cdn.discordapp.com/emojis/792397132828114965.webp?quality=lossless",
 		"description": "Yum, candy!",
 		"longdescription": "Consuming this candy will give you a random amount of coins. Yum!",
 		"id": "candy",
@@ -1412,24 +1385,22 @@
 		"cost": 25000,
 		"consumable": true,
 		"showInShop": false,
-		"rarity": 0,
-		"emoji": "<:dankCandy:792397132828114965>"
+		"rarity": 0
 	},
 	"blob": {
 		"name": "Blob",
-		"image": "https://cdn.discordapp.com/emojis/639826478866890773.gif",
+		"image": "https://cdn.discordapp.com/emojis/933188762782011454.gif?quality=lossless",
 		"description": "This is just a shell of it's former self, earned for doing basically absolutely nothing during the blob event",
 		"id": "blob",
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
 		"cost": 50000000,
-		"rarity": 4,
-		"emoji": "<a:blob:639826478866890773>"
+		"rarity": 4
 	},
 	"cupidsbigtoe": {
 		"name": "Cupid's Big Toe",
-		"image": "https://cdn.discordapp.com/emojis/718136880163586169.png",
+		"image": "https://cdn.discordapp.com/emojis/718136880163586169.webp?quality=lossless",
 		"description": "Enhance your multiplier with Cupid's presence!",
 		"longdescription": "Applies a multiplier of **69%** for **69 seconds**. Limited time item for valentines day!",
 		"id": "cupidsbigtoe",
@@ -1437,13 +1408,109 @@
 		"consumable": true,
 		"showInShop": false,
 		"cost": 25000,
-		"rarity": 0,
-		"emoji": "<:cupidsbigtoe:718136880163586169>"
+		"rarity": 0
+	},
+	"meteorite": {
+		"name": "Meteorite",
+		"image": "https://cdn.discordapp.com/emojis/932047375579643944.gif?quality=lossless",
+		"description": "A chunk of space rock with some interesting signs of life on it",
+		"id": "meteorite",
+		"type": "Sellable",
+		"cost": 25000,
+		"showInShop": false,
+		"consumable": false,
+		"usable": true,
+		"rarity": 2
+	},
+	"jarofsingularity": {
+		"name": "Jar Of Singularity",
+		"image": "https://cdn.discordapp.com/emojis/932759942081941515.webp?quality=lossless",
+		"description": "This could be important in the future...",
+		"id": "jarofsingularity",
+		"type": "Collectable",
+		"cost": 500000,
+		"showInShop": false,
+		"consumable": false,
+		"rarity": 2
+	},
+	"blackhole": {
+		"name": "Black Hole",
+		"image": "https://cdn.discordapp.com/emojis/932395505382744106.webp?quality=lossless",
+		"description": "This item eats some gained items.",
+		"longdescription": "This item is a shady little lottery. When you have one in your inventory, you have a random chance to have a gained item (from commands ran, not from your inv) to be sucked into the black hole and put into an item lottery. This also enters you to win said item lottery and get a share of ALL the items entered.",
+		"id": "blackhole",
+		"type": "Collectable",
+		"cost": 500000,
+		"showInShop": false,
+		"consumable": false,
+		"rarity": 2
+	},
+	"aliensample": {
+		"name": "Alien Sample",
+		"image": "https://cdn.discordapp.com/emojis/933475704434196540.gif?quality=lossless",
+		"description": "A collectible sample of alien tissue",
+		"id": "aliensample",
+		"type": "Collectable",
+		"cost": 500000,
+		"showInShop": false,
+		"consumable": false,
+		"rarity": 2
+	},
+	"adventureticket": {
+		"name": "Adventure Ticket",
+		"image": "https://cdn.discordapp.com/emojis/934112100970807336.webp?quality=lossless",
+		"description": "A ticket to start an adventure!",
+		"longdescription": "Can be found in limited stock in the shop, from voting, or from being a patron!",
+		"id": "adventureticket",
+		"type": "Collectable",
+		"cost": 100000,
+		"showInShop": true,
+		"consumable": false,
+		"rarity": 2
+	},
+	"empoweredfartbottle": {
+		"id": "empoweredfartbottle",
+		"name": "Empowered Fart Bottle",
+		"image": "https://cdn.discordapp.com/emojis/924808588420059207.gif?quality=lossless",
+		"type": "Tool",
+		"description": "A really POWERFULLY stinky bottle. You should NOT sniff it!",
+		"cost": 500000,
+		"showInShop": false,
+		"usable": true,
+		"consumable": true,
+		"rarity": 2
+	},
+	"starfragment": {
+		"id": "starfragment",
+		"name": "Star Fragment",
+		"image": "https://cdn.discordapp.com/emojis/923291410323603457.webp?quality=lossless",
+		"type": "Sellable",
+		"description": "A fragment of a shooting star. I wonder what this can be used for?",
+		"cost": 10000,
+		"showInShop": false,
+		"usable": true,
+		"consumable": true,
+		"rarity": 2,
+		"components": {
+			"shootingstar": 2
+		}
+	},
+	"shootingstar": {
+		"id": "shootingstar",
+		"name": "Shooting Star",
+		"image": "https://cdn.discordapp.com/emojis/923291410130686022.webp?quality=lossless",
+		"type": "Collectable",
+		"description": "Make a wish! Or don't, I can't force you.",
+		"cost": 500000,
+		"showInShop": false,
+		"usable": true,
+		"consumable": true,
+		"rarity": 2
 	},
 	"giftbox": {
 		"id": "giftbox",
 		"name": "Gift Box",
-		"image": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.png",
+		"image": "https://cdn.discordapp.com/attachments/693517202879414312/784506168730976305/present.webp?quality=lossless",
 		"type": "Loot Box",
 		"description": "A gift from a good friend",
 		"consumable": true,
@@ -1564,14 +1631,13 @@
 					]
 				}
 			]
-		},
-		"emoji": "<:present:784505770603184148>"
+		}
 	},
 	"daily": {
 		"id": "daily",
 		"name": "Daily Box",
-		"image": "https://cdn.discordapp.com/emojis/861390900219478037.gif",
-		"opening": "https://cdn.discordapp.com/emojis/861390923640471572.gif",
+		"image": "https://cdn.discordapp.com/emojis/861390900219478037.gif?quality=lossless",
+		"opening": "https://cdn.discordapp.com/emojis/861390923640471572.gif?quality=lossless",
 		"type": "Loot Box",
 		"description": "A reward for voting for Dank Memer! Using this box also gives you a 10 minute double xp boost.",
 		"consumable": true,
@@ -1610,51 +1676,20 @@
 					]
 				},
 				{
-					"pinkphallicobject": [
-						10,
-						25
-					]
-				},
-				{
-					"purplephallicobject": [
-						3,
-						5
-					]
-				},
-				{
-					"orangephallicobject": [
-						3,
-						5
-					]
-				},
-				{
-					"bluephallicobject": [
-						3,
-						5
-					]
-				},
-				{
-					"goldenphallicobject": [
-						1
-					]
-				},
-				{
 					"wishlist": [
 						1
 					]
 				},
 				{
-					"lifesaver": [
-						1,
-						3
+					"adventureticket": [
+						1
 					]
 				},
 				{
 					"banknote": [
 						1,
 						2,
-						4,
-						8
+						4
 					]
 				},
 				{
@@ -1746,14 +1781,13 @@
 					]
 				}
 			]
-		},
-		"emoji": "<a:DailyBoxClosed:861390900219478037>"
+		}
 	},
 	"weddinggift": {
 		"id": "weddinggift",
 		"name": "Wedding Gift",
-		"image": "https://cdn.discordapp.com/emojis/877566903516790855.png",
-		"opening": "https://cdn.discordapp.com/emojis/877566903516790855.png",
+		"image": "https://cdn.discordapp.com/emojis/877566903516790855.webp?quality=lossless",
+		"opening": "https://cdn.discordapp.com/emojis/877566903516790855.webp?quality=lossless",
 		"type": "Loot Box",
 		"description": "A gift for marrying someone!",
 		"consumable": true,
@@ -1815,14 +1849,13 @@
 					]
 				}
 			]
-		},
-		"emoji": "<:WeddingGift:877566903516790855>"
+		}
 	},
 	"normie": {
 		"id": "normie",
 		"name": "Normie Box",
-		"image": "https://cdn.discordapp.com/emojis/861390901405679626.gif",
-		"opening": "https://cdn.discordapp.com/emojis/861390923451727923.gif",
+		"image": "https://cdn.discordapp.com/emojis/861390901405679626.gif?quality=lossless",
+		"opening": "https://cdn.discordapp.com/emojis/861390923451727923.gif?quality=lossless",
 		"type": "Loot Box",
 		"description": "Can't get more basic than this",
 		"consumable": true,
@@ -1910,14 +1943,13 @@
 					]
 				}
 			]
-		},
-		"emoji": "<a:NormieBoxClosed:861390901405679626>"
+		}
 	},
 	"meme": {
 		"id": "meme",
 		"name": "Meme Box",
-		"image": "https://cdn.discordapp.com/emojis/861390901300953118.gif",
-		"opening": "https://cdn.discordapp.com/emojis/861390923085512724.gif",
+		"image": "https://cdn.discordapp.com/emojis/861390901300953118.gif?quality=lossless",
+		"opening": "https://cdn.discordapp.com/emojis/861390923085512724.gif?quality=lossless",
 		"type": "Loot Box",
 		"description": "Something actually worth opening",
 		"consumable": true,
@@ -2038,14 +2070,13 @@
 					]
 				}
 			]
-		},
-		"emoji": "<a:MemeBoxClosed:861390901300953118>"
+		}
 	},
 	"dank": {
 		"id": "dank",
 		"name": "Dank Box",
-		"image": "https://cdn.discordapp.com/emojis/861390901049425950.gif",
-		"opening": "https://cdn.discordapp.com/emojis/861390923195088956.gif",
+		"image": "https://cdn.discordapp.com/emojis/861390901049425950.gif?quality=lossless",
+		"opening": "https://cdn.discordapp.com/emojis/861390923195088956.gif?quality=lossless",
 		"type": "Loot Box",
 		"description": "Dank rewards for a dank user",
 		"consumable": true,
@@ -2184,14 +2215,13 @@
 					]
 				}
 			]
-		},
-		"emoji": "<a:DankBoxClosed:861390901049425950>"
+		}
 	},
 	"god": {
 		"id": "god",
 		"name": "God Box",
-		"image": "https://cdn.discordapp.com/emojis/861390900688977950.gif",
-		"opening": "https://cdn.discordapp.com/emojis/861390922410360883.gif",
+		"image": "https://cdn.discordapp.com/emojis/861390900688977950.gif?quality=lossless",
+		"opening": "https://cdn.discordapp.com/emojis/861390922410360883.gif?quality=lossless",
 		"type": "Loot Box",
 		"description": "What the hell this is op god tier box.",
 		"consumable": true,
@@ -2204,7 +2234,7 @@
 		},
 		"components": {
 			"lotterywinner": 1,
-			"dank": 2,
+			"dank": 3,
 			"ducttape": 1
 		},
 		"reward": {
@@ -2272,13 +2302,6 @@
 					]
 				},
 				{
-					"lifesaver": [
-						3,
-						5,
-						10
-					]
-				},
-				{
 					"banknote": [
 						10,
 						12,
@@ -2324,21 +2347,15 @@
 					"melmsiebeard": [
 						1
 					]
-				},
-				{
-					"yengpaw": [
-						1
-					]
 				}
 			]
-		},
-		"emoji": "<a:GodBoxClosed:861390900688977950>"
+		}
 	},
 	"patreon": {
 		"id": "patreon",
 		"name": "Patreon Box",
-		"image": "https://cdn.discordapp.com/emojis/892171107845677066.gif",
-		"opening": "https://cdn.discordapp.com/emojis/892171110974627850.gif",
+		"image": "https://cdn.discordapp.com/emojis/892171107845677066.gif?quality=lossless",
+		"opening": "https://cdn.discordapp.com/emojis/892171110974627850.gif?quality=lossless",
 		"type": "Loot Box",
 		"description": "This box is only for our loyal patrons! (Unless of course they choose to trade it)",
 		"consumable": true,
@@ -2378,6 +2395,11 @@
 					]
 				},
 				{
+					"bluesplane": [
+						1
+					]
+				},
+				{
 					"yengpaw": [
 						1
 					]
@@ -2412,12 +2434,11 @@
 					]
 				}
 			]
-		},
-		"emoji": "<a:PatreonBoxClosed:892171107845677066>"
+		}
 	},
 	"poster": {
 		"name": "Motivational Poster",
-		"image": "https://cdn.discordapp.com/emojis/834080273964072995.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273964072995.webp?quality=lossless",
 		"description": "Provides a 5% work payout bonus, stacking up to 50%. Found from the manager job.",
 		"id": "poster",
 		"type": "Power-up",
@@ -2425,12 +2446,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:poster:834080273964072995>"
+		"rarity": 2
 	},
 	"ectoplasm": {
 		"name": "Ectoplasm",
-		"image": "https://cdn.discordapp.com/emojis/834080273889099796.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273889099796.webp?quality=lossless",
 		"description": "Some gross ghost left their gunk everywhere, sell it! Found from the ghost job.",
 		"id": "ectoplasm",
 		"type": "Sellable",
@@ -2438,12 +2458,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:ectoplasm:834080273889099796>"
+		"rarity": 2
 	},
 	"diaper": {
 		"name": "Used Diaper",
-		"image": "https://cdn.discordapp.com/emojis/834080273947295764.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273947295764.webp?quality=lossless",
 		"description": "Throw this used diaper at someone to prevent them from joining or starting a heist for 12 hours. Found from the housewife job.",
 		"id": "diaper",
 		"type": "Tool",
@@ -2451,12 +2470,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:diaper:834080273947295764>"
+		"rarity": 2
 	},
 	"likebutton": {
 		"name": "Like Button",
-		"image": "https://cdn.discordapp.com/emojis/834080273922523196.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273922523196.webp?quality=lossless",
 		"description": "Everyone likes you so much, it is NEARLY impossible for you to get a broken laptop while posting memes. (-45% break chance) Found from the YouTuber job.",
 		"id": "likebutton",
 		"type": "Power-up",
@@ -2464,12 +2482,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:likebutton:834080273922523196>"
+		"rarity": 2
 	},
 	"taco": {
 		"name": "Crunchy Taco",
-		"image": "https://cdn.discordapp.com/emojis/834128399551299624.png",
+		"image": "https://cdn.discordapp.com/emojis/834128399551299624.webp?quality=lossless",
 		"description": "Eating this delicious taco will double your level up rewards for 24 hours. Found from the fast food worker job.",
 		"id": "taco",
 		"type": "Power-up",
@@ -2477,12 +2494,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:taco:834128399551299624>"
+		"rarity": 2
 	},
 	"tipjar": {
 		"name": "Tip Jar",
-		"image": "https://cdn.discordapp.com/emojis/834080273926717471.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273926717471.webp?quality=lossless",
 		"description": "You can check this tip jar once every hour! Sometimes you can find some neat stuff... Found from the streamer job.",
 		"id": "tipjar",
 		"type": "Tool",
@@ -2490,12 +2506,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:tipjar:834080273926717471>"
+		"rarity": 2
 	},
 	"aplus": {
 		"name": "A plus",
-		"image": "https://cdn.discordapp.com/emojis/834080273930387486.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273930387486.webp?quality=lossless",
 		"description": "An A+ you can sell for some profit, woo for cheating! Found from the teacher job.",
 		"id": "aplus",
 		"type": "Sellable",
@@ -2503,12 +2518,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:aplus:834080273930387486>"
+		"rarity": 2
 	},
 	"policebadge": {
 		"name": "Police Badge",
-		"image": "https://cdn.discordapp.com/emojis/834080273918197810.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273918197810.webp?quality=lossless",
 		"description": "A shiny police badge, found in the police station on the ground. Found from the police job.",
 		"id": "policebadge",
 		"type": "Collectable",
@@ -2516,12 +2530,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:policebadge:834080273918197810>"
+		"rarity": 2
 	},
 	"binary": {
 		"name": "Binary",
-		"image": "https://cdn.discordapp.com/emojis/910648334212026498.gif",
+		"image": "https://cdn.discordapp.com/emojis/910648334212026498.gif?quality=lossless",
 		"description": "A rouge piece of binary code spit out of a computer. Found from the developer job.",
 		"id": "binary",
 		"type": "Collectable",
@@ -2529,12 +2542,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<a:Binary:910648334212026498>"
+		"rarity": 2
 	},
 	"cash": {
 		"name": "Stack of Cash",
-		"image": "https://cdn.discordapp.com/emojis/862774540895125584.png",
+		"image": "https://cdn.discordapp.com/emojis/862774540895125584.webp?quality=lossless",
 		"description": "A tradeable item with the bot. Use it to trade for banknotes or pizzas. Found from the politician job.",
 		"id": "cash",
 		"type": "Tradeable",
@@ -2542,12 +2554,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:StackOfCash:862774540895125584>"
+		"rarity": 2
 	},
 	"beaker": {
 		"name": "Beaker of sus fluid",
-		"image": "https://cdn.discordapp.com/emojis/834080273918197811.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273918197811.webp?quality=lossless",
 		"description": "Dear god do NOT drink this. Found from the scientist job.",
 		"id": "beaker",
 		"type": "Sellable",
@@ -2555,12 +2566,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:beaker:834080273918197811>"
+		"rarity": 2
 	},
 	"santasbag": {
 		"name": "Santa's Bag",
-		"image": "https://cdn.discordapp.com/emojis/862415055622635560.png",
+		"image": "https://cdn.discordapp.com/emojis/862415055622635560.webp?quality=lossless",
 		"description": "Santa has a bag full of goodies. Some pretty rare goodies too. Found from the Santa job.",
 		"id": "santasbag",
 		"type": "Loot Box",
@@ -2658,12 +2668,11 @@
 					]
 				}
 			]
-		},
-		"emoji": "<:SantasBag:862415055622635560>"
+		}
 	},
 	"ammo": {
 		"name": "Ammo",
-		"image": "https://cdn.discordapp.com/emojis/834080273964073035.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273964073035.webp?quality=lossless",
 		"description": "While this item is active (1 hour), you will always find an animal while hunting. Found from the Hunter job.",
 		"id": "ammo",
 		"type": "Power-up",
@@ -2671,12 +2680,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:bullet:834080273964073035>"
+		"rarity": 2
 	},
 	"bait": {
 		"name": "Fishing Bait",
-		"image": "https://cdn.discordapp.com/emojis/834080273951883305.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273951883305.webp?quality=lossless",
 		"description": "While this item is active (1 hour), you will always find something while fishing. Found from the Fisherman job.",
 		"id": "bait",
 		"type": "Power-up",
@@ -2684,12 +2692,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:bait:834080273951883305>"
+		"rarity": 2
 	},
 	"collar": {
 		"name": "Pet Collar",
-		"image": "https://cdn.discordapp.com/emojis/834080273951883304.png",
+		"image": "https://cdn.discordapp.com/emojis/936381028396847195.webp?quality=lossless",
 		"description": "Owning this item gives you double xp for pets! Found from the vet job.",
 		"id": "collar",
 		"type": "Power-up",
@@ -2697,12 +2704,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:collar:834080273951883304>"
+		"rarity": 2
 	},
 	"banhammer": {
 		"name": "Ban Hammer",
-		"image": "https://cdn.discordapp.com/emojis/834080273942577242.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273942577242.webp?quality=lossless",
 		"description": "A hammer dropped by a mod after banning someone. Found from the discord moderator job.",
 		"id": "banhammer",
 		"type": "Sellable",
@@ -2710,12 +2716,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:banhammer:834080273942577242>"
+		"rarity": 2
 	},
 	"vaccine": {
 		"name": "Vaccine",
-		"image": "https://cdn.discordapp.com/emojis/834080273981243412.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273981243412.webp?quality=lossless",
 		"description": "Are we sure this is a vaccine and not some other drug? Found from the doctor job.",
 		"id": "vaccine",
 		"type": "Sellable",
@@ -2723,12 +2728,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:vaccine:834080273981243412>"
+		"rarity": 2
 	},
 	"stonkmachine": {
 		"name": "Stonk Machine",
-		"image": "https://cdn.discordapp.com/emojis/834080273796694057.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273796694057.webp?quality=lossless",
 		"description": "Use this machine to try and earn some coins from stonk investment. Warning, there is a 10% chance to lose 10% of your wallet from a bad investment! Found from the day trader job.",
 		"id": "stonkmachine",
 		"type": "Tool",
@@ -2736,12 +2740,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:stonksmachine:834080273796694057>"
+		"rarity": 2
 	},
 	"memepills": {
 		"name": "Meme pills",
-		"image": "https://cdn.discordapp.com/emojis/834080273804689409.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273804689409.webp?quality=lossless",
 		"description": "Pills that have literally no function besides selling. Found from the pharmacist job.",
 		"id": "memepills",
 		"type": "Sellable",
@@ -2749,12 +2752,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:memepills:834080273804689409>"
+		"rarity": 2
 	},
 	"energydrink": {
 		"name": "Energy Drink",
-		"image": "https://cdn.discordapp.com/emojis/834080273909284924.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273909284924.webp?quality=lossless",
 		"description": "A delicious energy drink. Found from the pro gamer job.",
 		"id": "energydrink",
 		"type": "Sellable",
@@ -2762,12 +2764,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:energydrink:834080273909284924>"
+		"rarity": 2
 	},
 	"whiskey": {
 		"name": "Bottle of Whiskey",
-		"image": "https://cdn.discordapp.com/emojis/834080273922523197.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273922523197.webp?quality=lossless",
 		"description": "A superior alcohol, gives you a better chance to steal from someone and has no negative effects (lasts 15 hours). Found from the bartender job.",
 		"id": "whiskey",
 		"type": "Power-up",
@@ -2775,12 +2776,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:whiskey:834080273922523197>"
+		"rarity": 2
 	},
 	"robbersmask": {
 		"name": "Robbers Mask",
-		"image": "https://cdn.discordapp.com/emojis/834080273889099797.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273889099797.webp?quality=lossless",
 		"description": "Your name will not show up on steal or bankrob notifs sent to the victim for 12 hours after using. Found from the robber job.",
 		"id": "robbersmask",
 		"type": "Power-up",
@@ -2788,12 +2788,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:robbersmask:834080273889099797>"
+		"rarity": 2
 	},
 	"baby": {
 		"name": "Baby",
-		"image": "https://cdn.discordapp.com/emojis/834080273942577192.png",
+		"image": "https://cdn.discordapp.com/emojis/937502609550503936.webp?quality=lossless",
 		"description": "We do NOT sell babies guys. We simply collect them. IN THE GAME, THIS IS A JOKE WTF. Found from the babysitter job.",
 		"id": "baby",
 		"type": "Collectable",
@@ -2801,12 +2800,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:baby:834080273942577192>"
+		"rarity": 2
 	},
 	"lawdegree": {
 		"name": "Law Degree",
-		"image": "https://cdn.discordapp.com/emojis/834080273963548733.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273963548733.webp?quality=lossless",
 		"description": "Anyone can be a lawyer these days, just sell them this! Found from the lawyer job.",
 		"id": "lawdegree",
 		"type": "Sellable",
@@ -2814,12 +2812,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:lawdegree:834080273963548733>"
+		"rarity": 2
 	},
 	"coupon": {
 		"name": "Shop Coupon",
-		"image": "https://cdn.discordapp.com/emojis/834080273892114482.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273892114482.webp?quality=lossless",
 		"description": "You will have the option to use this at a shop checkout. You can get 5% off any purchase from the shop. Found from the shopkeeper job.",
 		"id": "coupon",
 		"type": "Power-up",
@@ -2827,12 +2824,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:coupon:834080273892114482>"
+		"rarity": 2
 	},
 	"note": {
 		"name": "Musical Note",
-		"image": "https://cdn.discordapp.com/emojis/910673407761317928.gif",
+		"image": "https://cdn.discordapp.com/emojis/910673407761317928.gif?quality=lossless",
 		"description": "The record label did not want your music, so sell it to Dank Memer. Found from the musician job.",
 		"id": "note",
 		"type": "Sellable",
@@ -2840,12 +2836,11 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<a:Note:910673407761317928>"
+		"rarity": 2
 	},
 	"trash": {
 		"name": "Trash",
-		"image": "https://cdn.discordapp.com/emojis/834091084346949652.png",
+		"image": "https://cdn.discordapp.com/emojis/834091084346949652.webp?quality=lossless",
 		"description": "A trashy thing, not worth much.",
 		"longdescription": "This is an absolute trash item.",
 		"id": "trash",
@@ -2854,12 +2849,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:trash:834091084346949652>"
+		"rarity": 0
 	},
 	"garbage": {
 		"name": "Garbage",
-		"image": "https://cdn.discordapp.com/emojis/834091084392693760.png",
+		"image": "https://cdn.discordapp.com/emojis/935631382590394398.webp?quality=lossless",
 		"description": "A garbage thing, not worth much.",
 		"longdescription": "This is an absolute garbage item.",
 		"id": "garbage",
@@ -2868,12 +2862,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:garbage:834091084392693760>"
+		"rarity": 0
 	},
 	"junk": {
 		"name": "Junk",
-		"image": "https://cdn.discordapp.com/emojis/834091084359139378.png",
+		"image": "https://cdn.discordapp.com/emojis/834091084359139378.webp?quality=lossless",
 		"description": "A junky thing, not worth much.",
 		"longdescription": "This is an absolute junk item.",
 		"id": "junk",
@@ -2882,12 +2875,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:junk:834091084359139378>"
+		"rarity": 0
 	},
 	"cookie": {
 		"name": "Cookie",
-		"image": "https://cdn.discordapp.com/emojis/573152241289003036.png",
+		"image": "https://cdn.discordapp.com/emojis/573152241289003036.webp?quality=lossless",
 		"description": "A melt in your mouth yummy dummy cookie",
 		"longdescription": "This doesn't have any special functionality, it is just a cookie.",
 		"id": "cookie",
@@ -2896,24 +2888,22 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0,
-		"emoji": "<:cookie:573152241289003036>"
+		"rarity": 0
 	},
 	"bread": {
 		"name": "Fresh Bread",
-		"image": "https://cdn.discordapp.com/emojis/716848527149629490.png",
+		"image": "https://cdn.discordapp.com/emojis/716848527149629490.webp?quality=lossless",
 		"description": "The best bread from our meme bakery",
 		"id": "bread",
 		"type": "Sellable",
 		"cost": 500,
 		"consumable": true,
 		"showInShop": false,
-		"rarity": 0,
-		"emoji": "<:bread:716848527149629490>"
+		"rarity": 0
 	},
 	"potato": {
 		"name": "Potato ☭",
-		"image": "https://cdn.discordapp.com/emojis/834080273913872384.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273913872384.webp?quality=lossless",
 		"description": "A good communist potato",
 		"id": "potato",
 		"type": "Sellable",
@@ -2921,12 +2911,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:potato:834080273913872384>"
+		"rarity": 1
 	},
 	"bean": {
 		"name": "Bean",
-		"image": "https://cdn.discordapp.com/emojis/905951197821800500.png",
+		"image": "https://cdn.discordapp.com/emojis/905951197821800500.webp?quality=lossless",
 		"description": "It's just a bean. A simple B E A N.",
 		"id": "bean",
 		"type": "Sellable",
@@ -2934,12 +2923,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:Bean:905951197821800500>"
+		"rarity": 1
 	},
 	"corncob": {
 		"name": "Corncob",
-		"image": "https://cdn.discordapp.com/emojis/834080273942839326.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273942839326.webp?quality=lossless",
 		"description": "A cob of corn, you should post it on cornhub!",
 		"id": "corncob",
 		"type": "Sellable",
@@ -2947,12 +2935,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:corn:834080273942839326>"
+		"rarity": 1
 	},
 	"corndog": {
 		"name": "Corndog",
-		"image": "https://cdn.discordapp.com/emojis/834080273796694056.png",
+		"image": "https://cdn.discordapp.com/emojis/834080273796694056.webp?quality=lossless",
 		"description": "A dog of corn, yum!",
 		"id": "corndog",
 		"type": "Sellable",
@@ -2960,12 +2947,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1,
-		"emoji": "<:corndog:834080273796694056>"
+		"rarity": 1
 	},
 	"worm": {
 		"name": "Worm",
-		"image": "https://cdn.discordapp.com/emojis/864261394920898600.png",
+		"image": "https://cdn.discordapp.com/emojis/864261394920898600.webp?quality=lossless",
 		"description": "This worm is not alive, I think someone shot it? Who shoots a worm wtf.",
 		"longdescription": "This worm is not alive, I think someone shot it? Who shoots a worm wtf.\nThis item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "worm",
@@ -2973,12 +2959,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 500,
-		"rarity": 0,
-		"emoji": "<:Worm:864261394920898600>"
+		"rarity": 0
 	},
 	"ant": {
 		"name": "Ant",
-		"image": "https://cdn.discordapp.com/emojis/864220608865763378.png",
+		"image": "https://cdn.discordapp.com/emojis/864220608865763378.webp?quality=lossless",
 		"description": "This ant is not alive, I think someone shot it? Who shoots an ant wtf.",
 		"longdescription": "This ant is not alive, I think someone shot it? Who shoots an ant wtf.\nThis item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "ant",
@@ -2986,12 +2971,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1000,
-		"rarity": 0,
-		"emoji": "<:Ant:864220608865763378>"
+		"rarity": 0
 	},
 	"stickbug": {
 		"name": "Stickbug",
-		"image": "https://cdn.discordapp.com/emojis/864568819795755038.gif",
+		"image": "https://cdn.discordapp.com/emojis/864568819795755038.gif?quality=lossless",
 		"description": "This stickbug is not alive, I think someone shot it? Is the meme really that annoying?",
 		"longdescription": "This stickbug is not alive, I think someone shot it? Is the meme really that annoying?\nThis item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "stickbug",
@@ -2999,12 +2983,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 2000,
-		"rarity": 0,
-		"emoji": "<a:StickBug:864568819795755038>"
+		"rarity": 0
 	},
 	"ladybug": {
 		"name": "Ladybug",
-		"image": "https://cdn.discordapp.com/emojis/863198415822389268.png",
+		"image": "https://cdn.discordapp.com/emojis/863198415822389268.webp?quality=lossless",
 		"description": "This ladybug is not alive, I think someone shot it? This smells stale as crap.",
 		"longdescription": "This ladybug is not alive, I think someone shot it? This smells stale as crap.\nThis item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "ladybug",
@@ -3012,12 +2995,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 3000,
-		"rarity": 0,
-		"emoji": "<:Ladybug:863198415822389268>"
+		"rarity": 0
 	},
 	"spider": {
 		"name": "Spider",
-		"image": "https://cdn.discordapp.com/emojis/864261394944884746.png",
+		"image": "https://cdn.discordapp.com/emojis/864261394944884746.webp?quality=lossless",
 		"description": "This spider is not alive, I think someone shot it? Yeah that checks out, spiders suck.",
 		"longdescription": "This spider is not alive, I think someone shot it? Yeah that checks out, spiders suck.\nThis item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "spider",
@@ -3025,12 +3007,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000,
-		"rarity": 1,
-		"emoji": "<:Spider:864261394944884746>"
+		"rarity": 1
 	},
 	"fossil": {
 		"name": "Fossil",
-		"image": "https://cdn.discordapp.com/emojis/921790077393338378.png",
+		"image": "https://cdn.discordapp.com/emojis/921790077393338378.webp?quality=lossless",
 		"description": "The fossil of a beast from eons ago",
 		"longdescription": "This fossil is obviously not alive. You should sell it and nothing else. Right?",
 		"id": "fossil",
@@ -3039,12 +3020,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 7500,
-		"rarity": 1,
-		"emoji": "<:Fossil:921790077393338378>"
+		"rarity": 1
 	},
 	"skunk": {
 		"name": "Skunk",
-		"image": "https://cdn.discordapp.com/emojis/861390875992522792.png",
+		"image": "https://cdn.discordapp.com/emojis/861390875992522792.webp?quality=lossless",
 		"description": "This skunk is not alive, I think someone shot it. GOD IT SMELLS WTF",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "skunk",
@@ -3052,12 +3032,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1250,
-		"rarity": 0,
-		"emoji": "<:Skunk:861390875992522792>"
+		"rarity": 0
 	},
 	"rabbit": {
 		"name": "Rabbit",
-		"image": "https://cdn.discordapp.com/emojis/860665246875254784.png",
+		"image": "https://cdn.discordapp.com/emojis/860665246875254784.webp?quality=lossless",
 		"description": "This rabbit is not alive, I think someone shot it. Rabbit fur is pretty soft...",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "rabbit",
@@ -3065,12 +3044,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1500,
-		"rarity": 0,
-		"emoji": "<:Bunny:860665246875254784>"
+		"rarity": 0
 	},
 	"duck": {
 		"name": "Duck",
-		"image": "https://cdn.discordapp.com/emojis/573152043125178368.png",
+		"image": "https://cdn.discordapp.com/emojis/920400262911373383.webp?quality=lossless",
 		"description": "This duck is not alive, I think someone shot it. WE'RE EATIN GOOD TONIGHT BOYS",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "duck",
@@ -3078,12 +3056,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1750,
-		"rarity": 0,
-		"emoji": "<:petduck:573152043125178368>"
+		"rarity": 0
 	},
 	"deer": {
 		"name": "Deer",
-		"image": "https://cdn.discordapp.com/emojis/832746231100473384.png",
+		"image": "https://cdn.discordapp.com/emojis/832746231100473384.webp?quality=lossless",
 		"description": "This deer is not alive, I think someone shot it. WHO COULD HAVE DONE A THING TO BAMBI",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "deer",
@@ -3091,12 +3068,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 2000,
-		"rarity": 0,
-		"emoji": "<:deer:832746231100473384>"
+		"rarity": 0
 	},
 	"boar": {
 		"name": "Boar",
-		"image": "https://cdn.discordapp.com/emojis/861584585656762398.png",
+		"image": "https://cdn.discordapp.com/emojis/861584585656762398.webp?quality=lossless",
 		"description": "This boar is not alive, I think someone shot it. hakuna matata...",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "boar",
@@ -3104,12 +3080,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 4000,
-		"rarity": 0,
-		"emoji": "<:Boar:861584585656762398>"
+		"rarity": 0
 	},
 	"dragon": {
 		"name": "Dragon",
-		"image": "https://cdn.discordapp.com/emojis/861390869696741396.png",
+		"image": "https://cdn.discordapp.com/emojis/861390869696741396.webp?quality=lossless",
 		"description": "This dragon is not alive... I hope. I think someone shot it. This is worth a pretty penny!.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less. Unless...",
 		"id": "dragon",
@@ -3118,12 +3093,11 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 30000,
-		"rarity": 1,
-		"emoji": "<:Dragon:861390869696741396>"
+		"rarity": 1
 	},
 	"seaweed": {
 		"name": "Seaweed",
-		"image": "https://cdn.discordapp.com/emojis/887000050201419787.gif",
+		"image": "https://cdn.discordapp.com/emojis/887000050201419787.gif?quality=lossless",
 		"description": "Some slimy seaweed. You can sell it to gain a tiny portion coins.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "seaweed",
@@ -3131,12 +3105,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 250,
-		"rarity": 0,
-		"emoji": "<a:SeaWeed:887000050201419787>"
+		"rarity": 0
 	},
 	"fish": {
 		"name": "Common Fish",
-		"image": "https://cdn.discordapp.com/emojis/714980893999104051.png",
+		"image": "https://cdn.discordapp.com/emojis/714980893999104051.webp?quality=lossless",
 		"description": "This is a pretty common fish. You can sell it to gain a few coins.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "fish",
@@ -3144,12 +3117,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 750,
-		"rarity": 0,
-		"emoji": "<:commonfish:714980893999104051>"
+		"rarity": 0
 	},
 	"rarefish": {
 		"name": "Rare Fish",
-		"image": "https://cdn.discordapp.com/emojis/714980949149876316.png",
+		"image": "https://cdn.discordapp.com/emojis/714980949149876316.webp?quality=lossless",
 		"description": "This is a fairly rare fish. You can sell it to gain a fair amount of coins.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "rarefish",
@@ -3157,12 +3129,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 2500,
-		"rarity": 0,
-		"emoji": "<:rarefish:714980949149876316>"
+		"rarity": 0
 	},
 	"exoticfish": {
 		"name": "Exotic Fish",
-		"image": "https://cdn.discordapp.com/emojis/714981026245378088.png",
+		"image": "https://cdn.discordapp.com/emojis/714981026245378088.webp?quality=lossless",
 		"description": "This is a really rare fish. You can sell it to gain a large sum of coins.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "exoticfish",
@@ -3170,12 +3141,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000,
-		"rarity": 0,
-		"emoji": "<:exoticfish:714981026245378088>"
+		"rarity": 0
 	},
 	"jellyfish": {
 		"name": "Jelly Fish",
-		"image": "https://cdn.discordapp.com/emojis/841405707739463708.png",
+		"image": "https://cdn.discordapp.com/emojis/841405707739463708.webp?quality=lossless",
 		"description": "This is a really neat jellyfish. You can sell it to gain a large sum of coins.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "jellyfish",
@@ -3183,12 +3153,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 8000,
-		"rarity": 0,
-		"emoji": "<:jellyfish:841405707739463708>"
+		"rarity": 0
 	},
 	"legendaryfish": {
 		"name": "Legendary Fish",
-		"image": "https://cdn.discordapp.com/emojis/714981071548186684.png",
+		"image": "https://cdn.discordapp.com/emojis/714981071548186684.webp?quality=lossless",
 		"description": "This is a really REALLY rare fish. You can sell it to gain a massive sum of coins.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
 		"id": "legendaryfish",
@@ -3196,12 +3165,11 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 20000,
-		"rarity": 1,
-		"emoji": "<:legendaryfish:714981071548186684>"
+		"rarity": 1
 	},
 	"kraken": {
 		"name": "Kraken",
-		"image": "https://cdn.discordapp.com/emojis/860228238956429313.png",
+		"image": "https://cdn.discordapp.com/emojis/860228238956429313.webp?quality=lossless",
 		"description": "The king of sea can be sold to fill your pockets.",
 		"longdescription": "This item's purpose is to be collected or sold. Nothing more, nothing less..?",
 		"id": "kraken",
@@ -3210,7 +3178,6 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2,
-		"emoji": "<:Kraken:860228238956429313>"
+		"rarity": 2
 	}
 }
