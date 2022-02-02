@@ -17,7 +17,8 @@
 			"phone",
 			"huntingrifle",
 			"shovel"
-		]
+		],
+		"emoji": "<:NewPlayerPack:873172443529891871>"
 	},
 	"prestigepack": {
 		"id": "prestigepack",
@@ -36,7 +37,8 @@
 			"phone",
 			"huntingrifle",
 			"shovel"
-		]
+		],
+		"emoji": "<:PrestigePack:898709240837976064>"
 	},
 	"antirobpack": {
 		"id": "antirobpack",
@@ -54,7 +56,8 @@
 			"banknote",
 			"sand",
 			"landmine"
-		]
+		],
+		"emoji": "<:AntiRobPack:873172443462791200>"
 	},
 	"grindpack": {
 		"id": "grindpack",
@@ -72,7 +75,8 @@
 			"lifesaver",
 			"spinner",
 			"tidepod"
-		]
+		],
+		"emoji": "<:GrindPack:873172443685064744>"
 	},
 	"patreonpack": {
 		"id": "patreonpack",
@@ -88,7 +92,8 @@
 			"streakfreeze",
 			"coupon",
 			"adventureticket"
-		]
+		],
+		"emoji": "<:PatreonPack:921546973218218064>"
 	},
 	"phone": {
 		"name": "Cell Phone",
@@ -101,7 +106,8 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": true,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:phone:830509316632346625>"
 	},
 	"padlock": {
 		"name": "Padlock",
@@ -113,7 +119,8 @@
 		"cost": 5000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:padlock:830509316900651059>"
 	},
 	"laptop": {
 		"name": "Laptop",
@@ -125,7 +132,8 @@
 		"cost": 5000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:laptop:830509316674813974>"
 	},
 	"sand": {
 		"name": "Box of Sand",
@@ -139,7 +147,8 @@
 		"activecheck": false,
 		"showInShop": true,
 		"effects": "There's a chance the sand will blow back into your face, and you won't be able to steal from the person you mentioned.",
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:sand:830509316901175366>"
 	},
 	"apple": {
 		"name": "Apple",
@@ -151,7 +160,8 @@
 		"cost": 7500,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Apple:887000049266069575>"
 	},
 	"landmine": {
 		"name": "Landmine",
@@ -163,7 +173,8 @@
 		"cost": 10000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Landmine:887000049354145792>"
 	},
 	"fakeid": {
 		"name": "Fake ID",
@@ -175,7 +186,8 @@
 		"cost": 10000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:fakeid:573151946911776798>"
 	},
 	"alcohol": {
 		"name": "Alcohol",
@@ -188,7 +200,8 @@
 		"consumable": true,
 		"showInShop": true,
 		"effects": "There's a 10% chance you'll die from alcohol poisoning (meaning you'll lose all of your coins). You're also more prone to losing coins and being stolen from.",
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Alcohol:887000049555501127>"
 	},
 	"shovel": {
 		"name": "Shovel",
@@ -200,7 +213,8 @@
 		"cost": 25000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:IronShovel:868263822035669002>"
 	},
 	"fishingpole": {
 		"name": "Fishing Pole",
@@ -212,7 +226,8 @@
 		"cost": 25000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:LowFishingPole:868519722759630858>"
 	},
 	"huntingrifle": {
 		"name": "Hunting Rifle",
@@ -224,7 +239,8 @@
 		"cost": 25000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:LowRifle:868286178070261760>"
 	},
 	"coinbomb": {
 		"name": "Coin Bomb",
@@ -236,7 +252,8 @@
 		"cost": 30000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:coinbomb:688456543372312594>"
 	},
 	"horseshoe": {
 		"name": "Lucky Horseshoe",
@@ -248,7 +265,8 @@
 		"cost": 50000,
 		"consumable": true,
 		"showInShop": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:horseshoe:813911522975678476>"
 	},
 	"spinner": {
 		"name": "Fidget Spinner",
@@ -260,7 +278,8 @@
 		"cost": 50000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<a:FidgetSpinner:873970101479686194>"
 	},
 	"lifesaver": {
 		"name": "Life Saver",
@@ -272,7 +291,8 @@
 		"cost": 50000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<a:LifeSaver:935147848977219635>"
 	},
 	"tidepod": {
 		"name": "Tidepod",
@@ -285,7 +305,8 @@
 		"consumable": true,
 		"showInShop": true,
 		"effects": "There's a high chance you'll injure yourself from the tidepod and die (meaning you lose all coins).",
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Tidepod:887000049740030032>"
 	},
 	"wishlist": {
 		"name": "Robbers Wishlist",
@@ -298,7 +319,8 @@
 		"consumable": true,
 		"showInShop": true,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:wishlist:723641465615548447>"
 	},
 	"pepe": {
 		"name": "Rare Pepe",
@@ -310,7 +332,8 @@
 		"cost": 50000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:RarePepe:936007340736536626>"
 	},
 	"cheese": {
 		"name": "Shredded Cheese",
@@ -329,7 +352,8 @@
 			"MAX_CHEESE_ATE": 30,
 			"MAX_MULTIPLIER": 85
 		},
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:shreddedcheese:830509316933943307>"
 	},
 	"pizza": {
 		"name": "Pizza Slice",
@@ -341,7 +365,8 @@
 		"cost": 250000,
 		"showInShop": true,
 		"consumable": true,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:pizza:788070334640422942>"
 	},
 	"ring": {
 		"name": "Engagement Ring",
@@ -355,7 +380,8 @@
 		"consumable": false,
 		"usable": true,
 		"notSharable": true,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:Ring:862369027984064552>"
 	},
 	"pepecoin": {
 		"name": "Pepe Coin",
@@ -367,7 +393,8 @@
 		"cost": 500000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:pepecoin:718138332982280272>"
 	},
 	"pepemedal": {
 		"name": "Pepe Medal",
@@ -383,7 +410,8 @@
 			"pepecoin": 13,
 			"ducttape": 1
 		},
-		"rarity": 3
+		"rarity": 3,
+		"emoji": "<a:pepemedal:716848179022397462>"
 	},
 	"pepetrophy": {
 		"name": "Pepe Trophy",
@@ -396,7 +424,8 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": false,
-		"rarity": 4
+		"rarity": 4,
+		"emoji": "<a:pepetrophy:718136428219072662>"
 	},
 	"pepecrown": {
 		"name": "Pepe Crown",
@@ -409,7 +438,8 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": true,
-		"rarity": 5
+		"rarity": 5,
+		"emoji": "<:pepecrown:834862725120917544>"
 	},
 	"fartinabottle": {
 		"id": "fartinabottle",
@@ -451,7 +481,8 @@
 				"specialCost": 125000,
 				"limit": 3
 			}
-		]
+		],
+		"emoji": "<:FartInABottle:860285654009511936>"
 	},
 	"peperibbon": {
 		"id": "peperibbon",
@@ -490,7 +521,8 @@
 				"specialCost": 12000000,
 				"limit": 1
 			}
-		]
+		],
+		"emoji": "<:PepeRibbon:890646381482614824>"
 	},
 	"sugarskull": {
 		"id": "sugarskull",
@@ -548,7 +580,8 @@
 				"specialCost": 500000,
 				"limit": 1
 			}
-		]
+		],
+		"emoji": "<:SugarSkull:894597638161326091>"
 	},
 	"pepesus": {
 		"name": "Pepe Sus",
@@ -578,7 +611,8 @@
 				"specialCost": 25000000,
 				"limit": 1
 			}
-		]
+		],
+		"emoji": "<:peperibbonsus:890646381189009438>"
 	},
 	"toiletpaper": {
 		"name": "Toilet Paper",
@@ -626,7 +660,8 @@
 				"specialCost": 30000000,
 				"limit": 6
 			}
-		]
+		],
+		"emoji": "<:ToiletPaper:928399081112469544>"
 	},
 	"stocking": {
 		"name": "Holiday Stocking",
@@ -700,7 +735,8 @@
 				"specialCost": 100000,
 				"limit": 1
 			}
-		]
+		],
+		"emoji": "<:Stocking:920812196567597067>"
 	},
 	"enchantedbad": {
 		"name": "Enchanted Badosz's Card",
@@ -723,7 +759,8 @@
 				"specialCost": 69696969,
 				"limit": 1
 			}
-		]
+		],
+		"emoji": "<a:BadoszCard2:931295850292989973>"
 	},
 	"cursedpepe": {
 		"id": "cursedpepe",
@@ -746,7 +783,8 @@
 				"specialCost": 5000000,
 				"limit": 3
 			}
-		]
+		],
+		"emoji": "<:rarepepe:933194488241864704>"
 	},
 	"boxedchocolates": {
 		"id": "boxedchocolates",
@@ -769,7 +807,8 @@
 				"specialCost": 2000000,
 				"limit": 3
 			}
-		]
+		],
+		"emoji": "<:BoxxoChoccy:936271905357459508>"
 	},
 	"scepter": {
 		"name": "Cxorpy's Scepter",
@@ -781,7 +820,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 25000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<a:Scepter:926573136558850139>"
 	},
 	"letter": {
 		"name": "The Letter",
@@ -793,7 +833,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 25000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<a:Letter:926522932560269413>"
 	},
 	"armpithair": {
 		"name": "Armpit Hair",
@@ -805,7 +846,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 25000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:ArmpitHair:926267869258457139>"
 	},
 	"camera": {
 		"name": "Camera",
@@ -817,7 +859,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Camera:903730591294439496>"
 	},
 	"microphone": {
 		"name": "Microphone",
@@ -829,7 +872,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Microphone:903784794398294036>"
 	},
 	"mouse": {
 		"name": "Mouse",
@@ -841,7 +885,8 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Mouse:904821818425241600>"
 	},
 	"keyboard": {
 		"name": "Keyboard",
@@ -853,7 +898,8 @@
 		"consumable": false,
 		"showInShop": true,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Keyboard:904821868312268850>"
 	},
 	"soundcard": {
 		"name": "Sound Card",
@@ -865,7 +911,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:SoundCard:905572838847684648>"
 	},
 	"ringlight": {
 		"name": "Ring Light",
@@ -877,7 +924,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:RingLight:905501619523829780>"
 	},
 	"greenscreen": {
 		"name": "Green Screen",
@@ -889,7 +937,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:GreenScreen:904821937807716352>"
 	},
 	"headphones": {
 		"name": "Headphones",
@@ -901,7 +950,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Headphones:904886213087989761>"
 	},
 	"creditcard": {
 		"name": "Credit Card",
@@ -913,7 +963,8 @@
 		"type": "Power-up",
 		"cost": 2000000,
 		"consumable": true,
-		"showInShop": false
+		"showInShop": false,
+		"emoji": "<:CreditCard:892546328406663168>"
 	},
 	"streakfreeze": {
 		"name": "Streak Freeze",
@@ -925,7 +976,8 @@
 		"type": "Power-up",
 		"cost": 2000000,
 		"consumable": true,
-		"showInShop": false
+		"showInShop": false,
+		"emoji": "<:StreakFreeze:921501533273751682>"
 	},
 	"ducttape": {
 		"name": "Duct Tape",
@@ -937,7 +989,8 @@
 		"type": "Tool",
 		"cost": 900000,
 		"consumable": false,
-		"showInShop": true
+		"showInShop": true,
+		"emoji": "<:DuctTape:903663686017749013>"
 	},
 	"goldencorndog": {
 		"name": "Golden Corndog",
@@ -953,7 +1006,8 @@
 			"pepecoin": 1
 		},
 		"consumable": false,
-		"showInShop": false
+		"showInShop": false,
+		"emoji": "<:goldencorndog:841405708007505930>"
 	},
 	"prestigecoin": {
 		"name": "Prestige Coin",
@@ -965,7 +1019,8 @@
 		"cost": 1000000,
 		"consumable": true,
 		"showInShop": false,
-		"notSharable": false
+		"notSharable": false,
+		"emoji": "<:PrestigeCoin:899772669262700615>"
 	},
 	"aetheryxflower": {
 		"name": "Aetheryx' Flower",
@@ -976,7 +1031,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000000,
-		"rarity": 3
+		"rarity": 3,
+		"emoji": "<:WiltedFlower:936688654531825764>"
 	},
 	"karen": {
 		"name": "Literally Karen",
@@ -987,7 +1043,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 100000000,
-		"rarity": 5
+		"rarity": 5,
+		"emoji": "<:Karen:860196324762452028>"
 	},
 	"melmsiebeard": {
 		"name": "Melmsie's Beard",
@@ -998,7 +1055,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000000,
-		"rarity": 3
+		"rarity": 3,
+		"emoji": "<:MelsBeard:934601991097819216>"
 	},
 	"beanmp3": {
 		"name": "Bean Mp3 Player",
@@ -1016,7 +1074,8 @@
 			"headphones": 1,
 			"ducttape": 1
 		},
-		"rarity": 4
+		"rarity": 4,
+		"emoji": "<:BeanPlayer:922652278308093952>"
 	},
 	"badoszcard": {
 		"name": "Badosz's Card",
@@ -1026,8 +1085,9 @@
 		"type": "Collectable",
 		"consumable": false,
 		"showInShop": false,
-		"cost": 5000000,
-		"rarity": 3
+		"cost": 1000000,
+		"rarity": 3,
+		"emoji": "<a:King:869294028385038354>"
 	},
 	"bunnysapron": {
 		"name": "Bunny's Apron",
@@ -1038,7 +1098,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1000000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:BunnysApron:928417989357891675>"
 	},
 	"bluesplane": {
 		"name": "Blue's Plane",
@@ -1049,7 +1110,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1000000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:BluesPlane:931691006754189342>"
 	},
 	"yengpaw": {
 		"name": "Yeng Gang",
@@ -1060,7 +1122,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1000000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:YengsPaw:927305405988753468>"
 	},
 	"lotterywinner": {
 		"name": "Winning Lottery Ticket",
@@ -1072,7 +1135,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000000,
-		"rarity": 3
+		"rarity": 3,
+		"emoji": "<:winninglotteryticket:828630267983298580>"
 	},
 	"cutters": {
 		"name": "Bolt Cutters",
@@ -1084,7 +1148,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 100000000,
-		"rarity": 5
+		"rarity": 5,
+		"emoji": "<:cutters:831023529255632898>"
 	},
 	"reversal": {
 		"name": "Reversal Card",
@@ -1096,7 +1161,8 @@
 		"cost": 1000000,
 		"consumable": false,
 		"showInShop": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:reversal:573150370579087360>"
 	},
 	"eye": {
 		"name": "Odd Eye",
@@ -1107,7 +1173,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 100000000,
-		"rarity": 5
+		"rarity": 5,
+		"emoji": "<a:eye:787964747848089642>"
 	},
 	"chillpill": {
 		"name": "Chill Pill",
@@ -1119,7 +1186,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:chillpill:716825781908537395>"
 	},
 	"banknote": {
 		"name": "Bank Note",
@@ -1128,10 +1196,11 @@
 		"longdescription": "You can either use this note to expand your bank space by 10000-100000 or sell it for some coins. Your choice really. Expanded bank space does not reset on prestige (regular bank space earned via running commands does)",
 		"id": "banknote",
 		"type": "Power-up",
-		"cost": 300000,
+		"cost": 325000,
 		"consumable": true,
 		"showInShop": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:banknote:830509316888985621>"
 	},
 	"pinkphallicobject": {
 		"name": "Pink Phallic Object",
@@ -1143,7 +1212,8 @@
 		"cost": 12,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:pinkphallicobject:834192945019617280>"
 	},
 	"bluephallicobject": {
 		"name": "Blue Phallic Object",
@@ -1156,7 +1226,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:bluephallicobjectt:834192945124474983>"
 	},
 	"purplephallicobject": {
 		"name": "Purple Phallic Object",
@@ -1169,7 +1240,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:purplephallicobject:834192945334452244>"
 	},
 	"orangephallicobject": {
 		"name": "Orange Phallic Object",
@@ -1182,7 +1254,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:orangephallicobject:834192945132601426>"
 	},
 	"goldenphallicobject": {
 		"name": "Golden Phallic Object",
@@ -1195,7 +1268,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:goldenphallicobject:834192944956702746>"
 	},
 	"multiphallicobject": {
 		"name": "Multi Colored Phallic Object",
@@ -1217,7 +1291,8 @@
 			"goldenphallicobject": 3,
 			"ducttape": 1
 		},
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:multicoloredphallicobject:841123648911966219>"
 	},
 	"pepestatue": {
 		"name": "Pepe Statue",
@@ -1229,7 +1304,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:pepestatue:834978069629894663>"
 	},
 	"urinal": {
 		"name": "School Urinal",
@@ -1241,7 +1317,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:Urinal:889266191808471114>"
 	},
 	"snowflake": {
 		"name": "Snowflake",
@@ -1253,7 +1330,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Snowflake:920796800774991932>"
 	},
 	"ornament": {
 		"name": "Ornament",
@@ -1265,7 +1343,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Ornament:921193342501539891>"
 	},
 	"candycane": {
 		"name": "Candy Cane",
@@ -1277,7 +1356,8 @@
 		"showInShop": false,
 		"consumable": true,
 		"usable": true,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:CandyCane:920796779405000714>"
 	},
 	"tree": {
 		"name": "Literally a Tree",
@@ -1289,7 +1369,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:ChristmasTree:923005301421113344>"
 	},
 	"christmastree": {
 		"name": "Christmas Tree",
@@ -1301,7 +1382,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": false,
-		"rarity": 3
+		"rarity": 3,
+		"emoji": "<:ChristmasTreeDeco:923011690126254170>"
 	},
 	"berriesandcream": {
 		"name": "Berries and Cream",
@@ -1313,7 +1395,8 @@
 		"cost": 5000000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 3
+		"rarity": 3,
+		"emoji": "<:BerriesAndCream:890365752534761472>"
 	},
 	"fool": {
 		"name": "Fool's Notif",
@@ -1325,7 +1408,8 @@
 		"cost": 25000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:fool:826974895295692840>"
 	},
 	"snowball": {
 		"name": "Snowball",
@@ -1337,7 +1421,8 @@
 		"cost": 25000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:snowball:573150143524765699>"
 	},
 	"santashat": {
 		"name": "Santa's Hat",
@@ -1349,7 +1434,8 @@
 		"cost": 25000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:SantasHat:921546940032880660>"
 	},
 	"gift": {
 		"name": "Friend's Gift",
@@ -1361,7 +1447,8 @@
 		"cost": 1000000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:present:784505770603184148>"
 	},
 	"jacky": {
 		"name": "Jacky o' Lanty",
@@ -1373,7 +1460,8 @@
 		"cost": 5000000,
 		"showInShop": false,
 		"consumable": true,
-		"rarity": 3
+		"rarity": 3,
+		"emoji": "<:jacky:758662115841802271>"
 	},
 	"candy": {
 		"name": "Candy",
@@ -1385,7 +1473,8 @@
 		"cost": 25000,
 		"consumable": true,
 		"showInShop": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:dankCandy:792397132828114965>"
 	},
 	"blob": {
 		"name": "Blob",
@@ -1396,7 +1485,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 50000000,
-		"rarity": 4
+		"rarity": 4,
+		"emoji": "<a:blob:933188762782011454>"
 	},
 	"cupidsbigtoe": {
 		"name": "Cupid's Big Toe",
@@ -1408,7 +1498,8 @@
 		"consumable": true,
 		"showInShop": false,
 		"cost": 25000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:cupidsbigtoe:718136880163586169>"
 	},
 	"meteorite": {
 		"name": "Meteorite",
@@ -1420,7 +1511,8 @@
 		"showInShop": false,
 		"consumable": false,
 		"usable": true,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:Meteorite:932047375579643944>"
 	},
 	"jarofsingularity": {
 		"name": "Jar Of Singularity",
@@ -1431,7 +1523,8 @@
 		"cost": 500000,
 		"showInShop": false,
 		"consumable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:JarOfSingularity:932759942081941515>"
 	},
 	"blackhole": {
 		"name": "Black Hole",
@@ -1443,7 +1536,8 @@
 		"cost": 500000,
 		"showInShop": false,
 		"consumable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:BlackHole:932395505382744106>"
 	},
 	"aliensample": {
 		"name": "Alien Sample",
@@ -1454,7 +1548,8 @@
 		"cost": 500000,
 		"showInShop": false,
 		"consumable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:AlienSample:933475704434196540>"
 	},
 	"adventureticket": {
 		"name": "Adventure Ticket",
@@ -1463,10 +1558,11 @@
 		"longdescription": "Can be found in limited stock in the shop, from voting, or from being a patron!",
 		"id": "adventureticket",
 		"type": "Collectable",
-		"cost": 100000,
+		"cost": 200000,
 		"showInShop": true,
 		"consumable": false,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:AdventureTicket:934112100970807336>"
 	},
 	"empoweredfartbottle": {
 		"id": "empoweredfartbottle",
@@ -1474,11 +1570,12 @@
 		"image": "https://cdn.discordapp.com/emojis/924808588420059207.gif?quality=lossless",
 		"type": "Tool",
 		"description": "A really POWERFULLY stinky bottle. You should NOT sniff it!",
-		"cost": 500000,
+		"cost": 100000000,
 		"showInShop": false,
 		"usable": true,
 		"consumable": true,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:EmpoweredFartBottle:924808588420059207>"
 	},
 	"starfragment": {
 		"id": "starfragment",
@@ -1493,7 +1590,8 @@
 		"rarity": 2,
 		"components": {
 			"shootingstar": 2
-		}
+		},
+		"emoji": "<:StarFragment:923291410323603457>"
 	},
 	"shootingstar": {
 		"id": "shootingstar",
@@ -1505,7 +1603,8 @@
 		"showInShop": false,
 		"usable": true,
 		"consumable": true,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:ShootingStar:923291410130686022>"
 	},
 	"giftbox": {
 		"id": "giftbox",
@@ -1631,7 +1730,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<:present:784505770603184148>"
 	},
 	"daily": {
 		"id": "daily",
@@ -1781,7 +1881,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<a:DailyBoxClosed:861390900219478037>"
 	},
 	"weddinggift": {
 		"id": "weddinggift",
@@ -1849,7 +1950,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<:WeddingGift:877566903516790855>"
 	},
 	"normie": {
 		"id": "normie",
@@ -1943,7 +2045,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<a:NormieBoxClosed:861390901405679626>"
 	},
 	"meme": {
 		"id": "meme",
@@ -2070,7 +2173,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<a:MemeBoxClosed:861390901300953118>"
 	},
 	"dank": {
 		"id": "dank",
@@ -2215,7 +2319,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<a:DankBoxClosed:861390901049425950>"
 	},
 	"god": {
 		"id": "god",
@@ -2349,7 +2454,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<a:GodBoxClosed:861390900688977950>"
 	},
 	"patreon": {
 		"id": "patreon",
@@ -2434,7 +2540,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<a:PatreonBoxClosed:892171107845677066>"
 	},
 	"poster": {
 		"name": "Motivational Poster",
@@ -2446,7 +2553,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:poster:834080273964072995>"
 	},
 	"ectoplasm": {
 		"name": "Ectoplasm",
@@ -2458,7 +2566,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:ectoplasm:834080273889099796>"
 	},
 	"diaper": {
 		"name": "Used Diaper",
@@ -2470,7 +2579,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:diaper:834080273947295764>"
 	},
 	"likebutton": {
 		"name": "Like Button",
@@ -2482,7 +2592,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:likebutton:834080273922523196>"
 	},
 	"taco": {
 		"name": "Crunchy Taco",
@@ -2494,7 +2605,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:taco:834128399551299624>"
 	},
 	"tipjar": {
 		"name": "Tip Jar",
@@ -2506,7 +2618,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:tipjar:834080273926717471>"
 	},
 	"aplus": {
 		"name": "A plus",
@@ -2518,7 +2631,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:aplus:834080273930387486>"
 	},
 	"policebadge": {
 		"name": "Police Badge",
@@ -2530,7 +2644,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:policebadge:834080273918197810>"
 	},
 	"binary": {
 		"name": "Binary",
@@ -2542,7 +2657,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:Binary:910648334212026498>"
 	},
 	"cash": {
 		"name": "Stack of Cash",
@@ -2554,7 +2670,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:StackOfCash:862774540895125584>"
 	},
 	"beaker": {
 		"name": "Beaker of sus fluid",
@@ -2566,7 +2683,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:beaker:834080273918197811>"
 	},
 	"santasbag": {
 		"name": "Santa's Bag",
@@ -2668,7 +2786,8 @@
 					]
 				}
 			]
-		}
+		},
+		"emoji": "<:SantasBag:862415055622635560>"
 	},
 	"ammo": {
 		"name": "Ammo",
@@ -2680,7 +2799,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:bullet:834080273964073035>"
 	},
 	"bait": {
 		"name": "Fishing Bait",
@@ -2692,7 +2812,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:bait:834080273951883305>"
 	},
 	"collar": {
 		"name": "Pet Collar",
@@ -2704,7 +2825,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:PetCollar:936381028396847195>"
 	},
 	"banhammer": {
 		"name": "Ban Hammer",
@@ -2716,7 +2838,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:banhammer:834080273942577242>"
 	},
 	"vaccine": {
 		"name": "Vaccine",
@@ -2728,7 +2851,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:vaccine:834080273981243412>"
 	},
 	"stonkmachine": {
 		"name": "Stonk Machine",
@@ -2740,7 +2864,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:stonksmachine:834080273796694057>"
 	},
 	"memepills": {
 		"name": "Meme pills",
@@ -2752,7 +2877,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:memepills:834080273804689409>"
 	},
 	"energydrink": {
 		"name": "Energy Drink",
@@ -2764,7 +2890,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:energydrink:834080273909284924>"
 	},
 	"whiskey": {
 		"name": "Bottle of Whiskey",
@@ -2776,7 +2903,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:whiskey:834080273922523197>"
 	},
 	"robbersmask": {
 		"name": "Robbers Mask",
@@ -2788,7 +2916,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:robbersmask:834080273889099797>"
 	},
 	"baby": {
 		"name": "Baby",
@@ -2800,7 +2929,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:Baby:937502609550503936>"
 	},
 	"lawdegree": {
 		"name": "Law Degree",
@@ -2812,7 +2942,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:lawdegree:834080273963548733>"
 	},
 	"coupon": {
 		"name": "Shop Coupon",
@@ -2824,7 +2955,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<:coupon:834080273892114482>"
 	},
 	"note": {
 		"name": "Musical Note",
@@ -2836,7 +2968,8 @@
 		"showInShop": false,
 		"usable": false,
 		"cost": 100000,
-		"rarity": 2
+		"rarity": 2,
+		"emoji": "<a:Note:910673407761317928>"
 	},
 	"trash": {
 		"name": "Trash",
@@ -2849,7 +2982,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:trash:834091084346949652>"
 	},
 	"garbage": {
 		"name": "Garbage",
@@ -2862,7 +2996,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Garbage:935631382590394398>"
 	},
 	"junk": {
 		"name": "Junk",
@@ -2875,7 +3010,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:junk:834091084359139378>"
 	},
 	"cookie": {
 		"name": "Cookie",
@@ -2888,7 +3024,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:cookie:573152241289003036>"
 	},
 	"bread": {
 		"name": "Fresh Bread",
@@ -2899,7 +3036,8 @@
 		"cost": 500,
 		"consumable": true,
 		"showInShop": false,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:bread:716848527149629490>"
 	},
 	"potato": {
 		"name": "Potato ☭",
@@ -2911,7 +3049,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:potato:834080273913872384>"
 	},
 	"bean": {
 		"name": "Bean",
@@ -2923,7 +3062,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Bean:905951197821800500>"
 	},
 	"corncob": {
 		"name": "Corncob",
@@ -2935,7 +3075,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:corn:834080273942839326>"
 	},
 	"corndog": {
 		"name": "Corndog",
@@ -2947,7 +3088,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": false,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:corndog:834080273796694056>"
 	},
 	"worm": {
 		"name": "Worm",
@@ -2959,7 +3101,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 500,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Worm:864261394920898600>"
 	},
 	"ant": {
 		"name": "Ant",
@@ -2971,7 +3114,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Ant:864220608865763378>"
 	},
 	"stickbug": {
 		"name": "Stickbug",
@@ -2983,7 +3127,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 2000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<a:StickBug:864568819795755038>"
 	},
 	"ladybug": {
 		"name": "Ladybug",
@@ -2995,7 +3140,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 3000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Ladybug:863198415822389268>"
 	},
 	"spider": {
 		"name": "Spider",
@@ -3007,7 +3153,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Spider:864261394944884746>"
 	},
 	"fossil": {
 		"name": "Fossil",
@@ -3020,7 +3167,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 7500,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Fossil:921790077393338378>"
 	},
 	"skunk": {
 		"name": "Skunk",
@@ -3032,7 +3180,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1250,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Skunk:861390875992522792>"
 	},
 	"rabbit": {
 		"name": "Rabbit",
@@ -3044,7 +3193,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1500,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Bunny:860665246875254784>"
 	},
 	"duck": {
 		"name": "Duck",
@@ -3056,7 +3206,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 1750,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Duck:920400262911373383>"
 	},
 	"deer": {
 		"name": "Deer",
@@ -3068,7 +3219,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 2000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:deer:832746231100473384>"
 	},
 	"boar": {
 		"name": "Boar",
@@ -3080,7 +3232,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 4000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:Boar:861584585656762398>"
 	},
 	"dragon": {
 		"name": "Dragon",
@@ -3093,7 +3246,8 @@
 		"showInShop": false,
 		"usable": true,
 		"cost": 30000,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:Dragon:861390869696741396>"
 	},
 	"seaweed": {
 		"name": "Seaweed",
@@ -3105,7 +3259,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 250,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<a:SeaWeed:887000050201419787>"
 	},
 	"fish": {
 		"name": "Common Fish",
@@ -3117,7 +3272,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 750,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:commonfish:714980893999104051>"
 	},
 	"rarefish": {
 		"name": "Rare Fish",
@@ -3129,7 +3285,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 2500,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:rarefish:714980949149876316>"
 	},
 	"exoticfish": {
 		"name": "Exotic Fish",
@@ -3141,7 +3298,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 5000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:exoticfish:714981026245378088>"
 	},
 	"jellyfish": {
 		"name": "Jelly Fish",
@@ -3153,7 +3311,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 8000,
-		"rarity": 0
+		"rarity": 0,
+		"emoji": "<:jellyfish:841405707739463708>"
 	},
 	"legendaryfish": {
 		"name": "Legendary Fish",
@@ -3165,7 +3324,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"cost": 20000,
-		"rarity": 1
+		"rarity": 1,
+		"emoji": "<:legendaryfish:714981071548186684>"
 	},
 	"kraken": {
 		"name": "Kraken",
@@ -3177,7 +3337,8 @@
 		"consumable": false,
 		"showInShop": false,
 		"usable": true,
-		"cost": 100000,
-		"rarity": 2
+		"cost": 75000,
+		"rarity": 2,
+		"emoji": "<:Kraken:860228238956429313>"
 	}
 }
