@@ -34,7 +34,11 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			}
 		);
 
-		if (data.scope !== OAuthScope) {
+		const receivedScopes = data.scope.split(" ");
+		if (
+			!receivedScopes.includes("identify") &&
+			!receivedScopes.includes("email")
+		) {
 			return res
 				.status(403)
 				.send(
