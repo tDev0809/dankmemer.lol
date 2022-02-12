@@ -55,6 +55,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			? process.env.REPORTS_SERVER_WEBHOOK!
 			: process.env.REPORTS_USER_WEBHOOK!,
 		{
+			content: req.body.id,
 			embeds: [
 				{
 					title: `Reporting a ${req.body.type}`,

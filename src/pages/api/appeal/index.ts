@@ -54,6 +54,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			? process.env.APPEALS_SUPPORT_WEBHOOK!
 			: process.env.APPEALS_USER_WEBHOOK!,
 		{
+			content: user.id,
 			embeds: [
 				{
 					title: `Appealing a ${req.body.type}`,
