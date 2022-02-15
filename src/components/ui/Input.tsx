@@ -40,7 +40,7 @@ export default function Input({
 			className={clsx(
 				"bg-light-200 dark:bg-dank-600",
 				"text-black dark:text-light-300",
-				"placeholder-gray-500",
+				"placeholder-neutral-500",
 				"p-3 outline-none text-sm rounded-md",
 				scrollable ? "overflow-auto" : "overflow-hidden",
 				!resizable && "resize-none",
