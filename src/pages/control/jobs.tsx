@@ -6,25 +6,19 @@ import { toast } from "react-toastify";
 import Button from "src/components/ui/Button";
 import Dropdown from "src/components/ui/Dropdown";
 import Input from "src/components/ui/Input";
+import { JOBS_TEAMS } from "src/constants/jobs";
 import Container from "../../components/ui/Container";
 import GoBack from "../../components/ui/GoBack";
 import { PageProps } from "../../types";
 import { developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
-const dropdownOptions = [
-	"Engineering",
-	"Quality assurance",
-	"Administrative",
-	"Art",
-	"Uncategorized",
-];
-
 export default function ControlJobsPage({ user }: PageProps) {
 	const [jobTitle, setJobTitle] = useState("");
 	const [selectedTeam, setSelectedTeam] = useState("");
 	const [jobLocation, setJobLocation] = useState("");
 	const [jobDescription, setJobDescription] = useState("");
+	const [jobBody, setJobBody] = useState("");
 
 	const submitJob = async () => {
 		try {
@@ -36,6 +30,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 					team: selectedTeam,
 					location: jobLocation,
 					description: jobDescription,
+					body: jobBody,
 				},
 			});
 		} catch (e) {
@@ -100,14 +95,12 @@ export default function ControlJobsPage({ user }: PageProps) {
 												</div>
 											</div>
 										}
-										options={dropdownOptions.map(
-											(option) => ({
-												onClick: (e) => {
-													setSelectedTeam(option);
-												},
-												label: option,
-											})
-										)}
+										options={JOBS_TEAMS.map((option) => ({
+											onClick: (e) => {
+												setSelectedTeam(option);
+											},
+											label: option,
+										}))}
 									/>
 								</div>
 								<div className="ml-3">
@@ -130,7 +123,18 @@ export default function ControlJobsPage({ user }: PageProps) {
 										setJobDescription(e.target.value)
 									}
 									variant="medium"
-									placeholder="This is the job description. Describe who the role is for, their desired past experience and any required skills they should have. Markdown can be used here (and should be used for titles and lists on the job page)"
+									placeholder="A short description for the job, this is only shown on the jobs page not the job page itself."
+									resizable
+									block
+								/>
+							</div>
+							<div className="mt-8 mb-4">
+								<Input
+									label="Job Body"
+									value={jobBody}
+									onChange={(e) => setJobBody(e.target.value)}
+									variant="medium"
+									placeholder="This is the job body. Describe who the role is for, their desired past experience and any required skills they should have. Markdown can be used here (and should be used for titles and lists on the job page)"
 									resizable
 									block
 								/>
