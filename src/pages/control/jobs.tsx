@@ -1,3 +1,4 @@
+import axios from "axios";
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useState } from "react";
@@ -12,32 +13,38 @@ import { developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 const dropdownOptions = [
-	{
-		text: "Engineering",
-		value: "eng",
-	},
-	{
-		text: "Quality assurance",
-		value: "qa",
-	},
-	{
-		text: "Administrative",
-		value: "admin",
-	},
-	{
-		text: "Art",
-		value: "art",
-	},
-	{
-		text: "Uncategorized",
-		value: "other",
-	},
+	"Engineering",
+	"Quality assurance",
+	"Administrative",
+	"Art",
+	"Uncategorized",
 ];
 
 export default function ControlJobsPage({ user }: PageProps) {
 	const [jobTitle, setJobTitle] = useState("");
-	const [selectedTeam, setSelectedTeam] = useState({ text: "", value: "" });
+	const [selectedTeam, setSelectedTeam] = useState("");
+	const [jobLocation, setJobLocation] = useState("");
 	const [jobDescription, setJobDescription] = useState("");
+
+	const submitJob = async () => {
+		try {
+			await axios({
+				method: "POST",
+				url: "/api/jobs/create",
+				data: {
+					title: jobTitle,
+					team: selectedTeam,
+					location: jobLocation,
+					description: jobDescription,
+				},
+			});
+		} catch (e) {
+			console.error(e);
+			toast.error(
+				"Error while posting job, check console for more information."
+			);
+		}
+	};
 
 	return (
 		<Container title="Control" user={user}>
@@ -77,13 +84,13 @@ export default function ControlJobsPage({ user }: PageProps) {
 													<div
 														className={clsx(
 															"text-dark-400 dark:text-gray-500 min-w-[180px] text-sm",
-															selectedTeam.text
-																.length
+															selectedTeam.length >
+																1
 																? "dark:!text-neutral-300"
 																: ""
 														)}
 													>
-														{selectedTeam.text ||
+														{selectedTeam ||
 															"Respective team for job"}
 													</div>
 												</div>
@@ -98,7 +105,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 												onClick: (e) => {
 													setSelectedTeam(option);
 												},
-												label: option.text,
+												label: option,
 											})
 										)}
 									/>
@@ -108,9 +115,9 @@ export default function ControlJobsPage({ user }: PageProps) {
 										label="Job location(s)"
 										placeholder="Global, remote"
 										variant="short"
-										value={jobTitle}
+										value={jobLocation}
 										onChange={(e) =>
-											setJobTitle(e.target.value)
+											setJobLocation(e.target.value)
 										}
 									/>
 								</div>
@@ -128,7 +135,11 @@ export default function ControlJobsPage({ user }: PageProps) {
 									block
 								/>
 							</div>
-							<Button size="medium" className="max-w-max">
+							<Button
+								size="medium"
+								className="max-w-max"
+								onClick={submitJob}
+							>
 								Submit
 							</Button>
 						</div>
