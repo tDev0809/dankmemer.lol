@@ -85,6 +85,11 @@ export default function Footer({}: Props) {
 								</Link>
 							</div>
 							<div className="flex flex-col">
+								<Link href="/jobs">
+									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+										We're Hiring!
+									</span>
+								</Link>
 								<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer select-none flex items-center">
 									<div
 										onClick={() =>
