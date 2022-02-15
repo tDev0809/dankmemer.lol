@@ -41,9 +41,9 @@ export default function Input({
 				"bg-light-200 dark:bg-dank-600",
 				"text-black dark:text-light-300",
 				"placeholder-neutral-500",
-				"p-3 outline-none text-sm rounded-md",
+				"p-3 outline-none text-sm rounded-md min-h-[100px]",
 				scrollable ? "overflow-auto" : "overflow-hidden",
-				!resizable && "resize-none",
+				!resizable && "resize-none min-h-0",
 				block && "w-full",
 				variantClasses[variant]
 			)}

@@ -125,6 +125,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 									variant="medium"
 									placeholder="This is the job description. Describe who the role is for, their desired past experience and any required skills they should have. Markdown can be used here (and should be used for titles and lists on the job page)"
 									resizable
+									block
 								/>
 							</div>
 							<Button size="medium" className="max-w-max">
