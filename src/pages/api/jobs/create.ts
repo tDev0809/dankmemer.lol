@@ -33,6 +33,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			body,
 			createdAt: new Date().getTime(),
 			active: true,
+			applicants: [],
 		};
 		await db.collection("jobs").insertOne(job);
 		return res.status(200).json(job);

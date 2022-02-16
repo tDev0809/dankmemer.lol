@@ -6,7 +6,6 @@ import { NextIronRequest, withSession } from "../../../util/session";
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const db = await dbConnect();
-
 	const user = req.session.get("user");
 
 	if (!user) {
@@ -16,6 +15,19 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const { job, userId, name, email, whyApplicant } = req.body;
 	if (!job || !userId || !name || !email || !whyApplicant) {
 		return res.status(400).json({ error: "Missing body elements." });
+	}
+
+	const dbRecord = await db.collection("jobs").findOne({ _id: job._id });
+	if (!dbRecord) {
+		return res
+			.status(500)
+			.json({ error: "Job listing with provided ID was not found." });
+	}
+
+	if (dbRecord.applicants.includes(userId)) {
+		return res
+			.status(401)
+			.json({ error: "You have already applied for this position." });
 	}
 
 	try {
@@ -49,7 +61,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				headers: { "Content-Type": "application/json" },
 			}
 		);
-		return res.status(200).json(job);
+		await db
+			.collection("jobs")
+			.updateOne({ _id: job._id }, { $push: { applicants: userId } });
+		return res.status(200).json({ message: "Job application submitted." });
 	} catch (e) {
 		return res.status(500).json({ error: e });
 	}
