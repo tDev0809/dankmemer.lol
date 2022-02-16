@@ -2,7 +2,6 @@ import MarkdownIt from "markdown-it";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { Session } from "next-iron-session";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import Button from "src/components/ui/Button";
 import Container from "src/components/ui/Container";
 import GoBack from "src/components/ui/GoBack";
@@ -20,7 +19,7 @@ interface Job {
 	location: string;
 	createdAt: number;
 	active: boolean;
-	applicants: string[];
+	applicants?: string[];
 	alreadyApplied?: boolean;
 }
 
@@ -126,11 +125,12 @@ export const getServerSideProps: GetServerSideProps = withSession(
 				},
 			};
 		} else {
-			if (job.applicants.includes(user.id)) {
+			if (job.applicants?.includes(user.id)) {
 				job.alreadyApplied = true;
 			} else {
 				job.alreadyApplied = false;
 			}
+			delete job.applicants;
 			return {
 				props: { job, user },
 			};
