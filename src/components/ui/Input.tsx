@@ -19,6 +19,7 @@ interface Props {
 	block?: boolean;
 	scrollable?: boolean;
 	label?: string;
+	required?: boolean;
 }
 
 export default function Input({
@@ -31,6 +32,7 @@ export default function Input({
 	label,
 	variant,
 	scrollable,
+	required,
 }: Props) {
 	const Text = variant == "short" ? "input" : "textarea";
 
@@ -54,8 +56,11 @@ export default function Input({
 	);
 
 	return label ? (
-		<div className="flex flex-col space-y-1">
-			<div className="text-sm text-black dark:text-white">{label}</div>
+		<div className="flex flex-col space-y-1 w-full">
+			<div className="text-sm text-black dark:text-white">
+				{label}
+				{required && <sup className="text-red-500">*</sup>}
+			</div>
 			{inp}
 		</div>
 	) : (
