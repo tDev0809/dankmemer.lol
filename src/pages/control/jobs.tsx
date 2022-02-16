@@ -1,6 +1,7 @@
 import axios from "axios";
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Button from "src/components/ui/Button";
@@ -14,6 +15,8 @@ import { developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
 export default function ControlJobsPage({ user }: PageProps) {
+	const router = useRouter();
+
 	const [jobTitle, setJobTitle] = useState("");
 	const [selectedTeam, setSelectedTeam] = useState("");
 	const [jobLocation, setJobLocation] = useState("");
@@ -22,7 +25,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 
 	const submitJob = async () => {
 		try {
-			await axios({
+			const { data: job } = await axios({
 				method: "POST",
 				url: "/api/jobs/create",
 				data: {
@@ -31,6 +34,13 @@ export default function ControlJobsPage({ user }: PageProps) {
 					location: jobLocation,
 					description: jobDescription,
 					body: jobBody,
+				},
+			});
+			toast.success("Job offer has been posted", {
+				theme: "colored",
+				position: "top-center",
+				onClick: () => {
+					router.push(`/jobs/${job._id}`);
 				},
 			});
 		} catch (e) {
