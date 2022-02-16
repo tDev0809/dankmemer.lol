@@ -19,9 +19,17 @@ interface Props {
 	content: ReactNode;
 	options: Array<Option | null>;
 	className?: string;
+	isInput?: boolean;
+	requireScroll?: boolean;
 }
 
-export default function Dropdown({ content, options, className = "" }: Props) {
+export default function Dropdown({
+	content,
+	options,
+	className = "",
+	isInput = false,
+	requireScroll = false,
+}: Props) {
 	const [open, setOpen] = useState(false);
 	const dropdown = useRef<any>(null);
 
@@ -58,7 +66,10 @@ export default function Dropdown({ content, options, className = "" }: Props) {
 		>
 			<div
 				className={clsx(
-					"bg-light-500 dark:bg-dank-500 flex items-center rounded-md"
+					isInput
+						? "bg-light-200 dark:bg-dank-600"
+						: "bg-light-500 dark:bg-dank-500",
+					"flex items-center rounded-md"
 				)}
 				onClick={() => setOpen(!open)}
 			>
@@ -68,7 +79,8 @@ export default function Dropdown({ content, options, className = "" }: Props) {
 				<div className="absolute w-full min-h-full z-50 mt-2">
 					<div
 						className={clsx(
-							"bg-[#18191c] flex flex-col rounded-md space-y-1 p-2"
+							"bg-[#18191c] flex flex-col rounded-md space-y-1 p-2",
+							requireScroll && "max-h-72 overflow-y-auto"
 						)}
 						onClick={() => setOpen(false)}
 					>

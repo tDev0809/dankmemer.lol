@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ChangeEvent, KeyboardEvent } from "react";
+import { ChangeEvent, HTMLInputTypeAttribute, KeyboardEvent } from "react";
 
 const variantClasses = {
 	short: "h-10",
@@ -15,6 +15,7 @@ interface Props {
 	placeholder?: string;
 	value: string;
 	variant: keyof typeof variantClasses;
+	type?: HTMLInputTypeAttribute;
 	resizable?: boolean;
 	block?: boolean;
 	scrollable?: boolean;
@@ -28,11 +29,13 @@ export default function Input({
 	value,
 	placeholder = "",
 	resizable,
+	type,
 	block,
 	label,
 	variant,
 	scrollable,
 	required,
+	...options
 }: Props) {
 	const Text = variant == "short" ? "input" : "textarea";
 
@@ -52,6 +55,8 @@ export default function Input({
 			placeholder={placeholder}
 			value={value}
 			onKeyDown={onKeyDown}
+			type={type}
+			{...options}
 		/>
 	);
 

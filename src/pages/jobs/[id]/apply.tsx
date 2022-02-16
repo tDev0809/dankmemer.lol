@@ -13,6 +13,8 @@ import { PageProps } from "src/types";
 import { dbConnect } from "src/util/mongodb";
 import { withSession } from "src/util/session";
 import { useDropzone } from "react-dropzone";
+import Dropdown from "src/components/ui/Dropdown";
+import { COUNTRIES } from "src/constants/jobs";
 
 interface Job {
 	_id: string;
@@ -43,6 +45,10 @@ export default function JobPage({ user, job }: Props) {
 	const [middleNames, setMiddleNames] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState(user?.email!);
+
+	const [applicantDOB, setApplicantDOB] = useState("");
+	const [applicantCountry, setApplicantCountry] = useState("");
+
 	const [resume, setResume] = useState<string | ArrayBuffer | null>(null);
 
 	const [whyApplicant, setWhyApplicant] = useState("");
@@ -125,7 +131,17 @@ export default function JobPage({ user, job }: Props) {
 								inline: true,
 							},
 							{
-								name: "Preferred Email",
+								name: "Date of birth",
+								value: `${applicantDOB} (YYYY-MM-DD)`,
+								inline: true,
+							},
+							{
+								name: "Primary country of Residence",
+								value: applicantCountry,
+								inline: true,
+							},
+							{
+								name: "Preferred Contact Email",
 								value: email,
 								inline: true,
 							},
@@ -134,7 +150,18 @@ export default function JobPage({ user, job }: Props) {
 				],
 			})
 		);
-		form.append("file", acceptedFiles[0]);
+		form.append(
+			"file",
+			acceptedFiles[0],
+			`${`${firstName} ${middleNames} ${lastName}`.replace(
+				/\s+/g,
+				" "
+			)}'s Resume.${
+				acceptedFiles[0].name.split(".")[
+					acceptedFiles[0].name.split(".").length - 1
+				]
+			}`
+		);
 		await axios({
 			method: "POST",
 			url: process.env.NEXT_PUBLIC_JOBS_WEBHOOK!,
@@ -207,11 +234,75 @@ export default function JobPage({ user, job }: Props) {
 								</div>
 							</div>
 						</div>
+						<div className="flex flex-row space-x-4 mt-5">
+							<div className="w-4/12">
+								<p className="text-sm text-black dark:text-white mb-1">
+									Primary country of residence
+									<sup className="text-red-500">*</sup>
+								</p>
+								<Dropdown
+									content={
+										<div className="flex items-center justify-between w-full p-2">
+											<div className="flex items-center space-x-2">
+												<div
+													className={clsx(
+														"text-dark-400 dark:text-gray-500 min-w-[180px] text-sm",
+														applicantCountry.length >
+															1
+															? "dark:!text-neutral-300"
+															: ""
+													)}
+												>
+													{applicantCountry ||
+														"Name of country"}
+												</div>
+											</div>
+
+											<div className="material-icons text-dark-100 dark:text-gray-500">
+												expand_more
+											</div>
+										</div>
+									}
+									options={COUNTRIES.map((option) => ({
+										onClick: (e) => {
+											setApplicantCountry(option);
+										},
+										label: option,
+									}))}
+									requireScroll
+									isInput
+								/>
+							</div>
+							<div className="w-1/4">
+								<Input
+									variant="short"
+									placeholder="2000-01-01"
+									label="Date of birth"
+									value={applicantDOB}
+									onChange={(e) =>
+										setApplicantDOB(e.target.value)
+									}
+									type="date"
+									max={`${new Date().getFullYear() - 18}-${(
+										new Date().getMonth() + 1
+									).toLocaleString("en-US", {
+										minimumIntegerDigits: 2,
+										useGrouping: false,
+									})}-${new Date()
+										.getDate()
+										.toLocaleString("en-US", {
+											minimumIntegerDigits: 2,
+											useGrouping: false,
+										})}`}
+									required
+								/>
+							</div>
+						</div>
 						<div className="flex flex-row justify-between mt-5 w-1/3">
 							<Input
 								variant="short"
 								placeholder="john@example.com"
-								label="Preferred email address"
+								label="Preferred contact email address"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 								required
