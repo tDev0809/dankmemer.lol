@@ -30,10 +30,6 @@ export default function JobPage({ user, job }: Props) {
 	const router = useRouter();
 	const mdParser = new MarkdownIt();
 
-	useEffect(() => {
-		console.log(router.route);
-	}, []);
-
 	return (
 		<Container title={`Job | ${job?.title}`} user={user}>
 			<div className="my-10">
