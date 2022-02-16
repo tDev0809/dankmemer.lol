@@ -45,6 +45,7 @@ export default function JobPage({ user, job }: Props) {
 	const [middleNames, setMiddleNames] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState(user?.email!);
+	const [socials, setSocials] = useState("");
 
 	const [applicantDOB, setApplicantDOB] = useState("");
 	const [applicantCountry, setApplicantCountry] = useState("");
@@ -63,13 +64,24 @@ export default function JobPage({ user, job }: Props) {
 			whyApplicant.length >= 300 &&
 			whyApplicant.length <=
 				4096 - "**Why are they fit for this position?**\n".length &&
-			acceptedFiles.length === 1
+			acceptedFiles.length === 1 &&
+			applicantCountry !== "" &&
+			applicantDOB !== "" &&
+			(applicantDOB.match(/-/g) || []).length === 3
 		) {
 			setCanSubmit(true);
 		} else {
 			setCanSubmit(false);
 		}
-	}, [firstName, lastName, email, whyApplicant, acceptedFiles]);
+	}, [
+		firstName,
+		lastName,
+		email,
+		whyApplicant,
+		acceptedFiles,
+		applicantCountry,
+		applicantDOB,
+	]);
 
 	useEffect(() => {
 		if (!acceptedFiles[0]) return;
@@ -143,6 +155,11 @@ export default function JobPage({ user, job }: Props) {
 							{
 								name: "Preferred Contact Email",
 								value: email,
+								inline: true,
+							},
+							{
+								name: "Social media profiles",
+								value: `• ${socials.split(", ").join("\n• ")}`,
 								inline: true,
 							},
 						],
@@ -298,17 +315,6 @@ export default function JobPage({ user, job }: Props) {
 								/>
 							</div>
 						</div>
-						<div className="flex flex-row justify-between mt-5 w-1/3">
-							<Input
-								variant="short"
-								placeholder="john@example.com"
-								label="Preferred contact email address"
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								required
-								block
-							/>
-						</div>
 					</div>
 					<div className="flex-1 mt-5">
 						<p className="text-sm text-black dark:text-white mb-1">
@@ -404,7 +410,29 @@ export default function JobPage({ user, job }: Props) {
 						</div>
 					</div>
 				</div>
-
+				<div className="flex flex-row justify-start mt-5 w-full space-x-4">
+					<div className="w-1/5">
+						<Input
+							variant="short"
+							placeholder="john@example.com"
+							label="Preferred contact email address"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+							block
+						/>
+					</div>
+					<div className="w-11/12">
+						<Input
+							variant="short"
+							placeholder="https://twitter.com/dankmemerbot, https://github.com/DankMemer"
+							label='Social media profiles (Separate with ", ")'
+							value={socials}
+							onChange={(e) => setSocials(e.target.value)}
+							block
+						/>
+					</div>
+				</div>
 				<div className="flex flex-row justify-between mt-5 w-full">
 					<Input
 						variant="medium"
