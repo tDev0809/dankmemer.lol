@@ -30,7 +30,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 						fields: [
 							{
 								name: "Applicant",
-								value: `${name} (<@!${userId}>)`,
+								value: `${name.replace(
+									/\s+/g,
+									" "
+								)} (<@!${userId}>)`,
 								inline: true,
 							},
 							{
