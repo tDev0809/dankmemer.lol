@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { JOBS_TEAMS } from "src/constants/jobs";
 import axios from "axios";
+import { Label } from "src/components/community/PostLabel";
 
 interface Job {
 	_id: string;
@@ -33,10 +34,10 @@ export default function Jobs({ user }: PageProps) {
 				setJobs(data);
 			})
 			.catch(() => {});
-	}, []);
+	}, [selectedTeam]);
 
 	return (
-		<Container title="Community" user={user}>
+		<Container title="Jobs" user={user}>
 			<div className="flex flex-col my-16 space-y-12">
 				<div className="flex flex-col space-y-4">
 					<div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
@@ -96,24 +97,37 @@ export default function Jobs({ user }: PageProps) {
 								</div>
 							</div>
 							<div className="flex flex-col">
-								{jobs.map((job) => (
-									<div className="bg-light-500 dark:bg-dark-100 w-full min-h-[6rem] py-3 px-4 rounded-lg">
-										<h3 className="text-lg font-bold text-black dark:text-white">
-											{job.title}
-										</h3>
-										<p className="text-neutral-600 dark:text-neutral-400 mb-3">
-											{job.description}
-										</p>
-										<Button
-											size="small"
-											onClick={() =>
-												router.push(`/jobs/${job._id}`)
-											}
-										>
-											Learn more
-										</Button>
+								{jobs.length < 1 ? (
+									<div className="grid place-items-center min-h-[280px]">
+										<h1 className="font-black text-2xl dark:text-white/20 text-black/20">
+											No jobs found!
+										</h1>
 									</div>
-								))}
+								) : (
+									jobs.map((job) => (
+										<div className="bg-light-500 dark:bg-dark-100 w-full min-h-[6rem] py-3 px-4 rounded-lg">
+											<h3 className="text-lg font-bold text-black dark:text-white flex justify-start items-center">
+												{job.title}
+												<span className="font-semibold text-sm ml-3 text-neutral-500 dark:text-neutral-300 bg-neutral-300 dark:bg-dark-300 px-2 py-1 rounded-md">
+													{job.team}
+												</span>
+											</h3>
+											<p className="text-neutral-600 dark:text-neutral-400 mb-3">
+												{job.description}
+											</p>
+											<Button
+												size="small"
+												onClick={() =>
+													router.push(
+														`/jobs/${job._id}`
+													)
+												}
+											>
+												Learn more
+											</Button>
+										</div>
+									))
+								)}
 							</div>
 						</div>
 					</div>
