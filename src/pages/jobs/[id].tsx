@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Button from "src/components/ui/Button";
 import Container from "src/components/ui/Container";
+import GoBack from "src/components/ui/GoBack";
 import { PageProps } from "src/types";
 import { tailwindHtml } from "src/util/blog";
 import { dbConnect } from "src/util/mongodb";
@@ -33,7 +34,8 @@ export default function JobPage({ user, job }: Props) {
 	return (
 		<Container title={`Job | ${job?.title}`} user={user}>
 			<div className="my-10">
-				<h1 className="text-3xl font-bold font-montserrat text-black dark:text-white break-all mr-2">
+				<GoBack />
+				<h1 className="mt-4 text-3xl font-bold font-montserrat text-black dark:text-white break-all mr-2">
 					{job?.title}
 				</h1>
 				<div className="flex justify-start items-start mt-5">
