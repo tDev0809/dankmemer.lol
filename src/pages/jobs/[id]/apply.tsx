@@ -22,6 +22,8 @@ interface Job {
 	location: string;
 	createdAt: number;
 	active: boolean;
+	applicants?: string[];
+	alreadyApplied?: boolean;
 }
 
 interface Props extends PageProps {
@@ -87,6 +89,16 @@ export default function JobPage({ user, job }: Props) {
 		<Container title={`Job | ${job?.title}`} user={user}>
 			<div className="my-10">
 				<GoBack />
+				{job.alreadyApplied && (
+					<div className="grid place-items-center w-full h-14 bg-red-500 rounded-md my-3 shadow-[0px_0px_12px] shadow-red-500">
+						<p className="w-8/12 text-center">
+							You have already applied for this position, any
+							applications made are final and cannot be changed.
+							You are not able to submit another application at
+							this time.
+						</p>
+					</div>
+				)}
 				<h1 className="mt-4 text-3xl font-bold font-montserrat text-black dark:text-white break-all mr-2">
 					Apply for the "{job?.title}" position
 				</h1>
@@ -195,7 +207,9 @@ export const getServerSideProps: GetServerSideProps = withSession(
 
 		const db = await dbConnect();
 
-		const job = await db.collection("jobs").findOne({ _id: jobId });
+		const job = (await db
+			.collection("jobs")
+			.findOne({ _id: jobId })) as Job;
 		if (!job) {
 			return {
 				redirect: {
@@ -204,6 +218,12 @@ export const getServerSideProps: GetServerSideProps = withSession(
 				},
 			};
 		} else {
+			if (job.applicants?.includes(user.id)) {
+				job.alreadyApplied = true;
+			} else {
+				job.alreadyApplied = false;
+			}
+			delete job.applicants;
 			return {
 				props: { job, user },
 			};
