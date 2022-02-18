@@ -207,8 +207,8 @@ export default function JobPage({ user, job }: Props) {
 			<div className="my-10">
 				<GoBack />
 				{job.alreadyApplied && (
-					<div className="grid place-items-center w-full h-14 bg-red-500 rounded-md my-3 shadow-[0px_0px_12px] shadow-red-500">
-						<p className="w-8/12 text-center">
+					<div className="grid place-items-center w-full min-h-[3.5rem] bg-red-500 rounded-md my-3 shadow-[0px_0px_12px] shadow-red-500">
+						<p className="w-11/12 md:w-8/12 text-center">
 							You have already applied for this position, any
 							applications made are final and cannot be changed.
 							You are not able to submit another application at
@@ -216,20 +216,20 @@ export default function JobPage({ user, job }: Props) {
 						</p>
 					</div>
 				)}
-				<h1 className="mt-4 text-3xl font-bold font-montserrat text-black dark:text-white break-all mr-2">
+				<h1 className="mt-4 mb-2 text-3xl font-bold font-montserrat text-black dark:text-white break-word mr-2">
 					Apply for the "{job?.title}" position
 				</h1>
-				<p className="w-3/4 text-neutral-600 dark:text-neutral-400">
+				<p className="lg:w-3/4 text-neutral-600 dark:text-neutral-400">
 					We will need to gather some contact information from you
 					within your application. A reminder that abuse of this
 					system will result in a permanent suspension from all
 					current and future potential positions.
 				</p>
-				<div className="flex justify-between items-start relative">
-					<div className="flex-1 max-w-[755px]">
+				<div className="flex justify-between flex-col-reverse xl:flex-row items-start relative">
+					<div className="w-full xl:max-w-[755px]">
 						<div className="flex justify-start items-start mt-5">
-							<div className="flex flex-row space-x-4">
-								<div className="w-1/4">
+							<div className="flex flex-col md:flex-row md:space-x-3 w-full">
+								<div className="w-full mb-3 md:mb-0 xl:w-1/4">
 									<Input
 										variant="short"
 										placeholder="John"
@@ -241,7 +241,7 @@ export default function JobPage({ user, job }: Props) {
 										required
 									/>
 								</div>
-								<div className="w-1/3">
+								<div className="w-full mb-3 md:mb-0 md:w-1/4 xl:w-1/3">
 									<Input
 										variant="short"
 										placeholder="(optional)"
@@ -252,7 +252,7 @@ export default function JobPage({ user, job }: Props) {
 										}
 									/>
 								</div>
-								<div className="w-1/4">
+								<div className="w-full xl:w-1/4">
 									<Input
 										variant="short"
 										placeholder="Doe"
@@ -266,8 +266,8 @@ export default function JobPage({ user, job }: Props) {
 								</div>
 							</div>
 						</div>
-						<div className="flex flex-row space-x-4 mt-5">
-							<div className="w-4/12">
+						<div className="flex flex-col sm:flex-row sm:space-x-4 mt-5">
+							<div className="w-full md:w-4/12 mb-3 sm:mb-0">
 								<p className="text-sm text-black dark:text-white mb-1">
 									Primary country of residence
 									<sup className="text-red-500">*</sup>
@@ -305,7 +305,7 @@ export default function JobPage({ user, job }: Props) {
 									isInput
 								/>
 							</div>
-							<div className="w-1/4">
+							<div className="w-full sm:w-1/3 md:w-1/4">
 								<Input
 									variant="short"
 									placeholder="2000-01-01"
@@ -333,7 +333,7 @@ export default function JobPage({ user, job }: Props) {
 						</div>
 					</div>
 					{job.requiresResume && (
-						<div className="flex-1 mt-5">
+						<div className="mt-5 w-full">
 							<p className="text-sm text-black dark:text-white mb-1">
 								Upload your resume
 								<sup className="text-red-500">*</sup>
@@ -341,11 +341,11 @@ export default function JobPage({ user, job }: Props) {
 							<div
 								{...getRootProps({
 									className:
-										"group grid place-items-center text-center text-neutral-700 dark:text-neutral-400 bg-neutral-200 dark:bg-dark-100 w-full h-[125px] border-[3px] border-black/20 dark:border-white/20 hover:!border-dank-300 border-dashed rounded-md transition-colors",
+										"group grid place-items-center text-center text-neutral-700 dark:text-neutral-400 bg-neutral-200 dark:bg-dark-100 w-full h-[125px] border-[3px] border-black/20 dark:border-white/20 hover:!border-dank-300 border-dashed rounded-md transition-colors w-full",
 								})}
 							>
 								<input {...getInputProps()} />
-								<div className="group-hover:text-dank-300 transition-colors grid place-items-center py-3 w-full">
+								<div className="group-hover:text-dank-300 transition-colors grid place-items-center py-3 w-11/12 sm:w-full">
 									{acceptedFiles.length !== 1 ? (
 										<>
 											<p>Upload your resume</p>
@@ -428,56 +428,63 @@ export default function JobPage({ user, job }: Props) {
 						</div>
 					)}
 				</div>
-				<div className="flex flex-row justify-start mt-5 w-full space-x-4">
-					<div className="w-1/5">
+				<div className="flex justify-start mt-5 w-full md:space-x-4 flex-col md:flex-row">
+					<div className="w-full md:w-1/2 xl:w-1/5">
 						<Input
 							variant="short"
 							placeholder="john@example.com"
 							label="Preferred contact email address"
 							value={email}
+							type="email"
 							onChange={(e) => setEmail(e.target.value)}
 							required
 							block
 						/>
 					</div>
-					<div className="flex flex-col">
+					<div className="flex flex-col mt-4 md:mt-0 md:w-10/12 w-full">
 						<p className="text-sm text-black dark:text-white mb-1">
 							External links (Social media/Portfolio/Past work)
 						</p>
-						<div className="w-full flex flex-row space-x-2">
-							{links.map((social, i) => (
-								<div className="relative group w-60">
-									<Input
-										variant="short"
-										placeholder="https://twitter.com/dankmemerbot"
-										value={social}
-										onChange={(e) =>
-											updateSocial(i, e.target.value)
-										}
-										block
-									/>
-									<div
-										className="opacity-0 absolute right-0 top-0 group-hover:opacity-100 bg-light-200 dark:bg-dank-600 h-10 w-10 rounded-md grid place-items-center cursor-pointer"
-										onClick={() => deleteSocial(i)}
-									>
-										<span className="material-icons text-neutral-700 dark:text-neutral-400 hover:!text-red-400 transition-colors">
-											delete
-										</span>
+						<div className="w-full lg:1/2 flex flex-col lg:flex-row lg:space-x-2">
+							{links.map((link, i) => (
+								<div className="flex flex-row space-x-2 mb-2 lg:mb-0 w-full">
+									<div className="relative group w-full">
+										<Input
+											variant="short"
+											placeholder="https://twitter.com/dankmemerbot"
+											value={link}
+											onChange={(e) =>
+												updateSocial(i, e.target.value)
+											}
+											block
+										/>
+										<div
+											className="opacity-0 absolute right-0 top-0 group-hover:opacity-100 bg-light-200 dark:bg-dank-600 h-10 w-10 rounded-md grid place-items-center cursor-pointer"
+											onClick={() => deleteSocial(i)}
+										>
+											<span className="material-icons text-neutral-700 dark:text-neutral-400 hover:!text-red-400 transition-colors">
+												delete
+											</span>
+										</div>
 									</div>
+									{links.length - 1 === i &&
+										links.length < 4 && (
+											<div
+												className="bg-light-200 dark:bg-dank-600 h-10 min-w-[40px] rounded-md grid place-items-center cursor-pointer"
+												onClick={() =>
+													updateSocial(
+														links.length,
+														""
+													)
+												}
+											>
+												<span className="material-icons text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50 transition-colors">
+													add
+												</span>
+											</div>
+										)}
 								</div>
 							))}
-							{links.length < 4 && (
-								<div
-									className="bg-light-200 dark:bg-dank-600 h-10 w-10 rounded-md grid place-items-center cursor-pointer"
-									onClick={() =>
-										updateSocial(links.length, "")
-									}
-								>
-									<span className="material-icons text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50 transition-colors">
-										add
-									</span>
-								</div>
-							)}
 						</div>
 					</div>
 				</div>
