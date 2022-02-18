@@ -25,6 +25,7 @@ interface Job {
 	location: string;
 	createdAt: number;
 	active: boolean;
+	requiresResume: boolean;
 	applicants?: string[];
 	alreadyApplied?: boolean;
 }
@@ -62,6 +63,7 @@ export default function JobPage({ user, job }: Props) {
 			whyApplicant.length >= 300 &&
 			whyApplicant.length <=
 				4096 - "**Why are they fit for this position?**\n".length &&
+			job.requiresResume &&
 			acceptedFiles.length === 1 &&
 			applicantCountry !== "" &&
 			applicantDOB !== "" &&
@@ -221,7 +223,7 @@ export default function JobPage({ user, job }: Props) {
 					current and future potential positions.
 				</p>
 				<div className="flex justify-between items-start relative">
-					<div className="flex-1">
+					<div className="flex-1 max-w-[755px]">
 						<div className="flex justify-start items-start mt-5">
 							<div className="flex flex-row space-x-4">
 								<div className="w-1/4">
@@ -326,99 +328,101 @@ export default function JobPage({ user, job }: Props) {
 							</div>
 						</div>
 					</div>
-					<div className="flex-1 mt-5">
-						<p className="text-sm text-black dark:text-white mb-1">
-							Upload your resume
-							<sup className="text-red-500">*</sup>
-						</p>
-						<div
-							{...getRootProps({
-								className:
-									"group grid place-items-center text-center text-neutral-700 dark:text-neutral-400 bg-neutral-200 dark:bg-dark-100 w-full h-[125px] border-[3px] border-black/20 dark:border-white/20 hover:!border-dank-300 border-dashed rounded-md transition-colors",
-							})}
-						>
-							<input {...getInputProps()} />
-							<div className="group-hover:text-dank-300 transition-colors grid place-items-center py-3 w-full">
-								{acceptedFiles.length !== 1 ? (
-									<>
-										<p>Upload your resume</p>
-										<p>
-											(Only *.pdf, *.doc and *.docx files
-											will be accepted)
-										</p>
-									</>
-								) : (
-									<>
-										{acceptedFiles[0].type.includes(
-											"openxmlformats-officedocument"
-										) ? (
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												aria-hidden="true"
-												role="img"
-												width="32"
-												height="32"
-												preserveAspectRatio="xMidYMid meet"
-												viewBox="0 0 32 32"
-											>
-												<path
-													fill="currentColor"
-													d="m28.3 20l-.909 8.611L26 20h-2l-1.391 8.611L21.7 20H20l1.36 10h2.28L25 21.626L26.36 30h2.28L30 20h-1.7z"
-												/>
-												<path
-													fill="currentColor"
-													d="m25.707 9.293l-7-7A1 1 0 0 0 18 2H8a2.002 2.002 0 0 0-2 2v24a2.002 2.002 0 0 0 2 2h8v-2H8V4h8v6a2.002 2.002 0 0 0 2 2h6v4h2v-6a1 1 0 0 0-.293-.707ZM18 4.414L23.586 10H18Z"
-												/>
-											</svg>
-										) : acceptedFiles[0].type.includes(
-												"pdf"
-										  ) ? (
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												aria-hidden="true"
-												role="img"
-												width="32"
-												height="32"
-												preserveAspectRatio="xMidYMid meet"
-												viewBox="0 0 32 32"
-											>
-												<path
-													fill="currentColor"
-													d="M30 18v-2h-6v10h2v-4h3v-2h-3v-2h4zm-11 8h-4V16h4a3.003 3.003 0 0 1 3 3v4a3.003 3.003 0 0 1-3 3zm-2-2h2a1.001 1.001 0 0 0 1-1v-4a1.001 1.001 0 0 0-1-1h-2zm-6-8H6v10h2v-3h3a2.003 2.003 0 0 0 2-2v-3a2.002 2.002 0 0 0-2-2zm-3 5v-3h3l.001 3z"
-												/>
-												<path
-													fill="currentColor"
-													d="M22 14v-4a.91.91 0 0 0-.3-.7l-7-7A.909.909 0 0 0 14 2H4a2.006 2.006 0 0 0-2 2v24a2 2 0 0 0 2 2h16v-2H4V4h8v6a2.006 2.006 0 0 0 2 2h6v2Zm-8-4V4.4l5.6 5.6Z"
-												/>
-											</svg>
-										) : (
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												aria-hidden="true"
-												role="img"
-												width="32"
-												height="32"
-												preserveAspectRatio="xMidYMid meet"
-												viewBox="0 0 32 32"
-											>
-												<path
-													fill="currentColor"
-													d="m25.7 9.3l-7-7c-.2-.2-.4-.3-.7-.3H8c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-.3-.1-.5-.3-.7zM18 4.4l5.6 5.6H18V4.4zM24 28H8V4h8v6c0 1.1.9 2 2 2h6v16z"
-												/>
-												<path
-													fill="currentColor"
-													d="M10 22h12v2H10zm0-6h12v2H10z"
-												/>
-											</svg>
-										)}
-										<p className="w-8/12 overflow-auto text-sm">
-											{acceptedFiles[0].name}
-										</p>
-									</>
-								)}
+					{job.requiresResume && (
+						<div className="flex-1 mt-5">
+							<p className="text-sm text-black dark:text-white mb-1">
+								Upload your resume
+								<sup className="text-red-500">*</sup>
+							</p>
+							<div
+								{...getRootProps({
+									className:
+										"group grid place-items-center text-center text-neutral-700 dark:text-neutral-400 bg-neutral-200 dark:bg-dark-100 w-full h-[125px] border-[3px] border-black/20 dark:border-white/20 hover:!border-dank-300 border-dashed rounded-md transition-colors",
+								})}
+							>
+								<input {...getInputProps()} />
+								<div className="group-hover:text-dank-300 transition-colors grid place-items-center py-3 w-full">
+									{acceptedFiles.length !== 1 ? (
+										<>
+											<p>Upload your resume</p>
+											<p>
+												(Only *.pdf, *.doc and *.docx
+												files will be accepted)
+											</p>
+										</>
+									) : (
+										<>
+											{acceptedFiles[0].type.includes(
+												"openxmlformats-officedocument"
+											) ? (
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													aria-hidden="true"
+													role="img"
+													width="32"
+													height="32"
+													preserveAspectRatio="xMidYMid meet"
+													viewBox="0 0 32 32"
+												>
+													<path
+														fill="currentColor"
+														d="m28.3 20l-.909 8.611L26 20h-2l-1.391 8.611L21.7 20H20l1.36 10h2.28L25 21.626L26.36 30h2.28L30 20h-1.7z"
+													/>
+													<path
+														fill="currentColor"
+														d="m25.707 9.293l-7-7A1 1 0 0 0 18 2H8a2.002 2.002 0 0 0-2 2v24a2.002 2.002 0 0 0 2 2h8v-2H8V4h8v6a2.002 2.002 0 0 0 2 2h6v4h2v-6a1 1 0 0 0-.293-.707ZM18 4.414L23.586 10H18Z"
+													/>
+												</svg>
+											) : acceptedFiles[0].type.includes(
+													"pdf"
+											  ) ? (
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													aria-hidden="true"
+													role="img"
+													width="32"
+													height="32"
+													preserveAspectRatio="xMidYMid meet"
+													viewBox="0 0 32 32"
+												>
+													<path
+														fill="currentColor"
+														d="M30 18v-2h-6v10h2v-4h3v-2h-3v-2h4zm-11 8h-4V16h4a3.003 3.003 0 0 1 3 3v4a3.003 3.003 0 0 1-3 3zm-2-2h2a1.001 1.001 0 0 0 1-1v-4a1.001 1.001 0 0 0-1-1h-2zm-6-8H6v10h2v-3h3a2.003 2.003 0 0 0 2-2v-3a2.002 2.002 0 0 0-2-2zm-3 5v-3h3l.001 3z"
+													/>
+													<path
+														fill="currentColor"
+														d="M22 14v-4a.91.91 0 0 0-.3-.7l-7-7A.909.909 0 0 0 14 2H4a2.006 2.006 0 0 0-2 2v24a2 2 0 0 0 2 2h16v-2H4V4h8v6a2.006 2.006 0 0 0 2 2h6v2Zm-8-4V4.4l5.6 5.6Z"
+													/>
+												</svg>
+											) : (
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													aria-hidden="true"
+													role="img"
+													width="32"
+													height="32"
+													preserveAspectRatio="xMidYMid meet"
+													viewBox="0 0 32 32"
+												>
+													<path
+														fill="currentColor"
+														d="m25.7 9.3l-7-7c-.2-.2-.4-.3-.7-.3H8c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-.3-.1-.5-.3-.7zM18 4.4l5.6 5.6H18V4.4zM24 28H8V4h8v6c0 1.1.9 2 2 2h6v16z"
+													/>
+													<path
+														fill="currentColor"
+														d="M10 22h12v2H10zm0-6h12v2H10z"
+													/>
+												</svg>
+											)}
+											<p className="w-8/12 overflow-auto text-sm">
+												{acceptedFiles[0].name}
+											</p>
+										</>
+									)}
+								</div>
 							</div>
 						</div>
-					</div>
+					)}
 				</div>
 				<div className="flex flex-row justify-start mt-5 w-full space-x-4">
 					<div className="w-1/5">

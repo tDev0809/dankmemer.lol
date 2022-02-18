@@ -20,6 +20,9 @@ export default function ControlJobsPage({ user }: PageProps) {
 	const [jobTitle, setJobTitle] = useState("");
 	const [selectedTeam, setSelectedTeam] = useState("");
 	const [jobLocation, setJobLocation] = useState("");
+	const [jobRequiresResume, setJobRequiresResume] = useState<boolean | null>(
+		null
+	);
 	const [jobDescription, setJobDescription] = useState("");
 	const [jobBody, setJobBody] = useState("");
 
@@ -32,6 +35,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 					title: jobTitle,
 					team: selectedTeam,
 					location: jobLocation,
+					requiresResume: jobRequiresResume,
 					description: jobDescription,
 					body: jobBody,
 				},
@@ -62,7 +66,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 						Manage Job Offerings
 					</div>
 					<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
-						<div className="w-2/3 min-h-[400px] bg-light-500 dark:bg-dark-400 rounded-lg p-8 flex flex-col">
+						<div className="w-3/4 min-h-[400px] bg-light-500 dark:bg-dark-400 rounded-lg p-8 flex flex-col">
 							<h1 className="font-bold font-montserrat text-xl text-dark-400 dark:text-white">
 								Create a Job Offering
 							</h1>
@@ -124,8 +128,55 @@ export default function ControlJobsPage({ user }: PageProps) {
 										}
 									/>
 								</div>
+								<div className="ml-3">
+									<p className="text-sm text-black dark:text-white mb-1">
+										Require a Resume
+									</p>
+									<Dropdown
+										content={
+											<div className="flex items-center justify-between w-full p-2">
+												<div className="flex items-center space-x-2">
+													<div
+														className={clsx(
+															"text-dark-400 dark:text-gray-500 min-w-[100px] text-sm",
+															jobRequiresResume !==
+																null
+																? "dark:!text-neutral-300"
+																: ""
+														)}
+													>
+														{jobRequiresResume !==
+														null
+															? jobRequiresResume
+																? "Yes"
+																: "No"
+															: "Yes/No"}
+													</div>
+												</div>
+
+												<div className="material-icons text-dark-100 dark:text-gray-500">
+													expand_more
+												</div>
+											</div>
+										}
+										options={[
+											{
+												onClick: () => {
+													setJobRequiresResume(true);
+												},
+												label: "Yes",
+											},
+											{
+												onClick: () => {
+													setJobRequiresResume(false);
+												},
+												label: "No",
+											},
+										]}
+									/>
+								</div>
 							</div>
-							<div className="mt-8 mb-4">
+							<div className="mt-8">
 								<Input
 									label="Description"
 									value={jobDescription}
@@ -138,7 +189,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 									block
 								/>
 							</div>
-							<div className="mt-8 mb-4">
+							<div className="mt-4 mb-4">
 								<Input
 									label="Job Body"
 									value={jobBody}
