@@ -9,16 +9,22 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { JOBS_TEAMS } from "src/constants/jobs";
 import axios from "axios";
-import { Label } from "src/components/community/PostLabel";
+import { GetServerSideProps } from "next";
+import { withSession } from "src/util/session";
+import { unauthenticatedRoute } from "src/util/redirects";
 
 interface Job {
 	_id: string;
 	title: string;
 	description: string;
+	body: string;
 	team: string;
 	location: string;
 	createdAt: number;
 	active: boolean;
+	requiresResume: boolean;
+	applicants?: string[];
+	alreadyApplied?: boolean;
 }
 
 export default function Jobs({ user }: PageProps) {
@@ -29,7 +35,8 @@ export default function Jobs({ user }: PageProps) {
 	const [jobs, setJobs] = useState<Job[]>([]);
 
 	useEffect(() => {
-		axios(`/api/jobs/list?team=${selectedTeam}`)
+		let url = `/api/jobs/list?team=${selectedTeam}`;
+		axios(`${url}${user ? `&user=${user.id}` : ""}`)
 			.then(({ data }) => {
 				setJobs(data);
 			})
@@ -111,6 +118,11 @@ export default function Jobs({ user }: PageProps) {
 												<span className="font-semibold text-sm ml-3 text-neutral-500 dark:text-neutral-300 bg-neutral-300 dark:bg-dark-300 px-2 py-1 rounded-md">
 													{job.team}
 												</span>
+												{job.alreadyApplied && (
+													<span className="font-semibold text-sm ml-3 text-neutral-100 bg-dank-300 px-2 py-1 rounded-md">
+														Application submitted
+													</span>
+												)}
 											</h3>
 											<p className="text-neutral-600 dark:text-neutral-400 mb-3">
 												{job.description}
@@ -136,3 +148,6 @@ export default function Jobs({ user }: PageProps) {
 		</Container>
 	);
 }
+
+export const getServerSideProps: GetServerSideProps =
+	withSession(unauthenticatedRoute);
