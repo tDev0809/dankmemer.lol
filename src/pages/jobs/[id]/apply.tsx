@@ -50,8 +50,6 @@ export default function JobPage({ user, job }: Props) {
 	const [applicantDOB, setApplicantDOB] = useState("");
 	const [applicantCountry, setApplicantCountry] = useState("");
 
-	const [resume, setResume] = useState<string | ArrayBuffer | null>(null);
-
 	const [whyApplicant, setWhyApplicant] = useState("");
 
 	const [canSubmit, setCanSubmit] = useState(false);
@@ -82,17 +80,6 @@ export default function JobPage({ user, job }: Props) {
 		applicantCountry,
 		applicantDOB,
 	]);
-
-	useEffect(() => {
-		if (!acceptedFiles[0]) return;
-		const reader = new FileReader();
-		reader.readAsArrayBuffer(acceptedFiles[0]);
-
-		reader.onload = () => {
-			if (reader.result) setResume(reader.result);
-			else console.error("uh oh");
-		};
-	}, [acceptedFiles]);
 
 	const submitApplication = async () => {
 		try {
