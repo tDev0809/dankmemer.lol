@@ -46,7 +46,7 @@ export default function JobPage({ user, job }: Props) {
 	const [middleNames, setMiddleNames] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState(user?.email!);
-	const [socials, setSocials] = useState<string[]>([""]);
+	const [links, setLinks] = useState<string[]>([""]);
 
 	const [applicantDOB, setApplicantDOB] = useState("");
 	const [applicantCountry, setApplicantCountry] = useState("");
@@ -63,11 +63,10 @@ export default function JobPage({ user, job }: Props) {
 			whyApplicant.length >= 300 &&
 			whyApplicant.length <=
 				4096 - "**Why are they fit for this position?**\n".length &&
-			job.requiresResume &&
-			acceptedFiles.length === 1 &&
+			(job.requiresResume ? acceptedFiles.length === 1 : true) &&
 			applicantCountry !== "" &&
 			applicantDOB !== "" &&
-			(applicantDOB.match(/-/g) || []).length === 3
+			(applicantDOB.match(/-/g) || []).length === 2
 		) {
 			setCanSubmit(true);
 		} else {
@@ -112,62 +111,66 @@ export default function JobPage({ user, job }: Props) {
 
 	const sendWebhook = async () => {
 		const form = new FormData();
+		const embed = {
+			title: `Job Application for ${job.title}`,
+			url: `${window.location.href}`,
+			color: 0x199532,
+			timestamp: new Date(),
+			description: `**Why are they fit for this position?**\n${whyApplicant}`,
+			fields: [
+				{
+					name: "Applicant",
+					value: `${`${firstName} ${middleNames} ${lastName}`.replace(
+						/\s+/g,
+						" "
+					)} (<@!${user?.id!}>)`,
+					inline: true,
+				},
+				{
+					name: "Date of birth",
+					value: `(YYYY-MM-DD)\n${applicantDOB}`,
+					inline: true,
+				},
+				{
+					name: "Primary country of Residence",
+					value: applicantCountry,
+					inline: true,
+				},
+				{
+					name: "Preferred Contact Email",
+					value: email,
+					inline: true,
+				},
+			],
+		};
+		if (links.length >= 1 && links[0].length > 1) {
+			embed.fields.push({
+				name: "External links",
+				value: `• ${links.join("\n• ")}`,
+				inline: true,
+			});
+		}
 		form.append(
 			"payload_json",
 			JSON.stringify({
-				embeds: [
-					{
-						title: `Job Application for ${job.title}`,
-						url: `${window.location.href}`,
-						color: 0x199532,
-						timestamp: new Date(),
-						description: `**Why are they fit for this position?**\n${whyApplicant}`,
-						fields: [
-							{
-								name: "Applicant",
-								value: `${`${firstName} ${middleNames} ${lastName}`.replace(
-									/\s+/g,
-									" "
-								)} (<@!${user?.id!}>)`,
-								inline: true,
-							},
-							{
-								name: "Date of birth",
-								value: `${applicantDOB} (YYYY-MM-DD)`,
-								inline: true,
-							},
-							{
-								name: "Primary country of Residence",
-								value: applicantCountry,
-								inline: true,
-							},
-							{
-								name: "Preferred Contact Email",
-								value: email,
-								inline: true,
-							},
-							{
-								name: "Social media profiles",
-								value: `• ${socials.join("\n• ")}`,
-								inline: true,
-							},
-						],
-					},
-				],
+				embeds: [embed],
 			})
 		);
-		form.append(
-			"file",
-			acceptedFiles[0],
-			`${`${firstName} ${middleNames} ${lastName}`.replace(
-				/\s+/g,
-				" "
-			)}'s Resume.${
-				acceptedFiles[0].name.split(".")[
-					acceptedFiles[0].name.split(".").length - 1
-				]
-			}`
-		);
+		if (job.requiresResume) {
+			form.append(
+				"file",
+				acceptedFiles[0],
+				`${`${firstName} ${middleNames} ${lastName}`.replace(
+					/\s+/g,
+					" "
+				)}'s Resume.${
+					acceptedFiles[0].name.split(".")[
+						acceptedFiles[0].name.split(".").length - 1
+					]
+				}`
+			);
+		}
+
 		await axios({
 			method: "POST",
 			url: process.env.NEXT_PUBLIC_JOBS_WEBHOOK!,
@@ -178,24 +181,24 @@ export default function JobPage({ user, job }: Props) {
 
 	// Ensure that there is always at least 1 social media input
 	useEffect(() => {
-		if (socials.length === 0) {
-			setSocials([""]);
+		if (links.length === 0) {
+			setLinks([""]);
 		}
-	}, [socials]);
+	}, [links]);
 
 	const updateSocial = (index: number, value: string) => {
-		const _socials = [...socials];
-		_socials[index] = value;
-		setSocials(_socials);
+		const _links = [...links];
+		_links[index] = value;
+		setLinks(_links);
 	};
 
 	const deleteSocial = (index: number) => {
-		const _socials = [...socials];
-		if (index === 0 && socials.length === 1) {
+		const _links = [...links];
+		if (index === 0 && links.length === 1) {
 			return updateSocial(0, "");
 		} else {
-			_socials.splice(index, 1);
-			setSocials(_socials);
+			_links.splice(index, 1);
+			setLinks(_links);
 		}
 	};
 
@@ -438,10 +441,10 @@ export default function JobPage({ user, job }: Props) {
 					</div>
 					<div className="flex flex-col">
 						<p className="text-sm text-black dark:text-white mb-1">
-							Social media profiles
+							External links (Social media/Portfolio/Past work)
 						</p>
 						<div className="w-full flex flex-row space-x-2">
-							{socials.map((social, i) => (
+							{links.map((social, i) => (
 								<div className="relative group w-60">
 									<Input
 										variant="short"
@@ -462,11 +465,11 @@ export default function JobPage({ user, job }: Props) {
 									</div>
 								</div>
 							))}
-							{socials.length < 4 && (
+							{links.length < 4 && (
 								<div
 									className="bg-light-200 dark:bg-dank-600 h-10 w-10 rounded-md grid place-items-center cursor-pointer"
 									onClick={() =>
-										updateSocial(socials.length, "")
+										updateSocial(links.length, "")
 									}
 								>
 									<span className="material-icons text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50 transition-colors">
@@ -485,6 +488,7 @@ export default function JobPage({ user, job }: Props) {
 						value={whyApplicant}
 						onChange={(e) => setWhyApplicant(e.target.value)}
 						required
+						resizable
 						block
 					/>
 				</div>
