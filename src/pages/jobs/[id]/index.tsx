@@ -36,8 +36,8 @@ export default function JobPage({ user, job }: Props) {
 			<div className="my-10">
 				<GoBack />
 				{job.alreadyApplied && (
-					<div className="grid place-items-center w-full h-14 bg-red-500 rounded-md my-3 shadow-[0px_0px_12px] shadow-red-500">
-						<p className="w-8/12 text-center">
+					<div className="grid place-items-center w-full min-h-[3.5rem] bg-red-500 rounded-md my-3 shadow-[0px_0px_12px] shadow-red-500">
+						<p className="w-11/12 md:w-8/12 text-center">
 							You have already applied for this position, any
 							applications made are final and cannot be changed.
 							You are not able to submit another application at
@@ -48,9 +48,9 @@ export default function JobPage({ user, job }: Props) {
 				<h1 className="mt-4 text-3xl font-bold font-montserrat text-black dark:text-white break-all mr-2">
 					{job?.title}
 				</h1>
-				<div className="flex justify-start items-start mt-5">
-					<div className="">
-						<div className="w-60 h-56 rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between fixed">
+				<div className="flex justify-start items-start flex-col md:flex-row mt-5">
+					<div className="w-full md:w-max">
+						<div className="w-full md:w-60 h-56 rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3 md:fixed">
 							<div>
 								<div>
 									<h4 className="font-inter font-bold dark:text-neutral-400 leading-none">
@@ -76,7 +76,7 @@ export default function JobPage({ user, job }: Props) {
 						</div>
 					</div>
 					<div
-						className="ml-64 w-full"
+						className="md:ml-64 w-full"
 						dangerouslySetInnerHTML={{
 							__html: tailwindHtml(mdParser.render(job.body)),
 						}}
