@@ -315,6 +315,7 @@ export default function JobPage({ user, job }: Props) {
 										setApplicantDOB(e.target.value)
 									}
 									type="date"
+									// @ts-expect-error
 									max={`${new Date().getFullYear() - 18}-${(
 										new Date().getMonth() + 1
 									).toLocaleString("en-US", {
