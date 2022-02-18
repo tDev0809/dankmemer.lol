@@ -113,13 +113,20 @@ export default function Jobs({ user }: PageProps) {
 								) : (
 									jobs.map((job) => (
 										<div className="bg-light-500 dark:bg-dark-100 w-full min-h-[6rem] py-3 px-4 rounded-lg mb-3">
-											<h3 className="text-lg font-bold text-black dark:text-white flex justify-start items-center">
-												{job.title}
-												<span className="font-semibold text-sm ml-3 text-neutral-500 dark:text-neutral-300 bg-neutral-300 dark:bg-dark-300 px-2 py-1 rounded-md">
+											<h3 className="flex flex-wrap w-full gap-x-3 gap-y-1 text-lg font-bold text-black dark:text-white justify-start items-center">
+												<span>{job.title}</span>
+												<span
+													className="font-semibold text-sm text-neutral-500 dark:text-neutral-300 bg-neutral-300 dark:bg-dark-300 px-2 py-1 rounded-md cursor-pointer select-none"
+													onClick={() =>
+														setSelectedTeam(
+															job.team
+														)
+													}
+												>
 													{job.team}
 												</span>
 												{job.alreadyApplied && (
-													<span className="font-semibold text-sm ml-3 text-neutral-100 bg-dank-300 px-2 py-1 rounded-md">
+													<span className="font-semibold text-sm text-neutral-100 bg-dank-300 px-2 py-1 rounded-md select-none">
 														Application submitted
 													</span>
 												)}
