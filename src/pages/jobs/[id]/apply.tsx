@@ -45,7 +45,7 @@ export default function JobPage({ user, job }: Props) {
 	const [middleNames, setMiddleNames] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState(user?.email!);
-	const [socials, setSocials] = useState("");
+	const [socials, setSocials] = useState<string[]>([""]);
 
 	const [applicantDOB, setApplicantDOB] = useState("");
 	const [applicantCountry, setApplicantCountry] = useState("");
@@ -146,7 +146,7 @@ export default function JobPage({ user, job }: Props) {
 							},
 							{
 								name: "Social media profiles",
-								value: `• ${socials.split(", ").join("\n• ")}`,
+								value: `• ${socials.join("\n• ")}`,
 								inline: true,
 							},
 						],
@@ -172,6 +172,29 @@ export default function JobPage({ user, job }: Props) {
 			data: form,
 			headers: { "Content-Type": "application/json" },
 		});
+	};
+
+	// Ensure that there is always at least 1 social media input
+	useEffect(() => {
+		if (socials.length === 0) {
+			setSocials([""]);
+		}
+	}, [socials]);
+
+	const updateSocial = (index: number, value: string) => {
+		const _socials = [...socials];
+		_socials[index] = value;
+		setSocials(_socials);
+	};
+
+	const deleteSocial = (index: number) => {
+		const _socials = [...socials];
+		if (index === 0 && socials.length === 1) {
+			return updateSocial(0, "");
+		} else {
+			_socials.splice(index, 1);
+			setSocials(_socials);
+		}
 	};
 
 	return (
@@ -409,15 +432,45 @@ export default function JobPage({ user, job }: Props) {
 							block
 						/>
 					</div>
-					<div className="w-11/12">
-						<Input
-							variant="short"
-							placeholder="https://twitter.com/dankmemerbot, https://github.com/DankMemer"
-							label='Social media profiles (Separate with ", ")'
-							value={socials}
-							onChange={(e) => setSocials(e.target.value)}
-							block
-						/>
+					<div className="flex flex-col">
+						<p className="text-sm text-black dark:text-white mb-1">
+							Social media profiles
+						</p>
+						<div className="w-full flex flex-row space-x-2">
+							{socials.map((social, i) => (
+								<div className="relative group w-60">
+									<Input
+										variant="short"
+										placeholder="https://twitter.com/dankmemerbot"
+										value={social}
+										onChange={(e) =>
+											updateSocial(i, e.target.value)
+										}
+										block
+									/>
+									<div
+										className="opacity-0 absolute right-0 top-0 group-hover:opacity-100 bg-light-200 dark:bg-dank-600 h-10 w-10 rounded-md grid place-items-center cursor-pointer"
+										onClick={() => deleteSocial(i)}
+									>
+										<span className="material-icons text-neutral-700 dark:text-neutral-400 hover:!text-red-400 transition-colors">
+											delete
+										</span>
+									</div>
+								</div>
+							))}
+							{socials.length < 4 && (
+								<div
+									className="bg-light-200 dark:bg-dank-600 h-10 w-10 rounded-md grid place-items-center cursor-pointer"
+									onClick={() =>
+										updateSocial(socials.length, "")
+									}
+								>
+									<span className="material-icons text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50 transition-colors">
+										add
+									</span>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 				<div className="flex flex-row justify-between mt-5 w-full">
