@@ -334,7 +334,7 @@ export default function JobPage({ user, job }: Props) {
 						<div
 							{...getRootProps({
 								className:
-									"group grid place-items-center text-center text-neutral-700 dark:text-neutral-400 bg-neutral-200 dark:bg-dark-100 w-full h-[125px] border-[3px] border-black/20 dark:border-white/20 border-dashed rounded-md",
+									"group grid place-items-center text-center text-neutral-700 dark:text-neutral-400 bg-neutral-200 dark:bg-dark-100 w-full h-[125px] border-[3px] border-black/20 dark:border-white/20 hover:!border-dank-300 border-dashed rounded-md transition-colors",
 							})}
 						>
 							<input {...getInputProps()} />
