@@ -1,7 +1,10 @@
+import axios from "axios";
 import MarkdownIt from "markdown-it";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { Session } from "next-iron-session";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { Title } from "src/components/Title";
 import Button from "src/components/ui/Button";
 import Container from "src/components/ui/Container";
 import GoBack from "src/components/ui/GoBack";
@@ -31,6 +34,25 @@ export default function JobPage({ user, job }: Props) {
 	const router = useRouter();
 	const mdParser = new MarkdownIt();
 
+	const toggleJob = () => {
+		axios({
+			method: "POST",
+			url: `/api/jobs/update?id=${job._id}`,
+			data: { active: !job.active },
+		})
+			.then(() => router.reload())
+			.catch((e) => {
+				console.error(e);
+				toast.error(
+					"Something went wrong while toggling the job status.",
+					{
+						theme: "colored",
+						position: "top-center",
+					}
+				);
+			});
+	};
+
 	return (
 		<Container title={`Job | ${job?.title}`} user={user}>
 			<div className="my-10">
@@ -45,9 +67,23 @@ export default function JobPage({ user, job }: Props) {
 						</p>
 					</div>
 				)}
-				<h1 className="mt-4 text-3xl font-bold font-montserrat text-black dark:text-white break-all mr-2">
-					{job?.title}
-				</h1>
+				<div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+					<Title size="big">{job?.title}</Title>
+					{user?.developer && (
+						<div className="flex flex-row space-x-2">
+							<Button
+								size="medium"
+								variant="dark"
+								onClick={toggleJob}
+							>
+								{job.active ? "Disable" : "Enable"} listing
+							</Button>
+							<Button size="medium" variant="dark">
+								Edit listing
+							</Button>
+						</div>
+					)}
+				</div>
 				<div className="flex justify-start items-start flex-col md:flex-row mt-5">
 					<div className="w-full md:w-max">
 						<div className="w-full md:w-60 h-56 rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3 md:fixed">
