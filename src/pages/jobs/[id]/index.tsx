@@ -116,7 +116,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
 
 		const job = (await db
 			.collection("jobs")
-			.findOne({ _id: jobId })) as Job;
+			.findOne({ _id: jobId, active: true })) as Job;
 		if (!job) {
 			return {
 				redirect: {

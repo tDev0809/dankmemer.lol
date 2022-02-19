@@ -20,7 +20,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const db = await dbConnect();
 
 	if (!req.query.team || req.query.team === "all teams") {
-		const jobs = (await db.collection("jobs").find({}).toArray()) as Job[];
+		const jobs = (await db
+			.collection("jobs")
+			.find({ active: true })
+			.toArray()) as Job[];
 		for (let i = 0; i < jobs.length; i++) {
 			if (
 				req.query.user &&
@@ -34,7 +37,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	} else {
 		const jobs = await db
 			.collection("jobs")
-			.find({ team: req.query.team })
+			.find({ team: req.query.team, active: true })
 			.toArray();
 
 		for (let i = 0; i < jobs.length; i++) {
