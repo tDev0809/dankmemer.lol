@@ -2,6 +2,7 @@ export const JOBS_TEAMS = [
 	"Engineering",
 	"Quality assurance",
 	"Administrative",
+	"Bot Administration",
 	"Art",
 	"Uncategorized",
 ];
