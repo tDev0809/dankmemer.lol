@@ -27,10 +27,14 @@ interface Job {
 	active: boolean;
 	applicants?: string[];
 	alreadyApplied?: boolean;
+	requiresResume?: boolean;
 }
 
 export default function ControlJobsPage({ user }: PageProps) {
 	const router = useRouter();
+
+	const [isEditing, setIsEditing] = useState(false);
+	const [jobToEdit, setJobToEdit] = useState<Job | null>(null);
 
 	const [currentJobs, setCurrentJobs] = useState([]);
 
@@ -42,11 +46,23 @@ export default function ControlJobsPage({ user }: PageProps) {
 	);
 	const [jobDescription, setJobDescription] = useState("");
 	const [jobBody, setJobBody] = useState("");
+	const { edit } = router.query;
 
 	useEffect(() => {
 		axios(`/api/jobs/list?active=any`)
 			.then(({ data }) => {
 				setCurrentJobs(data);
+				if (edit) {
+					const job = data.filter((j: Job) => j._id === edit);
+					if (job) {
+						editJob(job[0]);
+						window.history.pushState(
+							null,
+							"",
+							window.location.href.split("?")[0]
+						);
+					}
+				}
 			})
 			.catch((e) => {
 				console.error(e);
@@ -57,7 +73,9 @@ export default function ControlJobsPage({ user }: PageProps) {
 		try {
 			const { data: job } = await axios({
 				method: "POST",
-				url: "/api/jobs/create",
+				url: isEditing
+					? `/api/jobs/update?id=${jobToEdit?._id}`
+					: "/api/jobs/create",
 				data: {
 					title: jobTitle,
 					team: selectedTeam,
@@ -67,13 +85,18 @@ export default function ControlJobsPage({ user }: PageProps) {
 					body: jobBody,
 				},
 			});
-			toast.success("Job offer has been posted", {
-				theme: "colored",
-				position: "top-center",
-				onClick: () => {
-					router.push(`/jobs/${job._id}`);
-				},
-			});
+			toast.success(
+				isEditing
+					? "Job offer has been updated"
+					: "Job offer has been posted",
+				{
+					theme: "colored",
+					position: "top-center",
+					onClick: () => {
+						router.push(`/jobs/${job._id || jobToEdit?._id}`);
+					},
+				}
+			);
 		} catch (e) {
 			console.error(e);
 			toast.error(
@@ -113,6 +136,19 @@ export default function ControlJobsPage({ user }: PageProps) {
 			});
 	};
 
+	const editJob = (job: Job) => {
+		setIsEditing(true);
+		setJobToEdit(job);
+
+		// Update inputs
+		setJobTitle(job.title);
+		setSelectedTeam(job.team);
+		setJobLocation(job.location);
+		setJobRequiresResume(job.requiresResume || false);
+		setJobDescription(job.description);
+		setJobBody(job.body);
+	};
+
 	return (
 		<Container title="Control" user={user}>
 			<div className="mx-8 xl:mx-0">
@@ -126,7 +162,9 @@ export default function ControlJobsPage({ user }: PageProps) {
 					<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
 						<div className="w-3/4 min-h-[400px] bg-light-500 dark:bg-dark-400 rounded-lg p-8 flex flex-col">
 							<h1 className="font-bold font-montserrat text-xl text-dark-400 dark:text-white">
-								Create a Job Offering
+								{isEditing
+									? `Editing '${jobToEdit?.title}'`
+									: "Create a Job Offering"}
 							</h1>
 							<div className="flex h-10 mt-2">
 								<div className="">
@@ -151,7 +189,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 													<div
 														className={clsx(
 															"text-dark-400 dark:text-gray-500 min-w-[180px] text-sm",
-															selectedTeam.length >
+															selectedTeam?.length >
 																1
 																? "dark:!text-neutral-300"
 																: ""
@@ -263,7 +301,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 								className="max-w-max"
 								onClick={submitJob}
 							>
-								Submit
+								{isEditing ? "Save changes" : "Submit"}
 							</Button>
 						</div>
 						<div className="w-full bg-light-500 dark:bg-dark-400 rounded-lg p-8">
@@ -284,35 +322,53 @@ export default function ControlJobsPage({ user }: PageProps) {
 											</p>
 										</div>
 										<div className="grid place-items-center select-none">
-											{jobListing.active ? (
-												<Tooltip content="Hide job offer from the public">
-													<span
-														className="material-icons cursor-pointer hover:text-dank-300 transition-colors"
-														style={{ fontSize: 18 }}
-														onClick={() =>
-															toggleJob(
-																jobListing
-															)
-														}
-													>
-														visibility_off
-													</span>
-												</Tooltip>
-											) : (
-												<Tooltip content="Make job offer public">
-													<span
-														className="material-icons cursor-pointer hover:text-dank-300 transition-colors"
-														style={{ fontSize: 18 }}
-														onClick={() =>
-															toggleJob(
-																jobListing
-															)
-														}
-													>
-														visibility
-													</span>
-												</Tooltip>
-											)}
+											<div className="space-x-2">
+												{" "}
+												{jobListing.active ? (
+													<Tooltip content="Hide job offer from the public">
+														<span
+															className="material-icons cursor-pointer hover:text-dank-300 transition-colors"
+															style={{
+																fontSize: 18,
+															}}
+															onClick={() =>
+																toggleJob(
+																	jobListing
+																)
+															}
+														>
+															visibility_off
+														</span>
+													</Tooltip>
+												) : (
+													<Tooltip content="Make job offer public">
+														<span
+															className="material-icons cursor-pointer hover:text-dank-300 transition-colors"
+															style={{
+																fontSize: 18,
+															}}
+															onClick={() =>
+																toggleJob(
+																	jobListing
+																)
+															}
+														>
+															visibility
+														</span>
+													</Tooltip>
+												)}
+												<span
+													className="material-icons cursor-pointer hover:text-dank-300 transition-colors"
+													style={{
+														fontSize: 18,
+													}}
+													onClick={() =>
+														editJob(jobListing)
+													}
+												>
+													edit
+												</span>
+											</div>
 										</div>
 									</div>
 								))}

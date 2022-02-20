@@ -78,7 +78,11 @@ export default function JobPage({ user, job }: Props) {
 							>
 								{job.active ? "Disable" : "Enable"} listing
 							</Button>
-							<Button size="medium" variant="dark">
+							<Button
+								size="medium"
+								variant="dark"
+								href={`/control/jobs?edit=${job._id}`}
+							>
 								Edit listing
 							</Button>
 						</div>
