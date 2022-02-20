@@ -2,11 +2,13 @@ import axios from "axios";
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Title } from "src/components/Title";
 import Button from "src/components/ui/Button";
 import Dropdown from "src/components/ui/Dropdown";
 import Input from "src/components/ui/Input";
+import Tooltip from "src/components/ui/Tooltip";
 import { JOBS_TEAMS } from "src/constants/jobs";
 import Container from "../../components/ui/Container";
 import GoBack from "../../components/ui/GoBack";
@@ -14,8 +16,23 @@ import { PageProps } from "../../types";
 import { developerRoute } from "../../util/redirects";
 import { withSession } from "../../util/session";
 
+interface Job {
+	_id: string;
+	title: string;
+	description: string;
+	body: string;
+	team: string;
+	location: string;
+	createdAt: number;
+	active: boolean;
+	applicants?: string[];
+	alreadyApplied?: boolean;
+}
+
 export default function ControlJobsPage({ user }: PageProps) {
 	const router = useRouter();
+
+	const [currentJobs, setCurrentJobs] = useState([]);
 
 	const [jobTitle, setJobTitle] = useState("");
 	const [selectedTeam, setSelectedTeam] = useState("");
@@ -25,6 +42,16 @@ export default function ControlJobsPage({ user }: PageProps) {
 	);
 	const [jobDescription, setJobDescription] = useState("");
 	const [jobBody, setJobBody] = useState("");
+
+	useEffect(() => {
+		axios(`/api/jobs/list?active=any`)
+			.then(({ data }) => {
+				setCurrentJobs(data);
+			})
+			.catch((e) => {
+				console.error(e);
+			});
+	}, []);
 
 	const submitJob = async () => {
 		try {
@@ -53,6 +80,37 @@ export default function ControlJobsPage({ user }: PageProps) {
 				"Error while posting job, check console for more information."
 			);
 		}
+	};
+
+	const toggleJob = (job: Job) => {
+		axios({
+			method: "POST",
+			url: `/api/jobs/update?id=${job._id}`,
+			data: { active: !job.active },
+		})
+			.then(() => {
+				toast.success(`${job.title} has been updated`, {
+					position: "top-center",
+					theme: "colored",
+				});
+				axios(`/api/jobs/list?active=any`)
+					.then(({ data }) => {
+						setCurrentJobs(data);
+					})
+					.catch((e) => {
+						console.error(e);
+					});
+			})
+			.catch((e) => {
+				console.error(e);
+				toast.error(
+					"Something went wrong while toggling the job status.",
+					{
+						theme: "colored",
+						position: "top-center",
+					}
+				);
+			});
 	};
 
 	return (
@@ -207,6 +265,58 @@ export default function ControlJobsPage({ user }: PageProps) {
 							>
 								Submit
 							</Button>
+						</div>
+						<div className="w-full bg-light-500 dark:bg-dark-400 rounded-lg p-8">
+							<Title size="small">Current offers</Title>
+							<div className="flex flex-col">
+								{currentJobs.map((jobListing: Job, i) => (
+									<div
+										key={i}
+										className="flex justify-between items-center my-2"
+									>
+										<div className="">
+											<p className="text-neutral-800 dark:text-neutral-200">
+												{jobListing.title}
+											</p>
+											<p className="text-sm text-neutral-700 dark:text-neutral-500">
+												Applicants:{" "}
+												{jobListing.applicants?.length}
+											</p>
+										</div>
+										<div className="grid place-items-center select-none">
+											{jobListing.active ? (
+												<Tooltip content="Hide job offer from the public">
+													<span
+														className="material-icons cursor-pointer hover:text-dank-300 transition-colors"
+														style={{ fontSize: 18 }}
+														onClick={() =>
+															toggleJob(
+																jobListing
+															)
+														}
+													>
+														visibility_off
+													</span>
+												</Tooltip>
+											) : (
+												<Tooltip content="Make job offer public">
+													<span
+														className="material-icons cursor-pointer hover:text-dank-300 transition-colors"
+														style={{ fontSize: 18 }}
+														onClick={() =>
+															toggleJob(
+																jobListing
+															)
+														}
+													>
+														visibility
+													</span>
+												</Tooltip>
+											)}
+										</div>
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>
