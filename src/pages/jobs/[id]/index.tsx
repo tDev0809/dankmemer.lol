@@ -131,17 +131,6 @@ export const getServerSideProps: GetServerSideProps = withSession(
 	async (ctx: GetServerSidePropsContext & { req: { session: Session } }) => {
 		const user = await ctx.req.session.get("user");
 
-		if (!user) {
-			return {
-				redirect: {
-					destination: `/api/auth/login?redirect=${encodeURIComponent(
-						ctx.resolvedUrl
-					)}`,
-					permanent: false,
-				},
-			};
-		}
-
 		const { id: jobId } = ctx.query;
 		if (!jobId) {
 			return {
@@ -165,14 +154,14 @@ export const getServerSideProps: GetServerSideProps = withSession(
 				},
 			};
 		} else {
-			if (job.applicants?.includes(user.id)) {
+			if (user && job.applicants?.includes(user.id)) {
 				job.alreadyApplied = true;
 			} else {
 				job.alreadyApplied = false;
 			}
 			delete job.applicants;
 			return {
-				props: { job, user },
+				props: { job, user: user ?? null },
 			};
 		}
 	}
