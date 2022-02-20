@@ -21,7 +21,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const user = req.session.get("user");
 
 	let dbQuery = {};
-	if (req.query.active !== "any" && user.developer) {
+	if (!user || !user.developer) {
 		dbQuery = { active: true };
 	}
 	if (req.query.team && req.query.team !== "all teams") {
@@ -35,7 +35,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		) {
 			jobs[i].alreadyApplied = true;
 		}
-		if (!user.developer) {
+		if (!user || !user.developer) {
 			delete jobs[i].applicants;
 		}
 	}
