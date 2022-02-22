@@ -159,14 +159,14 @@ export default function ControlJobsPage({ user }: PageProps) {
 					<div className="font-bold font-montserrat text-3xl text-dank-300 dark:text-light-100">
 						Manage Job Offerings
 					</div>
-					<div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 space-x-0 lg:space-x-4">
-						<div className="w-3/4 min-h-[400px] bg-light-500 dark:bg-dark-400 rounded-lg p-8 flex flex-col">
+					<div className="flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 space-x-0 2xl:space-x-4">
+						<div className="w-full 2xl:w-3/4 min-h-[400px] bg-light-500 dark:bg-dark-400 rounded-lg p-8 flex flex-col">
 							<h1 className="font-bold font-montserrat text-xl text-dark-400 dark:text-white">
 								{isEditing
 									? `Editing '${jobToEdit?.title}'`
 									: "Create a Job Offering"}
 							</h1>
-							<div className="flex h-10 mt-2">
+							<div className="flex flex-wrap gap-3 min-h-[2.5rem] mt-2">
 								<div className="">
 									<Input
 										label="Job title"
@@ -178,7 +178,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 										}
 									/>
 								</div>
-								<div className="ml-3">
+								<div className="">
 									<p className="text-sm text-black dark:text-white mb-1">
 										Job's respective team
 									</p>
@@ -213,7 +213,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 										}))}
 									/>
 								</div>
-								<div className="ml-3">
+								<div className="">
 									<Input
 										label="Job location(s)"
 										placeholder="Global, remote"
@@ -224,7 +224,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 										}
 									/>
 								</div>
-								<div className="ml-3">
+								<div className="">
 									<p className="text-sm text-black dark:text-white mb-1">
 										Require a Resume
 									</p>
@@ -304,7 +304,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 								{isEditing ? "Save changes" : "Submit"}
 							</Button>
 						</div>
-						<div className="w-full bg-light-500 dark:bg-dark-400 rounded-lg p-8">
+						<div className="w-full bg-light-500 dark:bg-dark-400 rounded-lg p-8 mt-10 2xl:mt-0">
 							<Title size="small">Current offers</Title>
 							<div className="flex flex-col">
 								{currentJobs.map((jobListing: Job, i) => (
