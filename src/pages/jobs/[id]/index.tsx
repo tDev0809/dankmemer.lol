@@ -1,4 +1,5 @@
 import axios from "axios";
+import clsx from "clsx";
 import MarkdownIt from "markdown-it";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { Session } from "next-iron-session";
@@ -90,7 +91,7 @@ export default function JobPage({ user, job }: Props) {
 				</div>
 				<div className="flex justify-start items-start flex-col md:flex-row mt-5">
 					<div className="w-full md:w-max">
-						<div className="w-full md:w-60 h-56 rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3 md:fixed">
+						<div className="w-full md:w-60 min-h-[14rem] rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3 md:fixed">
 							<div>
 								<div>
 									<h4 className="font-inter font-bold dark:text-neutral-400 leading-none">
@@ -104,6 +105,22 @@ export default function JobPage({ user, job }: Props) {
 									</h4>
 									<p>{job.location}</p>
 								</div>
+								{user && user.developer && (
+									<div className="my-5">
+										<h4 className="font-inter font-bold dark:text-neutral-400 leading-none">
+											Status
+										</h4>
+										<p
+											className={clsx(
+												job.active
+													? "text-dank-300"
+													: "text-red-400"
+											)}
+										>
+											{job.active ? "Active" : "Inactive"}
+										</p>
+									</div>
+								)}
 							</div>
 							<Button
 								size="medium"
@@ -143,9 +160,14 @@ export const getServerSideProps: GetServerSideProps = withSession(
 
 		const db = await dbConnect();
 
-		const job = (await db
-			.collection("jobs")
-			.findOne({ _id: jobId, active: true })) as Job;
+		let query: { _id: string; active?: boolean } = {
+			_id: jobId.toString(),
+		};
+		if (!user || !user.developer) {
+			query.active = true;
+		}
+
+		const job = (await db.collection("jobs").findOne(query)) as Job;
 		if (!job) {
 			return {
 				redirect: {
