@@ -304,7 +304,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 								{isEditing ? "Save changes" : "Submit"}
 							</Button>
 						</div>
-						<div className="w-full bg-light-500 dark:bg-dark-400 rounded-lg p-8 mt-10 2xl:mt-0">
+						<div className="w-full 2xl:w-1/4 bg-light-500 dark:bg-dark-400 rounded-lg p-8 mt-10 2xl:mt-0">
 							<Title size="small">Current offers</Title>
 							<div className="flex flex-col">
 								{currentJobs.map((jobListing: Job, i) => (
