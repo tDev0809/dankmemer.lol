@@ -85,15 +85,76 @@ export default function JobPage({ user, job }: Props) {
 	const submitApplication = async () => {
 		try {
 			if (!canSubmit) return;
+			const form = new FormData();
+			const embed = {
+				title: `Job Application for ${job.title}`,
+				url: `${window.location.href}`,
+				color: 0x199532,
+				timestamp: new Date(),
+				description: `**Why are they fit for this position?**\n${whyApplicant}`,
+				fields: [
+					{
+						name: "Applicant",
+						value: `${`${firstName} ${middleNames} ${lastName}`.replace(
+							/\s+/g,
+							" "
+						)} (<@!${user?.id!}>)`,
+						inline: true,
+					},
+					{
+						name: "Date of birth",
+						value: `(YYYY-MM-DD)\n${applicantDOB}`,
+						inline: true,
+					},
+					{
+						name: "Primary country of Residence",
+						value: applicantCountry,
+						inline: true,
+					},
+					{
+						name: "Preferred Contact Email",
+						value: email,
+						inline: true,
+					},
+				],
+			};
+			if (links.length >= 1 && links[0].length > 1) {
+				embed.fields.push({
+					name: "External links",
+					value: `• ${links.join("\n• ")}`,
+					inline: true,
+				});
+			}
+
+			form.append("job", JSON.stringify({ job, userId: user!.id }));
+			form.append(
+				"payload_json",
+				JSON.stringify({
+					embeds: [embed],
+				})
+			);
+
+			if (job.requiresResume) {
+				form.append(
+					"resume",
+					acceptedFiles[0],
+					`${`${firstName} ${middleNames} ${lastName}`.replace(
+						/\s+/g,
+						" "
+					)}'s Resume.${
+						acceptedFiles[0].name.split(".")[
+							acceptedFiles[0].name.split(".").length - 1
+						]
+					}`
+				);
+			}
+
 			await axios({
-				url: "/api/jobs/apply",
 				method: "POST",
-				data: {
-					job,
-					userId: user?.id,
-				},
+				url: "/api/jobs/apply",
+				data: form,
+				headers: { "Content-Type": "json/application" },
 			});
-			await sendWebhook();
 			toast.success("Your application has been submitted, good luck!", {
 				theme: "colored",
 				position: "top-center",
@@ -101,82 +162,14 @@ export default function JobPage({ user, job }: Props) {
 					router.push(`/jobs/${job._id}`);
 				},
 			});
-			await router.push("/");
+			setTimeout(async () => {
+				await router.push("/");
+			}, 5000);
 		} catch (e) {
 			toast.error(
 				"Something went wrong while trying to submit your application. Try again later."
 			);
 		}
-	};
-
-	const sendWebhook = async () => {
-		const form = new FormData();
-		const embed = {
-			title: `Job Application for ${job.title}`,
-			url: `${window.location.href}`,
-			color: 0x199532,
-			timestamp: new Date(),
-			description: `**Why are they fit for this position?**\n${whyApplicant}`,
-			fields: [
-				{
-					name: "Applicant",
-					value: `${`${firstName} ${middleNames} ${lastName}`.replace(
-						/\s+/g,
-						" "
-					)} (<@!${user?.id!}>)`,
-					inline: true,
-				},
-				{
-					name: "Date of birth",
-					value: `(YYYY-MM-DD)\n${applicantDOB}`,
-					inline: true,
-				},
-				{
-					name: "Primary country of Residence",
-					value: applicantCountry,
-					inline: true,
-				},
-				{
-					name: "Preferred Contact Email",
-					value: email,
-					inline: true,
-				},
-			],
-		};
-		if (links.length >= 1 && links[0].length > 1) {
-			embed.fields.push({
-				name: "External links",
-				value: `• ${links.join("\n• ")}`,
-				inline: true,
-			});
-		}
-		form.append(
-			"payload_json",
-			JSON.stringify({
-				embeds: [embed],
-			})
-		);
-		if (job.requiresResume) {
-			form.append(
-				"file",
-				acceptedFiles[0],
-				`${`${firstName} ${middleNames} ${lastName}`.replace(
-					/\s+/g,
-					" "
-				)}'s Resume.${
-					acceptedFiles[0].name.split(".")[
-						acceptedFiles[0].name.split(".").length - 1
-					]
-				}`
-			);
-		}
-
-		await axios({
-			method: "POST",
-			url: process.env.NEXT_PUBLIC_JOBS_WEBHOOK!,
-			data: form,
-			headers: { "Content-Type": "application/json" },
-		});
 	};
 
 	// Ensure that there is always at least 1 social media input
