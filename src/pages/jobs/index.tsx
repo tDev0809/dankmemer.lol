@@ -64,6 +64,7 @@ export default function Jobs({ user }: PageProps) {
 									.concat(JOBS_TEAMS)
 									.map((team) => (
 										<div
+											key={team}
 											className={clsx(
 												"py-2 px-4 bg-light-500 dark:bg-dark-100 rounded-md cursor-pointer select-none",
 												team == selectedTeam
@@ -116,7 +117,10 @@ export default function Jobs({ user }: PageProps) {
 									</div>
 								) : (
 									jobs.map((job) => (
-										<div className="bg-light-500 dark:bg-dark-100 w-full min-h-[6rem] py-3 px-4 rounded-lg mb-3">
+										<div
+											key={job._id}
+											className="bg-light-500 dark:bg-dark-100 w-full min-h-[6rem] py-3 px-4 rounded-lg mb-3"
+										>
 											<h3 className="flex flex-wrap w-full gap-x-3 gap-y-1 text-lg font-bold text-black dark:text-white justify-start items-center">
 												<span>{job.title}</span>
 												{!job.active && (
