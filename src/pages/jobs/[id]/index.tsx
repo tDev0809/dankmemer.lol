@@ -89,9 +89,9 @@ export default function JobPage({ user, job }: Props) {
 						</div>
 					)}
 				</div>
-				<div className="flex justify-start items-start flex-col md:flex-row mt-5">
-					<div className="w-full md:w-max">
-						<div className="w-full md:w-60 min-h-[14rem] rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3 md:fixed">
+				<div className="flex justify-start items-start flex-col md:flex-row mt-5 relative">
+					<div className="flex-1 h-full sticky top-4 ">
+						<div className="w-full md:w-60 min-h-[14rem] rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3">
 							<div>
 								<div>
 									<h4 className="font-inter font-bold dark:text-neutral-400 leading-none">
@@ -133,7 +133,7 @@ export default function JobPage({ user, job }: Props) {
 						</div>
 					</div>
 					<div
-						className="md:ml-64 w-full"
+						className="md:ml-8 w-full"
 						dangerouslySetInnerHTML={{
 							__html: tailwindHtml(mdParser.render(job.body)),
 						}}
