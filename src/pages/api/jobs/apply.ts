@@ -22,59 +22,63 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	}
 
 	try {
-		const form = new IncomingForm();
-		form.parse(req, async (error, fields: any, files: any) => {
-			if (error) {
-				return res
-					.status(500)
-					.json({ error: "Failed to parse incoming request." });
-			}
+		const { fields, files } = await new Promise((resolve, reject) => {
+			const form = new IncomingForm();
+			form.parse(req, async (error, fields: any, files: any) => {
+				if (error) {
+					reject(error);
+				}
+				console.log(files);
+				resolve({ fields, files });
+			});
+		});
 
-			const formData = new FormData();
+		const formData = new FormData();
+		if (Object.keys(files).length !== 0) {
 			formData.append("file", createReadStream(files.resume.filepath), {
 				filename: files.resume.originalFilename,
 			});
-			formData.append("payload_json", fields.payload_json);
+		}
 
-			const { job, userId } = JSON.parse(fields.job);
-			if (!job || !userId) {
-				return res
-					.status(400)
-					.json({ error: "Missing body elements." });
-			}
+		formData.append("payload_json", fields.payload_json);
 
-			const dbRecord = await db
-				.collection("jobs")
-				.findOne({ _id: job._id });
-			if (!dbRecord) {
-				return res.status(500).json({
-					error: "Job listing with provided ID was not found.",
-				});
-			}
+		const { job, userId } = JSON.parse(fields.job);
+		if (!job || !userId) {
+			return res.status(400).json({ error: "Missing body elements." });
+		}
 
-			if (dbRecord.applicants.includes(userId)) {
-				return res.status(401).json({
-					error: "You have already applied for this position.",
-				});
-			}
-
-			await db
-				.collection("jobs")
-				.updateOne({ _id: job._id }, { $push: { applicants: userId } });
-
-			await axios({
-				method: "POST",
-				url: process.env.JOBS_WEBHOOK,
-				data: formData,
-				headers: formData.getHeaders(),
+		const dbRecord = await db.collection("jobs").findOne({ _id: job._id });
+		if (!dbRecord) {
+			return res.status(500).json({
+				error: "Job listing with provided ID was not found.",
 			});
+		}
 
-			rm(files.resume.filepath);
+		if (dbRecord.applicants.includes(userId)) {
+			return res.status(401).json({
+				error: "You have already applied for this position.",
+			});
+		}
+
+		await db
+			.collection("jobs")
+			.updateOne({ _id: job._id }, { $push: { applicants: userId } });
+
+		await axios({
+			method: "POST",
+			url: process.env.JOBS_WEBHOOK,
+			data: formData,
+			headers: formData.getHeaders(),
 		});
+
+		if (Object.keys(files).length !== 0) {
+			rm(files.resume.filepath);
+		}
+		return res.status(200).json({ message: "Job application submitted." });
 	} catch (e) {
+		console.error(e);
 		return res.status(500).json({ error: e });
 	}
-	return res.status(200).json({ message: "Job application submitted." });
 };
 
 export default withSession(handler);
