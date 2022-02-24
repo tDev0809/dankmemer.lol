@@ -90,24 +90,28 @@ export default function JobPage({ user, job }: Props) {
 					)}
 				</div>
 				<div className="flex justify-start items-start flex-col md:flex-row mt-5 relative">
-					<div className="flex-1 h-full sticky top-4 ">
-						<div className="w-full md:w-60 min-h-[14rem] rounded-md dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3">
+					<div className="flex-1 h-full w-full md:w-max md:sticky top-4 ">
+						<div className="w-full md:w-60 min-h-[14rem] rounded-md bg-light-500 dark:bg-dark-100 py-4 px-5 flex flex-col justify-between mb-3">
 							<div>
 								<div>
-									<h4 className="font-inter font-bold dark:text-neutral-400 leading-none">
+									<h4 className="font-inter font-bold text-neutral-800 dark:text-neutral-400 leading-none">
 										Team
 									</h4>
-									<p>{job.team}</p>
+									<p className="text-neutral-600 dark:text-neutral-50">
+										{job.team}
+									</p>
 								</div>
 								<div className="mt-5">
-									<h4 className="font-inter font-bold dark:text-neutral-400 leading-none">
+									<h4 className="font-inter font-bold text-neutral-800 dark:text-neutral-400 leading-none">
 										Location
 									</h4>
-									<p>{job.location}</p>
+									<p className="text-neutral-600 dark:text-neutral-50">
+										{job.location}
+									</p>
 								</div>
 								{user && user.developer && (
 									<div className="my-5">
-										<h4 className="font-inter font-bold dark:text-neutral-400 leading-none">
+										<h4 className="font-inter font-bold text-neutral-800 dark:text-neutral-400 leading-none">
 											Status
 										</h4>
 										<p
