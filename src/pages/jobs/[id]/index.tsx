@@ -137,7 +137,7 @@ export default function JobPage({ user, job }: Props) {
 						</div>
 					</div>
 					<div
-						className="md:ml-8 w-full"
+						className="md:ml-8 w-full text-black dark:text-white"
 						dangerouslySetInnerHTML={{
 							__html: tailwindHtml(mdParser.render(job.body)),
 						}}
