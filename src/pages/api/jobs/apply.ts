@@ -28,7 +28,6 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 				if (error) {
 					reject(error);
 				}
-				console.log(files);
 				resolve({ fields, files });
 			});
 		});
@@ -66,7 +65,10 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 		await axios({
 			method: "POST",
-			url: process.env.JOBS_WEBHOOK,
+			url:
+				dbRecord.webhook.length > 1
+					? dbRecord.webhook
+					: process.env.JOBS_WEBHOOK,
 			data: formData,
 			headers: formData.getHeaders(),
 		});

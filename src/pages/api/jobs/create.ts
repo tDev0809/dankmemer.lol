@@ -16,8 +16,15 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		return res.status(401).json({ error: "You can't do this." });
 	}
 
-	const { title, team, location, requiresResume, description, body } =
-		req.body;
+	const {
+		title,
+		team,
+		location,
+		requiresResume,
+		webhook,
+		description,
+		body,
+	} = req.body;
 	if (!title || !team || !location || !description || !body) {
 		return res.status(400).json({ error: "Missing body elements." });
 	}
@@ -30,6 +37,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			title,
 			team,
 			location,
+			webhook,
 			requiresResume,
 			description,
 			body,

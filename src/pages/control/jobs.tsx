@@ -28,6 +28,7 @@ interface Job {
 	applicants?: string[];
 	alreadyApplied?: boolean;
 	requiresResume?: boolean;
+	webhook?: string;
 }
 
 export default function ControlJobsPage({ user }: PageProps) {
@@ -44,6 +45,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 	const [jobRequiresResume, setJobRequiresResume] = useState<boolean | null>(
 		null
 	);
+	const [jobCustomWH, setJobCustomWH] = useState("");
 	const [jobDescription, setJobDescription] = useState("");
 	const [jobBody, setJobBody] = useState("");
 	const { edit } = router.query;
@@ -80,6 +82,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 					title: jobTitle,
 					team: selectedTeam,
 					location: jobLocation,
+					webhook: jobCustomWH,
 					requiresResume: jobRequiresResume,
 					description: jobDescription,
 					body: jobBody,
@@ -145,6 +148,7 @@ export default function ControlJobsPage({ user }: PageProps) {
 		setSelectedTeam(job.team);
 		setJobLocation(job.location);
 		setJobRequiresResume(job.requiresResume || false);
+		setJobCustomWH(job.webhook || "");
 		setJobDescription(job.description);
 		setJobBody(job.body);
 	};
@@ -272,7 +276,18 @@ export default function ControlJobsPage({ user }: PageProps) {
 									/>
 								</div>
 							</div>
-							<div className="mt-8">
+							<div className="flex flex-col w-full mt-4">
+								<Input
+									label="Custom Webhook destination"
+									placeholder=""
+									variant="short"
+									value={jobCustomWH}
+									onChange={(e) =>
+										setJobCustomWH(e.target.value)
+									}
+								/>
+							</div>
+							<div className="mt-4">
 								<Input
 									label="Description"
 									value={jobDescription}
