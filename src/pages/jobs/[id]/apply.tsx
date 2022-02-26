@@ -482,16 +482,34 @@ export default function JobPage({ user, job }: Props) {
 					</div>
 				</div>
 				<div className="flex flex-row justify-between mt-5 w-full">
-					<Input
-						variant="medium"
-						placeholder="Try to be as detailed as possible in this section. This could be the make it or break it for a follow up from the team!"
-						label="Why would you fit this role?"
-						value={whyApplicant}
-						onChange={(e) => setWhyApplicant(e.target.value)}
-						required
-						resizable
-						block
-					/>
+					<div className="flex flex-col w-full">
+						<div className="">
+							<p className="text-sm text-black dark:text-white">
+								Why would you fit this role?
+								<sup className="text-red-500">*</sup>
+							</p>
+							<p className="text-sm text-neutral-700 dark:text-neutral-400 mb-1">
+								This section must contain text between{" "}
+								<span className="text-dank-300">300</span> and{" "}
+								<span className="text-dank-300">
+									{4096 -
+										"**Why are they fit for this position?**\n"
+											.length}{" "}
+								</span>
+								characters.
+							</p>
+						</div>
+
+						<Input
+							variant="medium"
+							placeholder="Try to be as detailed as possible in this section. This could be the make it or break it for a follow up from the team!"
+							value={whyApplicant}
+							onChange={(e) => setWhyApplicant(e.target.value)}
+							required
+							resizable
+							block
+						/>
+					</div>
 				</div>
 				<div className="mt-5">
 					<Button
