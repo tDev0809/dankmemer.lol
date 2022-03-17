@@ -17,7 +17,7 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 
 	const user = req.session.get("user");
 
-	if (!user.developer || !user.botModerator || !user.modManager) {
+	if (!user.developer && !user.botModerator && !user.modManager) {
 		return res
 			.status(403)
 			.json({ error: "You don't have permission to do this." });
