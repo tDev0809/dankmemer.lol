@@ -54,6 +54,23 @@ function Actions({ user, profile }: { user: User; profile: Profile }) {
 			});
 	};
 
+	const purge = () => {
+		if (
+			confirm(
+				"This will remove all of this user's data (posts, comments, upvotes, etc.) from the community page. Are you sure you want to continue?"
+			)
+		) {
+			axios
+				.patch(`/api/community/profile/purge/${profile.user.id}`)
+				.then(({}) => {
+					location.reload();
+				})
+				.catch((e) => {
+					toast.dark(e.response.data.error);
+				});
+		}
+	};
+
 	return (
 		<div>
 			<Dropdown
@@ -111,6 +128,15 @@ function Actions({ user, profile }: { user: User; profile: Profile }) {
 								onClick: () => {
 									swap("honorable");
 								},
+						  }
+						: null,
+					user?.botModerator
+						? {
+								label: "Purge user",
+								onClick: () => {
+									purge();
+								},
+								variant: "danger",
 						  }
 						: null,
 					{
