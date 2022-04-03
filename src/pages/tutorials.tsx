@@ -20,7 +20,7 @@ export default function Tutorials({ user }: PageProps) {
 	}, []);
 
 	return (
-		<Container title="Blog Posts" user={user}>
+		<Container title="Tutorials" user={user}>
 			<div className="my-16 mx-8 flex flex-col space-y-4 xl:mx-0">
 				<div className="flex items-center justify-between">
 					<Title size="big">Tutorials</Title>
