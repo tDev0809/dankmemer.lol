@@ -9,9 +9,9 @@ export default function Footer({}: Props) {
 
 	return (
 		<footer>
-			<div className="bg-light-200  dark:bg-dark-400 font-inter">
+			<div className="bg-light-200  font-inter dark:bg-dark-400">
 				<div className="flex justify-center">
-					<div className="flex flex-col lg:flex-row space-x-0 lg:space-x-72 space-y-4 lg:space-y-0 p-14 items-center">
+					<div className="flex flex-col items-center space-x-0 space-y-4 p-14 lg:flex-row lg:space-x-72 lg:space-y-0">
 						<div className="flex items-center space-x-4">
 							<Link href="/">
 								<img
@@ -21,7 +21,7 @@ export default function Footer({}: Props) {
 								/>
 							</Link>
 							<div className="flex flex-col -space-y-1">
-								<h2 className="text-dank-300 dark:text-light-200 text-2xl font-bold font-montserrat">
+								<h2 className="font-montserrat text-2xl font-bold text-dank-300 dark:text-light-200">
 									DANK MEMER
 								</h2>
 								<span className="text-md text-gray-400">
@@ -34,63 +34,68 @@ export default function Footer({}: Props) {
 						<div className="flex space-x-6 lg:space-x-12">
 							<div className="flex flex-col space-y-0">
 								<a
-									className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer"
+									className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white"
 									href="https://www.patreon.com/join/dankmemerbot"
 								>
 									Premium
 								</a>
 								<Link href="/commands">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Commands
 									</span>
 								</Link>
 								<Link href="/community/blogs">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Our blog
 									</span>
 								</Link>
 							</div>
 							<div className="flex flex-col">
 								<Link href="/staff">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Staff
 									</span>
 								</Link>
 								<Link href="/terms">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Terms
 									</span>
 								</Link>
 								<Link href="/privacy">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Privacy
 									</span>
 								</Link>
 							</div>
 							<div className="flex flex-col">
 								<Link href="/rules">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Rules
 									</span>
 								</Link>
 								<Link href="/reports">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Reports
 									</span>
 								</Link>
 								<Link href="/appeals">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										Appeals
 									</span>
 								</Link>
 							</div>
 							<div className="flex flex-col">
+								<Link href="/tutorials">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
+										Tutorials
+									</span>
+								</Link>
 								<Link href="/jobs">
-									<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer">
+									<span className="cursor-pointer text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 										We're Hiring!
 									</span>
 								</Link>
-								<span className="text-dark-100 dark:text-gray-300 hover:text-dank-200 dark:hover:text-white cursor-pointer select-none flex items-center">
+								<span className="flex cursor-pointer select-none items-center text-dark-100 hover:text-dank-200 dark:text-gray-300 dark:hover:text-white">
 									<div
 										onClick={() =>
 											setTheme(
@@ -108,7 +113,7 @@ export default function Footer({}: Props) {
 										added={new Date("10-21-2021")}
 										expireIn="month"
 									>
-										<div className="bg-red-500 ml-2 px-2 py-0.5 text-xs rounded-md text-white">
+										<div className="ml-2 rounded-md bg-red-500 px-2 py-0.5 text-xs text-white">
 											NEW
 										</div>
 									</Expire>
