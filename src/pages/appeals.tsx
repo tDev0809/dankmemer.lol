@@ -35,7 +35,7 @@ export default function Appeals({ user }: PageProps) {
 			body: JSON.stringify({
 				appeal,
 				rules: brokenRules.map(
-					(i) => APPEALS[type.includes("Bot") ? "user" : "server"][i]
+					(i) => APPEALS[type.includes("Bot") ? "user" : "server"][i - 1]
 				),
 				type,
 			}),
@@ -64,10 +64,10 @@ export default function Appeals({ user }: PageProps) {
 							Appeal{" "}
 							{
 								{
-									"Bot Ban": "a permanent ban",
-									"Bot Blacklist": "a temporary ban",
-									"Community Server Ban": "a community ban",
-									"Support Server Ban": "a support ban",
+									"Bot Ban": "a permanent bot ban",
+									"Bot Blacklist": "a temporary bot ban",
+									"Community Server Ban": "a community server ban",
+									"Support Server Ban": "a support server ban",
 								}[type]
 							}
 						</div>
@@ -79,7 +79,7 @@ export default function Appeals({ user }: PageProps) {
 					</div>
 					<div className="flex flex-col p-4 space-y-2">
 						<div className="text-lg font-bold font-montserrat text-dark-400 dark:text-white">
-							Which rules did you break?
+							Which rules were you punished for?
 						</div>
 						<div>
 							{[
@@ -109,8 +109,13 @@ export default function Appeals({ user }: PageProps) {
 					</div>
 					{type == "Bot Blacklist" && (
 						<div className="text-rose-600 px-4">
-							If a blacklist duration is under a week, it will be
+							If a blacklist duration is under two weeks, it will be
 							not appealed.
+						</div>
+					)}
+					{type == "Community Server Ban" && (
+						<div className="text-rose-600 px-4">
+							If you are still in the server but cannot talk, you are not banned. You are timed out. This cannot be appealed as it is temporary.
 						</div>
 					)}
 					{type == "Bot Ban" && (
@@ -129,20 +134,20 @@ export default function Appeals({ user }: PageProps) {
 									type.includes("Bot") ? "user" : "server"
 								].map((rule, i) => (
 									<label
-										key={i}
-										htmlFor={"rule-" + i}
-										onClick={(e) => updateBrokenRules(i)}
+										key={i + 1}
+										htmlFor={"rule-" + (i + 1)}
+										onClick={(e) => updateBrokenRules(i + 1)}
 										className="flex items-center space-x-6 select-none text-dark-400 dark:text-white"
 									>
 										<span
 											className={clsx(
 												"absolute text-sm rounded-md h-5 w-5 flex items-center justify-center text-white",
-												brokenRules.includes(i)
+												brokenRules.includes(i + 1)
 													? "bg-dank-300"
 													: "bg-gray-500 dark:bg-dank-400"
 											)}
 										>
-											{i}
+											{i + 1}
 										</span>
 										<span>{rule}</span>
 									</label>

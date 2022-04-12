@@ -12,20 +12,20 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 	const user = req.session.get("user");
 
 	if (!user) {
-		return res.status(401).json({ error: "You are not logged in." });
+		return res.status(401).json({ error: "You are not logged in" });
 	}
 
 	if (await db.collection("bans").findOne({ type: "appeal", id: user.id })) {
 		return res
 			.status(403)
-			.json({ error: "You are banned from appealing." });
+			.json({ error: "You are banned from appealing" });
 	}
 
 	if (
 		(await redis.get(`community:cooldown:appeal:${user.id}`)) &&
 		!user.moderator
 	) {
-		return res.status(429).json({ error: "You're doing that too often." });
+		return res.status(429).json({ error: "You're doing that too often" });
 	}
 
 	if (!req.body.type || !req.body.appeal || !req.body.rules) {
@@ -57,14 +57,15 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 			content: user.id,
 			embeds: [
 				{
-					title: `Appealing a ${req.body.type}`,
 					color: 0x39923c,
+					author: {
+						icon_url: user.avatar + '.png',
+						name: `${req.body.type} Appeal`,
+						url: `https://dankmemer.lol/@${user.id}`
+					},
 					timestamp: new Date(),
+					description: req.body.appeal.slice(0, 4095),
 					fields: [
-						{
-							name: `Banned user`,
-							value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})`,
-						},
 						{
 							name: "Rules that were broken",
 							value: (req.body.rules as string[])
@@ -72,9 +73,9 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 								.join("\n"),
 						},
 						{
-							name: "Appeal content",
-							value: req.body.appeal.slice(0, 1023),
-						},
+							name: "User Appealing",
+							value: `${user.username}#${user.discriminator} (<@${user.id}> | ${user.id})${req.body.type.includes('Server') ? '' : `\n${user.email}`}`,
+						}
 					],
 				},
 			],

@@ -36,7 +36,7 @@ export default function Reports({ user }: PageProps) {
 			body: JSON.stringify({
 				id,
 				report,
-				rules: brokenRules.map((i) => REPORTS[type][i]),
+				rules: brokenRules.map((i) => REPORTS[type][i - 1]),
 				type,
 			}),
 		});
@@ -128,20 +128,20 @@ export default function Reports({ user }: PageProps) {
 							<div className="flex flex-col space-y-1">
 								{REPORTS[type].map((rule, i) => (
 									<label
-										key={i}
-										htmlFor={"rule-" + i}
-										onClick={(e) => updateBrokenRules(i)}
+										key={i + 1}
+										htmlFor={"rule-" + i + 1}
+										onClick={(e) => updateBrokenRules(i + 1)}
 										className="flex items-center space-x-6 select-none text-dark-400 dark:text-white"
 									>
 										<span
 											className={clsx(
 												"absolute text-sm rounded-md h-5 w-5 flex items-center justify-center text-white",
-												brokenRules.includes(i)
+												brokenRules.includes(i + 1)
 													? "bg-dank-300"
 													: "bg-gray-500 dark:bg-dank-400"
 											)}
 										>
-											{i}
+											{i + 1}
 										</span>
 										<span>{rule}</span>
 									</label>
