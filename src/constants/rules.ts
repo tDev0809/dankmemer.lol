@@ -36,7 +36,7 @@ export const APPEALS: Record<string, string[]> = {
 		"Unsure",
 	],
 	user: [
-		"Userbots, Scripting, or Macros",
+		"Userbots, Autotyper, Scripting, or Macros",
 		"Spamming",
 		"Sharing or Using Exploits",
 		"Alternate Account Abuse",
