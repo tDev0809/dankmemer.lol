@@ -109,8 +109,8 @@ export default function Appeals({ user }: PageProps) {
 					</div>
 					{type == "Bot Blacklist" && (
 						<div className="text-rose-600 px-4">
-							If a blacklist duration is under two weeks, it will be
-							not appealed.
+							If a blacklist duration is under two weeks, it will not
+							be appealed.
 						</div>
 					)}
 					{type == "Community Server Ban" && (
