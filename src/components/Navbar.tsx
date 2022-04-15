@@ -52,6 +52,7 @@ export default function Navbar({ user }: Props) {
 								src={"/img/memer.png"}
 								alt="Logo"
 								width="42"
+								height="42"
 							/>
 						</Link>
 						<ul className="ml-5 space-x-4 hidden lg:flex">

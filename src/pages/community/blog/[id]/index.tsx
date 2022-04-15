@@ -78,23 +78,25 @@ export default function BlogPage({ user }: PageProps) {
 								}}
 							/>
 							<Ad
-								id="bottom"
-								platform="mobile"
-								sizes={[
-									[320, 50],
-									[300, 50],
-									[300, 250],
-								]}
-							/>
-							<Ad
-								id="bottom"
-								platform="desktop"
-								sizes={[
-									[728, 90],
-									[970, 90],
-									[970, 250],
-								]}
-							/>
+					id="blogpost-bottom-mobile"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[160, 600],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad
+					id="blogpost-bottom-desktop"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+						[970, 250],
+						[300, 250],
+					]}
+				/>
 							<BottomCTA />
 						</>
 					) : (

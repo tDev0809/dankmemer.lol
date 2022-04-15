@@ -4,6 +4,7 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import LoadingPepe from "../../../components/LoadingPepe";
+import { Ad } from "../../../components/Ad";
 import Container from "../../../components/ui/Container";
 import { PageProps, Tutorial } from "../../../types";
 import { tailwindHtml } from "../../../util/blog";
@@ -51,6 +52,26 @@ export default function TutorialPage({ user }: PageProps) {
 						<LoadingPepe />
 					)}
 				</div>
+				<Ad
+					id="tutorialpost-bottom-mobile"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[160, 600],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad
+					id="tutorialpost-bottom-desktop"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+						[970, 250],
+						[300, 250],
+					]}
+				/>
 			</div>
 		</Container>
 	);

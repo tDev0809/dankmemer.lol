@@ -113,14 +113,20 @@ export default function HomePage({ user }: PageProps) {
 				</div>
 				<div className="mt-10">
 					<Ad
-						id="top"
+						id="home-middle-mobile"
 						platform="mobile"
 						sizes={[
 							[320, 50],
-							[300, 50],
-							[300, 250],
+							[300, 50]
 						]}
 					/>
+					<Ad
+					id="home-middle-desktop"
+					platform="desktop"
+					sizes={[
+						[728, 90]
+					]}
+				/>
 				</div>
 			</div>
 			<div className="flex flex-col items-center mt-80 space-y-4 font-inter">
@@ -172,20 +178,23 @@ export default function HomePage({ user }: PageProps) {
 			</div>
 			<div className="m-24 flex flex-col space-y-8">
 				<Ad
-					id="bottom"
+					id="home-bottom-mobile"
 					platform="mobile"
 					sizes={[
 						[320, 50],
+						[160, 600],
 						[300, 50],
 						[300, 250],
 					]}
 				/>
 				<Ad
-					id="bottom"
+					id="home-bottom-desktop"
 					platform="desktop"
 					sizes={[
 						[728, 90],
 						[970, 90],
+						[970, 250],
+						[300, 250],
 					]}
 				/>
 				<BottomCTA />

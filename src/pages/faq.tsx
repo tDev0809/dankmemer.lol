@@ -47,8 +47,8 @@ export default function FaqPage({ user }: PageProps) {
 	return (
 		<Container title="FAQ" user={user}>
 			<div className="mt-20">
-				<Ad
-					id="top"
+			<Ad
+					id="faq-top-mobile"
 					platform="mobile"
 					sizes={[
 						[320, 50],
@@ -56,7 +56,14 @@ export default function FaqPage({ user }: PageProps) {
 						[300, 250],
 					]}
 				/>
-				<Ad id="top" platform="desktop" sizes={[[728, 90]]} />
+				<Ad
+					id="faq-top-desktop"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90]
+					]}
+				/>
 			</div>
 			<div className="my-20 flex flex-col space-y-8 relative">
 				<div>
@@ -145,21 +152,23 @@ export default function FaqPage({ user }: PageProps) {
 					))}
 				</div>
 				<Ad
-					id="bottom"
+					id="faq-bottom-mobile"
 					platform="mobile"
 					sizes={[
 						[320, 50],
+						[160, 600],
 						[300, 50],
 						[300, 250],
 					]}
 				/>
 				<Ad
-					id="bottom"
+					id="faq-bottom-desktop"
 					platform="desktop"
 					sizes={[
 						[728, 90],
 						[970, 90],
 						[970, 250],
+						[300, 250],
 					]}
 				/>
 			</div>

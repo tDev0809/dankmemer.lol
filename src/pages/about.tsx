@@ -57,7 +57,7 @@ export default function AboutPage({ user }: PageProps) {
 					</Block>
 					<div id="nitropay-about-middle" className="nitropay" />
 					<Ad
-						id="middle"
+						id="faq-middle-mobile"
 						platform="mobile"
 						sizes={[
 							[320, 50],
@@ -66,7 +66,7 @@ export default function AboutPage({ user }: PageProps) {
 						]}
 					/>
 					<Ad
-						id="middle"
+						id="faq-middle-desktop"
 						platform="desktop"
 						sizes={[
 							[728, 90],

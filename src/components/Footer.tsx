@@ -18,6 +18,7 @@ export default function Footer({}: Props) {
 									src={"/img/memer.png"}
 									alt="Logo"
 									width="100"
+									height="100"
 								/>
 							</Link>
 							<div className="flex flex-col -space-y-1">

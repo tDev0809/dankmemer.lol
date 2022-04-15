@@ -20,7 +20,7 @@ export default function createAd(
 			refreshTime: 30,
 			refreshVisibleOnly: true,
 			report: {
-				enabled: true,
+				enabled: false,
 				wording: "Report Ad",
 				position: "top-right",
 			},

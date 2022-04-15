@@ -53,7 +53,7 @@ export default function StaffPage({ user }: PageProps) {
 				{Object.keys(staff).length === 0 && <LoadingPepe />}
 				<div className="mb-20">
 					<Ad
-						id="bottom"
+						id="staff-bottom-mobile"
 						platform="mobile"
 						sizes={[
 							[320, 50],
@@ -62,7 +62,7 @@ export default function StaffPage({ user }: PageProps) {
 						]}
 					/>
 					<Ad
-						id="bottom"
+						id="staff-bottom-desktop"
 						platform="desktop"
 						sizes={[
 							[728, 90],

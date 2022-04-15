@@ -26,7 +26,7 @@ export default function Blogs({ user }: PageProps) {
 		<Container title="Blog Posts" user={user}>
 			<div className="flex flex-col my-16 space-y-4 mx-8 xl:mx-0">
 				<Ad
-					id="top"
+					id="blogs-top-desktop"
 					platform="desktop"
 					sizes={[
 						[728, 90],
@@ -35,7 +35,7 @@ export default function Blogs({ user }: PageProps) {
 					]}
 				/>
 				<Ad
-					id="top"
+					id="blogs-top-mobile"
 					platform="mobile"
 					sizes={[
 						[320, 50],
@@ -77,21 +77,23 @@ export default function Blogs({ user }: PageProps) {
 						  ))}
 				</div>
 				<Ad
-					id="bottom"
+					id="blogs-bottom-mobile"
 					platform="mobile"
 					sizes={[
 						[320, 50],
+						[160, 600],
 						[300, 50],
 						[300, 250],
 					]}
 				/>
 				<Ad
-					id="bottom"
+					id="blogs-bottom-desktop"
 					platform="desktop"
 					sizes={[
 						[728, 90],
 						[970, 90],
 						[970, 250],
+						[300, 250],
 					]}
 				/>
 			</div>

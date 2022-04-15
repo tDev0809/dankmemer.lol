@@ -46,23 +46,23 @@ export default function App({ Component, pageProps }: AppProps) {
 				}}
 			/>
 			<link
-				href="https://fonts.googleapis.com/icon?family=Material+Icons"
+				href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
 				rel="stylesheet"
 			/>
 			<link
-				href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+				href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined&display=swap"
 				rel="stylesheet"
 			/>
 			<link
-				href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700"
+				href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap"
 				rel="stylesheet"
 			/>
 			<link
-				href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+				href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&display=swap"
 				rel="stylesheet"
 			/>
 			<link
-				href="https://fonts.googleapis.com/css2?family=Inter"
+				href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
 				rel="stylesheet"
 			/>
 

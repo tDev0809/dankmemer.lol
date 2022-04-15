@@ -47,7 +47,7 @@ export default function LandingPage({ user }: PageProps) {
 		<Container title="Landing" user={user}>
 			<div className="mt-20">
 				<Ad
-					id="top"
+					id="landing-top-mobile"
 					platform="mobile"
 					sizes={[
 						[320, 50],
@@ -55,7 +55,7 @@ export default function LandingPage({ user }: PageProps) {
 						[300, 250],
 					]}
 				/>
-				<Ad id="top" platform="desktop" sizes={[[728, 90]]} />
+				<Ad id="landing-top-desktop" platform="desktop" sizes={[[728, 90], [970, 90]]} />
 			</div>
 			<div className="relative my-16">
 				<div className="flex flex-col items-center space-y-8">
@@ -231,22 +231,25 @@ export default function LandingPage({ user }: PageProps) {
 						</Block>
 					</div>
 					<Ad
-						id="bottom"
-						platform="mobile"
-						sizes={[
-							[320, 50],
-							[300, 50],
-							[300, 250],
-						]}
-					/>
-					<Ad
-						id="bottom"
-						platform="desktop"
-						sizes={[
-							[728, 90],
-							[970, 90],
-						]}
-					/>
+					id="landing-bottom-mobile"
+					platform="mobile"
+					sizes={[
+						[320, 50],
+						[160, 600],
+						[300, 50],
+						[300, 250],
+					]}
+				/>
+				<Ad
+					id="landing-bottom-desktop"
+					platform="desktop"
+					sizes={[
+						[728, 90],
+						[970, 90],
+						[970, 250],
+						[300, 250],
+					]}
+				/>
 				</div>
 			</div>
 		</Container>
