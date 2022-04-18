@@ -94,7 +94,7 @@ export default function Navbar({ user }: Props) {
 					</div>
 
 					<div className="items-center relative hidden lg:flex">
-						<Link href="https://discord.gg/meme">
+						<Link href="https://discord.gg/dankmemerbot">
 							<a
 								className="inline-block text-gray-800 dark:text-light-200 hover:text-dank-300 dark:hover:text-dank-100"
 								rel="noreferrer noopener"

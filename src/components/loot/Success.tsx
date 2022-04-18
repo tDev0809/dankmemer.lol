@@ -13,7 +13,7 @@ export function Success({ id }: { id?: string }) {
 					<div>
 						If they do not show up after 48 hours, join{" "}
 						<a
-							href="https://discord.gg/meme"
+							href="https://discord.gg/dankmemerbot"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-dank-300"

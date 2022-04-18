@@ -58,7 +58,7 @@ export default function Rules({ user }: PageProps) {
 							users is forbidden. Please report all exploits and
 							bugs to staff on the{" "}
 							<a
-								href="https://discord.gg/meme"
+								href="https://discord.gg/dankmemerbot"
 								target="_blank"
 								className="text-dank-300"
 							>

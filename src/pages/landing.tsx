@@ -87,7 +87,7 @@ export default function LandingPage({ user }: PageProps) {
 							title="Support"
 							icon="support_agent"
 							onClick={() =>
-								router.push("https://discord.gg/meme")
+								router.push("https://discord.gg/dankmemerbot")
 							}
 						>
 							FAQ page not enough to help? Head over to our

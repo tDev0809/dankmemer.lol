@@ -9,7 +9,7 @@ export function BannedUser() {
 					<div>
 						Your account has been banned from purchasing any of our
 						lootboxes! If you think this is a mistake, please join{" "}
-						<TextLink href="https://discord.gg/meme">
+						<TextLink href="https://discord.gg/dankmemerbot">
 							our support server
 						</TextLink>{" "}
 						for assistance. If this is correct, you may attempt to{" "}
