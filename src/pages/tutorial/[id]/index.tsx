@@ -51,8 +51,7 @@ export default function TutorialPage({ user }: PageProps) {
 					) : (
 						<LoadingPepe />
 					)}
-				</div>
-				<Ad
+					<Ad
 					id="tutorialpost-bottom-mobile"
 					platform="mobile"
 					sizes={[
@@ -72,6 +71,7 @@ export default function TutorialPage({ user }: PageProps) {
 						[300, 250],
 					]}
 				/>
+				</div>
 			</div>
 		</Container>
 	);
