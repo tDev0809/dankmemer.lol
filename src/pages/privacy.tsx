@@ -601,7 +601,7 @@ export default function Privacy({ user }: PageProps) {
 					</Legal>
 					<Legal title="Contact us">
 						<div>
-							If you have any questions about our Terms, please
+							If you have any questions or concerns about our Terms, please
 							contact us by email:{" "}
 							<a
 								href="mailto:admin@dankmemer.gg"
