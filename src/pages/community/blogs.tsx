@@ -2,7 +2,6 @@ import axios from "axios";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Ad } from "../../components/Ad";
 import { BlogPost } from "../../components/community/blog/BlogPost";
 import { BlogPostPlaceholder } from "../../components/community/blog/BlogPostPlaceholder";
 import { Title } from "../../components/Title";
@@ -25,24 +24,6 @@ export default function Blogs({ user }: PageProps) {
 	return (
 		<Container title="Blog Posts" user={user}>
 			<div className="flex flex-col my-16 space-y-4 mx-8 xl:mx-0">
-				<Ad
-					id="blogs-top-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-					]}
-				/>
-				<Ad
-					id="blogs-top-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
 				<div className="flex justify-between items-center">
 					<Title size="big">Blog Posts</Title>
 					{user?.developer && (
@@ -76,26 +57,6 @@ export default function Blogs({ user }: PageProps) {
 								</div>
 						  ))}
 				</div>
-				<Ad
-					id="blogs-bottom-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[160, 600],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="blogs-bottom-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-						[300, 250],
-					]}
-				/>
 			</div>
 		</Container>
 	);

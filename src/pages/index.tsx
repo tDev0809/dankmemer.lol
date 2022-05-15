@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Ad } from "../components/Ad";
 import BottomCTA from "../components/BottomCTA";
 import Container from "../components/ui/Container";
 import FancyButton from "../components/ui/FancyButton";
@@ -112,21 +111,6 @@ export default function HomePage({ user }: PageProps) {
 					</svg>
 				</div>
 				<div className="mt-10">
-					<Ad
-						id="home-middle-mobile"
-						platform="mobile"
-						sizes={[
-							[320, 50],
-							[300, 50]
-						]}
-					/>
-					<Ad
-					id="home-middle-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90]
-					]}
-				/>
 				</div>
 			</div>
 			<div className="flex flex-col items-center mt-80 space-y-4 font-inter">
@@ -177,26 +161,6 @@ export default function HomePage({ user }: PageProps) {
 				</div>
 			</div>
 			<div className="m-24 flex flex-col space-y-8">
-				<Ad
-					id="home-bottom-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[160, 600],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="home-bottom-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-						[300, 250],
-					]}
-				/>
 				<BottomCTA />
 			</div>
 		</Container>

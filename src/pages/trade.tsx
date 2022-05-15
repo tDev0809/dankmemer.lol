@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { Ad } from "../components/Ad";
 import { Title } from "../components/Title";
 import Button from "../components/ui/Button";
 import Container from "../components/ui/Container";
@@ -189,18 +188,6 @@ export default function TradePage({ user }: PageProps) {
 
 	return (
 		<Container title="Trade Generator" user={user}>
-			<div className="mt-20">
-				<Ad
-					id="top"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad id="top" platform="desktop" sizes={[[728, 90]]} />
-			</div>
 			<div className="my-20 flex flex-col space-y-4">
 				<div className="flex flex-col space-y-2">
 					<Title size="big">Trade Generator</Title>
@@ -278,23 +265,6 @@ export default function TradePage({ user }: PageProps) {
 						</div>
 					</div>
 				</div>
-				<Ad
-					id="bottom"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="bottom"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-					]}
-				/>
 			</div>
 		</Container>
 	);

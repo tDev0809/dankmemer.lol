@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import { Ad } from "../components/Ad";
 import Container from "../components/ui/Container";
 import { PageProps } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
@@ -45,18 +44,6 @@ export default function LandingPage({ user }: PageProps) {
 
 	return (
 		<Container title="Landing" user={user}>
-			<div className="mt-20">
-				<Ad
-					id="landing-top-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad id="landing-top-desktop" platform="desktop" sizes={[[728, 90], [970, 90]]} />
-			</div>
 			<div className="relative my-16">
 				<div className="flex flex-col items-center space-y-8">
 					<div className="text-dark-400 dark:text-white font-montserrat flex flex-col items-center -space-y-4">
@@ -230,26 +217,6 @@ export default function LandingPage({ user }: PageProps) {
 							</p>
 						</Block>
 					</div>
-					<Ad
-					id="landing-bottom-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[160, 600],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="landing-bottom-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-						[300, 250],
-					]}
-				/>
 				</div>
 			</div>
 		</Container>

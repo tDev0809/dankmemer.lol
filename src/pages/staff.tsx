@@ -2,7 +2,6 @@ import axios from "axios";
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-import { Ad } from "../components/Ad";
 import LoadingPepe from "../components/LoadingPepe";
 import { StaffCard } from "../components/StaffCard";
 import { Title } from "../components/Title";
@@ -51,26 +50,6 @@ export default function StaffPage({ user }: PageProps) {
 					</div>
 				)}
 				{Object.keys(staff).length === 0 && <LoadingPepe />}
-				<div className="mb-20">
-					<Ad
-						id="staff-bottom-mobile"
-						platform="mobile"
-						sizes={[
-							[320, 50],
-							[300, 50],
-							[300, 250],
-						]}
-					/>
-					<Ad
-						id="staff-bottom-desktop"
-						platform="desktop"
-						sizes={[
-							[728, 90],
-							[970, 90],
-							[970, 250],
-						]}
-					/>
-				</div>
 			</div>
 		</Container>
 	);

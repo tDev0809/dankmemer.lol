@@ -1,6 +1,5 @@
 import { GetServerSideProps } from "next";
 import { ReactNode } from "react";
-import { Ad } from "../components/Ad";
 import Container from "../components/ui/Container";
 import { PageProps } from "../types";
 import { unauthenticatedRoute } from "../util/redirects";
@@ -55,24 +54,6 @@ export default function AboutPage({ user }: PageProps) {
 						Dank Memer, and created it's current account and listed
 						it publically in January of 2017. The rest is history!
 					</Block>
-					<div id="nitropay-about-middle" className="nitropay" />
-					<Ad
-						id="faq-middle-mobile"
-						platform="mobile"
-						sizes={[
-							[320, 50],
-							[300, 50],
-							[300, 250],
-						]}
-					/>
-					<Ad
-						id="faq-middle-desktop"
-						platform="desktop"
-						sizes={[
-							[728, 90],
-							[300, 250],
-						]}
-					/>
 					<Block title="Why are there paid perks?">
 						For the first year of Dank Memer, there was little to no
 						paid features. We really did (and still do) push

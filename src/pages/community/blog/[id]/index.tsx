@@ -4,7 +4,6 @@ import MarkdownIt from "markdown-it";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Ad } from "../../../../components/Ad";
 import BottomCTA from "../../../../components/BottomCTA";
 import LoadingPepe from "../../../../components/LoadingPepe";
 import Container from "../../../../components/ui/Container";
@@ -77,26 +76,6 @@ export default function BlogPage({ user }: PageProps) {
 									),
 								}}
 							/>
-							<Ad
-					id="blogpost-bottom-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[160, 600],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="blogpost-bottom-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-						[300, 250],
-					]}
-				/>
 							<BottomCTA />
 						</>
 					) : (

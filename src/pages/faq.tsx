@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-import { Ad } from "../components/Ad";
 import Expandable from "../components/Expandable";
 import Container from "../components/ui/Container";
 import Dropdown from "../components/ui/Dropdown";
@@ -47,23 +46,6 @@ export default function FaqPage({ user }: PageProps) {
 	return (
 		<Container title="FAQ" user={user}>
 			<div className="mt-20">
-			<Ad
-					id="faq-top-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="faq-top-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90]
-					]}
-				/>
 			</div>
 			<div className="my-20 flex flex-col space-y-8 relative">
 				<div>
@@ -151,26 +133,6 @@ export default function FaqPage({ user }: PageProps) {
 						/>
 					))}
 				</div>
-				<Ad
-					id="faq-bottom-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[160, 600],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="faq-bottom-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-						[300, 250],
-					]}
-				/>
 			</div>
 		</Container>
 	);

@@ -3,7 +3,6 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { Ad } from "../../../components/Ad";
 import AuthorInfo from "../../../components/community/post/AuthorInfo";
 import CommentCard from "../../../components/community/post/CommentCard";
 import { Label } from "../../../components/community/PostLabel";
@@ -409,26 +408,6 @@ export default function PostPage({ user }: PageProps) {
 				)}
 				{!post && <LoadingPepe />}
 			</div>
-			<Ad
-					id="communitypost-bottom-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[160, 600],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="communitypost-bottom-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-						[300, 250],
-					]}
-				/>
 		</Container>
 	);
 }

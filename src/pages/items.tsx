@@ -2,7 +2,6 @@ import clsx from "clsx";
 import MarkdownIt from "markdown-it";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
-import { Ad } from "../components/Ad";
 import { Title } from "../components/Title";
 import Container from "../components/ui/Container";
 import Dropdown from "../components/ui/Dropdown";
@@ -80,25 +79,6 @@ export default function ItemsPage({ user }: PageProps) {
 
 	return (
 		<Container title="Items" user={user}>
-			<div className="mt-20">
-			<Ad
-					id="commands-top-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="commands-top-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90]
-					]}
-				/>
-			</div>
 			<div className="my-20 flex flex-col space-y-4">
 				<div className="flex flex-col space-y-2">
 					<Title size="big">Item directory</Title>
@@ -303,26 +283,6 @@ export default function ItemsPage({ user }: PageProps) {
 						</div>
 					</div>
 				</div>
-				<Ad
-					id="items-bottom-mobile"
-					platform="mobile"
-					sizes={[
-						[320, 50],
-						[160, 600],
-						[300, 50],
-						[300, 250],
-					]}
-				/>
-				<Ad
-					id="items-bottom-desktop"
-					platform="desktop"
-					sizes={[
-						[728, 90],
-						[970, 90],
-						[970, 250],
-						[300, 250],
-					]}
-				/>
 			</div>
 		</Container>
 	);
