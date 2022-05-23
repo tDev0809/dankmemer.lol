@@ -40,11 +40,11 @@ export default function BlogPage({ user }: PageProps) {
 	return (
 		<Container title="Blog" user={user}>
 			<div className="relative flex justify-center">
-				<div className="max-w-5xl flex flex-col items-center space-y-8 my-16">
+				<div className="my-16 flex max-w-5xl flex-col items-center space-y-8">
 					{blog ? (
 						<>
 							<div className="flex flex-col items-center space-y-1">
-								<div className="text-5xl font-montserrat font-bold text-dark-400 dark:text-white text-center">
+								<div className="text-center font-montserrat text-5xl font-bold text-dark-400 dark:text-white">
 									{blog.title}
 								</div>
 								<div className="flex flex-col items-center -space-y-1">
@@ -69,7 +69,7 @@ export default function BlogPage({ user }: PageProps) {
 								</div>
 							</div>
 							<div
-								className="text-dark-400 dark:text-white text-justify max-w-[80vw]"
+								className="max-w-[80vw] text-left text-dark-400 dark:text-white lg:text-justify"
 								dangerouslySetInnerHTML={{
 									__html: tailwindHtml(
 										mdParser.render(blog.content)
