@@ -14,6 +14,7 @@ interface Job {
 	requiresResume: boolean;
 	applicants?: string[];
 	alreadyApplied?: boolean;
+	webhook?: string
 }
 
 const handler = async (req: NextIronRequest, res: NextApiResponse) => {
@@ -28,16 +29,18 @@ const handler = async (req: NextIronRequest, res: NextApiResponse) => {
 		dbQuery = { ...dbQuery, team: req.query.team };
 	}
 	const jobs = (await db.collection("jobs").find(dbQuery).toArray()) as Job[];
+	
 	for (let i = 0; i < jobs.length; i++) {
 		if (
 			req.query.user &&
 			jobs[i].applicants?.includes(req.query.user.toString())
-		) {
-			jobs[i].alreadyApplied = true;
-		}
-		if (!user || !user.developer) {
-			delete jobs[i].applicants;
-		}
+			) {
+				jobs[i].alreadyApplied = true;
+			}
+			if (!user || !user.developer) {
+				delete jobs[i].applicants;
+				delete jobs[i].webhook;
+			}
 	}
 	return res.status(200).json(jobs);
 };
